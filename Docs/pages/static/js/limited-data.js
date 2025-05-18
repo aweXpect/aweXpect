@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          169.63695855935416,
           187.91740506490072,
           174.50051062901815,
           167.3493604830333,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           176.56466901302338,
           181.85792638705328,
           174.10448967493497,
-          179.0417648792267
+          179.0417648792267,
+          187.2770541826884
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.57935966764177,
           254.01929577191672,
           248.52970523834227,
           242.10036687850953,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           239.77524970127985,
           245.60798845972334,
           237.7248728956495,
-          234.8292191369193
+          234.8292191369193,
+          249.72692476908367
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          905.673551779527,
           893.4172147604136,
           993.2431596609263,
           953.183803431193,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           955.4121081488473,
           933.2471395639272,
           922.1544129689535,
-          886.9229546326858
+          886.9229546326858,
+          974.7824089050293
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          284234.16748046875,
           288582.9062825521,
           284706.7961077009,
           294376.2471679688,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           289293.5729282924,
           304438.33357747394,
           294659.1286433293,
-          286862.0983698918
+          286862.0983698918,
+          284138.01133510045
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1185,7 +1185,6 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
-          284980,
           284932,
           284932,
           284932,
@@ -1200,6 +1199,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2256589.625,
           2334812.1919270833,
           2242361.3895833334,
           2202506.453125,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2206017.678485577,
           2158297.6032366073,
           2262207.0260416665,
-          2127398.2411458334
+          2127398.2411458334,
+          2180274.0071614585
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          668806.9456612723,
           673995.2780598958,
           677454.1836635044,
           698783.9190755208,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           640980.4684119591,
           698330.6254557292,
           672229.68984375,
-          662489.2766601562
+          662489.2766601562,
+          691549.9870042067
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          305.548216683524,
           342.9348689397176,
           327.98435462315877,
           328.63511956532795,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           339.6146778424581,
           348.59646558761597,
           339.2717016293452,
-          316.4105793407985
+          316.4105793407985,
+          325.84510056177777
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          494.5617722102574,
           503.6010553042094,
           480.23742074232837,
           473.2413011959621,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           455.8286646525065,
           482.9320753642491,
           483.0849219640096,
-          472.2208952585856
+          472.2208952585856,
+          485.23061116536456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          20924.636753627234,
           17855.019201660158,
           16115.22378133138,
           15073.389371744792,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           15327.146318562825,
           17783.274465707633,
           14316.926812744141,
-          14619.790366617839
+          14619.790366617839,
+          19430.179524739582
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          200.09708217212133,
           221.86800956726074,
           201.41859899248396,
           204.02411695889063,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           217.37395300183977,
           218.01195632494412,
           217.6935727437337,
-          217.6671840974263
+          217.6671840974263,
+          207.67853968938192
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.86597556334274,
           249.94870079480685,
           239.71570798328943,
           245.97536669458663,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           238.17091957728067,
           243.0531065940857,
           239.39023883002145,
-          236.35795838038126
+          236.35795838038126,
+          247.6669745763143
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1242.9604949951172,
           1303.1603326161703,
           1242.637045288086,
           1201.4014718373617,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1258.132548014323,
           1261.0896020616804,
           1209.3310791015624,
-          1203.792130915324
+          1203.792130915324,
+          1280.43976949056
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          346.15348800023395,
           370.55715093612673,
           322.3637885366167,
           324.152760664622,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           324.88600904600963,
           345.48704694112143,
           335.54828176498415,
-          324.6192995707194
+          324.6192995707194,
+          360.8786482810974
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3398,7 +3398,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
-          1120,
+          1128,
           1128,
           1128,
           1128
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          487.55245005289714,
           501.50936568578084,
           466.5115341186523,
           463.506650352478,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           459.0914795215313,
           468.7973273595174,
           457.1514930089315,
-          466.4843738079071
+          466.4843738079071,
+          533.010534286499
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1403.4788766225179,
           1341.0663757324219,
           1326.3313828786215,
           1337.4512399037678,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1303.8324706737812,
           1340.2455825805664,
           1287.4496795654297,
-          1260.198956044515
+          1260.198956044515,
+          1402.9790326527186
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1130.0228824615479,
           1180.6780648549397,
           1090.0653171539307,
           1112.30292523702,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1151.8838663736979,
           1182.2483853560227,
           1080.708688354492,
-          1125.688649113973
+          1125.688649113973,
+          1124.2899721690587
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1405.1111368815104,
           1409.362286376953,
           1281.437453842163,
           1294.7140761057535,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1316.5972109476725,
           1316.080820465088,
           1286.7858207702636,
-          1323.911829249064
+          1323.911829249064,
+          1325.0280788739522
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2843.7595231192454,
           2960.71565729777,
           2781.353117116292,
           2815.9722903115407,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2883.8154560969424,
           2854.6876068115234,
           2757.5750406705415,
-          2826.4246622721353
+          2826.4246622721353,
+          2924.1092814127605
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "6130b25997a620542b72e639153caaa6750dc0cd",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Apr 18 15:06:03 2025 \u002B0200",
-        "message": "feat: Add options for \u0060HasSingle\u0060 with predicate (#513)"
-      },
-      {
         "sha": "a515324e5d75808255997e3045c72fbcfae29f03",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 18 17:45:22 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 03:33:20 2025 \u002B0200",
         "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
+      },
+      {
+        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 10:15:02 2025 \u002B0200",
+        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
       }
     ],
     "labels": [
-      "6130b259",
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "3d025a69",
       "c3567d33",
       "3ecf5746",
-      "dcb36930"
+      "dcb36930",
+      "da79591d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1245.8154490152995,
           1220.7780817667642,
           1180.2304985863823,
           1187.543562825521,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1280.267301940918,
           1294.3653736114502,
           1252.3567483084541,
-          1265.2982704162598
+          1265.2982704162598,
+          1303.7658267702375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4862,7 +4862,7 @@ window.BENCHMARK_DATA = {
           1976,
           1976,
           1976,
-          1976,
+          2168,
           2168,
           2168,
           2168,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          146562.47366768974,
           151233.91828264509,
           148940.79039713542,
           151713.18385416668,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           151527.09891764322,
           149367.17076822917,
           156609.4903971354,
-          147610.28305288462
+          147610.28305288462,
+          153746.45620492788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63788,
           63787,
           63787,
           63787,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4670.194120788574,
           4852.292223612468,
           4666.333506266276,
           4680.074990408762,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4618.420261128744,
           4780.975473844088,
           4555.141059366862,
-          4652.13718523298
+          4652.13718523298,
+          4806.996161397298
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
