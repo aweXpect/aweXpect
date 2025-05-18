@@ -24,9 +24,10 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source)
 	{
 		ObjectEqualityOptions<TValue> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AllIsUniqueConstraint<TKey, TValue, TValue>(it, grammars, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueConstraint<TKey, TValue, TValue>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -41,9 +42,10 @@ public static partial class ThatDictionary
 		AreAllUnique<TKey>(this IThat<IDictionary<TKey, string?>?> source)
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AllIsUniqueConstraint<TKey, string?, string?>(it, grammars, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueConstraint<TKey, string?, string?>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -64,11 +66,12 @@ public static partial class ThatDictionary
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+			expectationBuilder.AddConstraint((it, grammars) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(
-					it,
-					grammars,
+					expectationBuilder,
+					it, grammars,
 					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
@@ -92,11 +95,12 @@ public static partial class ThatDictionary
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+			expectationBuilder.AddConstraint((it, grammars) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(
-					it,
-					grammars,
+					expectationBuilder,
+					it, grammars,
 					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
@@ -105,6 +109,7 @@ public static partial class ThatDictionary
 	}
 
 	private sealed class AllIsUniqueConstraint<TKey, TValue, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
@@ -139,6 +144,7 @@ public static partial class ThatDictionary
 			}
 
 			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(actual);
 			return this;
 		}
 
@@ -162,6 +168,7 @@ public static partial class ThatDictionary
 	}
 
 	private sealed class AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		Func<TValue, TMember> memberAccessor,
@@ -199,6 +206,7 @@ public static partial class ThatDictionary
 			}
 
 			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(actual);
 			return this;
 		}
 

@@ -478,11 +478,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to [
-					               [1, 2],
-					               [3, 3],
-					               [4, 4]
-					             ],
+					             is equivalent to {
+					               [1] = 2,
+					               [3] = 3,
+					               [4] = 4
+					             },
 					             but it was not:
 					               Element [2] had superfluous 3
 					             and
@@ -491,7 +491,7 @@ public sealed partial class ThatObject
 					                 Expected: 3
 					             and
 					               Element [4] was missing 4
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore collection order
@@ -532,11 +532,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to [
-					               [1, 2],
-					               [2, 4],
-					               [3, 5]
-					             ],
+					             is equivalent to {
+					               [1] = 2,
+					               [2] = 4,
+					               [3] = 5
+					             },
 					             but it was not:
 					               Element [2] differed:
 					                    Found: 3
@@ -545,7 +545,7 @@ public sealed partial class ThatObject
 					               Element [3] differed:
 					                    Found: 4
 					                 Expected: 5
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore collection order
@@ -578,10 +578,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to [
-					               ["A", "A"],
-					               ["B", <null>]
-					             ],
+					             is equivalent to {
+					               ["A"] = "A",
+					               ["B"] = <null>
+					             },
 					             but it was not:
 					               Element [B] was missing <null>
 					             
@@ -674,12 +674,12 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to [
-					               ["A", "A"]
-					             ],
+					             is equivalent to {
+					               ["A"] = "A"
+					             },
 					             but it was not:
 					               Element [B] had superfluous <null>
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);

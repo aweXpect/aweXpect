@@ -24,6 +24,7 @@ public static partial class ValueFormatters
 		return stringBuilder.ToString();
 	}
 
+#pragma warning disable S3776 // Cognitive Complexity of methods should not be too high
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
@@ -49,7 +50,9 @@ public static partial class ValueFormatters
 
 		int maxCount = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		int count = maxCount;
-		stringBuilder.Append('[');
+
+		bool isDictionary = value is IDictionary;
+		stringBuilder.Append(isDictionary ? '{' : '[');
 		bool hasMoreValues = false;
 		bool isNotEmpty = false;
 		foreach (object? v in value)
@@ -96,8 +99,9 @@ public static partial class ValueFormatters
 			stringBuilder.AppendLine();
 		}
 
-		stringBuilder.Append(']');
+		stringBuilder.Append(isDictionary ? '}' : ']');
 	}
+#pragma warning restore S3776
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />

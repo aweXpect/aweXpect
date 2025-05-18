@@ -153,9 +153,8 @@ public static partial class ValueFormatters
 			object? item = valueType.GetProperty("Value")?.GetValue(value);
 			stringBuilder.Append('[');
 			Formatter.Format(stringBuilder, key, options);
-			stringBuilder.Append(", ");
+			stringBuilder.Append("] = ");
 			Formatter.Format(stringBuilder, item, options);
-			stringBuilder.Append(']');
 			return;
 		}
 

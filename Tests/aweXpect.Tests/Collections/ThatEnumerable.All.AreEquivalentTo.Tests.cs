@@ -44,7 +44,19 @@ public sealed partial class ThatEnumerable
 						             [2, (… and maybe others)]
 						             
 						             Collection:
-						             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             
 						             Equivalency options:
 						              - include public fields and properties
@@ -77,10 +89,34 @@ public sealed partial class ThatEnumerable
 						             but only 1 of 20 were
 						             
 						             Not matching items:
-						             [1, 1, 2, 3, 8, 13, 21, 34, 55, 89, …]
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               89,
+						               …
+						             ]
 						             
 						             Collection:
-						             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               …
+						             ]
 						             
 						             Equivalency options:
 						              - include public fields and properties

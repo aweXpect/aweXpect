@@ -44,7 +44,19 @@ public sealed partial class ThatAsyncEnumerable
 						             [2, 3, 5, 8, 13, 21, 34, 55, 89, (… and maybe others)]
 						             
 						             Collection:
-						             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             
 						             Equivalency options:
 						              - include public fields and properties
@@ -88,10 +100,34 @@ public sealed partial class ThatAsyncEnumerable
 						             but not all were
 						             
 						             Not matching items:
-						             [1, 1, 2, 3, 8, 13, 21, 34, 55, 89, (… and maybe others)]
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               89,
+						               (… and maybe others)
+						             ]
 						             
 						             Collection:
-						             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             
 						             Equivalency options:
 						              - include public fields and properties

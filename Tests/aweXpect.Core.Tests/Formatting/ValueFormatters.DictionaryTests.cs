@@ -13,7 +13,7 @@ public partial class ValueFormatters
 		[Fact]
 		public async Task ShouldFormatItems()
 		{
-			string expectedResult = "[[\"1\", 1], [\"2\", 2], [\"3\", 3], [\"4\", 4]]";
+			string expectedResult = "{[\"1\"] = 1, [\"2\"] = 2, [\"3\"] = 3, [\"4\"] = 4}";
 			Dictionary<string, int> value = Enumerable.Range(1, 4).ToDictionary(i => i.ToString(), i => i);
 			StringBuilder sb = new();
 
@@ -44,7 +44,7 @@ public partial class ValueFormatters
 		[Fact]
 		public async Task WithType_ShouldIncludeTypeInformation()
 		{
-			string expectedResult = "Dictionary<string, int> [[\"1\", 1], [\"2\", 2], [\"3\", 3]]";
+			string expectedResult = "Dictionary<string, int> {[\"1\"] = 1, [\"2\"] = 2, [\"3\"] = 3}";
 			Dictionary<string, int> value = Enumerable.Range(1, 3).ToDictionary(i => i.ToString(), i => i);
 			StringBuilder sb = new();
 

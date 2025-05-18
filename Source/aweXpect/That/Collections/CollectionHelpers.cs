@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using aweXpect.Core;
+using aweXpect.Helpers;
 
 namespace aweXpect;
 
@@ -42,7 +43,20 @@ internal static class CollectionHelpers
 		=> expectationBuilder.UpdateContexts(contexts
 			=> contexts
 				.Add(new ResultContext("Collection",
-					() => Formatter.Format(value, typeof(TItem).GetFormattingOption()).AppendIsIncomplete(isIncomplete),
+					() => Formatter.Format(value, typeof(TItem).GetFormattingOption(value switch
+					{
+						ICollection<TItem> coll => coll.Count,
+						ICountable countable => countable.Count,
+						_ => null
+					})).AppendIsIncomplete(isIncomplete),
+					-1)));
+
+	internal static ExpectationBuilder AddCollectionContext<TKey, TValue>(this ExpectationBuilder expectationBuilder,
+		IDictionary<TKey, TValue> value, bool isIncomplete = false)
+		=> expectationBuilder.UpdateContexts(contexts
+			=> contexts
+				.Add(new ResultContext("Dictionary",
+					() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count)).AppendIsIncomplete(isIncomplete),
 					-1)));
 
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
@@ -79,7 +93,7 @@ internal static class CollectionHelpers
 		        """;
 	}
 
-	internal static FormattingOptions GetFormattingOption(this Type type)
+	internal static FormattingOptions GetFormattingOption(this Type type, int? count)
 	{
 		Type[] singleLineTypes =
 		[
@@ -101,14 +115,14 @@ internal static class CollectionHelpers
 			typeof(Half),
 #endif
 		];
-		if (singleLineTypes.Contains(type))
+		if (count < 10 && singleLineTypes.Contains(type))
 		{
 			return FormattingOptions.SingleLine;
 		}
 
 		Type? underlyingType = Nullable.GetUnderlyingType(type);
 
-		if (underlyingType != null &&
+		if (count < 10 && underlyingType != null &&
 		    singleLineTypes.Contains(underlyingType))
 		{
 			return FormattingOptions.SingleLine;

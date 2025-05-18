@@ -564,14 +564,14 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to [
-					               [2, 3],
-					               [1, 4]
-					             ],
-					             but it was considered equivalent to [
-					               [2, 3],
-					               [1, 4]
-					             ]
+					             is not equivalent to {
+					               [2] = 3,
+					               [1] = 4
+					             },
+					             but it was considered equivalent to {
+					               [2] = 3,
+					               [1] = 4
+					             }
 					             
 					             Equivalency options:
 					              - include public fields and properties
@@ -607,14 +607,14 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to [
-					               ["B", "B"],
-					               ["A", "A"]
-					             ],
-					             but it was considered equivalent to [
-					               ["A", "A"],
-					               ["B", "B"]
-					             ]
+					             is not equivalent to {
+					               ["B"] = "B",
+					               ["A"] = "A"
+					             },
+					             but it was considered equivalent to {
+					               ["A"] = "A",
+					               ["B"] = "B"
+					             }
 					             
 					             Equivalency options:
 					              - include public fields and properties
