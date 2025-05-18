@@ -7,7 +7,7 @@ You can combine multiple expectations in different ways:
 Simply use `.And` or `.Or` to combine multiple expectations, e.g.
 
 ```csharp
-string subject = "something different"
+string subject = "something different";
 await Expect.That(subject).StartsWith("some").And.EndsWith("text");
 ```
 
