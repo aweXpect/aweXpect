@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace aweXpect.Helpers;
 
-internal sealed class MaterializingEnumerable<T> : IEnumerable<T>
+internal sealed class MaterializingEnumerable<T> : IEnumerable<T>, ICountable
 {
 	private readonly IEnumerator<T> _enumerator;
 	private readonly List<T> _materializedItems = new();
@@ -43,7 +43,16 @@ internal sealed class MaterializingEnumerable<T> : IEnumerable<T>
 			_materializedItems.Add(item);
 			yield return item;
 		}
+
+		Count = _materializedItems.Count;
 	}
 
 	#endregion
+
+	public int? Count { get; private set; }
+}
+
+internal interface ICountable
+{
+	int? Count { get; }
 }

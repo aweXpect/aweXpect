@@ -44,6 +44,9 @@ public sealed partial class ThatDictionary
 					             only has unique values,
 					             but it contained 1 duplicate:
 					               1
+					             
+					             Dictionary:
+					             {[0] = 1, [1] = 2, [2] = 3, [3] = 1}
 					             """);
 			}
 
@@ -62,6 +65,9 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               1,
 					               2
+					             
+					             Dictionary:
+					             {[0] = 1, [1] = 2, [2] = 3, [3] = 1, [4] = 2, [5] = -1}
 					             """);
 			}
 
@@ -131,6 +137,12 @@ public sealed partial class ThatDictionary
 					             only has unique values ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
+					             
+					             Dictionary:
+					             {
+					               [0] = "a",
+					               [1] = "A"
+					             }
 					             """);
 			}
 
@@ -148,6 +160,14 @@ public sealed partial class ThatDictionary
 					             only has unique values,
 					             but it contained 1 duplicate:
 					               "a"
+					             
+					             Dictionary:
+					             {
+					               [0] = "a",
+					               [1] = "b",
+					               [2] = "c",
+					               [3] = "a"
+					             }
 					             """);
 			}
 
@@ -166,6 +186,16 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+					             
+					             Dictionary:
+					             {
+					               [0] = "a",
+					               [1] = "b",
+					               [2] = "c",
+					               [3] = "a",
+					               [4] = "b",
+					               [5] = "x"
+					             }
 					             """);
 			}
 
@@ -224,6 +254,26 @@ public sealed partial class ThatDictionary
 					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
+					             
+					             Dictionary:
+					             {
+					               [0] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 1
+					               },
+					               [1] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 2
+					               },
+					               [2] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 3
+					               },
+					               [3] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 1
+					               }
+					             }
 					             """);
 			}
 
@@ -243,6 +293,34 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               1,
 					               2
+					             
+					             Dictionary:
+					             {
+					               [0] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 1
+					               },
+					               [1] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 2
+					               },
+					               [2] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 3
+					               },
+					               [3] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 1
+					               },
+					               [4] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = 2
+					               },
+					               [5] = ThatDictionary.MyClass {
+					                 Inner = <null>,
+					                 Value = -1
+					               }
+					             }
 					             """);
 			}
 
@@ -312,6 +390,16 @@ public sealed partial class ThatDictionary
 					             only has unique values for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
+					             
+					             Dictionary:
+					             {
+					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               [1] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "A"
+					               }
+					             }
 					             """);
 			}
 
@@ -330,6 +418,22 @@ public sealed partial class ThatDictionary
 					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
+					             
+					             Dictionary:
+					             {
+					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               [1] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "b"
+					               },
+					               [2] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "c"
+					               },
+					               [3] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               }
+					             }
 					             """);
 			}
 
@@ -349,6 +453,28 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+					             
+					             Dictionary:
+					             {
+					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               [1] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "b"
+					               },
+					               [2] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "c"
+					               },
+					               [3] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               [4] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "b"
+					               },
+					               [5] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "x"
+					               }
+					             }
 					             """);
 			}
 

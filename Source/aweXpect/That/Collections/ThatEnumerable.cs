@@ -242,7 +242,7 @@ public static partial class ThatEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
-						Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption())
+						Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption(_matchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
@@ -251,7 +251,7 @@ public static partial class ThatEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
-						Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption())
+						Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}

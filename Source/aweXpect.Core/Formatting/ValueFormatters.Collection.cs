@@ -49,7 +49,9 @@ public static partial class ValueFormatters
 
 		int maxCount = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		int count = maxCount;
-		stringBuilder.Append('[');
+
+		bool isDictionary = value is IDictionary;
+		stringBuilder.Append(isDictionary ? '{' : '[');
 		bool hasMoreValues = false;
 		bool isNotEmpty = false;
 		foreach (object? v in value)
@@ -96,7 +98,7 @@ public static partial class ValueFormatters
 			stringBuilder.AppendLine();
 		}
 
-		stringBuilder.Append(']');
+		stringBuilder.Append(isDictionary ? '}' : ']');
 	}
 
 	/// <summary>
