@@ -69,13 +69,13 @@ This will result in
 > but it was True
 > ```
 
-## [Migration](https://github.com/aweXpect/aweXpect.Migration)
+## Migration
 
 We added support to migrate from other testing frameworks.
 
 1. Temporarily install the
-   `aweXpect.Migration` [![Nuget](https://img.shields.io/nuget/v/aweXpect.Migration)](https://www.nuget.org/packages/aweXpect.Migration)
-   package in the test project and add the following global using statements in the test project:
+   [aweXpect.Migration](https://github.com/aweXpect/aweXpect.Migration) package [![Nuget](https://img.shields.io/nuget/v/aweXpect.Migration)](https://www.nuget.org/packages/aweXpect.Migration)
+   in the test project and add the following global using statements in the test project:
    ```csharp
    global using System.Threading.Tasks;
    global using aweXpect;
