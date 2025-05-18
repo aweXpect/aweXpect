@@ -90,13 +90,19 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope != BuildScope.Default)
 		.Executes(() =>
 		{
+			DotNetBuild(s => s
+				.SetProjectFile(Solution)
+				.SetConfiguration(Configuration.Debug)
+				.EnableNoLogo());
+			
 			string net48 = "net48";
 			DotNetTest(s => s
 					.SetConfiguration(Configuration.Debug)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
+					.EnableNoBuild()
 					.SetResultsDirectory(TestResultsDirectory / Configuration.Debug)
 					.CombineWith(
-						UnitTestProjects(BuildScope),
+						UnitTestProjects(BuildScope.Default),
 						(settings, project) => settings
 							.SetProjectFile(project)
 							.CombineWith(
