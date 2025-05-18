@@ -51,8 +51,3 @@ internal sealed class MaterializingEnumerable<T> : IEnumerable<T>, ICountable
 
 	public int? Count { get; private set; }
 }
-
-internal interface ICountable
-{
-	int? Count { get; }
-}

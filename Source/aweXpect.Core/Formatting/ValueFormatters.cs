@@ -151,7 +151,7 @@ public static partial class ValueFormatters
 
 			object? key = valueType.GetProperty("Key")?.GetValue(value);
 			object? item = valueType.GetProperty("Value")?.GetValue(value);
-			stringBuilder.Append("[");
+			stringBuilder.Append('[');
 			Formatter.Format(stringBuilder, key, options);
 			stringBuilder.Append("] = ");
 			Formatter.Format(stringBuilder, item, options);
