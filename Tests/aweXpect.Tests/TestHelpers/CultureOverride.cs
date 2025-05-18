@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace aweXpect.Tests;
 
-public class CultureOverride : IDisposable
+internal sealed class CultureOverride : IDisposable
 {
 	private readonly CultureInfo _originalCulture;
 
