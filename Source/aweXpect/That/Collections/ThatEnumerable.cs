@@ -19,6 +19,7 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	private sealed class IsEqualToConstraint<TItem, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		string expectedExpression,
@@ -59,6 +60,7 @@ public static partial class ThatEnumerable
 			{
 				_failure ??= TooManyDeviationsError(materializedEnumerable);
 				Outcome = Outcome.Failure;
+				expectationBuilder.AddCollectionContext(materializedEnumerable);
 				return this;
 			}
 
@@ -262,14 +264,20 @@ public static partial class ThatEnumerable
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
+		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly EnumerableQuantifier _quantifier;
 		private int _matchingCount;
 		private int _notMatchingCount;
 		private int? _totalCount;
 
-		public SyncCollectionCountConstraint(string it, ExpectationGrammars grammars, EnumerableQuantifier quantifier)
+		public SyncCollectionCountConstraint(
+			ExpectationBuilder expectationBuilder,
+			string it,
+			ExpectationGrammars grammars,
+			EnumerableQuantifier quantifier)
 			: base(it, grammars)
 		{
+			_expectationBuilder = expectationBuilder;
 			_quantifier = quantifier;
 		}
 
@@ -293,6 +301,7 @@ public static partial class ThatEnumerable
 				_matchingCount = collectionOfT.Count;
 				_totalCount = _matchingCount;
 				Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+				_expectationBuilder.AddCollectionContext(actual);
 				return Task.FromResult<ConstraintResult>(this);
 			}
 
@@ -305,6 +314,7 @@ public static partial class ThatEnumerable
 
 				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
 				{
+					_expectationBuilder.AddCollectionContext(materialized, true);
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 					return Task.FromResult<ConstraintResult>(this);
 				}
@@ -312,11 +322,13 @@ public static partial class ThatEnumerable
 				if (cancellationToken.IsCancellationRequested)
 				{
 					Outcome = Outcome.Undecided;
+					_expectationBuilder.AddCollectionContext(materialized, true);
 					return Task.FromResult<ConstraintResult>(this);
 				}
 			}
 
 			_totalCount = _matchingCount + _notMatchingCount;
+			_expectationBuilder.AddCollectionContext(materialized);
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 			return Task.FromResult<ConstraintResult>(this);
 		}
@@ -346,6 +358,7 @@ public static partial class ThatEnumerable
 	}
 
 	private sealed class IsInOrderConstraint<TItem, TMember>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,
@@ -368,6 +381,7 @@ public static partial class ThatEnumerable
 
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			expectationBuilder.AddCollectionContext(materialized);
 
 			TMember previous = default!;
 			int index = 0;
@@ -386,7 +400,7 @@ public static partial class ThatEnumerable
 				    (comparisonResult < 0 && sortOrder == SortOrder.Descending))
 				{
 					_failureText =
-						$"{It} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order in ";
+						$"{It} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order";
 					Outcome = Outcome.Failure;
 					return this;
 				}
@@ -405,10 +419,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(_failureText);
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
-		}
+			=> stringBuilder.Append(_failureText);
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -417,9 +428,6 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" was in ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
-		}
+			=> stringBuilder.Append(It).Append(" was");
 	}
 }

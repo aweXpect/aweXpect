@@ -22,7 +22,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in descending order,
-					             but it had 1 before 3 which is not in descending order in [
+					             but it had 1 before 3 which is not in descending order
+					             
+					             Collection:
+					             [
 					               3,
 					               3,
 					               2,
@@ -85,11 +88,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is not in descending order,
-					             but it was in [
-					               3,
-					               2,
-					               1
-					             ]
+					             but it was
+					             
+					             Collection:
+					             [3, 2, 1]
 					             """);
 			}
 		}
@@ -108,7 +110,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in descending order,
-					             but it had "A" before "a" which is not in descending order in [
+					             but it had "A" before "a" which is not in descending order
+					             
+					             Collection:
+					             [
 					               "A",
 					               "a"
 					             ]
@@ -138,7 +143,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in descending order,
-					             but it had "a" before "c" which is not in descending order in [
+					             but it had "a" before "c" which is not in descending order
+					             
+					             Collection:
+					             [
 					               "c",
 					               "b",
 					               "a",
@@ -189,7 +197,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in descending order for x => x.Value,
-					             but it had 1 before 3 which is not in descending order in [
+					             but it had 1 before 3 which is not in descending order
+					             
+					             Collection:
+					             [
 					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
@@ -246,7 +257,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is not in descending order for x => x.Value,
-					             but it was in [
+					             but it was
+					             
+					             Collection:
+					             [
 					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
@@ -275,7 +289,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in descending order for x => x.Value,
-					             but it had "A" before "a" which is not in descending order in [
+					             but it had "A" before "a" which is not in descending order
+					             
+					             Collection:
+					             [
 					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "A"
 					               },
@@ -310,7 +327,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in descending order for x => x.Value,
-					             but it had "a" before "c" which is not in descending order in [
+					             but it had "a" before "c" which is not in descending order
+					             
+					             Collection:
+					             [
 					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },

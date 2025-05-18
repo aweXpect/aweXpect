@@ -26,9 +26,11 @@ public static partial class ThatEnumerable
 	{
 		Quantifier quantifier = new();
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
+					expectationBuilder,
 					it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(expected)}{options}"
@@ -49,10 +51,11 @@ public static partial class ThatEnumerable
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(
-					it, grammars,
+					expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(expected)}{options}"
 						: $"contains {Formatter.Format(expected)}{options} {q}",
@@ -75,10 +78,11 @@ public static partial class ThatEnumerable
 	{
 		predicate.ThrowIfNull();
 		Quantifier quantifier = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
-					it, grammars,
+					expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
 						: $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
@@ -99,9 +103,12 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<TItem, TItem>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
 					options, matchOptions)),
 			source,
 			options,
@@ -118,9 +125,10 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<string?, string?>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected, options, matchOptions)),
 			source,
 			options,
@@ -137,9 +145,10 @@ public static partial class ThatEnumerable
 	{
 		Quantifier quantifier = new();
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainConstraint<TItem>(expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
 						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
@@ -160,9 +169,10 @@ public static partial class ThatEnumerable
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<string?>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainConstraint<string?>(expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
 						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
@@ -185,9 +195,10 @@ public static partial class ThatEnumerable
 	{
 		predicate.ThrowIfNull();
 		Quantifier quantifier = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainConstraint<TItem>(expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
 						: $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q.ToNegatedString()}",
@@ -198,6 +209,7 @@ public static partial class ThatEnumerable
 	}
 
 	private sealed class ContainConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		Func<Quantifier, string> expectationText,
@@ -234,6 +246,7 @@ public static partial class ThatEnumerable
 					{
 						case false:
 							Outcome = Outcome.Failure;
+							expectationBuilder.AddCollectionContext(_materializedEnumerable);
 							return this;
 						case true:
 							Outcome = Outcome.Success;
@@ -250,6 +263,7 @@ public static partial class ThatEnumerable
 
 			_isFinished = true;
 			Outcome = Outcome.Failure;
+			expectationBuilder.AddCollectionContext(_materializedEnumerable);
 			return this;
 		}
 
@@ -266,40 +280,36 @@ public static partial class ThatEnumerable
 			{
 				if (_count == 0)
 				{
-					stringBuilder.Append(it).Append(" did not contain it in ");
+					stringBuilder.Append(it).Append(" did not contain it");
 				}
 				else if (_count == 1)
 				{
-					stringBuilder.Append(it).Append(" contained it once in ");
+					stringBuilder.Append(it).Append(" contained it once");
 				}
 				else if (_count == 2)
 				{
-					stringBuilder.Append(it).Append(" contained it twice in ");
+					stringBuilder.Append(it).Append(" contained it twice");
 				}
 				else
 				{
-					stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times in ");
+					stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times");
 				}
-
-				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 			}
 			else
 			{
 				stringBuilder.Append(it).Append(" contained it at least ");
 				if (_count == 1)
 				{
-					stringBuilder.Append("once in ");
+					stringBuilder.Append("once");
 				}
 				else if (_count == 2)
 				{
-					stringBuilder.Append("twice in ");
+					stringBuilder.Append("twice");
 				}
 				else
 				{
-					stringBuilder.Append(_count).Append(" times in ");
+					stringBuilder.Append(_count).Append(" times");
 				}
-
-				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 			}
 		}
 

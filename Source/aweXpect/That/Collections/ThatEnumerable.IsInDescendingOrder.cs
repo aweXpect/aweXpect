@@ -18,9 +18,10 @@ public static partial class ThatEnumerable
 			this IThat<IEnumerable<TItem>?> source)
 	{
 		CollectionOrderOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderConstraint<TItem, TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsInOrderConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					x => x,
 					SortOrder.Descending,
 					options,
@@ -41,9 +42,10 @@ public static partial class ThatEnumerable
 			string doNotPopulateThisValue = "")
 	{
 		CollectionOrderOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderConstraint<TItem, TMember>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsInOrderConstraint<TItem, TMember>(expectationBuilder, it, grammars,
 					memberAccessor,
 					SortOrder.Descending,
 					options,
