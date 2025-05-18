@@ -69,6 +69,31 @@ This will result in
 > but it was True
 > ```
 
+## [Migration](https://github.com/aweXpect/aweXpect.Migration)
+
+We added support to migrate from other testing frameworks.
+
+1. Temporarily install the
+   `aweXpect.Migration` [![Nuget](https://img.shields.io/nuget/v/aweXpect.Migration)](https://www.nuget.org/packages/aweXpect.Migration)
+   package in the test project and add the following global using statements in the test project:
+   ```csharp
+   global using System.Threading.Tasks;
+   global using aweXpect;
+   ```
+
+2. Depending on the framework, the assertions will be marked with a warning:
+	- For [FluentAssertions](https://fluentassertions.com/):  
+      All usages of `.Should()` will be marked with
+	  `aweXpectM002: fluentassertions should be migrated to aweXpect`
+	- For [Xunit](https://xunit.net/):  
+      All usages of `Assert` will be marked with `aweXpectM003: Xunit assertions should be migrated to aweXpect`
+
+3. Most warnings can be automatically fixed with a code fix provider. Make sure to await all migrated expectations (fix `aweXpect0001: Expectations must be awaited or verified`).
+
+4. Fix the remaining warnings manually.
+
+5. Remove the `aweXpect.Migration` package again.
+
 ## Detecting test frameworks
 
 We support a lot of different unit testing frameworks:
@@ -80,71 +105,3 @@ We support a lot of different unit testing frameworks:
 
 When you have a reference to the corresponding test framework
 assembly, we will automatically throw the corresponding exceptions.
-
-## Multiple expectations
-
-You can combine multiple expectations in different ways:
-
-### On the same property
-
-Simply use `.And` or `.Or` to combine multiple expectations, e.g.
-
-```csharp
-string subject = "something different"
-await Expect.That(subject).StartsWith("some").And.EndsWith("text");
-```
-
-> ```
-> Expected subject to
-> start with "some" and end with "text",
-> but it was "something different"
-> ```
-
-### On different properties of the same subject
-
-Use the `For`-syntax to access different properties of a common subject and combine them again with `.And` or `.Or`,
-e.g.
-
-```csharp
-  public record MyClass(int Status, string Content);
-  MyClass subject = new(1, "some other content");
-  
-  await Expect.That(subject)
-    .For(x => x.Status, x => x.IsGreaterThan(1)).And
-    .For(x => x.Content, x => x.Is("some content"));
-```
-
-> ```
-> Expected subject to
-> for .Status be greater than 1 and for .Content be equal to "some content",
-> but .Status was 1 and .Content was "some other content" which differs at index 5:
->         ↓ (actual)
->   "some other content"
->   "some content"
->         ↑ (expected)
-> ```
-
-### On different subjects
-
-Use the `Expect.ThatAll` or `Expect.ThatAny` syntax to combine arbitrary expectations, e.g.
-
-```csharp
-  string subjectA = "ABC";
-  string subjectB = "XYZ";
-  
-  await Expect.ThatAll(
-    Expect.That(subjectA).Is("ABC"),
-    Expect.That(subjectB).Is("DEF"));
-```
-
-> ```
-> Expected all of the following to succeed:
->  [01] Expected subjectA to be equal to "ABC"
->  [02] Expected subjectB to be equal to "DEF"
-> but
->  [02] it was "XYZ" which differs at index 0:
->          ↓ (actual)
->         "XYZ"
->         "DEF"
->          ↑ (expected)
-> ```
