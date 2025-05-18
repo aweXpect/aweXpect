@@ -353,6 +353,18 @@ await Expect.That(values).All().Satisfy(i => i <= 20);
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
+### More than
+
+You can verify that more than `minimum` items in the collection, satisfy an expectation:
+
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).MoreThan(8).Satisfy(i => i < 10);
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
+
 ### At least
 
 You can verify that at least `minimum` items in the collection, satisfy an expectation:
@@ -373,6 +385,18 @@ You can verify that at most `maximum` items in the collection, satisfy an expect
 IEnumerable<int> values = Enumerable.Range(1, 20);
 
 await Expect.That(values).AtMost(1).Satisfy(i => i < 2);
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
+
+### Less than
+
+You can verify that less than `maximum` items in the collection, satisfy an expectation:
+
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).LessThan(2).Satisfy(i => i < 2);
 ```
 
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
