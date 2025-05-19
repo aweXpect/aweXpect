@@ -34,6 +34,9 @@ public sealed partial class ThatDictionary
 					             but it did contain [
 					               2
 					             ]
+					             
+					             Dictionary:
+					             {[1] = 0, [2] = 0, [3] = 0}
 					             """);
 			}
 

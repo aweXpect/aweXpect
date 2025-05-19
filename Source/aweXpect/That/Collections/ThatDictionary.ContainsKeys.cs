@@ -16,13 +16,17 @@ public static partial class ThatDictionary
 		ContainsKeys<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			params TKey[] expected)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainKeysConstraint<TKey, TValue>(it, grammars, expected)),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ContainsValuesResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TKey, TValue?>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainKeysConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source,
 			expected,
 			dictionary => expected
 				.Select(key => key is not null && dictionary.TryGetValue(key, out TValue? value) ? value : default)
 		);
+	}
 
 	/// <summary>
 	///     Verifies that the dictionary contains none of the <paramref name="unexpected" /> keys.
@@ -31,13 +35,20 @@ public static partial class ThatDictionary
 		DoesNotContainKeys<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			params TKey[] unexpected)
-		=> new(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainKeysConstraint<TKey, TValue>(it, grammars, unexpected).Invert()),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainKeysConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
 		);
+	}
 
-	private sealed class ContainKeysConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TKey[] expected)
+	private sealed class ContainKeysConstraint<TKey, TValue>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		TKey[] expected)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>>(it, grammars),
 			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
@@ -71,33 +82,34 @@ public static partial class ThatDictionary
 				(false, [], _) => Outcome.Success,
 				(false, _, _) => Outcome.Failure,
 			};
+			expectationBuilder.AddCollectionContext(actual);
 			return this;
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("contains keys ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" did not contain ");
-			Formatter.Format(stringBuilder, _missingKeys, FormattingOptions.MultipleLines);
+			ValueFormatters.Format(Formatter, stringBuilder, _missingKeys, FormattingOptions.MultipleLines);
 			stringBuilder.Append(" in ");
-			Formatter.Format(stringBuilder, Actual!.Keys, FormattingOptions.MultipleLines);
+			ValueFormatters.Format(Formatter, stringBuilder, Actual!.Keys, FormattingOptions.MultipleLines);
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("does not contain keys ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" did contain ");
-			Formatter.Format(stringBuilder, _existingKeys, FormattingOptions.MultipleLines);
+			ValueFormatters.Format(Formatter, stringBuilder, _existingKeys, FormattingOptions.MultipleLines);
 		}
 	}
 }

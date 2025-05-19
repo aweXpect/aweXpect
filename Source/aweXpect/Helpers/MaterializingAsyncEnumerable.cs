@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace aweXpect.Helpers;
 
-internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, ICountable
+internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, IMaterializedEnumerable<T>
 {
 	private readonly IAsyncEnumerator<T> _enumerator;
 	private readonly List<T> _materializedItems = new();
@@ -35,11 +35,17 @@ internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, ICo
 			_materializedItems.Add(item);
 			yield return item;
 		}
-		
+
 		Count = _materializedItems.Count;
 	}
 
 	#endregion
+
+	/// <inheritdoc cref="ICountable.Count" />
+	public int? Count { get; private set; }
+
+	/// <inheritdoc cref="IMaterializedEnumerable{T}.MaterializedItems" />
+	IReadOnlyList<T> IMaterializedEnumerable<T>.MaterializedItems => _materializedItems;
 
 	public static IAsyncEnumerable<T> Wrap(IAsyncEnumerable<T> enumerable)
 	{
@@ -50,7 +56,6 @@ internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, ICo
 
 		return new MaterializingAsyncEnumerable<T>(enumerable);
 	}
-
-	public int? Count { get; private set; }
 }
+
 #endif

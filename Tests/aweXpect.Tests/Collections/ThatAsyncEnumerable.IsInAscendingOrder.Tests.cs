@@ -23,13 +23,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in ascending order,
-					             but it had 3 before 1 which is not in ascending order in [
-					               1,
-					               1,
-					               2,
-					               3,
-					               1
-					             ]
+					             but it had 3 before 1 which is not in ascending order
+					             
+					             Collection:
+					             [1, 1, 2, 3, 1]
 					             """);
 			}
 
@@ -86,11 +83,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is not in ascending order,
-					             but it was in [
-					               1,
-					               2,
-					               3
-					             ]
+					             but it was
+					             
+					             Collection:
+					             [1, 2, 3]
 					             """);
 			}
 		}
@@ -109,7 +105,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in ascending order,
-					             but it had "a" before "A" which is not in ascending order in [
+					             but it had "a" before "A" which is not in ascending order
+					             
+					             Collection:
+					             [
 					               "a",
 					               "A"
 					             ]
@@ -139,7 +138,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in ascending order,
-					             but it had "c" before "a" which is not in ascending order in [
+					             but it had "c" before "a" which is not in ascending order
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c",
@@ -190,7 +192,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in ascending order for x => x.Value,
-					             but it had 3 before 1 which is not in ascending order in [
+					             but it had 3 before 1 which is not in ascending order
+					             
+					             Collection:
+					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.MyIntClass {
 					                 Value = 1
 					               },
@@ -247,7 +252,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is not in ascending order for x => x.Value,
-					             but it was in [
+					             but it was
+					             
+					             Collection:
+					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.MyIntClass {
 					                 Value = 1
 					               },
@@ -276,7 +284,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in ascending order for x => x.Value,
-					             but it had "a" before "A" which is not in ascending order in [
+					             but it had "a" before "A" which is not in ascending order
+					             
+					             Collection:
+					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
@@ -312,7 +323,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is in ascending order for x => x.Value,
-					             but it had "c" before "a" which is not in ascending order in [
+					             but it had "c" before "a" which is not in ascending order
+					             
+					             Collection:
+					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },

@@ -232,7 +232,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -363,7 +366,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "c",
 					               "a",
 					               "b",
@@ -385,7 +391,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -406,7 +415,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c",
@@ -428,7 +440,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -449,7 +464,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "a",
 					               "b",
@@ -495,7 +513,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -602,7 +623,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "c",
 					               "b"
@@ -707,7 +731,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -826,7 +853,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "c",
 					               "b"
@@ -847,7 +877,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "c",
 					               "a",
 					               "b",
@@ -869,7 +902,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -890,7 +926,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c",
@@ -912,7 +951,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -933,7 +975,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "a",
 					               "b",
@@ -979,7 +1024,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -1003,7 +1051,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order as wildcard,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "foo",
 					               "bar",
 					               "baz"
@@ -1025,7 +1076,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring leading white-space,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               " a",
 					               "b",
 					               "	c"
@@ -1047,7 +1101,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring trailing white-space,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a ",
 					               "b",
 					               "c	"

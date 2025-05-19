@@ -21,10 +21,11 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new
 			ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-					new IsEqualToConstraint<TItem, TItem>(it, grammars,
+				expectationBuilder.AddConstraint((it, grammars) =>
+					new IsEqualToConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 						doNotPopulateThisValue.TrimCommonWhiteSpace(),
 						expected,
 						options,
@@ -46,10 +47,11 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringCollectionBeContainedInResult<IAsyncEnumerable<string?>,
 			IThat<IAsyncEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<string?, string?>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected,
 					options,

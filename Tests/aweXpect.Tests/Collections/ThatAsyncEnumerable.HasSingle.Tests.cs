@@ -34,6 +34,12 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item,
 					             but it contained more than one item
+					             
+					             Collection:
+					             [
+					               1,
+					               2
+					             ]
 					             """);
 			}
 
@@ -95,6 +101,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item matching x => x > 1,
 					             but it contained more than one item
+					             
+					             Collection:
+					             [
+					               1,
+					               1,
+					               2,
+					               3
+					             ]
 					             """);
 			}
 
@@ -121,6 +135,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item matching x => x > 1,
 					             but it contained more than one item
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3
+					             ]
 					             """);
 			}
 
@@ -207,6 +228,21 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item of type MyClass,
 					             but it contained more than one item
+					             
+					             Collection:
+					             [
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               },
+					               MyOtherClass {
+					                 Value = 2
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 3
+					               }
+					             ]
 					             """);
 			}
 
@@ -263,6 +299,22 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item of type MyBaseClass matching x => x.Value > 1,
 					             but it contained more than one item
+					             
+					             Collection:
+					             [
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 2
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 3
+					               }
+					             ]
 					             """);
 			}
 
@@ -389,6 +441,12 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item which is greater than 4,
 					             but it contained more than one item
+					             
+					             Collection:
+					             [
+					               1,
+					               2
+					             ]
 					             """);
 			}
 

@@ -21,14 +21,17 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<TItem>?> source)
 	{
 		PredicateOptions<TItem> options = new();
-		return new SingleItemResult<IEnumerable<TItem>, TItem>(source.Get().ExpectationBuilder
-				.AddConstraint((it, grammars) => new HasSingleConstraint<TItem>(it, grammars, options)),
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new SingleItemResult<IEnumerable<TItem>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasSingleConstraint<TItem>(expectationBuilder, it, grammars, options)),
 			options,
 			f => f.FirstOrDefault(item => options.Matches(item))
 		);
 	}
 
 	private sealed class HasSingleConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		PredicateOptions<TItem> options)
@@ -68,6 +71,11 @@ public static partial class ThatEnumerable
 			}
 
 			Outcome = _count == 1 ? Outcome.Success : Outcome.Failure;
+			if (_count > 1)
+			{
+				expectationBuilder.AddCollectionContext(materialized);
+			}
+
 			return this;
 		}
 

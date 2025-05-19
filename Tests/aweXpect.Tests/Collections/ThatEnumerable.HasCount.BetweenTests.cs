@@ -27,6 +27,21 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but could not verify, because it was already cancelled
+					             
+					             Collection:
+					             [
+					               0,
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -54,6 +69,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but found only 2
+					             
+					             Collection:
+					             [1, 2]
 					             """);
 			}
 
@@ -70,6 +88,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but found 7
+					             
+					             Collection:
+					             [1, 2, 3, 4, 5, 6, 7]
 					             """);
 			}
 
@@ -97,6 +118,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but found only 2
+					             
+					             Collection:
+					             [1, 2]
 					             """);
 			}
 
@@ -113,6 +137,18 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but found at least 7
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 

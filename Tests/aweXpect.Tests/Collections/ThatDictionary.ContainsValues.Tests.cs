@@ -38,6 +38,9 @@ public sealed partial class ThatDictionary
 					               42,
 					               43
 					             ]
+					             
+					             Dictionary:
+					             {[1] = 41, [2] = 42, [3] = 43}
 					             """);
 			}
 

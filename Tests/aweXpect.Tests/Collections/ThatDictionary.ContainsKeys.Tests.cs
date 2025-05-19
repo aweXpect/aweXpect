@@ -38,6 +38,9 @@ public sealed partial class ThatDictionary
 					               2,
 					               3
 					             ]
+					             
+					             Dictionary:
+					             {[1] = 0, [2] = 0, [3] = 0}
 					             """);
 			}
 
@@ -105,6 +108,13 @@ public sealed partial class ThatDictionary
 					               <null>,
 					               (… and maybe others)
 					             ]
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 
@@ -134,6 +144,13 @@ public sealed partial class ThatDictionary
 					               "bar",
 					               (… and maybe others)
 					             ]
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 
@@ -162,6 +179,13 @@ public sealed partial class ThatDictionary
 					               "bar",
 					               (… and maybe others)
 					             ]
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 
@@ -209,6 +233,13 @@ public sealed partial class ThatDictionary
 					               "baz",
 					               (… and maybe others)
 					             ]
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 

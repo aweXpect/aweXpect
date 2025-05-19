@@ -20,9 +20,12 @@ public static partial class ThatAsyncEnumerable
 		IsInAscendingOrder<TItem>(this IThat<IAsyncEnumerable<TItem>?> source)
 	{
 		CollectionOrderOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TItem, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsInOrderConstraint<TItem, TItem>(it, grammars, x => x, SortOrder.Ascending, options, "")),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsInOrderConstraint<TItem, TItem>(
+					expectationBuilder, it, grammars,
+					x => x, SortOrder.Ascending, options, "")),
 			source,
 			options);
 	}
@@ -37,9 +40,12 @@ public static partial class ThatAsyncEnumerable
 			string doNotPopulateThisValue = "")
 	{
 		CollectionOrderOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsInOrderConstraint<TItem, TMember>(it, grammars, memberAccessor, SortOrder.Ascending, options,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsInOrderConstraint<TItem, TMember>(
+					expectationBuilder, it, grammars,
+					memberAccessor, SortOrder.Ascending, options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
 			options);

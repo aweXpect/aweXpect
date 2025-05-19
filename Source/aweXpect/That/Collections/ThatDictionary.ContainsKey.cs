@@ -15,12 +15,16 @@ public static partial class ThatDictionary
 		ContainsKey<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TKey expected)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsKeyConstraint<TKey, TValue>(it, grammars, expected)),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ContainsValueResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TKey, TValue?>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainsKeyConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source,
 			expected,
 			f => f.TryGetValue(expected, out TValue? value) ? value : default
 		);
+	}
 
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> key.
@@ -29,13 +33,17 @@ public static partial class ThatDictionary
 		DoesNotContainKey<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TKey unexpected)
-		=> new(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsKeyConstraint<TKey, TValue>(it, grammars, unexpected).Invert()),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainsKeyConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
 		);
+	}
 
-	private sealed class ContainsKeyConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TKey expected)
+	private sealed class ContainsKeyConstraint<TKey, TValue>(
+		ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars, TKey expected)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
 			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
@@ -43,6 +51,7 @@ public static partial class ThatDictionary
 		{
 			Actual = actual;
 			Outcome = actual?.ContainsKey(expected) == true ? Outcome.Success : Outcome.Failure;
+			expectationBuilder.AddCollectionContext(actual);
 			return this;
 		}
 

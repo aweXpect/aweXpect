@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Helpers;
 
@@ -39,25 +38,59 @@ internal static class CollectionHelpers
 		=> quantifier.IsSingle() ? "item" : "items";
 
 	internal static ExpectationBuilder AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder,
-		IEnumerable<TItem> value, bool isIncomplete = false)
-		=> expectationBuilder.UpdateContexts(contexts
+		IEnumerable<TItem>? value, bool isIncomplete = false)
+	{
+		if (value is null)
+		{
+			return expectationBuilder;
+		}
+
+		return expectationBuilder.UpdateContexts(contexts
 			=> contexts
 				.Add(new ResultContext("Collection",
 					() => Formatter.Format(value, typeof(TItem).GetFormattingOption(value switch
 					{
 						ICollection<TItem> coll => coll.Count,
 						ICountable countable => countable.Count,
-						_ => null
+						_ => null,
 					})).AppendIsIncomplete(isIncomplete),
 					-1)));
+	}
+
+#if NET8_0_OR_GREATER
+	internal static ExpectationBuilder AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder,
+		IMaterializedEnumerable<TItem>? value, bool isIncomplete = false)
+	{
+		if (value is null)
+		{
+			return expectationBuilder;
+		}
+
+		return expectationBuilder.UpdateContexts(contexts
+			=> contexts
+				.Add(new ResultContext("Collection",
+					() => Formatter.Format(value.MaterializedItems,
+							typeof(TItem).GetFormattingOption(value.Count))
+						.AppendIsIncomplete(isIncomplete),
+					-1)));
+	}
+#endif
 
 	internal static ExpectationBuilder AddCollectionContext<TKey, TValue>(this ExpectationBuilder expectationBuilder,
-		IDictionary<TKey, TValue> value, bool isIncomplete = false)
-		=> expectationBuilder.UpdateContexts(contexts
+		IDictionary<TKey, TValue>? value, bool isIncomplete = false)
+	{
+		if (value is null)
+		{
+			return expectationBuilder;
+		}
+
+		return expectationBuilder.UpdateContexts(contexts
 			=> contexts
 				.Add(new ResultContext("Dictionary",
-					() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count)).AppendIsIncomplete(isIncomplete),
-					-1)));
+					() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
+						.AppendIsIncomplete(isIncomplete),
+					-2)));
+	}
 
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
 	{
