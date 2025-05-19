@@ -37,7 +37,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 5,
-					             but it contained it at least once in [
+					             but it contained it at least once
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -48,7 +51,7 @@ public sealed partial class ThatAsyncEnumerable
 					               21,
 					               34,
 					               55,
-					               …
+					               (… and maybe others)
 					             ]
 					             """);
 			}
@@ -67,7 +70,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain 1 at least {minimum.ToTimesString()},
-					              but it contained it at least twice in [
+					              but it contained it at least twice
+					              
+					              Collection:
+					              [
 					                1,
 					                1,
 					                2,
@@ -78,7 +84,7 @@ public sealed partial class ThatAsyncEnumerable
 					                21,
 					                34,
 					                55,
-					                …
+					                (… and maybe others)
 					              ]
 					              """);
 			}
@@ -97,7 +103,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 1 at most twice,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -128,7 +137,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain 1 between {minimum} and {maximum} times,
-					              but it contained it twice in [
+					              but it contained it twice
+					              
+					              Collection:
+					              [
 					                1,
 					                1,
 					                2,
@@ -160,7 +172,10 @@ public sealed partial class ThatAsyncEnumerable
 					               StringValue = "",
 					               Value = 5
 					             } equivalent,
-					             but it contained it at least once in [
+					             but it contained it at least once
+					             
+					             Collection:
+					             [
 					               MyClass {
 					                 StringValue = "",
 					                 Value = 1
@@ -201,7 +216,7 @@ public sealed partial class ThatAsyncEnumerable
 					                 StringValue = "",
 					                 Value = 55
 					               },
-					               …
+					               (… and maybe others)
 					             ]
 					             """);
 			}
@@ -221,7 +236,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain 1 exactly {times.ToTimesString()},
-					              but it contained it {(times == 1 ? "at least " : "")}twice in [
+					              but it contained it {(times == 1 ? "at least " : "")}twice
+					              
+					              Collection:
+					              [
 					                1,
 					                1,
 					                2,
@@ -251,7 +269,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 1 less than 3 times,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -282,7 +303,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 1 more than once,
-					             but it contained it at least twice in [
+					             but it contained it at least twice
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -293,7 +317,7 @@ public sealed partial class ThatAsyncEnumerable
 					               21,
 					               34,
 					               55,
-					               …
+					               (… and maybe others)
 					             ]
 					             """);
 			}
@@ -313,7 +337,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain {Formatter.Format(unexpected)},
-					              but it contained it once in {Formatter.Format(values, FormattingOptions.MultipleLines)}
+					              but it contained it once
+					              
+					              Collection:
+					              {Formatter.Format(values)}
 					              """);
 			}
 
@@ -369,7 +396,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain "blue" at least {minimum.ToTimesString()},
-					              but it contained it twice in [
+					              but it contained it twice
+					              
+					              Collection:
+					              [
 					                "green",
 					                "blue",
 					                "blue",
@@ -392,7 +422,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "blue" at most twice,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               "green",
 					               "blue",
 					               "blue",
@@ -416,7 +449,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain "blue" between {minimum} and {maximum} times,
-					              but it contained it twice in [
+					              but it contained it twice
+					              
+					              Collection:
+					              [
 					                "green",
 					                "blue",
 					                "blue",
@@ -440,7 +476,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain "blue" exactly {times.ToTimesString()},
-					              but it contained it twice in [
+					              but it contained it twice
+					              
+					              Collection:
+					              [
 					                "green",
 					                "blue",
 					                "blue",
@@ -463,7 +502,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "blue" less than 3 times,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               "green",
 					               "blue",
 					               "blue",
@@ -487,7 +529,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "blue" more than once,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               "green",
 					               "blue",
 					               "blue",
@@ -525,7 +570,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "A" ignoring case,
-					             but it contained it once in [
+					             but it contained it once
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -577,7 +625,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 5,
-					             but it contained it at least once in [
+					             but it contained it at least once
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -588,7 +639,7 @@ public sealed partial class ThatAsyncEnumerable
 					               21,
 					               34,
 					               55,
-					               …
+					               (… and maybe others)
 					             ]
 					             """);
 			}
@@ -607,7 +658,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == 1 at least {minimum.ToTimesString()},
-					              but it contained it at least twice in [
+					              but it contained it at least twice
+					              
+					              Collection:
+					              [
 					                1,
 					                1,
 					                2,
@@ -618,7 +672,7 @@ public sealed partial class ThatAsyncEnumerable
 					                21,
 					                34,
 					                55,
-					                …
+					                (… and maybe others)
 					              ]
 					              """);
 			}
@@ -637,7 +691,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 1 at most twice,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -668,7 +725,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == 1 between {minimum} and {maximum} times,
-					              but it contained it twice in [
+					              but it contained it twice
+					              
+					              Collection:
+					              [
 					                1,
 					                1,
 					                2,
@@ -699,7 +759,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == 1 exactly {times.ToTimesString()},
-					              but it contained it {(times == 1 ? "at least " : "")}twice in [
+					              but it contained it {(times == 1 ? "at least " : "")}twice
+					              
+					              Collection:
+					              [
 					                1,
 					                1,
 					                2,
@@ -729,7 +792,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 1 less than 3 times,
-					             but it contained it twice in [
+					             but it contained it twice
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -760,7 +826,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 1 more than once,
-					             but it contained it at least twice in [
+					             but it contained it at least twice
+					             
+					             Collection:
+					             [
 					               1,
 					               1,
 					               2,
@@ -771,7 +840,7 @@ public sealed partial class ThatAsyncEnumerable
 					               21,
 					               34,
 					               55,
-					               …
+					               (… and maybe others)
 					             ]
 					             """);
 			}
@@ -791,7 +860,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == unexpected,
-					              but it contained it once in {Formatter.Format(values, FormattingOptions.MultipleLines)}
+					              but it contained it once
+					              
+					              Collection:
+					              {Formatter.Format(values)}
 					              """);
 			}
 

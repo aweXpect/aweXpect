@@ -255,6 +255,7 @@ public static partial class ThatEnumerable
 				}
 			}
 
+			expectationBuilder.AddCollectionContext(_materializedEnumerable);
 			if (quantifier.Check(_count, true) ?? _isNegated)
 			{
 				Outcome = Outcome.Success;
@@ -263,7 +264,6 @@ public static partial class ThatEnumerable
 
 			_isFinished = true;
 			Outcome = Outcome.Failure;
-			expectationBuilder.AddCollectionContext(_materializedEnumerable);
 			return this;
 		}
 

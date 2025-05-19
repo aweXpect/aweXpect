@@ -238,7 +238,7 @@ public static partial class ThatEnumerable
 				if (_index + _offset < 0)
 				{
 					Outcome = Outcome.Failure;
-					_expectationBuilder.AddCollectionContext(materializedEnumerable, false);
+					_expectationBuilder.AddCollectionContext(materializedEnumerable);
 					return this;
 				}
 

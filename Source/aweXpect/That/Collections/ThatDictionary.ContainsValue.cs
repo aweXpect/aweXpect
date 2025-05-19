@@ -15,11 +15,14 @@ public static partial class ThatDictionary
 		TValue>(
 		this IThat<IDictionary<TKey, TValue>?> source,
 		TValue expected)
-		=> new(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainValueConstraint<TKey, TValue>(it, grammars, expected)),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source
 		);
+	}
 
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
@@ -28,13 +31,17 @@ public static partial class ThatDictionary
 		DoesNotContainValue<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TValue unexpected)
-		=> new(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainValueConstraint<TKey, TValue>(it, grammars, unexpected).Invert()),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
 		);
+	}
 
-	private sealed class ContainValueConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TValue expected)
+	private sealed class ContainValueConstraint<TKey, TValue>(
+		ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars, TValue expected)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
 			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
@@ -42,6 +49,7 @@ public static partial class ThatDictionary
 		{
 			Actual = actual;
 			Outcome = actual?.ContainsValue(expected) == true ? Outcome.Success : Outcome.Failure;
+			expectationBuilder.AddCollectionContext(actual);
 			return this;
 		}
 

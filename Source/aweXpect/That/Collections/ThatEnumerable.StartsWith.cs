@@ -247,7 +247,7 @@ public static partial class ThatEnumerable
 				}
 			}
 
-			_expectationBuilder.AddCollectionContext(materializedEnumerable, false);
+			_expectationBuilder.AddCollectionContext(materializedEnumerable);
 			Outcome = Outcome.Failure;
 			return this;
 		}

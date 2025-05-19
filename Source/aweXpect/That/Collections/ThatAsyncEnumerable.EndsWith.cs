@@ -30,9 +30,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(expected);
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<TItem, TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected.ToArray(),
 					options)),
@@ -50,9 +51,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(expected);
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<TItem, TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
 					expected,
 					options)),
@@ -71,9 +73,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(expected);
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<string?, string?>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<string?, string?>(expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected.ToArray(),
 					options)),
@@ -91,9 +94,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(expected);
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<string, string>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<string, string>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
 					expected,
 					options)),
@@ -113,9 +117,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(unexpected);
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<TItem, TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					unexpected.ToArray(),
 					options).Invert()),
@@ -133,9 +138,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(unexpected);
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<TItem, TItem>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
 					unexpected,
 					options).Invert()),
@@ -155,9 +161,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(unexpected);
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<string?, string?>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<string?, string?>(expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					unexpected.ToArray(),
 					options).Invert()),
@@ -175,9 +182,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		ArgumentNullException.ThrowIfNull(unexpected);
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<string, string>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new EndsWithConstraint<string, string>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
 					unexpected,
 					options).Invert()),
@@ -193,6 +201,7 @@ public static partial class ThatAsyncEnumerable
 		private readonly TItem[] _expected;
 		private readonly string _expectedExpression;
 		private readonly List<TItem> _foundValues = [];
+		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly string _it;
 		private readonly IOptionsEquality<TMatch> _options;
 		private TItem? _firstMismatchItem;
@@ -201,12 +210,15 @@ public static partial class ThatAsyncEnumerable
 		private int _itemsCount;
 		private int _offset;
 
-		public EndsWithConstraint(string it,
+		public EndsWithConstraint(
+			ExpectationBuilder expectationBuilder,
+			string it,
 			ExpectationGrammars grammars,
 			string expectedExpression,
 			TItem[] expected,
 			IOptionsEquality<TMatch> options) : base(it, grammars)
 		{
+			_expectationBuilder = expectationBuilder;
 			_it = it;
 			_expectedExpression = expectedExpression;
 			_expected = expected;
@@ -254,6 +266,7 @@ public static partial class ThatAsyncEnumerable
 				if (_index + _offset < 0)
 				{
 					Outcome = Outcome.Failure;
+					_expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
 					return this;
 				}
 
@@ -263,6 +276,7 @@ public static partial class ThatAsyncEnumerable
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;
+					_expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>, true);
 					Outcome = Outcome.Failure;
 					return this;
 				}

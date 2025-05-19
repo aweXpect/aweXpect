@@ -21,6 +21,9 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             does not contain key 2,
 					             but it did
+					             
+					             Dictionary:
+					             {[1] = 0, [2] = 0, [3] = 0}
 					             """);
 			}
 

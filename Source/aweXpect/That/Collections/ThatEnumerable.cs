@@ -52,6 +52,7 @@ public static partial class ThatEnumerable
 				{
 					_failure ??= TooManyDeviationsError(materializedEnumerable);
 					Outcome = Outcome.Failure;
+					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
 					return this;
 				}
 			}
@@ -69,7 +70,7 @@ public static partial class ThatEnumerable
 		}
 
 		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
-			=> $"{It} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
+			=> $"{It} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -189,7 +190,7 @@ public static partial class ThatEnumerable
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 			AppendContexts(false);
-			_expectationBuilder.AddCollectionContext(materialized, false);
+			_expectationBuilder.AddCollectionContext(materialized);
 			return Task.FromResult<ConstraintResult>(this);
 		}
 

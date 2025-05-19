@@ -23,7 +23,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection [] in order,
-					             but it was completely different: [
+					             but it had more than 20 deviations compared to []
+					             
+					             Collection:
+					             [
 					               1,
 					               2,
 					               3,
@@ -34,8 +37,8 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
-					               …
-					             ] had more than 20 deviations compared to []
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -53,19 +56,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in order,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -506,7 +497,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection [] in order ignoring duplicates,
-					             but it was completely different: [
+					             but it had more than 20 deviations compared to []
+					             
+					             Collection:
+					             [
 					               1,
 					               2,
 					               3,
@@ -517,8 +511,8 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
-					               …
-					             ] had more than 20 deviations compared to []
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -535,19 +529,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in order ignoring duplicates,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -911,7 +893,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection [] in any order,
-					             but it was completely different: [
+					             but it had more than 20 deviations compared to []
+					             
+					             Collection:
+					             [
 					               1,
 					               2,
 					               3,
@@ -922,8 +907,8 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
-					               …
-					             ] had more than 20 deviations compared to []
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -940,19 +925,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in any order,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -1331,7 +1304,10 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection [] in any order ignoring duplicates,
-					             but it was completely different: [
+					             but it had more than 20 deviations compared to []
+					             
+					             Collection:
+					             [
 					               1,
 					               2,
 					               3,
@@ -1342,8 +1318,8 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
-					               …
-					             ] had more than 20 deviations compared to []
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -1361,19 +1337,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in any order ignoring duplicates,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,

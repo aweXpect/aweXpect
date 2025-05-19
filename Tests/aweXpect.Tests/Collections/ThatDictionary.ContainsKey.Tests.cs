@@ -36,6 +36,9 @@ public sealed partial class ThatDictionary
 					               2,
 					               3
 					             ]
+					             
+					             Dictionary:
+					             {[1] = 0, [2] = 0, [3] = 0}
 					             """);
 			}
 
@@ -78,6 +81,13 @@ public sealed partial class ThatDictionary
 
 					             Actual:
 					             bar
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 
@@ -109,6 +119,13 @@ public sealed partial class ThatDictionary
 					               2,
 					               3
 					             ]
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 

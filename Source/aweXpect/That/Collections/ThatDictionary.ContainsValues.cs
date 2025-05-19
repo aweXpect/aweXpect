@@ -15,11 +15,14 @@ public static partial class ThatDictionary
 		TValue>(
 		this IThat<IDictionary<TKey, TValue>?> source,
 		params TValue[] expected)
-		=> new(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainValuesConstraint<TKey, TValue>(it, grammars, expected)),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValuesConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source
 		);
+	}
 
 	/// <summary>
 	///     Verifies that the dictionary contains none of the <paramref name="unexpected" /> values.
@@ -29,16 +32,17 @@ public static partial class ThatDictionary
 			TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			params TValue[] unexpected)
-		=> new(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainValuesConstraint<TKey, TValue>(it, grammars, unexpected).Invert()),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValuesConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
 		);
+	}
 
 	private sealed class ContainValuesConstraint<TKey, TValue>(
-		string it,
-		ExpectationGrammars grammars,
-		TValue[] expected)
+		ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars, TValue[] expected)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
 			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
@@ -72,6 +76,7 @@ public static partial class ThatDictionary
 				(false, [], _) => Outcome.Success,
 				(false, _, _) => Outcome.Failure,
 			};
+			expectationBuilder.AddCollectionContext(actual);
 			return this;
 		}
 

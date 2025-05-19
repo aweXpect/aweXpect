@@ -64,6 +64,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             ends with expected,
 					             but it contained 2 at index 3 instead of 1
+					             
+					             Collection:
+					             [0, 0, 1, 2, 3, (… and maybe others)]
 					             """);
 			}
 
@@ -83,6 +86,9 @@ public sealed partial class ThatAsyncEnumerable
 					               0,
 					               0
 					             ]
+					             
+					             Collection:
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -141,6 +147,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             ends with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "FOO"
+					             
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 

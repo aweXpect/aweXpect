@@ -23,9 +23,10 @@ public static partial class ThatAsyncEnumerable
 		this IThat<IAsyncEnumerable<TItem>?> source)
 	{
 		PredicateOptions<TItem> options = new();
-		return new SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async(source.Get().ExpectationBuilder
-				.AddConstraint((it, grammars) =>
-					new HasSingleConstraint<TItem>(it, grammars, options)),
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async(
+			expectationBuilder.AddConstraint((it, grammars) =>
+					new HasSingleConstraint<TItem>(expectationBuilder, it, grammars, options)),
 			options,
 			async f =>
 			{
@@ -42,6 +43,7 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	private sealed class HasSingleConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		PredicateOptions<TItem> options)
@@ -83,6 +85,10 @@ public static partial class ThatAsyncEnumerable
 			}
 
 			Outcome = _count == 1 ? Outcome.Success : Outcome.Failure;
+			if (_count > 1)
+			{
+				expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
+			}
 			return this;
 		}
 

@@ -25,19 +25,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in order,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -48,6 +36,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -89,6 +92,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -141,6 +158,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -170,6 +196,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in order,
 					             but it contained item "d" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -189,6 +223,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -208,6 +251,13 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c"
+					             
+					             Collection:
+					             [
+					               "a",
+					               "c",
+					               "b"
+					             ]
 					             """);
 			}
 
@@ -225,6 +275,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in order,
 					             but it contained item "c" at index 0 that was not expected
+					             
+					             Collection:
+					             [
+					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -254,6 +312,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in order,
 					             but it contained item "c" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -283,6 +349,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in order,
 					             but it contained item "a" at index 0 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -338,19 +412,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in order ignoring duplicates,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -361,6 +423,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -414,6 +491,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -433,6 +524,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -462,6 +562,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in order ignoring duplicates,
 					             but it contained item "d" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -481,6 +589,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -500,6 +617,13 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c"
+					             
+					             Collection:
+					             [
+					               "a",
+					               "c",
+					               "b"
+					             ]
 					             """);
 			}
 
@@ -615,19 +739,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in any order,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -638,6 +750,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -679,6 +806,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -698,6 +839,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -727,6 +877,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in any order,
 					             but it contained item "d" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -746,6 +904,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -775,6 +942,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in any order,
 					             but it contained item "c" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -804,6 +979,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in any order,
 					             but it contained item "c" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -833,6 +1016,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in any order,
 					             but it contained item "a" at index 1 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -888,19 +1079,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in any order ignoring duplicates,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -911,6 +1090,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -964,6 +1158,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -983,6 +1191,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1012,6 +1229,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected in any order ignoring duplicates,
 					             but it contained item "d" at index 3 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -1031,6 +1256,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1158,19 +1392,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -1181,6 +1403,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -1222,6 +1459,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -1241,6 +1492,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1272,6 +1532,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -1292,6 +1560,15 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1312,6 +1589,13 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c" and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "c",
+					               "b"
+					             ]
 					             """);
 			}
 
@@ -1331,6 +1615,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "c" at index 0 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1362,6 +1654,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "c" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1393,6 +1693,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "a" at index 0 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1434,6 +1742,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -1453,19 +1768,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -1476,6 +1779,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -1529,6 +1847,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -1548,6 +1880,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1579,6 +1920,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -1599,6 +1948,15 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1619,6 +1977,13 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c" and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "c",
+					               "b"
+					             ]
 					             """);
 			}
 
@@ -1636,6 +2001,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1653,6 +2026,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1670,6 +2050,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1687,6 +2075,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1704,6 +2099,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1745,6 +2148,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -1764,19 +2174,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -1787,6 +2185,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -1828,6 +2241,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -1847,6 +2274,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1878,6 +2314,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -1898,6 +2342,15 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -1915,6 +2368,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "c",
+					               "b"
+					             ]
 					             """);
 			}
 
@@ -1934,6 +2394,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "c" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1965,6 +2433,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "c" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1996,6 +2472,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "a" at index 1 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2037,6 +2521,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -2057,19 +2548,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
-					             but it was completely different: [
-					               1,
-					               2,
-					               3,
-					               4,
-					               5,
-					               6,
-					               7,
-					               8,
-					               9,
-					               10,
-					               …
-					             ] had more than 20 deviations compared to [
+					             but it had more than 20 deviations compared to [
 					               100,
 					               101,
 					               102,
@@ -2080,6 +2559,21 @@ public sealed partial class ThatAsyncEnumerable
 					               107,
 					               108,
 					               109,
+					               …
+					             ]
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
 					               …
 					             ]
 					             """);
@@ -2136,6 +2630,20 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10
+					             ]
 					             """);
 			}
 
@@ -2156,6 +2664,15 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -2189,6 +2706,14 @@ public sealed partial class ThatAsyncEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d"
+					             ]
 					             """);
 			}
 
@@ -2210,6 +2735,15 @@ public sealed partial class ThatAsyncEnumerable
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
 					               contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "d",
+					               "e"
+					             ]
 					             """);
 			}
 
@@ -2228,6 +2762,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "c",
+					               "b"
+					             ]
 					             """);
 			}
 
@@ -2246,6 +2787,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2264,6 +2813,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2282,6 +2838,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2300,6 +2864,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2318,6 +2889,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2362,6 +2941,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}

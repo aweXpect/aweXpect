@@ -14,28 +14,42 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public static CollectionCountResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>
 		HasCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject)
-		=> new(quantifier => new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AsyncCollectionCountConstraint<TItem>(it, grammars, quantifier)),
-			subject));
+	{
+		ExpectationBuilder expectationBuilder = subject.Get().ExpectationBuilder;
+		return new
+			CollectionCountResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>(quantifier
+				=> new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+					expectationBuilder.AddConstraint((it, grammars)
+						=> new AsyncCollectionCountConstraint<TItem>(expectationBuilder, it, grammars, quantifier)),
+					subject));
+	}
 
 	/// <summary>
 	///     Verifies that the <paramref name="subject" /> has exactly <paramref name="expected" /> items.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		HasCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject, int expected)
-		=> new(subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AsyncCollectionCountConstraint<TItem>(it, grammars, EnumerableQuantifier.Exactly(expected))),
+	{
+		ExpectationBuilder expectationBuilder = subject.Get().ExpectationBuilder;
+		return new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AsyncCollectionCountConstraint<TItem>(expectationBuilder, it, grammars,
+					EnumerableQuantifier.Exactly(expected))),
 			subject);
+	}
 
 	/// <summary>
 	///     Verifies that the <paramref name="subject" /> does not have <paramref name="unexpected" /> items.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		DoesNotHaveCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject, int unexpected)
-		=> new(subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+	{
+		ExpectationBuilder expectationBuilder = subject.Get().ExpectationBuilder;
+		return new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new AsyncCollectionCountConstraint<TItem>(
-					it, grammars, EnumerableQuantifier.Exactly(unexpected)).Invert()),
+					expectationBuilder, it, grammars, EnumerableQuantifier.Exactly(unexpected)).Invert()),
 			subject);
+	}
 }
 #endif

@@ -29,6 +29,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has less than 7 items,
 					             but could not verify, because it was already cancelled
+					             
+					             Collection:
+					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
 			}
 
@@ -45,6 +48,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has less than 3 items,
 					             but found at least 3
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -72,6 +83,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has less than 2 items,
 					             but found at least 2
+					             
+					             Collection:
+					             [
+					               1,
+					               2,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
