@@ -109,6 +109,32 @@ DateTime subject = DateTime.Now;
 await Expect.That(subject).IsOnOrBefore(DateTime.Now).Within(TimeSpan.FromSeconds(1))
   .Because("it should have taken less than one second");
 ```
+```
+
+## Between
+
+You can verify that the `DateTime` or `DateTimeOffset` is between two values:
+
+```csharp
+DateTime subject1 = DateTime.Now;
+
+await Expect.That(subject1).IsBetween(new DateTime(2024, 1, 1)).And(new DateTime(2123, 12, 31));
+
+DateTimeOffset subject2 = DateTimeOffset.Now;
+
+await Expect.That(subject2)
+    .IsBetween(new DateTimeOffset(2024, 1, 1, 0, 0, 0, TimeSpan.FromHours(2)))
+    .And(new DateTimeOffset(2124, 12, 31, 23, 59, 59, TimeSpan.FromHours(2)));
+```
+
+You can also specify a tolerance:
+
+```csharp
+DateTime subject = DateTime.Now;
+
+await Expect.That(subject).IsBetween(DateTime.Today).And(DateTime.Now).Within(TimeSpan.FromSeconds(1))
+  .Because("it should have taken less than one second");
+```
 
 ## Properties
 
