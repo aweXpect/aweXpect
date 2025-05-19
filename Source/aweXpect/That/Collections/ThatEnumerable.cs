@@ -50,7 +50,7 @@ public static partial class ThatEnumerable
 			{
 				if (matcher.Verify(It, item, options, maximumNumber, out _failure))
 				{
-					_failure ??= TooManyDeviationsError(materializedEnumerable);
+					_failure ??= TooManyDeviationsError();
 					Outcome = Outcome.Failure;
 					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
 					return this;
@@ -59,7 +59,7 @@ public static partial class ThatEnumerable
 
 			if (matcher.VerifyComplete(It, options, maximumNumber, out _failure))
 			{
-				_failure ??= TooManyDeviationsError(materializedEnumerable);
+				_failure ??= TooManyDeviationsError();
 				Outcome = Outcome.Failure;
 				expectationBuilder.AddCollectionContext(materializedEnumerable);
 				return this;
@@ -69,7 +69,7 @@ public static partial class ThatEnumerable
 			return this;
 		}
 
-		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
+		private string TooManyDeviationsError()
 			=> $"{It} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)

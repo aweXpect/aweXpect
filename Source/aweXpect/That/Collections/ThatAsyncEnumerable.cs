@@ -185,7 +185,8 @@ public static partial class ThatAsyncEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
-						Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption(_matchingItems?.Count))
+						ValueFormatters.Format(Formatter, _matchingItems,
+								typeof(TItem).GetFormattingOption(_matchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
@@ -194,7 +195,8 @@ public static partial class ThatAsyncEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
-						Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
+						ValueFormatters.Format(Formatter, _notMatchingItems,
+								typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
@@ -353,7 +355,8 @@ public static partial class ThatAsyncEnumerable
 				{
 					_failure ??= TooManyDeviationsError();
 					Outcome = Outcome.Failure;
-					expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>, true);
+					expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>,
+						true);
 					return this;
 				}
 			}
@@ -379,7 +382,7 @@ public static partial class ThatAsyncEnumerable
 			sb.Append(" had more than ");
 			sb.Append(2 * maximumNumberOfCollectionItems);
 			sb.Append(" deviations compared to ");
-			Formatter.Format(sb, expected?.Take(maximumNumberOfCollectionItems + 1),
+			ValueFormatters.Format(Formatter, sb, expected?.Take(maximumNumberOfCollectionItems + 1),
 				FormattingOptions.MultipleLines);
 			return sb.ToString();
 		}
@@ -430,7 +433,6 @@ public static partial class ThatAsyncEnumerable
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private string? _failureText;
-		private List<TItem>? _values;
 
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
@@ -451,14 +453,8 @@ public static partial class ThatAsyncEnumerable
 			int maximumNumberOfCollectionItems =
 				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 			IComparer<TMember> comparer = options.GetComparer();
-			_values = new List<TItem>(maximumNumberOfCollectionItems + 1);
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
-				if (_values.Count <= maximumNumberOfCollectionItems)
-				{
-					_values.Add(item);
-				}
-
 				TMember current = memberAccessor(item);
 				if (index++ == 0)
 				{
@@ -474,7 +470,7 @@ public static partial class ThatAsyncEnumerable
 						$"{It} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order";
 				}
 
-				if (_failureText != null && _values.Count > maximumNumberOfCollectionItems)
+				if (_failureText != null && index > maximumNumberOfCollectionItems)
 				{
 					break;
 				}
