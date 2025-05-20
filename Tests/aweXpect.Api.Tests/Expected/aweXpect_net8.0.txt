@@ -724,6 +724,10 @@ namespace aweXpect
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsNegative<TNumber>(this aweXpect.Core.IThat<TNumber?> source)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>>, TNumber?> IsNotBetween<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>>, TNumber?> IsNotBetween<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNotEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? unexpected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsNotEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? unexpected)
