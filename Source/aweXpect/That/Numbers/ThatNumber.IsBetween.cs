@@ -12,7 +12,7 @@ public static partial class ThatNumber
 {
 #if NET8_0_OR_GREATER
 	/// <summary>
-	///     Verifies that the subject is between <paramref name="minimum" />…
+	///     Verifies that the subject is between the <paramref name="minimum" />…
 	/// </summary>
 	public static BetweenResult<AndOrResult<TNumber, IThat<TNumber>>, TNumber?> IsBetween<TNumber>(
 		this IThat<TNumber> source, TNumber? minimum)
@@ -31,6 +31,28 @@ public static partial class ThatNumber
 		=> new(maximum => new AndOrResult<TNumber?, IThat<TNumber?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsInRangeConstraint<TNumber>(it, grammars, minimum, maximum)),
+			source));
+	
+	/// <summary>
+	///     Verifies that the subject is not between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<TNumber, IThat<TNumber>>, TNumber?> IsNotBetween<TNumber>(
+		this IThat<TNumber> source, TNumber? minimum)
+		where TNumber : struct, INumber<TNumber>
+		=> new(maximum => new AndOrResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsInRangeConstraint<TNumber>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<TNumber?, IThat<TNumber?>>, TNumber?> IsNotBetween<TNumber>(
+		this IThat<TNumber?> source, TNumber? minimum)
+		where TNumber : struct, INumber<TNumber>
+		=> new(maximum => new AndOrResult<TNumber?, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsInRangeConstraint<TNumber>(it, grammars, minimum, maximum).Invert()),
 			source));
 
 	private sealed class IsInRangeConstraint<TNumber> : ConstraintResult.WithValue<TNumber>,
@@ -393,6 +415,248 @@ public static partial class ThatNumber
 		=> new(maximum => new AndOrResult<decimal?, IThat<decimal?>>(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new NullableIsInRangeConstraint<decimal>(it, grammars, minimum, maximum)),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<byte, IThat<byte>>, byte?> IsNotBetween(
+		this IThat<byte> source,
+		byte? minimum)
+		=> new(maximum => new AndOrResult<byte, IThat<byte>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<byte>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<sbyte, IThat<sbyte>>, sbyte?> IsNotBetween(
+		this IThat<sbyte> source,
+		sbyte? minimum)
+		=> new(maximum => new AndOrResult<sbyte, IThat<sbyte>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<sbyte>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<short, IThat<short>>, short?> IsNotBetween(
+		this IThat<short> source,
+		short? minimum)
+		=> new(maximum => new AndOrResult<short, IThat<short>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<short>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<ushort, IThat<ushort>>, ushort?> IsNotBetween(
+		this IThat<ushort> source,
+		ushort? minimum)
+		=> new(maximum => new AndOrResult<ushort, IThat<ushort>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<ushort>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<int, IThat<int>>, int?> IsNotBetween(
+		this IThat<int> source,
+		int? minimum)
+		=> new(maximum => new AndOrResult<int, IThat<int>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=>
+				new IsInRangeConstraint<int>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<uint, IThat<uint>>, uint?> IsNotBetween(
+		this IThat<uint> source,
+		uint? minimum)
+		=> new(maximum => new AndOrResult<uint, IThat<uint>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<uint>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<long, IThat<long>>, long?> IsNotBetween(
+		this IThat<long> source,
+		long? minimum)
+		=> new(maximum => new AndOrResult<long, IThat<long>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<long>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<ulong, IThat<ulong>>, ulong?> IsNotBetween(
+		this IThat<ulong> source,
+		ulong? minimum)
+		=> new(maximum => new AndOrResult<ulong, IThat<ulong>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<ulong>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<float, IThat<float>>, float?> IsNotBetween(
+		this IThat<float> source,
+		float? minimum)
+		=> new(maximum => new AndOrResult<float, IThat<float>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<float>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<double, IThat<double>>, double?> IsNotBetween(
+		this IThat<double> source,
+		double? minimum)
+		=> new(maximum => new AndOrResult<double, IThat<double>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<double>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<decimal, IThat<decimal>>, decimal?> IsNotBetween(
+		this IThat<decimal> source,
+		decimal? minimum)
+		=> new(maximum => new AndOrResult<decimal, IThat<decimal>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new IsInRangeConstraint<decimal>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<byte?, IThat<byte?>>, byte?> IsNotBetween(
+		this IThat<byte?> source,
+		byte? minimum)
+		=> new(maximum => new AndOrResult<byte?, IThat<byte?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<byte>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<sbyte?, IThat<sbyte?>>, sbyte?> IsNotBetween(
+		this IThat<sbyte?> source,
+		sbyte? minimum)
+		=> new(maximum => new AndOrResult<sbyte?, IThat<sbyte?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<sbyte>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<short?, IThat<short?>>, short?> IsNotBetween(
+		this IThat<short?> source,
+		short? minimum)
+		=> new(maximum => new AndOrResult<short?, IThat<short?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<short>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<ushort?, IThat<ushort?>>, ushort?> IsNotBetween(
+		this IThat<ushort?> source,
+		ushort? minimum)
+		=> new(maximum => new AndOrResult<ushort?, IThat<ushort?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<ushort>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<int?, IThat<int?>>, int?> IsNotBetween(
+		this IThat<int?> source,
+		int? minimum)
+		=> new(maximum => new AndOrResult<int?, IThat<int?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<int>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<uint?, IThat<uint?>>, uint?> IsNotBetween(
+		this IThat<uint?> source,
+		uint? minimum)
+		=> new(maximum => new AndOrResult<uint?, IThat<uint?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<uint>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<long?, IThat<long?>>, long?> IsNotBetween(
+		this IThat<long?> source,
+		long? minimum)
+		=> new(maximum => new AndOrResult<long?, IThat<long?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<long>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<ulong?, IThat<ulong?>>, ulong?> IsNotBetween(
+		this IThat<ulong?> source,
+		ulong? minimum)
+		=> new(maximum => new AndOrResult<ulong?, IThat<ulong?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<ulong>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<float?, IThat<float?>>, float?> IsNotBetween(
+		this IThat<float?> source,
+		float? minimum)
+		=> new(maximum => new AndOrResult<float?, IThat<float?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<float>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<double?, IThat<double?>>, double?> IsNotBetween(
+		this IThat<double?> source,
+		double? minimum)
+		=> new(maximum => new AndOrResult<double?, IThat<double?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<double>(it, grammars, minimum, maximum).Invert()),
+			source));
+
+	/// <summary>
+	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
+	/// </summary>
+	public static BetweenResult<AndOrResult<decimal?, IThat<decimal?>>, decimal?> IsNotBetween(
+		this IThat<decimal?> source,
+		decimal? minimum)
+		=> new(maximum => new AndOrResult<decimal?, IThat<decimal?>>(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new NullableIsInRangeConstraint<decimal>(it, grammars, minimum, maximum).Invert()),
 			source));
 
 	private sealed class IsInRangeConstraint<TNumber> : ConstraintResult.WithValue<TNumber>,

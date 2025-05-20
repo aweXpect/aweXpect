@@ -652,6 +652,28 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<sbyte?, aweXpect.Core.IThat<sbyte?>> IsNegative(this aweXpect.Core.IThat<sbyte?> source) { }
         public static aweXpect.Results.AndOrResult<short, aweXpect.Core.IThat<short>> IsNegative(this aweXpect.Core.IThat<short> source) { }
         public static aweXpect.Results.AndOrResult<short?, aweXpect.Core.IThat<short?>> IsNegative(this aweXpect.Core.IThat<short?> source) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<byte, aweXpect.Core.IThat<byte>>, byte?> IsNotBetween(this aweXpect.Core.IThat<byte> source, byte? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<byte?, aweXpect.Core.IThat<byte?>>, byte?> IsNotBetween(this aweXpect.Core.IThat<byte?> source, byte? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<decimal, aweXpect.Core.IThat<decimal>>, decimal?> IsNotBetween(this aweXpect.Core.IThat<decimal> source, decimal? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<decimal?, aweXpect.Core.IThat<decimal?>>, decimal?> IsNotBetween(this aweXpect.Core.IThat<decimal?> source, decimal? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<double, aweXpect.Core.IThat<double>>, double?> IsNotBetween(this aweXpect.Core.IThat<double> source, double? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<double?, aweXpect.Core.IThat<double?>>, double?> IsNotBetween(this aweXpect.Core.IThat<double?> source, double? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<float, aweXpect.Core.IThat<float>>, float?> IsNotBetween(this aweXpect.Core.IThat<float> source, float? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<float?, aweXpect.Core.IThat<float?>>, float?> IsNotBetween(this aweXpect.Core.IThat<float?> source, float? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<int, aweXpect.Core.IThat<int>>, int?> IsNotBetween(this aweXpect.Core.IThat<int> source, int? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<int?, aweXpect.Core.IThat<int?>>, int?> IsNotBetween(this aweXpect.Core.IThat<int?> source, int? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<long, aweXpect.Core.IThat<long>>, long?> IsNotBetween(this aweXpect.Core.IThat<long> source, long? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<long?, aweXpect.Core.IThat<long?>>, long?> IsNotBetween(this aweXpect.Core.IThat<long?> source, long? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<sbyte, aweXpect.Core.IThat<sbyte>>, sbyte?> IsNotBetween(this aweXpect.Core.IThat<sbyte> source, sbyte? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<sbyte?, aweXpect.Core.IThat<sbyte?>>, sbyte?> IsNotBetween(this aweXpect.Core.IThat<sbyte?> source, sbyte? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<short, aweXpect.Core.IThat<short>>, short?> IsNotBetween(this aweXpect.Core.IThat<short> source, short? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<short?, aweXpect.Core.IThat<short?>>, short?> IsNotBetween(this aweXpect.Core.IThat<short?> source, short? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<uint, aweXpect.Core.IThat<uint>>, uint?> IsNotBetween(this aweXpect.Core.IThat<uint> source, uint? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<uint?, aweXpect.Core.IThat<uint?>>, uint?> IsNotBetween(this aweXpect.Core.IThat<uint?> source, uint? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<ulong, aweXpect.Core.IThat<ulong>>, ulong?> IsNotBetween(this aweXpect.Core.IThat<ulong> source, ulong? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<ulong?, aweXpect.Core.IThat<ulong?>>, ulong?> IsNotBetween(this aweXpect.Core.IThat<ulong?> source, ulong? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<ushort, aweXpect.Core.IThat<ushort>>, ushort?> IsNotBetween(this aweXpect.Core.IThat<ushort> source, ushort? minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<ushort?, aweXpect.Core.IThat<ushort?>>, ushort?> IsNotBetween(this aweXpect.Core.IThat<ushort?> source, ushort? minimum) { }
         public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsNotEqualTo(this aweXpect.Core.IThat<byte> source, byte? unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsNotEqualTo(this aweXpect.Core.IThat<byte?> source, byte? unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsNotEqualTo(this aweXpect.Core.IThat<decimal> source, decimal? unexpected) { }
