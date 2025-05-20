@@ -109,7 +109,6 @@ DateTime subject = DateTime.Now;
 await Expect.That(subject).IsOnOrBefore(DateTime.Now).Within(TimeSpan.FromSeconds(1))
   .Because("it should have taken less than one second");
 ```
-```
 
 ## Between
 
