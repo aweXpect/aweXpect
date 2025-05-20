@@ -417,7 +417,6 @@ public static partial class ThatNumber
 					new NullableIsInRangeConstraint<decimal>(it, grammars, minimum, maximum)),
 			source));
 
-	
 	/// <summary>
 	///     Verifies that the subject is not in the range between the <paramref name="minimum" />…
 	/// </summary>
