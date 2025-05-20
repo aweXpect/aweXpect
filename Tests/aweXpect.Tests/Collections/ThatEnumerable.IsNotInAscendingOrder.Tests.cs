@@ -120,7 +120,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not in ascending order using OrdinalIgnoreCaseComparer,
+					             is not in ascending order using Ordinal*Comparer,
 					             but it was
 					             
 					             Collection:
@@ -128,7 +128,7 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "A"
 					             ]
-					             """);
+					             """).AsWildcard();
 			}
 
 			[Fact]
@@ -299,7 +299,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not in ascending order using OrdinalIgnoreCaseComparer for x => x.Value,
+					             is not in ascending order using Ordinal*Comparer for x => x.Value,
 					             but it was
 					             
 					             Collection:
@@ -311,7 +311,7 @@ public sealed partial class ThatEnumerable
 					                 Value = "A"
 					               }
 					             ]
-					             """);
+					             """).AsWildcard();
 			}
 
 			[Fact]
