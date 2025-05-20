@@ -23,7 +23,7 @@ public class BetweenResult<TTarget, TType>(
 	Func<TType, TTarget> callback)
 {
 	/// <summary>
-	///     …and <paramref name="maximum" /> value.
+	///     …and the <paramref name="maximum" /> value.
 	/// </summary>
 	public TTarget And(TType maximum)
 		=> callback(maximum);
