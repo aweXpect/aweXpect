@@ -184,9 +184,11 @@ namespace aweXpect
         public static aweXpect.Results.PropertyResult.Int<System.DateOnly> HasYear(this aweXpect.Core.IThat<System.DateOnly> source) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>>, System.DateOnly?> IsBetween(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsEqualTo(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>>, System.DateOnly?> IsNotBetween(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
@@ -517,9 +519,11 @@ namespace aweXpect
         public static aweXpect.Results.PropertyResult.Int<System.DateOnly?> HasYear(this aweXpect.Core.IThat<System.DateOnly?> source) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>>, System.DateOnly?> IsBetween(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsEqualTo(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>>, System.DateOnly?> IsNotBetween(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
@@ -636,9 +640,11 @@ namespace aweXpect
         public static aweXpect.Results.PropertyResult.Int<System.TimeOnly?> HasSecond(this aweXpect.Core.IThat<System.TimeOnly?> source) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>>, System.TimeOnly?> IsBetween(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsEqualTo(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>>, System.TimeOnly?> IsNotBetween(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotEqualTo(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
@@ -866,9 +872,11 @@ namespace aweXpect
         public static aweXpect.Results.PropertyResult.Int<System.TimeOnly> HasSecond(this aweXpect.Core.IThat<System.TimeOnly> source) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>>, System.TimeOnly?> IsBetween(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsEqualTo(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>>, System.TimeOnly?> IsNotBetween(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotEqualTo(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }

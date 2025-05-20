@@ -118,6 +118,34 @@ TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
 await Expect.That(subjectB).IsBefore(TimeOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromSeconds(1));
 ```
 
+## Between
+
+You can verify that the `DateOnly` or `TimeOnly` is between two values:
+
+```csharp
+DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
+
+await Expect.That(subjectA).IsBetween(new DateOnly(2024, 1, 1)).And(new DateOnly(2123, 12, 31));
+
+TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
+
+await Expect.That(subjectB)
+    .IsBetween(TimeOnly.FromDateTime(DateTime.Now).Add(-2.Seconds()))
+    .And(TimeOnly.FromDateTime(DateTime.Now).Add(2.Seconds()));
+```
+
+You can also specify a tolerance:
+
+```csharp
+TimeOnly subject = TimeOnly.FromDateTime(DateTime.Now);
+
+await Expect.That(subject)
+	.IsBetween(TimeOnly.FromDateTime(DateTime.Now))
+    .And(TimeOnly.FromDateTime(DateTime.Now))
+	.Within(2.Seconds())
+  .Because("it should have taken less than two seconds");
+```
+
 ## Properties
 
 You can verify, the properties of the `DateTime`:
