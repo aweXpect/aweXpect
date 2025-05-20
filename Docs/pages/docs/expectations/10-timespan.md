@@ -82,6 +82,28 @@ await Expect.That(subject).IsLessThan(42).Within(TimeSpan.FromSeconds(2))
   .Because("we accept values less than 0:44 (0:42 ± 2s)");
 ```
 
+## Between
+
+You can verify that the `TimeSpan` is between two values:
+
+```csharp
+TimeSpan subject = TimeSpan.FromSeconds(42);
+
+await Expect.That(subject).IsBetween(TimeSpan.FromSeconds(40)).And(TimeSpan.FromSeconds(50));
+```
+
+You can also specify a tolerance:
+
+```csharp
+TimeSpan subject = TimeSpan.FromSeconds(42);
+
+await Expect.That(subject)
+	.IsBetween(43.Seconds())
+    .And(45.Seconds())
+	.Within(1.Seconds())
+  .Because("it should expand the interval by 1 second");
+```
+
 ## Positive / negative
 
 You can verify that the `TimeSpan` is positive or negative:
