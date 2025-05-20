@@ -154,11 +154,13 @@ await Expect.That([1, 2, 3]).None().Satisfy(item => item < 0);
 
 ## Sort order
 
-You can verify that the collection contains is sorted in ascending or descending order:
+You can verify whether the collection is sorted in ascending or descending order or not:
 
 ```csharp
 await Expect.That([1, 2, 3]).IsInAscendingOrder();
+await Expect.That([1, 3, 2]).IsNotInAscendingOrder();
 await Expect.That(["c", "b", "a"]).IsInDescendingOrder();
+await Expect.That(["c", "a", "b"]).IsNotInDescendingOrder();
 ```
 
 You can also specify a custom comparer:
