@@ -469,12 +469,14 @@ namespace aweXpect
     }
     public static class ThatNullableTimeSpan
     {
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>>, System.TimeSpan?> IsBetween(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsEqualTo(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsGreaterThan(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsGreaterThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsLessThan(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsLessThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNegative(this aweXpect.Core.IThat<System.TimeSpan?> source) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>>, System.TimeSpan?> IsNotBetween(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotEqualTo(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotGreaterThan(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotGreaterThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
@@ -928,12 +930,14 @@ namespace aweXpect
     }
     public static class ThatTimeSpan
     {
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>>, System.TimeSpan?> IsBetween(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsEqualTo(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsGreaterThan(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsGreaterThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsLessThan(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsLessThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNegative(this aweXpect.Core.IThat<System.TimeSpan> source) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>>, System.TimeSpan?> IsNotBetween(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? minimum) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotEqualTo(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotGreaterThan(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotGreaterThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
