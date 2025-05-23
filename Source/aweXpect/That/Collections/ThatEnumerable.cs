@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -397,6 +398,80 @@ public static partial class ThatEnumerable
 			int index = 0;
 			IComparer<TMember> comparer = options.GetComparer();
 			foreach (TItem item in materialized)
+			{
+				TMember current = memberAccessor(item);
+				if (index++ == 0)
+				{
+					previous = current;
+					continue;
+				}
+
+				int comparisonResult = comparer.Compare(previous, current);
+				if ((comparisonResult > 0 && sortOrder == SortOrder.Ascending) ||
+				    (comparisonResult < 0 && sortOrder == SortOrder.Descending))
+				{
+					_failureText =
+						$"{It} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order";
+					Outcome = Outcome.Failure;
+					return this;
+				}
+
+				previous = current;
+			}
+
+			Outcome = Outcome.Success;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is in ").Append(sortOrder.ToString().ToLower()).Append(" order");
+			stringBuilder.Append(options).Append(memberExpression);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(_failureText);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not in ").Append(sortOrder.ToString().ToLower()).Append(" order");
+			stringBuilder.Append(options).Append(memberExpression);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was");
+	}
+
+	private sealed class IsInOrderForEnumerableConstraint<TEnumerable, TMember>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		Func<object?, TMember> memberAccessor,
+		SortOrder sortOrder,
+		CollectionOrderOptions<TMember> options,
+		string memberExpression)
+		: ConstraintResult.WithNotNullValue<TEnumerable>(it, grammars),
+			IContextConstraint<TEnumerable>
+		where TEnumerable : IEnumerable?
+	{
+		private string? _failureText;
+
+		public ConstraintResult IsMetBy(TEnumerable actual, IEvaluationContext context)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			IEnumerable materialized = context.UseMaterializedEnumerable(actual);
+			expectationBuilder.AddCollectionContext(materialized);
+
+			TMember previous = default!;
+			int index = 0;
+			IComparer<TMember> comparer = options.GetComparer();
+			foreach (object? item in materialized)
 			{
 				TMember current = memberAccessor(item);
 				if (index++ == 0)

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using aweXpect.Core.EvaluationContext;
 
 namespace aweXpect.Helpers;
@@ -25,6 +27,28 @@ internal static class EvaluationContextExtensions
 		}
 
 		IEnumerable<TItem> materializedEnumerable = MaterializingEnumerable<TItem>.Wrap(collection);
+		// ReSharper disable once PossibleMultipleEnumeration
+		evaluationContext.Store(MaterializedEnumerableKey, materializedEnumerable);
+		// ReSharper disable once PossibleMultipleEnumeration
+		return materializedEnumerable;
+	}
+
+	/// <summary>
+	///     Avoids enumerating an <see cref="IEnumerable{TItem}" /> multiple times,
+	///     by caching already materialized items in the <paramref name="evaluationContext" />.
+	/// </summary>
+	[return: NotNullIfNotNull(nameof(collection))]
+	public static IEnumerable? UseMaterializedEnumerable<TCollection>(
+		this IEvaluationContext evaluationContext, TCollection collection)
+		where TCollection : IEnumerable?
+	{
+		if (evaluationContext.TryReceive(MaterializedEnumerableKey,
+			    out IEnumerable? existingValue))
+		{
+			return existingValue;
+		}
+
+		IEnumerable? materializedEnumerable = MaterializingEnumerable.Wrap(collection);
 		// ReSharper disable once PossibleMultipleEnumeration
 		evaluationContext.Store(MaterializedEnumerableKey, materializedEnumerable);
 		// ReSharper disable once PossibleMultipleEnumeration

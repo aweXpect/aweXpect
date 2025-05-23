@@ -6,7 +6,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class IsNotInDescendingOrder
+	public sealed partial class IsNotInDescendingOrder
 	{
 		public sealed class Tests
 		{
