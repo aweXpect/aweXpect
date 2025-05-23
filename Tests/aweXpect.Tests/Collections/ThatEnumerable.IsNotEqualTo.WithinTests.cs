@@ -24,11 +24,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0m, 2.0m, 3.0m,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, 2.0, 3.0]
 						             """);
 				}
 
@@ -58,12 +60,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0m, null, 2.0m, 3.0m,] in order ± 0.2,
-						             but it did in [
-						               1.1,
-						               <null>,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, <null>, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, <null>, 2.0, 3.0]
 						             """);
 				}
 
@@ -93,12 +96,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0, double.NaN, 2.0, 3.0,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               NaN,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, NaN, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, NaN, 2.0, 3.0]
 						             """);
 				}
 
@@ -114,11 +118,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0, 2.0, 3.0,] in order ± 0.2,
-						             but it did in [
-						               1.1,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, 2.0, 3.0]
 						             """);
 				}
 
@@ -148,12 +154,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0, double.NaN, 2.0, 3.0,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               NaN,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, NaN, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, NaN, 2.0, 3.0]
 						             """);
 				}
 
@@ -169,12 +176,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0, null, 2.0, 3.0,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               <null>,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, <null>, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, <null>, 2.0, 3.0]
 						             """);
 				}
 
@@ -204,12 +212,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0F, float.NaN, 2.0F, 3.0F,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               NaN,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, NaN, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, NaN, 2.0, 3.0]
 						             """);
 				}
 
@@ -225,11 +234,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0F, 2.0F, 3.0F,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, 2.0, 3.0]
 						             """);
 				}
 
@@ -259,12 +270,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0F, float.NaN, 2.0F, 3.0F,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               NaN,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, NaN, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, NaN, 2.0, 3.0]
 						             """);
 				}
 
@@ -280,12 +292,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             does not match collection [1.0F, null, 2.0F, 3.0F,] in any order ± 0.2,
-						             but it did in [
-						               1.1,
-						               <null>,
-						               2.1,
-						               3.1
-						             ]
+						             but it did
+						             
+						             Collection:
+						             [1.1, <null>, 2.1, 3.1]
+						             
+						             Expected:
+						             [1.0, <null>, 2.0, 3.0]
 						             """);
 				}
 
@@ -319,7 +332,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage($"""
 						              Expected that subject
 						              does not match collection expected in any order within 1:00,
-						              but it did in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
+						              but it did
+						              
+						              Collection:
+						              {Formatter.Format(subject, FormattingOptions.MultipleLines)}
+						              
+						              Expected:
+						              {Formatter.Format(expected, FormattingOptions.MultipleLines)}
 						              """);
 				}
 
@@ -357,7 +376,13 @@ public sealed partial class ThatEnumerable
 						.WithMessage($"""
 						              Expected that subject
 						              does not match collection expected in any order within 1:00,
-						              but it did in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
+						              but it did
+						              
+						              Collection:
+						              {Formatter.Format(subject, FormattingOptions.MultipleLines)}
+						              
+						              Expected:
+						              {Formatter.Format(expected, FormattingOptions.MultipleLines)}
 						              """);
 				}
 

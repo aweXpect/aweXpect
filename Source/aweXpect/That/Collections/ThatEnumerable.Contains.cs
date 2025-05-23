@@ -208,6 +208,49 @@ public static partial class ThatEnumerable
 			quantifier);
 	}
 
+	/// <summary>
+	///     Verifies that the collection does not contain the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		DoesNotContain<TItem>(
+			this IThat<IEnumerable<TItem>?> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					options, matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not contain the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
+		DoesNotContain(this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected, options, matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+
 	private sealed class ContainConstraint<TItem>(
 		ExpectationBuilder expectationBuilder,
 		string it,

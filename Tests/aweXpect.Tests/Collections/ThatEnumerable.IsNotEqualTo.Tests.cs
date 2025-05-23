@@ -231,7 +231,17 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -362,8 +372,18 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -384,9 +404,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
 					               "c"
 					             ]
 					             """);
@@ -405,10 +436,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
 					               "c"
 					             ]
 					             """);
@@ -427,7 +468,18 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
 					               "a",
 					               "b",
 					               "c"
@@ -448,8 +500,18 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -494,7 +556,17 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -601,10 +673,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "c",
 					               "b"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
 					             ]
 					             """);
 			}
@@ -706,7 +788,17 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -825,10 +917,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "c",
 					               "b"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
 					             ]
 					             """);
 			}
@@ -846,8 +948,18 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -868,9 +980,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
 					               "c"
 					             ]
 					             """);
@@ -889,10 +1012,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
 					               "b",
 					               "c",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
 					               "c"
 					             ]
 					             """);
@@ -911,7 +1044,18 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
 					               "a",
 					               "b",
 					               "c"
@@ -932,8 +1076,18 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -978,7 +1132,17 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -1002,10 +1166,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order as wildcard,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "foo",
 					               "bar",
 					               "baz"
+					             ]
+					             
+					             Expected:
+					             [
+					               "*oo",
+					               "*a?",
+					               "?a?"
 					             ]
 					             """);
 			}
@@ -1024,10 +1198,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring leading white-space,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               " a",
 					               "b",
 					               "	c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               " b",
+					               "c"
 					             ]
 					             """);
 			}
@@ -1046,10 +1230,20 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not match collection unexpected in order ignoring trailing white-space,
-					             but it did in [
+					             but it did
+					             
+					             Collection:
+					             [
 					               "a ",
 					               "b",
 					               "c	"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b ",
+					               "c"
 					             ]
 					             """);
 			}

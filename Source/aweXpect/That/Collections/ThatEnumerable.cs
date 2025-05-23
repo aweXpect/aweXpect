@@ -41,6 +41,15 @@ public static partial class ThatEnumerable
 				return this;
 			}
 
+			expectationBuilder.UpdateContexts(contexts => contexts
+					.Add(new ResultContext("Expected",
+						() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
+						{
+							ICollection<TItem> coll => coll.Count,
+							ICountable countable => countable.Count,
+							_ => null,
+						})),
+						-2)));
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
@@ -65,12 +74,13 @@ public static partial class ThatEnumerable
 				return this;
 			}
 
+			expectationBuilder.AddCollectionContext(materializedEnumerable);
 			Outcome = Outcome.Success;
 			return this;
 		}
 
 		private string TooManyDeviationsError()
-			=> $"{It} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
+			=> $"{It} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations";
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -101,8 +111,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				stringBuilder.Append(It).Append(" did in ");
-				Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
+				stringBuilder.Append(It).Append(" did");
 			}
 		}
 	}

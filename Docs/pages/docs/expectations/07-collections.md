@@ -253,6 +253,8 @@ await Expect.That(values).Contains([1, 1, 2, 2]).IgnoringDuplicates();
 await Expect.That(values).Contains([3, 3, 1, 1]).InAnyOrder().IgnoringDuplicates();
 ```
 
+*Note: You can also negate this expectation with `DoesNotContain`.*
+
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 To check for a proper subset, append `.Properly()` (which would fail for equal collections).
@@ -269,6 +271,8 @@ await Expect.That(values).IsContainedIn([4, 3, 2, 1]).InAnyOrder();
 await Expect.That(values).IsContainedIn([1, 1, 2, 2, 3, 3, 4, 4]).IgnoringDuplicates();
 await Expect.That(values).IsContainedIn([4, 4, 3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringDuplicates();
 ```
+
+*Note: You can also negate this expectation with `IsNotContainedIn`.*
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
