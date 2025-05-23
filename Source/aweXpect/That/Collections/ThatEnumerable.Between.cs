@@ -10,18 +10,19 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection between <paramref name="minimum" />…
 	/// </summary>
-	public static BetweenResult<Elements<TItem>> Between<TItem>(
-		this IThat<IEnumerable<TItem>?> subject,
+	public static BetweenResult<Elements<TItem, TEnumerable>> Between<TItem, TEnumerable>(
+		this IThat<TEnumerable> subject,
 		int minimum)
-		=> new(maximum => new Elements<TItem>(subject,
+	where TEnumerable : IEnumerable<TItem>
+		=> new(maximum => new Elements<TItem, TEnumerable>(subject,
 			EnumerableQuantifier.Between(minimum, maximum, subject.Get().ExpectationBuilder.ExpectationGrammars)));
 
 	/// <summary>
 	///     Verifies that in the collection between <paramref name="minimum" />…
 	/// </summary>
-	public static BetweenResult<Elements> Between(
+	public static BetweenResult<StringElements> Between(
 		this IThat<IEnumerable<string?>?> subject,
 		int minimum)
-		=> new(maximum => new Elements(subject,
+		=> new(maximum => new StringElements(subject,
 			EnumerableQuantifier.Between(minimum, maximum, subject.Get().ExpectationBuilder.ExpectationGrammars)));
 }

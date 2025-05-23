@@ -9,16 +9,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
-	public static Elements<TItem> Exactly<TItem>(
-		this IThat<IEnumerable<TItem>?> subject,
+	public static Elements<TItem, TEnumerable> Exactly<TItem, TEnumerable>(
+		this IThat<TEnumerable> subject,
 		int expected)
+	where TEnumerable : IEnumerable<TItem>
 		=> new(subject,
 			EnumerableQuantifier.Exactly(expected, subject.Get().ExpectationBuilder.ExpectationGrammars));
 
 	/// <summary>
 	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
-	public static Elements Exactly(
+	public static StringElements Exactly(
 		this IThat<IEnumerable<string?>?> subject,
 		int expected)
 		=> new(subject,

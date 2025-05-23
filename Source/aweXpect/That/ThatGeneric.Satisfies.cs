@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -10,7 +11,6 @@ using aweXpect.Options;
 using aweXpect.Results;
 
 namespace aweXpect;
-
 public static partial class ThatGeneric
 {
 	/// <summary>

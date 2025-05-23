@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
+#endif
 using System.Threading;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -21,7 +25,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = GetCancellingEnumerable(5, cts);
 
 					async Task Act()
-						=> await That(subject).All().Satisfy(x => x < 6).WithCancellation(token);
+						=> await That(subject).Foo().Satisfy(x => x < 6).WithCancellation(token);
 
 					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
@@ -52,8 +56,8 @@ public sealed partial class ThatEnumerable
 					ThrowWhenIteratingTwiceEnumerable subject = new();
 
 					async Task Act()
-						=> await That(subject).All().Satisfy(_ => true)
-							.And.All().Satisfy(_ => true);
+						=> await That(subject).Foo().Satisfy(_ => true)
+							.And.Foo().Satisfy(_ => true);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -64,17 +68,17 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 					async Task Act()
-						=> await That(subject).All().Satisfy(x => x == 1);
+						=> await That(subject).Foo().Satisfy(x => x == 1);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
 						             satisfies x => x == 1 for all items,
 						             but not all did
-						             
+
 						             Not matching items:
 						             [2, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -92,13 +96,50 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
+				
+				#if NET8_0_OR_GREATER
+				[Fact]
+				public async Task WhenEnumerableContainsDifferentValues_ShouldFailXXX()
+				{
+					ImmutableArray<int> subject = [1, 1, 1, 1, 2, 2, 3,];
+
+					async Task Act()
+						=> await That(subject).Foo().Satisfy(x => x == 1);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             satisfies x => x == 1 for all items,
+						             but not all did
+
+						             Not matching items:
+						             [2, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
+						             """);
+				}
+#endif
+
 				[Fact]
 				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
 				{
 					int[] subject = [1, 1, 1, 1, 2, 2, 3,];
 
 					async Task Act()
-						=> await That(subject).All().Satisfy(x => x == 1);
+						=> await That(subject).Foo().Sat(x => x == 1);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -117,10 +158,10 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable((int[]) []);
+					IEnumerable subject = ToEnumerable((int[]) []);
 
 					async Task Act()
-						=> await That(subject).All().Satisfy(x => x == 0);
+						=> await That(subject).Foo().Sat<int>(x => x == 0);
 
 					await That(Act).DoesNotThrow();
 				}

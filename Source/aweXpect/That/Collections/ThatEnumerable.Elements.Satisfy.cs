@@ -9,7 +9,7 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements
+	public partial class StringElements
 	{
 		/// <summary>
 		///     …satisfy the <paramref name="predicate" />.
@@ -41,12 +41,12 @@ public static partial class ThatEnumerable
 		}
 	}
 
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TEnumerable>
 	{
 		/// <summary>
 		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		public AndOrResult<TEnumerable, IThat<TEnumerable>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
@@ -54,7 +54,7 @@ public static partial class ThatEnumerable
 		{
 			predicate.ThrowIfNull();
 			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
-			return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			return new AndOrResult<TEnumerable, IThat<TEnumerable>>(
 				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						expectationBuilder,

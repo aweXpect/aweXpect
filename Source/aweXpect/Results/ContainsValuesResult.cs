@@ -32,7 +32,7 @@ public class ContainsValuesResult<TCollection, TThat, TKey, TValue>
 	/// <summary>
 	///     Further expectations on the selected values of the dictionary.
 	/// </summary>
-	public ThatEnumerable.Elements<TValue> WhoseValues
+	public ThatEnumerable.Elements<TValue, IEnumerable<TValue>> WhoseValues
 		=> new(
 			new ThatSubject<IEnumerable<TValue>>(_expectationBuilder
 				.ForWhich(_memberAccessor, " whose values ", $"values {Formatter.Format(_keys)}",

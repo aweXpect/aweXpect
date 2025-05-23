@@ -12,12 +12,12 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TEnumerable>
 	{
 		/// <summary>
 		///     …are equivalent to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>
 			AreEquivalentTo<TExpected>(TExpected expected,
 				Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
 				[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -33,7 +33,7 @@ public static partial class ThatEnumerable
 
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>(
 				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						expectationBuilder,

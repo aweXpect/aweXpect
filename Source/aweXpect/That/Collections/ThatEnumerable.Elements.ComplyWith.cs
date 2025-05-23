@@ -15,16 +15,16 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TEnumerable>
 	{
 		/// <summary>
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>
 			ComplyWith(Action<IThat<TItem>> expectations)
 		{
 			ObjectEqualityOptions<TItem> options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
 					=> new ComplyWithConstraint(expectationBuilder, it, grammars, _quantifier, expectations)),
 				_subject,
@@ -32,8 +32,8 @@ public static partial class ThatEnumerable
 		}
 
 		private sealed class ComplyWithConstraint
-			: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
-				IAsyncContextConstraint<IEnumerable<TItem>?>
+			: ConstraintResult.WithNotNullValue<TEnumerable>,
+				IAsyncContextConstraint<TEnumerable>
 		{
 			private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
 			private readonly EnumerableQuantifier _quantifier;
@@ -52,11 +52,12 @@ public static partial class ThatEnumerable
 			}
 
 			public async Task<ConstraintResult> IsMetBy(
-				IEnumerable<TItem>? actual,
+				TEnumerable actual,
 				IEvaluationContext context,
 				CancellationToken cancellationToken)
 			{
 				Actual = actual;
+				// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 				if (actual is null)
 				{
 					Outcome = Outcome.Failure;

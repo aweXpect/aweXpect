@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -9,17 +8,17 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TEnumerable>
 	{
 		/// <summary>
 		///     …are of type <typeparamref name="TType" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>
 			Are<TType>()
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>(
 				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						expectationBuilder,
@@ -42,13 +41,13 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …are of type <paramref name="type" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>
 			Are(Type type)
 		{
 			type.ThrowIfNull();
 			ObjectEqualityOptions<TItem> options = new();
 			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>(
 				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						expectationBuilder,

@@ -9,8 +9,9 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection no items…
 	/// </summary>
-	public static Elements<TItem> None<TItem>(
-		this IThat<IEnumerable<TItem>?> subject)
+	public static Elements<TItem, TEnumerable> None<TItem, TEnumerable>(
+		this IThat<TEnumerable> subject)
+	where TEnumerable : IEnumerable<TItem>
 		=> new(subject,
 			EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |
 			                          ExpectationGrammars.Plural));
@@ -18,7 +19,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection no items…
 	/// </summary>
-	public static Elements None(
+	public static StringElements None(
 		this IThat<IEnumerable<string?>?> subject)
 		=> new(subject,
 			EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |

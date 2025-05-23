@@ -12,14 +12,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<double>, IThat<IEnumerable<double>?>, double, double>
-		AreEqualTo(this Elements<double> elements, double expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, double, double>
+		AreEqualTo<TEnumerable>(this Elements<double, TEnumerable> elements, double expected)
+		where TEnumerable : IEnumerable<double>
 	{
-		IElements<double> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<double, double> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<double>, IThat<IEnumerable<double>?>, double, double>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, double, double>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<double>(
 					expectationBuilder,
@@ -42,14 +43,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<double?>, IThat<IEnumerable<double?>?>, double?, double>
-		AreEqualTo(this Elements<double?> elements, double? expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, double?, double>
+		AreEqualTo<TEnumerable>(this Elements<double?, TEnumerable> elements, double? expected)
+		where TEnumerable : IEnumerable<double?>
 	{
-		IElements<double?> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<double?, double> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<double?>, IThat<IEnumerable<double?>?>, double?, double>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, double?, double>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<double?>(
 					expectationBuilder,
@@ -72,14 +74,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<float>, IThat<IEnumerable<float>?>, float, float>
-		AreEqualTo(this Elements<float> elements, float expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, float, float>
+		AreEqualTo<TEnumerable>(this Elements<float, TEnumerable> elements, float expected)
+		where TEnumerable : IEnumerable<float>
 	{
-		IElements<float> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<float, float> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<float>, IThat<IEnumerable<float>?>, float, float>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, float, float>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<float>(
 					expectationBuilder,
@@ -102,14 +105,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<float?>, IThat<IEnumerable<float?>?>, float?, float>
-		AreEqualTo(this Elements<float?> elements, float? expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, float?, float>
+		AreEqualTo<TEnumerable>(this Elements<float?, TEnumerable> elements, float? expected)
+		where TEnumerable : IEnumerable<float?>
 	{
-		IElements<float?> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<float?, float> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<float?>, IThat<IEnumerable<float?>?>, float?, float>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, float?, float>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<float?>(
 					expectationBuilder,
@@ -132,14 +136,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<decimal>, IThat<IEnumerable<decimal>?>, decimal, decimal>
-		AreEqualTo(this Elements<decimal> elements, decimal expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, decimal, decimal>
+		AreEqualTo<TEnumerable>(this Elements<decimal, TEnumerable> elements, decimal expected)
+		where TEnumerable : IEnumerable<decimal>
 	{
-		IElements<decimal> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<decimal>, IThat<IEnumerable<decimal>?>, decimal, decimal>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, decimal, decimal>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<decimal>(
 					expectationBuilder,
@@ -162,14 +167,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<decimal?>, IThat<IEnumerable<decimal?>?>, decimal?, decimal>
-		AreEqualTo(this Elements<decimal?> elements, decimal? expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, decimal?, decimal>
+		AreEqualTo<TEnumerable>(this Elements<decimal?, TEnumerable> elements, decimal? expected)
+		where TEnumerable : IEnumerable<decimal?>
 	{
-		IElements<decimal?> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<decimal?>, IThat<IEnumerable<decimal?>?>, decimal?, decimal>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, decimal?, decimal>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<decimal?>(
 					expectationBuilder,
@@ -192,14 +198,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<DateTime>, IThat<IEnumerable<DateTime>?>, DateTime, TimeSpan>
-		AreEqualTo(this Elements<DateTime> elements, DateTime expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, DateTime, TimeSpan>
+		AreEqualTo<TEnumerable>(this Elements<DateTime, TEnumerable> elements, DateTime expected)
+		where TEnumerable : IEnumerable<DateTime>
 	{
-		IElements<DateTime> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<DateTime>, IThat<IEnumerable<DateTime>?>, DateTime, TimeSpan>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, DateTime, TimeSpan>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<DateTime>(
 					expectationBuilder,
@@ -222,14 +229,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ToleranceEqualityResult<IEnumerable<DateTime?>, IThat<IEnumerable<DateTime?>?>, DateTime?, TimeSpan>
-		AreEqualTo(this Elements<DateTime?> elements, DateTime? expected)
+	public static ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, DateTime?, TimeSpan>
+		AreEqualTo<TEnumerable>(this Elements<DateTime?, TEnumerable> elements, DateTime? expected)
+		where TEnumerable : IEnumerable<DateTime?>
 	{
-		IElements<DateTime?> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ToleranceEqualityResult<IEnumerable<DateTime?>, IThat<IEnumerable<DateTime?>?>, DateTime?, TimeSpan>(
+		return new ToleranceEqualityResult<TEnumerable, IThat<TEnumerable>, DateTime?, TimeSpan>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<DateTime?>(
 					expectationBuilder,
@@ -252,13 +260,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>?, IThat<IEnumerable<TItem>?>, TItem>
-		AreEqualTo<TItem>(this Elements<TItem> elements, TItem expected)
+	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>
+		AreEqualTo<TItem, TEnumerable>(this Elements<TItem, TEnumerable> elements, TItem expected)
+		where TEnumerable : IEnumerable<TItem>
 	{
-		IElements<TItem> iElements = elements;
+		IElements<TEnumerable> iElements = elements;
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ObjectEqualityResult<IEnumerable<TItem>?, IThat<IEnumerable<TItem>?>, TItem>(
+		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<TItem>(
 					expectationBuilder,
@@ -282,18 +291,18 @@ public static partial class ThatEnumerable
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
 	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> AreEqualTo(
-		this Elements elements,
+		this StringElements stringElements,
 		string? expected)
 	{
-		IElements iElements = elements;
+		IStringElements iStringElements = stringElements;
 		StringEqualityOptions options = new();
-		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
+		ExpectationBuilder expectationBuilder = iStringElements.Subject.Get().ExpectationBuilder;
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<string?>(
 					expectationBuilder,
 					it, grammars,
-					iElements.Quantifier,
+					iStringElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
 							g.IsNegated()) switch
 						{
@@ -304,7 +313,7 @@ public static partial class ThatEnumerable
 						},
 					a => options.AreConsideredEqual(a, expected),
 					"were")),
-			iElements.Subject,
+			iStringElements.Subject,
 			options);
 	}
 }
