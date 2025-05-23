@@ -217,6 +217,52 @@ public static partial class ThatAsyncEnumerable
 			quantifier);
 	}
 
+	/// <summary>
+	///     Verifies that the collection does not contain the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
+		DoesNotContain<TItem>(
+			this IThat<IAsyncEnumerable<TItem>?> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<TItem, TItem>(
+					expectationBuilder, it, grammars, 
+					doNotPopulateThisValue.TrimCommonWhiteSpace(), expected,
+					options, matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not contain the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionContainResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
+		DoesNotContain(
+			this IThat<IAsyncEnumerable<string?>?> source,
+			IEnumerable<string?> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringCollectionContainResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<string?, string?>(
+					expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected, options, matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+
 	private sealed class ContainConstraint<TItem>(
 		ExpectationBuilder expectationBuilder,
 		string it,

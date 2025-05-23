@@ -9,7 +9,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public sealed class DoesNotContain
+	public sealed partial class DoesNotContain
 	{
 		public sealed class ItemTests
 		{
@@ -883,19 +883,6 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).DoesNotContain(x => x == unexpected);
 
 				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
-			{
-				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
-
-				async Task Act()
-					=> await That(subject).DoesNotContain(null!);
-
-				await That(Act).Throws<ArgumentNullException>()
-					.WithParamName("predicate").And
-					.WithMessage("The predicate cannot be null.").AsPrefix();
 			}
 
 			[Fact]

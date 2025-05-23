@@ -42,6 +42,9 @@ public sealed partial class ThatAsyncEnumerable
 						             
 						             Collection:
 						             [1.1, 2.3, 3.1]
+						             
+						             Expected:
+						             [1.0, 2.0, 3.0]
 						             """);
 				}
 			}
@@ -77,6 +80,9 @@ public sealed partial class ThatAsyncEnumerable
 						             
 						             Collection:
 						             [1.1, <null>, 2.3, 3.1]
+						             
+						             Expected:
+						             [1.0, <null>, 2.0, 3.0]
 						             """);
 				}
 			}
@@ -123,6 +129,9 @@ public sealed partial class ThatAsyncEnumerable
 						             
 						             Collection:
 						             [1.1, 2.3, 3.1]
+						             
+						             Expected:
+						             [1.0, 2.0, 3.0]
 						             """);
 				}
 			}
@@ -169,6 +178,9 @@ public sealed partial class ThatAsyncEnumerable
 						             
 						             Collection:
 						             [1.1, <null>, 2.3, 3.1]
+						             
+						             Expected:
+						             [1.0, <null>, 2.0, 3.0]
 						             """);
 				}
 			}
@@ -215,6 +227,9 @@ public sealed partial class ThatAsyncEnumerable
 						             
 						             Collection:
 						             [1.1, 2.3, 3.1]
+						             
+						             Expected:
+						             [1.0, 2.0, 3.0]
 						             """);
 				}
 			}
@@ -261,6 +276,9 @@ public sealed partial class ThatAsyncEnumerable
 						             
 						             Collection:
 						             [1.1, <null>, 2.3, 3.1]
+						             
+						             Expected:
+						             [1.0, <null>, 2.0, 3.0]
 						             """);
 				}
 			}
@@ -308,6 +326,9 @@ public sealed partial class ThatAsyncEnumerable
 						                {Formatter.Format(now.AddHours(2))},
 						                {Formatter.Format(now.AddHours(3))}
 						              ]
+						              
+						              Expected:
+						              {Formatter.Format(expected, FormattingOptions.MultipleLines)}
 						              """);
 				}
 			}
@@ -356,6 +377,9 @@ public sealed partial class ThatAsyncEnumerable
 						                {Formatter.Format(now.AddHours(2))},
 						                {Formatter.Format(now.AddHours(3))}
 						              ]
+						              
+						              Expected:
+						              {Formatter.Format(expected, FormattingOptions.MultipleLines)}
 						              """);
 				}
 			}

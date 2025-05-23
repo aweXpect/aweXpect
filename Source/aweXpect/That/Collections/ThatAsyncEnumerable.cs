@@ -344,6 +344,15 @@ public static partial class ThatAsyncEnumerable
 				_items = [];
 			}
 
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Expected",
+					() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
+					{
+						ICollection<TItem> coll => coll.Count,
+						ICountable countable => countable.Count,
+						_ => null,
+					})),
+					-2)));
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				if (_items?.Count < maximumNumber + 1)
@@ -381,9 +390,7 @@ public static partial class ThatAsyncEnumerable
 			sb.Append(It);
 			sb.Append(" had more than ");
 			sb.Append(2 * maximumNumberOfCollectionItems);
-			sb.Append(" deviations compared to ");
-			ValueFormatters.Format(Formatter, sb, expected?.Take(maximumNumberOfCollectionItems + 1),
-				FormattingOptions.MultipleLines);
+			sb.Append(" deviations");
 			return sb.ToString();
 		}
 

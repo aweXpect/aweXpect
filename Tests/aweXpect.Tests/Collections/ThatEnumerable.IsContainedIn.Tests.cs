@@ -24,19 +24,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in order,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -50,6 +38,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -104,6 +107,20 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10
+					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
 					             ]
 					             """);
 			}
@@ -166,6 +183,16 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
+					             ]
 					             """);
 			}
 
@@ -203,6 +230,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -231,6 +265,13 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -257,6 +298,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -278,6 +326,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -319,6 +374,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -352,6 +414,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -412,19 +481,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in order ignoring duplicates,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -438,6 +495,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -505,6 +577,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -532,6 +618,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -570,6 +666,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -598,6 +701,13 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -623,6 +733,13 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "c",
 					               "b"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
 					             ]
 					             """);
 			}
@@ -739,19 +856,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in any order,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -765,6 +870,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -820,6 +940,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -847,6 +981,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -885,6 +1029,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -912,6 +1063,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
 					             ]
 					             """);
 			}
@@ -946,6 +1104,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -987,6 +1152,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1020,6 +1192,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -1080,19 +1259,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected in any order ignoring duplicates,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -1106,6 +1273,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -1173,6 +1355,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -1200,6 +1396,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -1238,6 +1444,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1265,6 +1478,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
 					             ]
 					             """);
 			}
@@ -1393,19 +1613,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -1419,6 +1627,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -1474,6 +1697,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -1501,6 +1738,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -1541,6 +1788,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1570,6 +1824,13 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1597,6 +1858,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1620,6 +1888,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -1663,6 +1938,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1698,6 +1980,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -1751,6 +2040,13 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -1770,19 +2066,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -1796,6 +2080,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -1863,6 +2162,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -1890,6 +2203,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -1930,6 +2253,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1959,6 +2289,13 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1986,6 +2323,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2007,6 +2351,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -2035,6 +2386,14 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2058,6 +2417,13 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "b",
 					               "c",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
 					               "c"
 					             ]
 					             """);
@@ -2084,6 +2450,14 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2105,6 +2479,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -2157,6 +2538,13 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -2176,19 +2564,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -2202,6 +2578,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -2257,6 +2648,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -2284,6 +2689,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -2324,6 +2739,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2353,6 +2775,13 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2377,6 +2806,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2400,6 +2836,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -2443,6 +2886,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2478,6 +2928,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -2531,6 +2988,13 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -2551,19 +3015,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
-					             but it had more than 20 deviations compared to [
-					               100,
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               …
-					             ]
+					             but it had more than 20 deviations
 					             
 					             Collection:
 					             [
@@ -2577,6 +3029,21 @@ public sealed partial class ThatEnumerable
 					               8,
 					               9,
 					               10,
+					               …
+					             ]
+					             
+					             Expected:
+					             [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
 					               …
 					             ]
 					             """);
@@ -2647,6 +3114,20 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
+					             
+					             Expected:
+					             [
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               110
+					             ]
 					             """);
 			}
 
@@ -2675,6 +3156,16 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d",
 					               "e"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "x",
+					               "y",
+					               "z"
 					             ]
 					             """);
 			}
@@ -2717,6 +3208,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2747,6 +3245,13 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2772,6 +3277,13 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2794,6 +3306,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -2823,6 +3342,14 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2847,6 +3374,13 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "b",
 					               "c",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
 					               "c"
 					             ]
 					             """);
@@ -2874,6 +3408,14 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -2896,6 +3438,13 @@ public sealed partial class ThatEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -2946,6 +3495,13 @@ public sealed partial class ThatEnumerable
 					             but it contained all expected items
 					             
 					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
 					             [
 					               "a",
 					               "b",

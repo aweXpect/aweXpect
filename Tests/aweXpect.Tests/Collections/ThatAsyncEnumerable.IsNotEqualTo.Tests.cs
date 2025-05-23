@@ -240,6 +240,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -375,6 +382,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -397,6 +411,14 @@ public sealed partial class ThatAsyncEnumerable
 					             [
 					               "a",
 					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
 					               "c"
 					             ]
 					             """);
@@ -424,6 +446,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -444,6 +473,14 @@ public sealed partial class ThatAsyncEnumerable
 					             
 					             Collection:
 					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
 					               "a",
 					               "b",
 					               "c"
@@ -469,6 +506,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -516,6 +560,13 @@ public sealed partial class ThatAsyncEnumerable
 					             but it did
 					             
 					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
 					             [
 					               "a",
 					               "b",
@@ -631,6 +682,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -734,6 +792,13 @@ public sealed partial class ThatAsyncEnumerable
 					             but it did
 					             
 					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
 					             [
 					               "a",
 					               "b",
@@ -861,6 +926,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -882,6 +954,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Collection:
 					             [
 					               "c",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -910,6 +989,14 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -933,6 +1020,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "a",
 					               "b",
 					               "c",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
 					               "c"
 					             ]
 					             """);
@@ -959,6 +1053,14 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -980,6 +1082,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Collection:
 					             [
 					               "a",
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
 					               "a",
 					               "b",
 					               "c"
@@ -1032,6 +1141,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 		}
@@ -1059,6 +1175,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "bar",
 					               "baz"
 					             ]
+					             
+					             Expected:
+					             [
+					               "*oo",
+					               "*a?",
+					               "?a?"
+					             ]
 					             """);
 			}
 
@@ -1084,6 +1207,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "	c"
 					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               " b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -1108,6 +1238,13 @@ public sealed partial class ThatAsyncEnumerable
 					               "a ",
 					               "b",
 					               "c	"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b ",
+					               "c"
 					             ]
 					             """);
 			}
