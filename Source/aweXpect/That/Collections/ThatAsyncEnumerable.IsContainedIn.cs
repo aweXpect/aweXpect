@@ -88,7 +88,7 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	/// <summary>
-	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection is not contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
 	public static StringCollectionBeContainedInResult<IAsyncEnumerable<string?>,
 			IThat<IAsyncEnumerable<string?>?>>
