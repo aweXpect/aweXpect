@@ -13,6 +13,8 @@ internal sealed class MaterializingEnumerable<T> : IEnumerable<T>, ICountable
 		_enumerator = enumerable.GetEnumerator();
 	}
 
+	public int? Count { get; private set; }
+
 	public static IEnumerable<T> Wrap(IEnumerable<T> enumerable)
 	{
 		if (enumerable is ICollection<T> or MaterializingEnumerable<T>)
@@ -48,6 +50,53 @@ internal sealed class MaterializingEnumerable<T> : IEnumerable<T>, ICountable
 	}
 
 	#endregion
+}
+
+internal sealed class MaterializingEnumerable : IEnumerable, ICountable
+{
+	private readonly IEnumerator _enumerator;
+	private readonly List<object?> _materializedItems = new();
+
+	private MaterializingEnumerable(IEnumerable enumerable)
+	{
+		_enumerator = enumerable.GetEnumerator();
+	}
 
 	public int? Count { get; private set; }
+
+	public static IEnumerable Wrap(IEnumerable enumerable)
+	{
+		if (enumerable is ICollection or MaterializingEnumerable)
+		{
+			return enumerable;
+		}
+
+		return new MaterializingEnumerable(enumerable);
+	}
+
+	#region IEnumerable Members
+
+	/// <inheritdoc />
+	IEnumerator IEnumerable.GetEnumerator()
+		=> GetEnumerator();
+
+	/// <inheritdoc />
+	public IEnumerator GetEnumerator()
+	{
+		foreach (object? materializedItem in _materializedItems)
+		{
+			yield return materializedItem;
+		}
+
+		while (_enumerator.MoveNext())
+		{
+			object? item = _enumerator.Current;
+			_materializedItems.Add(item);
+			yield return item;
+		}
+
+		Count = _materializedItems.Count;
+	}
+
+	#endregion
 }

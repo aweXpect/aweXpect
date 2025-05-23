@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
@@ -51,6 +52,26 @@ internal static class CollectionHelpers
 					() => Formatter.Format(value, typeof(TItem).GetFormattingOption(value switch
 					{
 						ICollection<TItem> coll => coll.Count,
+						ICountable countable => countable.Count,
+						_ => null,
+					})).AppendIsIncomplete(isIncomplete),
+					-1)));
+	}
+
+	internal static ExpectationBuilder AddCollectionContext(this ExpectationBuilder expectationBuilder,
+		IEnumerable? value, bool isIncomplete = false)
+	{
+		if (value is null)
+		{
+			return expectationBuilder;
+		}
+
+		return expectationBuilder.UpdateContexts(contexts
+			=> contexts
+				.Add(new ResultContext("Collection",
+					() => Formatter.Format(value, typeof(object).GetFormattingOption(value switch
+					{
+						ICollection coll => coll.Count,
 						ICountable countable => countable.Count,
 						_ => null,
 					})).AppendIsIncomplete(isIncomplete),
