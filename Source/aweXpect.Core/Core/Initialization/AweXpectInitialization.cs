@@ -24,7 +24,14 @@ internal static class AweXpectInitialization
 		_ = State.Value;
 	}
 
-	internal static ITestFrameworkAdapter DetectFramework(IEnumerable<Type> types)
+	/// <summary>
+	///     Detects a test framework adapter from the provided types.
+	/// </summary>
+	/// <returns>
+	///     An instance of <see cref="ITestFrameworkAdapter" /> if a matching framework is found;
+	///     otherwise <see langword="null" />.
+	/// </returns>
+	internal static ITestFrameworkAdapter? DetectFramework(IEnumerable<Type> types)
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
 		foreach (Type frameworkType in types
@@ -48,18 +55,35 @@ internal static class AweXpectInitialization
 			}
 		}
 
-		return new FallbackTestFramework();
+		return null;
 	}
 
 	private static InitializationState Initialize()
 	{
 		ExecuteCustomInitializers();
 
-		ITestFrameworkAdapter testFramework = DetectFramework(AppDomain.CurrentDomain.GetAssemblies()
-			.Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
-				.All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
-			.SelectMany(assembly => assembly.GetTypes().Where(x => !x.IsNestedPrivate)));
-		return new InitializationState(testFramework);
+		foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies()
+			         .Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
+				         .All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix))))
+		{
+			try
+			{
+				ITestFrameworkAdapter? testFrameworkAdapter = DetectFramework(
+					assembly.GetTypes().Where(x => !x.IsNestedPrivate));
+				if (testFrameworkAdapter is not null)
+				{
+					return new InitializationState(testFrameworkAdapter);
+				}
+			}
+			catch (ReflectionTypeLoadException ex)
+			{
+				// Ignore any ReflectionTypeLoadException and continue with the next assembly.
+				Debug.WriteLine($"ReflectionTypeLoadException caught: {ex.Message}");
+				Debug.WriteLine(ex.StackTrace);
+			}
+		}
+
+		return new InitializationState(new FallbackTestFramework());
 	}
 
 	private static void ExecuteCustomInitializers()
