@@ -107,10 +107,9 @@ public class TraceWriterTests
 			await That(callback).ExecutesWithin(500.Milliseconds());
 		}
 
-		await That(traceWriter.Messages).IsEqualTo([
-			"Checking expectation for callback delegate returning int 4 in 0:00",
-			"  Successfully verified that callback executes within 0:00.500",
-		]);
+		await That(traceWriter.Messages).HasCount(2);
+		await That(traceWriter.Messages[0]).IsEqualTo("Checking expectation for callback delegate returning int 4 in 0:00").AsPrefix();
+		await That(traceWriter.Messages[1]).IsEqualTo("  Successfully verified that callback executes within 0:00.500");
 	}
 
 	[Fact]
