@@ -8,12 +8,11 @@ namespace aweXpect.Core.Tests.Core.Initialization;
 public sealed class AweXpectInitializationTests
 {
 	[Fact]
-	public async Task DetectFramework_WhenAllFrameworksAreNotAvailable_ShouldUseFallbackAdapter()
+	public async Task DetectFramework_WhenAllFrameworksAreNotAvailable_ShouldReturnNull()
 	{
-		ITestFrameworkAdapter result = AweXpectInitialization.DetectFramework([typeof(UnavailableFrameworkAdapter),]);
+		ITestFrameworkAdapter? result = AweXpectInitialization.DetectFramework([typeof(UnavailableFrameworkAdapter),]);
 
-		await That(result.IsAvailable).IsFalse();
-		await That(result.GetType().Name).IsEqualTo("FallbackTestFramework");
+		await That(result).IsNull();
 	}
 
 	[Fact]
