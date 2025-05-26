@@ -24,6 +24,13 @@ internal static class AweXpectInitialization
 		_ = State.Value;
 	}
 
+	/// <summary>
+	///     Detects a test framework adapter from the provided types.
+	/// </summary>
+	/// <returns>
+	///     An instance of <see cref="ITestFrameworkAdapter" /> if a matching framework is found;
+	///     otherwise <see langword="null" />.
+	/// </returns>
 	internal static ITestFrameworkAdapter? DetectFramework(IEnumerable<Type> types)
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
@@ -68,9 +75,11 @@ internal static class AweXpectInitialization
 					return new InitializationState(testFrameworkAdapter);
 				}
 			}
-			catch (ReflectionTypeLoadException)
+			catch (ReflectionTypeLoadException ex)
 			{
 				// Ignore any ReflectionTypeLoadException and continue with the next assembly.
+				Debug.WriteLine($"ReflectionTypeLoadException caught: {ex.Message}");
+				Debug.WriteLine(ex.StackTrace);
 			}
 		}
 
