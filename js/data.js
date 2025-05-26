@@ -1752,6 +1752,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -2046,7 +2052,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -2344,7 +2351,8 @@ window.BENCHMARK_DATA = {
           173.9553770167487,
           199.80228233337402,
           178.76434304033006,
-          184.1249951203664
+          184.1249951203664,
+          174.9670513788859
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2539,6 +2547,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2953,7 +2962,8 @@ window.BENCHMARK_DATA = {
           247.52893355914526,
           255.03110618591307,
           238.30563385146004,
-          247.57854792049952
+          247.57854792049952,
+          233.77054506937662
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3146,6 +3156,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3562,7 +3573,8 @@ window.BENCHMARK_DATA = {
           894.1112631284274,
           915.0066973822458,
           888.9810293197631,
-          890.8840222676595
+          890.8840222676595,
+          939.4979274749755
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3788,6 +3800,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -5169,6 +5182,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -5386,7 +5405,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -5607,7 +5627,8 @@ window.BENCHMARK_DATA = {
           281234.68694196426,
           292183.7704101562,
           279505.085543119,
-          302241.97431640624
+          302241.97431640624,
+          287348.23465401784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5820,6 +5841,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6062,7 +6084,8 @@ window.BENCHMARK_DATA = {
           2266668.7569754464,
           2235792.8703125,
           2154650.2026041667,
-          2362824.2916666665
+          2362824.2916666665,
+          2226640.401785714
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6178,6 +6201,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -6517,7 +6541,8 @@ window.BENCHMARK_DATA = {
           662703.6919642857,
           705797.3111328125,
           640466.5045572916,
-          651360.494140625
+          651360.494140625,
+          659977.0431640625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6673,6 +6698,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -8509,6 +8535,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -8803,7 +8835,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -9101,7 +9134,8 @@ window.BENCHMARK_DATA = {
           439.43279056549073,
           436.89987319310507,
           456.5969689809359,
-          455.9862754895137
+          455.9862754895137,
+          437.305313428243
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9399,6 +9433,7 @@ window.BENCHMARK_DATA = {
           944,
           944,
           944,
+          1392,
           1392,
           1392,
           1392,
@@ -9710,7 +9745,8 @@ window.BENCHMARK_DATA = {
           477.7858723004659,
           497.14046141306557,
           461.869382926396,
-          484.6119711240133
+          484.6119711240133,
+          466.8386217435201
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9903,6 +9939,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -10319,7 +10356,8 @@ window.BENCHMARK_DATA = {
           17115.871579851424,
           21097.721282958984,
           16159.960723876953,
-          15633.118927001953
+          15633.118927001953,
+          16513.952407836914
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10545,6 +10583,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -12388,6 +12427,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -12682,7 +12727,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -12980,7 +13026,8 @@ window.BENCHMARK_DATA = {
           209.79220821176256,
           222.61224433581035,
           215.3104007755007,
-          216.4665387948354
+          216.4665387948354,
+          215.28101360003154
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13176,6 +13223,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -13589,7 +13637,8 @@ window.BENCHMARK_DATA = {
           247.25985822677612,
           252.6089560508728,
           240.32801624706812,
-          247.87021067937215
+          247.87021067937215,
+          239.42126148087638
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13782,6 +13831,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -14198,7 +14248,8 @@ window.BENCHMARK_DATA = {
           1215.2747761862618,
           1230.7774927775065,
           1200.9123689015707,
-          1274.7580629984539
+          1274.7580629984539,
+          1223.7221062978108
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14424,6 +14475,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -16267,6 +16319,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -16561,7 +16619,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -16859,7 +16918,8 @@ window.BENCHMARK_DATA = {
           337.8303912480672,
           344.9213002522786,
           386.86575280703033,
-          343.8973602881798
+          343.8973602881798,
+          329.9240467389425
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17149,6 +17209,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -17468,7 +17529,8 @@ window.BENCHMARK_DATA = {
           452.5546978541783,
           487.6526235580444,
           473.23411293029784,
-          491.4839486440023
+          491.4839486440023,
+          464.06545241673786
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17661,6 +17723,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -18077,7 +18140,8 @@ window.BENCHMARK_DATA = {
           1300.7130370821271,
           1352.8751158396403,
           1253.971019744873,
-          1401.2979301452638
+          1401.2979301452638,
+          1291.7464790344238
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18303,6 +18367,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -20146,6 +20211,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -20440,7 +20511,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -20738,7 +20810,8 @@ window.BENCHMARK_DATA = {
           1113.352572807899,
           1133.4418055216472,
           1139.8615409306117,
-          1314.327764638265
+          1314.327764638265,
+          1277.475847117106
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21041,6 +21114,7 @@ window.BENCHMARK_DATA = {
           2024,
           2024,
           2024,
+          2712,
           2712
         ],
         "borderColor": "#63A2AC",
@@ -21347,7 +21421,8 @@ window.BENCHMARK_DATA = {
           1347.518753306071,
           1268.2270727157593,
           1286.8146965026856,
-          1251.6614463806152
+          1251.6614463806152,
+          1288.9248940785726
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21540,6 +21615,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -21956,7 +22032,8 @@ window.BENCHMARK_DATA = {
           2795.4036272684734,
           2966.494485982259,
           2830.953411102295,
-          2789.146853383382
+          2789.146853383382,
+          2820.958183288574
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22182,6 +22259,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -24025,6 +24103,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 23 23:03:20 2025 \u002B0200",
         "message": "feat: negate \u0060IsContainedIn\u0060 and \u0060Contains\u0060 (#627)"
+      },
+      {
+        "sha": "926958352ca348efa4ff1c24ea61933713914a71",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 26 11:58:02 2025 \u002B0200",
+        "message": "fix: ignore assemblies where \u0060GetTypes()\u0060 throws an exception (#628)"
       }
     ],
     "labels": [
@@ -24319,7 +24403,8 @@ window.BENCHMARK_DATA = {
       "9006a8c5",
       "c665913b",
       "62a44ebc",
-      "3b468751"
+      "3b468751",
+      "92695835"
     ],
     "datasets": [
       {
@@ -24617,7 +24702,8 @@ window.BENCHMARK_DATA = {
           1267.8402309417725,
           1248.9589369455973,
           1253.394433430263,
-          1394.1471372331891
+          1394.1471372331891,
+          1439.8894724845886
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24920,6 +25006,7 @@ window.BENCHMARK_DATA = {
           2184,
           2184,
           2184,
+          2872,
           2872
         ],
         "borderColor": "#63A2AC",
@@ -25226,7 +25313,8 @@ window.BENCHMARK_DATA = {
           152456.72589983259,
           150551.5698939732,
           149901.7881905692,
-          154714.4334309896
+          154714.4334309896,
+          148651.33056640625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25529,7 +25617,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
-          63788
+          63788,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25835,7 +25924,8 @@ window.BENCHMARK_DATA = {
           4710.638694254557,
           4713.269641621908,
           4761.645504252116,
-          4872.022634379069
+          4872.022634379069,
+          4583.164693705241
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26061,6 +26151,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
