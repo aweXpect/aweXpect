@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -11,13 +11,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BenchmarkDotNet"/>
-		<PackageReference Include="FluentAssertions"/>
-		<PackageReference Include="TUnit.Assertions"/>
+		<PackageReference Include="BenchmarkDotNet" />
+		<PackageReference Include="FluentAssertions" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.Common" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+		<PackageReference Include="TUnit.Assertions" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj" />
 	</ItemGroup>
 
 </Project>
