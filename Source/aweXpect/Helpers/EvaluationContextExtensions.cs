@@ -34,7 +34,7 @@ internal static class EvaluationContextExtensions
 	}
 
 	/// <summary>
-	///     Avoids enumerating an <see cref="IEnumerable{TItem}" /> multiple times,
+	///     Avoids enumerating an <see cref="IEnumerable" /> multiple times,
 	///     by caching already materialized items in the <paramref name="evaluationContext" />.
 	/// </summary>
 	[return: NotNullIfNotNull(nameof(collection))]
