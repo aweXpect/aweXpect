@@ -58,10 +58,11 @@ internal sealed class MaterializingEnumerable : IEnumerable, ICountable
 {
 	private readonly IEnumerator _enumerator;
 	private readonly List<object?> _materializedItems = new();
-	private bool _isMaterializedCompletely = false;
+	private bool _isMaterializedCompletely;
 
 	private MaterializingEnumerable(IEnumerable enumerable)
 	{
+		// ReSharper disable once GenericEnumeratorNotDisposed
 		_enumerator = enumerable.GetEnumerator();
 	}
 
@@ -98,9 +99,12 @@ internal sealed class MaterializingEnumerable : IEnumerable, ICountable
 			yield return item;
 		}
 
-		_isMaterializedCompletely = true;
-		(_enumerator as IDisposable)?.Dispose();
-		Count = _materializedItems.Count;
+		if (!_isMaterializedCompletely)
+		{
+			_isMaterializedCompletely = true;
+			(_enumerator as IDisposable)?.Dispose();
+			Count = _materializedItems.Count;
+		}
 	}
 
 	#endregion

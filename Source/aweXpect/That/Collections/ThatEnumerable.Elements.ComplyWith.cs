@@ -102,9 +102,9 @@ public static partial class ThatEnumerable
 			protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(" items");
+				stringBuilder.Append(ComplyItems);
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -113,9 +113,9 @@ public static partial class ThatEnumerable
 			protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(" items");
+				stringBuilder.Append(ComplyItems);
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
@@ -210,9 +210,9 @@ public static partial class ThatEnumerable
 			protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(" items");
+				stringBuilder.Append(ComplyItems);
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -221,9 +221,9 @@ public static partial class ThatEnumerable
 			protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(" items");
+				stringBuilder.Append(ComplyItems);
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
@@ -313,9 +313,9 @@ public static partial class ThatEnumerable
 			protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(" items");
+				stringBuilder.Append(ComplyItems);
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -324,9 +324,9 @@ public static partial class ThatEnumerable
 			protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(" items");
+				stringBuilder.Append(ComplyItems);
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)

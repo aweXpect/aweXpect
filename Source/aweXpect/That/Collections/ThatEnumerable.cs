@@ -19,6 +19,10 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatEnumerable
 {
+	private const string For = " for ";
+	private const string ComplyItems = " items";
+	private const string SortOrder = " order";
+
 	private sealed class IsEqualToConstraint<TItem, TMatch>(
 		ExpectationBuilder expectationBuilder,
 		string it,
@@ -43,14 +47,14 @@ public static partial class ThatEnumerable
 			}
 
 			expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Expected",
-						() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
-						{
-							ICollection<TItem> coll => coll.Count,
-							ICountable countable => countable.Count,
-							_ => null,
-						})),
-						-2)));
+				.Add(new ResultContext("Expected",
+					() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
+					{
+						ICollection<TItem> coll => coll.Count,
+						ICountable countable => countable.Count,
+						_ => null,
+					})),
+					-2)));
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
@@ -215,7 +219,7 @@ public static partial class ThatEnumerable
 			else
 			{
 				stringBuilder.Append(_expectationText(Grammars));
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
 				stringBuilder.Append(_quantifier.GetItemString());
@@ -237,7 +241,7 @@ public static partial class ThatEnumerable
 			else
 			{
 				stringBuilder.Append(_expectationText(Grammars.Negate()));
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
 				stringBuilder.Append(_quantifier.GetItemString());
@@ -376,7 +380,7 @@ public static partial class ThatEnumerable
 			else
 			{
 				stringBuilder.Append(_expectationText(Grammars));
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
 				stringBuilder.Append(_quantifier.GetItemString());
@@ -398,7 +402,7 @@ public static partial class ThatEnumerable
 			else
 			{
 				stringBuilder.Append(_expectationText(Grammars.Negate()));
-				stringBuilder.Append(" for ");
+				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
 				stringBuilder.Append(_quantifier.GetItemString());
@@ -667,8 +671,8 @@ public static partial class ThatEnumerable
 				}
 
 				int comparisonResult = comparer.Compare(previous, current);
-				if ((comparisonResult > 0 && sortOrder == SortOrder.Ascending) ||
-				    (comparisonResult < 0 && sortOrder == SortOrder.Descending))
+				if ((comparisonResult > 0 && sortOrder == aweXpect.SortOrder.Ascending) ||
+				    (comparisonResult < 0 && sortOrder == aweXpect.SortOrder.Descending))
 				{
 					_failureText =
 						$"{It} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order";
@@ -685,7 +689,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append("is in ").Append(sortOrder.ToString().ToLower()).Append(" order");
+			stringBuilder.Append("is in ").Append(sortOrder.ToString().ToLower()).Append(SortOrder);
 			stringBuilder.Append(options).Append(memberExpression);
 		}
 
@@ -694,7 +698,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append("is not in ").Append(sortOrder.ToString().ToLower()).Append(" order");
+			stringBuilder.Append("is not in ").Append(sortOrder.ToString().ToLower()).Append(SortOrder);
 			stringBuilder.Append(options).Append(memberExpression);
 		}
 
@@ -741,8 +745,8 @@ public static partial class ThatEnumerable
 				}
 
 				int comparisonResult = comparer.Compare(previous, current);
-				if ((comparisonResult > 0 && sortOrder == SortOrder.Ascending) ||
-				    (comparisonResult < 0 && sortOrder == SortOrder.Descending))
+				if ((comparisonResult > 0 && sortOrder == aweXpect.SortOrder.Ascending) ||
+				    (comparisonResult < 0 && sortOrder == aweXpect.SortOrder.Descending))
 				{
 					_failureText =
 						$"{It} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order";
@@ -759,7 +763,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append("is in ").Append(sortOrder.ToString().ToLower()).Append(" order");
+			stringBuilder.Append("is in ").Append(sortOrder.ToString().ToLower()).Append(SortOrder);
 			stringBuilder.Append(options).Append(memberExpression);
 		}
 
@@ -768,7 +772,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append("is not in ").Append(sortOrder.ToString().ToLower()).Append(" order");
+			stringBuilder.Append("is not in ").Append(sortOrder.ToString().ToLower()).Append(SortOrder);
 			stringBuilder.Append(options).Append(memberExpression);
 		}
 

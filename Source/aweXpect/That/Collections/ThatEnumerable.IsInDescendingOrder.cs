@@ -29,7 +29,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderConstraint<TItem, TItem>(
 					expectationBuilder, it, grammars,
 					x => x,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					"")),
 			source,
@@ -54,7 +54,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderConstraint<TItem, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
@@ -75,7 +75,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<TEnumerable, object?>(
 					expectationBuilder, it, grammars,
 					x => x,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					"")),
 			source,
@@ -100,7 +100,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<TEnumerable, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
@@ -122,7 +122,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
 					expectationBuilder, it, grammars,
 					x => (TItem)x!,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					"")),
 			source,
@@ -149,7 +149,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderConstraint<TItem, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
@@ -171,7 +171,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderConstraint<TItem, TItem>(
 					expectationBuilder, it, grammars,
 					x => x,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					"").Invert()),
 			source,
@@ -196,7 +196,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderConstraint<TItem, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}").Invert()),
 			source,
@@ -217,7 +217,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<TEnumerable, object?>(
 					expectationBuilder, it, grammars,
 					x => x,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					"").Invert()),
 			source,
@@ -242,7 +242,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<TEnumerable, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}").Invert()),
 			source,
@@ -263,7 +263,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
 					expectationBuilder, it, grammars,
 					x => (TItem)x!,
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					"").Invert()),
 			source,
@@ -289,7 +289,7 @@ public static partial class ThatEnumerable
 				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TMember>(
 					expectationBuilder, it, grammars,
 					o => memberAccessor((TItem)o!),
-					SortOrder.Descending,
+					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}").Invert()),
 			source,
