@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -160,8 +161,7 @@ public static partial class ThatEnumerable
 			}
 
 			_materializedEnumerable = context.UseMaterializedEnumerable(actual);
-
-			foreach (object? _ in _materializedEnumerable)
+			if (_materializedEnumerable.Cast<object?>().Any())
 			{
 				Outcome = Outcome.Failure;
 				return this;

@@ -70,7 +70,7 @@ public static partial class ThatEnumerable
 			options,
 			f =>
 			{
-				return f.Cast<TItem>().FirstOrDefault(item => options.Matches(item));
+				return f.FirstOrDefault(item => options.Matches(item));
 			});
 	}
 #endif
