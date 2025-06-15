@@ -368,6 +368,103 @@ public static partial class ThatEnumerable
 				_totalCount);
 	}
 
+	private sealed class SyncCollectionCountForEnumerableConstraint<TEnumerable>
+		: ConstraintResult.WithNotNullValue<TEnumerable>,
+			IAsyncContextConstraint<TEnumerable>
+		where TEnumerable : IEnumerable?
+	{
+		private readonly ExpectationBuilder _expectationBuilder;
+		private readonly EnumerableQuantifier _quantifier;
+		private int _matchingCount;
+		private int _notMatchingCount;
+		private int? _totalCount;
+
+		public SyncCollectionCountForEnumerableConstraint(
+			ExpectationBuilder expectationBuilder,
+			string it,
+			ExpectationGrammars grammars,
+			EnumerableQuantifier quantifier)
+			: base(it, grammars)
+		{
+			_expectationBuilder = expectationBuilder;
+			_quantifier = quantifier;
+		}
+
+		public Task<ConstraintResult> IsMetBy(
+			TEnumerable? actual,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return Task.FromResult<ConstraintResult>(this);
+			}
+
+			_matchingCount = 0;
+			_notMatchingCount = 0;
+
+			if (actual is ICollection<TEnumerable> collectionOfT)
+			{
+				_matchingCount = collectionOfT.Count;
+				_totalCount = _matchingCount;
+				Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+				_expectationBuilder.AddCollectionContext(actual);
+				return Task.FromResult<ConstraintResult>(this);
+			}
+
+			IEnumerable materialized = context.UseMaterializedEnumerable(actual);
+
+			foreach (object? _ in materialized)
+			{
+				_matchingCount++;
+
+				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
+				{
+					_expectationBuilder.AddCollectionContext(materialized, true);
+					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					return Task.FromResult<ConstraintResult>(this);
+				}
+
+				if (cancellationToken.IsCancellationRequested)
+				{
+					Outcome = Outcome.Undecided;
+					_expectationBuilder.AddCollectionContext(materialized, true);
+					return Task.FromResult<ConstraintResult>(this);
+				}
+			}
+
+			_totalCount = _matchingCount + _notMatchingCount;
+			_expectationBuilder.AddCollectionContext(materialized);
+			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			return Task.FromResult<ConstraintResult>(this);
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has ");
+			stringBuilder.Append(_quantifier);
+			stringBuilder.Append(' ');
+			stringBuilder.Append(_quantifier.GetItemString());
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not have ");
+			stringBuilder.Append(_quantifier);
+			stringBuilder.Append(' ');
+			stringBuilder.Append(_quantifier.GetItemString());
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount,
+				_totalCount);
+	}
+
 	private sealed class IsInOrderConstraint<TItem, TMember>(
 		ExpectationBuilder expectationBuilder,
 		string it,
