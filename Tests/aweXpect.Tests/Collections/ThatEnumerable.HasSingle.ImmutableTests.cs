@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -8,43 +9,12 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class HasSingle
 	{
-		public sealed class Tests
+		public sealed class ImmutableTests
 		{
-			[Fact]
-			public async Task DoesNotMaterializeEnumerable()
-			{
-				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
-
-				async Task Act()
-					=> await That(subject).HasSingle();
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             has a single item,
-					             but it contained more than one item
-					             
-					             Collection:
-					             [
-					               1,
-					               1,
-					               2,
-					               3,
-					               5,
-					               8,
-					               13,
-					               21,
-					               34,
-					               55,
-					               …
-					             ]
-					             """);
-			}
-
 			[Fact]
 			public async Task ShouldReturnSingleItem()
 			{
-				IEnumerable<int> subject = ToEnumerable([42,]);
+				ImmutableArray<int> subject = [42,];
 
 				int result = await That(subject).HasSingle();
 
@@ -54,7 +24,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				ImmutableArray<int> subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasSingle();
@@ -64,20 +34,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has a single item,
 					             but it contained more than one item
-					             
+
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsSingleElement_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1,]);
+				ImmutableArray<int> subject = [1,];
 
 				int result = await That(subject).HasSingle();
 
@@ -87,7 +53,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable(Array.Empty<int>());
+				ImmutableArray<int> subject = [];
 
 				async Task Act()
 					=> await That(subject).HasSingle();
@@ -99,61 +65,14 @@ public sealed partial class ThatEnumerable
 					             but it was empty
 					             """);
 			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IEnumerable<string>? subject = null;
-
-				async Task Act()
-					=> await That(subject).HasSingle();
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             has a single item,
-					             but it was <null>
-					             """);
-			}
 		}
 
-		public sealed class MatchingPredicateTests
+		public sealed class ImmutableMatchingPredicateTests
 		{
-			[Fact]
-			public async Task DoesNotMaterializeEnumerable()
-			{
-				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
-
-				async Task Act()
-					=> await That(subject).HasSingle().Matching(x => x > 1);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             has a single item matching x => x > 1,
-					             but it contained more than one item
-					             
-					             Collection:
-					             [
-					               1,
-					               1,
-					               2,
-					               3,
-					               5,
-					               8,
-					               13,
-					               21,
-					               34,
-					               55,
-					               …
-					             ]
-					             """);
-			}
-
 			[Fact]
 			public async Task ShouldReturnSingleItem()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				ImmutableArray<int> subject = [1, 2, 3,];
 
 				int result = await That(subject).HasSingle().Matching(x => x == 2);
 
@@ -163,7 +82,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				ImmutableArray<int> subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching(x => x > 1);
@@ -173,20 +92,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has a single item matching x => x > 1,
 					             but it contained more than one item
-					             
+
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsSingleElement_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				ImmutableArray<int> subject = [1, 2, 3,];
 
 				int result = await That(subject).HasSingle().Matching(x => x > 2);
 
@@ -196,7 +111,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable(Array.Empty<int>());
+				ImmutableArray<int> subject = [];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching(_ => true);
@@ -212,7 +127,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
 			{
-				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+				ImmutableArray<int> subject = [];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching(null!);
@@ -221,31 +136,15 @@ public sealed partial class ThatEnumerable
 					.WithParamName("predicate").And
 					.WithMessage("The predicate cannot be null.").AsPrefix();
 			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IEnumerable<string>? subject = null;
-
-				async Task Act()
-					=> await That(subject).HasSingle().Matching(_ => false);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             has a single item matching _ => false,
-					             but it was <null>
-					             """);
-			}
 		}
 
-		public sealed class MatchingTypeTests
+		public sealed class ImmutableMatchingTypeTests
 		{
 			[Fact]
 			public async Task ShouldReturnSingleItem()
 			{
-				IEnumerable<MyBaseClass> subject =
-					ToEnumerable(new MyClass(1), new MyOtherClass(2), new MyBaseClass(3));
+				ImmutableArray<MyBaseClass> subject =
+					[new MyClass(1), new MyOtherClass(2), new(3),];
 
 				MyBaseClass result = await That(subject).HasSingle().Matching<MyOtherClass>();
 
@@ -255,8 +154,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldFail()
 			{
-				IEnumerable<MyBaseClass> subject = ToEnumerable<MyBaseClass>(
-					new MyClass(1), new MyOtherClass(2), new MyClass(3));
+				ImmutableArray<MyBaseClass> subject = [new MyClass(1), new MyOtherClass(2), new MyClass(3),];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching<MyClass>();
@@ -266,7 +164,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has a single item of type MyClass,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -287,8 +185,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSingleElement_ShouldSucceed()
 			{
-				IEnumerable<MyBaseClass> subject = ToEnumerable(
-					new MyClass(1), new MyOtherClass(2), new MyBaseClass(3));
+				ImmutableArray<MyBaseClass> subject = [new MyClass(1), new MyOtherClass(2), new(3),];
 
 				MyBaseClass result = await That(subject).HasSingle().Matching<MyClass>();
 
@@ -298,7 +195,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldFail()
 			{
-				IEnumerable<MyBaseClass> subject = ToEnumerable<MyBaseClass>();
+				ImmutableArray<MyBaseClass> subject = [];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching<MyClass>();
@@ -312,12 +209,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class MatchingTypePredicateTests
+		public sealed class ImmutableMatchingTypePredicateTests
 		{
 			[Fact]
 			public async Task ShouldReturnSingleItem()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3,], x => new MyClass(x));
+				ImmutableArray<MyClass> subject = [..ToEnumerable([1, 2, 3,], x => new MyClass(x)),];
 
 				MyBaseClass result = await That(subject).HasSingle().Matching<MyBaseClass>(x => x.Value == 2);
 
@@ -327,7 +224,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldFail()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3,], x => new MyClass(x));
+				ImmutableArray<MyClass> subject = [..ToEnumerable([1, 2, 3,], x => new MyClass(x)),];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching<MyBaseClass>(x => x.Value > 1);
@@ -337,7 +234,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has a single item of type MyBaseClass matching x => x.Value > 1,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -359,7 +256,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsNoMatchingElements_ShouldFail()
 			{
-				IEnumerable<MyBaseClass> subject = ToEnumerable([1, 2, 3,], x => new MyBaseClass(x));
+				ImmutableArray<MyBaseClass> subject = [..ToEnumerable([1, 2, 3,], x => new MyBaseClass(x)),];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching<MyClass>(x => x.Value > 1);
@@ -375,7 +272,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSingleElement_ShouldSucceed()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3,], x => new MyClass(x));
+				ImmutableArray<MyClass> subject = [..ToEnumerable([1, 2, 3,], x => new MyClass(x)),];
 
 				MyBaseClass result = await That(subject).HasSingle().Matching<MyBaseClass>(x => x.Value > 2);
 
@@ -385,7 +282,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldFail()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable<MyClass>();
+				ImmutableArray<MyClass> subject = [];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching<MyBaseClass>(_ => true);
@@ -401,7 +298,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
 			{
-				IEnumerable<MyBaseClass> subject = ToEnumerable([1, 2, 3,], x => new MyBaseClass(x));
+				ImmutableArray<MyBaseClass> subject = [..ToEnumerable([1, 2, 3,], x => new MyBaseClass(x)),];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Matching<MyClass>(null!);
@@ -412,12 +309,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class NegatedTests
+		public sealed class ImmutableNegatedTests
 		{
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				ImmutableArray<int> subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.HasSingle());
@@ -428,7 +325,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSingleElement_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1,]);
+				ImmutableArray<int> subject = [1,];
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.HasSingle());
@@ -444,7 +341,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable(Array.Empty<int>());
+				ImmutableArray<int> subject = [];
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.HasSingle());
@@ -453,12 +350,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class WhichTests
+		public sealed class ImmutableWhichTests
 		{
 			[Fact]
 			public async Task ShouldReturnSingleItem()
 			{
-				IEnumerable<int> subject = ToEnumerable([42,]);
+				ImmutableArray<int> subject = [42,];
 
 				int result = await That(subject).HasSingle().Which.IsGreaterThan(41).And
 					.IsLessThan(43);
@@ -469,7 +366,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				ImmutableArray<int> subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(2);
@@ -479,20 +376,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has a single item which is greater than 2,
 					             but it contained more than one item
-					             
+
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable(Array.Empty<int>());
+				ImmutableArray<int> subject = [];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(4);
@@ -508,7 +401,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenSingleItemDoesNotSatisfyExpectation_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([3,]);
+				ImmutableArray<int> subject = [3,];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(4);
@@ -524,7 +417,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenSingleItemSatisfiesExpectation_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([3,]);
+				ImmutableArray<int> subject = [3,];
 
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(2);
@@ -534,3 +427,4 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
+#endif

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -8,12 +8,12 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class IsEmpty
 	{
-		public sealed class Tests
+		public sealed class EnumerableTests
 		{
 			[Fact]
 			public async Task DoesNotMaterializeEnumerable()
 			{
-				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+				IEnumerable subject = Factory.GetFibonacciNumbers();
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -41,7 +41,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldCallEnumeratorOnlyOnce()
 			{
-				IEnumerable<int> subject = new ThrowWhenIteratingTwiceEnumerable();
+				IEnumerable subject = new ThrowWhenIteratingTwiceEnumerable();
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -52,7 +52,10 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsValues_ShouldFail()
 			{
-				string[] subject = ["foo",];
+				IEnumerable subject = new[]
+				{
+					"foo",
+				};
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -70,7 +73,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayIsEmpty_ShouldSucceed()
 			{
-				string[] subject = [];
+				IEnumerable subject = Array.Empty<object>();
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -81,7 +84,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsValues_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 2,]);
+				IEnumerable subject = ToEnumerable([1, 1, 2,]);
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -101,7 +104,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable((int[]) []);
+				IEnumerable subject = ToEnumerable((int[]) []);
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -112,7 +115,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IEnumerable<string>? subject = null;
+				IEnumerable? subject = null;
 
 				async Task Act()
 					=> await That(subject).IsEmpty();

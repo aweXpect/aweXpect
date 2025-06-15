@@ -52,25 +52,28 @@ public class SingleItemResult<TCollection, TItem>
 	/// <summary>
 	///     …of type <typeparamref name="T" />.
 	/// </summary>
-	public SingleItemResult<TCollection, TItem> Matching<T>()
+	public SingleItemResult<TCollection, T> Matching<T>()
 	{
 		_options.SetPredicate(item => item is T,
 			$" of type {Formatter.Format(typeof(T))}");
-		return this;
+		return Cast<T>(x => (T)(object)x!);
 	}
 
 	/// <summary>
 	///     …of type <typeparamref name="T" /> that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public SingleItemResult<TCollection, TItem> Matching<T>(Func<T, bool> predicate,
+	public SingleItemResult<TCollection, T> Matching<T>(Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
 		predicate.ThrowIfNull();
 		_options.SetPredicate(item => item is T typed && predicate(typed),
 			$" of type {Formatter.Format(typeof(T))} matching {doNotPopulateThisValue}");
-		return this;
+		return Cast<T>(x => (T)(object)x!);
 	}
+
+	private SingleItemResult<TCollection, T> Cast<T>(Func<TItem?, T> memberAccessor)
+		=> new(_expectationBuilder, new PredicateOptions<T>(), x => memberAccessor(_memberAccessor(x)));
 
 	/// <summary>
 	///     An <see cref="ExpectationResult" /> for a single item from an asynchronous collection.
@@ -113,24 +116,28 @@ public class SingleItemResult<TCollection, TItem>
 		/// <summary>
 		///     …of type <typeparamref name="T" />.
 		/// </summary>
-		public Async Matching<T>()
+		public SingleItemResult<TCollection, T>.Async Matching<T>()
 		{
 			_options.SetPredicate(item => item is T,
 				$" of type {Formatter.Format(typeof(T))}");
-			return this;
+			return Cast<T>(x => (T)(object)x!);
 		}
 
 		/// <summary>
 		///     …of type <typeparamref name="T" /> that satisfies the <paramref name="predicate" />.
 		/// </summary>
-		public Async Matching<T>(Func<T, bool> predicate,
+		public SingleItemResult<TCollection, T>.Async Matching<T>(Func<T, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		{
 			predicate.ThrowIfNull();
 			_options.SetPredicate(item => item is T typed && predicate(typed),
 				$" of type {Formatter.Format(typeof(T))} matching {doNotPopulateThisValue}");
-			return this;
+			return Cast<T>(x => (T)(object)x!);
 		}
+
+		private SingleItemResult<TCollection, T>.Async Cast<T>(Func<TItem?, T> memberAccessor)
+			=> new(_expectationBuilder, new PredicateOptions<T>(),
+				async x => memberAccessor(await _asyncMemberAccessor(x)));
 	}
 }
