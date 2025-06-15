@@ -30,7 +30,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             satisfies item => item < 0 for no items,
 						             but could not verify, because it was already cancelled
-						             
+
 						             Collection:
 						             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 						             """);
@@ -61,10 +61,10 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             satisfies item => item == 5 for no items,
 						             but at least one did
-						             
+
 						             Matching items:
 						             [5, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -85,7 +85,7 @@ public sealed partial class ThatAsyncEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 1);
@@ -95,10 +95,10 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             satisfies item => item == 1 for no items,
 						             but 4 of 7 did
-						             
+
 						             Matching items:
 						             [1, 1, 1, 1]
-						             
+
 						             Collection:
 						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
@@ -118,7 +118,7 @@ public sealed partial class ThatAsyncEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 42);

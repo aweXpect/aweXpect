@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class StartsWith
+	public sealed partial class StartsWith
 	{
 		public sealed class Tests
 		{
@@ -68,9 +68,9 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             starts with expected,
+					             starts with [1, 3],
 					             but it contained 2 at index 1 instead of 3
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -93,11 +93,11 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             starts with expected,
+					             starts with [1, 2, 3, 4],
 					             but it contained only 3 items and misses 1 items: [
 					               4
 					             ]
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -158,7 +158,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             starts with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "BAZ"
-					             
+
 					             Collection:
 					             [
 					               "foo",

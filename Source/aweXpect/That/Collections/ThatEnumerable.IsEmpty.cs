@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Results;
+#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
+#endif
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -18,6 +23,16 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) => new IsEmptyConstraint<TItem>(it, grammars)),
+			source);
+
+	/// <summary>
+	///     Verifies that the collection is empty.
+	/// </summary>
+	public static AndOrResult<TEnumerable, IThat<TEnumerable?>> IsEmpty<TEnumerable>(
+		this IThat<TEnumerable?> source)
+		where TEnumerable : IEnumerable
+		=> new(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) => new IsEmptyForEnumerableConstraint<TEnumerable>(it, grammars)),
 			source);
 
 	/// <summary>
@@ -61,6 +76,80 @@ public static partial class ThatEnumerable
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			using IEnumerator<TItem> enumerator = _materializedEnumerable.GetEnumerator();
 			if (enumerator.MoveNext())
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			Outcome = Outcome.Success;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("are empty");
+			}
+			else
+			{
+				stringBuilder.Append("is empty");
+			}
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("are not empty");
+			}
+			else
+			{
+				stringBuilder.Append("is not empty");
+			}
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was");
+	}
+
+	private sealed class IsEmptyForEnumerableConstraint<TEnumerable>(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<TEnumerable>(it, grammars),
+			IContextConstraint<TEnumerable>
+		where TEnumerable : IEnumerable?
+	{
+		private IEnumerable? _materializedEnumerable;
+
+		public ConstraintResult IsMetBy(TEnumerable actual, IEvaluationContext context)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			if (actual is ICollection collectionOfT)
+			{
+				_materializedEnumerable = actual;
+				if (collectionOfT.Count > 0)
+				{
+					Outcome = Outcome.Failure;
+					return this;
+				}
+
+				Outcome = Outcome.Success;
+				return this;
+			}
+
+			_materializedEnumerable = context.UseMaterializedEnumerable(actual);
+			if (_materializedEnumerable.Cast<object?>().Any())
 			{
 				Outcome = Outcome.Failure;
 				return this;

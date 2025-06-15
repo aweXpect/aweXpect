@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class AreExactly
+		public sealed partial class AreExactly
 		{
 			public sealed class GenericTests
 			{

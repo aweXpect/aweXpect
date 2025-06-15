@@ -26,7 +26,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected in order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -41,7 +41,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -79,7 +79,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -127,7 +127,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -203,7 +203,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -240,7 +240,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -300,7 +300,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -343,7 +343,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -390,7 +390,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -434,7 +434,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -468,7 +468,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -509,7 +509,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -524,7 +524,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -562,7 +562,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -591,7 +591,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -639,7 +639,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -682,7 +682,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -719,7 +719,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -779,7 +779,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -870,7 +870,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -904,7 +904,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -945,7 +945,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected in any order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -960,7 +960,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -998,7 +998,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1046,7 +1046,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -1089,7 +1089,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1126,7 +1126,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1208,7 +1208,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1252,7 +1252,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1296,7 +1296,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1330,7 +1330,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1371,7 +1371,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1386,7 +1386,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -1424,7 +1424,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1455,7 +1455,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1503,7 +1503,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -1546,7 +1546,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1583,7 +1583,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1713,7 +1713,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1747,7 +1747,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1788,7 +1788,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1803,7 +1803,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -1843,7 +1843,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1891,7 +1891,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -1936,7 +1936,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1973,7 +1973,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2034,7 +2034,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2079,7 +2079,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2127,7 +2127,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2173,7 +2173,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2209,7 +2209,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2242,7 +2242,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2269,7 +2269,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -2284,7 +2284,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -2324,7 +2324,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2355,7 +2355,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2403,7 +2403,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -2446,7 +2446,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2483,7 +2483,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2544,7 +2544,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2576,7 +2576,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2607,7 +2607,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2640,7 +2640,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2671,7 +2671,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2704,7 +2704,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2737,7 +2737,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2773,7 +2773,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2806,7 +2806,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2833,7 +2833,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in any order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -2848,7 +2848,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -2888,7 +2888,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2936,7 +2936,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -2979,7 +2979,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3018,7 +3018,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3076,7 +3076,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3121,7 +3121,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3167,7 +3167,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3213,7 +3213,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3249,7 +3249,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3282,7 +3282,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3309,7 +3309,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in any order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -3324,7 +3324,7 @@ public sealed partial class ThatAsyncEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -3364,7 +3364,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3397,7 +3397,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3445,7 +3445,7 @@ public sealed partial class ThatAsyncEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -3488,7 +3488,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3527,7 +3527,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3585,7 +3585,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3617,7 +3617,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3648,7 +3648,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3681,7 +3681,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3712,7 +3712,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3745,7 +3745,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3778,7 +3778,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3814,7 +3814,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -3847,7 +3847,7 @@ public sealed partial class ThatAsyncEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",

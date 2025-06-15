@@ -53,7 +53,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).StartsWith(1, 2, 3);
@@ -64,7 +64,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentStartingElements_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 				IEnumerable<int> expected = [1, 3,];
 
 				async Task Act()
@@ -75,7 +75,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             starts with expected,
 					             but it contained 2 at index 1 instead of 3
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -88,7 +88,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenExpectedContainsAdditionalElements_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).StartsWith(1, 2, 3, 4);
@@ -100,7 +100,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained only 3 items and misses 1 items: [
 					               4
 					             ]
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -120,7 +120,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1);
 
 				async Task Act()
 					=> await That(subject).StartsWith(null!);
@@ -161,7 +161,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             starts with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "BAZ"
-					             
+
 					             Collection:
 					             [
 					               "foo",

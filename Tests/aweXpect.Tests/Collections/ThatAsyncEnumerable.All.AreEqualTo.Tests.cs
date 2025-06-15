@@ -38,10 +38,10 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [2, 3, 5, 8, 13, 21, 34, 55, 89, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -94,7 +94,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to 5 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -109,7 +109,7 @@ public sealed partial class ThatAsyncEnumerable
 						               89,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -172,7 +172,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to "item-1" for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               "item-2",
@@ -186,7 +186,7 @@ public sealed partial class ThatAsyncEnumerable
 						               "item-89",
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "item-1",
@@ -239,7 +239,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to "item-5" for all items,
 						             but only 1 of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               "item-1",
@@ -252,7 +252,7 @@ public sealed partial class ThatAsyncEnumerable
 						               "item-34",
 						               "item-55"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "item-1",
@@ -284,12 +284,12 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 2 were
-						             
+
 						             Not matching items:
 						             [
 						               "FOO"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo",

@@ -6,7 +6,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class IsInAscendingOrder
+	public sealed partial class IsInAscendingOrder
 	{
 		public sealed class Tests
 		{
@@ -23,7 +23,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had 3 before 1 which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -89,7 +89,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order,
 					             but it was
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -111,7 +111,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had "a" before "A" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -144,7 +144,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had "c" before "a" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -198,7 +198,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had 3 before 1 which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsInAscendingOrder.MyIntClass {
@@ -258,7 +258,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsInAscendingOrder.MyIntClass {
@@ -290,7 +290,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had "a" before "A" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsInAscendingOrder.StringMemberTests.MyStringClass {
@@ -328,7 +328,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had "c" before "a" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsInAscendingOrder.StringMemberTests.MyStringClass {

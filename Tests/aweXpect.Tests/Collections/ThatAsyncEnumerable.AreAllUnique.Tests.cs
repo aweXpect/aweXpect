@@ -14,7 +14,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
@@ -25,7 +25,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -36,7 +36,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3, 1);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -47,7 +47,7 @@ public sealed partial class ThatAsyncEnumerable
 					             only has unique items,
 					             but it contained 1 duplicate:
 					               1
-					             
+
 					             Collection:
 					             [1, 2, 3, 1]
 					             """);
@@ -56,7 +56,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 1, 2, -1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3, 1, 2, -1);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -68,7 +68,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
-					             
+
 					             Collection:
 					             [1, 2, 3, 1, 2, -1]
 					             """);
@@ -96,7 +96,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.AreAllUnique());
@@ -106,7 +106,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has duplicate items,
 					             but all were unique
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -115,7 +115,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3, 1);
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.AreAllUnique());
@@ -173,7 +173,7 @@ public sealed partial class ThatAsyncEnumerable
 					             only has unique items ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -196,7 +196,7 @@ public sealed partial class ThatAsyncEnumerable
 					             only has unique items,
 					             but it contained 1 duplicate:
 					               "a"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -222,7 +222,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -290,7 +290,7 @@ public sealed partial class ThatAsyncEnumerable
 					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -329,7 +329,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -392,7 +392,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has duplicate items for x => x.Value,
 					             but all were unique
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -474,7 +474,7 @@ public sealed partial class ThatAsyncEnumerable
 					             only has unique items for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
@@ -502,7 +502,7 @@ public sealed partial class ThatAsyncEnumerable
 					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
@@ -537,7 +537,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.AreAllUnique.StringMemberTests.MyStringClass {

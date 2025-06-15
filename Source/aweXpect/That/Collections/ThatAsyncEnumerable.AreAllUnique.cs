@@ -64,7 +64,8 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(expectationBuilder, it, grammars, memberAccessor,
+				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(expectationBuilder, it, grammars,
+					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
@@ -86,7 +87,8 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(expectationBuilder, it, grammars, memberAccessor,
+				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(expectationBuilder, it, grammars,
+					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options

@@ -198,10 +198,10 @@ public static partial class ThatAsyncEnumerable
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly TItem[] _expected;
 		private readonly string _expectedExpression;
 		private readonly List<TItem> _foundValues = [];
-		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly string _it;
 		private readonly IOptionsEquality<TMatch> _options;
 		private TItem? _firstMismatchItem;
@@ -276,7 +276,8 @@ public static partial class ThatAsyncEnumerable
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;
-					_expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>, true);
+					_expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>,
+						true);
 					Outcome = Outcome.Failure;
 					return this;
 				}

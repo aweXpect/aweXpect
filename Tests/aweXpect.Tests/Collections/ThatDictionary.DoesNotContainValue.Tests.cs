@@ -37,7 +37,7 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             does not contain value 42,
 					             but it did
-					             
+
 					             Dictionary:
 					             {[1] = 41, [2] = 42, [3] = 43}
 					             """);

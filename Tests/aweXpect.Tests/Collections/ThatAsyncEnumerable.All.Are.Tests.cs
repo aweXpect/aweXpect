@@ -31,7 +31,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is of type ThatAsyncEnumerable.All.Are.MyClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatAsyncEnumerable.All.Are.MyBaseClass {
@@ -65,7 +65,7 @@ public sealed partial class ThatAsyncEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatAsyncEnumerable.All.Are.MyBaseClass {
@@ -152,7 +152,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is of type ThatAsyncEnumerable.All.Are.MyClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatAsyncEnumerable.All.Are.MyBaseClass {
@@ -186,7 +186,7 @@ public sealed partial class ThatAsyncEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatAsyncEnumerable.All.Are.MyBaseClass {

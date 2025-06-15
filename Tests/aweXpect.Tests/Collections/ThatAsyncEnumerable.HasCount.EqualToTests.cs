@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has exactly 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
@@ -38,7 +38,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMatchingItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).HasCount().EqualTo(3);
@@ -49,7 +49,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).HasCount().EqualTo(4);
@@ -59,7 +59,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has exactly 4 items,
 					             but found only 3
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -68,7 +68,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).HasCount().EqualTo(2);
@@ -78,7 +78,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has exactly 2 items,
 					             but found at least 3
-					             
+
 					             Collection:
 					             [
 					               1,

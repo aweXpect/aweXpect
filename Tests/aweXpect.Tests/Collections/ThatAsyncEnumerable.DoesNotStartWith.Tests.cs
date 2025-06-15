@@ -86,7 +86,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(1, 2, 3);
@@ -106,7 +106,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentStartingElements_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 				IEnumerable<int> unexpected = [1, 3,];
 
 				async Task Act()
@@ -154,7 +154,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenUnexpectedContainsAdditionalElements_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(1, 2, 3, 4);
@@ -165,7 +165,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenUnexpectedIsEmpty_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith();
@@ -184,7 +184,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(null!);

@@ -232,14 +232,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -373,7 +373,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "c",
@@ -381,7 +381,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -405,14 +405,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -437,7 +437,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -445,7 +445,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -469,14 +469,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -501,7 +501,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -509,7 +509,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -557,14 +557,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -674,14 +674,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -789,14 +789,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -918,14 +918,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -949,7 +949,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "c",
@@ -957,7 +957,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -981,14 +981,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1013,7 +1013,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1021,7 +1021,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1045,14 +1045,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1077,7 +1077,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1085,7 +1085,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1133,14 +1133,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1167,14 +1167,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order as wildcard,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "foo",
 					               "bar",
 					               "baz"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "*oo",
@@ -1199,14 +1199,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring leading white-space,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               " a",
 					               "b",
 					               "	c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1231,14 +1231,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring trailing white-space,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a ",
 					               "b",
 					               "c	"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",

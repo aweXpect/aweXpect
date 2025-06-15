@@ -34,7 +34,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -101,7 +101,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item matching x => x > 1,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -135,7 +135,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item matching x => x > 1,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -228,7 +228,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item of type MyClass,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -299,7 +299,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item of type MyBaseClass matching x => x.Value > 1,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -441,7 +441,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has a single item which is greater than 4,
 					             but it contained more than one item
-					             
+
 					             Collection:
 					             [
 					               1,

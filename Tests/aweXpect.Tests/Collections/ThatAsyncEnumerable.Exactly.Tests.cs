@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for exactly 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
@@ -60,7 +60,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for exactly one item,
 					             but at least 2 were
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -81,7 +81,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).Exactly(4).AreEqualTo(1);
@@ -92,7 +92,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).Exactly(4).AreEqualTo(2);
@@ -102,7 +102,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 2 for exactly 4 items,
 					             but only 2 of 7 were
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -111,7 +111,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).Exactly(3).AreEqualTo(1);
@@ -121,7 +121,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for exactly 3 items,
 					             but 4 of 7 were
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -159,7 +159,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for exactly one item,
 					             but 2 of 3 were
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -193,7 +193,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly 3 items,
 					             but only 2 of 4 were
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -217,7 +217,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly one item,
 					             but 2 of 3 were
-					             
+
 					             Collection:
 					             [
 					               "foo",

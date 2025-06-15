@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class ComplyWith
+		public sealed partial class ComplyWith
 		{
 			public sealed class Tests
 			{

@@ -37,7 +37,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain 5,
 					             but it contained it at least once
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -70,7 +70,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain 1 at least {minimum.ToTimesString()},
 					              but it contained it at least twice
-					              
+
 					              Collection:
 					              [
 					                1,
@@ -103,7 +103,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain 1 at most twice,
 					             but it contained it twice
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -137,7 +137,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain 1 between {minimum} and {maximum} times,
 					              but it contained it twice
-					              
+
 					              Collection:
 					              [
 					                1,
@@ -172,7 +172,7 @@ public sealed partial class ThatEnumerable
 					               Value = 5
 					             } equivalent,
 					             but it contained it at least once
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -236,7 +236,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain 1 exactly {times.ToTimesString()},
 					              but it contained it {(times == 1 ? "at least " : "")}twice
-					              
+
 					              Collection:
 					              [
 					                1,
@@ -269,7 +269,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain 1 less than 3 times,
 					             but it contained it twice
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -303,7 +303,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain 1 more than once,
 					             but it contained it at least twice
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -336,7 +336,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain {Formatter.Format(unexpected)},
 					              but it contained it at least once
-					              
+
 					              Collection:
 					              {Formatter.Format(subject)}
 					              """);
@@ -391,7 +391,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain "item-5",
 					             but it contained it at least once
-					             
+
 					             Collection:
 					             [
 					               "item-1",
@@ -424,7 +424,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain "blue" at least {minimum.ToTimesString()},
 					              but it contained it at least twice
-					              
+
 					              Collection:
 					              [
 					                "green",
@@ -450,7 +450,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain "blue" at most twice,
 					             but it contained it twice
-					             
+
 					             Collection:
 					             [
 					               "green",
@@ -477,7 +477,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain "blue" between {minimum} and {maximum} times,
 					              but it contained it twice
-					              
+
 					              Collection:
 					              [
 					                "green",
@@ -501,7 +501,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain "foo" ignoring case,
 					             but it contained it at least once
-					             
+
 					             Collection:
 					             [
 					               "FOO"
@@ -525,7 +525,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain "blue" exactly {times.ToTimesString()},
 					              but it contained it twice
-					              
+
 					              Collection:
 					              [
 					                "green",
@@ -551,7 +551,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain "blue" less than 3 times,
 					             but it contained it twice
-					             
+
 					             Collection:
 					             [
 					               "green",
@@ -578,7 +578,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain "blue" more than once,
 					             but it contained it at least twice
-					             
+
 					             Collection:
 					             [
 					               "green",
@@ -602,7 +602,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain "foo",
 					             but it contained it at least once
-					             
+
 					             Collection:
 					             [
 					               "FOO",
@@ -667,7 +667,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain item matching x => x == 5,
 					             but it contained it at least once
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -700,7 +700,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain item matching x => x == 1 at least {minimum.ToTimesString()},
 					              but it contained it at least twice
-					              
+
 					              Collection:
 					              [
 					                1,
@@ -733,7 +733,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain item matching x => x == 1 at most twice,
 					             but it contained it twice
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -767,7 +767,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain item matching x => x == 1 between {minimum} and {maximum} times,
 					              but it contained it twice
-					              
+
 					              Collection:
 					              [
 					                1,
@@ -801,7 +801,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain item matching x => x == 1 exactly {times.ToTimesString()},
 					              but it contained it {(times == 1 ? "at least " : "")}twice
-					              
+
 					              Collection:
 					              [
 					                1,
@@ -834,7 +834,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain item matching x => x == 1 less than 3 times,
 					             but it contained it twice
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -868,7 +868,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not contain item matching x => x == 1 more than once,
 					             but it contained it at least twice
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -901,7 +901,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              does not contain item matching x => x == unexpected,
 					              but it contained it at least once
-					              
+
 					              Collection:
 					              {Formatter.Format(subject)}
 					              """);

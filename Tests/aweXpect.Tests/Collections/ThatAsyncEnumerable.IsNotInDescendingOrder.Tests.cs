@@ -14,7 +14,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreNotSortedCorrectly_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([3, 3, 2, 1, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(3, 3, 2, 1, 3);
 
 				async Task Act()
 					=> await That(subject).IsNotInDescendingOrder();
@@ -25,7 +25,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreSortedCorrectly_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([3, 2, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(3, 2, 1);
 
 				async Task Act()
 					=> await That(subject).IsNotInDescendingOrder();
@@ -35,7 +35,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order,
 					             but it was
-					             
+
 					             Collection:
 					             [3, 2, 1]
 					             """);
@@ -63,7 +63,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreNotSortedCorrectly_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([3, 3, 2, 1, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(3, 3, 2, 1, 3);
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.IsNotInDescendingOrder());
@@ -73,7 +73,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in descending order,
 					             but it had 1 before 3 which is not in descending order
-					             
+
 					             Collection:
 					             [3, 3, 2, 1, 3]
 					             """);
@@ -82,7 +82,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreSortedCorrectly_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([3, 2, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(3, 2, 1);
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.IsNotInDescendingOrder());
@@ -117,7 +117,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order using OrdinalIgnoreCaseComparer,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "A",
@@ -150,7 +150,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "c",
@@ -203,7 +203,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsNotInDescendingOrder.MyIntClass {
@@ -235,7 +235,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had 1 before 3 which is not in descending order
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsNotInDescendingOrder.MyIntClass {
@@ -296,7 +296,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order using OrdinalIgnoreCaseComparer for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsNotInDescendingOrder.StringMemberTests.MyStringClass {
@@ -335,7 +335,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsNotInDescendingOrder.StringMemberTests.MyStringClass {

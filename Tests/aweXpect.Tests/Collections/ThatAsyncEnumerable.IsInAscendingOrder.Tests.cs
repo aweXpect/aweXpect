@@ -14,7 +14,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreNotSortedCorrectly_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 2, 3, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 2, 3, 1);
 
 				async Task Act()
 					=> await That(subject).IsInAscendingOrder();
@@ -24,7 +24,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had 3 before 1 which is not in ascending order
-					             
+
 					             Collection:
 					             [1, 1, 2, 3, 1]
 					             """);
@@ -33,7 +33,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreSortedCorrectly_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).IsInAscendingOrder();
@@ -63,7 +63,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreNotSortedCorrectly_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 2, 3, 1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 2, 3, 1);
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.IsInAscendingOrder());
@@ -74,7 +74,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenItemsAreSortedCorrectly_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => it.IsInAscendingOrder());
@@ -84,7 +84,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in ascending order,
 					             but it was
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -106,7 +106,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had "a" before "A" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -139,7 +139,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had "c" before "a" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -193,7 +193,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had 3 before 1 which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.MyIntClass {
@@ -253,7 +253,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in ascending order for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.MyIntClass {
@@ -285,7 +285,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had "a" before "A" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.StringMemberTests.MyStringClass {
@@ -324,7 +324,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had "c" before "a" which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatAsyncEnumerable.IsInAscendingOrder.StringMemberTests.MyStringClass {

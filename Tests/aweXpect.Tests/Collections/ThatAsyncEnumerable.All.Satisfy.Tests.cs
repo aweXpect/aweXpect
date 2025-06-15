@@ -38,10 +38,10 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             satisfies x => x <= 1 for all items,
 						             but not all did
-						             
+
 						             Not matching items:
 						             [2, 3, 5, 8, 13, 21, 34, 55, 89, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -72,7 +72,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             satisfies x => x is > 4 and < 6 for all items,
 						             but not all did
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -87,7 +87,7 @@ public sealed partial class ThatAsyncEnumerable
 						               89,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -162,12 +162,12 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             satisfies x => x?.StartsWith("ba") == true for all items,
 						             but only 2 of 3 did
-						             
+
 						             Not matching items:
 						             [
 						               "foo"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo",
