@@ -35,18 +35,6 @@ public static partial class ThatEnumerable
 				.AddConstraint((it, grammars) => new IsEmptyForEnumerableConstraint<TEnumerable>(it, grammars)),
 			source);
 
-#if NET8_0_OR_GREATER
-	/// <summary>
-	///     Verifies that the collection is in ascending order.
-	/// </summary>
-	public static AndOrResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>
-		IsEmpty<TItem>(this IThat<ImmutableArray<TItem>> source)
-		=> new(source.Get().ExpectationBuilder
-				.AddConstraint((it, grammars)
-					=> new IsEmptyForEnumerableConstraint<ImmutableArray<TItem>>(it, grammars)),
-			source);
-#endif
-
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
