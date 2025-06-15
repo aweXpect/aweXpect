@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
 using aweXpect.Equivalency;
 
@@ -12,12 +12,12 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed partial class AreEquivalentTo
 		{
-			public sealed class Tests
+			public sealed class EnumerableTests
 			{
 				[Fact]
 				public async Task DoesNotEnumerateTwice()
 				{
-					ThrowWhenIteratingTwiceEnumerable subject = new();
+					IEnumerable subject = new ThrowWhenIteratingTwiceEnumerable();
 
 					async Task Act()
 						=> await That(subject).All().AreEquivalentTo(1)
@@ -29,7 +29,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotMaterializeEnumerable()
 				{
-					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+					IEnumerable subject = Factory.GetFibonacciNumbers();
 
 					async Task Act()
 						=> await That(subject).All().AreEquivalentTo(1, o => o.IncludingFields());
@@ -39,10 +39,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 1 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [2, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -57,7 +57,7 @@ public sealed partial class ThatEnumerable
 						               55,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldUseCustomComparer()
 				{
-					int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
+					IEnumerable subject = Factory.GetFibonacciNumbers(20).ToArray();
 
 					async Task Act()
 						=> await That(subject).All().AreEquivalentTo(5).Using(new AllEqualComparer());
@@ -77,7 +77,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
 				{
-					int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
+					IEnumerable subject = Factory.GetFibonacciNumbers(20).ToArray();
 
 					async Task Act()
 						=> await That(subject).All().AreEquivalentTo(5);
@@ -87,7 +87,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 5 for all items,
 						             but only 1 of 20 were
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -102,7 +102,7 @@ public sealed partial class ThatEnumerable
 						               89,
 						               …
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -117,7 +117,7 @@ public sealed partial class ThatEnumerable
 						               55,
 						               …
 						             ]
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);
@@ -127,7 +127,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenNoItemsDiffer_ShouldSucceed()
 				{
 					int constantValue = 42;
-					int[] subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
+					IEnumerable subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
 
 					async Task Act()
 						=> await That(subject).All().AreEquivalentTo(constantValue);
@@ -139,7 +139,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenSubjectIsNull_ShouldFail()
 				{
 					int constantValue = 42;
-					IEnumerable<int>? subject = null!;
+					IEnumerable? subject = null;
 
 					async Task Act()
 						=> await That(subject).All().AreEquivalentTo(constantValue);
@@ -149,7 +149,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to constantValue for all items,
 						             but it was <null>
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);

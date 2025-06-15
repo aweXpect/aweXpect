@@ -27,11 +27,7 @@ public sealed partial class ThatEnumerable
 					             but it did
 					             
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -78,11 +74,7 @@ public sealed partial class ThatEnumerable
 					             but it did
 					             
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 

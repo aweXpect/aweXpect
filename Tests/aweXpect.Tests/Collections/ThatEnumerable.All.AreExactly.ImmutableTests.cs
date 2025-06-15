@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -11,12 +12,18 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed partial class AreExactly
 		{
-			public sealed class GenericTests
+			public sealed class ImmutableGenericTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(_ => new MyBaseClass());
+					ImmutableArray<MyBaseClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyBaseClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly<MyClass>();
@@ -25,49 +32,74 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is exactly of type ThatEnumerable.All.AreExactly.MyClass for all items,
-						             but not all were
+						             but none of 10 were
 
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 1
 						               },
-						               (… and maybe others)
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 2
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 3
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 4
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 5
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 6
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 7
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 8
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 9
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 10
+						               }
 						             ]
 
 						             Collection:
 						             [
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 1
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 2
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 3
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 4
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 5
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 6
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 7
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 8
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 9
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
-						               },
-						               (… and maybe others)
+						                 Foo = 10
+						               }
 						             ]
 						             """);
 				}
@@ -75,10 +107,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldFail()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly<MyBaseClass>();
@@ -87,7 +122,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is exactly of type ThatEnumerable.All.AreExactly.MyBaseClass for all items,
-						             but not all were
+						             but none of 10 were
 
 						             Not matching items:
 						             [
@@ -95,7 +130,42 @@ public sealed partial class ThatEnumerable
 						                 Bar = 0,
 						                 Foo = 1
 						               },
-						               (… and maybe others)
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 2
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 3
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 4
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 5
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 6
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 7
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 8
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 9
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 10
+						               }
 						             ]
 
 						             Collection:
@@ -139,8 +209,7 @@ public sealed partial class ThatEnumerable
 						               ThatEnumerable.All.AreExactly.MyClass {
 						                 Bar = 0,
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -148,10 +217,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly<MyClass>();
@@ -160,15 +232,18 @@ public sealed partial class ThatEnumerable
 				}
 			}
 
-			public sealed class TypeTests
+			public sealed class ImmutableTypeTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyBaseClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyBaseClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly(typeof(MyClass));
@@ -177,14 +252,40 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is exactly of type ThatEnumerable.All.AreExactly.MyClass for all items,
-						             but not all were
+						             but none of 10 were
 
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
 						                 Foo = 1
 						               },
-						               (… and maybe others)
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 2
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 3
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 4
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 5
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 6
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 7
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 8
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 9
+						               },
+						               ThatEnumerable.All.AreExactly.MyBaseClass {
+						                 Foo = 10
+						               }
 						             ]
 
 						             Collection:
@@ -218,8 +319,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -227,7 +327,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
 				{
-					IEnumerable<int> subject = Enumerable.Range(1, 10);
+					ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly(null!);
@@ -240,10 +340,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldFail()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly(typeof(MyBaseClass));
@@ -252,7 +355,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is exactly of type ThatEnumerable.All.AreExactly.MyBaseClass for all items,
-						             but not all were
+						             but none of 10 were
 
 						             Not matching items:
 						             [
@@ -260,7 +363,42 @@ public sealed partial class ThatEnumerable
 						                 Bar = 0,
 						                 Foo = 1
 						               },
-						               (… and maybe others)
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 2
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 3
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 4
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 5
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 6
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 7
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 8
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 9
+						               },
+						               ThatEnumerable.All.AreExactly.MyClass {
+						                 Bar = 0,
+						                 Foo = 10
+						               }
 						             ]
 
 						             Collection:
@@ -304,8 +442,7 @@ public sealed partial class ThatEnumerable
 						               ThatEnumerable.All.AreExactly.MyClass {
 						                 Bar = 0,
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -313,10 +450,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().AreExactly(typeof(MyClass));
@@ -324,16 +464,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).DoesNotThrow();
 				}
 			}
-
-			public class MyClass : MyBaseClass
-			{
-				public int Bar { get; set; }
-			}
-
-			public class MyBaseClass
-			{
-				public int Foo { get; set; }
-			}
 		}
 	}
 }
+#endif

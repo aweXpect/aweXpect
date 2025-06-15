@@ -66,10 +66,20 @@ internal static class CollectionHelpers
 			return expectationBuilder;
 		}
 
+		Type type = typeof(object);
+		foreach (object? item in value)
+		{
+			if (item is not null)
+			{
+				type = item.GetType();
+				break;
+			}
+		}
+
 		return expectationBuilder.UpdateContexts(contexts
 			=> contexts
 				.Add(new ResultContext("Collection",
-					() => Formatter.Format(value, typeof(object).GetFormattingOption(value switch
+					() => Formatter.Format(value, type.GetFormattingOption(value switch
 					{
 						ICollection coll => coll.Count,
 						ICountable countable => countable.Count,

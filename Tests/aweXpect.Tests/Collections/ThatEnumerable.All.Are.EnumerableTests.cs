@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -11,12 +11,12 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed partial class Are
 		{
-			public sealed class GenericTests
+			public sealed class EnumerableGenericTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
 					{
 						Foo = v,
 					});
@@ -29,7 +29,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -37,7 +37,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -78,7 +78,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -92,7 +92,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -104,12 +104,12 @@ public sealed partial class ThatEnumerable
 				}
 			}
 
-			public sealed class TypeTests
+			public sealed class EnumerableTypeTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
 					{
 						Foo = v,
 					});
@@ -122,7 +122,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -130,7 +130,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -171,7 +171,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
 				{
-					IEnumerable<int> subject = Enumerable.Range(1, 10);
+					IEnumerable subject = Enumerable.Range(1, 10);
 
 					async Task Act()
 						=> await That(subject).All().Are(null!);
@@ -184,7 +184,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -198,7 +198,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -208,16 +208,6 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).DoesNotThrow();
 				}
-			}
-
-			public class MyClass : MyBaseClass
-			{
-				public int Bar { get; set; }
-			}
-
-			public class MyBaseClass
-			{
-				public int Foo { get; set; }
 			}
 		}
 	}

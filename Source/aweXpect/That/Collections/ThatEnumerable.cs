@@ -271,6 +271,169 @@ public static partial class ThatEnumerable
 		}
 	}
 
+	private sealed class CollectionForEnumerableConstraint<TEnumerable>
+		: ConstraintResult.WithNotNullValue<TEnumerable>,
+			IAsyncContextConstraint<TEnumerable>
+		where TEnumerable : IEnumerable?
+	{
+		private readonly ExpectationBuilder _expectationBuilder;
+		private readonly Func<ExpectationGrammars, string> _expectationText;
+		private readonly Func<object?, bool> _predicate;
+		private readonly EnumerableQuantifier _quantifier;
+		private readonly string _verb;
+		private Type? _itemType;
+		private int _matchingCount;
+		private LimitedCollection<object?>? _matchingItems;
+		private int _notMatchingCount;
+		private LimitedCollection<object?>? _notMatchingItems;
+		private int? _totalCount;
+
+		public CollectionForEnumerableConstraint(
+			ExpectationBuilder expectationBuilder,
+			string it,
+			ExpectationGrammars grammars,
+			EnumerableQuantifier quantifier,
+			Func<ExpectationGrammars, string> expectationText,
+			Func<object?, bool> predicate,
+			string verb) : base(it, grammars)
+		{
+			_expectationBuilder = expectationBuilder;
+			_quantifier = quantifier;
+			_expectationText = expectationText;
+			_predicate = predicate;
+			_verb = verb;
+		}
+
+		public Task<ConstraintResult> IsMetBy(
+			TEnumerable actual,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return Task.FromResult<ConstraintResult>(this);
+			}
+
+			IEnumerable materialized = context.UseMaterializedEnumerable(actual);
+			bool cancelEarly = actual is not ICollection;
+			_matchingCount = 0;
+			_notMatchingCount = 0;
+			int maxItems = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get() + 1;
+			_matchingItems = new LimitedCollection<object?>(maxItems);
+			_notMatchingItems = new LimitedCollection<object?>(maxItems);
+
+			foreach (object? item in materialized)
+			{
+				if (_itemType is null && item is not null)
+				{
+					_itemType = item.GetType();
+				}
+
+				if (_predicate(item))
+				{
+					_matchingCount++;
+					_matchingItems.Add(item);
+				}
+				else
+				{
+					_notMatchingCount++;
+					_notMatchingItems.Add(item);
+				}
+
+				if (cancelEarly && _quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
+				{
+					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					AppendContexts(true);
+					_expectationBuilder.AddCollectionContext(materialized, true);
+					return Task.FromResult<ConstraintResult>(this);
+				}
+
+				if (cancellationToken.IsCancellationRequested)
+				{
+					Outcome = Outcome.Undecided;
+					_expectationBuilder.AddCollectionContext(materialized, true);
+					return Task.FromResult<ConstraintResult>(this);
+				}
+			}
+
+			_totalCount = _matchingCount + _notMatchingCount;
+			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			AppendContexts(false);
+			_expectationBuilder.AddCollectionContext(materialized);
+			return Task.FromResult<ConstraintResult>(this);
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_expectationText(Grammars));
+			}
+			else
+			{
+				stringBuilder.Append(_expectationText(Grammars));
+				stringBuilder.Append(" for ");
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
+			}
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("not ");
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_expectationText(Grammars));
+			}
+			else
+			{
+				stringBuilder.Append(_expectationText(Grammars.Negate()));
+				stringBuilder.Append(" for ");
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
+			}
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+				_totalCount, _verb);
+
+		private void AppendContexts(bool isIncomplete)
+		{
+			EnumerableQuantifier.QuantifierContext quantifierContext = _quantifier.GetQuantifierContext();
+			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.MatchingItems))
+			{
+				_expectationBuilder.UpdateContexts(contexts => contexts
+					.Add(new ResultContext("Matching items",
+						Formatter.Format(_matchingItems,
+								(_itemType ?? typeof(object)).GetFormattingOption(_matchingItems?.Count))
+							.AppendIsIncomplete(isIncomplete),
+						int.MaxValue)));
+			}
+
+			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.NotMatchingItems))
+			{
+				_expectationBuilder.UpdateContexts(contexts => contexts
+					.Add(new ResultContext("Not matching items",
+						Formatter.Format(_notMatchingItems,
+								(_itemType ?? typeof(object)).GetFormattingOption(_notMatchingItems?.Count))
+							.AppendIsIncomplete(isIncomplete),
+						int.MaxValue)));
+			}
+		}
+	}
+
 	private sealed class SyncCollectionCountConstraint<TItem>
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>

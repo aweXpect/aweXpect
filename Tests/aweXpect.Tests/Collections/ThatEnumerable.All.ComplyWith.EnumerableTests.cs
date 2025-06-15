@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Threading;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -11,22 +11,23 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed partial class ComplyWith
 		{
-			public sealed class Tests
+			public sealed class EnumerableTests
 			{
 				[Fact]
 				public async Task ConsidersCancellationToken()
 				{
 					using CancellationTokenSource cts = new();
 					CancellationToken token = cts.Token;
-					IEnumerable<int> subject = GetCancellingEnumerable(5, cts);
+					IEnumerable subject = GetCancellingEnumerable(5, cts);
 
 					async Task Act()
-						=> await That(subject).All().ComplyWith(x => x.IsLessThan(6)).WithCancellation(token);
+						=> await That(subject).All().ComplyWith(x => x.Satisfies(y => (int?)y < 6))
+							.WithCancellation(token);
 
 					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
-						             is less than 6 for all items,
+						             satisfies y => (int?)y < 6 for all items,
 						             but could not verify, because it was already cancelled
 						             """);
 				}
@@ -34,11 +35,11 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotEnumerateTwice()
 				{
-					ThrowWhenIteratingTwiceEnumerable subject = new();
+					IEnumerable subject = new ThrowWhenIteratingTwiceEnumerable();
 
 					async Task Act()
-						=> await That(subject).All().ComplyWith(x => x.IsGreaterThan(-1))
-							.And.All().ComplyWith(x => x.IsGreaterThan(-1));
+						=> await That(subject).All().ComplyWith(x => x.Satisfies(_ => true))
+							.And.All().ComplyWith(x => x.Satisfies(_ => true));
 
 					await That(Act).DoesNotThrow();
 				}
@@ -46,7 +47,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotMaterializeEnumerable()
 				{
-					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+					IEnumerable subject = Factory.GetFibonacciNumbers();
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(1));
@@ -62,7 +63,10 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
 				{
-					int[] subject = [1, 1, 1, 1, 2, 2, 3,];
+					IEnumerable subject = new[]
+					{
+						1, 1, 1, 1, 2, 2, 3,
+					};
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(1));
@@ -71,14 +75,14 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to 1 for all items,
-						             but only 4 of 7 were
+						             but not all were
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable((int[]) []);
+					IEnumerable subject = ToEnumerable((int[]) []);
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(0));
@@ -89,7 +93,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsEqualValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1,]);
+					IEnumerable subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1,]);
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(1));
@@ -100,7 +104,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenSubjectIsNull_ShouldFail()
 				{
-					IEnumerable<int>? subject = null;
+					IEnumerable? subject = null;
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(0));
@@ -114,12 +118,12 @@ public sealed partial class ThatEnumerable
 				}
 			}
 
-			public sealed class NegatedTests
+			public sealed class EnumerableNegatedTests
 			{
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1,]);
+					IEnumerable subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1,]);
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.DoesNotComplyWith(it => it.IsEqualTo(1)));

@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class MoreThan
+	public sealed partial class MoreThan
 	{
 		public sealed class ItemsTests
 		{

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using aweXpect.Core;
 using aweXpect.Helpers;
@@ -281,6 +282,66 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
+	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>
+		AreEqualTo<TEnumerable>(this ElementsForEnumerable<TEnumerable> elements, object? expected)
+		where TEnumerable : IEnumerable?
+	{
+		IElementsForEnumerable<TEnumerable> iElements = elements;
+		ObjectEqualityOptions<object?> options = new();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new CollectionForEnumerableConstraint<TEnumerable>(
+					expectationBuilder,
+					it, grammars,
+					iElements.Quantifier,
+					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+							g.IsNegated()) switch
+						{
+							(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+							(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+							(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+							(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+						},
+					a => options.AreConsideredEqual(a, expected),
+					"were")),
+			iElements.Subject,
+			options);
+	}
+
+	/// <summary>
+	///     …are equal to the <paramref name="expected" /> value.
+	/// </summary>
+	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>
+		AreEqualTo<TEnumerable, TItem>(this ElementsForStructEnumerable<TEnumerable, TItem> elements, object? expected)
+		where TEnumerable : struct, IEnumerable<TItem>
+	{
+		IElementsForStructEnumerable<TEnumerable, TItem> iElements = elements;
+		ObjectEqualityOptions<object?> options = new();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new CollectionForEnumerableConstraint<TEnumerable>(
+					expectationBuilder,
+					it, grammars,
+					iElements.Quantifier,
+					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+							g.IsNegated()) switch
+						{
+							(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+							(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+							(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+							(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+						},
+					a => options.AreConsideredEqual(a, expected),
+					"were")),
+			iElements.Subject,
+			options);
+	}
+
+	/// <summary>
+	///     …are equal to the <paramref name="expected" /> value.
+	/// </summary>
 	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> AreEqualTo(
 		this Elements elements,
 		string? expected)
@@ -303,6 +364,37 @@ public static partial class ThatEnumerable
 							(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
 						},
 					a => options.AreConsideredEqual(a, expected),
+					"were")),
+			iElements.Subject,
+			options);
+	}
+
+	/// <summary>
+	///     …are equal to the <paramref name="expected" /> value.
+	/// </summary>
+	public static StringEqualityResult<TEnumerable, IThat<TEnumerable>> AreEqualTo<TEnumerable>(
+		this ElementsForStructEnumerable<TEnumerable> elements,
+		string? expected)
+		where TEnumerable : struct, IEnumerable<string?>
+	{
+		IElementsForStructEnumerable<TEnumerable> iElements = elements;
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
+		return new StringEqualityResult<TEnumerable, IThat<TEnumerable>>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new CollectionForEnumerableConstraint<TEnumerable>(
+					expectationBuilder,
+					it, grammars,
+					iElements.Quantifier,
+					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+							g.IsNegated()) switch
+						{
+							(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+							(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+							(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+							(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+						},
+					a => options.AreConsideredEqual((string?)a, expected),
 					"were")),
 			iElements.Subject,
 			options);

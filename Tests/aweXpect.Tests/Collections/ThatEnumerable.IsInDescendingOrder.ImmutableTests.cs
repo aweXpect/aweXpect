@@ -24,13 +24,7 @@ public sealed partial class ThatEnumerable
 					             but it had 1 before 3 which is not in descending order
 
 					             Collection:
-					             [
-					               3,
-					               3,
-					               2,
-					               1,
-					               3
-					             ]
+					             [3, 3, 2, 1, 3]
 					             """);
 			}
 
@@ -51,7 +45,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldNotIgnoreCasing()
 			{
-				ImmutableArray<string> subject = [..ToEnumerable(["A", "a",]),];
+				ImmutableArray<string> subject = ["A", "a",];
 
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
@@ -73,7 +67,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				ImmutableArray<string> subject = [..ToEnumerable(["A", "a",]),];
+				ImmutableArray<string> subject = ["A", "a",];
 
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder().Using(StringComparer.OrdinalIgnoreCase);
@@ -84,7 +78,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenItemsAreNotSortedCorrectly_ShouldFail()
 			{
-				ImmutableArray<string> subject = [..ToEnumerable(["c", "b", "a", "c",]),];
+				ImmutableArray<string> subject = ["c", "b", "a", "c",];
 
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
@@ -108,7 +102,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenItemsAreSortedCorrectly_ShouldSucceed()
 			{
-				ImmutableArray<string> subject = [..ToEnumerable(["c", "b", "a",]),];
+				ImmutableArray<string> subject = ["c", "b", "a",];
 
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();

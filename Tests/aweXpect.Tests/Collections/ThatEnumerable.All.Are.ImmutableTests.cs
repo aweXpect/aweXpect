@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -11,15 +12,18 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed partial class Are
 		{
-			public sealed class GenericTests
+			public sealed class ImmutableGenericTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyBaseClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyBaseClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().Are<MyClass>();
@@ -28,14 +32,40 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
-						             but not all were
+						             but none of 10 were
 						             
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
 						                 Foo = 1
 						               },
-						               (… and maybe others)
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 2
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 3
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 4
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 5
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 6
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 7
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 8
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 9
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 10
+						               }
 						             ]
 						             
 						             Collection:
@@ -69,8 +99,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.Are.MyBaseClass {
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -78,10 +107,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().Are<MyBaseClass>();
@@ -92,10 +124,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().Are<MyClass>();
@@ -104,15 +139,18 @@ public sealed partial class ThatEnumerable
 				}
 			}
 
-			public sealed class TypeTests
+			public sealed class ImmutableTypeTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyBaseClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyBaseClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().Are(typeof(MyClass));
@@ -121,14 +159,40 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
-						             but not all were
+						             but none of 10 were
 						             
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
 						                 Foo = 1
 						               },
-						               (… and maybe others)
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 2
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 3
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 4
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 5
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 6
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 7
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 8
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 9
+						               },
+						               ThatEnumerable.All.Are.MyBaseClass {
+						                 Foo = 10
+						               }
 						             ]
 						             
 						             Collection:
@@ -162,8 +226,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.Are.MyBaseClass {
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -171,7 +234,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
 				{
-					IEnumerable<int> subject = Enumerable.Range(1, 10);
+					ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 
 					async Task Act()
 						=> await That(subject).All().Are(null!);
@@ -184,10 +247,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().Are(typeof(MyBaseClass));
@@ -198,10 +264,13 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
-					{
-						Foo = v,
-					});
+					ImmutableArray<MyClass> subject =
+					[
+						..Enumerable.Range(1, 10).Select(v => new MyClass
+						{
+							Foo = v,
+						}),
+					];
 
 					async Task Act()
 						=> await That(subject).All().Are(typeof(MyClass));
@@ -209,16 +278,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).DoesNotThrow();
 				}
 			}
-
-			public class MyClass : MyBaseClass
-			{
-				public int Bar { get; set; }
-			}
-
-			public class MyBaseClass
-			{
-				public int Foo { get; set; }
-			}
 		}
 	}
 }
+#endif

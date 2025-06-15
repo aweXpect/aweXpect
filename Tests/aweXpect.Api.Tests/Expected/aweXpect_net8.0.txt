@@ -330,7 +330,10 @@ namespace aweXpect
     public static class ThatEnumerable
     {
         public static aweXpect.ThatEnumerable.Elements All(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> All(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> All(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> All<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> AreAllUnique(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> AreAllUnique<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> AreAllUnique<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Func<TItem, string> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "") { }
@@ -344,13 +347,28 @@ namespace aweXpect
         public static aweXpect.Results.ToleranceEqualityResult<System.Collections.Generic.IEnumerable<double?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<double?>?>, double?, double> AreEqualTo(this aweXpect.ThatEnumerable.Elements<double?> elements, double? expected) { }
         public static aweXpect.Results.ToleranceEqualityResult<System.Collections.Generic.IEnumerable<float>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<float>?>, float, float> AreEqualTo(this aweXpect.ThatEnumerable.Elements<float> elements, float expected) { }
         public static aweXpect.Results.ToleranceEqualityResult<System.Collections.Generic.IEnumerable<float?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<float?>?>, float?, float> AreEqualTo(this aweXpect.ThatEnumerable.Elements<float?> elements, float? expected) { }
+        public static aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, object?> AreEqualTo<TEnumerable>(this aweXpect.ThatEnumerable.ElementsForEnumerable<TEnumerable> elements, object? expected)
+            where TEnumerable : System.Collections.IEnumerable? { }
+        public static aweXpect.Results.StringEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>> AreEqualTo<TEnumerable>(this aweXpect.ThatEnumerable.ElementsForStructEnumerable<TEnumerable> elements, string? expected)
+            where TEnumerable :  struct, System.Collections.Generic.IEnumerable<string?> { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>?, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> AreEqualTo<TItem>(this aweXpect.ThatEnumerable.Elements<TItem> elements, TItem expected) { }
+        public static aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, object?> AreEqualTo<TEnumerable, TItem>(this aweXpect.ThatEnumerable.ElementsForStructEnumerable<TEnumerable, TItem> elements, object? expected)
+            where TEnumerable :  struct, System.Collections.Generic.IEnumerable<TItem> { }
         public static aweXpect.ThatEnumerable.Elements AtLeast(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int minimum) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> AtLeast(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject, int minimum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> AtLeast(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject, int minimum) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int minimum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int minimum) { }
         public static aweXpect.ThatEnumerable.Elements AtMost(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int maximum) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> AtMost(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject, int maximum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> AtMost(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject, int maximum) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int maximum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int maximum) { }
         public static aweXpect.Results.BetweenResult<aweXpect.ThatEnumerable.Elements> Between(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?>> Between(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject, int minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>>> Between(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject, int minimum) { }
         public static aweXpect.Results.BetweenResult<aweXpect.ThatEnumerable.Elements<TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int minimum) { }
+        public static aweXpect.Results.BetweenResult<aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int minimum) { }
         public static aweXpect.Results.StringEqualityTypeCountResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> Contains(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, string? expected) { }
         public static aweXpect.Results.StringCollectionContainResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> Contains(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, System.Collections.Generic.IEnumerable<string?> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectCountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> Contains<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, TItem expected) { }
@@ -364,6 +382,10 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> DoesNotEndWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, params TItem[] unexpected) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> DoesNotEndWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> DoesNotHaveCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int unexpected) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Immutable.ImmutableArray<TItem>, aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>?>> DoesNotHaveCount<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>?> subject, int unexpected) { }
+        public static aweXpect.Results.AndOrResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>> DoesNotHaveCount<TEnumerable>(this aweXpect.Core.IThat<TEnumerable?> subject, int unexpected)
+            where TEnumerable : System.Collections.IEnumerable { }
+        public static aweXpect.Results.AndOrResult<TItem[], aweXpect.Core.IThat<TItem[]?>> DoesNotHaveCount<TItem>(this aweXpect.Core.IThat<TItem[]?> subject, int unexpected) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> DoesNotStartWith(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, params string[] unexpected) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> DoesNotStartWith(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, System.Collections.Generic.IEnumerable<string?> unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> DoesNotStartWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, params TItem[] unexpected) { }
@@ -373,9 +395,20 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> EndsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, params TItem[] expected) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> EndsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.ThatEnumerable.Elements Exactly(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int expected) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> Exactly(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject, int expected) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> Exactly(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject, int expected) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> Exactly<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int expected) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> Exactly<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int expected) { }
         public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
+        public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<System.Collections.Immutable.ImmutableArray<TItem>, aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>?>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>?> subject) { }
+        public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>>> HasCount<TEnumerable>(this aweXpect.Core.IThat<TEnumerable?> subject)
+            where TEnumerable : System.Collections.IEnumerable { }
+        public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<TItem[], aweXpect.Core.IThat<TItem[]?>>> HasCount<TItem>(this aweXpect.Core.IThat<TItem[]?> subject) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int expected) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Immutable.ImmutableArray<TItem>, aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>?>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>?> subject, int expected) { }
+        public static aweXpect.Results.AndOrResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>> HasCount<TEnumerable>(this aweXpect.Core.IThat<TEnumerable?> subject, int expected)
+            where TEnumerable : System.Collections.IEnumerable { }
+        public static aweXpect.Results.AndOrResult<TItem[], aweXpect.Core.IThat<TItem[]?>> HasCount<TItem>(this aweXpect.Core.IThat<TItem[]?> subject, int expected) { }
         public static aweXpect.Results.SingleItemResult<System.Collections.Generic.IEnumerable<TItem>, TItem> HasSingle<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source) { }
         public static aweXpect.Results.StringCollectionBeContainedInResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> IsContainedIn(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, System.Collections.Generic.IEnumerable<string?> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectCollectionBeContainedInResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> IsContainedIn<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
@@ -434,11 +467,20 @@ namespace aweXpect
         public static aweXpect.Results.CollectionOrderResult<TMember, TEnumerable, aweXpect.Core.IThat<TEnumerable?>> IsNotInDescendingOrder<TEnumerable, TMember>(this aweXpect.Core.IThat<TEnumerable?> source, System.Func<object?, TMember> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "")
             where TEnumerable : System.Collections.IEnumerable { }
         public static aweXpect.ThatEnumerable.Elements LessThan(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int maximum) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> LessThan(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject, int maximum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> LessThan(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject, int maximum) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> LessThan<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int maximum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> LessThan<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int maximum) { }
         public static aweXpect.ThatEnumerable.Elements MoreThan(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int minimum) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> MoreThan(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject, int minimum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> MoreThan(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject, int minimum) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> MoreThan<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int minimum) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> MoreThan<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int minimum) { }
         public static aweXpect.ThatEnumerable.Elements None(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable?> None(this aweXpect.Core.IThat<System.Collections.IEnumerable?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> None(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> None<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> None<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> StartsWith(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, params string[] expected) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> StartsWith(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, System.Collections.Generic.IEnumerable<string?> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> StartsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, params TItem[] expected) { }
@@ -457,15 +499,60 @@ namespace aweXpect
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> ComplyWith(System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> Satisfy(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
+        public class ElementsForEnumerable<TEnumerable> : aweXpect.ThatEnumerable.IElementsForEnumerable<TEnumerable>
+            where TEnumerable : System.Collections.IEnumerable?
+        {
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>, object?> Are(System.Type type) { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>, object?> Are<TType>() { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>, object?> AreEquivalentTo<TExpected>(TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>, object?> AreExactly(System.Type type) { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>, object?> AreExactly<TType>() { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>, object?> ComplyWith(System.Action<aweXpect.Core.IThat<object?>> expectations) { }
+            public aweXpect.Results.AndOrResult<TEnumerable, aweXpect.Core.IThat<TEnumerable?>> Satisfy(System.Func<object?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        }
+        public class ElementsForStructEnumerable<TEnumerable> : aweXpect.ThatEnumerable.IElementsForStructEnumerable<TEnumerable>
+            where TEnumerable :  struct, System.Collections.Generic.IEnumerable<string?>
+        {
+            public aweXpect.Results.AndOrResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>> Satisfy(System.Func<string?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        }
+        public class ElementsForStructEnumerable<TEnumerable, TItem> : aweXpect.ThatEnumerable.IElementsForStructEnumerable<TEnumerable, TItem>
+            where TEnumerable :  struct, System.Collections.Generic.IEnumerable<TItem>
+        {
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, TItem> Are(System.Type type) { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, TItem> Are<TType>() { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, TItem> AreEquivalentTo<TExpected>(TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, TItem> AreExactly(System.Type type) { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, TItem> AreExactly<TType>() { }
+            public aweXpect.Results.ObjectEqualityResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>, TItem> ComplyWith(System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+            public aweXpect.Results.AndOrResult<TEnumerable, aweXpect.Core.IThat<TEnumerable>> Satisfy(System.Func<TItem?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        }
         public interface IElements
         {
             aweXpect.EnumerableQuantifier Quantifier { get; }
             aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> Subject { get; }
         }
-        public interface IElements<TItem>
+        public interface IElements<out TItem>
         {
             aweXpect.EnumerableQuantifier Quantifier { get; }
             aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> Subject { get; }
+        }
+        public interface IElementsForEnumerable<out TEnumerable>
+            where out TEnumerable : System.Collections.IEnumerable?
+        {
+            aweXpect.EnumerableQuantifier Quantifier { get; }
+            aweXpect.Core.IThat<TEnumerable> Subject { get; }
+        }
+        public interface IElementsForStructEnumerable<out TEnumerable>
+            where out TEnumerable :  struct, System.Collections.Generic.IEnumerable<string?>
+        {
+            aweXpect.EnumerableQuantifier Quantifier { get; }
+            aweXpect.Core.IThat<TEnumerable> Subject { get; }
+        }
+        public interface IElementsForStructEnumerable<out TEnumerable, TItem>
+            where out TEnumerable :  struct, System.Collections.Generic.IEnumerable<TItem>
+        {
+            aweXpect.EnumerableQuantifier Quantifier { get; }
+            aweXpect.Core.IThat<TEnumerable> Subject { get; }
         }
     }
     public static class ThatEventRecording

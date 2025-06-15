@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -11,12 +11,15 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed partial class AreExactly
 		{
-			public sealed class GenericTests
+			public sealed class EnumerableGenericTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(_ => new MyBaseClass());
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
+					{
+						Foo = v,
+					});
 
 					async Task Act()
 						=> await That(subject).All().AreExactly<MyClass>();
@@ -30,7 +33,7 @@ public sealed partial class ThatEnumerable
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 1
 						               },
 						               (… and maybe others)
 						             ]
@@ -38,34 +41,34 @@ public sealed partial class ThatEnumerable
 						             Collection:
 						             [
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 1
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 2
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 3
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 4
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 5
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 6
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 7
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 8
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 9
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
-						                 Foo = 0
+						                 Foo = 10
 						               },
 						               (… and maybe others)
 						             ]
@@ -75,7 +78,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldFail()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -148,7 +151,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -160,12 +163,12 @@ public sealed partial class ThatEnumerable
 				}
 			}
 
-			public sealed class TypeTests
+			public sealed class EnumerableTypeTests
 			{
 				[Fact]
 				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyBaseClass
 					{
 						Foo = v,
 					});
@@ -227,7 +230,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
 				{
-					IEnumerable<int> subject = Enumerable.Range(1, 10);
+					IEnumerable subject = Enumerable.Range(1, 10);
 
 					async Task Act()
 						=> await That(subject).All().AreExactly(null!);
@@ -240,7 +243,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldFail()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -313,7 +316,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(v => new MyClass
+					IEnumerable subject = Enumerable.Range(1, 10).Select(v => new MyClass
 					{
 						Foo = v,
 					});
@@ -323,16 +326,6 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).DoesNotThrow();
 				}
-			}
-
-			public class MyClass : MyBaseClass
-			{
-				public int Bar { get; set; }
-			}
-
-			public class MyBaseClass
-			{
-				public int Foo { get; set; }
 			}
 		}
 	}
