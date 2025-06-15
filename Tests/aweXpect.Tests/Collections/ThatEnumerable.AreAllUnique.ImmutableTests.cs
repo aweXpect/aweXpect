@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -9,7 +10,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class AreAllUnique
 	{
-		public sealed class Tests
+		public sealed class ImmutableArrayTests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
@@ -91,7 +92,7 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class NegatedTests
+		public sealed class ImmutableArrayNegatedTests
 		{
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldFail()
@@ -124,7 +125,7 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class StringTests
+		public sealed class ImmutableArrayStringTests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
@@ -252,7 +253,7 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class MemberTests
+		public sealed class ImmutableArrayMemberTests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
@@ -377,7 +378,7 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class NegatedMemberTests
+		public sealed class ImmutableArrayNegatedMemberTests
 		{
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldFail()
@@ -423,7 +424,7 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class StringMemberTests
+		public sealed class ImmutableArrayStringMemberTests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
@@ -475,10 +476,10 @@ public sealed partial class ThatEnumerable
 					             
 					             Collection:
 					             [
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "A"
 					               }
 					             ]
@@ -503,16 +504,16 @@ public sealed partial class ThatEnumerable
 					             
 					             Collection:
 					             [
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "a"
 					               }
 					             ]
@@ -538,22 +539,22 @@ public sealed partial class ThatEnumerable
 					             
 					             Collection:
 					             [
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					               ThatEnumerable.AreAllUnique.ImmutableArrayStringMemberTests.MyStringClass {
 					                 Value = "x"
 					               }
 					             ]
@@ -583,3 +584,4 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
+#endif

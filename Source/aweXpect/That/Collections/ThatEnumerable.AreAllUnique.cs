@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,9 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
+#endif
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -93,6 +97,136 @@ public static partial class ThatEnumerable
 			source, options
 		);
 	}
+
+	/// <summary>
+	///     Verifies that the collection only contains unique items.
+	/// </summary>
+	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?> AreAllUnique<TEnumerable>(
+		this IThat<TEnumerable?> source)
+		where TEnumerable : IEnumerable
+	{
+		ObjectEqualityOptions<object?> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueForEnumerableConstraint<TEnumerable?, object?>(expectationBuilder, it, grammars, options)),
+			source, options
+		);
+	}
+
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the
+	///     <paramref name="memberAccessor" />.
+	/// </summary>
+	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TMember> AreAllUnique<TEnumerable,
+		TMember>(
+		this IThat<TEnumerable?> source,
+		Func<object?, TMember> memberAccessor,
+		[CallerArgumentExpression("memberAccessor")]
+		string doNotPopulateThisValue = "")
+		where TEnumerable : IEnumerable
+	{
+		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TMember>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueWithPredicateForEnumerableConstraint<TEnumerable, TMember, TMember>(
+					expectationBuilder,
+					it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					options)),
+			source, options
+		);
+	}
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection only contains unique items.
+	/// </summary>
+	public static ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>, TItem> AreAllUnique<TItem>(
+		this IThat<ImmutableArray<TItem>?> source)
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueForEnumerableConstraint<ImmutableArray<TItem>, TItem>(expectationBuilder, it, grammars, options)),
+			source, options
+		);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection only contains unique items.
+	/// </summary>
+	public static StringEqualityResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>?>> AreAllUnique(
+		this IThat<ImmutableArray<string?>?> source)
+	{
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringEqualityResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>?>>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueForEnumerableConstraint<string, string>(expectationBuilder, it, grammars, options)),
+			source, options
+		);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the
+	///     <paramref name="memberAccessor" />.
+	/// </summary>
+	public static ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>, TMember> AreAllUnique<
+		TItem,
+		TMember>(
+		this IThat<ImmutableArray<TItem>?> source,
+		Func<TItem, TMember> memberAccessor,
+		[CallerArgumentExpression("memberAccessor")]
+		string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>, TMember>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueWithPredicateForEnumerableConstraint<ImmutableArray<TItem>, TMember, TMember>(
+					expectationBuilder,
+					it, grammars,
+					v => memberAccessor((TItem)v!),
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					options)),
+			source, options
+		);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the
+	///     <paramref name="memberAccessor" />.
+	/// </summary>
+	public static StringEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>> AreAllUnique<TItem>(
+		this IThat<ImmutableArray<TItem>?> source,
+		Func<TItem, string> memberAccessor,
+		[CallerArgumentExpression("memberAccessor")]
+		string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueWithPredicateForEnumerableConstraint<ImmutableArray<TItem>, string, string>(
+					expectationBuilder,
+					it, grammars,
+					v => memberAccessor((TItem)v!),
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					options)),
+			source, options
+		);
+	}
+#endif
 
 	private sealed class AreAllUniqueConstraint<TItem, TMatch>(
 		ExpectationBuilder expectationBuilder,
@@ -183,6 +317,131 @@ public static partial class ThatEnumerable
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
+			{
+				TMember itemMember = memberAccessor(item);
+				if (checkedItems.Any(compareWith =>
+					    o.AreConsideredEqual(itemMember, compareWith) &&
+					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+				{
+					_duplicates.Add(itemMember);
+				}
+
+				checkedItems.Add(itemMember);
+			}
+
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(materialized);
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique items for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate items for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
+	}
+	
+	private sealed class AreAllUniqueForEnumerableConstraint<TEnumerable, TMatch>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		IOptionsEquality<TMatch> options)
+		: ConstraintResult.WithNotNullValue<TEnumerable?>(it, grammars),
+			IContextConstraint<TEnumerable?>
+		where TEnumerable : IEnumerable?
+	{
+		private readonly List<object?> _duplicates = [];
+
+		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			IEnumerable materialized = context.UseMaterializedEnumerable(actual);
+			List<object?> checkedItems = new();
+
+			IOptionsEquality<TMatch> o = options;
+			foreach (object? item in materialized)
+			{
+				if (checkedItems.Any(compareWith =>
+					    item is TMatch matchedItem &&
+					    o.AreConsideredEqual(matchedItem, compareWith) &&
+					    _duplicates.All(x => !o.AreConsideredEqual(matchedItem, x))))
+				{
+					_duplicates.Add(item);
+				}
+
+				checkedItems.Add(item);
+			}
+
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(materialized);
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique items");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate items");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
+	}
+
+	private sealed class AreAllUniqueWithPredicateForEnumerableConstraint<TEnumerable, TMember, TMatch>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		Func<object?, TMember> memberAccessor,
+		string memberAccessorExpression,
+		IOptionsEquality<TMatch> options)
+		: ConstraintResult.WithNotNullValue<TEnumerable?>(it, grammars),
+			IContextConstraint<TEnumerable?>
+		where TEnumerable : IEnumerable?
+		where TMember : TMatch
+	{
+		private readonly List<TMember> _duplicates = [];
+
+		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			IEnumerable materialized = context.UseMaterializedEnumerable(actual);
+			List<TMember> checkedItems = new();
+
+			IOptionsEquality<TMatch> o = options;
+			foreach (object? item in materialized)
 			{
 				TMember itemMember = memberAccessor(item);
 				if (checkedItems.Any(compareWith =>
