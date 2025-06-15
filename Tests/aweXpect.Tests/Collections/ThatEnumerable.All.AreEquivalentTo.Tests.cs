@@ -39,10 +39,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 1 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [2, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -57,7 +57,7 @@ public sealed partial class ThatEnumerable
 						               55,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);
@@ -87,7 +87,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 5 for all items,
 						             but only 1 of 20 were
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -102,7 +102,7 @@ public sealed partial class ThatEnumerable
 						               89,
 						               …
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -117,7 +117,7 @@ public sealed partial class ThatEnumerable
 						               55,
 						               …
 						             ]
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);
@@ -149,7 +149,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to constantValue for all items,
 						             but it was <null>
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);

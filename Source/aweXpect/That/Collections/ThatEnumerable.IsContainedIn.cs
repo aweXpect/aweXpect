@@ -56,6 +56,7 @@ public static partial class ThatEnumerable
 			options,
 			matchOptions);
 	}
+
 	/// <summary>
 	///     Verifies that the collection is not contained in the provided <paramref name="expected" /> collection.
 	/// </summary>

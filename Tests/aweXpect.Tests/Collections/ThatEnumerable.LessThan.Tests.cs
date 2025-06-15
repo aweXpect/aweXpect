@@ -27,7 +27,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for less than 8 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [
 					               0,
@@ -70,10 +70,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for less than 2 items,
 					             but at least 2 were
-					             
+
 					             Matching items:
 					             [1, 1, (… and maybe others)]
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -115,10 +115,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for less than 3 items,
 					             but 4 of 7 were
-					             
+
 					             Matching items:
 					             [1, 1, 1, 1]
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -148,10 +148,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for less than 4 items,
 					             but at least 4 were
-					             
+
 					             Matching items:
 					             [1, 1, 1, 1, (… and maybe others)]
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -198,14 +198,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for less than 2 items,
 					             but at least 2 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               "FOO",
 					               (… and maybe others)
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -236,7 +236,7 @@ public sealed partial class ThatEnumerable
 					               "foo",
 					               (… and maybe others)
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -260,13 +260,13 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for less than one item,
 					             but at least 1 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               (… and maybe others)
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",

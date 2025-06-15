@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             does not have exactly 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
@@ -48,7 +48,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             does not have exactly 3 items,
 					             but it did
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);

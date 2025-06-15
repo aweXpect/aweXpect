@@ -27,7 +27,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has at most 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [
 					               0,
@@ -80,7 +80,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has at most 2 items,
 					             but found 3
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -121,7 +121,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has at most 2 items,
 					             but found at least 3
-					             
+
 					             Collection:
 					             [
 					               1,

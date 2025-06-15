@@ -47,7 +47,7 @@ public sealed partial class ThatEnumerable
 					             only has unique items,
 					             but it contained 1 duplicate:
 					               1
-					             
+
 					             Collection:
 					             [1, 2, 3, 1]
 					             """);
@@ -68,7 +68,7 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
-					             
+
 					             Collection:
 					             [1, 2, 3, 1, 2, -1]
 					             """);
@@ -106,7 +106,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has duplicate items,
 					             but all were unique
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -173,7 +173,7 @@ public sealed partial class ThatEnumerable
 					             only has unique items ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -196,7 +196,7 @@ public sealed partial class ThatEnumerable
 					             only has unique items,
 					             but it contained 1 duplicate:
 					               "a"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -222,7 +222,7 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -290,7 +290,7 @@ public sealed partial class ThatEnumerable
 					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -329,7 +329,7 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -392,7 +392,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has duplicate items for x => x.Value,
 					             but all were unique
-					             
+
 					             Collection:
 					             [
 					               MyClass {
@@ -472,7 +472,7 @@ public sealed partial class ThatEnumerable
 					             only has unique items for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
@@ -500,7 +500,7 @@ public sealed partial class ThatEnumerable
 					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
@@ -535,7 +535,7 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {

@@ -29,10 +29,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to NaN for all items,
 						             but only 2 of 3 were
-						             
+
 						             Not matching items:
 						             [1.0]
-						             
+
 						             Collection:
 						             [NaN, NaN, 1.0]
 						             """);
@@ -53,10 +53,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to NaN for all items,
 						             but only 2 of 3 were
-						             
+
 						             Not matching items:
 						             [1.0]
-						             
+
 						             Collection:
 						             [NaN, NaN, 1.0]
 						             """);
@@ -68,7 +68,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldSupportNullableValues()
 				{
-					ImmutableArray<int?> subject = [..Factory.GetConstantValueEnumerable<int?>(null, 20)];
+					ImmutableArray<int?> subject = [..Factory.GetConstantValueEnumerable<int?>(null, 20),];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo(null);
@@ -79,7 +79,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldUseCustomComparer()
 				{
-					ImmutableArray<int> subject = [..Factory.GetFibonacciNumbers(20).ToArray()];
+					ImmutableArray<int> subject = [..Factory.GetFibonacciNumbers(20).ToArray(),];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo(5).Using(new AllEqualComparer());
@@ -90,7 +90,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
 				{
-					ImmutableArray<int> subject = [..Factory.GetFibonacciNumbers(20).ToArray()];
+					ImmutableArray<int> subject = [..Factory.GetFibonacciNumbers(20).ToArray(),];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo(5);
@@ -100,7 +100,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 5 for all items,
 						             but only 1 of 20 were
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -115,7 +115,7 @@ public sealed partial class ThatEnumerable
 						               89,
 						               …
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -137,7 +137,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenNoItemsDiffer_ShouldSucceed()
 				{
 					int constantValue = 42;
-					ImmutableArray<int> subject = [..Factory.GetConstantValueEnumerable(constantValue, 20).ToArray()];
+					ImmutableArray<int> subject = [..Factory.GetConstantValueEnumerable(constantValue, 20).ToArray(),];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo(constantValue);
@@ -151,7 +151,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldSupportNullableValues()
 				{
-					ImmutableArray<string?> subject = [..Factory.GetConstantValueEnumerable<string?>(null, 20)];
+					ImmutableArray<string?> subject = [..Factory.GetConstantValueEnumerable<string?>(null, 20),];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo(null);
@@ -162,7 +162,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldUseCustomComparer()
 				{
-					ImmutableArray<string?> subject = [..Factory.GetFibonacciNumbers(i => $"item-{i}", 20)];
+					ImmutableArray<string?> subject = [..Factory.GetFibonacciNumbers(i => $"item-{i}", 20),];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("item-5").Using(new AllEqualComparer());
@@ -173,7 +173,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
 				{
-					ImmutableArray<string> subject = [..Factory.GetFibonacciNumbers(i => $"item-{i}", 10)];
+					ImmutableArray<string> subject = [..Factory.GetFibonacciNumbers(i => $"item-{i}", 10),];
 
 					async Task Act()
 						=> await That(subject)!.All().AreEqualTo("item-5");
@@ -183,7 +183,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "item-5" for all items,
 						             but only 1 of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               "item-1",
@@ -196,7 +196,7 @@ public sealed partial class ThatEnumerable
 						               "item-34",
 						               "item-55"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "item-1",
@@ -230,12 +230,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring case, white-space and newline style for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -256,12 +256,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring case for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -282,12 +282,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring leading white-space for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -308,12 +308,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring newline style for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -334,12 +334,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring trailing white-space for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -362,12 +362,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 2 were
-						             
+
 						             Not matching items:
 						             [
 						               "FOO"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo",
@@ -393,13 +393,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 3 were
-						             
+
 						             Not matching items:
 						             [
 						               " foo",
 						               "	foo"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               " foo",
@@ -425,12 +425,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo\nbar" for all items,
 						             but only 1 of 3 were
-						             
+
 						             Not matching items:
 						             [
 						               *
 						             ]
-						             
+
 						             Collection:
 						             [
 						               *
@@ -455,13 +455,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 3 were
-						             
+
 						             Not matching items:
 						             [
 						               "foo ",
 						               "foo	"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo ",
@@ -475,7 +475,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenNoItemsDiffer_ShouldSucceed()
 				{
 					string constantValue = "foo";
-					ImmutableArray<string> subject = [..Factory.GetConstantValueEnumerable(constantValue, 20)];
+					ImmutableArray<string> subject = [..Factory.GetConstantValueEnumerable(constantValue, 20),];
 
 					async Task Act()
 						=> await That(subject)!.All().AreEqualTo(constantValue);

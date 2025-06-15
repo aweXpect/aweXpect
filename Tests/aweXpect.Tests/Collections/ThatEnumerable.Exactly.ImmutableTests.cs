@@ -1,7 +1,5 @@
 ﻿#if NET8_0_OR_GREATER
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Threading;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -37,7 +35,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 2 for exactly 4 items,
 					             but only 2 of 7 were
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -56,7 +54,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for exactly 3 items,
 					             but 4 of 7 were
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -78,7 +76,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for exactly one item,
 					             but 2 of 3 were
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -112,7 +110,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly 3 items,
 					             but only 2 of 4 were
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -136,7 +134,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly one item,
 					             but 2 of 3 were
-					             
+
 					             Collection:
 					             [
 					               "foo",

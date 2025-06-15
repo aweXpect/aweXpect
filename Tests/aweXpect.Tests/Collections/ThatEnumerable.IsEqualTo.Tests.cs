@@ -24,7 +24,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection [] in order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -39,7 +39,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               (… and maybe others)
 					             ]
-					             
+
 					             Expected:
 					             []
 					             """);
@@ -60,7 +60,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -75,7 +75,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -110,10 +110,10 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "b",
 					               "c"
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -158,7 +158,7 @@ public sealed partial class ThatEnumerable
 					                 108,
 					                 109,
 					                 110
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -172,7 +172,7 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -254,7 +254,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -263,7 +263,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -290,7 +290,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order,
 					             but it contained item "d" at index 3 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -298,7 +298,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -324,7 +324,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -333,7 +333,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -359,14 +359,14 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -390,14 +390,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order,
 					             but it lacked 1 of 4 expected items: "c"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -422,7 +422,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order,
 					             but it contained item "c" at index 3 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -430,7 +430,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -457,14 +457,14 @@ public sealed partial class ThatEnumerable
 					               contained item "b" at index 1 instead of "a" and
 					               contained item "c" at index 2 instead of "b" and
 					               lacked 1 of 4 expected items: "a"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -489,7 +489,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order,
 					             but it contained item "a" at index 0 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -497,7 +497,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -521,14 +521,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order,
 					             but it lacked 1 of 4 expected items: "d"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -555,14 +555,14 @@ public sealed partial class ThatEnumerable
 					             but it lacked 2 of 5 expected items:
 					               "d",
 					               "e"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -603,7 +603,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection [] in order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -618,7 +618,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               (… and maybe others)
 					             ]
-					             
+
 					             Expected:
 					             []
 					             """);
@@ -638,7 +638,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -653,7 +653,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -688,10 +688,10 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "b",
 					               "c"
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -717,10 +717,10 @@ public sealed partial class ThatEnumerable
 					             but it lacked 2 of 2 expected items:
 					               "a",
 					               "b"
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -765,7 +765,7 @@ public sealed partial class ThatEnumerable
 					                 108,
 					                 109,
 					                 110
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -779,7 +779,7 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -816,7 +816,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -825,7 +825,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -852,7 +852,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order ignoring duplicates,
 					             but it contained item "d" at index 3 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -860,7 +860,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -886,7 +886,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -895,7 +895,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -921,14 +921,14 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1000,14 +1000,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in order ignoring duplicates,
 					             but it lacked 1 of 4 expected items: "d"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1034,14 +1034,14 @@ public sealed partial class ThatEnumerable
 					             but it lacked 2 of 5 expected items:
 					               "d",
 					               "e"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1081,7 +1081,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection [] in any order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1096,7 +1096,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               (… and maybe others)
 					             ]
-					             
+
 					             Expected:
 					             []
 					             """);
@@ -1116,7 +1116,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1131,7 +1131,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -1166,10 +1166,10 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "b",
 					               "c"
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1214,7 +1214,7 @@ public sealed partial class ThatEnumerable
 					                 108,
 					                 109,
 					                 110
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1228,7 +1228,7 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -1265,7 +1265,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1274,7 +1274,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1301,7 +1301,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it contained item "d" at index 3 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1309,7 +1309,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1335,7 +1335,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1344,7 +1344,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1380,14 +1380,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it lacked 1 of 4 expected items: "c"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1412,7 +1412,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it contained item "c" at index 3 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1420,7 +1420,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1444,14 +1444,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it lacked 1 of 4 expected items: "a"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1476,7 +1476,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it contained item "a" at index 1 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1484,7 +1484,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1508,14 +1508,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order,
 					             but it lacked 1 of 4 expected items: "d"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1542,14 +1542,14 @@ public sealed partial class ThatEnumerable
 					             but it lacked 2 of 5 expected items:
 					               "d",
 					               "e"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1590,7 +1590,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection [] in any order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1605,7 +1605,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               (… and maybe others)
 					             ]
-					             
+
 					             Expected:
 					             []
 					             """);
@@ -1626,7 +1626,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order ignoring duplicates,
 					             but it had more than 20 deviations
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1641,7 +1641,7 @@ public sealed partial class ThatEnumerable
 					               10,
 					               …
 					             ]
-					             
+
 					             Expected:
 					             [
 					               100,
@@ -1676,10 +1676,10 @@ public sealed partial class ThatEnumerable
 					               "a",
 					               "b",
 					               "c"
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1707,10 +1707,10 @@ public sealed partial class ThatEnumerable
 					             but it lacked 2 of 2 expected items:
 					               "a",
 					               "b"
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1755,7 +1755,7 @@ public sealed partial class ThatEnumerable
 					                 108,
 					                 109,
 					                 110
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1769,7 +1769,7 @@ public sealed partial class ThatEnumerable
 					               9,
 					               10
 					             ]
-					             
+
 					             Expected:
 					             [
 					               101,
@@ -1806,7 +1806,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1815,7 +1815,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1842,7 +1842,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order ignoring duplicates,
 					             but it contained item "d" at index 3 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1850,7 +1850,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1876,7 +1876,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1885,7 +1885,7 @@ public sealed partial class ThatEnumerable
 					               "d",
 					               "e"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1969,14 +1969,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             matches collection expected in any order ignoring duplicates,
 					             but it lacked 1 of 4 expected items: "d"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2003,14 +2003,14 @@ public sealed partial class ThatEnumerable
 					             but it lacked 2 of 5 expected items:
 					               "d",
 					               "e"
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",

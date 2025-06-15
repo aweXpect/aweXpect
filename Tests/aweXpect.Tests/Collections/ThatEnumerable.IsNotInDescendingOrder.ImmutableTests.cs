@@ -33,7 +33,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order,
 					             but it was
-					             
+
 					             Collection:
 					             [3, 2, 1]
 					             """);
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order using OrdinalIgnoreCaseComparer,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "A",
@@ -99,7 +99,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "c",
@@ -136,7 +136,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order for x => x is MyIntClass c ? c.Value : 0,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInDescendingOrder.MyIntClass {
@@ -180,7 +180,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order using OrdinalIgnoreCaseComparer for x => x is MyStringClass c ? c.Value : "",
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInDescendingOrder.ImmutableArrayStringMemberTests.MyStringClass {
@@ -218,7 +218,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order for x => x is MyStringClass c ? c.Value : "",
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInDescendingOrder.ImmutableArrayStringMemberTests.MyStringClass {

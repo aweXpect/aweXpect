@@ -29,7 +29,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item < 0 for no items,
 						             but could not verify, because it was already cancelled
-						             
+
 						             Collection:
 						             [
 						               0,
@@ -72,10 +72,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item == 5 for no items,
 						             but at least one did
-						             
+
 						             Matching items:
 						             [5, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -106,10 +106,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item == 1 for no items,
 						             but at least one did
-						             
+
 						             Matching items:
 						             [1, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,

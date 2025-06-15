@@ -68,10 +68,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for less than 4 items,
 					             but 4 of 7 were
-					             
+
 					             Matching items:
 					             [1, 1, 1, 1]
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -93,13 +93,13 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for less than 2 items,
 					             but 2 of 3 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               "FOO"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -122,13 +122,13 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for less than 2 items,
 					             but 2 of 3 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               "foo"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -151,13 +151,13 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for less than one item,
 					             but 2 of 3 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               "foo"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",

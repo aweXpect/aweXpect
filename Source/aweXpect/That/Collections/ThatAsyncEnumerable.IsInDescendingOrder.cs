@@ -54,7 +54,7 @@ public static partial class ThatAsyncEnumerable
 			source,
 			options);
 	}
-	
+
 	/// <summary>
 	///     Verifies that the collection is not in descending order.
 	/// </summary>

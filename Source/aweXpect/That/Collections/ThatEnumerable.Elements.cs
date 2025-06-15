@@ -137,7 +137,8 @@ public static partial class ThatEnumerable
 	///     Result class for expectations on the elements of a <see cref="IEnumerable{TItem}" /> of
 	///     <typeparamref name="TItem" />.
 	/// </summary>
-	public partial class ElementsForStructEnumerable<TEnumerable, TItem> : IElementsForStructEnumerable<TEnumerable, TItem>
+	public partial class
+		ElementsForStructEnumerable<TEnumerable, TItem> : IElementsForStructEnumerable<TEnumerable, TItem>
 		where TEnumerable : struct, IEnumerable<TItem>
 	{
 		private readonly EnumerableQuantifier _quantifier;

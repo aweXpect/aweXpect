@@ -186,9 +186,9 @@ public static partial class ThatEnumerable
 			IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly TItem[] _expected;
 		private readonly string _expectedExpression;
-		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly string _it;
 		private readonly IOptionsEquality<TMatch> _options;
 		private TItem? _firstMismatchItem;

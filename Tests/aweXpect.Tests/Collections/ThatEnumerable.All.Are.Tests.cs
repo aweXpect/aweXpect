@@ -29,7 +29,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -37,7 +37,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -122,7 +122,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -130,7 +130,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {

@@ -66,7 +66,7 @@ public static partial class ThatEnumerable
 				options);
 		}
 	}
-	
+
 	public partial class ElementsForEnumerable<TEnumerable>
 	{
 		/// <summary>
@@ -124,7 +124,7 @@ public static partial class ThatEnumerable
 				options);
 		}
 	}
-	
+
 	public partial class ElementsForStructEnumerable<TEnumerable, TItem>
 	{
 		/// <summary>

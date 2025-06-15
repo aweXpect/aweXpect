@@ -27,7 +27,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not have exactly 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [
 					               0,
@@ -58,7 +58,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not have exactly 2 items,
 					             but it did
-					             
+
 					             Collection:
 					             [1, 2]
 					             """);
@@ -99,7 +99,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not have exactly 3 items,
 					             but it did
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);

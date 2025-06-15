@@ -34,7 +34,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order,
 					             but it was
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -72,7 +72,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order,
 					             but it had 3 before 1 which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -122,7 +122,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order using Ordinal*Comparer,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -155,7 +155,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -208,7 +208,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.MyIntClass {
@@ -240,7 +240,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in ascending order for x => x.Value,
 					             but it had 3 before 1 which is not in ascending order
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.MyIntClass {
@@ -301,7 +301,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order using Ordinal*Comparer for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.StringMemberTests.MyStringClass {
@@ -338,7 +338,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order for x => x.Value,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.StringMemberTests.MyStringClass {

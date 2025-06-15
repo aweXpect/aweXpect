@@ -44,7 +44,7 @@ public sealed partial class ThatDictionary
 					             only has unique values,
 					             but it contained 1 duplicate:
 					               1
-					             
+
 					             Dictionary:
 					             {[0] = 1, [1] = 2, [2] = 3, [3] = 1}
 					             """);
@@ -65,7 +65,7 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               1,
 					               2
-					             
+
 					             Dictionary:
 					             {[0] = 1, [1] = 2, [2] = 3, [3] = 1, [4] = 2, [5] = -1}
 					             """);
@@ -137,7 +137,7 @@ public sealed partial class ThatDictionary
 					             only has unique values ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
-					             
+
 					             Dictionary:
 					             {
 					               [0] = "a",
@@ -160,7 +160,7 @@ public sealed partial class ThatDictionary
 					             only has unique values,
 					             but it contained 1 duplicate:
 					               "a"
-					             
+
 					             Dictionary:
 					             {
 					               [0] = "a",
@@ -186,7 +186,7 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
-					             
+
 					             Dictionary:
 					             {
 					               [0] = "a",
@@ -254,7 +254,7 @@ public sealed partial class ThatDictionary
 					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
-					             
+
 					             Dictionary:
 					             {
 					               [0] = ThatDictionary.MyClass {
@@ -293,7 +293,7 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               1,
 					               2
-					             
+
 					             Dictionary:
 					             {
 					               [0] = ThatDictionary.MyClass {
@@ -390,7 +390,7 @@ public sealed partial class ThatDictionary
 					             only has unique values for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
-					             
+
 					             Dictionary:
 					             {
 					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
@@ -418,7 +418,7 @@ public sealed partial class ThatDictionary
 					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
-					             
+
 					             Dictionary:
 					             {
 					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
@@ -453,7 +453,7 @@ public sealed partial class ThatDictionary
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
-					             
+
 					             Dictionary:
 					             {
 					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {

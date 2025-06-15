@@ -109,7 +109,8 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new AreAllUniqueForEnumerableConstraint<TEnumerable?, object?>(expectationBuilder, it, grammars, options)),
+				=> new AreAllUniqueForEnumerableConstraint<TEnumerable?, object?>(expectationBuilder, it, grammars,
+					options)),
 			source, options
 		);
 	}
@@ -151,7 +152,8 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new AreAllUniqueForEnumerableConstraint<ImmutableArray<TItem>, TItem>(expectationBuilder, it, grammars, options)),
+				=> new AreAllUniqueForEnumerableConstraint<ImmutableArray<TItem>, TItem>(expectationBuilder, it,
+					grammars, options)),
 			source, options
 		);
 	}
@@ -352,7 +354,7 @@ public static partial class ThatEnumerable
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("all were unique");
 	}
-	
+
 	private sealed class AreAllUniqueForEnumerableConstraint<TEnumerable, TMatch>(
 		ExpectationBuilder expectationBuilder,
 		string it,

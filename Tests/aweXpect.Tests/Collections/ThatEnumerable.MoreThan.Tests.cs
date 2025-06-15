@@ -27,7 +27,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for more than 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [
 					               0,
@@ -92,10 +92,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for more than 5 items,
 					             but only 4 of 7 were
-					             
+
 					             Not matching items:
 					             [2, 2, 3]
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -133,12 +133,12 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for more than 2 items,
 					             but only 2 of 3 were
-					             
+
 					             Not matching items:
 					             [
 					               "bar"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -161,12 +161,12 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for more than 2 items,
 					             but only 2 of 3 were
-					             
+
 					             Not matching items:
 					             [
 					               "bar"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -189,13 +189,13 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for more than 2 items,
 					             but only 2 of 4 were
-					             
+
 					             Not matching items:
 					             [
 					               "FOO",
 					               "bar"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",

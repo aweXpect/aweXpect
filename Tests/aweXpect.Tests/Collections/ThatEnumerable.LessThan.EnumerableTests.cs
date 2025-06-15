@@ -27,7 +27,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             satisfies y => (int?)y < 6 for less than 8 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [
 					               0,
@@ -70,10 +70,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for less than 2 items,
 					             but at least 2 were
-					             
+
 					             Matching items:
 					             [1, 1, (… and maybe others)]
-					             
+
 					             Collection:
 					             [
 					               1,

@@ -25,7 +25,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not have exactly 3 items,
 					             but it did
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -72,7 +72,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not have exactly 3 items,
 					             but it did
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);

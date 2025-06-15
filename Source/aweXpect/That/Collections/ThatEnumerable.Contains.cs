@@ -128,7 +128,8 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected, options, matchOptions)),
 			source,
 			options,
@@ -244,7 +245,8 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+				new IsEqualToConstraint<string?, string?>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected, options, matchOptions).Invert()),
 			source,
 			options,

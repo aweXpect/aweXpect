@@ -33,7 +33,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order,
 					             but it was
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order using OrdinalIgnoreCaseComparer,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -99,7 +99,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -136,7 +136,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order for x => x is MyIntClass c ? c.Value : 0,
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.MyIntClass {
@@ -180,7 +180,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order using OrdinalIgnoreCaseComparer for x => x is MyStringClass c ? c.Value : "",
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.ImmutableArrayStringMemberTests.MyStringClass {
@@ -218,7 +218,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in ascending order for x => x is MyStringClass c ? c.Value : "",
 					             but it was
-					             
+
 					             Collection:
 					             [
 					               ThatEnumerable.IsNotInAscendingOrder.ImmutableArrayStringMemberTests.MyStringClass {

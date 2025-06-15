@@ -33,7 +33,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -67,7 +67,7 @@ public sealed partial class ThatEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -160,7 +160,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is of type ThatEnumerable.All.Are.MyClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
@@ -194,7 +194,7 @@ public sealed partial class ThatEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatEnumerable.All.Are.MyBaseClass {
