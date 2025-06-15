@@ -48,13 +48,14 @@ public static partial class ThatEnumerable
 			this IThat<IEnumerable<TItem>?> source,
 			params TItem[] expected)
 	{
+		_ = expected ?? throw new ArgumentNullException(nameof(expected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
-					expected ?? throw new ArgumentNullException(nameof(expected)),
+					expected,
 					options)),
 			source,
 			options);
@@ -89,13 +90,14 @@ public static partial class ThatEnumerable
 			this IThat<IEnumerable<string?>?> source,
 			params string[] expected)
 	{
+		_ = expected ?? throw new ArgumentNullException(nameof(expected));
 		StringEqualityOptions options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<string, string>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
-					expected ?? throw new ArgumentNullException(nameof(expected)),
+					expected,
 					options)),
 			source,
 			options);
@@ -116,8 +118,7 @@ public static partial class ThatEnumerable
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
-					// ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-					expected?.ToArray() ?? throw new ArgumentNullException(nameof(expected)),
+					expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -132,13 +133,14 @@ public static partial class ThatEnumerable
 			params TItem[] expected)
 		where TEnumerable : IEnumerable
 	{
+		_ = expected ?? throw new ArgumentNullException(nameof(expected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
-					expected.ToArray() ?? throw new ArgumentNullException(nameof(expected)),
+					expected,
 					options)),
 			source,
 			options);
@@ -176,13 +178,14 @@ public static partial class ThatEnumerable
 			this IThat<ImmutableArray<TItem>> source,
 			params TItem[] expected)
 	{
+		_ = expected ?? throw new ArgumentNullException(nameof(expected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithForEnumerableConstraint<ImmutableArray<TItem>, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
-					expected ?? throw new ArgumentNullException(nameof(expected)),
+					expected,
 					options)),
 			source,
 			options);
@@ -221,6 +224,7 @@ public static partial class ThatEnumerable
 			this IThat<ImmutableArray<string?>> source,
 			params string[] expected)
 	{
+		_ = expected ?? throw new ArgumentNullException(nameof(expected));
 		StringEqualityOptions options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>(
@@ -228,7 +232,7 @@ public static partial class ThatEnumerable
 				=> new EndsWithForEnumerableConstraint<ImmutableArray<string?>, string>(expectationBuilder, it,
 					grammars,
 					Formatter.Format(expected),
-					expected ?? throw new ArgumentNullException(nameof(expected)),
+					expected,
 					options)),
 			source,
 			options);
@@ -265,13 +269,14 @@ public static partial class ThatEnumerable
 			this IThat<IEnumerable<TItem>?> source,
 			params TItem[] unexpected)
 	{
+		_ = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<TItem, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
-					unexpected ?? throw new ArgumentNullException(nameof(unexpected)),
+					unexpected,
 					options).Invert()),
 			source,
 			options);
@@ -307,13 +312,14 @@ public static partial class ThatEnumerable
 			this IThat<IEnumerable<string?>?> source,
 			params string[] unexpected)
 	{
+		_ = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
 		StringEqualityOptions options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<string, string>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
-					unexpected ?? throw new ArgumentNullException(nameof(unexpected)),
+					unexpected,
 					options).Invert()),
 			source,
 			options);
@@ -334,8 +340,7 @@ public static partial class ThatEnumerable
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
-					// ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-					unexpected?.ToArray() ?? throw new ArgumentNullException(nameof(unexpected)),
+					unexpected.ToArray(),
 					options).Invert()),
 			source,
 			options);
@@ -350,13 +355,14 @@ public static partial class ThatEnumerable
 			params TItem[] unexpected)
 		where TEnumerable : IEnumerable
 	{
+		_ = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
-					unexpected.ToArray() ?? throw new ArgumentNullException(nameof(unexpected)),
+					unexpected,
 					options).Invert()),
 			source,
 			options);
@@ -395,13 +401,14 @@ public static partial class ThatEnumerable
 			this IThat<ImmutableArray<TItem>> source,
 			params TItem[] unexpected)
 	{
+		_ = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithForEnumerableConstraint<ImmutableArray<TItem>, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
-					unexpected ?? throw new ArgumentNullException(nameof(unexpected)),
+					unexpected,
 					options).Invert()),
 			source,
 			options);
@@ -440,6 +447,7 @@ public static partial class ThatEnumerable
 			this IThat<ImmutableArray<string?>> source,
 			params string[] unexpected)
 	{
+		_ = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
 		StringEqualityOptions options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>(
@@ -447,7 +455,7 @@ public static partial class ThatEnumerable
 				=> new EndsWithForEnumerableConstraint<ImmutableArray<string?>, string>(expectationBuilder, it,
 					grammars,
 					Formatter.Format(unexpected),
-					unexpected ?? throw new ArgumentNullException(nameof(unexpected)),
+					unexpected,
 					options).Invert()),
 			source,
 			options);
