@@ -1794,6 +1794,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -2095,7 +2101,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -2400,7 +2407,8 @@ window.BENCHMARK_DATA = {
           204.53280202547708,
           180.27784519195558,
           175.848150908947,
-          192.50793351445878
+          192.50793351445878,
+          224.1259891827901
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2595,6 +2603,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3023,7 +3032,8 @@ window.BENCHMARK_DATA = {
           245.33033049901326,
           237.9260437829154,
           232.67388774667467,
-          232.02562278111776
+          232.02562278111776,
+          257.9945465405782
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3216,6 +3226,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3646,7 +3657,8 @@ window.BENCHMARK_DATA = {
           992.7947387695312,
           905.7902752331325,
           943.9814722061158,
-          873.0784281321934
+          873.0784281321934,
+          965.5370454152425
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3872,6 +3884,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -5302,6 +5315,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -5526,7 +5545,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -5754,7 +5774,8 @@ window.BENCHMARK_DATA = {
           291751.63441685267,
           284741.403132512,
           286932.83461216517,
-          285525.6551688058
+          285525.6551688058,
+          292256.4032451923
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5967,6 +5988,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6223,7 +6245,8 @@ window.BENCHMARK_DATA = {
           2277271.408333333,
           2197242.153125,
           2258679.250260417,
-          2222388.2276041666
+          2222388.2276041666,
+          2286349.490625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6339,6 +6362,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -6692,7 +6716,8 @@ window.BENCHMARK_DATA = {
           668726.7589285715,
           689712.5216796875,
           672909.6015625,
-          683663.7433894231
+          683663.7433894231,
+          686662.0734375
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6848,6 +6873,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -8733,6 +8759,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -9034,7 +9066,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -9339,7 +9372,8 @@ window.BENCHMARK_DATA = {
           457.90296436945596,
           476.70961029188976,
           475.0698565483093,
-          435.23586937586464
+          435.23586937586464,
+          468.7072446162884
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9649,7 +9683,8 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
-          1392
+          1392,
+          1432
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9962,7 +9997,8 @@ window.BENCHMARK_DATA = {
           505.5328419367472,
           446.0457442723788,
           561.0464864730835,
-          481.9678870519002
+          481.9678870519002,
+          489.64288495381675
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10155,6 +10191,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -10585,7 +10622,8 @@ window.BENCHMARK_DATA = {
           20903.370798746746,
           15088.433866373698,
           22367.252968924386,
-          14751.810962931315
+          14751.810962931315,
+          19373.06622314453
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10811,6 +10849,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -12703,6 +12742,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -13004,7 +13049,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -13309,7 +13355,8 @@ window.BENCHMARK_DATA = {
           220.70548770825067,
           214.71754519144693,
           222.1042958577474,
-          215.77110419273376
+          215.77110419273376,
+          211.4747458775838
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13505,6 +13552,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -13932,7 +13980,8 @@ window.BENCHMARK_DATA = {
           267.17978719075523,
           242.82264474722055,
           255.0050269762675,
-          237.36426599820456
+          237.36426599820456,
+          253.58260338647025
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14125,6 +14174,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -14555,7 +14605,8 @@ window.BENCHMARK_DATA = {
           1271.9164096832276,
           1217.0472063700358,
           1257.1778881366436,
-          1202.0696358998616
+          1202.0696358998616,
+          1182.2770084381104
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14781,6 +14832,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -16673,6 +16725,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -16974,7 +17032,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -17279,7 +17338,8 @@ window.BENCHMARK_DATA = {
           347.1617356300354,
           347.54862417493547,
           371.5721657752991,
-          357.67176113128664
+          357.67176113128664,
+          347.5104963098253
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17569,6 +17629,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -17902,7 +17963,8 @@ window.BENCHMARK_DATA = {
           491.61240717569984,
           465.5487283706665,
           548.4726373672486,
-          468.48163347244264
+          468.48163347244264,
+          483.28295974731446
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18095,6 +18157,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -18525,7 +18588,8 @@ window.BENCHMARK_DATA = {
           1411.784335708618,
           1291.573767344157,
           1349.519139734904,
-          1301.7286973317464
+          1301.7286973317464,
+          1295.1223273958478
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18751,6 +18815,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -20643,6 +20708,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -20944,7 +21015,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -21249,7 +21321,8 @@ window.BENCHMARK_DATA = {
           1403.854779179891,
           1290.8648170471192,
           1279.8576189676921,
-          1229.2228226979573
+          1229.2228226979573,
+          1485.5296230316162
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21559,7 +21632,8 @@ window.BENCHMARK_DATA = {
           2712,
           2712,
           2712,
-          2712
+          2712,
+          2752
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21872,7 +21946,8 @@ window.BENCHMARK_DATA = {
           1366.5729435511998,
           1241.6301436106364,
           1317.9282190958659,
-          1246.1236507415772
+          1246.1236507415772,
+          1341.114610417684
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22065,6 +22140,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -22495,7 +22571,8 @@ window.BENCHMARK_DATA = {
           2955.9449501037598,
           2792.977881113688,
           2871.474394480387,
-          2770.221476334792
+          2770.221476334792,
+          2882.1317749023438
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22721,6 +22798,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -24613,6 +24691,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 16:12:07 2025 \u002B0200",
         "message": "feat: support \u0060IReadOnlyDictionary\u0060 (#640)"
+      },
+      {
+        "sha": "56b575bcfc538f0915244223bb38bf2a393a939d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
+        "message": "fix: avoid duplicate contexts in collection expectations (#641)"
       }
     ],
     "labels": [
@@ -24914,7 +24998,8 @@ window.BENCHMARK_DATA = {
       "bc68bb41",
       "a2199eab",
       "92019bdc",
-      "d832baa0"
+      "d832baa0",
+      "56b575bc"
     ],
     "datasets": [
       {
@@ -25219,7 +25304,8 @@ window.BENCHMARK_DATA = {
           1530.5494247164045,
           1412.1140669413976,
           1457.5079257965087,
-          1441.8127782185873
+          1441.8127782185873,
+          1670.8219671885172
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25529,7 +25615,8 @@ window.BENCHMARK_DATA = {
           2872,
           2872,
           2872,
-          2872
+          2872,
+          2912
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25842,7 +25929,8 @@ window.BENCHMARK_DATA = {
           151538.22041829428,
           152160.88288225446,
           150571.79912860578,
-          150658.91510416666
+          150658.91510416666,
+          152840.81640625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26152,7 +26240,8 @@ window.BENCHMARK_DATA = {
           63787,
           63788,
           63787,
-          64323
+          64323,
+          63352
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26465,7 +26554,8 @@ window.BENCHMARK_DATA = {
           4705.577638753255,
           4666.275335458608,
           4681.740395609538,
-          4463.100389208113
+          4463.100389208113,
+          4870.437549845377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26691,6 +26781,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
