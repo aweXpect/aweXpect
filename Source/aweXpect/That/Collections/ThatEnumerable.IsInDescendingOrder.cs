@@ -119,7 +119,7 @@ public static partial class ThatEnumerable
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TItem>(
 					expectationBuilder, it, grammars,
-					x => (TItem)x!,
+					x => x,
 					aweXpect.SortOrder.Descending,
 					options,
 					"")),
@@ -258,7 +258,7 @@ public static partial class ThatEnumerable
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TItem>(
 					expectationBuilder, it, grammars,
-					x => (TItem)x!,
+					x => x,
 					aweXpect.SortOrder.Descending,
 					options,
 					"").Invert()),
@@ -284,7 +284,7 @@ public static partial class ThatEnumerable
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TMember>(
 					expectationBuilder, it, grammars,
-					o => memberAccessor((TItem)o!),
+					memberAccessor,
 					aweXpect.SortOrder.Descending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}").Invert()),
