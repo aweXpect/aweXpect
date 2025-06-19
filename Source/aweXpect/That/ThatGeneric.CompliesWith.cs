@@ -49,6 +49,7 @@ public static partial class ThatGeneric
 		private readonly ManualExpectationBuilder<T> _itemExpectationBuilder;
 		private readonly RepeatedCheckOptions _options;
 		private bool _isNegated;
+		private bool _isOnceNegated;
 
 		public CompliesWithConstraint(ExpectationBuilder expectationBuilder, ExpectationGrammars grammars,
 			Action<IThat<T>> expectations, RepeatedCheckOptions options)
@@ -67,7 +68,7 @@ public static partial class ThatGeneric
 			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 			if (isMatch.Outcome == Outcome.Success != _isNegated)
 			{
-				return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
+				return NegateOnceIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 			}
 
 			if (_options.Timeout > TimeSpan.Zero)
@@ -88,23 +89,22 @@ public static partial class ThatGeneric
 					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 					if (isMatch.Outcome == Outcome.Success != _isNegated)
 					{
-						return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
+						return NegateOnceIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 					}
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
+			return NegateOnceIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-		}
+			=> _itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 
-		private ConstraintResult NegateIfNegated(ConstraintResult constraintResult)
+		private ConstraintResult NegateOnceIfNegated(ConstraintResult constraintResult)
 		{
-			if (_isNegated)
+			if (_isNegated && !_isOnceNegated)
 			{
+				_isOnceNegated = true;
 				return constraintResult.Negate();
 			}
 
