@@ -22,6 +22,7 @@ public static partial class ThatEnumerable
 	private const string For = " for ";
 	private const string ComplyItems = " items";
 	private const string SortOrder = " order";
+	private const string CannotCompareToNull = " cannot compare to <null>";
 
 	private sealed class IsEqualToConstraint<TItem, TMatch>(
 		ExpectationBuilder expectationBuilder,
@@ -98,7 +99,7 @@ public static partial class ThatEnumerable
 		{
 			if (expected is null)
 			{
-				stringBuilder.Append(It).Append(" cannot compare to <null>");
+				stringBuilder.Append(It).Append(CannotCompareToNull);
 			}
 			else if (_failure is not null)
 			{
@@ -113,7 +114,7 @@ public static partial class ThatEnumerable
 		{
 			if (expected is null)
 			{
-				stringBuilder.Append(It).Append(" cannot compare to <null>");
+				stringBuilder.Append(It).Append(CannotCompareToNull);
 			}
 			else
 			{
@@ -197,7 +198,7 @@ public static partial class ThatEnumerable
 		{
 			if (expected is null)
 			{
-				stringBuilder.Append(It).Append(" cannot compare to <null>");
+				stringBuilder.Append(It).Append(CannotCompareToNull);
 			}
 			else if (_failure is not null)
 			{
@@ -212,7 +213,7 @@ public static partial class ThatEnumerable
 		{
 			if (expected is null)
 			{
-				stringBuilder.Append(It).Append(" cannot compare to <null>");
+				stringBuilder.Append(It).Append(CannotCompareToNull);
 			}
 			else
 			{

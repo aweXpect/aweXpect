@@ -97,6 +97,140 @@ public static partial class ThatEnumerable
 	}
 
 	/// <summary>
+	///     Verifies that the collection contains the <paramref name="expected" /> value.
+	/// </summary>
+	public static ObjectCountResult<IEnumerable, IThat<IEnumerable?>, object?>
+		Contains(
+			this IThat<IEnumerable?> source,
+			object? expected)
+	{
+		Quantifier quantifier = new();
+		ObjectEqualityOptions<object?> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCountResult<IEnumerable, IThat<IEnumerable?>, object?>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<IEnumerable, object?>(
+					expectationBuilder,
+					it, grammars,
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
+					a => options.AreConsideredEqual(a, expected),
+					quantifier)),
+			source,
+			quantifier,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the collection contains an item that satisfies the <paramref name="predicate" />.
+	/// </summary>
+	public static CountResult<IEnumerable, IThat<IEnumerable?>>
+		Contains(
+			this IThat<IEnumerable?> source,
+			Func<object?, bool> predicate,
+			[CallerArgumentExpression("predicate")]
+			string doNotPopulateThisValue = "")
+	{
+		predicate.ThrowIfNull();
+		Quantifier quantifier = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CountResult<IEnumerable, IThat<IEnumerable?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<IEnumerable, object?>(
+					expectationBuilder, it, grammars,
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
+					predicate,
+					quantifier)),
+			source,
+			quantifier);
+	}
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection contains the <paramref name="expected" /> value.
+	/// </summary>
+	public static ObjectCountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>
+		Contains<TItem>(
+			this IThat<ImmutableArray<TItem>> source,
+			TItem expected)
+	{
+		Quantifier quantifier = new();
+		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+					expectationBuilder,
+					it, grammars,
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
+					a => options.AreConsideredEqual(a, expected),
+					quantifier)),
+			source,
+			quantifier,
+			options);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection contains the <paramref name="expected" /> value.
+	/// </summary>
+	public static StringEqualityTypeCountResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>> Contains(
+		this IThat<ImmutableArray<string?>> source,
+		string? expected)
+	{
+		Quantifier quantifier = new();
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringEqualityTypeCountResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<ImmutableArray<string?>, string?>(
+					expectationBuilder, it, grammars,
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
+					a => options.AreConsideredEqual(a, expected),
+					quantifier)),
+			source,
+			quantifier,
+			options);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection contains an item that satisfies the <paramref name="predicate" />.
+	/// </summary>
+	public static CountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>
+		Contains<TItem>(
+			this IThat<ImmutableArray<TItem>> source,
+			Func<TItem, bool> predicate,
+			[CallerArgumentExpression("predicate")]
+			string doNotPopulateThisValue = "")
+	{
+		predicate.ThrowIfNull();
+		Quantifier quantifier = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+					expectationBuilder, it, grammars,
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
+					predicate,
+					quantifier)),
+			source,
+			quantifier);
+	}
+#endif
+
+	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
 	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
@@ -312,6 +446,140 @@ public static partial class ThatEnumerable
 	}
 
 	/// <summary>
+	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static ObjectCountResult<IEnumerable, IThat<IEnumerable?>, object?>
+		DoesNotContain(
+			this IThat<IEnumerable?> source,
+			object? unexpected)
+	{
+		Quantifier quantifier = new();
+		ObjectEqualityOptions<object?> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCountResult<IEnumerable, IThat<IEnumerable?>, object?>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<IEnumerable, object?>(
+					expectationBuilder,
+					it, grammars,
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(unexpected)}{options}"
+						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
+					a => options.AreConsideredEqual(a, unexpected),
+					quantifier).Invert()),
+			source,
+			quantifier,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
+	/// </summary>
+	public static CountResult<IEnumerable, IThat<IEnumerable?>>
+		DoesNotContain(
+			this IThat<IEnumerable?> source,
+			Func<object?, bool> predicate,
+			[CallerArgumentExpression("predicate")]
+			string doNotPopulateThisValue = "")
+	{
+		predicate.ThrowIfNull();
+		Quantifier quantifier = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CountResult<IEnumerable, IThat<IEnumerable?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<IEnumerable, object?>(
+					expectationBuilder, it, grammars,
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q.ToNegatedString()}",
+					predicate,
+					quantifier).Invert()),
+			source,
+			quantifier);
+	}
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static ObjectCountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>
+		DoesNotContain<TItem>(
+			this IThat<ImmutableArray<TItem>> source,
+			TItem unexpected)
+	{
+		Quantifier quantifier = new();
+		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+					expectationBuilder,
+					it, grammars,
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(unexpected)}{options}"
+						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
+					a => options.AreConsideredEqual(a, unexpected),
+					quantifier).Invert()),
+			source,
+			quantifier,
+			options);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static StringEqualityTypeCountResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>> DoesNotContain(
+		this IThat<ImmutableArray<string?>> source,
+		string? unexpected)
+	{
+		Quantifier quantifier = new();
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringEqualityTypeCountResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<ImmutableArray<string?>, string?>(
+					expectationBuilder, it, grammars,
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(unexpected)}{options}"
+						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
+					a => options.AreConsideredEqual(a, unexpected),
+					quantifier).Invert()),
+			source,
+			quantifier,
+			options);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
+	/// </summary>
+	public static CountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>
+		DoesNotContain<TItem>(
+			this IThat<ImmutableArray<TItem>> source,
+			Func<TItem, bool> predicate,
+			[CallerArgumentExpression("predicate")]
+			string doNotPopulateThisValue = "")
+	{
+		predicate.ThrowIfNull();
+		Quantifier quantifier = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CountResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+					expectationBuilder, it, grammars,
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q.ToNegatedString()}",
+					predicate,
+					quantifier).Invert()),
+			source,
+			quantifier);
+	}
+#endif
+
+	/// <summary>
 	///     Verifies that the collection does not contain the provided <paramref name="unexpected" /> collection.
 	/// </summary>
 	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
@@ -487,9 +755,138 @@ public static partial class ThatEnumerable
 			_materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			_count = 0;
-			foreach (TItem item in _materializedEnumerable.Where(predicate))
+			foreach (TItem _ in _materializedEnumerable.Where(predicate))
 			{
-				if (predicate(item))
+				_count++;
+				bool? check = quantifier.Check(_count, false);
+				switch (check)
+				{
+					case false:
+						Outcome = Outcome.Failure;
+						expectationBuilder.AddCollectionContext(_materializedEnumerable);
+						return this;
+					case true:
+						Outcome = Outcome.Success;
+						return this;
+				}
+			}
+
+			expectationBuilder.AddCollectionContext(_materializedEnumerable);
+			if (quantifier.Check(_count, true) ?? _isNegated)
+			{
+				Outcome = Outcome.Success;
+				return this;
+			}
+
+			_isFinished = true;
+			Outcome = Outcome.Failure;
+			return this;
+		}
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectationText.Invoke(quantifier));
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual == null)
+			{
+				stringBuilder.Append(it).Append(" was <null>");
+			}
+			else if (_isFinished)
+			{
+				if (_count == 0)
+				{
+					stringBuilder.Append(it).Append(" did not contain it");
+				}
+				else if (_count == 1)
+				{
+					stringBuilder.Append(it).Append(" contained it once");
+				}
+				else if (_count == 2)
+				{
+					stringBuilder.Append(it).Append(" contained it twice");
+				}
+				else
+				{
+					stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times");
+				}
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" contained it at least ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once");
+				}
+				else if (_count == 2)
+				{
+					stringBuilder.Append("twice");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times");
+				}
+			}
+		}
+
+		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(IEnumerable<TItem>));
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
+		}
+	}
+
+	private sealed class ContainForEnumerableConstraint<TEnumerable, TItem>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		Func<Quantifier, string> expectationText,
+		Func<TItem, bool> predicate,
+		Quantifier quantifier)
+		: ConstraintResult(grammars),
+			IContextConstraint<TEnumerable?>
+		where TEnumerable : IEnumerable
+	{
+		private IEnumerable? _actual;
+		private int _count;
+		private bool _isFinished;
+		private bool _isNegated;
+		private IEnumerable? _materializedEnumerable;
+
+		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		{
+			_actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			_materializedEnumerable = context.UseMaterializedEnumerable(actual);
+			_count = 0;
+			foreach (object? item in _materializedEnumerable)
+			{
+				if (item is TItem typedItem && predicate(typedItem))
 				{
 					_count++;
 					bool? check = quantifier.Check(_count, false);
