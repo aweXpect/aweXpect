@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using aweXpect.Equivalency;
+﻿using aweXpect.Equivalency;
 
 namespace aweXpect.Core.Tests.Equivalency;
 
