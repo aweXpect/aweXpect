@@ -381,7 +381,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("[g-h]{1}[o]*", false)]
 			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["foo", "bar", "baz",];
+				ImmutableArray<string?> subject = ["foo", "bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).Contains(regex).AsRegex();
@@ -406,7 +406,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("f??o", false)]
 			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["foo", "bar", "baz",];
+				ImmutableArray<string?> subject = ["foo", "bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).Contains(wildcard).AsWildcard();
@@ -455,7 +455,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, false)]
 			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("blue").AtLeast(minimum.Times());
@@ -482,7 +482,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, true)]
 			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("blue").AtMost(maximum.Times());
@@ -509,7 +509,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, 4, false)]
 			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("blue").Between(minimum).And(maximum.Times());
@@ -536,7 +536,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, false)]
 			public async Task ShouldSupportExactly(int times, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("yellow").Exactly(times);
@@ -562,7 +562,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, true)]
 			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("blue").LessThan(maximum.Times());
@@ -589,7 +589,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, false)]
 			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("blue").MoreThan(minimum.Times());
@@ -613,7 +613,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportNever()
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).Contains("blue").Never();
@@ -673,7 +673,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("goo", false)]
 			public async Task WhenIgnoringCase_ShouldUseCaseInsensitiveMatch(string match, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["foo", "bar", "baz",];
+				ImmutableArray<string?> subject = ["foo", "bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).Contains(match).IgnoringCase();
@@ -699,7 +699,7 @@ public sealed partial class ThatEnumerable
 			public async Task WhenIgnoringNewlineStyle_ShouldIgnoreNewlineStyle(string match, bool expectSuccess)
 			{
 				string nl = Environment.NewLine;
-				ImmutableArray<string> subject = [$"fo{nl}o", $"ba{nl}r", $"ba{nl}z",];
+				ImmutableArray<string?> subject = [$"fo{nl}o", $"ba{nl}r", $"ba{nl}z",];
 
 				async Task Act()
 					=> await That(subject).Contains(match).IgnoringNewlineStyle();

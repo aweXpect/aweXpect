@@ -319,7 +319,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, true)]
 			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("blue").AtLeast(minimum.Times());
@@ -345,7 +345,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(2, false)]
 			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("blue").AtMost(maximum.Times());
@@ -372,7 +372,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, 4, true)]
 			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("blue").Between(minimum).And(maximum.Times());
@@ -396,7 +396,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportCasing()
 			{
-				ImmutableArray<string> subject = ["FOO",];
+				ImmutableArray<string?> subject = ["FOO",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("foo").IgnoringCase();
@@ -420,7 +420,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, true)]
 			public async Task ShouldSupportExactly(int times, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("blue").Exactly(times);
@@ -446,7 +446,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, false)]
 			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("blue").LessThan(maximum.Times());
@@ -473,7 +473,7 @@ public sealed partial class ThatEnumerable
 			[InlineData(3, true)]
 			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
 			{
-				ImmutableArray<string> subject = ["green", "blue", "blue", "yellow",];
+				ImmutableArray<string?> subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("blue").MoreThan(minimum.Times());
@@ -497,7 +497,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsUnexpectedValue_ShouldFail()
 			{
-				ImmutableArray<string> subject = ["FOO", "foo",];
+				ImmutableArray<string?> subject = ["FOO", "foo",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("foo");
@@ -519,7 +519,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableDoesNotContainUnexpectedValue_ShouldSucceed()
 			{
-				ImmutableArray<string> subject = ["FOO",];
+				ImmutableArray<string?> subject = ["FOO",];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain("foo");
