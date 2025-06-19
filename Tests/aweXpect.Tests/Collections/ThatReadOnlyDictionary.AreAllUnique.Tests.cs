@@ -258,19 +258,19 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Dictionary:
 					             {
-					               [0] = ThatDictionary.MyClass {
+					               [0] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 1
 					               },
-					               [1] = ThatDictionary.MyClass {
+					               [1] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 2
 					               },
-					               [2] = ThatDictionary.MyClass {
+					               [2] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 3
 					               },
-					               [3] = ThatDictionary.MyClass {
+					               [3] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 1
 					               }
@@ -297,27 +297,27 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Dictionary:
 					             {
-					               [0] = ThatDictionary.MyClass {
+					               [0] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 1
 					               },
-					               [1] = ThatDictionary.MyClass {
+					               [1] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 2
 					               },
-					               [2] = ThatDictionary.MyClass {
+					               [2] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 3
 					               },
-					               [3] = ThatDictionary.MyClass {
+					               [3] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 1
 					               },
-					               [4] = ThatDictionary.MyClass {
+					               [4] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = 2
 					               },
-					               [5] = ThatDictionary.MyClass {
+					               [5] = ThatReadOnlyDictionary.MyClass {
 					                 Inner = <null>,
 					                 Value = -1
 					               }
@@ -394,10 +394,10 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Dictionary:
 					             {
-					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [0] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               [1] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [1] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "A"
 					               }
 					             }
@@ -422,16 +422,16 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Dictionary:
 					             {
-					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [0] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               [1] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [1] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               [2] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [2] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },
-					               [3] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [3] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               }
 					             }
@@ -457,22 +457,22 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Dictionary:
 					             {
-					               [0] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [0] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               [1] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [1] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               [2] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [2] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },
-					               [3] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [3] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               [4] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [4] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               [5] = ThatDictionary.AreAllUnique.StringMemberTests.MyStringClass {
+					               [5] = ThatReadOnlyDictionary.AreAllUnique.StringMemberTests.MyStringClass {
 					                 Value = "x"
 					               }
 					             }

@@ -123,6 +123,22 @@ internal static class CollectionHelpers
 					-2)));
 	}
 
+	internal static ExpectationBuilder AddCollectionContext<TKey, TValue>(this ExpectationBuilder expectationBuilder,
+		IReadOnlyDictionary<TKey, TValue>? value, bool isIncomplete = false)
+	{
+		if (value is null)
+		{
+			return expectationBuilder;
+		}
+
+		return expectationBuilder.UpdateContexts(contexts
+			=> contexts
+				.Add(new ResultContext("Dictionary",
+					() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
+						.AppendIsIncomplete(isIncomplete),
+					-2)));
+	}
+
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
 	{
 		if (!isIncomplete || formattedItems.Length < 3)
