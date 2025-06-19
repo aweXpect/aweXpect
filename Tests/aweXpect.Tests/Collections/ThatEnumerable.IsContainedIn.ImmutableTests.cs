@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -9,12 +11,12 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class IsContainedIn
 	{
-		public sealed class InSameOrderTests
+		public sealed class ImmutableInSameOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -61,7 +63,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -73,7 +75,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -128,7 +130,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int>? expected = null;
 
 				async Task Act()
@@ -143,25 +145,9 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IEnumerable<string>? subject = null;
-
-				async Task Act()
-					=> await That(subject).IsContainedIn([]);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             is contained in collection [] in order,
-					             but it was <null>
-					             """);
-			}
-
-			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -199,7 +185,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -211,7 +197,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -243,7 +229,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -278,7 +264,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -311,7 +297,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -343,7 +329,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -355,7 +341,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -387,7 +373,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -399,7 +385,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -431,7 +417,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -443,7 +429,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -456,7 +442,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -466,12 +452,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class InSameOrderIgnoringDuplicatesTests
+		public sealed class ImmutableInSameOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -518,7 +504,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -530,7 +516,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
@@ -542,7 +528,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -597,7 +583,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -635,7 +621,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -647,7 +633,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -679,7 +665,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -714,7 +700,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -747,7 +733,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -759,7 +745,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -771,7 +757,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -783,7 +769,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -795,7 +781,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -807,7 +793,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -819,7 +805,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -831,7 +817,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -841,12 +827,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class InAnyOrderTests
+		public sealed class ImmutableInAnyOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -893,7 +879,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -905,7 +891,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -960,7 +946,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -998,7 +984,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -1010,7 +996,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1042,7 +1028,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1077,7 +1063,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1089,7 +1075,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1121,7 +1107,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -1133,7 +1119,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1165,7 +1151,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -1177,7 +1163,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1209,7 +1195,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -1221,7 +1207,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -1234,7 +1220,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1244,12 +1230,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class InAnyOrderIgnoringDuplicatesTests
+		public sealed class ImmutableInAnyOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -1296,7 +1282,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "a", "b", "c", "a",];
 
 				async Task Act()
@@ -1308,7 +1294,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
@@ -1320,7 +1306,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -1375,7 +1361,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -1413,7 +1399,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -1425,7 +1411,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1457,7 +1443,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1492,7 +1478,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1504,7 +1490,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1516,7 +1502,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -1528,7 +1514,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1540,7 +1526,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -1552,7 +1538,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1564,7 +1550,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -1576,7 +1562,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -1588,7 +1574,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1598,12 +1584,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class ProperlyInSameOrderTests
+		public sealed class ImmutableProperlyInSameOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -1650,7 +1636,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1662,7 +1648,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -1717,7 +1703,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -1755,7 +1741,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -1767,7 +1753,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1801,7 +1787,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1837,7 +1823,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1871,7 +1857,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1905,7 +1891,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -1917,7 +1903,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1951,7 +1937,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -1963,7 +1949,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -1997,7 +1983,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -2009,7 +1995,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -2022,7 +2008,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2051,12 +2037,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class ProperlyInSameOrderIgnoringDuplicatesTests
+		public sealed class ImmutableProperlyInSameOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -2103,7 +2089,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2115,7 +2101,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
@@ -2127,7 +2113,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -2182,7 +2168,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -2220,7 +2206,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -2232,7 +2218,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2266,7 +2252,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2302,7 +2288,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2336,7 +2322,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2368,7 +2354,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -2400,7 +2386,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2432,7 +2418,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -2464,7 +2450,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2496,7 +2482,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -2508,7 +2494,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -2520,7 +2506,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2549,12 +2535,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class ProperlyInAnyOrderTests
+		public sealed class ImmutableProperlyInAnyOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -2601,7 +2587,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2613,7 +2599,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -2668,7 +2654,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -2706,7 +2692,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -2718,7 +2704,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2752,7 +2738,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2788,7 +2774,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2819,7 +2805,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2853,7 +2839,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -2865,7 +2851,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2899,7 +2885,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -2911,7 +2897,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2945,7 +2931,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -2957,7 +2943,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -2970,7 +2956,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -2999,12 +2985,12 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class ProperlyInAnyOrderIgnoringDuplicatesTests
+		public sealed class ImmutableProperlyInAnyOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 11),];
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -3052,7 +3038,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "a", "b", "c", "a",];
 
 				async Task Act()
@@ -3065,7 +3051,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				ImmutableArray<string?> subject = [];
 				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
@@ -3078,7 +3064,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				ImmutableArray<int> subject = [..Enumerable.Range(1, 10),];
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -3134,7 +3120,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
@@ -3173,7 +3159,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["b", "b", "c", "d",];
 				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -3186,7 +3172,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3221,7 +3207,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "d", "e",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3258,7 +3244,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				ImmutableArray<string?> subject = ["a", "c", "b",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3290,7 +3276,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["c", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3323,7 +3309,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
@@ -3356,7 +3342,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3389,7 +3375,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
@@ -3422,7 +3408,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3455,7 +3441,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
@@ -3468,7 +3454,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
@@ -3481,7 +3467,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
@@ -3512,3 +3498,4 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
+#endif

@@ -27,7 +27,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
-		string expectedExpression,
+		string? expectedExpression,
 		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
@@ -89,7 +89,107 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
+			stringBuilder.Append(matchOptions.GetExpectation(
+				expectedExpression ?? Formatter.Format(expected, FormattingOptions.SingleLine), Grammars));
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (expected is null)
+			{
+				stringBuilder.Append(It).Append(" cannot compare to <null>");
+			}
+			else if (_failure is not null)
+			{
+				stringBuilder.Append(_failure);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalExpectation(stringBuilder, indentation);
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (expected is null)
+			{
+				stringBuilder.Append(It).Append(" cannot compare to <null>");
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" did");
+			}
+		}
+	}
+
+	private sealed class IsEqualToForEnumerableConstraint<TEnumerable, TItem, TMatch>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		string? expectedExpression,
+		IEnumerable<TItem>? expected,
+		IOptionsEquality<TMatch> options,
+		CollectionMatchOptions matchOptions)
+		: ConstraintResult.WithEqualToValue<TEnumerable?>(it, grammars, expected is null),
+			IContextConstraint<TEnumerable?>
+		where TEnumerable : IEnumerable?
+		where TItem : TMatch
+	{
+		private string? _failure;
+
+		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		{
+			Actual = actual;
+			if (actual is null || expected is null)
+			{
+				Outcome = actual is null && expected is null ? Outcome.Success : Outcome.Failure;
+				return this;
+			}
+
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Expected",
+					() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
+					{
+						ICollection<TItem> coll => coll.Count,
+						ICountable countable => countable.Count,
+						_ => null,
+					})),
+					-2)));
+			IEnumerable materializedEnumerable = context.UseMaterializedEnumerable(actual);
+			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
+			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+
+			foreach (TItem item in materializedEnumerable)
+			{
+				if (matcher.Verify(It, item, options, maximumNumber, out _failure))
+				{
+					_failure ??= TooManyDeviationsError();
+					Outcome = Outcome.Failure;
+					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
+					return this;
+				}
+			}
+
+			if (matcher.VerifyComplete(It, options, maximumNumber, out _failure))
+			{
+				_failure ??= TooManyDeviationsError();
+				Outcome = Outcome.Failure;
+				expectationBuilder.AddCollectionContext(materializedEnumerable);
+				return this;
+			}
+
+			expectationBuilder.AddCollectionContext(materializedEnumerable);
+			Outcome = Outcome.Success;
+			return this;
+		}
+
+		private string TooManyDeviationsError()
+			=> $"{It} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations";
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(matchOptions.GetExpectation(
+				expectedExpression ?? Formatter.Format(expected, FormattingOptions.SingleLine), Grammars));
 			stringBuilder.Append(options);
 		}
 
