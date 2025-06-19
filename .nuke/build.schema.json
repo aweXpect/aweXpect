@@ -37,9 +37,11 @@
         "CodeAnalysisEnd",
         "CodeCoverage",
         "Compile",
+        "DebugUnitTests",
         "DotNetFrameworkUnitTests",
         "DotNetUnitTests",
         "MutationComment",
+        "MutationTestDashboard",
         "MutationTestExecution",
         "MutationTests",
         "Pack",
@@ -48,6 +50,7 @@
         "TestFrameworks",
         "TestingPlatformFrameworks",
         "UnitTests",
+        "UnitTestsWithCoverage",
         "VsTestFrameworks",
         "XunitTestingPlatformFrameworks"
       ]
