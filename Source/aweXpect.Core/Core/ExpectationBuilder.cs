@@ -540,12 +540,25 @@ internal class ExpectationBuilder<TValue> : ExpectationBuilder
 			timeoutCts.CancelAfter(timeout.Value);
 			CancellationToken token = timeoutCts.Token;
 			TValue dataWithTimeout = await _subjectSource.GetValue(timeSystem, token);
-			Customize.aweXpect.TraceWriter.Value?.WriteMessage($"Checking expectation for {Subject} {dataWithTimeout} with timeout of {Formatter.Format(timeout)}");
+			Customize.aweXpect.TraceWriter.Value?.WriteMessage(
+				$"Checking expectation for {Subject} {dataWithTimeout} with timeout of {Formatter.Format(timeout)}");
 			return await rootNode.IsMetBy(dataWithTimeout, context, token);
 		}
 
-		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken);
-		Customize.aweXpect.TraceWriter.Value?.WriteMessage($"Checking expectation for {Subject} {data}");
+		TValue data;
+		try
+		{
+			data = await _subjectSource.GetValue(timeSystem, cancellationToken);
+			Customize.aweXpect.TraceWriter.Value?.WriteMessage($"Checking expectation for {Subject} {data}");
+		}
+		catch (Exception exception)
+		{
+			ConstraintResult expectation = await rootNode.IsMetBy(default(TValue), context, cancellationToken);
+			Customize.aweXpect.TraceWriter.Value?.WriteMessage(
+				$"Checking expectation for {Subject} threw an exception");
+			return new ConstraintResult.ExceptionConstraintResult(expectation, exception, this);
+		}
+
 		return await rootNode.IsMetBy(data, context, cancellationToken);
 	}
 }
