@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
@@ -6,6 +7,9 @@ using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
+#endif
 
 namespace aweXpect;
 
@@ -273,6 +277,83 @@ public static partial class ThatEnumerable
 			options,
 			matchOptions);
 	}
+
+	/// <summary>
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionMatchResult<IEnumerable, IThat<IEnumerable?>, TItem>
+		IsEqualTo<TItem>(
+			this IThat<IEnumerable?> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCollectionMatchResult<IEnumerable, IThat<IEnumerable?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToForEnumerableConstraint<IEnumerable, TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					options,
+					matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionBeContainedInResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>
+		IsEqualTo<TItem>(
+			this IThat<ImmutableArray<TItem>> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCollectionBeContainedInResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToForEnumerableConstraint<ImmutableArray<TItem>, TItem, TItem>(expectationBuilder, it,
+					grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					options,
+					matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionBeContainedInResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>
+		IsEqualTo(this IThat<ImmutableArray<string?>> source,
+			IEnumerable<string?> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringCollectionBeContainedInResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToForEnumerableConstraint<ImmutableArray<string?>, string?, string?>(expectationBuilder, it,
+					grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					options,
+					matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+#endif
 
 	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
@@ -546,4 +627,84 @@ public static partial class ThatEnumerable
 			options,
 			matchOptions);
 	}
+
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
+	/// </summary>
+	public static ObjectCollectionMatchResult<IEnumerable, IThat<IEnumerable?>, TItem>
+		IsNotEqualTo<TItem>(
+			this IThat<IEnumerable?> source,
+			IEnumerable<TItem> unexpected,
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCollectionMatchResult<IEnumerable, IThat<IEnumerable?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToForEnumerableConstraint<IEnumerable, TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					options,
+					matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
+	/// </summary>
+	public static ObjectCollectionBeContainedInResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>
+		IsNotEqualTo<TItem>(
+			this IThat<ImmutableArray<TItem>> source,
+			IEnumerable<TItem> unexpected,
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectCollectionBeContainedInResult<ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToForEnumerableConstraint<ImmutableArray<TItem>, TItem, TItem>(expectationBuilder, it,
+					grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					options,
+					matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
+	/// </summary>
+	public static StringCollectionBeContainedInResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>
+		IsNotEqualTo(this IThat<ImmutableArray<string?>> source,
+			IEnumerable<string?> unexpected,
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringCollectionBeContainedInResult<ImmutableArray<string?>, IThat<ImmutableArray<string?>>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToForEnumerableConstraint<ImmutableArray<string?>, string?, string?>(expectationBuilder, it,
+					grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					options,
+					matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+#endif
 }

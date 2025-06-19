@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class Exactly
+	public sealed partial class Exactly
 	{
 		public sealed class ItemsTests
 		{
@@ -28,7 +28,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for exactly 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [
 					               0,
@@ -71,7 +71,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for exactly one item,
 					             but at least 2 were
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -113,7 +113,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 2 for exactly 4 items,
 					             but only 2 of 7 were
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -132,7 +132,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for exactly 3 items,
 					             but at least 4 were
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -179,7 +179,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for exactly one item,
 					             but at least 2 were
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -214,7 +214,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly 3 items,
 					             but only 2 of 4 were
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -238,7 +238,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly one item,
 					             but at least 2 were
-					             
+
 					             Collection:
 					             [
 					               "foo",

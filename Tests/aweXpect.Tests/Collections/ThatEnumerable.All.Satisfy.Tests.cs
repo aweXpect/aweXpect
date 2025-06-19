@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class Satisfy
+		public sealed partial class Satisfy
 		{
 			public sealed class ItemTests
 			{
@@ -28,7 +28,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies x => x < 6 for all items,
 						             but could not verify, because it was already cancelled
-						             
+
 						             Collection:
 						             [
 						               0,
@@ -71,10 +71,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies x => x == 1 for all items,
 						             but not all did
-						             
+
 						             Not matching items:
 						             [2, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -105,10 +105,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies x => x == 1 for all items,
 						             but only 4 of 7 did
-						             
+
 						             Not matching items:
 						             [2, 2, 3]
-						             
+
 						             Collection:
 						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
@@ -181,12 +181,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies x => x?.StartsWith("ba") == true for all items,
 						             but only 2 of 3 did
-						             
+
 						             Not matching items:
 						             [
 						               "foo"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo",

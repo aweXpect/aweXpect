@@ -1,7 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -185,7 +184,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
-						ValueFormatters.Format(Formatter, _matchingItems,
+						Formatter.Format(_matchingItems,
 								typeof(TItem).GetFormattingOption(_matchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
@@ -195,7 +194,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
-						ValueFormatters.Format(Formatter, _notMatchingItems,
+						Formatter.Format(_notMatchingItems,
 								typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));

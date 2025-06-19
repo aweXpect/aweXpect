@@ -1,5 +1,4 @@
-﻿#if NET8_0_OR_GREATER
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -8,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class EndsWith
+	public sealed partial class EndsWith
 	{
 		public sealed class Tests
 		{
@@ -62,9 +61,9 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with expected,
+					             ends with [1, 3],
 					             but it contained 2 at index 3 instead of 1
-					             
+
 					             Collection:
 					             [0, 0, 1, 2, 3, (… and maybe others)]
 					             """);
@@ -86,7 +85,7 @@ public sealed partial class ThatEnumerable
 					               0,
 					               0
 					             ]
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -147,7 +146,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             ends with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "FOO"
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -183,4 +182,3 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
-#endif

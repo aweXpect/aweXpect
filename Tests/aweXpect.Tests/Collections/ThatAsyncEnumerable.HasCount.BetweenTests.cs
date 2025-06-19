@@ -28,7 +28,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
@@ -37,7 +37,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMatchingItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -48,7 +48,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -58,7 +58,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but found only 2
-					             
+
 					             Collection:
 					             [1, 2]
 					             """);
@@ -67,7 +67,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 4, 5, 6, 7,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3, 4, 5, 6, 7);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -77,7 +77,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has between 3 and 6 items,
 					             but found at least 7
-					             
+
 					             Collection:
 					             [
 					               1,

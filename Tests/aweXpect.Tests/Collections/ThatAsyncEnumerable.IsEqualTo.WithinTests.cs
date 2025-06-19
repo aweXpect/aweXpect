@@ -39,10 +39,10 @@ public sealed partial class ThatAsyncEnumerable
 						             but it
 						               contained item 2.3 at index 1 that was not expected and
 						               lacked 1 of 3 expected items: 2.0
-						             
+
 						             Collection:
 						             [1.1, 2.3, 3.1]
-						             
+
 						             Expected:
 						             [1.0, 2.0, 3.0]
 						             """);
@@ -77,10 +77,10 @@ public sealed partial class ThatAsyncEnumerable
 						             but it
 						               contained item 2.3 at index 2 that was not expected and
 						               lacked 1 of 4 expected items: 2.0
-						             
+
 						             Collection:
 						             [1.1, <null>, 2.3, 3.1]
-						             
+
 						             Expected:
 						             [1.0, <null>, 2.0, 3.0]
 						             """);
@@ -126,10 +126,10 @@ public sealed partial class ThatAsyncEnumerable
 						             but it
 						               contained item 2.3 at index 1 that was not expected and
 						               lacked 1 of 3 expected items: 2.0
-						             
+
 						             Collection:
 						             [1.1, 2.3, 3.1]
-						             
+
 						             Expected:
 						             [1.0, 2.0, 3.0]
 						             """);
@@ -175,10 +175,10 @@ public sealed partial class ThatAsyncEnumerable
 						             but it
 						               contained item 2.3 at index 2 that was not expected and
 						               lacked 1 of 4 expected items: 2.0
-						             
+
 						             Collection:
 						             [1.1, <null>, 2.3, 3.1]
-						             
+
 						             Expected:
 						             [1.0, <null>, 2.0, 3.0]
 						             """);
@@ -224,10 +224,10 @@ public sealed partial class ThatAsyncEnumerable
 						             but it
 						               contained item 2.3 at index 1 that was not expected and
 						               lacked 1 of 3 expected items: 2.0
-						             
+
 						             Collection:
 						             [1.1, 2.3, 3.1]
-						             
+
 						             Expected:
 						             [1.0, 2.0, 3.0]
 						             """);
@@ -273,10 +273,10 @@ public sealed partial class ThatAsyncEnumerable
 						             but it
 						               contained item 2.3 at index 2 that was not expected and
 						               lacked 1 of 4 expected items: 2.0
-						             
+
 						             Collection:
 						             [1.1, <null>, 2.3, 3.1]
-						             
+
 						             Expected:
 						             [1.0, <null>, 2.0, 3.0]
 						             """);
@@ -319,14 +319,14 @@ public sealed partial class ThatAsyncEnumerable
 						              but it
 						                contained item {Formatter.Format(now.AddHours(2))} at index 1 that was not expected and
 						                lacked 1 of 3 expected items: {Formatter.Format(now.AddHours(2).AddMinutes(-2))}
-						              
+
 						              Collection:
 						              [
 						                {Formatter.Format(now.AddHours(1))},
 						                {Formatter.Format(now.AddHours(2))},
 						                {Formatter.Format(now.AddHours(3))}
 						              ]
-						              
+
 						              Expected:
 						              {Formatter.Format(expected, FormattingOptions.MultipleLines)}
 						              """);
@@ -369,7 +369,7 @@ public sealed partial class ThatAsyncEnumerable
 						              but it
 						                contained item {Formatter.Format(now.AddHours(2))} at index 2 that was not expected and
 						                lacked 1 of 4 expected items: {Formatter.Format(now.AddHours(2).AddMinutes(-2))}
-						              
+
 						              Collection:
 						              [
 						                {Formatter.Format(now.AddHours(1))},
@@ -377,7 +377,7 @@ public sealed partial class ThatAsyncEnumerable
 						                {Formatter.Format(now.AddHours(2))},
 						                {Formatter.Format(now.AddHours(3))}
 						              ]
-						              
+
 						              Expected:
 						              {Formatter.Format(expected, FormattingOptions.MultipleLines)}
 						              """);

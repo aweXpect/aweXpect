@@ -11,7 +11,7 @@ internal class LimitedCollection<T> : ICollection<T>
 
 	public LimitedCollection(int? limit = null)
 	{
-		_limit = limit ?? (Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get() + 1);
+		_limit = limit ?? Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get() + 1;
 		_buffer = new List<T>(_limit);
 	}
 

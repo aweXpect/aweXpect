@@ -39,10 +39,10 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equivalent to 1 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [2, 3, 5, 8, 13, 21, 34, 55, 89, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -57,7 +57,7 @@ public sealed partial class ThatAsyncEnumerable
 						               55,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);
@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equivalent to 5 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -113,7 +113,7 @@ public sealed partial class ThatAsyncEnumerable
 						               89,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -128,7 +128,7 @@ public sealed partial class ThatAsyncEnumerable
 						               55,
 						               (… and maybe others)
 						             ]
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);
@@ -160,7 +160,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equivalent to constantValue for all items,
 						             but it was <null>
-						             
+
 						             Equivalency options:
 						              - include public fields and properties
 						             """);

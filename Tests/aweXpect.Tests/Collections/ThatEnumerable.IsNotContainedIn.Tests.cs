@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class IsNotContainedIn
+	public sealed partial class IsNotContainedIn
 	{
 		public sealed class InSameOrderTests
 		{
@@ -37,10 +37,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -111,7 +111,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -119,7 +119,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -194,14 +194,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -238,14 +238,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -282,14 +282,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -314,14 +314,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -348,14 +348,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -394,10 +394,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -421,10 +421,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -472,7 +472,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -480,7 +480,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -543,7 +543,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "c",
@@ -551,7 +551,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -575,14 +575,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -607,7 +607,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -615,7 +615,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -633,20 +633,20 @@ public sealed partial class ThatEnumerable
 
 				async Task Act()
 					=> await That(subject).IsNotContainedIn(expected).IgnoringDuplicates();
-				
+
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -671,7 +671,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -679,7 +679,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -703,14 +703,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -735,14 +735,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -768,14 +768,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -814,10 +814,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -865,7 +865,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -873,7 +873,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -924,14 +924,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -967,14 +967,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1011,14 +1011,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1055,14 +1055,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1087,14 +1087,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1121,14 +1121,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1167,10 +1167,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1196,10 +1196,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1247,7 +1247,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -1255,7 +1255,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1306,14 +1306,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "c",
 					               "b"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1337,7 +1337,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "c",
@@ -1345,7 +1345,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1369,14 +1369,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1401,7 +1401,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1409,7 +1409,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1433,14 +1433,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1465,7 +1465,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1473,7 +1473,7 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1497,14 +1497,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1529,14 +1529,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1562,14 +1562,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1608,10 +1608,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1659,7 +1659,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -1667,7 +1667,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1742,14 +1742,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1786,14 +1786,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1830,14 +1830,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1862,14 +1862,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1923,10 +1923,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -1950,10 +1950,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2001,7 +2001,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -2009,7 +2009,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2132,14 +2132,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2164,14 +2164,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2224,10 +2224,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2275,7 +2275,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -2283,7 +2283,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2358,14 +2358,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2402,14 +2402,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2446,14 +2446,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2478,14 +2478,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2539,10 +2539,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2568,10 +2568,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             []
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2619,7 +2619,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -2627,7 +2627,7 @@ public sealed partial class ThatEnumerable
 					               "c",
 					               "d"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2750,14 +2750,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -2782,14 +2782,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it did
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",

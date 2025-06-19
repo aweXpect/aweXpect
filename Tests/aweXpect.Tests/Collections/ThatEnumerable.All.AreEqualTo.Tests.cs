@@ -28,10 +28,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to NaN for all items,
 						             but only 2 of 3 were
-						             
+
 						             Not matching items:
 						             [1.0]
-						             
+
 						             Collection:
 						             [NaN, NaN, 1.0]
 						             """);
@@ -52,10 +52,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to NaN for all items,
 						             but only 2 of 3 were
-						             
+
 						             Not matching items:
 						             [1.0]
-						             
+
 						             Collection:
 						             [NaN, NaN, 1.0]
 						             """);
@@ -89,10 +89,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [2, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -145,7 +145,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 5 for all items,
 						             but only 1 of 20 were
-						             
+
 						             Not matching items:
 						             [
 						               1,
@@ -160,7 +160,7 @@ public sealed partial class ThatEnumerable
 						               89,
 						               …
 						             ]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -223,13 +223,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "item-1" for all items,
 						             but not all were
-						             
+
 						             Not matching items:
 						             [
 						               "item-2",
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "item-1",
@@ -282,7 +282,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "item-5" for all items,
 						             but only 1 of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               "item-1",
@@ -295,7 +295,7 @@ public sealed partial class ThatEnumerable
 						               "item-34",
 						               "item-55"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "item-1",
@@ -329,12 +329,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring case, white-space and newline style for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -355,12 +355,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring case for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -381,12 +381,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring leading white-space for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -407,12 +407,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring newline style for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -433,12 +433,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" ignoring trailing white-space for all items,
 						             but none of 1 were
-						             
+
 						             Not matching items:
 						             [
 						               "bar"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "bar"
@@ -461,12 +461,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 2 were
-						             
+
 						             Not matching items:
 						             [
 						               "FOO"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo",
@@ -492,13 +492,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 3 were
-						             
+
 						             Not matching items:
 						             [
 						               " foo",
 						               "	foo"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               " foo",
@@ -524,12 +524,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo\nbar" for all items,
 						             but only 1 of 3 were
-						             
+
 						             Not matching items:
 						             [
 						               *
 						             ]
-						             
+
 						             Collection:
 						             [
 						               *
@@ -554,13 +554,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 3 were
-						             
+
 						             Not matching items:
 						             [
 						               "foo ",
 						               "foo	"
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo ",

@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class None
 	{
-		public sealed class AreEqualTo
+		public sealed partial class AreEqualTo
 		{
 			public sealed class Tests
 			{
@@ -29,7 +29,7 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 8 for no items,
 						             but could not verify, because it was already cancelled
-						             
+
 						             Collection:
 						             [
 						               0,
@@ -72,10 +72,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 5 for no items,
 						             but at least one was
-						             
+
 						             Matching items:
 						             [5, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -106,10 +106,10 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for no items,
 						             but at least one was
-						             
+
 						             Matching items:
 						             [1, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,
@@ -178,13 +178,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "bar" ignoring case for no items,
 						             but at least one was
-						             
+
 						             Matching items:
 						             [
 						               "BAR",
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "FOO",
@@ -208,13 +208,13 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "bar" for no items,
 						             but at least one was
-						             
+
 						             Matching items:
 						             [
 						               "bar",
 						               (… and maybe others)
 						             ]
-						             
+
 						             Collection:
 						             [
 						               "foo",

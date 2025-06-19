@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for at most 8 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
@@ -60,10 +60,10 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for at most one item,
 					             but at least 2 were
-					             
+
 					             Matching items:
 					             [1, 1, (… and maybe others)]
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -84,7 +84,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSufficientlyFewEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(2);
@@ -95,7 +95,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(1);
@@ -105,10 +105,10 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for at most 3 items,
 					             but 4 of 7 were
-					             
+
 					             Matching items:
 					             [1, 1, 1, 1]
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -146,13 +146,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for at most one item,
 					             but 2 of 3 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               "FOO"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -186,13 +186,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for at most one item,
 					             but 2 of 3 were
-					             
+
 					             Matching items:
 					             [
 					               "foo",
 					               "foo"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",

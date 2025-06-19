@@ -42,7 +42,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).EndsWith(1, 2, 3);
@@ -53,7 +53,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentEndingElements_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([0, 0, 1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(0, 0, 1, 2, 3);
 				IEnumerable<int> expected = [1, 3,];
 
 				async Task Act()
@@ -64,7 +64,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             ends with expected,
 					             but it contained 2 at index 3 instead of 1
-					             
+
 					             Collection:
 					             [0, 0, 1, 2, 3, (… and maybe others)]
 					             """);
@@ -73,7 +73,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenExpectedContainsAdditionalElements_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
 
 				async Task Act()
 					=> await That(subject).EndsWith(0, 0, 1, 2, 3);
@@ -86,7 +86,7 @@ public sealed partial class ThatAsyncEnumerable
 					               0,
 					               0
 					             ]
-					             
+
 					             Collection:
 					             [1, 2, 3]
 					             """);
@@ -106,7 +106,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1);
 
 				async Task Act()
 					=> await That(subject).EndsWith(null!);
@@ -147,7 +147,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             ends with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "FOO"
-					             
+
 					             Collection:
 					             [
 					               "foo",

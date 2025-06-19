@@ -110,7 +110,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint<TItem, TItem>(
-					expectationBuilder, it, grammars, 
+					expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(), expected,
 					options, matchOptions)),
 			source,
@@ -232,7 +232,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint<TItem, TItem>(
-					expectationBuilder, it, grammars, 
+					expectationBuilder, it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(), expected,
 					options, matchOptions).Invert()),
 			source,

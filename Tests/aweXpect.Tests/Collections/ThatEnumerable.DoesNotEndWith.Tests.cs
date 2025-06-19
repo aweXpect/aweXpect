@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class DoesNotEndWith
+	public sealed partial class DoesNotEndWith
 	{
 		public sealed class Tests
 		{
@@ -118,7 +118,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not end with unexpected,
+					             does not end with ["bar", "baz"],
 					             but it did end with [
 					               "bar",
 					               "baz"

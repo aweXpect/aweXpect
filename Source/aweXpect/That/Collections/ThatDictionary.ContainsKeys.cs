@@ -89,27 +89,27 @@ public static partial class ThatDictionary
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("contains keys ");
-			ValueFormatters.Format(Formatter, stringBuilder, expected);
+			Formatter.Format(stringBuilder, expected);
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" did not contain ");
-			ValueFormatters.Format(Formatter, stringBuilder, _missingKeys, FormattingOptions.MultipleLines);
+			Formatter.Format(stringBuilder, _missingKeys, FormattingOptions.MultipleLines);
 			stringBuilder.Append(" in ");
-			ValueFormatters.Format(Formatter, stringBuilder, Actual!.Keys, FormattingOptions.MultipleLines);
+			Formatter.Format(stringBuilder, Actual!.Keys, FormattingOptions.MultipleLines);
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("does not contain keys ");
-			ValueFormatters.Format(Formatter, stringBuilder, expected);
+			Formatter.Format(stringBuilder, expected);
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" did contain ");
-			ValueFormatters.Format(Formatter, stringBuilder, _existingKeys, FormattingOptions.MultipleLines);
+			Formatter.Format(stringBuilder, _existingKeys, FormattingOptions.MultipleLines);
 		}
 	}
 }

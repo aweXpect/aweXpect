@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for more than 6 items,
 					             but could not verify, because it was already cancelled
-					             
+
 					             Collection:
 					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
@@ -61,7 +61,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsEnoughItems_EqualShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).MoreThan(3).AreEqualTo(1);
@@ -72,7 +72,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_EqualShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).MoreThan(5).AreEqualTo(1);
@@ -82,10 +82,10 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for more than 5 items,
 					             but only 4 of 7 were
-					             
+
 					             Not matching items:
 					             [2, 2, 3]
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -94,7 +94,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_EquivalentShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).MoreThan(5).AreEqualTo(1);
@@ -104,10 +104,10 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for more than 5 items,
 					             but only 4 of 7 were
-					             
+
 					             Not matching items:
 					             [2, 2, 3]
-					             
+
 					             Collection:
 					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
@@ -145,12 +145,12 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for more than 2 items,
 					             but only 2 of 3 were
-					             
+
 					             Not matching items:
 					             [
 					               "bar"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -173,12 +173,12 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for more than 2 items,
 					             but only 2 of 3 were
-					             
+
 					             Not matching items:
 					             [
 					               "bar"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",
@@ -201,13 +201,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for more than 2 items,
 					             but only 2 of 4 were
-					             
+
 					             Not matching items:
 					             [
 					               "FOO",
 					               "bar"
 					             ]
-					             
+
 					             Collection:
 					             [
 					               "foo",

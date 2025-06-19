@@ -26,7 +26,7 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async(
 			expectationBuilder.AddConstraint((it, grammars) =>
-					new HasSingleConstraint<TItem>(expectationBuilder, it, grammars, options)),
+				new HasSingleConstraint<TItem>(expectationBuilder, it, grammars, options)),
 			options,
 			async f =>
 			{
@@ -89,6 +89,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
 			}
+
 			return this;
 		}
 

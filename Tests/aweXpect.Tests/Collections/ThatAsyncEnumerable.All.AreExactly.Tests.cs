@@ -31,7 +31,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyBaseClass {
@@ -65,7 +65,7 @@ public sealed partial class ThatAsyncEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyBaseClass {
@@ -119,7 +119,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyBaseClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyClass {
@@ -163,7 +163,7 @@ public sealed partial class ThatAsyncEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyClass {
@@ -245,7 +245,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyBaseClass {
@@ -279,7 +279,7 @@ public sealed partial class ThatAsyncEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyBaseClass {
@@ -347,7 +347,7 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyBaseClass for all items,
 						             but none of 10 were
-						             
+
 						             Not matching items:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyClass {
@@ -391,7 +391,7 @@ public sealed partial class ThatAsyncEnumerable
 						                 Foo = 10
 						               }
 						             ]
-						             
+
 						             Collection:
 						             [
 						               ThatAsyncEnumerable.All.AreExactly.MyClass {

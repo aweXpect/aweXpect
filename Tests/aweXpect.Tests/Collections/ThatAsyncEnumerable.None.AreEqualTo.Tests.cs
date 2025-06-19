@@ -64,7 +64,7 @@ public sealed partial class ThatAsyncEnumerable
 
 						             Matching items:
 						             [5, (… and maybe others)]
-						             
+
 						             Collection:
 						             [
 						               1,

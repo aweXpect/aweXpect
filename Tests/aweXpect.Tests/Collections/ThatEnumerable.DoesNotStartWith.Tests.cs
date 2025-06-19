@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class DoesNotStartWith
+	public sealed partial class DoesNotStartWith
 	{
 		public sealed class Tests
 		{
@@ -64,7 +64,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not start with unexpected equivalent,
+					             does not start with [MyClass { StringValue = "", Value = 1 }, MyClass { StringValue = "", Value = 1 }, MyClass { StringValue = "", Value = 2 }] equivalent,
 					             but it did start with [
 					               MyClass {
 					                 StringValue = "",
@@ -142,7 +142,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not start with unexpected,
+					             does not start with ["foo", "bar"],
 					             but it did start with [
 					               "foo",
 					               "bar"
