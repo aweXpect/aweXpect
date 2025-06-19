@@ -29,8 +29,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection more than <paramref name="minimum" /> items…
 	/// </summary>
-	public static ElementsForEnumerable<IEnumerable?> MoreThan(
-		this IThat<IEnumerable?> subject,
+	public static ElementsForEnumerable<IEnumerable> MoreThan(
+		this IThat<IEnumerable> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.MoreThan(minimum, subject.Get().ExpectationBuilder.ExpectationGrammars));
 

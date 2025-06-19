@@ -64,15 +64,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<object?, TEnumerable, IThat<TEnumerable?>>
-		IsInAscendingOrder<TEnumerable>(this IThat<TEnumerable?> source)
-		where TEnumerable : IEnumerable
+	public static CollectionOrderResult<object?, IEnumerable, IThat<IEnumerable>>
+		IsInAscendingOrder(this IThat<IEnumerable> source)
 	{
 		CollectionOrderOptions<object?> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new CollectionOrderResult<object?, TEnumerable, IThat<TEnumerable?>>(
+		return new CollectionOrderResult<object?, IEnumerable, IThat<IEnumerable>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<TEnumerable, object?>(
+				=> new IsInOrderForEnumerableConstraint<IEnumerable, object?, object?>(
 					expectationBuilder, it, grammars,
 					x => x,
 					aweXpect.SortOrder.Ascending,
@@ -85,19 +84,18 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<TMember, TEnumerable, IThat<TEnumerable?>>
-		IsInAscendingOrder<TEnumerable, TMember>(
-			this IThat<TEnumerable?> source,
+	public static CollectionOrderResult<TMember, IEnumerable, IThat<IEnumerable>>
+		IsInAscendingOrder<TMember>(
+			this IThat<IEnumerable> source,
 			Func<object?, TMember> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
-		where TEnumerable : IEnumerable
 	{
 		CollectionOrderOptions<TMember> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new CollectionOrderResult<TMember, TEnumerable, IThat<TEnumerable?>>(
+		return new CollectionOrderResult<TMember, IEnumerable, IThat<IEnumerable>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<TEnumerable, TMember>(
+				=> new IsInOrderForEnumerableConstraint<IEnumerable, object?, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
 					aweXpect.SortOrder.Ascending,
@@ -119,9 +117,9 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TItem, ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TItem>(
 					expectationBuilder, it, grammars,
-					x => (TItem)x!,
+					x => x,
 					aweXpect.SortOrder.Ascending,
 					options,
 					"")),
@@ -146,7 +144,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TMember, ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderConstraint<TItem, TMember>(
+				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
 					aweXpect.SortOrder.Ascending,
@@ -206,15 +204,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is not in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<object?, TEnumerable, IThat<TEnumerable?>>
-		IsNotInAscendingOrder<TEnumerable>(this IThat<TEnumerable?> source)
-		where TEnumerable : IEnumerable
+	public static CollectionOrderResult<object?, IEnumerable, IThat<IEnumerable>>
+		IsNotInAscendingOrder(this IThat<IEnumerable> source)
 	{
 		CollectionOrderOptions<object?> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new CollectionOrderResult<object?, TEnumerable, IThat<TEnumerable?>>(
+		return new CollectionOrderResult<object?, IEnumerable, IThat<IEnumerable>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<TEnumerable, object?>(
+				=> new IsInOrderForEnumerableConstraint<IEnumerable, object?, object?>(
 					expectationBuilder, it, grammars,
 					x => x,
 					aweXpect.SortOrder.Ascending,
@@ -227,19 +224,18 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is not in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<TMember, TEnumerable, IThat<TEnumerable?>>
-		IsNotInAscendingOrder<TEnumerable, TMember>(
-			this IThat<TEnumerable?> source,
+	public static CollectionOrderResult<TMember, IEnumerable, IThat<IEnumerable>>
+		IsNotInAscendingOrder<TMember>(
+			this IThat<IEnumerable> source,
 			Func<object?, TMember> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
-		where TEnumerable : IEnumerable
 	{
 		CollectionOrderOptions<TMember> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new CollectionOrderResult<TMember, TEnumerable, IThat<TEnumerable?>>(
+		return new CollectionOrderResult<TMember, IEnumerable, IThat<IEnumerable>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<TEnumerable, TMember>(
+				=> new IsInOrderForEnumerableConstraint<IEnumerable, object?, TMember>(
 					expectationBuilder, it, grammars,
 					memberAccessor,
 					aweXpect.SortOrder.Ascending,
@@ -260,9 +256,9 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TItem, ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TItem>(
 					expectationBuilder, it, grammars,
-					x => (TItem)x!,
+					x => x,
 					aweXpect.SortOrder.Ascending,
 					options,
 					"").Invert()),
@@ -286,9 +282,9 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new CollectionOrderResult<TMember, ImmutableArray<TItem>, IThat<ImmutableArray<TItem>>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TMember>(
+				=> new IsInOrderForEnumerableConstraint<ImmutableArray<TItem>, TItem, TMember>(
 					expectationBuilder, it, grammars,
-					o => memberAccessor((TItem)o!),
+					memberAccessor,
 					aweXpect.SortOrder.Ascending,
 					options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}").Invert()),

@@ -167,7 +167,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).Contains(Array.Empty<string>());
+					=> await That(subject)!.Contains(Array.Empty<string>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

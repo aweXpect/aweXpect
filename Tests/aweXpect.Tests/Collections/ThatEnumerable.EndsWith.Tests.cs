@@ -61,7 +61,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with [1, 3],
+					             ends with expected,
 					             but it contained 2 at index 3 instead of 1
 
 					             Collection:

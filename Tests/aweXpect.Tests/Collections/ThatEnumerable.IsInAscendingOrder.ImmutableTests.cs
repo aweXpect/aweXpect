@@ -239,7 +239,7 @@ public sealed partial class ThatEnumerable
 				ImmutableArray<MyStringClass> subject = [..ToEnumerable(["a", "b", "c",], x => new MyStringClass(x)),];
 
 				async Task Act()
-					=> await That(subject).IsInAscendingOrder(x => x is MyStringClass c ? c.Value : "");
+					=> await That(subject).IsInAscendingOrder(x => x.Value);
 
 				await That(Act).DoesNotThrow();
 			}

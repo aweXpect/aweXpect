@@ -29,8 +29,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection no items…
 	/// </summary>
-	public static ElementsForEnumerable<IEnumerable?> None(
-		this IThat<IEnumerable?> subject)
+	public static ElementsForEnumerable<IEnumerable> None(
+		this IThat<IEnumerable> subject)
 		=> new(subject, EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |
 		                                          ExpectationGrammars.Plural));
 

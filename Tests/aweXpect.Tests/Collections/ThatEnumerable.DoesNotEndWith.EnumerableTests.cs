@@ -115,7 +115,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).DoesNotEndWith(0);
+					=> await That(subject)!.DoesNotEndWith(0);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

@@ -282,16 +282,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>
-		AreEqualTo<TEnumerable>(this ElementsForEnumerable<TEnumerable> elements, object? expected)
-		where TEnumerable : IEnumerable?
+	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, object?>
+		AreEqualTo(this ElementsForEnumerable<IEnumerable> elements, object? expected)
 	{
-		IElementsForEnumerable<TEnumerable> iElements = elements;
+		IElementsForEnumerable<IEnumerable> iElements = elements;
 		ObjectEqualityOptions<object?> options = new();
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
-		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
+		return new ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, object?>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionForEnumerableConstraint<TEnumerable>(
+				=> new CollectionForEnumerableConstraint<IEnumerable>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,

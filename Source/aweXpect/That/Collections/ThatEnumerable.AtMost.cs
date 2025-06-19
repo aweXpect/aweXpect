@@ -29,8 +29,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
-	public static ElementsForEnumerable<IEnumerable?> AtMost(
-		this IThat<IEnumerable?> subject,
+	public static ElementsForEnumerable<IEnumerable> AtMost(
+		this IThat<IEnumerable> subject,
 		int maximum)
 		=> new(subject, EnumerableQuantifier.AtMost(maximum, subject.Get().ExpectationBuilder.ExpectationGrammars));
 

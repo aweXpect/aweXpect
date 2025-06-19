@@ -31,8 +31,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
-	public static ElementsForEnumerable<IEnumerable?> Exactly(
-		this IThat<IEnumerable?> subject,
+	public static ElementsForEnumerable<IEnumerable> Exactly(
+		this IThat<IEnumerable> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected, subject.Get().ExpectationBuilder.ExpectationGrammars));
 

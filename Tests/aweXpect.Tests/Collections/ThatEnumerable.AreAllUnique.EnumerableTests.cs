@@ -80,7 +80,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).AreAllUnique();
+					=> await That(subject)!.AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -238,7 +238,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).AreAllUnique(x => (x as MyClass)?.Value);
+					=> await That(subject)!.AreAllUnique(x => (x as MyClass)?.Value);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
