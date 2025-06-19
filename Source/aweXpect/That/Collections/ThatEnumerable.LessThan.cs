@@ -29,8 +29,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection less than <paramref name="maximum" /> items…
 	/// </summary>
-	public static ElementsForEnumerable<IEnumerable?> LessThan(
-		this IThat<IEnumerable?> subject,
+	public static ElementsForEnumerable<IEnumerable> LessThan(
+		this IThat<IEnumerable> subject,
 		int maximum)
 		=> new(subject, EnumerableQuantifier.LessThan(maximum, subject.Get().ExpectationBuilder.ExpectationGrammars));
 

@@ -112,7 +112,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).DoesNotHaveCount(2);
+					=> await That(subject)!.DoesNotHaveCount(2);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

@@ -180,7 +180,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasCount(2);
+					=> await That(subject)!.HasCount(2);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -257,7 +257,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasCount().EqualTo(2);
+					=> await That(subject)!.HasCount().EqualTo(2);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

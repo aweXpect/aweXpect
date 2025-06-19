@@ -807,11 +807,11 @@ public static partial class ThatEnumerable
 			=> stringBuilder.Append(It).Append(" was");
 	}
 
-	private sealed class IsInOrderForEnumerableConstraint<TEnumerable, TMember>(
+	private sealed class IsInOrderForEnumerableConstraint<TEnumerable, TItem, TMember>(
 		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
-		Func<object?, TMember> memberAccessor,
+		Func<TItem, TMember> memberAccessor,
 		SortOrder sortOrder,
 		CollectionOrderOptions<TMember> options,
 		string memberExpression)
@@ -838,7 +838,12 @@ public static partial class ThatEnumerable
 			IComparer<TMember> comparer = options.GetComparer();
 			foreach (object? item in materialized)
 			{
-				TMember current = memberAccessor(item);
+				if (item is not TItem typedItem)
+				{
+					continue;
+				}
+				
+				TMember current = memberAccessor(typedItem);
 				if (index++ == 0)
 				{
 					previous = current;

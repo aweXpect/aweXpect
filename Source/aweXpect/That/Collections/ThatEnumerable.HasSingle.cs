@@ -37,15 +37,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains exactly one item.
 	/// </summary>
-	public static SingleItemResult<TEnumerable, object?> HasSingle<TEnumerable>(
-		this IThat<TEnumerable?> source)
-		where TEnumerable : IEnumerable
+	public static SingleItemResult<IEnumerable, object?> HasSingle(
+		this IThat<IEnumerable> source)
 	{
 		PredicateOptions<object?> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new SingleItemResult<TEnumerable, object?>(
+		return new SingleItemResult<IEnumerable, object?>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new HasSingleForEnumerableConstraint<TEnumerable, object?>(expectationBuilder, it, grammars,
+				=> new HasSingleForEnumerableConstraint<IEnumerable, object?>(expectationBuilder, it, grammars,
 					options)),
 			options,
 			f =>

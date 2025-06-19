@@ -106,17 +106,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>
-		StartsWith<TEnumerable, TItem>(
-			this IThat<TEnumerable?> source,
+	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
+		StartsWith<TItem>(
+			this IThat<IEnumerable> source,
 			IEnumerable<TItem> expected)
-		where TEnumerable : IEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>(
+		return new ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
+				=> new StartsWithForEnumerableConstraint<IEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
 					expected.ToArray(),
 					options)),
@@ -127,18 +126,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>
-		StartsWith<TEnumerable, TItem>(
-			this IThat<TEnumerable?> source,
+	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
+		StartsWith<TItem>(
+			this IThat<IEnumerable> source,
 			params TItem[] expected)
-		where TEnumerable : IEnumerable
 	{
 		_ = expected ?? throw new ArgumentNullException(nameof(expected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>(
+		return new ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
+				=> new StartsWithForEnumerableConstraint<IEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(expected),
 					expected,
 					options)),
@@ -328,17 +326,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>
-		DoesNotStartWith<TEnumerable, TItem>(
-			this IThat<TEnumerable?> source,
+	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
+		DoesNotStartWith<TItem>(
+			this IThat<IEnumerable> source,
 			IEnumerable<TItem> unexpected)
-		where TEnumerable : IEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>(
+		return new ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
+				=> new StartsWithForEnumerableConstraint<IEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
 					unexpected.ToArray(),
 					options).Invert()),
@@ -349,18 +346,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>
-		DoesNotStartWith<TEnumerable, TItem>(
-			this IThat<TEnumerable?> source,
+	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
+		DoesNotStartWith<TItem>(
+			this IThat<IEnumerable> source,
 			params TItem[] unexpected)
-		where TEnumerable : IEnumerable
 	{
 		_ = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
 		ObjectEqualityOptions<TItem> options = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, TItem>(
+		return new ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithForEnumerableConstraint<TEnumerable, TItem>(expectationBuilder, it, grammars,
+				=> new StartsWithForEnumerableConstraint<IEnumerable, TItem>(expectationBuilder, it, grammars,
 					Formatter.Format(unexpected),
 					unexpected,
 					options).Invert()),

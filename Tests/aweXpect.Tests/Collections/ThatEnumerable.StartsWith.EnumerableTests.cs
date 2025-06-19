@@ -110,7 +110,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).StartsWith(0);
+					=> await That(subject)!.StartsWith(0);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

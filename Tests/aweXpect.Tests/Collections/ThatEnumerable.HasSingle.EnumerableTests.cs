@@ -106,7 +106,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasSingle();
+					=> await That(subject)!.HasSingle();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -228,7 +228,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasSingle().Matching(_ => false);
+					=> await That(subject)!.HasSingle().Matching(_ => false);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

@@ -27,8 +27,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection all items…
 	/// </summary>
-	public static ElementsForEnumerable<IEnumerable?> All(
-		this IThat<IEnumerable?> subject)
+	public static ElementsForEnumerable<IEnumerable> All(
+		this IThat<IEnumerable> subject)
 		=> new(subject, EnumerableQuantifier.All(subject.Get().ExpectationBuilder.ExpectationGrammars));
 
 #if NET8_0_OR_GREATER

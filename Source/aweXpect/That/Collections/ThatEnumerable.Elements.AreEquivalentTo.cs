@@ -61,7 +61,7 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …are equivalent to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?>
+		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>
 			AreEquivalentTo<TExpected>(TExpected expected,
 				Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
 				[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -77,7 +77,7 @@ public static partial class ThatEnumerable
 
 			ObjectEqualityOptions<object?> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
-			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?>(
+			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
 				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionForEnumerableConstraint<TEnumerable>(
 						expectationBuilder,

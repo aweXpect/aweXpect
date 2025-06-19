@@ -214,7 +214,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? expected = null;
 
 				async Task Act()
-					=> await That(subject).IsEqualTo(expected!);
+					=> await That(subject)!.IsEqualTo(expected!);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -225,7 +225,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsEqualTo(Array.Empty<int>());
+					=> await That(subject)!.IsEqualTo(Array.Empty<int>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

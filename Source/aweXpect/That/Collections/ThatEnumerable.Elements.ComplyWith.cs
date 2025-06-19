@@ -129,11 +129,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
-		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?>
+		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>
 			ComplyWith(Action<IThat<object?>> expectations)
 		{
 			ObjectEqualityOptions<object?> options = new();
-			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable?>, object?>(
+			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
 				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
 					=> new ComplyWithConstraint(expectationBuilder, it, grammars, _quantifier, expectations)),
 				_subject,
