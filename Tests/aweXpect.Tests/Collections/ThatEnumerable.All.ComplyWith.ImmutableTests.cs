@@ -54,7 +54,7 @@ public sealed partial class ThatEnumerable
 
 			public sealed class ImmutableNegatedTests
 			{
-				[Fact(Skip = "TODO: #632")]
+				[Fact]
 				public async Task WhenEnumerableOnlyContainsEqualValues_ShouldFail()
 				{
 					ImmutableArray<int> subject = [1, 1, 1, 1, 1, 1, 1,];
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is not equal to 1 for all items,
-						             but not all were
+						             but none of 7 were
 						             """);
 				}
 			}
