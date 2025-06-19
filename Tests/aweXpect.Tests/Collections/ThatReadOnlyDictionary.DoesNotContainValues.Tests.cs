@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace aweXpect.Tests;
 
-public sealed partial class ThatDictionary
+public sealed partial class ThatReadOnlyDictionary
 {
 	public sealed class DoesNotContainValues
 	{
@@ -11,7 +12,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAllValuesDoNotExist_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [41, 42, 43,]);
+				IReadOnlyDictionary<int, int> subject = ToDictionary([1, 2, 3,], [41, 42, 43,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainValues(0, 2);
@@ -22,7 +23,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAtLeastOneValueExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [41, 42, 43,]);
+				IReadOnlyDictionary<int, int> subject = ToDictionary([1, 2, 3,], [41, 42, 43,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainValues(42, 2);
@@ -43,7 +44,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Dictionary<int, string>? subject = null;
+				ReadOnlyDictionary<int, string>? subject = null;
 
 				async Task Act()
 					=> await That(subject).DoesNotContainValues("foo", "bar");

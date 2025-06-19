@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace aweXpect.Tests;
 
-public sealed partial class ThatDictionary
+public sealed partial class ThatReadOnlyDictionary
 {
 	public sealed class ContainsKey
 	{
@@ -11,7 +12,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
+				IReadOnlyDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2);
@@ -22,7 +23,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
+				IReadOnlyDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(0);
@@ -45,7 +46,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Dictionary<string, int>? subject = null;
+				ReadOnlyDictionary<string, int>? subject = null;
 
 				async Task Act()
 					=> await That(subject).ContainsKey("foo");
@@ -64,7 +65,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ButValueDoesNotMatch_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
+				IReadOnlyDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("foo");
@@ -94,7 +95,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
+				IReadOnlyDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("bar");
@@ -105,7 +106,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
+				IReadOnlyDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(0).WhoseValue.IsEqualTo("bar");
@@ -132,7 +133,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Dictionary<string, string>? subject = null;
+				ReadOnlyDictionary<string, string>? subject = null;
 
 				async Task Act()
 					=> await That(subject).ContainsKey("foo").WhoseValue.IsEmpty();

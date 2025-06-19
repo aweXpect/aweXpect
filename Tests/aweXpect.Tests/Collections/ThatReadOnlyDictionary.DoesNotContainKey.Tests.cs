@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace aweXpect.Tests;
 
-public sealed partial class ThatDictionary
+public sealed partial class ThatReadOnlyDictionary
 {
 	public sealed class DoesNotContainKey
 	{
@@ -11,7 +12,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
+				IReadOnlyDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKey(2);
@@ -30,7 +31,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
+				IReadOnlyDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKey(42);
@@ -41,7 +42,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Dictionary<string, int>? subject = null;
+				ReadOnlyDictionary<string, int>? subject = null;
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKey("foo");
