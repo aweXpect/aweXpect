@@ -47,15 +47,21 @@ internal static class CollectionHelpers
 		}
 
 		return expectationBuilder.UpdateContexts(contexts
-			=> contexts
-				.Add(new ResultContext("Collection",
-					() => Formatter.Format(value, typeof(TItem).GetFormattingOption(value switch
-					{
-						ICollection<TItem> coll => coll.Count,
-						ICountable countable => countable.Count,
-						_ => null,
-					})).AppendIsIncomplete(isIncomplete),
-					-1)));
+			=>
+		{
+			if (contexts.All(c => c.Title != "Collection"))
+			{
+				contexts
+					.Add(new ResultContext("Collection",
+						() => Formatter.Format(value, typeof(TItem).GetFormattingOption(value switch
+						{
+							ICollection<TItem> coll => coll.Count,
+							ICountable countable => countable.Count,
+							_ => null,
+						})).AppendIsIncomplete(isIncomplete),
+						-1));
+			}
+		});
 	}
 
 	internal static ExpectationBuilder AddCollectionContext(this ExpectationBuilder expectationBuilder,
@@ -77,15 +83,21 @@ internal static class CollectionHelpers
 		}
 
 		return expectationBuilder.UpdateContexts(contexts
-			=> contexts
-				.Add(new ResultContext("Collection",
-					() => Formatter.Format(value, type.GetFormattingOption(value switch
-					{
-						ICollection coll => coll.Count,
-						ICountable countable => countable.Count,
-						_ => null,
-					})).AppendIsIncomplete(isIncomplete),
-					-1)));
+			=>
+		{
+			if (contexts.All(c => c.Title != "Collection"))
+			{
+				contexts
+					.Add(new ResultContext("Collection",
+						() => Formatter.Format(value, type.GetFormattingOption(value switch
+						{
+							ICollection coll => coll.Count,
+							ICountable countable => countable.Count,
+							_ => null,
+						})).AppendIsIncomplete(isIncomplete),
+						-1));
+			}
+		});
 	}
 
 #if NET8_0_OR_GREATER
@@ -98,12 +110,18 @@ internal static class CollectionHelpers
 		}
 
 		return expectationBuilder.UpdateContexts(contexts
-			=> contexts
-				.Add(new ResultContext("Collection",
-					() => Formatter.Format(value.MaterializedItems,
-							typeof(TItem).GetFormattingOption(value.Count))
-						.AppendIsIncomplete(isIncomplete),
-					-1)));
+			=>
+		{
+			if (contexts.All(c => c.Title != "Collection"))
+			{
+				contexts
+					.Add(new ResultContext("Collection",
+						() => Formatter.Format(value.MaterializedItems,
+								typeof(TItem).GetFormattingOption(value.Count))
+							.AppendIsIncomplete(isIncomplete),
+						-1));
+			}
+		});
 	}
 #endif
 
@@ -116,11 +134,17 @@ internal static class CollectionHelpers
 		}
 
 		return expectationBuilder.UpdateContexts(contexts
-			=> contexts
-				.Add(new ResultContext("Dictionary",
-					() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
-						.AppendIsIncomplete(isIncomplete),
-					-2)));
+			=>
+		{
+			if (contexts.All(c => c.Title != "Dictionary"))
+			{
+				contexts
+					.Add(new ResultContext("Dictionary",
+						() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
+							.AppendIsIncomplete(isIncomplete),
+						-2));
+			}
+		});
 	}
 
 	internal static ExpectationBuilder AddCollectionContext<TKey, TValue>(this ExpectationBuilder expectationBuilder,
@@ -132,11 +156,17 @@ internal static class CollectionHelpers
 		}
 
 		return expectationBuilder.UpdateContexts(contexts
-			=> contexts
-				.Add(new ResultContext("Dictionary",
-					() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
-						.AppendIsIncomplete(isIncomplete),
-					-2)));
+			=>
+		{
+			if (contexts.All(c => c.Title != "Dictionary"))
+			{
+				contexts
+					.Add(new ResultContext("Dictionary",
+						() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
+							.AppendIsIncomplete(isIncomplete),
+						-2));
+			}
+		});
 	}
 
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)

@@ -373,6 +373,25 @@ public sealed partial class ThatEnumerable
 					             but it was <null>
 					             """);
 			}
+
+			[Fact]
+			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
+			{
+				IEnumerable subject = ToEnumerable([1, 2, 3,]);
+
+				async Task Act()
+					=> await That(subject).Contains(4).And.Contains(5);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains 4 at least once and contains 5 at least once,
+					             but it did not contain it
+
+					             Collection:
+					             [1, 2, 3]
+					             """);
+			}
 		}
 
 		public sealed class EnumerablePredicateTests
