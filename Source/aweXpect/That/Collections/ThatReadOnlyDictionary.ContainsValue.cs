@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -6,18 +7,19 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatDictionary
+public static partial class ThatReadOnlyDictionary
 {
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>> ContainsValue<TKey,
-		TValue>(
-		this IThat<IDictionary<TKey, TValue>?> source,
-		TValue expected)
+	public static AndOrResult<IReadOnlyDictionary<TKey, TValue>, IThat<IReadOnlyDictionary<TKey, TValue>?>>
+		ContainsValue<TKey,
+			TValue>(
+			this IThat<IReadOnlyDictionary<TKey, TValue>?> source,
+			TValue expected)
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+		return new AndOrResult<IReadOnlyDictionary<TKey, TValue>, IThat<IReadOnlyDictionary<TKey, TValue>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source
@@ -27,14 +29,15 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>> ContainsValue<TKey,
+	public static AndOrResult<ReadOnlyDictionary<TKey, TValue>, IThat<ReadOnlyDictionary<TKey, TValue>?>> ContainsValue<
+		TKey,
 		TValue>(
-		this IThat<Dictionary<TKey, TValue>?> source,
+		this IThat<ReadOnlyDictionary<TKey, TValue>?> source,
 		TValue expected)
 		where TKey : notnull
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>(
+		return new AndOrResult<ReadOnlyDictionary<TKey, TValue>, IThat<ReadOnlyDictionary<TKey, TValue>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source
@@ -44,13 +47,13 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>
+	public static AndOrResult<IReadOnlyDictionary<TKey, TValue>, IThat<IReadOnlyDictionary<TKey, TValue>?>>
 		DoesNotContainValue<TKey, TValue>(
-			this IThat<IDictionary<TKey, TValue>?> source,
+			this IThat<IReadOnlyDictionary<TKey, TValue>?> source,
 			TValue unexpected)
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+		return new AndOrResult<IReadOnlyDictionary<TKey, TValue>, IThat<IReadOnlyDictionary<TKey, TValue>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
@@ -60,14 +63,14 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>
+	public static AndOrResult<ReadOnlyDictionary<TKey, TValue>, IThat<ReadOnlyDictionary<TKey, TValue>?>>
 		DoesNotContainValue<TKey, TValue>(
-			this IThat<Dictionary<TKey, TValue>?> source,
+			this IThat<ReadOnlyDictionary<TKey, TValue>?> source,
 			TValue unexpected)
 		where TKey : notnull
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
-		return new AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>(
+		return new AndOrResult<ReadOnlyDictionary<TKey, TValue>, IThat<ReadOnlyDictionary<TKey, TValue>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
@@ -79,10 +82,10 @@ public static partial class ThatDictionary
 		string it,
 		ExpectationGrammars grammars,
 		TValue expected)
-		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
-			IValueConstraint<IDictionary<TKey, TValue>?>
+		: ConstraintResult.WithNotNullValue<IReadOnlyDictionary<TKey, TValue>?>(it, grammars),
+			IValueConstraint<IReadOnlyDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
+		public ConstraintResult IsMetBy(IReadOnlyDictionary<TKey, TValue>? actual)
 		{
 			Actual = actual;
 			Outcome = actual?.ContainsValue(expected) == true ? Outcome.Success : Outcome.Failure;
