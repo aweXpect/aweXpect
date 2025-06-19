@@ -145,6 +145,33 @@ public sealed partial class ThatReadOnlyDictionary
 					             but it was <null>
 					             """);
 			}
+
+			[Fact]
+			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
+			{
+				IReadOnlyDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
+
+				async Task Act()
+					=> await That(subject).ContainsKey(4).And.ContainsKey(5);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains key 4 and contains key 5,
+					             but it contained only [
+					               1,
+					               2,
+					               3
+					             ]
+
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
+					             """);
+			}
 		}
 	}
 }

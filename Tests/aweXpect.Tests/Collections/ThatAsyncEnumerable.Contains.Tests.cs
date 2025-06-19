@@ -339,6 +339,29 @@ public sealed partial class ThatAsyncEnumerable
 					             but it was <null>
 					             """);
 			}
+
+			[Fact]
+			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
+
+				async Task Act()
+					=> await That(subject).Contains("d").And.Contains("e");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains "d" at least once and contains "e" at least once,
+					             but it did not contain it
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             """);
+			}
 		}
 
 		public sealed class StringItemTests
