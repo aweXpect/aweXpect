@@ -24,6 +24,26 @@ public sealed partial class ThatBool
 						             """);
 				}
 
+				[Fact]
+				public async Task WhenTaskFails_ShouldFailWithExceptionMessage()
+				{
+					Task<bool?> subject = Task.FromException<bool?>(
+						new NotSupportedException("When Task throws an exception"));
+
+					async Task Act()
+						=> await That(subject).IsNotFalse().Because("the exception should be logged");
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             is not False, because the exception should be logged,
+						             but it did throw a NotSupportedException
+
+						             Exception:
+						             System.NotSupportedException: When Task throws an exception
+						             """).AsPrefix();
+				}
+
 				[Theory]
 				[InlineData(true)]
 				[InlineData(null)]
