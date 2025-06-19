@@ -1770,6 +1770,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -2067,7 +2073,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -2368,7 +2375,8 @@ window.BENCHMARK_DATA = {
           184.1249951203664,
           174.9670513788859,
           185.16396660804747,
-          181.01117501940047
+          181.01117501940047,
+          204.53280202547708
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2563,6 +2571,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2983,7 +2992,8 @@ window.BENCHMARK_DATA = {
           247.57854792049952,
           233.77054506937662,
           254.31237921347986,
-          237.01035624284012
+          237.01035624284012,
+          245.33033049901326
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3176,6 +3186,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3598,7 +3609,8 @@ window.BENCHMARK_DATA = {
           890.8840222676595,
           939.4979274749755,
           928.6721323649089,
-          889.536064368028
+          889.536064368028,
+          992.7947387695312
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3824,6 +3836,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -5226,6 +5239,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -5446,7 +5465,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -5670,7 +5690,8 @@ window.BENCHMARK_DATA = {
           302241.97431640624,
           287348.23465401784,
           282286.05911690847,
-          283767.5955078125
+          283767.5955078125,
+          291751.63441685267
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5883,6 +5904,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6131,7 +6153,8 @@ window.BENCHMARK_DATA = {
           2362824.2916666665,
           2226640.401785714,
           2249510.4739583335,
-          2191530.8878348214
+          2191530.8878348214,
+          2277271.408333333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6247,6 +6270,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -6592,7 +6616,8 @@ window.BENCHMARK_DATA = {
           651360.494140625,
           659977.0431640625,
           683638.7384114583,
-          673176.93671875
+          673176.93671875,
+          668726.7589285715
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6748,6 +6773,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -8605,6 +8631,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -8902,7 +8934,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -9203,7 +9236,8 @@ window.BENCHMARK_DATA = {
           455.9862754895137,
           437.305313428243,
           444.0535390218099,
-          434.7978056271871
+          434.7978056271871,
+          457.90296436945596
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9501,6 +9535,7 @@ window.BENCHMARK_DATA = {
           944,
           944,
           944,
+          1392,
           1392,
           1392,
           1392,
@@ -9818,7 +9853,8 @@ window.BENCHMARK_DATA = {
           484.6119711240133,
           466.8386217435201,
           493.7333182607378,
-          470.59170888264975
+          470.59170888264975,
+          505.5328419367472
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10011,6 +10047,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -10433,7 +10470,8 @@ window.BENCHMARK_DATA = {
           15633.118927001953,
           16513.952407836914,
           17605.77992553711,
-          15418.933693440755
+          15418.933693440755,
+          20903.370798746746
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10659,6 +10697,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -12523,6 +12562,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -12820,7 +12865,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -13121,7 +13167,8 @@ window.BENCHMARK_DATA = {
           216.4665387948354,
           215.28101360003154,
           212.85696013768515,
-          206.1617080313819
+          206.1617080313819,
+          220.70548770825067
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13317,6 +13364,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -13736,7 +13784,8 @@ window.BENCHMARK_DATA = {
           247.87021067937215,
           239.42126148087638,
           262.3960386912028,
-          234.45493885676066
+          234.45493885676066,
+          267.17978719075523
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13929,6 +13978,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -14351,7 +14401,8 @@ window.BENCHMARK_DATA = {
           1274.7580629984539,
           1223.7221062978108,
           1230.2955780029297,
-          1177.847213608878
+          1177.847213608878,
+          1271.9164096832276
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14577,6 +14628,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -16441,6 +16493,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -16738,7 +16796,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -17039,7 +17098,8 @@ window.BENCHMARK_DATA = {
           343.8973602881798,
           329.9240467389425,
           356.44820238749185,
-          330.760696547372
+          330.760696547372,
+          347.1617356300354
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17329,6 +17389,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -17654,7 +17715,8 @@ window.BENCHMARK_DATA = {
           491.4839486440023,
           464.06545241673786,
           493.75733477274576,
-          461.34744453430176
+          461.34744453430176,
+          491.61240717569984
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17847,6 +17909,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -18269,7 +18332,8 @@ window.BENCHMARK_DATA = {
           1401.2979301452638,
           1291.7464790344238,
           1365.501568521772,
-          1231.4061547688075
+          1231.4061547688075,
+          1411.784335708618
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18495,6 +18559,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -20359,6 +20424,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -20656,7 +20727,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -20957,7 +21029,8 @@ window.BENCHMARK_DATA = {
           1314.327764638265,
           1277.475847117106,
           1261.4664159502302,
-          1276.221273167928
+          1276.221273167928,
+          1403.854779179891
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21260,6 +21333,7 @@ window.BENCHMARK_DATA = {
           2024,
           2024,
           2024,
+          2712,
           2712,
           2712,
           2712,
@@ -21572,7 +21646,8 @@ window.BENCHMARK_DATA = {
           1251.6614463806152,
           1288.9248940785726,
           1268.9306722368513,
-          1301.5327020372663
+          1301.5327020372663,
+          1366.5729435511998
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21765,6 +21840,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -22187,7 +22263,8 @@ window.BENCHMARK_DATA = {
           2789.146853383382,
           2820.958183288574,
           2890.9485644022625,
-          2887.6253995259603
+          2887.6253995259603,
+          2955.9449501037598
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22413,6 +22490,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -24277,6 +24355,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 09:18:08 2025 \u002B0200",
         "message": "feat: support \u0060IEnumerable\u0060 and \u0060ImmutableArray\u003CT\u003E\u0060 (#631)"
+      },
+      {
+        "sha": "bc68bb4156182f1f4100331a9f2bac66fa2b640c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jun 19 10:02:52 2025 \u002B0200",
+        "message": "fix: \u0060ComplyWith\u0060 with negated expectations (#635)"
       }
     ],
     "labels": [
@@ -24574,7 +24658,8 @@ window.BENCHMARK_DATA = {
       "3b468751",
       "92695835",
       "947ee8b8",
-      "589bbf9e"
+      "589bbf9e",
+      "bc68bb41"
     ],
     "datasets": [
       {
@@ -24875,7 +24960,8 @@ window.BENCHMARK_DATA = {
           1394.1471372331891,
           1439.8894724845886,
           1425.060577774048,
-          1414.6528885705131
+          1414.6528885705131,
+          1530.5494247164045
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25178,6 +25264,7 @@ window.BENCHMARK_DATA = {
           2184,
           2184,
           2184,
+          2872,
           2872,
           2872,
           2872,
@@ -25490,7 +25577,8 @@ window.BENCHMARK_DATA = {
           154714.4334309896,
           148651.33056640625,
           149190.66305338542,
-          150382.0438701923
+          150382.0438701923,
+          151538.22041829428
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25796,7 +25884,8 @@ window.BENCHMARK_DATA = {
           63788,
           63787,
           63787,
-          64323
+          64323,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26105,7 +26194,8 @@ window.BENCHMARK_DATA = {
           4872.022634379069,
           4583.164693705241,
           4610.413400777181,
-          4826.351900373186
+          4826.351900373186,
+          4705.577638753255
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26331,6 +26421,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
