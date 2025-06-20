@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          181.35359342892966,
           176.50438736279804,
           165.20963236001822,
           174.59635601724898,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           180.27784519195558,
           175.848150908947,
           192.50793351445878,
-          224.1259891827901
+          224.1259891827901,
+          186.30594897270203
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          245.12925386428833,
           242.66552935327803,
           236.76013781229656,
           249.34934680802482,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           237.9260437829154,
           232.67388774667467,
           232.02562278111776,
-          257.9945465405782
+          257.9945465405782,
+          232.65857474009195
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          927.1346371332804,
           919.8447134154184,
           905.0992447535197,
           919.9749597549438,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           905.7902752331325,
           943.9814722061158,
           873.0784281321934,
-          965.5370454152425
+          965.5370454152425,
+          878.0830819056584
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          294631.522530692,
           314233.2585611979,
           284220.2225060096,
           294318.6247558594,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           284741.403132512,
           286932.83461216517,
           285525.6551688058,
-          292256.4032451923
+          292256.4032451923,
+          284663.0350585937
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1166,7 +1166,6 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
-          284980,
           284932,
           284932,
           284932,
@@ -1181,6 +1180,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2253766.2600446427,
           2247297.886458333,
           2158314.210677083,
           2290229.707291667,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2197242.153125,
           2258679.250260417,
           2222388.2276041666,
-          2286349.490625
+          2286349.490625,
+          2186689.884207589
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          692611.5629557292,
           694162.5021484375,
           656404.4268229167,
           660975.7720703125,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           689712.5216796875,
           672909.6015625,
           683663.7433894231,
-          686662.0734375
+          686662.0734375,
+          663320.1628580729
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          340.3929023106893,
           328.485919157664,
           308.6757690565927,
           347.7678818702698,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           476.70961029188976,
           475.0698565483093,
           435.23586937586464,
-          468.7072446162884
+          468.7072446162884,
+          432.60185187657675
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1921,7 +1921,6 @@ window.BENCHMARK_DATA = {
           944,
           944,
           944,
-          944,
           1392,
           1392,
           1392,
@@ -1935,6 +1934,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432
         ],
         "borderColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          490.11598110198975,
           491.34117692311605,
           457.098587067922,
           476.1311932972499,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           446.0457442723788,
           561.0464864730835,
           481.9678870519002,
-          489.64288495381675
+          489.64288495381675,
+          462.12075939178465
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          16314.000923665364,
           22079.332303873696,
           18594.793620518274,
           15514.327014629658,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           15088.433866373698,
           22367.252968924386,
           14751.810962931315,
-          19373.06622314453
+          19373.06622314453,
+          14682.362988063267
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          210.41828548908234,
           210.61935878594716,
           195.95007627350944,
           205.66901299158732,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           214.71754519144693,
           222.1042958577474,
           215.77110419273376,
-          211.4747458775838
+          211.4747458775838,
+          214.0656453927358
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          241.56356013615925,
           247.78579727808633,
           243.51702607472737,
           248.49198122024535,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           242.82264474722055,
           255.0050269762675,
           237.36426599820456,
-          253.58260338647025
+          253.58260338647025,
+          245.08528396061487
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1242.6944427490234,
           1277.4197474161783,
           1176.255475616455,
           1261.1604169209797,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1217.0472063700358,
           1257.1778881366436,
           1202.0696358998616,
-          1182.2770084381104
+          1182.2770084381104,
+          1207.4422156016033
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          330.4692884763082,
           345.95934171676635,
           321.12500890096027,
           320.59356542996,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           347.54862417493547,
           371.5721657752991,
           357.67176113128664,
-          347.5104963098253
+          347.5104963098253,
+          327.91306355794273
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3379,7 +3379,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
-          1120,
+          1128,
           1128,
           1128,
           1128,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          501.67386004130043,
           509.8131201426188,
           456.2291506767273,
           491.4281099319458,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           465.5487283706665,
           548.4726373672486,
           468.48163347244264,
-          483.28295974731446
+          483.28295974731446,
+          447.77258291244505
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1303.7424368540446,
           1336.8374738057455,
           1308.2842380523682,
           1343.1959041867938,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1291.573767344157,
           1349.519139734904,
           1301.7286973317464,
-          1295.1223273958478
+          1295.1223273958478,
+          1292.463389669146
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1102.2335801442464,
           1095.5582065582275,
           1086.9947269439697,
           1211.6990715026855,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1290.8648170471192,
           1279.8576189676921,
           1229.2228226979573,
-          1485.5296230316162
+          1485.5296230316162,
+          1362.9875935236612
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4120,7 +4120,6 @@ window.BENCHMARK_DATA = {
           2008,
           2008,
           2008,
-          2008,
           2024,
           2024,
           2024,
@@ -4134,7 +4133,8 @@ window.BENCHMARK_DATA = {
           2712,
           2712,
           2712,
-          2752
+          2752,
+          2728
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1399.3304279327392,
           1329.378657913208,
           1246.0590887705484,
           1311.7225372314454,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1241.6301436106364,
           1317.9282190958659,
           1246.1236507415772,
-          1341.114610417684
+          1341.114610417684,
+          1244.4669793446858
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2801.9814455849782,
           2891.8621434529623,
           2773.381458791097,
           2818.0347343444823,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2792.977881113688,
           2871.474394480387,
           2770.221476334792,
-          2882.1317749023438
+          2882.1317749023438,
+          2846.8725797017414
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "b175affc4209bb00ad4cce520177b743e9f6f2e3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri May 2 19:22:23 2025 \u002B0200",
-        "message": "feat: add \u0060IsOneOf\u0060 expectations for \u0060TimeSpan\u0060 (#545)"
-      },
-      {
         "sha": "aeaac5a96d167e4dbcee2b697044da00cc2c62f3",
         "author": "Valentin Breu\u00DF",
         "date": "Fri May 2 23:55:07 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
-      "b175affc",
       "aeaac5a9",
       "c02ec34a",
       "0709bcba",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1211.8029298146566,
           1186.0319499969482,
           1112.674384943644,
           1208.987174987793,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1412.1140669413976,
           1457.5079257965087,
           1441.8127782185873,
-          1670.8219671885172
+          1670.8219671885172,
+          1547.445827960968
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4843,7 +4843,6 @@ window.BENCHMARK_DATA = {
           1976,
           1976,
           1976,
-          1976,
           2168,
           2168,
           2168,
@@ -4867,6 +4866,7 @@ window.BENCHMARK_DATA = {
           2872,
           2872,
           2872,
+          2912,
           2912
         ],
         "borderColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          152611.30981445312,
           152871.63500976562,
           146530.3745814732,
           152368.16441127233,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           152160.88288225446,
           150571.79912860578,
           150658.91510416666,
-          152840.81640625
+          152840.81640625,
+          149888.4112374442
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63788,
           63787,
           63787,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63788,
           63787,
           64323,
-          63352
+          63352,
+          64323
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4703.753085000174,
           4665.989098103842,
           4615.144359842936,
           4737.522259521485,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4666.275335458608,
           4681.740395609538,
           4463.100389208113,
-          4870.437549845377
+          4870.437549845377,
+          4719.2738917032875
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",

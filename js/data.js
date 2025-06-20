@@ -1800,6 +1800,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -2102,7 +2108,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -2408,7 +2415,8 @@ window.BENCHMARK_DATA = {
           180.27784519195558,
           175.848150908947,
           192.50793351445878,
-          224.1259891827901
+          224.1259891827901,
+          186.30594897270203
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2603,6 +2611,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3033,7 +3042,8 @@ window.BENCHMARK_DATA = {
           237.9260437829154,
           232.67388774667467,
           232.02562278111776,
-          257.9945465405782
+          257.9945465405782,
+          232.65857474009195
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3226,6 +3236,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3658,7 +3669,8 @@ window.BENCHMARK_DATA = {
           905.7902752331325,
           943.9814722061158,
           873.0784281321934,
-          965.5370454152425
+          965.5370454152425,
+          878.0830819056584
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3884,6 +3896,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -5321,6 +5334,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -5546,7 +5565,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -5775,7 +5795,8 @@ window.BENCHMARK_DATA = {
           284741.403132512,
           286932.83461216517,
           285525.6551688058,
-          292256.4032451923
+          292256.4032451923,
+          284663.0350585937
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5988,6 +6009,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6246,7 +6268,8 @@ window.BENCHMARK_DATA = {
           2197242.153125,
           2258679.250260417,
           2222388.2276041666,
-          2286349.490625
+          2286349.490625,
+          2186689.884207589
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6362,6 +6385,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -6717,7 +6741,8 @@ window.BENCHMARK_DATA = {
           689712.5216796875,
           672909.6015625,
           683663.7433894231,
-          686662.0734375
+          686662.0734375,
+          663320.1628580729
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6873,6 +6898,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -8765,6 +8791,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -9067,7 +9099,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -9373,7 +9406,8 @@ window.BENCHMARK_DATA = {
           476.70961029188976,
           475.0698565483093,
           435.23586937586464,
-          468.7072446162884
+          468.7072446162884,
+          432.60185187657675
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9684,6 +9718,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432
         ],
         "borderColor": "#63A2AC",
@@ -9998,7 +10033,8 @@ window.BENCHMARK_DATA = {
           446.0457442723788,
           561.0464864730835,
           481.9678870519002,
-          489.64288495381675
+          489.64288495381675,
+          462.12075939178465
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10191,6 +10227,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -10623,7 +10660,8 @@ window.BENCHMARK_DATA = {
           15088.433866373698,
           22367.252968924386,
           14751.810962931315,
-          19373.06622314453
+          19373.06622314453,
+          14682.362988063267
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10849,6 +10887,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -12748,6 +12787,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -13050,7 +13095,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -13356,7 +13402,8 @@ window.BENCHMARK_DATA = {
           214.71754519144693,
           222.1042958577474,
           215.77110419273376,
-          211.4747458775838
+          211.4747458775838,
+          214.0656453927358
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13552,6 +13599,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -13981,7 +14029,8 @@ window.BENCHMARK_DATA = {
           242.82264474722055,
           255.0050269762675,
           237.36426599820456,
-          253.58260338647025
+          253.58260338647025,
+          245.08528396061487
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14174,6 +14223,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -14606,7 +14656,8 @@ window.BENCHMARK_DATA = {
           1217.0472063700358,
           1257.1778881366436,
           1202.0696358998616,
-          1182.2770084381104
+          1182.2770084381104,
+          1207.4422156016033
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14832,6 +14883,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -16731,6 +16783,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -17033,7 +17091,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -17339,7 +17398,8 @@ window.BENCHMARK_DATA = {
           347.54862417493547,
           371.5721657752991,
           357.67176113128664,
-          347.5104963098253
+          347.5104963098253,
+          327.91306355794273
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17629,6 +17689,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -17964,7 +18025,8 @@ window.BENCHMARK_DATA = {
           465.5487283706665,
           548.4726373672486,
           468.48163347244264,
-          483.28295974731446
+          483.28295974731446,
+          447.77258291244505
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18157,6 +18219,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -18589,7 +18652,8 @@ window.BENCHMARK_DATA = {
           1291.573767344157,
           1349.519139734904,
           1301.7286973317464,
-          1295.1223273958478
+          1295.1223273958478,
+          1292.463389669146
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18815,6 +18879,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -20714,6 +20779,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -21016,7 +21087,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -21322,7 +21394,8 @@ window.BENCHMARK_DATA = {
           1290.8648170471192,
           1279.8576189676921,
           1229.2228226979573,
-          1485.5296230316162
+          1485.5296230316162,
+          1362.9875935236612
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21633,7 +21706,8 @@ window.BENCHMARK_DATA = {
           2712,
           2712,
           2712,
-          2752
+          2752,
+          2728
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21947,7 +22021,8 @@ window.BENCHMARK_DATA = {
           1241.6301436106364,
           1317.9282190958659,
           1246.1236507415772,
-          1341.114610417684
+          1341.114610417684,
+          1244.4669793446858
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22140,6 +22215,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -22572,7 +22648,8 @@ window.BENCHMARK_DATA = {
           2792.977881113688,
           2871.474394480387,
           2770.221476334792,
-          2882.1317749023438
+          2882.1317749023438,
+          2846.8725797017414
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22798,6 +22875,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -24697,6 +24775,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 19 19:55:12 2025 \u002B0200",
         "message": "fix: avoid duplicate contexts in collection expectations (#641)"
+      },
+      {
+        "sha": "484fed7bf36e582d61a438c39dee1a3f355daf11",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jun 20 12:50:28 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.10.7 (#644)"
       }
     ],
     "labels": [
@@ -24999,7 +25083,8 @@ window.BENCHMARK_DATA = {
       "a2199eab",
       "92019bdc",
       "d832baa0",
-      "56b575bc"
+      "56b575bc",
+      "484fed7b"
     ],
     "datasets": [
       {
@@ -25305,7 +25390,8 @@ window.BENCHMARK_DATA = {
           1412.1140669413976,
           1457.5079257965087,
           1441.8127782185873,
-          1670.8219671885172
+          1670.8219671885172,
+          1547.445827960968
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25616,6 +25702,7 @@ window.BENCHMARK_DATA = {
           2872,
           2872,
           2872,
+          2912,
           2912
         ],
         "borderColor": "#63A2AC",
@@ -25930,7 +26017,8 @@ window.BENCHMARK_DATA = {
           152160.88288225446,
           150571.79912860578,
           150658.91510416666,
-          152840.81640625
+          152840.81640625,
+          149888.4112374442
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26241,7 +26329,8 @@ window.BENCHMARK_DATA = {
           63788,
           63787,
           64323,
-          63352
+          63352,
+          64323
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26555,7 +26644,8 @@ window.BENCHMARK_DATA = {
           4666.275335458608,
           4681.740395609538,
           4463.100389208113,
-          4870.437549845377
+          4870.437549845377,
+          4719.2738917032875
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26781,6 +26871,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
