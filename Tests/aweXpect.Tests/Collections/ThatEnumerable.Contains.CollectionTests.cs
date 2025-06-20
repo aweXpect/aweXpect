@@ -71,10 +71,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
+					             but it lacked all 3 expected items
 
 					             Collection:
 					             []
@@ -101,17 +98,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 expected items
 
 					             Collection:
 					             [
@@ -159,10 +146,10 @@ public sealed partial class ThatEnumerable
 					             but it
 					               contained item 3 at index 3 instead of 1 and
 					               contained item 12 at index 4 instead of 2
-					             
+
 					             Collection:
 					             [1, 2, 1, 3, 12, 2, 2]
-					             
+
 					             Expected:
 					             [1, 2, 1, 1, 2]
 					             """);
@@ -221,7 +208,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -256,9 +243,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order,
-					             but it lacked 2 of 6 expected items:
-					               "a",
-					               "e"
+					             but it lacked all 6 expected items
 
 					             Collection:
 					             [
@@ -441,6 +426,36 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WithItemsInDifferentOrder_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["c", "a",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in order,
+					             but it lacked 1 of 2 expected items: "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+
+					             Expected:
+					             [
+					               "c",
+					               "a"
+					             ]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMissingItem_ShouldFail()
 			{
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
@@ -506,7 +521,6 @@ public sealed partial class ThatEnumerable
 					             ]
 					             """);
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
@@ -583,10 +597,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
+					             but it lacked all 3 unique expected items
 
 					             Collection:
 					             []
@@ -613,9 +624,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
-					             but it lacked 2 of 2 expected items:
-					               "a",
-					               "b"
+					             but it lacked all 2 unique expected items
 
 					             Collection:
 					             []
@@ -642,17 +651,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 unique expected items
 
 					             Collection:
 					             [
@@ -704,7 +703,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -739,9 +738,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
-					             but it lacked 2 of 5 expected items:
-					               "a",
-					               "e"
+					             but it lacked all 5 unique expected items
 
 					             Collection:
 					             [
@@ -878,6 +875,36 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains(expected).IgnoringDuplicates();
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithItemsInDifferentOrder_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["c", "a",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringDuplicates();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in order ignoring duplicates,
+					             but it lacked 1 of 2 expected items: "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+
+					             Expected:
+					             [
+					               "c",
+					               "a"
+					             ]
+					             """);
 			}
 
 			[Fact]
@@ -1022,10 +1049,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in any order,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
+					             but it lacked all 3 expected items
 
 					             Collection:
 					             []
@@ -1052,17 +1076,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in any order,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 expected items
 
 					             Collection:
 					             [
@@ -1449,10 +1463,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
+					             but it lacked all 3 unique expected items
 
 					             Collection:
 					             []
@@ -1481,9 +1492,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
-					             but it lacked 2 of 2 expected items:
-					               "a",
-					               "b"
+					             but it lacked all 2 unique expected items
 
 					             Collection:
 					             []
@@ -1510,17 +1519,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 unique expected items
 
 					             Collection:
 					             [
@@ -1868,10 +1867,7 @@ public sealed partial class ThatEnumerable
 					             contains collection expected and at least one additional item in order,
 					             but it
 					               did not contain any additional items and
-					               lacked 3 of 3 expected items:
-					                 "a",
-					                 "b",
-					                 "c"
+					               lacked all 3 expected items
 
 					             Collection:
 					             []
@@ -1898,17 +1894,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 expected items
 
 					             Collection:
 					             [
@@ -1996,9 +1982,9 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order,
-					             but it lacked 2 of 6 expected items:
-					               "a",
-					               "e"
+					             but it
+					               did not contain any additional items and
+					               lacked all 6 expected items
 
 					             Collection:
 					             [
@@ -2352,10 +2338,7 @@ public sealed partial class ThatEnumerable
 					             contains collection expected and at least one additional item in order ignoring duplicates,
 					             but it
 					               did not contain any additional items and
-					               lacked 3 of 3 expected items:
-					                 "a",
-					                 "b",
-					                 "c"
+					               lacked all 3 unique expected items
 
 					             Collection:
 					             []
@@ -2384,9 +2367,7 @@ public sealed partial class ThatEnumerable
 					             contains collection expected and at least one additional item in order ignoring duplicates,
 					             but it
 					               did not contain any additional items and
-					               lacked 2 of 2 expected items:
-					                 "a",
-					                 "b"
+					               lacked all 2 unique expected items
 
 					             Collection:
 					             []
@@ -2413,17 +2394,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 unique expected items
 
 					             Collection:
 					             [
@@ -2510,9 +2481,9 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates,
-					             but it lacked 2 of 5 expected items:
-					               "a",
-					               "e"
+					             but it
+					               did not contain any additional items and
+					               lacked all 5 unique expected items
 
 					             Collection:
 					             [
@@ -2919,10 +2890,7 @@ public sealed partial class ThatEnumerable
 					             contains collection expected and at least one additional item in any order,
 					             but it
 					               did not contain any additional items and
-					               lacked 3 of 3 expected items:
-					                 "a",
-					                 "b",
-					                 "c"
+					               lacked all 3 expected items
 
 					             Collection:
 					             []
@@ -2949,17 +2917,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in any order,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 expected items
 
 					             Collection:
 					             [
@@ -3396,10 +3354,7 @@ public sealed partial class ThatEnumerable
 					             contains collection expected and at least one additional item in any order ignoring duplicates,
 					             but it
 					               did not contain any additional items and
-					               lacked 3 of 3 expected items:
-					                 "a",
-					                 "b",
-					                 "c"
+					               lacked all 3 unique expected items
 
 					             Collection:
 					             []
@@ -3430,9 +3385,7 @@ public sealed partial class ThatEnumerable
 					             contains collection expected and at least one additional item in any order ignoring duplicates,
 					             but it
 					               did not contain any additional items and
-					               lacked 2 of 2 expected items:
-					                 "a",
-					                 "b"
+					               lacked all 2 unique expected items
 
 					             Collection:
 					             []
@@ -3459,17 +3412,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in any order ignoring duplicates,
-					             but it lacked 10 of 10 expected items:
-					               101,
-					               102,
-					               103,
-					               104,
-					               105,
-					               106,
-					               107,
-					               108,
-					               109,
-					               110
+					             but it lacked all 10 unique expected items
 
 					             Collection:
 					             [
@@ -3910,23 +3853,23 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains([regex,]).AsRegex();
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($$"""
-					               Expected that subject
-					               contains collection [regex,] in order as regex,
-					               but it lacked 1 of 1 expected items: "{{regex}}"
+					.WithMessage("""
+					             Expected that subject
+					             contains collection [regex,] in order as regex,
+					             but it lacked all 1 expected items
 
-					               Collection:
-					               [
-					                 "foo",
-					                 "bar",
-					                 "baz"
-					               ]
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
 
-					               Expected:
-					               [
-					                 "[g-h]{1}[o]*"
-					               ]
-					               """);
+					             Expected:
+					             [
+					               "[g-h]{1}[o]*"
+					             ]
+					             """);
 			}
 
 			[Theory]
@@ -3940,23 +3883,23 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains([wildcard,]).AsWildcard();
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
-					              Expected that subject
-					              contains collection [wildcard,] in order as wildcard,
-					              but it lacked 1 of 1 expected items: "{wildcard}"
+					.WithMessage("""
+					             Expected that subject
+					             contains collection [wildcard,] in order as wildcard,
+					             but it lacked all 1 expected items
 
-					              Collection:
-					              [
-					                "foo",
-					                "bar",
-					                "baz"
-					              ]
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
 
-					              Expected:
-					              [
-					                "f??o"
-					              ]
-					              """);
+					             Expected:
+					             [
+					               "f??o"
+					             ]
+					             """);
 			}
 
 			[Theory]
@@ -3970,23 +3913,23 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains([match,]).AsWildcard().Exactly();
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
-					              Expected that subject
-					              contains collection [match,] in order,
-					              but it lacked 1 of 1 expected items: "{match}"
+					.WithMessage("""
+					             Expected that subject
+					             contains collection [match,] in order,
+					             but it lacked all 1 expected items
 
-					              Collection:
-					              [
-					                "foo",
-					                "bar",
-					                "baz"
-					              ]
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
 
-					              Expected:
-					              [
-					                "*oo"
-					              ]
-					              """);
+					             Expected:
+					             [
+					               "*oo"
+					             ]
+					             """);
 			}
 
 			[Theory]
@@ -4000,23 +3943,289 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains([match,]).IgnoringCase();
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
-					              Expected that subject
-					              contains collection [match,] in order ignoring case,
-					              but it lacked 1 of 1 expected items: "{match}"
+					.WithMessage("""
+					             Expected that subject
+					             contains collection [match,] in order ignoring case,
+					             but it lacked all 1 expected items
 
-					              Collection:
-					              [
-					                "foo",
-					                "bar",
-					                "baz"
-					              ]
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
 
-					              Expected:
-					              [
-					                "goo"
-					              ]
-					              """);
+					             Expected:
+					             [
+					               "goo"
+					             ]
+					             """);
+			}
+		}
+
+		public sealed class InSameOrderIgnoringInterspersedItemsTests
+		{
+			[Fact]
+			public async Task WithInterspersedItems_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringInterspersedItems();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInterspersedItemsInDifferentOrder_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["b", "a",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringInterspersedItems();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in order ignoring interspersed items,
+					             but it lacked 1 of 2 expected items: "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+
+					             Expected:
+					             [
+					               "b",
+					               "a"
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WithSameCollection_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringInterspersedItems();
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class InSameOrderIgnoringDuplicatesAndInterspersedItemsTests
+		{
+			[Fact]
+			public async Task WithInterspersedItems_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringDuplicates().IgnoringInterspersedItems();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInterspersedItemsInDifferentOrder_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["b", "a",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringInterspersedItems().IgnoringDuplicates();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in order ignoring duplicates and interspersed items,
+					             but it lacked 1 of 2 expected items: "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+
+					             Expected:
+					             [
+					               "b",
+					               "a"
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WithSameCollection_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringDuplicates().IgnoringInterspersedItems();
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class ProperlyInSameOrderIgnoringInterspersedItemsTests
+		{
+			[Fact]
+			public async Task WithInterspersedItems_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).Properly().IgnoringInterspersedItems();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInterspersedItemsInDifferentOrder_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["b", "a",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).Properly().IgnoringInterspersedItems();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected and at least one additional item in order ignoring interspersed items,
+					             but it lacked 1 of 2 expected items: "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+
+					             Expected:
+					             [
+					               "b",
+					               "a"
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WithSameCollection_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).Properly().IgnoringInterspersedItems();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected and at least one additional item in order ignoring interspersed items,
+					             but it did not contain any additional items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             """);
+			}
+		}
+
+		public sealed class ProperlyInSameOrderIgnoringDuplicatesAndInterspersedItemsTests
+		{
+			[Fact]
+			public async Task WithInterspersedItems_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).Properly().IgnoringDuplicates().IgnoringInterspersedItems();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInterspersedItemsInDifferentOrder_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["b", "a",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).Properly().IgnoringInterspersedItems().IgnoringDuplicates();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected and at least one additional item in order ignoring duplicates and interspersed items,
+					             but it lacked 1 of 2 expected items: "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+
+					             Expected:
+					             [
+					               "b",
+					               "a"
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WithSameCollection_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).Properly().IgnoringDuplicates().IgnoringInterspersedItems();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected and at least one additional item in order ignoring duplicates and interspersed items,
+					             but it did not contain any additional items
+					             
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             
+					             Expected:
+					             [
+					               "a",
+					               "b",
+					               "c"
+					             ]
+					             """);
 			}
 		}
 	}

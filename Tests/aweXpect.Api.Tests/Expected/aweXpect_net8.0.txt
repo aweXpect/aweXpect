@@ -1246,6 +1246,7 @@ namespace aweXpect.Results
     {
         public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TElement> options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
         public TSelf IgnoringDuplicates() { }
+        public TSelf IgnoringInterspersedItems() { }
         public TSelf InAnyOrder() { }
     }
     public class ObjectCollectionMatchWithToleranceResult<TType, TThat, TElement, TTolerance> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TElement>
@@ -1328,6 +1329,7 @@ namespace aweXpect.Results
     {
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
         public TSelf IgnoringDuplicates() { }
+        public TSelf IgnoringInterspersedItems() { }
         public TSelf InAnyOrder() { }
     }
 }

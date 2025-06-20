@@ -108,11 +108,8 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in order,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
-
+					             but it lacked all 3 expected items
+					             
 					             Collection:
 					             []
 
@@ -149,18 +146,8 @@ public sealed partial class ThatEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected and
-					               lacked 10 of 10 expected items:
-					                 101,
-					                 102,
-					                 103,
-					                 104,
-					                 105,
-					                 106,
-					                 107,
-					                 108,
-					                 109,
-					                 110
-
+					               lacked all 10 expected items
+					             
 					             Collection:
 					             [
 					               1,
@@ -686,11 +673,8 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in order ignoring duplicates,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
-
+					             but it lacked all 3 unique expected items
+					             
 					             Collection:
 					             []
 
@@ -716,10 +700,8 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in order ignoring duplicates,
-					             but it lacked 2 of 2 expected items:
-					               "a",
-					               "b"
-
+					             but it lacked all 2 unique expected items
+					             
 					             Collection:
 					             []
 
@@ -756,18 +738,8 @@ public sealed partial class ThatEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected and
-					               lacked 10 of 10 expected items:
-					                 101,
-					                 102,
-					                 103,
-					                 104,
-					                 105,
-					                 106,
-					                 107,
-					                 108,
-					                 109,
-					                 110
-
+					               lacked all 10 unique expected items
+					             
 					             Collection:
 					             [
 					               1,
@@ -1164,11 +1136,8 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in any order,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
-
+					             but it lacked all 3 expected items
+					             
 					             Collection:
 					             []
 
@@ -1205,18 +1174,8 @@ public sealed partial class ThatEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected and
-					               lacked 10 of 10 expected items:
-					                 101,
-					                 102,
-					                 103,
-					                 104,
-					                 105,
-					                 106,
-					                 107,
-					                 108,
-					                 109,
-					                 110
-
+					               lacked all 10 expected items
+					             
 					             Collection:
 					             [
 					               1,
@@ -1674,11 +1633,8 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in any order ignoring duplicates,
-					             but it lacked 3 of 3 expected items:
-					               "a",
-					               "b",
-					               "c"
-
+					             but it lacked all 3 unique expected items
+					             
 					             Collection:
 					             []
 
@@ -1706,10 +1662,8 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             matches collection expected in any order ignoring duplicates,
-					             but it lacked 2 of 2 expected items:
-					               "a",
-					               "b"
-
+					             but it lacked all 2 unique expected items
+					             
 					             Collection:
 					             []
 
@@ -1746,18 +1700,8 @@ public sealed partial class ThatEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected and
-					               lacked 10 of 10 expected items:
-					                 101,
-					                 102,
-					                 103,
-					                 104,
-					                 105,
-					                 106,
-					                 107,
-					                 108,
-					                 109,
-					                 110
-
+					               lacked all 10 unique expected items
+					             
 					             Collection:
 					             [
 					               1,
