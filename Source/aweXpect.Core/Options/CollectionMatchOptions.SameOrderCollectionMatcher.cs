@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using aweXpect.Core;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
@@ -14,6 +16,7 @@ public partial class CollectionMatchOptions
 		private readonly EquivalenceRelations _equivalenceRelations;
 		private readonly T[] _expectedItems;
 		private readonly List<T> _foundItems = new();
+		private readonly bool _ignoreInterspersedItems;
 		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
 		private readonly List<T> _matchingItems = new();
 		private readonly List<T> _missingItems = new();
@@ -21,11 +24,14 @@ public partial class CollectionMatchOptions
 		private int _expectationIndex = -1;
 		private int _index;
 		private int _matchIndex;
+		private int _maxMatchIndex;
 
 		public SameOrderCollectionMatcher(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T> expected)
+			IEnumerable<T> expected,
+			bool ignoreInterspersedItems)
 		{
 			_equivalenceRelations = equivalenceRelation;
+			_ignoreInterspersedItems = ignoreInterspersedItems;
 			_expectedItems = expected.ToArray();
 			_totalExpectedItems = _expectedItems.Length;
 		}
@@ -43,6 +49,10 @@ public partial class CollectionMatchOptions
 			{
 				VerifyTheCurrentValueIsEqualToTheExpectedValue(value);
 			}
+			else if (_ignoreInterspersedItems)
+			{
+				_additionalItems.Add(_index, value);
+			}
 			else
 			{
 				VerifyTheCurrentValueIsDifferentFromTheExpectedValue(value, options);
@@ -56,14 +66,21 @@ public partial class CollectionMatchOptions
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
-			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _matchIndex);
+			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _maxMatchIndex);
 			if (_expectedItems.Length > consideredExpectedItems)
 			{
 				for (int i = consideredExpectedItems; i < _expectedItems.Length; i++)
 				{
 					T item = _expectedItems[i];
-					if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value, item)) &&
-					    _incorrectItems.All(x => !options.AreConsideredEqual(x.Value.Item, item)))
+					KeyValuePair<int, T> additionalItem = _additionalItems
+						.FirstOrDefault(a => options.AreConsideredEqual(a.Value, item));
+					if (!additionalItem.IsDefault())
+					{
+						_additionalItems.Remove(additionalItem.Key);
+						_missingItems.Add(additionalItem.Value);
+					}
+					else if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value, item)) &&
+					         _incorrectItems.All(x => !options.AreConsideredEqual(x.Value.Item, item)))
 					{
 						_missingItems.Add(item);
 					}
@@ -96,7 +113,7 @@ public partial class CollectionMatchOptions
 
 			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
 			{
-				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations));
+				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations, false));
 			}
 			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedInProperly) && !_missingItems.Any())
 			{
@@ -136,6 +153,7 @@ public partial class CollectionMatchOptions
 
 				_matchingItems.Clear();
 				_matchIndex++;
+				_maxMatchIndex = Math.Max(_matchIndex, _maxMatchIndex);
 				_expectationIndex = 0;
 				_matchingItems.Add(value);
 			}
@@ -186,6 +204,7 @@ public partial class CollectionMatchOptions
 		private void VerifyTheCurrentValueIsEqualToTheExpectedValue(T value)
 		{
 			_matchIndex++;
+			_maxMatchIndex = Math.Max(_matchIndex, _maxMatchIndex);
 			_expectationIndex++;
 			_matchingItems.Add(value);
 		}

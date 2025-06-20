@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
@@ -12,6 +13,7 @@ public partial class CollectionMatchOptions
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelations _equivalenceRelations;
+		private readonly bool _ignoreInterspersedItems;
 		private readonly T[] _expectedDistinctItems;
 		private readonly List<T> _foundItems = new();
 		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
@@ -22,11 +24,14 @@ public partial class CollectionMatchOptions
 		private int _expectationIndex = -1;
 		private int _index;
 		private int _matchIndex;
+		private int _maxMatchIndex;
 
 		public SameOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T> expected)
+			IEnumerable<T> expected,
+			bool ignoreInterspersedItems)
 		{
 			_equivalenceRelations = equivalenceRelation;
+			_ignoreInterspersedItems = ignoreInterspersedItems;
 			_expectedDistinctItems = expected.Distinct().ToArray();
 			_totalExpectedItems = _expectedDistinctItems.Length;
 		}
@@ -53,6 +58,15 @@ public partial class CollectionMatchOptions
 			{
 				VerifyTheCurrentValueIsEqualToTheExpectedValue(value, options);
 			}
+			else if (_ignoreInterspersedItems)
+			{
+				if (!_uniqueItems.Add(value))
+				{
+					return false;
+				}
+
+				_additionalItems.Add(_index, value);
+			}
 			else
 			{
 				if (!_uniqueItems.Add(value))
@@ -73,13 +87,21 @@ public partial class CollectionMatchOptions
 		{
 			int maximumNumberOfCollectionItems =
 				maximumNumber;
-			foreach (T item in _expectedDistinctItems.Skip(Math.Max(_expectationIndex - 1, _matchIndex)))
+			foreach (T item in _expectedDistinctItems.Skip(Math.Max(_expectationIndex - 1, _maxMatchIndex)))
 			{
+				KeyValuePair<int, T> additionalItem = _additionalItems
+					.FirstOrDefault(a => options.AreConsideredEqual(a.Value, item));
+				if (!additionalItem.IsDefault())
+				{
+					_additionalItems.Remove(additionalItem.Key);
+					_missingItems.Add(additionalItem.Value);
+				}
+				
 				if (!_uniqueItems.Add(item))
 				{
 					continue;
 				}
-
+				
 				if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value, item)) &&
 				    _incorrectItems.All(x => !options.AreConsideredEqual(x.Value.Item, item)))
 				{
@@ -116,7 +138,7 @@ public partial class CollectionMatchOptions
 
 			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
 			{
-				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations));
+				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations, true));
 			}
 			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedInProperly) && !_missingItems.Any())
 			{
@@ -169,6 +191,7 @@ public partial class CollectionMatchOptions
 
 				_matchingItems.Clear();
 				_matchIndex++;
+				_maxMatchIndex = Math.Max(_matchIndex, _maxMatchIndex);
 				_expectationIndex = 0;
 				_matchingItems.Add(value);
 			}
@@ -185,6 +208,7 @@ public partial class CollectionMatchOptions
 		private void VerifyTheCurrentValueIsEqualToTheExpectedValue(T value, IOptionsEquality<T2> options)
 		{
 			_matchIndex++;
+			_maxMatchIndex = Math.Max(_matchIndex, _maxMatchIndex);
 			_expectationIndex++;
 			_matchingItems.Add(value);
 			_uniqueItems.Add(value);

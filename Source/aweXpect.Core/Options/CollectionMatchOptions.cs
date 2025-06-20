@@ -50,6 +50,7 @@ public partial class CollectionMatchOptions(
 
 	private EquivalenceRelations _equivalenceRelations = equivalenceRelations;
 	private bool _ignoringDuplicates;
+	private bool _ignoringInterspersedItems;
 	private bool _inAnyOrder;
 
 	/// <summary>
@@ -69,6 +70,11 @@ public partial class CollectionMatchOptions(
 	public void IgnoringDuplicates() => _ignoringDuplicates = true;
 
 	/// <summary>
+	///     Ignores interspersed items in the actual collection.
+	/// </summary>
+	public void IgnoringInterspersedItems() => _ignoringInterspersedItems = true;
+
+	/// <summary>
 	///     Get the collection matcher for the <paramref name="expected" /> enumerable.
 	/// </summary>
 	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<T> expected)
@@ -77,23 +83,33 @@ public partial class CollectionMatchOptions(
 		{
 			(true, true) => new AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected),
 			(true, false) => new AnyOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected),
-			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected),
-			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
 		};
 
 	/// <summary>
-	///     Specifies the expectation for the <paramref name="expectedExpression" /> using the provided <paramref name="grammars"/>.
+	///     Specifies the expectation for the <paramref name="expectedExpression" /> using the provided
+	///     <paramref name="grammars" />.
 	/// </summary>
 	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
-		=> (_inAnyOrder, _ignoringDuplicates) switch
+		=> (_inAnyOrder, _ignoringDuplicates, _ignoringInterspersedItems) switch
 		{
-			(true, true) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order ignoring duplicates",
-			(true, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
-			(false, true) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order ignoring duplicates",
-			(false, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order",
+			(true, true, _) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			                   " in any order ignoring duplicates",
+			(true, false, _) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
+			(false, true, false) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			                        " in order ignoring duplicates",
+			(false, false, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order",
+			(false, true, true) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			                       " in order ignoring duplicates and interspersed items",
+			(false, false, true) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			                        " in order ignoring interspersed items",
 		};
 
-	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression, ExpectationGrammars grammars)
+	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression,
+		ExpectationGrammars grammars)
 		=> (equivalenceRelation, grammars.IsNegated()) switch
 		{
 			(EquivalenceRelations.Contains, false)
@@ -166,9 +182,19 @@ public partial class CollectionMatchOptions(
 	}
 
 	private static IEnumerable<string> MissingItemsError<T>(int total, List<T> missingItems,
-		EquivalenceRelations equivalenceRelation)
+		EquivalenceRelations equivalenceRelation, bool ignoringDuplicates)
 	{
 		bool hasMissingItems = missingItems.Any();
+		if (total == missingItems.Count)
+		{
+			yield return ignoringDuplicates switch
+			{
+				true => $"lacked all {total} unique expected items",
+				false => $"lacked all {total} expected items",
+			};
+			yield break;
+		}
+
 		if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelations.IsContainedIn))
 		{
 			if (missingItems.Count == 1)

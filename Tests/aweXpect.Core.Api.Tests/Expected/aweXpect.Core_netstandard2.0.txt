@@ -730,6 +730,7 @@ namespace aweXpect.Options
             where T : T2 { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public void IgnoringDuplicates() { }
+        public void IgnoringInterspersedItems() { }
         public void InAnyOrder() { }
         public void SetEquivalenceRelation(aweXpect.Options.CollectionMatchOptions.EquivalenceRelations equivalenceRelation) { }
         [System.Flags]
