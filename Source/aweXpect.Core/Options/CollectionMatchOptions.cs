@@ -152,9 +152,7 @@ public partial class CollectionMatchOptions(
 		}
 	}
 
-	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems,
-		T[] expectedItems,
-		EquivalenceRelations equivalenceRelation)
+	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems)
 	{
 		bool hasIncorrectItems = incorrectItems.Any();
 		if (hasIncorrectItems)
