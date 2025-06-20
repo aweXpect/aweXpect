@@ -143,6 +143,31 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 
+
+			[Fact]
+			public async Task WhenExpectedContainsDuplicateButMissingItems_ShouldFail()
+			{
+				int[] collection = [1, 2, 1, 3, 12, 2, 2,];
+
+				async Task Act()
+					=> await That(collection).Contains([1, 2, 1, 1, 2,]);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that collection
+					             contains collection [1, 2, 1, 1, 2,] in order,
+					             but it
+					               contained item 3 at index 3 instead of 1 and
+					               contained item 12 at index 4 instead of 2
+					             
+					             Collection:
+					             [1, 2, 1, 3, 12, 2, 2]
+					             
+					             Expected:
+					             [1, 2, 1, 1, 2]
+					             """);
+			}
+
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
@@ -189,11 +214,14 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order,
-					             but it lacked 3 of 6 expected items:
-					               "x",
-					               "y",
-					               "z"
-
+					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
+					               lacked 3 of 6 expected items:
+					                 "x",
+					                 "y",
+					                 "z"
+					             
 					             Collection:
 					             [
 					               "a",
@@ -669,11 +697,14 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
-					             but it lacked 3 of 6 expected items:
-					               "x",
-					               "y",
-					               "z"
-
+					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
+					               lacked 3 of 6 expected items:
+					                 "x",
+					                 "y",
+					                 "z"
+					             
 					             Collection:
 					             [
 					               "a",
@@ -1923,6 +1954,8 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order,
 					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
 					               did not contain any additional items and
 					               lacked 3 of 6 expected items:
 					                 "x",
@@ -2435,10 +2468,13 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates,
-					             but it lacked 3 of 6 expected items:
-					               "x",
-					               "y",
-					               "z"
+					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
+					               lacked 3 of 6 expected items:
+					                 "x",
+					                 "y",
+					                 "z"
 
 					             Collection:
 					             [
