@@ -191,11 +191,14 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order,
-					             but it lacked 3 of 6 expected items:
-					               "x",
-					               "y",
-					               "z"
-
+					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
+					               lacked 3 of 6 expected items:
+					                 "x",
+					                 "y",
+					                 "z"
+					             
 					             Collection:
 					             [
 					               "a",
@@ -671,11 +674,14 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
-					             but it lacked 3 of 6 expected items:
-					               "x",
-					               "y",
-					               "z"
-
+					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
+					               lacked 3 of 6 expected items:
+					                 "x",
+					                 "y",
+					                 "z"
+					             
 					             Collection:
 					             [
 					               "a",
@@ -1925,12 +1931,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order,
 					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
 					               did not contain any additional items and
 					               lacked 3 of 6 expected items:
 					                 "x",
 					                 "y",
 					                 "z"
-
+					             
 					             Collection:
 					             [
 					               "a",
@@ -2437,11 +2445,14 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates,
-					             but it lacked 3 of 6 expected items:
-					               "x",
-					               "y",
-					               "z"
-
+					             but it
+					               contained item "d" at index 3 instead of "x" and
+					               contained item "e" at index 4 instead of "y" and
+					               lacked 3 of 6 expected items:
+					                 "x",
+					                 "y",
+					                 "z"
+					             
 					             Collection:
 					             [
 					               "a",

@@ -101,7 +101,7 @@ public partial class CollectionMatchOptions
 			}
 
 			List<string> errors = new();
-			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedDistinctItems, _equivalenceRelations));
+			errors.AddRange(IncorrectItemsError(_incorrectItems));
 			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
 			{
 				errors.AddRange(AdditionalItemsError(_additionalItems));

@@ -152,21 +152,13 @@ public partial class CollectionMatchOptions(
 		}
 	}
 
-	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems,
-		T[] expectedItems,
-		EquivalenceRelations equivalenceRelation)
+	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems)
 	{
 		bool hasIncorrectItems = incorrectItems.Any();
 		if (hasIncorrectItems)
 		{
 			foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
 			{
-				if (equivalenceRelation.HasFlag(EquivalenceRelations.Contains) &&
-				    !expectedItems.Contains(incorrectItem.Value.Item))
-				{
-					continue;
-				}
-
 				yield return
 					$"contained item {Formatter.Format(incorrectItem.Value.Item)} at index {incorrectItem.Key} instead of {Formatter.Format(incorrectItem.Value.Expected)}";
 			}
