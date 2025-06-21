@@ -184,6 +184,11 @@ public partial class CollectionMatchOptions(
 	private static IEnumerable<string> MissingItemsError<T>(int total, List<T> missingItems,
 		EquivalenceRelations equivalenceRelation, bool ignoringDuplicates)
 	{
+		if (total == 0)
+		{
+			yield break;
+		}
+
 		bool hasMissingItems = missingItems.Any();
 		if (total == missingItems.Count)
 		{

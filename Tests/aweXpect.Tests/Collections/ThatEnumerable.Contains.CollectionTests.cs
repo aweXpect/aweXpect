@@ -130,7 +130,6 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 
-
 			[Fact]
 			public async Task WhenExpectedContainsDuplicateButMissingItems_ShouldFail()
 			{
@@ -153,6 +152,18 @@ public sealed partial class ThatEnumerable
 					             Expected:
 					             [1, 2, 1, 1, 2]
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldSucceed()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int> expected = [];
+
+				async Task Act()
+					=> await That(subject).Contains(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -684,6 +695,35 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldSucceed()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int> expected = [];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).IgnoringDuplicates();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Contains(expected!).IgnoringDuplicates();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in order ignoring duplicates,
+					             but it cannot compare to <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
@@ -1105,6 +1145,35 @@ public sealed partial class ThatEnumerable
 					               109,
 					               110
 					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldSucceed()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int> expected = [];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).InAnyOrder();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Contains(expected!).InAnyOrder();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in any order,
+					             but it cannot compare to <null>
 					             """);
 			}
 
@@ -1548,6 +1617,35 @@ public sealed partial class ThatEnumerable
 					               109,
 					               110
 					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldSucceed()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int> expected = [];
+
+				async Task Act()
+					=> await That(subject).Contains(expected).InAnyOrder().IgnoringDuplicates();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Contains(expected!).InAnyOrder().IgnoringDuplicates();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains collection expected in any order ignoring duplicates,
+					             but it cannot compare to <null>
 					             """);
 			}
 
@@ -4135,14 +4233,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring interspersed items,
 					             but it did not contain any additional items
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
@@ -4162,7 +4260,8 @@ public sealed partial class ThatEnumerable
 				string[] expected = ["a", "c",];
 
 				async Task Act()
-					=> await That(subject).Contains(expected).Properly().IgnoringDuplicates().IgnoringInterspersedItems();
+					=> await That(subject).Contains(expected).Properly().IgnoringDuplicates()
+						.IgnoringInterspersedItems();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -4174,7 +4273,8 @@ public sealed partial class ThatEnumerable
 				string[] expected = ["b", "a",];
 
 				async Task Act()
-					=> await That(subject).Contains(expected).Properly().IgnoringInterspersedItems().IgnoringDuplicates();
+					=> await That(subject).Contains(expected).Properly().IgnoringInterspersedItems()
+						.IgnoringDuplicates();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -4204,21 +4304,22 @@ public sealed partial class ThatEnumerable
 				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
-					=> await That(subject).Contains(expected).Properly().IgnoringDuplicates().IgnoringInterspersedItems();
+					=> await That(subject).Contains(expected).Properly().IgnoringDuplicates()
+						.IgnoringInterspersedItems();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates and interspersed items,
 					             but it did not contain any additional items
-					             
+
 					             Collection:
 					             [
 					               "a",
 					               "b",
 					               "c"
 					             ]
-					             
+
 					             Expected:
 					             [
 					               "a",
