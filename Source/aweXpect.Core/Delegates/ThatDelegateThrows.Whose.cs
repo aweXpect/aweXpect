@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Results;
 
@@ -11,10 +11,11 @@ public partial class ThatDelegateThrows<TException>
 	///     Verifies the <paramref name="expectations" /> on the member selected by the <paramref name="memberSelector" />.
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> Whose<TMember>(
-		Expression<Func<TException, TMember?>> memberSelector,
-		Action<IThat<TMember?>> expectations)
+		Func<TException, TMember?> memberSelector,
+		Action<IThat<TMember?>> expectations,
+		[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
 		=> new(ExpectationBuilder.ForMember(
-					MemberAccessor<TException, TMember?>.FromExpression(memberSelector),
+					MemberAccessor<TException, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
 					(member, expectation) => expectation.Append("whose ").Append(member))
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			this);

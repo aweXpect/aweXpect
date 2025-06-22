@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Results;
@@ -13,13 +13,14 @@ public static partial class ThatGeneric
 	/// </summary>
 	public static AndOrResult<T, IThat<T>> For<T, TMember>(
 		this IThat<T> source,
-		Expression<Func<T, TMember?>> memberSelector,
-		Action<IThat<TMember?>> expectations)
+		Func<T, TMember?> memberSelector,
+		Action<IThat<TMember?>> expectations,
+		[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		expectationBuilder
 			.ForMember(
-				MemberAccessor<T, TMember?>.FromExpression(memberSelector),
+				MemberAccessor<T, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
 				(member, stringBuilder) => stringBuilder.Append("for ").Append(member))
 			.AddExpectations(e => expectations(new ThatSubject<TMember?>(e)));
 		return new AndOrResult<T, IThat<T>>(expectationBuilder, source);

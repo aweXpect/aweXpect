@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 
 namespace aweXpect.Results;
@@ -38,11 +38,12 @@ public class AndOrWhoseResult<TType, TThat, TSelf>(
 	/// </summary>
 	public AdditionalAndOrWhoseResult
 		Whose<TMember>(
-			Expression<Func<TType, TMember?>> memberSelector,
-			Action<IThat<TMember?>> expectations)
+			Func<TType, TMember?> memberSelector,
+			Action<IThat<TMember?>> expectations,
+			[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
 		=> new(
 			_expectationBuilder
-				.ForMember(MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
+				.ForMember(MemberAccessor<TType, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
 					(member, stringBuilder) => stringBuilder.Append(" whose ").Append(member))
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			_returnValue);
@@ -67,14 +68,15 @@ public class AndOrWhoseResult<TType, TThat, TSelf>(
 		/// </summary>
 		public AdditionalAndOrWhoseResult
 			AndWhose<TMember>(
-				Expression<Func<TType, TMember?>> memberSelector,
-				Action<IThat<TMember?>> expectations)
+				Func<TType, TMember?> memberSelector,
+				Action<IThat<TMember?>> expectations,
+				[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
 		{
 			_expectationBuilder.And(" and");
 			return new AdditionalAndOrWhoseResult(
 				_expectationBuilder
 					.ForMember(
-						MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
+						MemberAccessor<TType, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
 						(member, stringBuilder) => stringBuilder.Append(" whose ").Append(member))
 					.AddExpectations(e
 						=> expectations(new ThatSubject<TMember?>(e))),
