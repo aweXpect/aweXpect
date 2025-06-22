@@ -61,23 +61,23 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 	/// </summary>
 	public static MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(
 		Func<TSource, TTarget> func, string name)
-		=> new(func, ExtractMemberPath(name));
+		=> new(func, ExtractMemberPath(name.Trim()));
 
-	private static string ExtractMemberPath(string name)
+	private static string ExtractMemberPath(string expression)
 	{
 		// Example: "x => x.Foo" would result in ".Foo"
-		int idx = name.IndexOf("=>", StringComparison.Ordinal);
+		int idx = expression.IndexOf("=>", StringComparison.Ordinal);
 		if (idx > 0)
 		{
-			string? prefix = name.Substring(0, idx).Trim();
-			int idx2 = name.Substring(idx).IndexOf(prefix, StringComparison.Ordinal);
-			if (idx2 > 0)
+			string? prefix = expression.Substring(0, idx).Trim();
+			idx = expression.IndexOf(prefix, idx, StringComparison.Ordinal);
+			if (idx > 0)
 			{
-				name = name.Substring(idx + idx2 + prefix.Length).TrimStart();
+				expression = expression.Substring(idx + prefix.Length).TrimStart();
 			}
 		}
 
-		return $"{name} ";
+		return $"{expression} ";
 	}
 
 	internal TTarget AccessMember(TSource value) => _accessor.Invoke(value);
