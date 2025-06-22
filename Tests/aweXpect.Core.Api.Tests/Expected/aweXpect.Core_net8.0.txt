@@ -250,6 +250,7 @@ namespace aweXpect.Core
     {
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFunc(System.Func<TSource, TTarget> func, string name) { }
+        public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(System.Func<TSource, TTarget> func, string name) { }
     }
     public class ResultContext
     {
@@ -490,7 +491,7 @@ namespace aweXpect.Delegates
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
         public aweXpect.Core.IThat<TException> Which { get; }
         public aweXpect.Delegates.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> Whose<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> Whose<TMember>(System.Func<TException, TMember?> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations, [System.Runtime.CompilerServices.CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "") { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType, System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner<TInnerException>()
@@ -918,11 +919,11 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>
     {
         public AndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-        public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult Which<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult Which<TMember>(System.Func<TType, TMember?> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations, [System.Runtime.CompilerServices.CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "") { }
         public class AdditionalAndOrWhichResult : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
         {
             public AdditionalAndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-            public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult AndWhich<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+            public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult AndWhich<TMember>(System.Func<TType, TMember?> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations, [System.Runtime.CompilerServices.CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "") { }
         }
     }
     public class AndOrWhoseResult<TType, TThat> : aweXpect.Results.AndOrWhoseResult<TType, TThat, aweXpect.Results.AndOrWhoseResult<TType, TThat>>
@@ -933,11 +934,11 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>
     {
         public AndOrWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-        public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult Whose<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult Whose<TMember>(System.Func<TType, TMember?> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations, [System.Runtime.CompilerServices.CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "") { }
         public class AdditionalAndOrWhoseResult : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
         {
             public AdditionalAndOrWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-            public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult AndWhose<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+            public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult AndWhose<TMember>(System.Func<TType, TMember?> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations, [System.Runtime.CompilerServices.CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "") { }
         }
     }
     public class AndResult<TThat> : aweXpect.Results.ExpectationResult

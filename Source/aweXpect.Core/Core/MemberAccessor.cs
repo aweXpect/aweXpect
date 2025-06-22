@@ -56,5 +56,29 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 		Func<TSource, TTarget> func, string name)
 		=> new(func, name);
 
+	/// <summary>
+	///     Creates a member accessor from the given <paramref name="func" />.
+	/// </summary>
+	public static MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(
+		Func<TSource, TTarget> func, string name)
+		=> new(func, ExtractMemberPath(name));
+
+	private static string ExtractMemberPath(string name)
+	{
+		// Example: "x => x.Foo" would result in ".Foo"
+		int idx = name.IndexOf("=>", StringComparison.Ordinal);
+		if (idx > 0)
+		{
+			string? prefix = name.Substring(0, idx).Trim();
+			int idx2 = name.Substring(idx).IndexOf(prefix, StringComparison.Ordinal);
+			if (idx2 > 0)
+			{
+				name = name.Substring(idx + idx2 + prefix.Length).TrimStart();
+			}
+		}
+
+		return $"{name} ";
+	}
+
 	internal TTarget AccessMember(TSource value) => _accessor.Invoke(value);
 }

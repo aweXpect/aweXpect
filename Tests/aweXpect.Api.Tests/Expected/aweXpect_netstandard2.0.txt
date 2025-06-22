@@ -463,7 +463,7 @@ namespace aweXpect
         public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> CompliesWith<T>(this aweXpect.Core.IThat<T> source, System.Action<aweXpect.Core.IThat<T>> expectations) { }
         public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> DoesNotComplyWith<T>(this aweXpect.Core.IThat<T> source, System.Action<aweXpect.Core.IThat<T>> expectations) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> DoesNotSatisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> For<T, TMember>(this aweXpect.Core.IThat<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> For<T, TMember>(this aweXpect.Core.IThat<T> source, System.Func<T, TMember?> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations, [System.Runtime.CompilerServices.CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> Satisfies<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuid
