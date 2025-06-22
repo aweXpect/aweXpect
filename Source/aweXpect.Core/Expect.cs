@@ -55,7 +55,7 @@ public static class Expect
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new(new ExpectationBuilder<DelegateValue>(
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			new DelegateSource(@delegate is null ? null : _ => @delegate()), doNotPopulateThisValue));
+			new DelegateSource(@delegate), doNotPopulateThisValue));
 
 	/// <summary>
 	///     Specify expectations for the current <see cref="Action{CancellationToken}" /> <paramref name="delegate" />.

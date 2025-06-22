@@ -1,18 +1,34 @@
 ﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.TimeSystem;
 
 namespace aweXpect.Core.Sources;
 
-internal class DelegateSource(Action<CancellationToken>? action) : IValueSource<DelegateValue>
+internal class DelegateSource : IValueSource<DelegateValue>
 {
+	private readonly Action<CancellationToken>? _action;
+
+	public DelegateSource(Action<CancellationToken>? action)
+	{
+		ThrowIfAsyncVoid(action?.GetMethodInfo(), "Func<CancellationToken, Task>");
+		_action = action;
+	}
+
+	public DelegateSource(Action? action)
+	{
+		ThrowIfAsyncVoid(action?.GetMethodInfo(), "Func<Task>");
+		_action = action is null ? null : _ => action();
+	}
+
 	#region IValueSource<DelegateValue> Members
 
 	public Task<DelegateValue> GetValue(ITimeSystem timeSystem,
 		CancellationToken cancellationToken)
 	{
-		if (action is null)
+		if (_action is null)
 		{
 			return Task.FromResult(new DelegateValue(null, TimeSpan.Zero, true));
 		}
@@ -21,7 +37,7 @@ internal class DelegateSource(Action<CancellationToken>? action) : IValueSource<
 		try
 		{
 			sw.Start();
-			action(cancellationToken);
+			_action(cancellationToken);
 			sw.Stop();
 			return Task.FromResult(new DelegateValue(null, sw.Elapsed));
 		}
@@ -32,4 +48,14 @@ internal class DelegateSource(Action<CancellationToken>? action) : IValueSource<
 	}
 
 	#endregion
+
+	private static void ThrowIfAsyncVoid(MethodInfo? method, string replaceType)
+	{
+		if (method is not null &&
+		    Attribute.IsDefined(method, typeof(AsyncStateMachineAttribute), true))
+		{
+			throw new InvalidOperationException(
+				$"Cannot use aweXpect on an async void method: Use {replaceType} instead.");
+		}
+	}
 }

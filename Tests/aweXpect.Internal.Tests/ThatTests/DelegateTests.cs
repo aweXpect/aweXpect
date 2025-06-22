@@ -5,6 +5,64 @@ namespace aweXpect.Internal.Tests.ThatTests;
 
 public sealed class DelegateTests
 {
+	[Fact]
+	public async Task ForAsyncVoidAction_WhenVerifyingDoesNotThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action @delegate = async () => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).DoesNotThrow();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<Task> instead.");
+	}
+
+	[Fact]
+	public async Task
+		ForAsyncVoidAction_WithCancellationToken_WhenVerifyingDoesNotThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action<CancellationToken> @delegate = async _ => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).DoesNotThrow();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<CancellationToken, Task> instead.");
+	}
+
+	[Fact]
+	public async Task ForAsyncVoidAction_WhenVerifyingDoesThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action @delegate = async () => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).ThrowsException();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<Task> instead.");
+	}
+
+	[Fact]
+	public async Task
+		ForAsyncVoidAction_WithCancellationToken_WhenVerifyingDoesThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action<CancellationToken> @delegate = async _ => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).ThrowsException();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<CancellationToken, Task> instead.");
+	}
+
 	[Theory]
 	[AutoData]
 	public async Task ShouldReturnValue_FuncTaskValue(int value)
