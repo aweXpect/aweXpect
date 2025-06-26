@@ -463,12 +463,12 @@ namespace aweXpect.Delegates
         public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
         {
             public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow() { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow(System.Type exceptionType) { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow<TException>()
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrow() { }
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrow(System.Type exceptionType) { }
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrow<TException>()
                 where TException : System.Exception { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly(System.Type exceptionType) { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly<TException>()
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrowExactly(System.Type exceptionType) { }
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrowExactly<TException>()
                 where TException : System.Exception { }
             public aweXpect.Results.ExecutesInResult<aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithValue<T>>> ExecutesIn() { }
         }
@@ -998,6 +998,11 @@ namespace aweXpect.Results
         public CountTimesResult(System.Func<int, TTarget> callback) { }
         public TTarget Once() { }
         public TTarget Twice() { }
+    }
+    public class DelegateWithValueResult<T> : aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>>
+    {
+        public DelegateWithValueResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Delegates.ThatDelegate.WithValue<T> returnValue) { }
+        public aweXpect.Core.IThat<T> AndWhoseResult { get; }
     }
     public class ExecutesInResult<TResult>
     {
