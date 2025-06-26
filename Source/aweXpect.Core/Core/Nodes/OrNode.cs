@@ -73,7 +73,16 @@ internal class OrNode : Node
 
 	/// <inheritdoc />
 	public override void SetReason(BecauseReason becauseReason)
-		=> Current.SetReason(becauseReason);
+	{
+		if (_nodes.Any() && Current is ExpectationNode expectationNode && expectationNode.IsEmpty())
+		{
+			_nodes.Last().Item2.SetReason(becauseReason);
+		}
+		else
+		{
+			Current.SetReason(becauseReason);
+		}
+	}
 
 	/// <inheritdoc />
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
