@@ -467,8 +467,8 @@ namespace aweXpect.Delegates
             public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrow(System.Type exceptionType) { }
             public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrow<TException>()
                 where TException : System.Exception { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly(System.Type exceptionType) { }
-            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly<TException>()
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrowExactly(System.Type exceptionType) { }
+            public aweXpect.Results.DelegateWithValueResult<T> DoesNotThrowExactly<TException>()
                 where TException : System.Exception { }
             public aweXpect.Results.ExecutesInResult<aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithValue<T>>> ExecutesIn() { }
         }
