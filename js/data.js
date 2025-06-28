@@ -1836,6 +1836,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -2144,7 +2150,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -2456,7 +2463,8 @@ window.BENCHMARK_DATA = {
           179.46447882285486,
           175.00926145485468,
           172.61679566701252,
-          192.81062908172606
+          192.81062908172606,
+          179.98704361915588
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2651,6 +2659,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3093,7 +3102,8 @@ window.BENCHMARK_DATA = {
           253.2860634667533,
           237.4190366268158,
           231.43684519131978,
-          259.5631338119507
+          259.5631338119507,
+          241.91011476516724
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3286,6 +3296,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3730,7 +3741,8 @@ window.BENCHMARK_DATA = {
           901.5926150594439,
           918.9554906845093,
           923.162266031901,
-          953.2389249801636
+          953.2389249801636,
+          907.2633148829142
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3956,6 +3968,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -5435,6 +5448,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -5666,7 +5685,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -5901,7 +5921,8 @@ window.BENCHMARK_DATA = {
           292710.8317057292,
           283555.6037109375,
           287829.0840890067,
-          304013.13203125
+          304013.13203125,
+          284650.56319754466
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6114,6 +6135,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6384,7 +6406,8 @@ window.BENCHMARK_DATA = {
           2132535.3111979165,
           2160704.6130022323,
           2264118.33125,
-          2256625.6305803573
+          2256625.6305803573,
+          2222148.8683035714
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6500,6 +6523,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -6867,7 +6891,8 @@ window.BENCHMARK_DATA = {
           661993.6464146206,
           679058.1527994792,
           657938.9382672991,
-          698289.6197916666
+          698289.6197916666,
+          702984.4766927083
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7023,6 +7048,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -8957,6 +8983,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -9265,7 +9297,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -9577,7 +9610,8 @@ window.BENCHMARK_DATA = {
           449.3245107650757,
           462.9595523834229,
           475.591170501709,
-          498.11682598931446
+          498.11682598931446,
+          473.5898542086283
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9888,6 +9922,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -10214,7 +10249,8 @@ window.BENCHMARK_DATA = {
           488.17328364508495,
           474.8708656311035,
           494.3149578730265,
-          498.27709515889484
+          498.27709515889484,
+          499.28297284444176
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10407,6 +10443,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -10851,7 +10888,8 @@ window.BENCHMARK_DATA = {
           16593.641760689872,
           14332.27610880534,
           14354.56362269475,
-          15934.616585286458
+          15934.616585286458,
+          15012.133584594727
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11077,6 +11115,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -13018,6 +13057,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -13326,7 +13371,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -13638,7 +13684,8 @@ window.BENCHMARK_DATA = {
           220.87499686876933,
           221.37683000564576,
           222.13072136243184,
-          256.73530829747517
+          256.73530829747517,
+          243.3091415507453
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13834,6 +13881,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -14275,7 +14323,8 @@ window.BENCHMARK_DATA = {
           251.83974140030998,
           244.91748832066853,
           247.48351977666218,
-          267.30659739176434
+          267.30659739176434,
+          262.0948366800944
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14468,6 +14517,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -14912,7 +14962,8 @@ window.BENCHMARK_DATA = {
           1200.2487936019897,
           1213.958693231855,
           1174.8104722340902,
-          1244.3741897855487
+          1244.3741897855487,
+          1284.795884499183
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15138,6 +15189,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -17079,6 +17131,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -17387,7 +17445,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -17699,7 +17758,8 @@ window.BENCHMARK_DATA = {
           354.1745580991109,
           341.0157405413114,
           346.34708077112833,
-          367.556484635671
+          367.556484635671,
+          360.1514263470968
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17989,6 +18049,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -18336,7 +18397,8 @@ window.BENCHMARK_DATA = {
           484.323215675354,
           461.5715643442594,
           513.3697696050008,
-          525.7692464192709
+          525.7692464192709,
+          476.9977034841265
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18529,6 +18591,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -18973,7 +19036,8 @@ window.BENCHMARK_DATA = {
           1269.0321311950684,
           1245.6329256693523,
           1273.537567392985,
-          1353.7223636627198
+          1353.7223636627198,
+          1318.0942178090413
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19199,6 +19263,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -21140,6 +21205,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -21448,7 +21519,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -21760,7 +21832,8 @@ window.BENCHMARK_DATA = {
           1396.320725631714,
           1453.894500096639,
           1341.0103571573893,
-          1429.1151908874513
+          1429.1151908874513,
+          1395.7656646141638
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22073,6 +22146,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -22397,7 +22471,8 @@ window.BENCHMARK_DATA = {
           1269.4440137227377,
           1403.4167254130045,
           1319.1912958780924,
-          1357.6318433125814
+          1357.6318433125814,
+          1349.706202952067
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22590,6 +22665,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -23034,7 +23110,8 @@ window.BENCHMARK_DATA = {
           2811.671460723877,
           2896.9455362955728,
           2894.585633414132,
-          2966.211356608073
+          2966.211356608073,
+          2905.297693125407
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23260,6 +23337,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -25201,6 +25279,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jun 26 21:28:42 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.12.0 (#661)"
+      },
+      {
+        "sha": "d8de7740ec45836f853af84c32d521f3d6b15213",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Jun 28 09:39:02 2025 \u002B0200",
+        "message": "feat!: remove unnecessary \u0060And\u0060 from delegate \u0060DoesNotThrow\u0060 (#665)"
       }
     ],
     "labels": [
@@ -25509,7 +25593,8 @@ window.BENCHMARK_DATA = {
       "27c997b3",
       "cc62afe8",
       "6f36cdd4",
-      "96261e5a"
+      "96261e5a",
+      "d8de7740"
     ],
     "datasets": [
       {
@@ -25821,7 +25906,8 @@ window.BENCHMARK_DATA = {
           1551.2572608675275,
           1579.0685142789569,
           1658.7753606523786,
-          1623.0199266161237
+          1623.0199266161237,
+          1606.012037150065
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26134,6 +26220,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -26458,7 +26545,8 @@ window.BENCHMARK_DATA = {
           154139.10065104166,
           152920.43447265626,
           150053.5365862165,
-          157784.12566266741
+          157784.12566266741,
+          153098.04411969866
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26775,7 +26863,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63788,
-          63788
+          63788,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27095,7 +27184,8 @@ window.BENCHMARK_DATA = {
           4529.189785883977,
           4578.599439493815,
           4794.661790466309,
-          4724.253467014858
+          4724.253467014858,
+          4883.5146077473955
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -27321,6 +27411,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
