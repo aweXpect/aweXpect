@@ -18,8 +18,7 @@ public abstract partial class ThatDelegate
 		/// </summary>
 		public DelegateWithValueResult<T> DoesNotThrow()
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
-					new DoesNotThrowConstraint(it, grammars, typeof(Exception))),
-				this);
+					new DoesNotThrowConstraint(it, grammars, typeof(Exception))));
 
 		/// <summary>
 		///     Verifies that the delegate does not throw an exception of type <typeparamref name="TException" />.
@@ -27,16 +26,14 @@ public abstract partial class ThatDelegate
 		public DelegateWithValueResult<T> DoesNotThrow<TException>()
 			where TException : Exception
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
-					new DoesNotThrowConstraint(it, grammars, typeof(TException))),
-				this);
+					new DoesNotThrowConstraint(it, grammars, typeof(TException))));
 
 		/// <summary>
 		///     Verifies that the delegate does not throw an exception of type <paramref name="exceptionType" />.
 		/// </summary>
 		public DelegateWithValueResult<T> DoesNotThrow(Type exceptionType)
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
-					new DoesNotThrowConstraint(it, grammars, exceptionType)),
-				this);
+					new DoesNotThrowConstraint(it, grammars, exceptionType)));
 
 		private sealed class DoesNotThrowConstraint(
 			string it,
