@@ -16,19 +16,17 @@ public abstract partial class ThatDelegate
 		/// <summary>
 		///     Verifies that the delegate does not throw an exception of type <typeparamref name="TException" />.
 		/// </summary>
-		public AndResult<WithoutValue> DoesNotThrowExactly<TException>()
+		public ExpectationResult DoesNotThrowExactly<TException>()
 			where TException : Exception
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
-					new DoesNotThrowExactlyConstraint(it, grammars, typeof(TException))),
-				this);
+					new DoesNotThrowExactlyConstraint(it, grammars, typeof(TException))));
 
 		/// <summary>
 		///     Verifies that the delegate does not throw an exception of type <paramref name="exceptionType" />.
 		/// </summary>
-		public AndResult<WithoutValue> DoesNotThrowExactly(Type exceptionType)
+		public ExpectationResult DoesNotThrowExactly(Type exceptionType)
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
-					new DoesNotThrowExactlyConstraint(it, grammars, exceptionType)),
-				this);
+					new DoesNotThrowExactlyConstraint(it, grammars, exceptionType)));
 
 		private sealed class DoesNotThrowExactlyConstraint(string it, ExpectationGrammars grammars, Type exceptionType)
 			: ConstraintResult(grammars),

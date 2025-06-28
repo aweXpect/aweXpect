@@ -10,8 +10,8 @@ namespace aweXpect.Results;
 /// <summary>
 ///     Result for a delegate with a value that does not throw.
 /// </summary>
-public class DelegateWithValueResult<T>(ExpectationBuilder expectationBuilder, ThatDelegate.WithValue<T> returnValue)
-	: AndResult<T, ThatDelegate.WithValue<T>>(expectationBuilder, returnValue)
+public class DelegateWithValueResult<T>(ExpectationBuilder expectationBuilder)
+	: ExpectationResult<T>(expectationBuilder)
 {
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 
