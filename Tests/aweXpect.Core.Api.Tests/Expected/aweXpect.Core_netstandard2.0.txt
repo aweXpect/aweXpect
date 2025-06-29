@@ -500,6 +500,7 @@ namespace aweXpect.Delegates
             where TInnerException : System.Exception { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInnerException() { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
+        public aweXpect.Delegates.ThatDelegateThrows<TException> Within(System.TimeSpan duration) { }
     }
 }
 namespace aweXpect.Equivalency
@@ -829,12 +830,13 @@ namespace aweXpect.Options
     {
         public TimeSpanEqualityOptions() { }
         public void AppendFailureResult(System.Text.StringBuilder stringBuilder, System.TimeSpan actual) { }
+        public void AppendTo(System.Text.StringBuilder stringBuilder, string prefix) { }
         public void Approximately(System.TimeSpan expected, System.TimeSpan tolerance) { }
         public void AtLeast(System.TimeSpan minimum) { }
         public void AtMost(System.TimeSpan maximum) { }
         public void Between(System.TimeSpan minimum, System.TimeSpan maximum) { }
         public bool IsWithinLimit(System.TimeSpan? actual) { }
-        public override string ToString() { }
+        public void Within(System.TimeSpan duration) { }
     }
     public class TimeTolerance
     {

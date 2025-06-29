@@ -18,7 +18,7 @@ public abstract partial class ThatDelegate
 	{
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<TException>(ExpectationBuilder
-				.AddConstraint((it, grammars) => new DelegateIsNotNullConstraint(it, grammars))
+				.AddConstraint((it, grammars) => new DelegateIsNotNullWithinTimeoutConstraint(it, grammars, throwOptions))
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
 				.AddConstraint((it, grammars) => new ThrowsConstraint(it, grammars, typeof(TException), throwOptions))
 				.And(" "),
@@ -32,7 +32,7 @@ public abstract partial class ThatDelegate
 	{
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<Exception>(ExpectationBuilder
-				.AddConstraint((it, grammars) => new DelegateIsNotNullConstraint(it, grammars))
+				.AddConstraint((it, grammars) => new DelegateIsNotNullWithinTimeoutConstraint(it, grammars, throwOptions))
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
 				.AddConstraint((it, grammars) => new ThrowsConstraint(it, grammars, exceptionType, throwOptions))
 				.And(" "),
@@ -88,6 +88,12 @@ public abstract partial class ThatDelegate
 			else
 			{
 				stringBuilder.Append("throws ").Append(Formatter.Format(exceptionType).PrependAOrAn());
+			}
+
+			if (throwOptions.ExecutionTimeOptions is not null)
+			{
+				stringBuilder.Append(' ');
+				throwOptions.ExecutionTimeOptions.AppendTo(stringBuilder, "in ");
 			}
 		}
 

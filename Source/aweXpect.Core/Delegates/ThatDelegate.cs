@@ -5,6 +5,7 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
 using aweXpect.Core.Sources;
+using aweXpect.Options;
 
 namespace aweXpect.Delegates;
 
@@ -34,13 +35,28 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		return message;
 	}
 
-	private sealed class DelegateIsNotNullConstraint(string it, ExpectationGrammars grammars)
+	private sealed class DelegateIsNotNullWithinTimeoutConstraint(string it, ExpectationGrammars grammars, ThrowsOption options)
 		: ConstraintResult(grammars),
 			IValueConstraint<DelegateValue>
 	{
+		private DelegateValue? _actual;
 		public ConstraintResult IsMetBy(DelegateValue value)
 		{
-			Outcome = value.IsNull ? Outcome.Failure : Outcome.Success;
+			_actual = value;
+			if (value.IsNull)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			if (options.ExecutionTimeOptions is not null &&
+			    !options.ExecutionTimeOptions.IsWithinLimit(value.Duration))
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+			
+			Outcome = Outcome.Success;
 			return this;
 		}
 
@@ -50,7 +66,17 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.ItWasNull(it);
+		{
+			if (_actual?.IsNull != false)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else if (options.ExecutionTimeOptions is not null)
+			{
+				stringBuilder.Append(it).Append(" took ");
+				options.ExecutionTimeOptions.AppendFailureResult(stringBuilder, _actual.Duration);
+			}
+		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
@@ -65,6 +91,8 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 	internal class ThrowsOption
 	{
 		public bool DoCheckThrow { get; private set; } = true;
+		
+		public TimeSpanEqualityOptions? ExecutionTimeOptions { get; set; }
 
 		public void CheckThrow(bool doCheckThrow) => DoCheckThrow = doCheckThrow;
 	}

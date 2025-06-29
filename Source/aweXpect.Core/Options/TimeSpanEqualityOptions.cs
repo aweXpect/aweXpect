@@ -32,8 +32,17 @@ public class TimeSpanEqualityOptions
 	public void AppendFailureResult(StringBuilder stringBuilder, TimeSpan actual)
 		=> _limit?.AppendFailureResult(stringBuilder, actual);
 
-	/// <inheritdoc />
-	public override string ToString() => _limit?.ToString() ?? "<no limit specified>";
+	/// <summary>
+	///     Appends the <paramref name="prefix" /> and the option description to the <paramref name="stringBuilder" />.
+	/// </summary>
+	public void AppendTo(StringBuilder stringBuilder, string prefix)
+		=> _limit?.AppendTo(stringBuilder, prefix);
+
+	/// <summary>
+	///     Verifies that the value is within the given <paramref name="duration" />.
+	/// </summary>
+	public void Within(TimeSpan duration)
+		=> _limit = new MaximumLimit(duration, true);
 
 	/// <summary>
 	///     Verifies that the value is at most <paramref name="maximum" />.
@@ -74,6 +83,8 @@ public class TimeSpanEqualityOptions
 
 		public virtual void AppendFailureResult(StringBuilder stringBuilder, TimeSpan actual)
 			=> Formatter.Format(stringBuilder, actual);
+
+		public abstract void AppendTo(StringBuilder stringBuilder, string prefix);
 	}
 
 	private sealed record ApproximatelyLimit(TimeSpan Expected, TimeSpan Tolerance) : Limit
@@ -81,8 +92,14 @@ public class TimeSpanEqualityOptions
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual >= Expected - Tolerance && actual <= Expected + Tolerance;
 
-		public override string ToString()
-			=> $"approximately {Formatter.Format(Expected)} ± {Formatter.Format(Tolerance)}";
+		public override void AppendTo(StringBuilder stringBuilder, string prefix)
+		{
+			stringBuilder.Append(prefix);
+			stringBuilder.Append("approximately ");
+			Formatter.Format(stringBuilder, Expected);
+			stringBuilder.Append(" ± ");
+			Formatter.Format(stringBuilder, Tolerance);
+		}
 
 		public override void AppendFailureResult(StringBuilder stringBuilder, TimeSpan actual)
 		{
@@ -100,7 +117,14 @@ public class TimeSpanEqualityOptions
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual >= Minimum && actual <= Maximum;
 
-		public override string ToString() => $"between {Formatter.Format(Minimum)} and {Formatter.Format(Maximum)}";
+		public override void AppendTo(StringBuilder stringBuilder, string prefix)
+		{
+			stringBuilder.Append(prefix);
+			stringBuilder.Append("between ");
+			Formatter.Format(stringBuilder, Minimum);
+			stringBuilder.Append(" and ");
+			Formatter.Format(stringBuilder, Maximum);
+		}
 
 		public override void AppendFailureResult(StringBuilder stringBuilder, TimeSpan actual)
 		{
@@ -118,7 +142,12 @@ public class TimeSpanEqualityOptions
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual >= Minimum;
 
-		public override string ToString() => $"at least {Formatter.Format(Minimum)}";
+		public override void AppendTo(StringBuilder stringBuilder, string prefix)
+		{
+			stringBuilder.Append(prefix);
+			stringBuilder.Append("at least ");
+			Formatter.Format(stringBuilder, Minimum);
+		}
 
 		public override void AppendFailureResult(StringBuilder stringBuilder, TimeSpan actual)
 		{
@@ -127,11 +156,24 @@ public class TimeSpanEqualityOptions
 		}
 	}
 
-	private sealed record MaximumLimit(TimeSpan Maximum) : Limit
+	private sealed record MaximumLimit(TimeSpan Maximum, bool IsWithin = false) : Limit
 	{
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual <= Maximum;
 
-		public override string ToString() => $"at most {Formatter.Format(Maximum)}";
+		public override void AppendTo(StringBuilder stringBuilder, string prefix)
+		{
+			if (IsWithin)
+			{
+				stringBuilder.Append("within ");
+				Formatter.Format(stringBuilder, Maximum);
+			}
+			else
+			{
+				stringBuilder.Append(prefix);
+				stringBuilder.Append("at most ");
+				Formatter.Format(stringBuilder, Maximum);
+			}
+		}
 	}
 }
