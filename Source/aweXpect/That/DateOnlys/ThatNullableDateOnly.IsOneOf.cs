@@ -122,11 +122,24 @@ public static partial class ThatNullableDateOnly
 			{
 				TimeSpan timeTolerance = tolerance.Tolerance ??
 				                         Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
-				Outcome = expected.Any(value =>
-					value != null &&
-					Math.Abs(actual.Value.DayNumber - value.Value.DayNumber) <= (int)timeTolerance.TotalDays)
-					? Outcome.Success
-					: Outcome.Failure;
+				bool hasValues = false;
+				foreach (DateOnly? value in expected)
+				{
+					hasValues = true;
+					if (value != null &&
+					    Math.Abs(actual.Value.DayNumber - value.Value.DayNumber) <= (int)timeTolerance.TotalDays)
+					{
+						Outcome = Outcome.Success;
+						return this;
+					}
+				}
+
+				if (!hasValues)
+				{
+					throw new ArgumentException("You have to provide at least one expected value!");
+				}
+
+				Outcome = Outcome.Failure;
 			}
 
 			return this;

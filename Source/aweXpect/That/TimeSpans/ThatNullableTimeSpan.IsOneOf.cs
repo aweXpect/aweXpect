@@ -118,11 +118,24 @@ public static partial class ThatNullableTimeSpan
 			}
 			else
 			{
-				Outcome = expected.Any(value =>
-					value != null &&
-					IsWithinTolerance(tolerance.Tolerance, actual.Value - value.Value))
-					? Outcome.Success
-					: Outcome.Failure;
+				bool hasValues = false;
+				foreach (TimeSpan? value in expected)
+				{
+					hasValues = true;
+					if (value != null &&
+					    IsWithinTolerance(tolerance.Tolerance, actual.Value - value.Value))
+					{
+						Outcome = Outcome.Success;
+						return this;
+					}
+				}
+
+				if (!hasValues)
+				{
+					throw new ArgumentException("You have to provide at least one expected value!");
+				}
+
+				Outcome = Outcome.Failure;
 			}
 
 			return this;

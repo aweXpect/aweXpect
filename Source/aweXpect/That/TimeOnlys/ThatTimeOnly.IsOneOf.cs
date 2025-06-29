@@ -27,7 +27,7 @@ public static partial class ThatTimeOnly
 			source,
 			tolerance);
 	}
-	
+
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>
@@ -42,7 +42,7 @@ public static partial class ThatTimeOnly
 			source,
 			tolerance);
 	}
-	
+
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>
@@ -116,11 +116,24 @@ public static partial class ThatTimeOnly
 			Actual = actual;
 			TimeSpan timeTolerance = tolerance.Tolerance ??
 			                         Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
-			Outcome = expected.Any(value =>
-				value != null &&
-				Math.Abs(actual.Ticks - value.Value.Ticks) <= timeTolerance.Ticks)
-				? Outcome.Success
-				: Outcome.Failure;
+			bool hasValues = false;
+			foreach (TimeOnly? value in expected)
+			{
+				hasValues = true;
+				if (value != null &&
+				    Math.Abs(actual.Ticks - value.Value.Ticks) <= timeTolerance.Ticks)
+				{
+					Outcome = Outcome.Success;
+					return this;
+				}
+			}
+
+			if (!hasValues)
+			{
+				throw new ArgumentException("You have to provide at least one expected value!");
+			}
+
+			Outcome = Outcome.Failure;
 
 			return this;
 		}

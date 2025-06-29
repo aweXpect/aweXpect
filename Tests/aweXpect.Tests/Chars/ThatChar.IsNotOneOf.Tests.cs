@@ -10,6 +10,19 @@ public sealed partial class ThatChar
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				char subject = 'a';
+				char[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
 			[Theory]
 			[InlineData('a')]
 			[InlineData('X')]
@@ -17,12 +30,25 @@ public sealed partial class ThatChar
 			[InlineData('\t')]
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed(char subject)
 			{
-				IEnumerable<char?> expected = [null,];
+				IEnumerable<char?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				char subject = 'a';
+				char?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
 			}
 
 			[Theory]
@@ -31,7 +57,7 @@ public sealed partial class ThatChar
 			public async Task WhenSubjectIsContained_ShouldFail(char subject,
 				params char[] otherValues)
 			{
-				IEnumerable<char> expected = [..otherValues, subject,];
+				IEnumerable<char> expected = [..otherValues, subject];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);

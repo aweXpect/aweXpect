@@ -11,10 +11,23 @@ public sealed partial class ThatDateTimeOffset
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				DateTimeOffset subject = CurrentTime();
+				DateTimeOffset[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed()
 			{
 				DateTimeOffset subject = CurrentTime();
-				IEnumerable<DateTimeOffset?> expected = [null,];
+				IEnumerable<DateTimeOffset?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -23,10 +36,23 @@ public sealed partial class ThatDateTimeOffset
 			}
 
 			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				DateTimeOffset subject = CurrentTime();
+				DateTimeOffset?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsContained_ShouldFail()
 			{
 				DateTimeOffset subject = CurrentTime();
-				IEnumerable<DateTimeOffset> expected = [LaterTime(), subject, EarlierTime(),];
+				IEnumerable<DateTimeOffset> expected = [LaterTime(), subject, EarlierTime()];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -43,7 +69,7 @@ public sealed partial class ThatDateTimeOffset
 			public async Task WhenSubjectIsDifferent_ShouldSucceed()
 			{
 				DateTimeOffset subject = CurrentTime();
-				DateTimeOffset[] expected = [LaterTime(), EarlierTime(),];
+				DateTimeOffset[] expected = [LaterTime(), EarlierTime()];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -60,7 +86,7 @@ public sealed partial class ThatDateTimeOffset
 				int actualDifference, int tolerance, bool expectToThrow)
 			{
 				DateTimeOffset subject = EarlierTime(actualDifference);
-				DateTimeOffset[] expected = [CurrentTime(), LaterTime(),];
+				DateTimeOffset[] expected = [CurrentTime(), LaterTime()];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected)
