@@ -41,15 +41,16 @@ public sealed partial class ThatDelegate
 				}
 
 				[Fact]
-				public async Task WhenExceptionTypeIsThrownInTime_ShouldSucceed()
+				public async Task WhenDurationIsNegative_ShouldThrowArgumentOutOfRangeException()
 				{
-					Exception exception = new CustomException();
-					Action action = () => throw exception;
+					Action? subject = null;
 
-					async Task<Exception> Act()
-						=> await That(action).ThrowsException().Within(5.Seconds());
+					async Task Act()
+						=> await That(subject!).ThrowsException().Within(-1.Milliseconds());
 
-					await That(Act).DoesNotThrow();
+					await That(Act).Throws<ArgumentOutOfRangeException>()
+						.WithParamName("duration").And
+						.WithMessage("The duration must not be negative").AsPrefix();
 				}
 
 				[Fact]
@@ -71,6 +72,18 @@ public sealed partial class ThatDelegate
 						             throws an exception within 0:00.005,
 						             but it took *
 						             """).AsWildcard();
+				}
+
+				[Fact]
+				public async Task WhenExceptionTypeIsThrownInTime_ShouldSucceed()
+				{
+					Exception exception = new CustomException();
+					Action action = () => throw exception;
+
+					async Task<Exception> Act()
+						=> await That(action).ThrowsException().Within(5.Seconds());
+
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -114,12 +127,12 @@ public sealed partial class ThatDelegate
 					Action? subject = null;
 
 					async Task Act()
-						=> await That(subject!).ThrowsException().Within(5.Seconds());
+						=> await That(subject!).ThrowsException().Within(0.Seconds());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             throws an exception within 0:05,
+						             throws an exception within 0:00,
 						             but it was <null>
 						             """);
 				}

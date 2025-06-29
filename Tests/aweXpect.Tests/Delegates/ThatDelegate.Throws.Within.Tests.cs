@@ -42,6 +42,19 @@ public sealed partial class ThatDelegate
 				}
 
 				[Fact]
+				public async Task WhenDurationIsNegative_ShouldThrowArgumentOutOfRangeException()
+				{
+					Action? subject = null;
+
+					async Task Act()
+						=> await That(subject!).Throws<CustomException>().Within(-1.Milliseconds());
+
+					await That(Act).Throws<ArgumentOutOfRangeException>()
+						.WithParamName("duration").And
+						.WithMessage("The duration must not be negative").AsPrefix();
+				}
+
+				[Fact]
 				public async Task WhenExactExceptionTypeIsThrownInTime_ShouldSucceed()
 				{
 					Exception exception = new CustomException();
@@ -146,12 +159,12 @@ public sealed partial class ThatDelegate
 					Action? subject = null;
 
 					async Task Act()
-						=> await That(subject!).Throws<CustomException>().Within(5.Seconds());
+						=> await That(subject!).Throws<CustomException>().Within(0.Seconds());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             throws a ThatDelegate.CustomException within 0:05,
+						             throws a ThatDelegate.CustomException within 0:00,
 						             but it was <null>
 						             """);
 				}
@@ -208,6 +221,19 @@ public sealed partial class ThatDelegate
 						await That(action).Throws(typeof(CustomException)).Within(5.Seconds());
 
 					await That(result).IsSameAs(exception);
+				}
+
+				[Fact]
+				public async Task WhenDurationIsNegative_ShouldThrowArgumentOutOfRangeException()
+				{
+					Action? subject = null;
+
+					async Task Act()
+						=> await That(subject!).Throws(typeof(CustomException)).Within(-1.Milliseconds());
+
+					await That(Act).Throws<ArgumentOutOfRangeException>()
+						.WithParamName("duration").And
+						.WithMessage("The duration must not be negative").AsPrefix();
 				}
 
 				[Fact]
@@ -315,12 +341,12 @@ public sealed partial class ThatDelegate
 					Action? subject = null;
 
 					async Task Act()
-						=> await That(subject!).Throws(typeof(CustomException)).Within(5.Seconds());
+						=> await That(subject!).Throws(typeof(CustomException)).Within(0.Seconds());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             throws a ThatDelegate.CustomException within 0:05,
+						             throws a ThatDelegate.CustomException within 0:00,
 						             but it was <null>
 						             """);
 				}
