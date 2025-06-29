@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -70,7 +71,23 @@ public static partial class ThatChar
 		public ConstraintResult IsMetBy(char actual)
 		{
 			Actual = actual;
-			Outcome = expected.Any(value => actual.Equals(value)) ? Outcome.Success : Outcome.Failure;
+			bool hasValues = false;
+			foreach (char? value in expected)
+			{
+				hasValues = true;
+				if (actual.Equals(value))
+				{
+					Outcome = Outcome.Success;
+					return this;
+				}
+			}
+
+			if (!hasValues)
+			{
+				throw new ArgumentException("You have to provide at least one expected value!");
+			}
+
+			Outcome = Outcome.Failure;
 			return this;
 		}
 

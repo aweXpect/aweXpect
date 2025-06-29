@@ -12,10 +12,23 @@ public sealed partial class ThatDateOnly
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				DateOnly subject = CurrentTime();
+				DateOnly[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed()
 			{
 				DateOnly subject = CurrentTime();
-				IEnumerable<DateOnly?> expected = [null,];
+				IEnumerable<DateOnly?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -24,10 +37,23 @@ public sealed partial class ThatDateOnly
 			}
 
 			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				DateOnly subject = CurrentTime();
+				DateOnly?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsContained_ShouldFail()
 			{
 				DateOnly subject = CurrentTime();
-				IEnumerable<DateOnly> expected = [LaterTime(), subject, EarlierTime(),];
+				IEnumerable<DateOnly> expected = [LaterTime(), subject, EarlierTime()];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -44,7 +70,7 @@ public sealed partial class ThatDateOnly
 			public async Task WhenSubjectIsDifferent_ShouldSucceed()
 			{
 				DateOnly subject = CurrentTime();
-				DateOnly[] expected = [LaterTime(), EarlierTime(),];
+				DateOnly[] expected = [LaterTime(), EarlierTime()];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -61,7 +87,7 @@ public sealed partial class ThatDateOnly
 				int actualDifference, int tolerance, bool expectToThrow)
 			{
 				DateOnly subject = EarlierTime(actualDifference);
-				DateOnly[] expected = [CurrentTime(), LaterTime(),];
+				DateOnly[] expected = [CurrentTime(), LaterTime()];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected)

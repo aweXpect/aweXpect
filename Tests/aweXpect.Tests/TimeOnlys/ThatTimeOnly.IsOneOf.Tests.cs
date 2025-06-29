@@ -12,10 +12,23 @@ public sealed partial class ThatTimeOnly
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				TimeOnly subject = CurrentTime();
+				TimeOnly[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenExpectedOnlyContainsNull_ShouldFail()
 			{
 				TimeOnly subject = CurrentTime();
-				IEnumerable<TimeOnly?> expected = [null,];
+				IEnumerable<TimeOnly?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -29,10 +42,23 @@ public sealed partial class ThatTimeOnly
 			}
 
 			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				TimeOnly subject = CurrentTime();
+				TimeOnly?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsContained_ShouldSucceed()
 			{
 				TimeOnly subject = CurrentTime();
-				IEnumerable<TimeOnly> expected = [LaterTime(), subject, EarlierTime(),];
+				IEnumerable<TimeOnly> expected = [LaterTime(), subject, EarlierTime()];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -44,7 +70,7 @@ public sealed partial class ThatTimeOnly
 			public async Task WhenSubjectIsDifferent_ShouldFail()
 			{
 				TimeOnly subject = CurrentTime();
-				TimeOnly[] expected = [LaterTime(), EarlierTime(),];
+				TimeOnly[] expected = [LaterTime(), EarlierTime()];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -66,7 +92,7 @@ public sealed partial class ThatTimeOnly
 				int actualDifference, int tolerance, bool expectToThrow)
 			{
 				TimeOnly subject = EarlierTime(actualDifference);
-				TimeOnly[] expected = [CurrentTime(), LaterTime(),];
+				TimeOnly[] expected = [CurrentTime(), LaterTime()];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected)

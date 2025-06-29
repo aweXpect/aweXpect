@@ -15,7 +15,7 @@ public sealed partial class ThatNumber
 			public async Task ForByte_ShouldSupportEnumerable()
 			{
 				byte subject = 2;
-				IEnumerable<byte> unexpected = [1, 2, 3,];
+				IEnumerable<byte> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -73,7 +73,7 @@ public sealed partial class ThatNumber
 			public async Task ForDecimal_ShouldSupportEnumerable()
 			{
 				decimal subject = 2;
-				IEnumerable<decimal> unexpected = [1, 2, 3,];
+				IEnumerable<decimal> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -140,7 +140,7 @@ public sealed partial class ThatNumber
 			public async Task ForDouble_ShouldSupportEnumerable()
 			{
 				double subject = 2;
-				IEnumerable<double> unexpected = [1, 2, 3,];
+				IEnumerable<double> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -157,7 +157,7 @@ public sealed partial class ThatNumber
 			public async Task ForDouble_WhenSubjectAndExpectedAreNaN_ShouldFail()
 			{
 				double subject = double.NaN;
-				double[] expected = [double.NaN,];
+				double[] expected = [double.NaN];
 
 				async Task Act() => await That(subject).IsNotOneOf(expected);
 
@@ -240,7 +240,7 @@ public sealed partial class ThatNumber
 			public async Task ForFloat_ShouldSupportEnumerable()
 			{
 				float subject = 2;
-				IEnumerable<float> unexpected = [1, 2, 3,];
+				IEnumerable<float> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -257,7 +257,7 @@ public sealed partial class ThatNumber
 			public async Task ForFloat_WhenSubjectAndExpectedAreNaN_ShouldFail()
 			{
 				float subject = float.NaN;
-				float[] expected = [float.NaN,];
+				float[] expected = [float.NaN];
 
 				async Task Act() => await That(subject).IsNotOneOf(expected);
 
@@ -324,7 +324,7 @@ public sealed partial class ThatNumber
 			public async Task ForInt_ShouldSupportEnumerable()
 			{
 				int subject = 2;
-				IEnumerable<int> unexpected = [1, 2, 3,];
+				IEnumerable<int> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -335,6 +335,32 @@ public sealed partial class ThatNumber
 					             is not one of [1, 2, 3],
 					             but it was 2
 					             """);
+			}
+
+			[Fact]
+			public async Task ForInt_WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				int subject = 1;
+				int[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
+			public async Task ForInt_WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				int subject = 1;
+				int?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
 			}
 
 			[Theory]
@@ -382,7 +408,7 @@ public sealed partial class ThatNumber
 			public async Task ForLong_ShouldSupportEnumerable()
 			{
 				long subject = 2;
-				IEnumerable<long> unexpected = [1, 2, 3,];
+				IEnumerable<long> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -456,7 +482,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableByte_ShouldSupportEnumerable()
 			{
 				byte? subject = 2;
-				IEnumerable<byte?> unexpected = [1, 2, 3,];
+				IEnumerable<byte?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -514,7 +540,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableDecimal_ShouldSupportEnumerable()
 			{
 				decimal? subject = 2;
-				IEnumerable<decimal?> unexpected = [1, 2, 3,];
+				IEnumerable<decimal?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -585,7 +611,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableDouble_ShouldSupportEnumerable()
 			{
 				double? subject = 2;
-				IEnumerable<double?> unexpected = [1, 2, 3,];
+				IEnumerable<double?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -642,7 +668,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableFloat_ShouldSupportEnumerable()
 			{
 				float? subject = 2;
-				IEnumerable<float?> unexpected = [1, 2, 3,];
+				IEnumerable<float?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -699,7 +725,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableInt_ShouldSupportEnumerable()
 			{
 				int? subject = 2;
-				IEnumerable<int?> unexpected = [1, 2, 3,];
+				IEnumerable<int?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -710,6 +736,32 @@ public sealed partial class ThatNumber
 					             is not one of [1, 2, 3],
 					             but it was 2
 					             """);
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				int? subject = 1;
+				int[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				int? subject = 1;
+				int?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
 			}
 
 			[Theory]
@@ -757,7 +809,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableLong_ShouldSupportEnumerable()
 			{
 				long? subject = 2;
-				IEnumerable<long?> unexpected = [1, 2, 3,];
+				IEnumerable<long?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -815,7 +867,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableSbyte_ShouldSupportEnumerable()
 			{
 				sbyte? subject = 2;
-				IEnumerable<sbyte?> unexpected = [1, 2, 3,];
+				IEnumerable<sbyte?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -873,7 +925,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableShort_ShouldSupportEnumerable()
 			{
 				short? subject = 2;
-				IEnumerable<short?> unexpected = [1, 2, 3,];
+				IEnumerable<short?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -931,7 +983,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableUint_ShouldSupportEnumerable()
 			{
 				uint? subject = 2;
-				IEnumerable<uint?> unexpected = [1, 2, 3,];
+				IEnumerable<uint?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -989,7 +1041,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableUlong_ShouldSupportEnumerable()
 			{
 				ulong? subject = 2;
-				IEnumerable<ulong?> unexpected = [1, 2, 3,];
+				IEnumerable<ulong?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1047,7 +1099,7 @@ public sealed partial class ThatNumber
 			public async Task ForNullableUshort_ShouldSupportEnumerable()
 			{
 				ushort? subject = 2;
-				IEnumerable<ushort?> unexpected = [1, 2, 3,];
+				IEnumerable<ushort?> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1105,7 +1157,7 @@ public sealed partial class ThatNumber
 			public async Task ForSbyte_ShouldSupportEnumerable()
 			{
 				sbyte subject = 2;
-				IEnumerable<sbyte> unexpected = [1, 2, 3,];
+				IEnumerable<sbyte> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1163,7 +1215,7 @@ public sealed partial class ThatNumber
 			public async Task ForShort_ShouldSupportEnumerable()
 			{
 				short subject = 2;
-				IEnumerable<short> unexpected = [1, 2, 3,];
+				IEnumerable<short> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1221,7 +1273,7 @@ public sealed partial class ThatNumber
 			public async Task ForUint_ShouldSupportEnumerable()
 			{
 				uint subject = 2;
-				IEnumerable<uint> unexpected = [1, 2, 3,];
+				IEnumerable<uint> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1279,7 +1331,7 @@ public sealed partial class ThatNumber
 			public async Task ForUlong_ShouldSupportEnumerable()
 			{
 				ulong subject = 2;
-				IEnumerable<ulong> unexpected = [1, 2, 3,];
+				IEnumerable<ulong> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1337,7 +1389,7 @@ public sealed partial class ThatNumber
 			public async Task ForUshort_ShouldSupportEnumerable()
 			{
 				ushort subject = 2;
-				IEnumerable<ushort> unexpected = [1, 2, 3,];
+				IEnumerable<ushort> unexpected = [1, 2, 3];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -1396,7 +1448,7 @@ public sealed partial class ThatNumber
 			public async Task WhenSubjectIsNullAndUnexpectedContainsNull_ShouldFail()
 			{
 				int? subject = null;
-				IEnumerable<int?> expected = [1, null,];
+				IEnumerable<int?> expected = [1, null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);

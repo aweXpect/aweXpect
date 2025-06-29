@@ -103,7 +103,7 @@ internal class ExpectationNode : Node
 				result = _reason?.ApplyTo(result) ?? result;
 			}
 		}
-		catch (Exception e) when (_constraint is not null)
+		catch (Exception e) when (e is not ArgumentException && _constraint is not null)
 		{
 			throw new InvalidOperationException(
 					$"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}: {e.Message}",
