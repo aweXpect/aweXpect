@@ -13,9 +13,11 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> Whose<TMember>(
 		Func<TException, TMember?> memberSelector,
 		Action<IThat<TMember?>> expectations,
-		[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
+		[CallerArgumentExpression("memberSelector")]
+		string doNotPopulateThisValue = "")
 		=> new(ExpectationBuilder.ForMember(
-					MemberAccessor<TException, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
+					MemberAccessor<TException, TMember?>.FromFuncAsMemberAccessor(memberSelector,
+						doNotPopulateThisValue),
 					(member, expectation) => expectation.Append("whose ").Append(member))
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			this);

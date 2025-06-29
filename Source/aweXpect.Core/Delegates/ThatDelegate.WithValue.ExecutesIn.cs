@@ -51,7 +51,10 @@ public abstract partial class ThatDelegate
 			}
 
 			public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-				=> stringBuilder.Append("executes in ").Append(options);
+			{
+				stringBuilder.Append("executes ");
+				options.AppendTo(stringBuilder, "in ");
+			}
 
 			public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 			{
