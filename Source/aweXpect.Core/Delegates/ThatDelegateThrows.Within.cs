@@ -10,6 +10,11 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public ThatDelegateThrows<TException> Within(TimeSpan duration)
 	{
+		if (duration < TimeSpan.Zero)
+		{
+			throw new ArgumentOutOfRangeException(nameof(duration), "The duration must not be negative.");
+		}
+
 		TimeSpanEqualityOptions options = new();
 		options.Within(duration);
 		_throwOptions.ExecutionTimeOptions = options;
