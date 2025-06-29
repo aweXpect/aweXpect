@@ -35,7 +35,7 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		return message;
 	}
 
-	private sealed class DelegateIsNotNullConstraint(string it, ExpectationGrammars grammars, ThrowsOption options)
+	private sealed class DelegateIsNotNullWithinTimeoutConstraint(string it, ExpectationGrammars grammars, ThrowsOption options)
 		: ConstraintResult(grammars),
 			IValueConstraint<DelegateValue>
 	{
