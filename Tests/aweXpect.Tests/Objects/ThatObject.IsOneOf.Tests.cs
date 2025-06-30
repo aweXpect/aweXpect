@@ -15,7 +15,7 @@ public sealed partial class ThatObject
 			public async Task SubjectToItself_ShouldSucceed()
 			{
 				object subject = new MyClass();
-				IEnumerable<object> expected = [new MyClass(), subject];
+				IEnumerable<object> expected = [new MyClass(), subject,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -27,7 +27,7 @@ public sealed partial class ThatObject
 			public async Task SubjectToSomeOtherValue_ShouldFail()
 			{
 				object subject = new MyClass();
-				object[] expected = [new MyClass()];
+				object[] expected = [new MyClass(),];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected)
@@ -47,7 +47,7 @@ public sealed partial class ThatObject
 			public async Task WhenComparingWithEquivalence_ShouldSucceed()
 			{
 				object subject = new MyClass();
-				object[] expected = [new MyClass()];
+				object[] expected = [new MyClass(),];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected).Equivalent();
@@ -72,7 +72,7 @@ public sealed partial class ThatObject
 			public async Task WhenExpectedOnlyContainsNullValues_ShouldFail()
 			{
 				MyClass subject = new();
-				IEnumerable<object?> expected = [null];
+				IEnumerable<object?> expected = [null,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -120,7 +120,7 @@ public sealed partial class ThatObject
 			public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
 			{
 				object? subject = null;
-				IEnumerable<object?> expected = [new MyClass(), null];
+				IEnumerable<object?> expected = [new MyClass(), null,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);

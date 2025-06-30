@@ -28,7 +28,7 @@ public sealed partial class ThatEnum
 			[InlineData(MyColors.Green)]
 			public async Task WhenExpectedOnlyContainsNull_ShouldFail(MyColors subject)
 			{
-				IEnumerable<MyColors?> expected = [null];
+				IEnumerable<MyColors?> expected = [null,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -60,7 +60,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldSucceed(MyColors subject,
 				params MyColors[] otherValues)
 			{
-				MyColors[] expected = [..otherValues, subject];
+				MyColors[] expected = [..otherValues, subject,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -92,7 +92,7 @@ public sealed partial class ThatEnum
 			[InlineData(EnumLong.Int64LessOne)]
 			public async Task WhenExpectedOnlyContainsNull_ShouldFail(EnumLong subject)
 			{
-				IEnumerable<EnumLong?> expected = [null];
+				IEnumerable<EnumLong?> expected = [null,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -111,7 +111,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldSucceed(EnumLong subject,
 				params EnumLong[] otherValues)
 			{
-				IEnumerable<EnumLong> expected = [..otherValues, subject];
+				IEnumerable<EnumLong> expected = [..otherValues, subject,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -143,7 +143,7 @@ public sealed partial class ThatEnum
 			[InlineData(EnumULong.UInt64LessOne)]
 			public async Task WhenExpectedOnlyContainsNull_ShouldFail(EnumULong subject)
 			{
-				IEnumerable<EnumULong?> expected = [null];
+				IEnumerable<EnumULong?> expected = [null,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);
@@ -162,7 +162,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldSucceed(EnumULong subject,
 				params EnumULong[] otherValues)
 			{
-				IEnumerable<EnumULong> expected = [..otherValues, subject];
+				IEnumerable<EnumULong> expected = [..otherValues, subject,];
 
 				async Task Act()
 					=> await That(subject).IsOneOf(expected);

@@ -40,7 +40,7 @@ public sealed partial class ThatString
 			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				string? subject = null;
-				IEnumerable<string> unexpected = ["foo", "bar"];
+				IEnumerable<string> unexpected = ["foo", "bar",];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
@@ -52,7 +52,7 @@ public sealed partial class ThatString
 			public async Task WhenSubjectIsNullAndUnexpectedContainsNull_ShouldFail()
 			{
 				string? subject = null;
-				IEnumerable<string?> expected = ["foo", null];
+				IEnumerable<string?> expected = ["foo", null,];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
