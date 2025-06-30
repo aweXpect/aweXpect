@@ -10,6 +10,19 @@ public sealed partial class ThatEnum
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				MyColors subject = MyColors.Blue;
+				MyColors[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
 			[Theory]
 			[InlineData(MyColors.Blue)]
 			[InlineData(MyColors.Green)]
@@ -21,6 +34,19 @@ public sealed partial class ThatEnum
 					=> await That(subject).IsNotOneOf(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				MyColors subject = MyColors.Blue;
+				MyColors?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
 			}
 
 			[Theory]
@@ -75,7 +101,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldFail(EnumLong subject,
 				params EnumLong[] otherValues)
 			{
-				IEnumerable<EnumLong> expected = [..otherValues, subject,];
+				EnumLong[] expected = [..otherValues, subject,];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);

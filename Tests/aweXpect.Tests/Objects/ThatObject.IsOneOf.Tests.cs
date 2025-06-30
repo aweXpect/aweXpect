@@ -56,6 +56,19 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				object subject = new MyClass();
+				object[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenExpectedOnlyContainsNullValues_ShouldFail()
 			{
 				MyClass subject = new();
@@ -72,6 +85,19 @@ public sealed partial class ThatObject
 					                 Value = 0
 					               }
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				object subject = new MyClass();
+				object?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
 			}
 
 			[Fact]

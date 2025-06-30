@@ -27,7 +27,7 @@ public sealed partial class ThatTimeSpan
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed()
 			{
 				TimeSpan subject = CurrentTime();
-				IEnumerable<TimeSpan?> expected = [null];
+				IEnumerable<TimeSpan?> expected = [null,];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -52,7 +52,7 @@ public sealed partial class ThatTimeSpan
 			public async Task WhenSubjectIsContained_ShouldFail()
 			{
 				TimeSpan subject = CurrentTime();
-				IEnumerable<TimeSpan> expected = [LaterTime(), subject, EarlierTime()];
+				IEnumerable<TimeSpan> expected = [LaterTime(), subject, EarlierTime(),];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -69,7 +69,7 @@ public sealed partial class ThatTimeSpan
 			public async Task WhenSubjectIsDifferent_ShouldSucceed()
 			{
 				TimeSpan subject = CurrentTime();
-				TimeSpan[] expected = [LaterTime(), EarlierTime()];
+				TimeSpan[] expected = [LaterTime(), EarlierTime(),];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -86,7 +86,7 @@ public sealed partial class ThatTimeSpan
 				int actualDifference, int tolerance, bool expectToThrow)
 			{
 				TimeSpan subject = EarlierTime(actualDifference);
-				TimeSpan[] expected = [CurrentTime(), LaterTime()];
+				TimeSpan[] expected = [CurrentTime(), LaterTime(),];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected)

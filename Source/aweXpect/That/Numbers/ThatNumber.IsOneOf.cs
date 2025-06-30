@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -217,7 +216,7 @@ public static partial class ThatNumber
 		{
 			Actual = actual;
 			bool hasValues = false;
-			foreach (TNumber? value in expected)
+			foreach (TNumber value in expected)
 			{
 				hasValues = true;
 				if (options.IsWithinTolerance(actual, value))
@@ -229,7 +228,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -273,7 +272,7 @@ public static partial class ThatNumber
 		{
 			Actual = actual;
 			bool hasValues = false;
-			foreach (TNumber? value in expected)
+			foreach (TNumber value in expected)
 			{
 				hasValues = true;
 				if (options.IsWithinTolerance(actual, value))
@@ -285,7 +284,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -341,7 +340,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -397,7 +396,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -2421,7 +2420,7 @@ public static partial class ThatNumber
 		{
 			Actual = actual;
 			bool hasValues = false;
-			foreach (TNumber? value in expected)
+			foreach (TNumber value in expected)
 			{
 				hasValues = true;
 				if (options.IsWithinTolerance(actual, value))
@@ -2433,7 +2432,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -2477,7 +2476,7 @@ public static partial class ThatNumber
 		{
 			Actual = actual;
 			bool hasValues = false;
-			foreach (TNumber? value in expected)
+			foreach (TNumber value in expected)
 			{
 				hasValues = true;
 				if (options.IsWithinTolerance(actual, value))
@@ -2489,7 +2488,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -2545,7 +2544,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;
@@ -2601,7 +2600,7 @@ public static partial class ThatNumber
 
 			if (!hasValues)
 			{
-				throw new ArgumentException("You have to provide at least one expected value!");
+				throw ThrowHelper.EmptyCollection();
 			}
 
 			Outcome = Outcome.Failure;

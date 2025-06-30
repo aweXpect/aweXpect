@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -87,9 +86,23 @@ public static partial class ThatObject
 		public ConstraintResult IsMetBy(TSubject actual)
 		{
 			Actual = actual;
-			Outcome = expected.Any(value => options.AreConsideredEqual(actual, value))
-				? Outcome.Success
-				: Outcome.Failure;
+			bool hasValues = false;
+			foreach (TExpected? value in expected)
+			{
+				hasValues = true;
+				if (options.AreConsideredEqual(actual, value))
+				{
+					Outcome = Outcome.Success;
+					return this;
+				}
+			}
+
+			if (!hasValues)
+			{
+				throw ThrowHelper.EmptyCollection();
+			}
+
+			Outcome = Outcome.Failure;
 			return this;
 		}
 

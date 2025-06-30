@@ -136,7 +136,7 @@ public static partial class ThatNullableDateTimeOffset
 
 				if (!hasValues)
 				{
-					throw new ArgumentException("You have to provide at least one expected value!");
+					throw ThrowHelper.EmptyCollection();
 				}
 
 				Outcome = Outcome.Failure;

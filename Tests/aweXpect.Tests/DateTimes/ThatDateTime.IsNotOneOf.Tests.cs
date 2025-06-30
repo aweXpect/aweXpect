@@ -27,7 +27,7 @@ public sealed partial class ThatDateTime
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed()
 			{
 				DateTime subject = CurrentTime();
-				IEnumerable<DateTime?> expected = [null];
+				IEnumerable<DateTime?> expected = [null,];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -52,7 +52,7 @@ public sealed partial class ThatDateTime
 			public async Task WhenSubjectIsContained_ShouldFail()
 			{
 				DateTime subject = CurrentTime();
-				IEnumerable<DateTime> expected = [LaterTime(), subject, EarlierTime()];
+				IEnumerable<DateTime> expected = [LaterTime(), subject, EarlierTime(),];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -69,7 +69,7 @@ public sealed partial class ThatDateTime
 			public async Task WhenSubjectIsDifferent_ShouldSucceed()
 			{
 				DateTime subject = CurrentTime();
-				DateTime[] expected = [LaterTime(), EarlierTime()];
+				DateTime[] expected = [LaterTime(), EarlierTime(),];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -86,7 +86,7 @@ public sealed partial class ThatDateTime
 				int actualDifference, int tolerance, bool expectToThrow)
 			{
 				DateTime subject = EarlierTime(actualDifference);
-				DateTime[] expected = [CurrentTime(), LaterTime()];
+				DateTime[] expected = [CurrentTime(), LaterTime(),];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected)

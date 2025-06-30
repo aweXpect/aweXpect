@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -82,10 +81,24 @@ public static partial class ThatString
 		{
 			Actual = actual;
 			StringEqualityOptions stringEqualityOptions = options;
-			Outcome = expectedValues.Any(expectedValue => stringEqualityOptions
-				.AreConsideredEqual(actual, expectedValue))
-				? Outcome.Success
-				: Outcome.Failure;
+			bool hasValues = false;
+			foreach (string? value in expectedValues)
+			{
+				hasValues = true;
+				if (stringEqualityOptions
+				    .AreConsideredEqual(actual, value))
+				{
+					Outcome = Outcome.Success;
+					return this;
+				}
+			}
+
+			if (!hasValues)
+			{
+				throw ThrowHelper.EmptyCollection();
+			}
+
+			Outcome = Outcome.Failure;
 			return this;
 		}
 

@@ -12,6 +12,19 @@ public sealed partial class ThatEnum
 		{
 			public sealed class Tests
 			{
+				[Fact]
+				public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+				{
+					MyColors? subject = MyColors.Blue;
+					MyColors[] expected = [];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).Throws<ArgumentException>()
+						.WithMessage("You have to provide at least one expected value!");
+				}
+
 				[Theory]
 				[InlineData(MyColors.Blue)]
 				[InlineData(MyColors.Green)]
@@ -28,6 +41,19 @@ public sealed partial class ThatEnum
 						              is one of [<null>],
 						              but it was {Formatter.Format(subject)}
 						              """);
+				}
+
+				[Fact]
+				public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+				{
+					MyColors? subject = MyColors.Blue;
+					MyColors?[] expected = [];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).Throws<ArgumentException>()
+						.WithMessage("You have to provide at least one expected value!");
 				}
 
 				[Theory]
