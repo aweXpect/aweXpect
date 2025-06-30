@@ -10,17 +10,43 @@ public sealed partial class ThatEnum
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				MyColors subject = MyColors.Blue;
+				MyColors[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
 			[Theory]
 			[InlineData(MyColors.Blue)]
 			[InlineData(MyColors.Green)]
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed(MyColors subject)
 			{
-				IEnumerable<MyColors?> expected = [null,];
+				IEnumerable<MyColors?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				MyColors subject = MyColors.Blue;
+				MyColors?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
 			}
 
 			[Theory]
@@ -29,7 +55,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldFail(MyColors subject,
 				params MyColors[] otherValues)
 			{
-				IEnumerable<MyColors> expected = [..otherValues, subject,];
+				IEnumerable<MyColors> expected = [..otherValues, subject];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -61,7 +87,7 @@ public sealed partial class ThatEnum
 			[InlineData(EnumLong.Int64LessOne)]
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed(EnumLong subject)
 			{
-				IEnumerable<EnumLong?> expected = [null,];
+				IEnumerable<EnumLong?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -75,7 +101,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldFail(EnumLong subject,
 				params EnumLong[] otherValues)
 			{
-				IEnumerable<EnumLong> expected = [..otherValues, subject,];
+				EnumLong[] expected = [..otherValues, subject];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -107,7 +133,7 @@ public sealed partial class ThatEnum
 			[InlineData(EnumULong.UInt64LessOne)]
 			public async Task WhenExpectedOnlyContainsNull_ShouldSucceed(EnumULong subject)
 			{
-				IEnumerable<EnumULong?> expected = [null,];
+				IEnumerable<EnumULong?> expected = [null];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);
@@ -121,7 +147,7 @@ public sealed partial class ThatEnum
 			public async Task WhenSubjectIsContained_ShouldFail(EnumULong subject,
 				params EnumULong[] otherValues)
 			{
-				IEnumerable<EnumULong> expected = [..otherValues, subject,];
+				IEnumerable<EnumULong> expected = [..otherValues, subject];
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(expected);

@@ -78,7 +78,23 @@ public static partial class ThatNullableEnum
 		public ConstraintResult IsMetBy(TEnum? actual)
 		{
 			Actual = actual;
-			Outcome = expected.Any(value => actual.Equals(value)) ? Outcome.Success : Outcome.Failure;
+			bool hasValues = false;
+			foreach (TEnum? value in expected)
+			{
+				hasValues = true;
+				if (actual.Equals(value))
+				{
+					Outcome = Outcome.Success;
+					return this;
+				}
+			}
+
+			if (!hasValues)
+			{
+				throw ThrowHelper.EmptyCollection();
+			}
+
+			Outcome = Outcome.Failure;
 			return this;
 		}
 

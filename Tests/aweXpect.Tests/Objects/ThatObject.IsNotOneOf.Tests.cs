@@ -12,6 +12,32 @@ public sealed partial class ThatObject
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				object subject = new MyClass();
+				object[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				object subject = new MyClass();
+				object?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task SubjectToItself_ShouldFail()
 			{
 				object subject = new MyClass();
