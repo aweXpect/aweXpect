@@ -463,9 +463,8 @@ namespace aweXpect.Delegates
         public class ThrowsOption
         {
             public ThrowsOption() { }
-            public bool DoCheckThrow { get; }
+            public bool DoCheckThrow { get; set; }
             public aweXpect.Options.TimeSpanEqualityOptions? ExecutionTimeOptions { get; set; }
-            public void CheckThrow(bool doCheckThrow) { }
         }
         public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
         {
