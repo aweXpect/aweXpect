@@ -401,7 +401,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact(Skip = "TODO: Enable after updating aweXpect.Core")]
+			[Fact]
 			public async Task WithManyAdditionalItems_ShouldSucceed()
 			{
 				List<int> values = [42, 5, 18, 23,];
@@ -410,7 +410,7 @@ public sealed partial class ThatEnumerable
 				await That(results).Contains(values);
 			}
 
-			[Fact(Skip = "TODO: Enable after updating aweXpect.Core")]
+			[Fact]
 			public async Task WithManyAdditionalItemsAtTheBeginning_ShouldSucceed()
 			{
 				List<int> values = [42, 5, 18, 23,];
