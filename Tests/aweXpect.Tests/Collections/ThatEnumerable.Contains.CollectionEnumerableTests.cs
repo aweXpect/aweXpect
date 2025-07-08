@@ -16,7 +16,7 @@ public sealed partial class ThatEnumerable
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
 				IEnumerable subject = Enumerable.Range(1, 11);
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<int> expected = Enumerable.Range(100, 21);
 
 				async Task Act()
 					=> await That(subject).Contains(expected);
@@ -73,7 +73,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order,
 					             but it lacked all 3 expected items
-					             
+
 					             Collection:
 					             []
 
@@ -100,7 +100,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order,
 					             but it lacked all 10 expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -184,7 +184,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -220,7 +220,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order,
 					             but it lacked all 6 expected items
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -401,6 +401,24 @@ public sealed partial class ThatEnumerable
 				await That(Act).DoesNotThrow();
 			}
 
+			[Fact(Skip = "TODO: Enable after updating aweXpect.Core")]
+			public async Task WithManyAdditionalItems_ShouldSucceed()
+			{
+				List<int> values = [42, 5, 18, 23,];
+				List<int> results = Enumerable.Range(1, 50).SelectMany(_ => values).ToList();
+
+				await That(results).Contains(values);
+			}
+
+			[Fact(Skip = "TODO: Enable after updating aweXpect.Core")]
+			public async Task WithManyAdditionalItemsAtTheBeginning_ShouldSucceed()
+			{
+				List<int> values = [42, 5, 18, 23,];
+				List<int> results = [..Enumerable.Range(100, 50), ..values, 101, 102, 103,];
+
+				await That(results).Contains(values);
+			}
+
 			[Fact]
 			public async Task WithMissingItem_ShouldFail()
 			{
@@ -545,7 +563,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
 					             but it lacked all 3 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -572,7 +590,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
 					             but it lacked all 2 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -599,7 +617,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
 					             but it lacked all 10 unique expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -650,7 +668,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -686,7 +704,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in order ignoring duplicates,
 					             but it lacked all 5 unique expected items
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -967,7 +985,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in any order,
 					             but it lacked all 3 expected items
-					             
+
 					             Collection:
 					             []
 
@@ -994,7 +1012,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in any order,
 					             but it lacked all 10 expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1381,7 +1399,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
 					             but it lacked all 3 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -1410,7 +1428,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
 					             but it lacked all 2 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -1437,7 +1455,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected in any order ignoring duplicates,
 					             but it lacked all 10 unique expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1726,7 +1744,7 @@ public sealed partial class ThatEnumerable
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
 				IEnumerable subject = Enumerable.Range(1, 11);
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<int> expected = Enumerable.Range(100, 21);
 
 				async Task Act()
 					=> await That(subject).Contains(expected).Properly();
@@ -1785,7 +1803,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 3 expected items
-					             
+
 					             Collection:
 					             []
 
@@ -1812,7 +1830,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order,
 					             but it lacked all 10 expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -1864,7 +1882,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -1902,7 +1920,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 6 expected items
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -2256,7 +2274,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 3 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -2285,7 +2303,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 2 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -2312,7 +2330,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in order ignoring duplicates,
 					             but it lacked all 10 unique expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -2363,7 +2381,7 @@ public sealed partial class ThatEnumerable
 					                 "x",
 					                 "y",
 					                 "z"
-					             
+
 					             Collection:
 					             [
 					               "a",
@@ -2401,7 +2419,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 5 unique expected items
-					             
+
 					             Collection:
 					             [
 					               "b",
@@ -2808,7 +2826,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 3 expected items
-					             
+
 					             Collection:
 					             []
 
@@ -2835,7 +2853,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in any order,
 					             but it lacked all 10 expected items
-					             
+
 					             Collection:
 					             [
 					               1,
@@ -3272,7 +3290,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 3 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -3303,7 +3321,7 @@ public sealed partial class ThatEnumerable
 					             but it
 					               did not contain any additional items and
 					               lacked all 2 unique expected items
-					             
+
 					             Collection:
 					             []
 
@@ -3330,7 +3348,7 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains collection expected and at least one additional item in any order ignoring duplicates,
 					             but it lacked all 10 unique expected items
-					             
+
 					             Collection:
 					             [
 					               1,

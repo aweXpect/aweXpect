@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -60,7 +59,14 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			error = null;
-			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
+			int errorThreshold = 2 * maximumNumber;
+			int errorCount = _incorrectItems.Count + _missingItems.Count;
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
+			{
+				errorCount += _additionalItems.Count;
+			}
+
+			return errorCount > errorThreshold;
 		}
 
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
