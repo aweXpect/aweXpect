@@ -8,7 +8,7 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public ThatDelegateThrows<TException?> OnlyIf(bool predicate)
 	{
-		_throwOptions.CheckThrow(predicate);
-		return new ThatDelegateThrows<TException?>(ExpectationBuilder, _throwOptions);
+		ThrowOptions.DoCheckThrow = predicate;
+		return new ThatDelegateThrows<TException?>(ExpectationBuilder, ThrowOptions);
 	}
 }

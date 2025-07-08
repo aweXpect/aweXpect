@@ -35,11 +35,15 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		return message;
 	}
 
-	private sealed class DelegateIsNotNullWithinTimeoutConstraint(string it, ExpectationGrammars grammars, ThrowsOption options)
+	private sealed class DelegateIsNotNullWithinTimeoutConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		ThrowsOption options)
 		: ConstraintResult(grammars),
 			IValueConstraint<DelegateValue>
 	{
 		private DelegateValue? _actual;
+
 		public ConstraintResult IsMetBy(DelegateValue value)
 		{
 			_actual = value;
@@ -55,7 +59,7 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 				Outcome = Outcome.Failure;
 				return this;
 			}
-			
+
 			Outcome = Outcome.Success;
 			return this;
 		}
@@ -88,12 +92,22 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 			=> this;
 	}
 
-	internal class ThrowsOption
+	/// <summary>
+	///     Options on expectations if a delegate throws.
+	/// </summary>
+	public class ThrowsOption
 	{
-		public bool DoCheckThrow { get; private set; } = true;
-		
-		public TimeSpanEqualityOptions? ExecutionTimeOptions { get; set; }
+		/// <summary>
+		///     Flag indicating if the delegate is expected to throw an exception.
+		/// </summary>
+		/// <remarks>
+		///     If set to <see langword="false" />, the delegate must not throw any exception.
+		/// </remarks>
+		public bool DoCheckThrow { get; set; } = true;
 
-		public void CheckThrow(bool doCheckThrow) => DoCheckThrow = doCheckThrow;
+		/// <summary>
+		///     Options on the execution time to allow specifying a timeout.
+		/// </summary>
+		public TimeSpanEqualityOptions? ExecutionTimeOptions { get; set; }
 	}
 }

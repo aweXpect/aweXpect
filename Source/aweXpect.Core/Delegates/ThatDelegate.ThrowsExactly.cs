@@ -121,7 +121,7 @@ public abstract partial class ThatDelegate
 
 		public override ConstraintResult Negate()
 		{
-			throwOptions.CheckThrow(!throwOptions.DoCheckThrow);
+			throwOptions.DoCheckThrow = !throwOptions.DoCheckThrow;
 			return this;
 		}
 	}
