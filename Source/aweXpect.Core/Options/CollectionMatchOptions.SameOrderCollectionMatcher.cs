@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -60,6 +59,11 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			error = null;
+			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
+			{
+				return _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
+			}
+			
 			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
 		}
 
