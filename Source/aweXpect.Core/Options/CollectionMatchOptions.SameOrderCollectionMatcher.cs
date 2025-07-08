@@ -59,12 +59,14 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			error = null;
-			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
+			int errorThreshold = 2 * maximumNumber;
+			int errorCount = _incorrectItems.Count + _missingItems.Count;
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
 			{
-				return _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
+				errorCount += _additionalItems.Count;
 			}
-			
-			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
+
+			return errorCount > errorThreshold;
 		}
 
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
