@@ -17,7 +17,7 @@ public partial class ThatDelegateThrows<TException>
 
 		TimeSpanEqualityOptions options = new();
 		options.Within(duration);
-		_throwOptions.ExecutionTimeOptions = options;
+		ThrowOptions.ExecutionTimeOptions = options;
 		return this;
 	}
 }

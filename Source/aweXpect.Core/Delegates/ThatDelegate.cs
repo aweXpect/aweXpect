@@ -88,7 +88,7 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 			=> this;
 	}
 
-	internal class ThrowsOption
+	public class ThrowsOption
 	{
 		public bool DoCheckThrow { get; private set; } = true;
 		
