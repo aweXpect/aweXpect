@@ -10,26 +10,26 @@ namespace aweXpect;
 public static partial class ThatException
 {
 	/// <summary>
-	///     Verifies that the actual exception has a message equal to <paramref name="expected" />.
+	///     Verifies that the actual exception has a message containing the <paramref name="expected" /> pattern.
 	/// </summary>
-	public static StringEqualityTypeResult<Exception?, IThat<Exception?>> HasMessage(
+	public static StringEqualityTypeResult<Exception?, IThat<Exception?>> HasMessageContaining(
 		this IThat<Exception?> source,
-		string expected)
+		string? expected)
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<Exception?, IThat<Exception?>>(
 			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
-				=> new HasMessageValueConstraint(
+				=> new HasMessageContainingConstraint(
 					expectationBuilder, it, grammars, expected, options)),
 			source,
 			options);
 	}
 
-	internal class HasMessageValueConstraint(
+	internal class HasMessageContainingConstraint(
 		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
-		string expected,
+		string? expected,
 		StringEqualityOptions options)
 		: ConstraintResult.WithValue<Exception?>(grammars),
 			IValueConstraint<Exception?>
@@ -37,7 +37,10 @@ public static partial class ThatException
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
 			Actual = actual;
-			Outcome = options.AreConsideredEqual(actual?.Message, expected) ? Outcome.Success : Outcome.Failure;
+			options.AsWildcard();
+			Outcome = expected is null || options.AreConsideredEqual(actual?.Message, $"*{expected}*")
+				? Outcome.Success
+				: Outcome.Failure;
 			if (Outcome == Outcome.Failure)
 			{
 				expectationBuilder.UpdateContexts(contexts => contexts
@@ -52,16 +55,16 @@ public static partial class ThatException
 			ExpectationGrammars equalityGrammars = Grammars;
 			if (Grammars.HasFlag(ExpectationGrammars.Active))
 			{
-				stringBuilder.Append("with Message ");
+				stringBuilder.Append("with Message containing ");
 				equalityGrammars &= ~ExpectationGrammars.Active;
 			}
 			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
-				stringBuilder.Append("Message is ");
+				stringBuilder.Append("Message contains ");
 			}
 			else
 			{
-				stringBuilder.Append("has Message ");
+				stringBuilder.Append("contains Message ");
 			}
 
 			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars));
@@ -75,16 +78,16 @@ public static partial class ThatException
 			ExpectationGrammars equalityGrammars = Grammars;
 			if (Grammars.HasFlag(ExpectationGrammars.Active))
 			{
-				stringBuilder.Append("with Message ");
+				stringBuilder.Append("with Message containing ");
 				equalityGrammars &= ~ExpectationGrammars.Active;
 			}
 			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
-				stringBuilder.Append("Message is ");
+				stringBuilder.Append("Message contains ");
 			}
 			else
 			{
-				stringBuilder.Append("has Message ");
+				stringBuilder.Append("contains Message ");
 			}
 
 			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars));

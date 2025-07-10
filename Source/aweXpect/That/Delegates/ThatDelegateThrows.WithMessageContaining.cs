@@ -9,17 +9,17 @@ namespace aweXpect;
 public static partial class ThatDelegateThrows
 {
 	/// <summary>
-	///     Verifies that the thrown exception has a message equal to <paramref name="expected" />.
+	///     Verifies that the thrown exception has a message that contains the <paramref name="expected" /> pattern.
 	/// </summary>
-	public static StringEqualityTypeResult<TException, ThatDelegateThrows<TException>> WithMessage<TException>(
+	public static StringEqualityResult<TException, ThatDelegateThrows<TException>> WithMessageContaining<TException>(
 		this ThatDelegateThrows<TException> source,
-		string expected)
+		string? expected)
 		where TException : Exception?
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(
+		return new StringEqualityResult<TException, ThatDelegateThrows<TException>>(
 			source.ExpectationBuilder.AddConstraint((it, grammars)
-				=> new ThatException.HasMessageValueConstraint(
+				=> new ThatException.HasMessageContainingConstraint(
 					source.ExpectationBuilder,
 					it,
 					grammars | ExpectationGrammars.Active | ExpectationGrammars.Nested,
