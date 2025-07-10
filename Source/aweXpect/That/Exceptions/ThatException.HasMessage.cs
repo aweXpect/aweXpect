@@ -71,24 +71,7 @@ public static partial class ThatException
 			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual?.Message, expected));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			ExpectationGrammars equalityGrammars = Grammars;
-			if (Grammars.HasFlag(ExpectationGrammars.Active))
-			{
-				stringBuilder.Append("with Message ");
-				equalityGrammars &= ~ExpectationGrammars.Active;
-			}
-			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
-			{
-				stringBuilder.Append("Message is ");
-			}
-			else
-			{
-				stringBuilder.Append("has Message ");
-			}
-
-			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars));
-		}
+			=> AppendNormalExpectation(stringBuilder, indentation);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalResult(stringBuilder, indentation);

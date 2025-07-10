@@ -78,19 +78,19 @@ public static partial class ThatException
 			ExpectationGrammars equalityGrammars = Grammars;
 			if (Grammars.HasFlag(ExpectationGrammars.Active))
 			{
-				stringBuilder.Append("with Message containing ");
+				stringBuilder.Append("with Message not containing ");
 				equalityGrammars &= ~ExpectationGrammars.Active;
 			}
 			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
-				stringBuilder.Append("Message contains ");
+				stringBuilder.Append("Message does not contain ");
 			}
 			else
 			{
-				stringBuilder.Append("contains Message ");
+				stringBuilder.Append("does not contain Message ");
 			}
 
-			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars));
+			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars.Negate()));
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
