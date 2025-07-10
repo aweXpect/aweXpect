@@ -280,7 +280,7 @@ namespace aweXpect
             where TException : System.Exception? { }
         public static aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithMessage<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string expected)
             where TException : System.Exception? { }
-        public static aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string expected)
+        public static aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string? expected)
             where TException : System.ArgumentException? { }
         public static aweXpect.Results.AndOrResult<TException?, aweXpect.Delegates.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations)
             where TException : System.Exception? { }
@@ -669,7 +669,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasInnerException(this aweXpect.Core.IThat<System.Exception?> source) { }
         public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasInnerException(this aweXpect.Core.IThat<System.Exception?> source, System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
         public static aweXpect.Results.StringEqualityTypeResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasMessage(this aweXpect.Core.IThat<System.Exception?> source, string expected) { }
-        public static aweXpect.Results.AndOrResult<TException, aweXpect.Core.IThat<TException>> HasParamName<TException>(this aweXpect.Core.IThat<TException> source, string expected)
+        public static aweXpect.Results.AndOrResult<TException, aweXpect.Core.IThat<TException>> HasParamName<TException>(this aweXpect.Core.IThat<TException> source, string? expected)
             where TException : System.ArgumentException? { }
         public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasRecursiveInnerExceptions(this aweXpect.Core.IThat<System.Exception?> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }

@@ -8,6 +8,30 @@ public sealed partial class ThatException
 		{
 			[Theory]
 			[AutoData]
+			public async Task WhenExpectedIsNull_AndParamNameIsEmpty_ShouldSucceed(string message)
+			{
+				ArgumentException subject = new(message);
+
+				async Task Act()
+					=> await That(subject).HasParamName(null);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenExpectedIsNull_ShouldSucceed(string message)
+			{
+				ArgumentException subject = new(message, nameof(message));
+
+				async Task Act()
+					=> await That(subject).HasParamName(null);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
 			public async Task WhenParamNameIsDifferent_ShouldFail(string message)
 			{
 				ArgumentException subject = new(message, nameof(message));
