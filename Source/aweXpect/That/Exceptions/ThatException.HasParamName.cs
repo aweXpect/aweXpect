@@ -11,18 +11,21 @@ public static partial class ThatException
 	/// <summary>
 	///     Verifies that the actual <see cref="ArgumentException" /> has an <paramref name="expected" /> param name.
 	/// </summary>
+	/// <remarks>
+	///     If <paramref name="expected" /> is <see langword="null" />, does not verify anything.
+	/// </remarks>
 	public static AndOrResult<TException, IThat<TException>> HasParamName<TException>(
 		this IThat<TException> source,
-		string expected)
+		string? expected)
 		where TException : ArgumentException?
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new HasParamNameValueConstraint<TException>(it, grammars, expected)),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new HasParamNameValueConstraint<TException>(it, grammars, expected)),
 			source);
 
 	internal class HasParamNameValueConstraint<TArgumentException>(
 		string it,
 		ExpectationGrammars grammars,
-		string expected)
+		string? expected)
 		: ConstraintResult.WithNotNullValue<Exception?>(it, grammars),
 			IValueConstraint<Exception?>
 		where TArgumentException : ArgumentException?
@@ -30,7 +33,7 @@ public static partial class ThatException
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
 			Actual = actual;
-			Outcome = actual is TArgumentException argumentException && argumentException.ParamName == expected
+			Outcome = actual is TArgumentException argumentException && (expected is null || argumentException.ParamName == expected)
 				? Outcome.Success
 				: Outcome.Failure;
 			return this;
