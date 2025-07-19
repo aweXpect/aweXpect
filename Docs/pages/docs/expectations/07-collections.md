@@ -345,7 +345,7 @@ await Expect.That(["FOO", "BAR"]).EndsWith(["bar"]).IgnoringCase();
 
 ## Have
 
-Specifications that count the elements in a collection.
+Specifications that count the elements in a collection that satisfy specific conditions.
 
 ### All
 
@@ -486,6 +486,21 @@ await Expect.That(result).IsGreaterThan(41);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+## Have item at index
+
+You can verify that the collection contains an item that satisfies the expectation on a given index (or any index).
+
+```csharp
+IEnumerable<string> values = ["0th item", "1st item", "2nd item", "3rd item"];
+
+await Expect.That(values).HasItem("1st item").AtIndex(1);
+await Expect.That(values).HasItem(a => a.StartsWith("2nd")).AtAnyIndex();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
 
 ## Dictionaries
 

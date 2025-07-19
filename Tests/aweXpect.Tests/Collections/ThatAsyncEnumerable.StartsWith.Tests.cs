@@ -77,11 +77,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained 2 at index 1 instead of 3
 
 					             Collection:
-					             [
-					               1,
-					               2,
-					               (… and maybe others)
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -166,7 +162,7 @@ public sealed partial class ThatAsyncEnumerable
 					             [
 					               "foo",
 					               "bar",
-					               (… and maybe others)
+					               "baz"
 					             ]
 					             """);
 			}

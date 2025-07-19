@@ -249,7 +249,7 @@ public static partial class ThatAsyncEnumerable
 				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
 				{
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
-					_expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>, true);
+					await _expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
 					return this;
 				}
 			}
@@ -257,13 +257,13 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				Outcome = Outcome.Undecided;
-				_expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>, true);
+				await _expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>, true);
 				return this;
 			}
 
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
-			_expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
+			await _expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
 			return this;
 		}
 
@@ -363,13 +363,12 @@ public static partial class ThatAsyncEnumerable
 				{
 					_failure ??= TooManyDeviationsError();
 					Outcome = Outcome.Failure;
-					expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>,
-						true);
+					await expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
 					return this;
 				}
 			}
 
-			expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
+			await expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
 			if (matcher.VerifyComplete(It, options, maximumNumber, out _failure))
 			{
 				_failure ??= TooManyDeviationsError();
@@ -452,7 +451,7 @@ public static partial class ThatAsyncEnumerable
 
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
+			await expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
 
 			TMember previous = default!;
 			int index = 0;
