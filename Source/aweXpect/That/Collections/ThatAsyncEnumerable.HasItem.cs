@@ -84,7 +84,6 @@ public static partial class ThatAsyncEnumerable
 			_hasIndex = false;
 			Outcome = Outcome.Failure;
 
-			List<TItem> items = [];
 			int index = -1;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
