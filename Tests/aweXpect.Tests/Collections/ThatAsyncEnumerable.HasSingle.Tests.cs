@@ -36,10 +36,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained more than one item
 
 					             Collection:
-					             [
-					               1,
-					               2
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -107,7 +104,14 @@ public sealed partial class ThatAsyncEnumerable
 					               1,
 					               1,
 					               2,
-					               3
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
 					             ]
 					             """);
 			}
@@ -137,11 +141,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained more than one item
 
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -443,10 +443,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained more than one item
 
 					             Collection:
-					             [
-					               1,
-					               2
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 

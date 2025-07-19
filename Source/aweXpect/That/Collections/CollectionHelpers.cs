@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using aweXpect.Core;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 
 namespace aweXpect;
@@ -101,13 +103,15 @@ internal static class CollectionHelpers
 	}
 
 #if NET8_0_OR_GREATER
-	internal static ExpectationBuilder AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder,
+	internal static async Task<ExpectationBuilder> AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder,
 		IMaterializedEnumerable<TItem>? value, bool isIncomplete = false)
 	{
 		if (value is null)
 		{
 			return expectationBuilder;
 		}
+
+		await value.MaterializeItems(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get());
 
 		return expectationBuilder.UpdateContexts(contexts
 			=>

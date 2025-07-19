@@ -31,7 +31,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but could not verify, because it was already cancelled
 
 					             Collection:
-					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
+					             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, (… and maybe others)]
 					             """);
 			}
 
@@ -50,12 +50,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but found at least 3
 
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3,
-					               (… and maybe others)
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -85,11 +80,7 @@ public sealed partial class ThatAsyncEnumerable
 					             but found at least 2
 
 					             Collection:
-					             [
-					               1,
-					               2,
-					               (… and maybe others)
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 

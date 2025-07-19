@@ -259,8 +259,7 @@ public static partial class ThatAsyncEnumerable
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;
-					_expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>,
-						true);
+					await _expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
 					Outcome = Outcome.Failure;
 					return this;
 				}
@@ -273,7 +272,7 @@ public static partial class ThatAsyncEnumerable
 				}
 			}
 
-			_expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
+			await _expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
 			Outcome = Outcome.Failure;
 			return this;
 		}

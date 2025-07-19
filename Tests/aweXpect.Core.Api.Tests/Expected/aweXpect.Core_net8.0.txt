@@ -750,6 +750,14 @@ namespace aweXpect.Formatting
 }
 namespace aweXpect.Options
 {
+    public class CollectionIndexOptions
+    {
+        public CollectionIndexOptions() { }
+        public string GetDescription() { }
+        public bool HasOnlySingleIndex() { }
+        public bool? IsIndexInRange(int index) { }
+        public void SetIndexRange(int? minimum, int? maximum) { }
+    }
     public class CollectionMatchOptions
     {
         public CollectionMatchOptions(aweXpect.Options.CollectionMatchOptions.EquivalenceRelations equivalenceRelations = 1) { }
@@ -1078,6 +1086,12 @@ namespace aweXpect.Results
         public System.Runtime.CompilerServices.TaskAwaiter<TType> GetAwaiter() { }
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public TSelf WithTimeout(System.TimeSpan timeout) { }
+    }
+    public class HasItemResult<TCollection>
+    {
+        public HasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
+        public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtAnyIndex() { }
+        public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtIndex(int index) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>
         where TType :  struct, System.Numerics.INumber<TType>

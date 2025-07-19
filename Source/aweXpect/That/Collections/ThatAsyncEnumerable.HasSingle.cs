@@ -87,7 +87,7 @@ public static partial class ThatAsyncEnumerable
 			Outcome = _count == 1 ? Outcome.Success : Outcome.Failure;
 			if (_count > 1)
 			{
-				expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
+				await expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
 			}
 
 			return this;

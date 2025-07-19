@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace aweXpect.Helpers;
 
@@ -26,13 +27,14 @@ internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, IMa
 
 		while (await _enumerator.MoveNextAsync())
 		{
+			T item = _enumerator.Current;
+			_materializedItems.Add(item);
+
 			if (cancellationToken.IsCancellationRequested)
 			{
 				break;
 			}
 
-			T item = _enumerator.Current;
-			_materializedItems.Add(item);
 			yield return item;
 		}
 
@@ -46,6 +48,21 @@ internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, IMa
 
 	/// <inheritdoc cref="IMaterializedEnumerable{T}.MaterializedItems" />
 	IReadOnlyList<T> IMaterializedEnumerable<T>.MaterializedItems => _materializedItems;
+
+	/// <inheritdoc cref="IMaterializedEnumerable{T}.MaterializeItems(int)" />
+	public async Task MaterializeItems(int minimumNumberOfItems)
+	{
+		int index = 0;
+		await foreach (T _ in this)
+		{
+			if (index++ > minimumNumberOfItems)
+			{
+				return;
+			}
+		}
+
+		Count = _materializedItems.Count;
+	}
 
 	public static IAsyncEnumerable<T> Wrap(IAsyncEnumerable<T> enumerable)
 	{
