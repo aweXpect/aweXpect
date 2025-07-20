@@ -810,9 +810,9 @@ public sealed partial class ThatEnumerable
 					              
 					              Collection:
 					              [
-					                "fo\r\no",
-					                "ba\r\nr",
-					                "ba\r\nz"
+					                "fo{nl.DisplayWhitespace()}o",
+					                "ba{nl.DisplayWhitespace()}r",
+					                "ba{nl.DisplayWhitespace()}z"
 					              ]
 					              """);
 			}
