@@ -11,13 +11,13 @@ namespace aweXpect.Results;
 /// <remarks>
 ///     <seealso cref="HasItemResult{TCollection}" />
 /// </remarks>
-public class HasItemStringResult<TCollection>(
+public class StringHasItemResult<TCollection>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	StringEqualityOptions options)
-	: HasItemStringResult<TCollection,
-		HasItemStringResult<TCollection>>(
+	: StringHasItemResult<TCollection,
+		StringHasItemResult<TCollection>>(
 		expectationBuilder,
 		collection,
 		collectionIndexOptions,
@@ -29,14 +29,14 @@ public class HasItemStringResult<TCollection>(
 /// <remarks>
 ///     <seealso cref="HasItemResult{TCollection}" />
 /// </remarks>
-public class HasItemStringResult<TCollection, TSelf>(
+public class StringHasItemResult<TCollection, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	StringEqualityOptions options)
 	: HasItemResult<TCollection>(expectationBuilder, collection, collectionIndexOptions),
 		IOptionsProvider<StringEqualityOptions>
-	where TSelf : HasItemStringResult<TCollection, TSelf>
+	where TSelf : StringHasItemResult<TCollection, TSelf>
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
 	StringEqualityOptions IOptionsProvider<StringEqualityOptions>.Options => options;

@@ -291,10 +291,10 @@ namespace aweXpect
         public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<TItem[], aweXpect.Core.IThat<TItem[]?>>> HasCount<TItem>(this aweXpect.Core.IThat<TItem[]?> subject) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int expected) { }
         public static aweXpect.Results.AndOrResult<TItem[], aweXpect.Core.IThat<TItem[]?>> HasCount<TItem>(this aweXpect.Core.IThat<TItem[]?> subject, int expected) { }
-        public static aweXpect.Results.HasItemStringResult<System.Collections.Generic.IEnumerable<string?>?> HasItem(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, string? expected) { }
-        public static aweXpect.Results.HasItemObjectResult<System.Collections.IEnumerable, object?> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable> source, object? expected) { }
+        public static aweXpect.Results.StringHasItemResult<System.Collections.Generic.IEnumerable<string?>?> HasItem(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, string? expected) { }
+        public static aweXpect.Results.ObjectHasItemResult<System.Collections.IEnumerable, object?> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable> source, object? expected) { }
         public static aweXpect.Results.HasItemResult<System.Collections.IEnumerable> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable> source, System.Func<object?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.HasItemObjectResult<System.Collections.Generic.IEnumerable<TItem>?, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, TItem expected) { }
+        public static aweXpect.Results.ObjectHasItemResult<System.Collections.Generic.IEnumerable<TItem>?, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, TItem expected) { }
         public static aweXpect.Results.HasItemResult<System.Collections.Generic.IEnumerable<TItem>?> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.SingleItemResult<System.Collections.IEnumerable, object?> HasSingle(this aweXpect.Core.IThat<System.Collections.IEnumerable> source) { }
         public static aweXpect.Results.SingleItemResult<System.Collections.Generic.IEnumerable<TItem>, TItem> HasSingle<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source) { }
@@ -1156,8 +1156,8 @@ namespace aweXpect.Equivalency
 {
     public static class EquivalencyExtensions
     {
-        public static TSelf Equivalent<TCollection, TItem, TSelf>(this aweXpect.Results.HasItemObjectResult<TCollection, TItem, TSelf> result, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? options = null)
-            where TSelf : aweXpect.Results.HasItemObjectResult<TCollection, TItem, TSelf> { }
+        public static TSelf Equivalent<TCollection, TItem, TSelf>(this aweXpect.Results.ObjectHasItemResult<TCollection, TItem, TSelf> result, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? options = null)
+            where TSelf : aweXpect.Results.ObjectHasItemResult<TCollection, TItem, TSelf> { }
         public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> result, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? options = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> { }
     }

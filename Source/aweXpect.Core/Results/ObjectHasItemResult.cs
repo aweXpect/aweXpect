@@ -10,13 +10,13 @@ namespace aweXpect.Results;
 /// <remarks>
 ///     <seealso cref="HasItemResult{TCollection}" />
 /// </remarks>
-public class HasItemObjectResult<TCollection, TItem>(
+public class ObjectHasItemResult<TCollection, TItem>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	ObjectEqualityOptions<TItem> options)
-	: HasItemObjectResult<TCollection, TItem,
-		HasItemObjectResult<TCollection, TItem>>(
+	: ObjectHasItemResult<TCollection, TItem,
+		ObjectHasItemResult<TCollection, TItem>>(
 		expectationBuilder,
 		collection,
 		collectionIndexOptions,
@@ -28,14 +28,14 @@ public class HasItemObjectResult<TCollection, TItem>(
 /// <remarks>
 ///     <seealso cref="HasItemResult{TCollection}" />
 /// </remarks>
-public class HasItemObjectResult<TCollection, TItem, TSelf>(
+public class ObjectHasItemResult<TCollection, TItem, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	ObjectEqualityOptions<TItem> options)
 	: HasItemResult<TCollection>(expectationBuilder, collection, collectionIndexOptions),
 		IOptionsProvider<ObjectEqualityOptions<TItem>>
-	where TSelf : HasItemObjectResult<TCollection, TItem, TSelf>
+	where TSelf : ObjectHasItemResult<TCollection, TItem, TSelf>
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
 	ObjectEqualityOptions<TItem> IOptionsProvider<ObjectEqualityOptions<TItem>>.Options => options;

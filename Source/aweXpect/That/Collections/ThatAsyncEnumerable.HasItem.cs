@@ -38,13 +38,13 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemObjectResult<IAsyncEnumerable<TItem>?, TItem> HasItem<TItem>(
+	public static ObjectHasItemResult<IAsyncEnumerable<TItem>?, TItem> HasItem<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> source, TItem expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		ObjectEqualityOptions<TItem> options = new();
-		return new HasItemObjectResult<IAsyncEnumerable<TItem>?, TItem>(
+		return new ObjectHasItemResult<IAsyncEnumerable<TItem>?, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemConstraint<TItem>(expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),
@@ -58,13 +58,13 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemStringResult<IAsyncEnumerable<string?>?> HasItem(
+	public static StringHasItemResult<IAsyncEnumerable<string?>?> HasItem(
 		this IThat<IAsyncEnumerable<string?>?> source, string? expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		StringEqualityOptions options = new();
-		return new HasItemStringResult<IAsyncEnumerable<string?>?>(
+		return new StringHasItemResult<IAsyncEnumerable<string?>?>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemConstraint<string?>(expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),

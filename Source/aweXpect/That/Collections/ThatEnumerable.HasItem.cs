@@ -40,13 +40,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemObjectResult<IEnumerable<TItem>?, TItem> HasItem<TItem>(
+	public static ObjectHasItemResult<IEnumerable<TItem>?, TItem> HasItem<TItem>(
 		this IThat<IEnumerable<TItem>?> source, TItem expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		ObjectEqualityOptions<TItem> options = new();
-		return new HasItemObjectResult<IEnumerable<TItem>?, TItem>(
+		return new ObjectHasItemResult<IEnumerable<TItem>?, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemConstraint<TItem>(expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),
@@ -60,13 +60,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemStringResult<IEnumerable<string?>?> HasItem(
+	public static StringHasItemResult<IEnumerable<string?>?> HasItem(
 		this IThat<IEnumerable<string?>?> source, string? expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		StringEqualityOptions options = new();
-		return new HasItemStringResult<IEnumerable<string?>?>(
+		return new StringHasItemResult<IEnumerable<string?>?>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemConstraint<string?>(expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),
@@ -100,13 +100,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemObjectResult<IEnumerable, object?> HasItem(
+	public static ObjectHasItemResult<IEnumerable, object?> HasItem(
 		this IThat<IEnumerable> source, object? expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		ObjectEqualityOptions<object?> options = new();
-		return new HasItemObjectResult<IEnumerable, object?>(
+		return new ObjectHasItemResult<IEnumerable, object?>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemForEnumerableConstraint<IEnumerable, object?>(
 					expectationBuilder, it, grammars,
@@ -144,13 +144,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemObjectResult<ImmutableArray<TItem>, TItem> HasItem<TItem>(
+	public static ObjectHasItemResult<ImmutableArray<TItem>, TItem> HasItem<TItem>(
 		this IThat<ImmutableArray<TItem>> source, TItem expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		ObjectEqualityOptions<TItem> options = new();
-		return new HasItemObjectResult<ImmutableArray<TItem>, TItem>(
+		return new ObjectHasItemResult<ImmutableArray<TItem>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
 					expectationBuilder, it, grammars,
@@ -167,13 +167,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has the <paramref name="expected" /> item…
 	/// </summary>
-	public static HasItemStringResult<ImmutableArray<string?>> HasItem(
+	public static StringHasItemResult<ImmutableArray<string?>> HasItem(
 		this IThat<ImmutableArray<string?>> source, string? expected)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		StringEqualityOptions options = new();
-		return new HasItemStringResult<ImmutableArray<string?>>(
+		return new StringHasItemResult<ImmutableArray<string?>>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemForEnumerableConstraint<ImmutableArray<string?>, string?>(
 					expectationBuilder, it, grammars,
