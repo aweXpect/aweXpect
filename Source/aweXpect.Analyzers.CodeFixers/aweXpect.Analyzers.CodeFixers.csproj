@@ -13,23 +13,23 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\aweXpect.Analyzers\aweXpect.Analyzers.csproj"/>
+		<ProjectReference Include="..\aweXpect.Analyzers\aweXpect.Analyzers.csproj" />
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.CodeAnalysis.Common"/>
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
-		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common"/>
+		<PackageReference Include="Microsoft.CodeAnalysis.Common" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<AdditionalFiles Remove="AnalyzerReleases.Unshipped.md"/>
-		<AdditionalFiles Remove="AnalyzerReleases.Shipped.md"/>
+		<AdditionalFiles Remove="AnalyzerReleases.Unshipped.md" />
+		<AdditionalFiles Remove="AnalyzerReleases.Shipped.md" />
 	</ItemGroup>
 
 </Project>

@@ -11,13 +11,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BenchmarkDotNet"/>
-		<PackageReference Include="FluentAssertions"/>
-		<PackageReference Include="TUnit.Assertions"/>
+		<PackageReference Include="BenchmarkDotNet" />
+		<PackageReference Include="FluentAssertions" />
+		<PackageReference Include="TUnit.Assertions" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
+
+	  <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" VersionOverride="4.14.0" />
+
+	  <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+
+	  <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj" />
 	</ItemGroup>
 
 </Project>

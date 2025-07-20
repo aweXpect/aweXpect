@@ -1,7 +1,6 @@
 <Project>
 
-	<Import Project="$(MSBuildThisFileDirectory)/../Directory.Build.props"
-			Condition="Exists('$(MSBuildThisFileDirectory)/../Directory.Build.props')"/>
+	<Import Project="$(MSBuildThisFileDirectory)/../Directory.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)/../Directory.Build.props')" />
 
 	<PropertyGroup>
 		<Authors>aweXpect</Authors>
@@ -49,20 +48,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$([MSBuild]::GetPathOfFileAbove('logo_256x256.png', '$(MSBuildThisFileDirectory)../Docs/pages/static/img/'))"
-			  Pack="true"
-			  PackagePath="/Docs/"
-			  Link="\Docs\logo_256x256.png"/>
-		<None Include="$(SolutionDir)/Artifacts/README.md"
-			  Condition="Exists('$(SolutionDir)/Artifacts/README.md')"
-			  Pack="true"
-			  PackagePath="/Docs/"
-			  Link="Docs\README.md"/>
-		<None Include="$(SolutionDir)/README.md"
-			  Condition="!Exists('$(SolutionDir)/Artifacts/README.md')"
-			  Pack="true"
-			  PackagePath="/Docs/"
-			  Link="Docs\README.md"/>
+		<None Include="$([MSBuild]::GetPathOfFileAbove('logo_256x256.png', '$(MSBuildThisFileDirectory)../Docs/pages/static/img/'))" Pack="true" PackagePath="/Docs/" Link="\Docs\logo_256x256.png" />
+		<None Include="$(SolutionDir)/Artifacts/README.md" Condition="Exists('$(SolutionDir)/Artifacts/README.md')" Pack="true" PackagePath="/Docs/" Link="Docs\README.md" />
+		<None Include="$(SolutionDir)/README.md" Condition="!Exists('$(SolutionDir)/Artifacts/README.md')" Pack="true" PackagePath="/Docs/" Link="Docs\README.md" />
 	</ItemGroup>
 
 	<PropertyGroup>
