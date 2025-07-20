@@ -1205,7 +1205,7 @@ public sealed partial class ThatAsyncEnumerable
 					             [
 					               " a",
 					               "b",
-					               "	c"
+					               "\tc"
 					             ]
 
 					             Expected:
@@ -1237,7 +1237,7 @@ public sealed partial class ThatAsyncEnumerable
 					             [
 					               "a ",
 					               "b",
-					               "c	"
+					               "c\t"
 					             ]
 
 					             Expected:

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Equivalency;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -24,7 +22,6 @@ public class HasItemObjectResult<TCollection, TItem>(
 		collectionIndexOptions,
 		options);
 
-
 /// <summary>
 ///     The result for verifying that a collection has a specific item at a given index.
 /// </summary>
@@ -36,17 +33,12 @@ public class HasItemObjectResult<TCollection, TItem, TSelf>(
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	ObjectEqualityOptions<TItem> options)
-	: HasItemResult<TCollection>(expectationBuilder, collection, collectionIndexOptions)
+	: HasItemResult<TCollection>(expectationBuilder, collection, collectionIndexOptions),
+		IOptionsProvider<ObjectEqualityOptions<TItem>>
 	where TSelf : HasItemObjectResult<TCollection, TItem, TSelf>
 {
-	/// <summary>
-	///     Use equivalency to compare objects.
-	/// </summary>
-	public TSelf Equivalent(Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
-	{
-		options.Equivalent(EquivalencyOptionsExtensions.FromCallback(optionsCallback));
-		return (TSelf)this;
-	}
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	ObjectEqualityOptions<TItem> IOptionsProvider<ObjectEqualityOptions<TItem>>.Options => options;
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.

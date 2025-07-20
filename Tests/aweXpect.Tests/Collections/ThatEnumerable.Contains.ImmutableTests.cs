@@ -735,12 +735,9 @@ public sealed partial class ThatEnumerable
 
 					              Collection:
 					              [
-					                "fo
-					                o",
-					                "ba
-					                r",
-					                "ba
-					                z"
+					                "fo\r\no",
+					                "ba\r\nr",
+					                "ba\r\nz"
 					              ]
 					              """);
 			}

@@ -55,6 +55,26 @@ public static partial class ThatAsyncEnumerable
 			options);
 	}
 
+	/// <summary>
+	///     Verifies that the collection has the <paramref name="expected" /> item…
+	/// </summary>
+	public static HasItemStringResult<IAsyncEnumerable<string?>?> HasItem(
+		this IThat<IAsyncEnumerable<string?>?> source, string? expected)
+	{
+		CollectionIndexOptions indexOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		StringEqualityOptions options = new();
+		return new HasItemStringResult<IAsyncEnumerable<string?>?>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemConstraint<string?>(expectationBuilder, it, grammars,
+					a => options.AreConsideredEqual(a, expected),
+					() => options.GetExpectation(expected, grammars),
+					indexOptions)),
+			source,
+			indexOptions,
+			options);
+	}
+
 	private sealed class HasItemConstraint<TItem>(
 		ExpectationBuilder expectationBuilder,
 		string it,

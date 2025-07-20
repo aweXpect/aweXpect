@@ -1070,11 +1070,39 @@ namespace aweXpect.Results
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public TSelf WithTimeout(System.TimeSpan timeout) { }
     }
+    public class HasItemObjectResult<TCollection, TItem> : aweXpect.Results.HasItemObjectResult<TCollection, TItem, aweXpect.Results.HasItemObjectResult<TCollection, TItem>>
+    {
+        public HasItemObjectResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.ObjectEqualityOptions<TItem> options) { }
+    }
+    public class HasItemObjectResult<TCollection, TItem, TSelf> : aweXpect.Results.HasItemResult<TCollection>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions<TItem>>
+        where TSelf : aweXpect.Results.HasItemObjectResult<TCollection, TItem, TSelf>
+    {
+        public HasItemObjectResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.ObjectEqualityOptions<TItem> options) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+    }
     public class HasItemResult<TCollection>
     {
         public HasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
         public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtAnyIndex() { }
         public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtIndex(int index) { }
+    }
+    public class HasItemStringResult<TCollection> : aweXpect.Results.HasItemStringResult<TCollection, aweXpect.Results.HasItemStringResult<TCollection>>
+    {
+        public HasItemStringResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.StringEqualityOptions options) { }
+    }
+    public class HasItemStringResult<TCollection, TSelf> : aweXpect.Results.HasItemResult<TCollection>, aweXpect.Core.IOptionsProvider<aweXpect.Options.StringEqualityOptions>
+        where TSelf : aweXpect.Results.HasItemStringResult<TCollection, TSelf>
+    {
+        public HasItemStringResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.StringEqualityOptions options) { }
+        public TSelf AsPrefix() { }
+        public TSelf AsRegex() { }
+        public TSelf AsSuffix() { }
+        public TSelf AsWildcard() { }
+        public TSelf IgnoringCase(bool ignoreCase = true) { }
+        public TSelf IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
+        public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
+        public TSelf IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>
         where TType :  struct, System.IComparable<TType>

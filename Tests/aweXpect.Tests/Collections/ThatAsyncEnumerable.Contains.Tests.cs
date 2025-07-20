@@ -718,12 +718,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					              Collection:
 					              [
-					                "fo
-					                o",
-					                "ba
-					                r",
-					                "ba
-					                z"
+					                "fo\r\no",
+					                "ba\r\nr",
+					                "ba\r\nz"
 					              ]
 					              """);
 			}

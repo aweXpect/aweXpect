@@ -1206,9 +1206,9 @@ public sealed partial class ThatEnumerable
 					             [
 					               " a",
 					               "b",
-					               "	c"
+					               "\tc"
 					             ]
-
+					             
 					             Expected:
 					             [
 					               "a",
@@ -1233,14 +1233,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not match collection unexpected in order ignoring trailing white-space,
 					             but it did
-
+					             
 					             Collection:
 					             [
 					               "a ",
 					               "b",
-					               "c	"
+					               "c\t"
 					             ]
-
+					             
 					             Expected:
 					             [
 					               "a",

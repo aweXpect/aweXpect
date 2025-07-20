@@ -58,6 +58,26 @@ public static partial class ThatEnumerable
 	}
 
 	/// <summary>
+	///     Verifies that the collection has the <paramref name="expected" /> item…
+	/// </summary>
+	public static HasItemStringResult<IEnumerable<string?>?> HasItem(
+		this IThat<IEnumerable<string?>?> source, string? expected)
+	{
+		CollectionIndexOptions indexOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		StringEqualityOptions options = new();
+		return new HasItemStringResult<IEnumerable<string?>?>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemConstraint<string?>(expectationBuilder, it, grammars,
+					a => options.AreConsideredEqual(a, expected),
+					() => options.GetExpectation(expected, grammars),
+					indexOptions)),
+			source,
+			indexOptions,
+			options);
+	}
+
+	/// <summary>
 	///     Verifies that the collection has an item matching the <paramref name="predicate" />…
 	/// </summary>
 	public static HasItemResult<IEnumerable> HasItem(
@@ -133,6 +153,29 @@ public static partial class ThatEnumerable
 		return new HasItemObjectResult<ImmutableArray<TItem>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
 				=> new HasItemForEnumerableConstraint<ImmutableArray<TItem>, TItem>(
+					expectationBuilder, it, grammars,
+					a => options.AreConsideredEqual(a, expected),
+					() => $"{Formatter.Format(expected)}{options}",
+					indexOptions)),
+			source,
+			indexOptions,
+			options);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection has the <paramref name="expected" /> item…
+	/// </summary>
+	public static HasItemStringResult<ImmutableArray<string?>> HasItem(
+		this IThat<ImmutableArray<string?>> source, string? expected)
+	{
+		CollectionIndexOptions indexOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		StringEqualityOptions options = new();
+		return new HasItemStringResult<ImmutableArray<string?>>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemForEnumerableConstraint<ImmutableArray<string?>, string?>(
 					expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),
 					() => $"{Formatter.Format(expected)}{options}",

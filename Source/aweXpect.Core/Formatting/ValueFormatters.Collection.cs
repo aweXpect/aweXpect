@@ -85,6 +85,7 @@ public static partial class ValueFormatters
 			stringBuilder.Append(Format(formatter, v, options with
 			{
 				IncludeType = false,
+				UseLineBreaks = options.UseLineBreaks && v?.GetType() != typeof(string),
 			}).Indent("  ", false));
 		}
 
