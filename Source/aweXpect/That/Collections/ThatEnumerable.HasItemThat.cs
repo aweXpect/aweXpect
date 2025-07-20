@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -11,7 +9,9 @@ using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
 #if NET8_0_OR_GREATER
+using System.Collections;
 using System.Collections.Immutable;
+using System.Linq;
 #endif
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -54,14 +54,14 @@ public static partial class ThatEnumerable
 #endif
 
 	private sealed class HasItemThatConstraint<TItem> : ConstraintResult.WithValue<IEnumerable<TItem>?>,
-			IAsyncContextConstraint<IEnumerable<TItem>?>
+		IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
-		private TItem? _actual;
-		private bool _hasIndex;
 		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly string _it;
-		private readonly CollectionIndexOptions _options;
 		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+		private readonly CollectionIndexOptions _options;
+		private TItem? _actual;
+		private bool _hasIndex;
 
 		public HasItemThatConstraint(ExpectationBuilder expectationBuilder,
 			string it,
@@ -72,12 +72,13 @@ public static partial class ThatEnumerable
 			_expectationBuilder = expectationBuilder;
 			_it = it;
 			_options = options;
-			
+
 			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(_expectationBuilder, Grammars);
 			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
-		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -177,15 +178,17 @@ public static partial class ThatEnumerable
 		}
 	}
 
-	private sealed class HasItemThatForEnumerableConstraint<TEnumerable, TItem> : ConstraintResult.WithValue<TEnumerable>,
-			IAsyncContextConstraint<TEnumerable>
+#if NET8_0_OR_GREATER
+	private sealed class HasItemThatForEnumerableConstraint<TEnumerable, TItem> :
+		ConstraintResult.WithValue<TEnumerable>,
+		IAsyncContextConstraint<TEnumerable>
 		where TEnumerable : IEnumerable?
 	{
-		private object? _actual;
 		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly string _it;
-		private readonly CollectionIndexOptions _options;
 		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+		private readonly CollectionIndexOptions _options;
+		private object? _actual;
 
 		public HasItemThatForEnumerableConstraint(ExpectationBuilder expectationBuilder,
 			string it,
@@ -196,12 +199,13 @@ public static partial class ThatEnumerable
 			_expectationBuilder = expectationBuilder;
 			_it = it;
 			_options = options;
-			
+
 			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(_expectationBuilder, Grammars);
 			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
-		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -298,4 +302,5 @@ public static partial class ThatEnumerable
 			}
 		}
 	}
+#endif
 }
