@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Equivalency;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -12,18 +10,17 @@ namespace aweXpect.Results;
 /// <remarks>
 ///     <seealso cref="HasItemResult{TCollection}" />
 /// </remarks>
-public class HasItemObjectResult<TCollection, TItem>(
+public class ObjectHasItemResult<TCollection, TItem>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	ObjectEqualityOptions<TItem> options)
-	: HasItemObjectResult<TCollection, TItem,
-		HasItemObjectResult<TCollection, TItem>>(
+	: ObjectHasItemResult<TCollection, TItem,
+		ObjectHasItemResult<TCollection, TItem>>(
 		expectationBuilder,
 		collection,
 		collectionIndexOptions,
 		options);
-
 
 /// <summary>
 ///     The result for verifying that a collection has a specific item at a given index.
@@ -31,22 +28,17 @@ public class HasItemObjectResult<TCollection, TItem>(
 /// <remarks>
 ///     <seealso cref="HasItemResult{TCollection}" />
 /// </remarks>
-public class HasItemObjectResult<TCollection, TItem, TSelf>(
+public class ObjectHasItemResult<TCollection, TItem, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions,
 	ObjectEqualityOptions<TItem> options)
-	: HasItemResult<TCollection>(expectationBuilder, collection, collectionIndexOptions)
-	where TSelf : HasItemObjectResult<TCollection, TItem, TSelf>
+	: HasItemResult<TCollection>(expectationBuilder, collection, collectionIndexOptions),
+		IOptionsProvider<ObjectEqualityOptions<TItem>>
+	where TSelf : ObjectHasItemResult<TCollection, TItem, TSelf>
 {
-	/// <summary>
-	///     Use equivalency to compare objects.
-	/// </summary>
-	public TSelf Equivalent(Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
-	{
-		options.Equivalent(EquivalencyOptionsExtensions.FromCallback(optionsCallback));
-		return (TSelf)this;
-	}
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	ObjectEqualityOptions<TItem> IOptionsProvider<ObjectEqualityOptions<TItem>>.Options => options;
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.

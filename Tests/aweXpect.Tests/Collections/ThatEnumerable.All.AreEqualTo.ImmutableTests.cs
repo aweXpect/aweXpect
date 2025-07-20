@@ -397,14 +397,14 @@ public sealed partial class ThatEnumerable
 						             Not matching items:
 						             [
 						               " foo",
-						               "	foo"
+						               "\tfoo"
 						             ]
-
+						             
 						             Collection:
 						             [
 						               " foo",
 						               "foo",
-						               "	foo"
+						               "\tfoo"
 						             ]
 						             """);
 				}
@@ -459,14 +459,14 @@ public sealed partial class ThatEnumerable
 						             Not matching items:
 						             [
 						               "foo ",
-						               "foo	"
+						               "foo\t"
 						             ]
-
+						             
 						             Collection:
 						             [
 						               "foo ",
 						               "foo",
-						               "foo	"
+						               "foo\t"
 						             ]
 						             """);
 				}

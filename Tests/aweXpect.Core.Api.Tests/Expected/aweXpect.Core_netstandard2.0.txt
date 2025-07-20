@@ -1110,6 +1110,16 @@ namespace aweXpect.Results
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
+    public class ObjectHasItemResult<TCollection, TItem> : aweXpect.Results.ObjectHasItemResult<TCollection, TItem, aweXpect.Results.ObjectHasItemResult<TCollection, TItem>>
+    {
+        public ObjectHasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.ObjectEqualityOptions<TItem> options) { }
+    }
+    public class ObjectHasItemResult<TCollection, TItem, TSelf> : aweXpect.Results.HasItemResult<TCollection>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions<TItem>>
+        where TSelf : aweXpect.Results.ObjectHasItemResult<TCollection, TItem, TSelf>
+    {
+        public ObjectHasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.ObjectEqualityOptions<TItem> options) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+    }
     public static class PropertyResult
     {
         public class DateTimeKind<TItem>
@@ -1197,6 +1207,24 @@ namespace aweXpect.Results
         public TSelf AsSuffix() { }
         public TSelf AsWildcard() { }
         public TSelf Exactly() { }
+    }
+    public class StringHasItemResult<TCollection> : aweXpect.Results.StringHasItemResult<TCollection, aweXpect.Results.StringHasItemResult<TCollection>>
+    {
+        public StringHasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.StringEqualityOptions options) { }
+    }
+    public class StringHasItemResult<TCollection, TSelf> : aweXpect.Results.HasItemResult<TCollection>, aweXpect.Core.IOptionsProvider<aweXpect.Options.StringEqualityOptions>
+        where TSelf : aweXpect.Results.StringHasItemResult<TCollection, TSelf>
+    {
+        public StringHasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions, aweXpect.Options.StringEqualityOptions options) { }
+        public TSelf AsPrefix() { }
+        public TSelf AsRegex() { }
+        public TSelf AsSuffix() { }
+        public TSelf AsWildcard() { }
+        public TSelf IgnoringCase(bool ignoreCase = true) { }
+        public TSelf IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
+        public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
+        public TSelf IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class TimeToleranceResult<TType, TThat> : aweXpect.Results.TimeToleranceResult<TType, TThat, aweXpect.Results.TimeToleranceResult<TType, TThat>>
     {

@@ -1204,7 +1204,7 @@ public sealed partial class ThatEnumerable
 					             [
 					               " a",
 					               "b",
-					               "	c"
+					               "\tc"
 					             ]
 
 					             Expected:
@@ -1236,7 +1236,7 @@ public sealed partial class ThatEnumerable
 					             [
 					               "a ",
 					               "b",
-					               "c	"
+					               "c\t"
 					             ]
 
 					             Expected:

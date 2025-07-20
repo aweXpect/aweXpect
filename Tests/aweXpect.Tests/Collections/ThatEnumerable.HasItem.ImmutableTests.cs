@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Immutable;
 using System.Linq;
+using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -180,7 +181,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
-				ImmutableArray<string> subject = ["a", "b", "c",];
+				ImmutableArray<string?> subject = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).HasItem("d").AtIndex(0).And.HasItem("e").AtIndex(1).And.HasItem("f")

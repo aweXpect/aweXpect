@@ -735,12 +735,9 @@ public sealed partial class ThatEnumerable
 
 					              Collection:
 					              [
-					                "fo
-					                o",
-					                "ba
-					                r",
-					                "ba
-					                z"
+					                "fo{nl.DisplayWhitespace()}o",
+					                "ba{nl.DisplayWhitespace()}r",
+					                "ba{nl.DisplayWhitespace()}z"
 					              ]
 					              """);
 			}

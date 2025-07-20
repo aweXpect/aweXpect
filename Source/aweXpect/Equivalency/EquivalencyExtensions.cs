@@ -27,6 +27,19 @@ public static class EquivalencyExtensions
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
+	public static TSelf Equivalent<TCollection, TItem, TSelf>(
+		this ObjectHasItemResult<TCollection, TItem, TSelf> result,
+		Func<EquivalencyOptions, EquivalencyOptions>? options = null)
+		where TSelf : ObjectHasItemResult<TCollection, TItem, TSelf>
+	{
+		((IOptionsProvider<ObjectEqualityOptions<TItem>>)result).Options.SetMatchType(
+			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(options)));
+		return (TSelf)result;
+	}
+
+	/// <summary>
+	///     Use equivalency to compare objects.
+	/// </summary>
 	internal static ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this ObjectEqualityOptions<TSubject> options,
 		EquivalencyOptions equivalencyOptions)
 	{

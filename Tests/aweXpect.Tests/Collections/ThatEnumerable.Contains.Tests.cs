@@ -807,15 +807,12 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              contains {Formatter.Format(match)} ignoring newline style at least once,
 					              but it did not contain it
-
+					              
 					              Collection:
 					              [
-					                "fo
-					                o",
-					                "ba
-					                r",
-					                "ba
-					                z"
+					                "fo{nl.DisplayWhitespace()}o",
+					                "ba{nl.DisplayWhitespace()}r",
+					                "ba{nl.DisplayWhitespace()}z"
 					              ]
 					              """);
 			}
