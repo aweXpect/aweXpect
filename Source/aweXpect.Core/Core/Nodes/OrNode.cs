@@ -87,7 +87,7 @@ internal class OrNode : Node
 	/// <inheritdoc />
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		foreach (Node node in _nodes.Select(n => n.Item2))
+		foreach (Node node in _nodes.Select(n => n.Item2).Where(n => n != Current))
 		{
 			node.AppendExpectation(stringBuilder, indentation);
 			stringBuilder.Append(DefaultSeparator);
