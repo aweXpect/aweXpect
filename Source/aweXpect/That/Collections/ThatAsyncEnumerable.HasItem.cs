@@ -108,7 +108,7 @@ public static partial class ThatAsyncEnumerable
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				index++;
-				bool? isIndexInRange = options.IsIndexInRange(index);
+				bool? isIndexInRange = options.DoesIndexMatch(index);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -142,7 +142,7 @@ public static partial class ThatAsyncEnumerable
 			}
 			else if (_hasIndex)
 			{
-				if (options.HasOnlySingleIndex())
+				if (options.MatchesOnlySingleIndex())
 				{
 					stringBuilder.Append(it).Append(" had item ");
 					Formatter.Format(stringBuilder, _actual);
