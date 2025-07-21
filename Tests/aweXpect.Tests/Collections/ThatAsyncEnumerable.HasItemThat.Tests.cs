@@ -17,7 +17,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsEqualTo(5)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(5));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -77,7 +77,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -96,7 +96,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

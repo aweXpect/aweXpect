@@ -13,22 +13,14 @@ public class HasItemResult<TCollection>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions)
+	: AndOrResult<TCollection, IThat<TCollection>>(expectationBuilder, collection)
 {
-	/// <summary>
-	///     …at any index.
-	/// </summary>
-	public AndOrResult<TCollection, IThat<TCollection>> AtAnyIndex()
-	{
-		collectionIndexOptions.SetIndexRange(null, null);
-		return new AndOrResult<TCollection, IThat<TCollection>>(expectationBuilder, collection);
-	}
-
 	/// <summary>
 	///     …at the given <paramref name="index" />.
 	/// </summary>
 	public AndOrResult<TCollection, IThat<TCollection>> AtIndex(int index)
 	{
 		collectionIndexOptions.SetIndexRange(index, index);
-		return new AndOrResult<TCollection, IThat<TCollection>>(expectationBuilder, collection);
+		return this;
 	}
 }
