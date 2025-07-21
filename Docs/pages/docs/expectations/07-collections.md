@@ -496,7 +496,7 @@ You can verify that the collection contains an item that satisfies the expectati
 IEnumerable<string> values = ["0th item", "1st item", "2nd item", "3rd item"];
 
 await Expect.That(values).HasItem("1st item").AtIndex(1);
-await Expect.That(values).HasItem(it => it.StartsWith("2nd")).AtAnyIndex();
+await Expect.That(values).HasItem(it => it.StartsWith("2nd")); // at any index
 ```
 
 You can also use expectations on the individual items.
@@ -505,7 +505,7 @@ You can also use expectations on the individual items.
 IEnumerable<string> values = ["0th item", "1st item", "2nd item", "3rd item"];
 
 await Expect.That(values).HasItemThat(it => it.IsEqualTo("1st item")).AtIndex(1);
-await Expect.That(values).HasItemThat(it => it.StartsWith("2nd").And.EndsWith("item")).AtAnyIndex();
+await Expect.That(values).HasItemThat(it => it.StartsWith("2nd").And.EndsWith("item")); // at any index
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*

@@ -736,9 +736,10 @@ namespace aweXpect.Options
     public class CollectionIndexOptions
     {
         public CollectionIndexOptions() { }
+        public bool? DoesIndexMatch(int index) { }
         public string GetDescription() { }
-        public bool HasOnlySingleIndex() { }
-        public bool? IsIndexInRange(int index) { }
+        public bool MatchesOnlySingleIndex() { }
+        public void SetIndexMatch(System.Func<int, bool?> isIndexMatch, bool matchesOnlySingleIndex, string description) { }
         public void SetIndexRange(int? minimum, int? maximum) { }
     }
     public class CollectionMatchOptions
@@ -1070,10 +1071,9 @@ namespace aweXpect.Results
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public TSelf WithTimeout(System.TimeSpan timeout) { }
     }
-    public class HasItemResult<TCollection>
+    public class HasItemResult<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>
     {
         public HasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
-        public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtAnyIndex() { }
         public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtIndex(int index) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>

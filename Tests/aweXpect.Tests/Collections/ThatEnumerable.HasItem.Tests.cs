@@ -18,7 +18,7 @@ public sealed partial class ThatEnumerable
 				ThrowWhenIteratingTwiceEnumerable subject = new();
 
 				async Task Act()
-					=> await That(subject).HasItem(_ => true).AtAnyIndex()
+					=> await That(subject).HasItem(_ => true)
 						.And.HasItem(_ => true).AtIndex(0);
 
 				await That(Act).DoesNotThrow();
@@ -30,7 +30,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).HasItem(a => a == 5).AtAnyIndex();
+					=> await That(subject).HasItem(a => a == 5);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -95,7 +95,7 @@ public sealed partial class ThatEnumerable
 				List<int> subject = [];
 
 				async Task Act()
-					=> await That(subject).HasItem(_ => true).AtAnyIndex();
+					=> await That(subject).HasItem(_ => true);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -114,7 +114,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasItem(_ => true).AtAnyIndex();
+					=> await That(subject).HasItem(_ => true);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -148,7 +148,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).HasItem(_ => false).AtIndex(0).And.HasItem(_ => false).AtIndex(1).And
 						.HasItem(_ => false)
-						.AtAnyIndex();
+						;
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -174,7 +174,7 @@ public sealed partial class ThatEnumerable
 				ThrowWhenIteratingTwiceEnumerable subject = new();
 
 				async Task Act()
-					=> await That(subject).HasItem(1).AtAnyIndex()
+					=> await That(subject).HasItem(1)
 						.And.HasItem(1).AtIndex(0);
 
 				await That(Act).DoesNotThrow();
@@ -186,7 +186,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).HasItem(5).AtAnyIndex();
+					=> await That(subject).HasItem(5);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -261,7 +261,7 @@ public sealed partial class ThatEnumerable
 				List<int> subject = [];
 
 				async Task Act()
-					=> await That(subject).HasItem(expected).AtAnyIndex();
+					=> await That(subject).HasItem(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -281,7 +281,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasItem(expected).AtAnyIndex();
+					=> await That(subject).HasItem(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -315,7 +315,7 @@ public sealed partial class ThatEnumerable
 
 				async Task Act()
 					=> await That(subject).HasItem(4).AtIndex(0).And.HasItem(5).AtIndex(1).And.HasItem(6)
-						.AtAnyIndex();
+						;
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -635,7 +635,7 @@ public sealed partial class ThatEnumerable
 				List<string?> subject = [];
 
 				async Task Act()
-					=> await That(subject).HasItem("foo").AtAnyIndex();
+					=> await That(subject).HasItem("foo");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -654,7 +654,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).HasItem("foo").AtAnyIndex();
+					=> await That(subject!).HasItem("foo");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -721,7 +721,7 @@ public sealed partial class ThatEnumerable
 
 				async Task Act()
 					=> await That(subject).HasItem("d").AtIndex(0).And.HasItem("e").AtIndex(1).And.HasItem("f")
-						.AtAnyIndex();
+						;
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -748,7 +748,7 @@ public sealed partial class ThatEnumerable
 				MyClass expected = new(5);
 
 				async Task Act()
-					=> await That(subject).HasItem(expected).Equivalent().AtAnyIndex();
+					=> await That(subject).HasItem(expected).Equivalent();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -760,7 +760,7 @@ public sealed partial class ThatEnumerable
 				MyClass expected = new(4);
 
 				async Task Act()
-					=> await That(subject).HasItem(expected).Equivalent().AtAnyIndex();
+					=> await That(subject).HasItem(expected).Equivalent();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -827,7 +827,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
 
 				async Task Act()
-					=> await That(subject).HasItem(1).Using(new AllDifferentComparer()).AtAnyIndex();
+					=> await That(subject).HasItem(1).Using(new AllDifferentComparer());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -858,7 +858,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
 
 				async Task Act()
-					=> await That(subject).HasItem(4).Using(new AllEqualComparer()).AtAnyIndex();
+					=> await That(subject).HasItem(4).Using(new AllEqualComparer());
 
 				await That(Act).DoesNotThrow();
 			}

@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 				ImmutableArray<int> subject = [];
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

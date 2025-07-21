@@ -16,7 +16,7 @@ public sealed partial class ThatEnumerable
 				ThrowWhenIteratingTwiceEnumerable subject = new();
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(int.MinValue)).AtAnyIndex()
+					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(int.MinValue))
 						.And.HasItemThat(it => it.IsNotEqualTo(int.MinValue)).AtIndex(0);
 
 				await That(Act).DoesNotThrow();
@@ -28,7 +28,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsEqualTo(5)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(5));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -93,7 +93,7 @@ public sealed partial class ThatEnumerable
 				List<int> subject = [];
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -112,7 +112,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0)).AtAnyIndex();
+					=> await That(subject).HasItemThat(it => it.IsNotEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

@@ -96,7 +96,7 @@ public static partial class ThatEnumerable
 			foreach (TItem item in materialized)
 			{
 				index++;
-				bool? isIndexInRange = _options.IsIndexInRange(index);
+				bool? isIndexInRange = _options.DoesIndexMatch(index);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -135,7 +135,7 @@ public static partial class ThatEnumerable
 			}
 			else if (_hasIndex)
 			{
-				if (_options.HasOnlySingleIndex())
+				if (_options.MatchesOnlySingleIndex())
 				{
 					stringBuilder.Append(_it).Append(" had item ");
 					Formatter.Format(stringBuilder, _actual);
@@ -222,7 +222,7 @@ public static partial class ThatEnumerable
 			foreach (TItem item in materialized.Cast<TItem>())
 			{
 				index++;
-				bool? isIndexInRange = _options.IsIndexInRange(index);
+				bool? isIndexInRange = _options.DoesIndexMatch(index);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -260,7 +260,7 @@ public static partial class ThatEnumerable
 			}
 			else if (_actual is not null)
 			{
-				if (_options.HasOnlySingleIndex())
+				if (_options.MatchesOnlySingleIndex())
 				{
 					stringBuilder.Append(_it).Append(" had item ");
 					Formatter.Format(stringBuilder, _actual);
