@@ -53,19 +53,19 @@ public sealed partial class ThatString
 			}
 
 			[Theory]
-			[InlineData("12.34", "de-AT")]
-			[InlineData("12.34,0", "en-US")]
+			[InlineData("-12.34", "de-AT")]
+			[InlineData("-12,34", "en-US")]
 			public async Task WithFormatProvider_WhenFormatDoesNotMatch_ShouldFail(string subject, string cultureName)
 			{
 				IFormatProvider formatProvider = new CultureInfo(cultureName);
 
 				async Task Act()
-					=> await That(subject).IsParsableInto<decimal>(formatProvider);
+					=> await That(subject).IsParsableInto<uint>(formatProvider);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is parsable into decimal using {cultureName},
+					              is parsable into uint using {cultureName},
 					              but it was not because the input string '{subject}' was not in a correct format
 					              """);
 			}

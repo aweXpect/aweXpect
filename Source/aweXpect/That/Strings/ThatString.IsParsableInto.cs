@@ -13,7 +13,8 @@ public static partial class ThatString
 	///     Verifies that the subject is parsable into type <typeparamref name="TType" />.
 	/// </summary>
 	/// <remarks>
-	///     The optional <paramref name="formatProvider" /> provides culture-specific formatting information.
+	///     The optional parameter <paramref name="formatProvider" /> provides culture-specific formatting information
+	///     in the call to <see cref="IParsable{TType}.Parse(string, IFormatProvider)" />.
 	/// </remarks>
 	public static IsParsableResult<TType> IsParsableInto<TType>(
 		this IThat<string?> source,
@@ -28,7 +29,8 @@ public static partial class ThatString
 	///     Verifies that the subject is not parsable into type <typeparamref name="TType" />.
 	/// </summary>
 	/// <remarks>
-	///     The optional <paramref name="formatProvider" /> provides culture-specific formatting information.
+	///     The optional parameter <paramref name="formatProvider" /> provides culture-specific formatting information
+	///     in the call to <see cref="IParsable{TType}.Parse(string, IFormatProvider)" />.
 	/// </remarks>
 	public static AndOrResult<string?, IThat<string?>> IsNotParsableInto<TType>(
 		this IThat<string?> source,
@@ -71,7 +73,15 @@ public static partial class ThatString
 			}
 			catch (Exception ex)
 			{
-				_exceptionMessage = char.ToLowerInvariant(ex.Message[0]) + ex.Message[1..^1];
+				if (string.IsNullOrEmpty(ex.Message) || ex.Message.Length < 2)
+				{
+					_exceptionMessage = "an unknown error occurred";
+				}
+				else
+				{
+					_exceptionMessage = char.ToLowerInvariant(ex.Message[0]) + ex.Message[1..^1];
+				}
+
 				Outcome = Outcome.Failure;
 			}
 
