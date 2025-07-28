@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<PackageReference Include="TUnit"/>
-		<PackageReference Include="Microsoft.Testing.Extensions.TrxReport"/>
-		<PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage"/>
+		<PackageReference Include="TUnit" />
+		<PackageReference Include="Microsoft.Testing.Extensions.TrxReport" />
+		<PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Source\aweXpect\aweXpect.csproj"/>
+		<ProjectReference Include="..\..\..\Source\aweXpect\aweXpect.csproj" />
 	</ItemGroup>
 
 </Project>
