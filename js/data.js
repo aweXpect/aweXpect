@@ -1914,6 +1914,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -2235,7 +2241,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -2560,7 +2567,8 @@ window.BENCHMARK_DATA = {
           184.21250583330792,
           181.1335564851761,
           192.5319437810353,
-          184.1567827803748
+          184.1567827803748,
+          180.86571323076885
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2755,6 +2763,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3223,7 +3232,8 @@ window.BENCHMARK_DATA = {
           240.73733043670654,
           230.7116722890309,
           244.14898891448973,
-          244.0979370389666
+          244.0979370389666,
+          226.85287739549364
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3416,6 +3426,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3886,7 +3897,8 @@ window.BENCHMARK_DATA = {
           898.1869722366333,
           875.7904837681697,
           979.8017501831055,
-          909.5592615263803
+          909.5592615263803,
+          859.5331059183393
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4112,6 +4124,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -5682,6 +5695,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -5926,7 +5945,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -6174,7 +6194,8 @@ window.BENCHMARK_DATA = {
           278378.0557016226,
           296852.2213541667,
           298701.83056640625,
-          280349.15130208334
+          280349.15130208334,
+          303665.5537109375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6387,6 +6408,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6683,7 +6705,8 @@ window.BENCHMARK_DATA = {
           2128061.538504464,
           2185017.234635417,
           2325631.9215959823,
-          2334730.49375
+          2334730.49375,
+          2200111.263997396
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6799,6 +6822,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7192,7 +7216,8 @@ window.BENCHMARK_DATA = {
           657804.3223307292,
           637597.1786411831,
           715550.1927315848,
-          655833.778125
+          655833.778125,
+          665963.2380022322
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7348,6 +7373,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -9373,6 +9399,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -9694,7 +9726,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -10019,7 +10052,8 @@ window.BENCHMARK_DATA = {
           460.7181004524231,
           437.5466561684242,
           477.68382975260414,
-          443.71707309087117
+          443.71707309087117,
+          429.9422842172476
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10330,6 +10364,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -10682,7 +10717,8 @@ window.BENCHMARK_DATA = {
           478.15033022562665,
           642.6398880004883,
           493.9984954833984,
-          452.5271094004313
+          452.5271094004313,
+          467.538049527577
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10875,6 +10911,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11345,7 +11382,8 @@ window.BENCHMARK_DATA = {
           15786.955865478516,
           15157.162970909705,
           18498.805947875975,
-          14418.42090657552
+          14418.42090657552,
+          15063.948951212566
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11571,6 +11609,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -13603,6 +13642,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -13924,7 +13969,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -14249,7 +14295,8 @@ window.BENCHMARK_DATA = {
           214.13452116648355,
           204.85106452306113,
           230.0384741306305,
-          216.55567235213059
+          216.55567235213059,
+          200.03386173929488
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14445,6 +14492,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -14912,7 +14960,8 @@ window.BENCHMARK_DATA = {
           247.59838955742973,
           239.53299522399902,
           264.97102680206297,
-          230.71778553326925
+          230.71778553326925,
+          236.25134102503458
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15105,6 +15154,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -15575,7 +15625,8 @@ window.BENCHMARK_DATA = {
           1221.9975028404822,
           1324.9968592779976,
           1323.6579242706298,
-          1278.8567810058594
+          1278.8567810058594,
+          1188.8218409674507
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15801,6 +15852,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -17833,6 +17885,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -18154,7 +18212,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -18479,7 +18538,8 @@ window.BENCHMARK_DATA = {
           331.1578245162964,
           342.42493467330934,
           356.95237627029417,
-          336.2319192568461
+          336.2319192568461,
+          338.51004954746793
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18769,6 +18829,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -19142,7 +19203,8 @@ window.BENCHMARK_DATA = {
           488.2162861506144,
           457.6144228935242,
           505.07166086832683,
-          450.139838886261
+          450.139838886261,
+          449.3180795056479
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19335,6 +19397,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -19805,7 +19868,8 @@ window.BENCHMARK_DATA = {
           1358.8801959991456,
           1257.9991579691568,
           1391.6091942420373,
-          1353.7002480824788
+          1353.7002480824788,
+          1259.697444507054
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20031,6 +20095,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -22063,6 +22128,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -22384,7 +22455,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -22709,7 +22781,8 @@ window.BENCHMARK_DATA = {
           1382.2567981719972,
           1302.2429545084635,
           1389.4736036936442,
-          1403.839359964643
+          1403.839359964643,
+          1369.522089767456
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23022,6 +23095,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -23372,7 +23446,8 @@ window.BENCHMARK_DATA = {
           1267.1283485706035,
           1348.5674292246501,
           1376.529356275286,
-          1253.8849623362223
+          1253.8849623362223,
+          1277.9614789145332
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23565,6 +23640,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -24035,7 +24111,8 @@ window.BENCHMARK_DATA = {
           2772.594041442871,
           2829.4063524882,
           2918.3122222900392,
-          2820.0574241638183
+          2820.0574241638183,
+          2723.496263376872
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24261,6 +24338,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -26293,6 +26371,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jul 28 12:44:16 2025 \u002B0200",
         "message": "chore: Bump the nunit group with 2 updates (#690)"
+      },
+      {
+        "sha": "ca8cbe60f2db2f2ee4ffbc7ec92fa034d4253f24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jul 28 20:19:42 2025 \u002B0200",
+        "message": "feat: add \u0060IsParsableInto\u0060 for strings (#693)"
       }
     ],
     "labels": [
@@ -26614,7 +26698,8 @@ window.BENCHMARK_DATA = {
       "fe15b21e",
       "5b6272d3",
       "12de9e03",
-      "6df2116f"
+      "6df2116f",
+      "ca8cbe60"
     ],
     "datasets": [
       {
@@ -26939,7 +27024,8 @@ window.BENCHMARK_DATA = {
           1562.3858586720057,
           1587.735904284886,
           1590.2633996691022,
-          1586.7863970438639
+          1586.7863970438639,
+          1527.2639700082632
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27252,6 +27338,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -27602,7 +27689,8 @@ window.BENCHMARK_DATA = {
           149384.70138113838,
           152960.40921223958,
           152614.89048549108,
-          151995.89494441106
+          151995.89494441106,
+          147873.83811598556
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27932,6 +28020,7 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63788,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -28265,7 +28354,8 @@ window.BENCHMARK_DATA = {
           4548.767402140299,
           4477.604979294997,
           4749.248908996582,
-          4616.688967895508
+          4616.688967895508,
+          4597.5753835042315
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -28491,6 +28581,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
