@@ -1118,12 +1118,16 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> IsNotNullOrWhiteSpace(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsNotOneOf(this aweXpect.Core.IThat<string?> source, System.Collections.Generic.IEnumerable<string?> unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsNotOneOf(this aweXpect.Core.IThat<string?> source, params string?[] unexpected) { }
+        public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsNotParsableInto<TType>(this aweXpect.Core.IThat<string?> source, System.IFormatProvider? formatProvider = null)
+            where TType : System.IParsable<TType> { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> IsNotUpperCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsNull(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsNullOrEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsNullOrWhiteSpace(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsOneOf(this aweXpect.Core.IThat<string?> source, System.Collections.Generic.IEnumerable<string?> expected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsOneOf(this aweXpect.Core.IThat<string?> source, params string?[] expected) { }
+        public static aweXpect.Results.IsParsableResult<TType> IsParsableInto<TType>(this aweXpect.Core.IThat<string?> source, System.IFormatProvider? formatProvider = null)
+            where TType : System.IParsable<TType> { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsUpperCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> StartsWith(this aweXpect.Core.IThat<string?> source, string expected) { }
     }
@@ -1245,6 +1249,12 @@ namespace aweXpect.Results
         {
             aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate);
         }
+    }
+    public class IsParsableResult<TType> : aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>>
+        where TType : System.IParsable<TType>
+    {
+        public IsParsableResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<string?> subject, System.IFormatProvider? formatProvider) { }
+        public aweXpect.Core.IThat<TType> Which { get; }
     }
     public class ObjectCollectionBeContainedInResult<TType, TThat, TItem> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TItem>
     {
