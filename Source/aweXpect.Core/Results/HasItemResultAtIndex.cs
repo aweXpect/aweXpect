@@ -9,21 +9,18 @@ namespace aweXpect.Results;
 /// <remarks>
 ///     <seealso cref="ExpectationResult{TType,TSelf}" />
 /// </remarks>
-public class HasItemResult<TCollection>(
+public class HasItemResultAtIndex<TCollection>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions)
 	: AndOrResult<TCollection, IThat<TCollection>>(expectationBuilder, collection)
 {
-	private readonly IThat<TCollection> _collection = collection;
-	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
-
 	/// <summary>
-	///     …at the given <paramref name="index" />.
+	///     …from end.
 	/// </summary>
-	public HasItemResultAtIndex<TCollection> AtIndex(int index)
+	public AndOrResult<TCollection, IThat<TCollection>> FromEnd()
 	{
-		collectionIndexOptions.SetIndex(index);
-		return new HasItemResultAtIndex<TCollection>(_expectationBuilder, _collection, collectionIndexOptions);
+		collectionIndexOptions.SetFromEnd();
+		return this;
 	}
 }
