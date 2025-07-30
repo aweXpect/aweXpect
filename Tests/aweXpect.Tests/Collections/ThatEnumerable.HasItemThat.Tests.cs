@@ -70,7 +70,7 @@ public sealed partial class ThatEnumerable
 				[
 					0,
 					1,
-					2,
+					2
 				];
 
 				async Task Act()
@@ -107,7 +107,7 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_WithAnyIndex_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IEnumerable<int>? subject = null;
 
@@ -159,6 +159,125 @@ public sealed partial class ThatEnumerable
 					               "b",
 					               "c"
 					             ]
+					             """);
+			}
+		}
+
+		public sealed class FromEndTests
+		{
+			[Theory]
+			[AutoData]
+			public async Task WhenEnumerableContainsDifferentItemAtGivenIndex_ShouldSucceed(
+				List<int> values, int expected)
+			{
+				values.Add(0);
+				values.Add(1);
+				values.Add(expected);
+				values.Add(3);
+				values.Add(4);
+				IEnumerable<int> subject = values;
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(expected - 1)).AtIndex(2).FromEnd();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has item that is equal to {expected - 1} at index 2 from end,
+					              but it had item {expected} at index 2 from end
+
+					              Collection:
+					              {Formatter.Format(values)}
+					              """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenEnumerableContainsExpectedItemAtGivenIndex_ShouldSucceed(
+				List<int> values, int expected)
+			{
+				values.Add(0);
+				values.Add(1);
+				values.Add(expected);
+				values.Add(3);
+				values.Add(4);
+				IEnumerable<int> subject = values;
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(expected)).AtIndex(2).FromEnd();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed(int expected)
+			{
+				IEnumerable<int> subject = [expected, 3, 4,];
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(expected)).AtIndex(3).FromEnd();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has item that is equal to {expected} at index 3 from end,
+					              but it did not contain any item at index 3 from end
+
+					              Collection:
+					              [{expected}, 3, 4]
+					              """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenEnumerableIsEmpty_ShouldFail(int expected)
+			{
+				IEnumerable<int> subject = Array.Empty<int>();
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(expected)).AtIndex(0).FromEnd();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has item that is equal to {expected} at index 0 from end,
+					              but it did not contain any item at index 0 from end
+
+					              Collection:
+					              []
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1)]
+			[InlineData(-10)]
+			public async Task WhenIndexIsNegative_ShouldThrowArgumentOutOfRangeException(int index)
+			{
+				int[] subject = [];
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(0)).AtIndex(index).FromEnd();
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithParamName("index").And
+					.WithMessage("The index must be greater than or equal to 0.").AsPrefix();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				int expected = 42;
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).HasItemThat(it => it.IsEqualTo(expected)).AtIndex(0).FromEnd();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item that is equal to 42 at index 0 from end,
+					             but it was <null>
 					             """);
 			}
 		}

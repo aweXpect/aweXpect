@@ -8,8 +8,13 @@ namespace aweXpect.Options;
 public class CollectionIndexOptions
 {
 	private string _description = "";
-	private Func<int, bool?> _isIndexMatch = _ => true;
+	private Func<int, int?, bool?> _isIndexMatch = (_, _) => true;
 	private bool _matchesOnlySingleIndex;
+
+	/// <summary>
+	///     Flag indicating if the expected index is checked from the end of the collection.
+	/// </summary>
+	public bool FromEnd { get; private set; }
 
 	/// <summary>
 	///     Checks if the <paramref name="index" /> is in range.
@@ -20,8 +25,8 @@ public class CollectionIndexOptions
 	///     otherwise <see langword="false" /> when the <paramref name="index" /> is not in range
 	///     and will also not be in range for larger values.
 	/// </returns>
-	public bool? DoesIndexMatch(int index)
-		=> _isIndexMatch.Invoke(index);
+	public bool? DoesIndexMatch(int index, int? count)
+		=> _isIndexMatch.Invoke(index, count);
 
 	/// <summary>
 	///     Flag indicating, if only a single index is considered in range.
@@ -30,37 +35,36 @@ public class CollectionIndexOptions
 		=> _matchesOnlySingleIndex;
 
 	/// <summary>
-	///     Set the checked index to be in range between <paramref name="minimum" /> and <paramref name="maximum" />.
+	///     Specifies, that the expected index is checked from the end of the collection.
 	/// </summary>
-	/// <remarks>When either parameter is set to <see langword="null" />, the corresponding range direction is unlimited.</remarks>
-	public void SetIndexRange(int? minimum, int? maximum)
+	public void SetFromEnd() => FromEnd = true;
+
+	/// <summary>
+	///     Set the expected index to be <paramref name="index" />.
+	/// </summary>
+	public void SetIndex(int index)
 	{
-		_isIndexMatch = index =>
+		if (index < 0)
 		{
-			if (maximum.HasValue && index > maximum)
-			{
-				return false;
-			}
+			throw new ArgumentOutOfRangeException(nameof(index), "The index must be greater than or equal to 0.");
+		}
 
-			if ((minimum is null || index >= minimum) &&
-			    (maximum is null || index <= maximum))
+		_isIndexMatch = (idx, count) =>
+		{
+			switch (FromEnd)
 			{
-				return true;
+				case true when
+					count is not null &&
+					count - idx - 1 == index:
+				case false when
+					idx == index:
+					return true;
+				default:
+					return null;
 			}
-
-			return null;
 		};
-		_matchesOnlySingleIndex = maximum == minimum && minimum is not null;
-		if (minimum is null && maximum is null)
-		{
-			_description = "";
-		}
-		else
-		{
-			_description = minimum == maximum
-				? $" at index {minimum}"
-				: $" with index between {minimum} and {maximum}";
-		}
+		_matchesOnlySingleIndex = true;
+		_description = $" at index {index}";
 	}
 
 	/// <summary>
@@ -70,11 +74,13 @@ public class CollectionIndexOptions
 	///     function, or if it could match multiple indices.
 	/// </summary>
 	/// <remarks>
-	///     The <paramref name="isIndexMatch" /> is expected to return <see langword="true" /> when the index matches,
+	///     The <paramref name="isIndexMatch" /> receives two parameters,
+	///     the first being the index to check, the second the total number of items
+	///     and is expected to return <see langword="true" /> when the index matches,
 	///     <see langword="null" /> when the index does not match, but could match for larger values and otherwise
 	///     <see langword="false" />, when it does not match and will not match for larger values.
 	/// </remarks>
-	public void SetIndexMatch(Func<int, bool?> isIndexMatch, bool matchesOnlySingleIndex, string description)
+	public void SetIndexMatch(Func<int, int?, bool?> isIndexMatch, bool matchesOnlySingleIndex, string description)
 	{
 		_isIndexMatch = isIndexMatch;
 		_matchesOnlySingleIndex = matchesOnlySingleIndex;
@@ -85,5 +91,5 @@ public class CollectionIndexOptions
 	///     Returns the description of the <see cref="CollectionIndexOptions" />.
 	/// </summary>
 	public string GetDescription()
-		=> _description;
+		=> _description + (FromEnd ? " from end" : "");
 }

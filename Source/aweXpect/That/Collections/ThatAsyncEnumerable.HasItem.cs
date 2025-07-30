@@ -104,11 +104,16 @@ public static partial class ThatAsyncEnumerable
 			_hasIndex = false;
 			Outcome = Outcome.Failure;
 
+			int? count = null;
+			if (options.FromEnd)
+			{
+				count = (await (materialized as IMaterializedEnumerable<TItem>)!.MaterializeItems(null)).Count;
+			}
 			int index = -1;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				index++;
-				bool? isIndexInRange = options.DoesIndexMatch(index);
+				bool? isIndexInRange = options.DoesIndexMatch(index, count);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)

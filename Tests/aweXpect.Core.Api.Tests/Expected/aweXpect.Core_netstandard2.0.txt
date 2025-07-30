@@ -736,11 +736,13 @@ namespace aweXpect.Options
     public class CollectionIndexOptions
     {
         public CollectionIndexOptions() { }
-        public bool? DoesIndexMatch(int index) { }
+        public bool FromEnd { get; }
+        public bool? DoesIndexMatch(int index, int? count) { }
         public string GetDescription() { }
         public bool MatchesOnlySingleIndex() { }
-        public void SetIndexMatch(System.Func<int, bool?> isIndexMatch, bool matchesOnlySingleIndex, string description) { }
-        public void SetIndexRange(int? minimum, int? maximum) { }
+        public void SetFromEnd() { }
+        public void SetIndex(int index) { }
+        public void SetIndexMatch(System.Func<int, int?, bool?> isIndexMatch, bool matchesOnlySingleIndex, string description) { }
     }
     public class CollectionMatchOptions
     {
@@ -1071,10 +1073,15 @@ namespace aweXpect.Results
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public TSelf WithTimeout(System.TimeSpan timeout) { }
     }
+    public class HasItemResultAtIndex<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>
+    {
+        public HasItemResultAtIndex(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
+        public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> FromEnd() { }
+    }
     public class HasItemResult<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>
     {
         public HasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
-        public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> AtIndex(int index) { }
+        public aweXpect.Results.HasItemResultAtIndex<TCollection> AtIndex(int index) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>
         where TType :  struct, System.IComparable<TType>

@@ -495,7 +495,8 @@ You can verify that the collection contains an item that satisfies the expectati
 ```csharp
 IEnumerable<string> values = ["0th item", "1st item", "2nd item", "3rd item"];
 
-await Expect.That(values).HasItem("1st item").AtIndex(1);
+await Expect.That(values).HasItem("1st item").AtIndex(1); // at the zero-based index 1
+await Expect.That(values).HasItem("2nd item").AtIndex(1).FromEnd(); // at the zero-based index 1 from end
 await Expect.That(values).HasItem(it => it.StartsWith("2nd")); // at any index
 ```
 
