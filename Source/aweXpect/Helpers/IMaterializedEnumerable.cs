@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace aweXpect.Helpers;
 
-internal interface IMaterializedEnumerable<out T> : ICountable
+internal interface IMaterializedEnumerable<T> : ICountable
 {
 	IReadOnlyList<T> MaterializedItems { get; }
-	Task MaterializeItems(int minimumNumberOfItems);
+	Task<IMaterializedEnumerable<T>> MaterializeItems(int? numberOfItems);
 }
 #endif

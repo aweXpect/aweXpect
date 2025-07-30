@@ -49,19 +49,20 @@ internal sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>, IMa
 	/// <inheritdoc cref="IMaterializedEnumerable{T}.MaterializedItems" />
 	IReadOnlyList<T> IMaterializedEnumerable<T>.MaterializedItems => _materializedItems;
 
-	/// <inheritdoc cref="IMaterializedEnumerable{T}.MaterializeItems(int)" />
-	public async Task MaterializeItems(int minimumNumberOfItems)
+	/// <inheritdoc cref="IMaterializedEnumerable{T}.MaterializeItems(int?)" />
+	public async Task<IMaterializedEnumerable<T>> MaterializeItems(int? numberOfItems)
 	{
 		int index = 0;
 		await foreach (T _ in this)
 		{
-			if (index++ > minimumNumberOfItems)
+			if (numberOfItems.HasValue && ++index > numberOfItems)
 			{
-				return;
+				return this;
 			}
 		}
 
 		Count = _materializedItems.Count;
+		return this;
 	}
 
 	public static IAsyncEnumerable<T> Wrap(IAsyncEnumerable<T> enumerable)

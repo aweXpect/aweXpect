@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -11,7 +12,6 @@ using aweXpect.Results;
 #if NET8_0_OR_GREATER
 using System.Collections;
 using System.Collections.Immutable;
-using System.Linq;
 #endif
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -92,11 +92,16 @@ public static partial class ThatEnumerable
 			_hasIndex = false;
 			Outcome = Outcome.Failure;
 
+			int? count = null;
+			if (_options.FromEnd)
+			{
+				count = actual is ICollection<TItem> collection ? collection.Count : materialized.Count();
+			}
 			int index = -1;
 			foreach (TItem item in materialized)
 			{
 				index++;
-				bool? isIndexInRange = _options.DoesIndexMatch(index);
+				bool? isIndexInRange = _options.DoesIndexMatch(index, count);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -218,11 +223,16 @@ public static partial class ThatEnumerable
 			_expectationBuilder.AddCollectionContext(materialized);
 			Outcome = Outcome.Failure;
 
+			int? count = null;
+			if (_options.FromEnd)
+			{
+				count = actual is ICollection collection ? collection.Count : materialized.Cast<TItem>().Count();
+			}
 			int index = -1;
 			foreach (TItem item in materialized.Cast<TItem>())
 			{
 				index++;
-				bool? isIndexInRange = _options.DoesIndexMatch(index);
+				bool? isIndexInRange = _options.DoesIndexMatch(index, count);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)

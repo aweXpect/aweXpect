@@ -213,11 +213,16 @@ public static partial class ThatEnumerable
 			_hasIndex = false;
 			Outcome = Outcome.Failure;
 
+			int? count = null;
+			if (options.FromEnd)
+			{
+				count = actual is ICollection<TItem> collection ? collection.Count : materialized.Count();
+			}
 			int index = -1;
 			foreach (TItem item in materialized)
 			{
 				index++;
-				bool? isIndexInRange = options.DoesIndexMatch(index);
+				bool? isIndexInRange = options.DoesIndexMatch(index, count);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -317,11 +322,16 @@ public static partial class ThatEnumerable
 			expectationBuilder.AddCollectionContext(materialized);
 			Outcome = Outcome.Failure;
 
+			int? count = null;
+			if (options.FromEnd)
+			{
+				count = actual is ICollection collection ? collection.Count : materialized.Cast<TItem>().Count();
+			}
 			int index = -1;
 			foreach (TItem item in materialized.Cast<TItem>())
 			{
 				index++;
-				bool? isIndexInRange = options.DoesIndexMatch(index);
+				bool? isIndexInRange = options.DoesIndexMatch(index, count);
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
