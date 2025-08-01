@@ -72,15 +72,21 @@ public static partial class ThatAsyncEnumerable
 			Outcome = Outcome.Failure;
 
 			int? count = null;
-			if (_options.FromEnd)
+			if (_options.Match is CollectionIndexOptions.IMatchFromEnd)
 			{
 				count = (await (materialized as IMaterializedEnumerable<TItem>)!.MaterializeItems(null)).Count;
 			}
+
 			int index = -1;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				index++;
-				bool? isIndexInRange = _options.DoesIndexMatch(index, count);
+				bool? isIndexInRange = _options.Match switch
+				{
+					CollectionIndexOptions.IMatchFromBeginning fromBeginning => fromBeginning.MatchesIndex(index),
+					CollectionIndexOptions.IMatchFromEnd fromEnd => fromEnd.MatchesIndex(index, count),
+					_ => false
+				};
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -108,7 +114,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			stringBuilder.Append("has item that ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(_options.GetDescription());
+			stringBuilder.Append(_options.Match.GetDescription());
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -119,15 +125,15 @@ public static partial class ThatAsyncEnumerable
 			}
 			else if (_hasIndex)
 			{
-				if (_options.MatchesOnlySingleIndex())
+				if (_options.Match.OnlySingleIndex())
 				{
 					stringBuilder.Append(_it).Append(" had item ");
 					Formatter.Format(stringBuilder, _actual);
-					stringBuilder.Append(_options.GetDescription());
+					stringBuilder.Append(_options.Match.GetDescription());
 				}
 				else
 				{
-					string optionDescription = _options.GetDescription();
+					string optionDescription = _options.Match.GetDescription();
 					if (string.IsNullOrEmpty(optionDescription))
 					{
 						optionDescription = " at any index";
@@ -138,7 +144,7 @@ public static partial class ThatAsyncEnumerable
 			}
 			else
 			{
-				stringBuilder.Append(_it).Append(" did not contain any item").Append(_options.GetDescription());
+				stringBuilder.Append(_it).Append(" did not contain any item").Append(_options.Match.GetDescription());
 			}
 		}
 
@@ -146,7 +152,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			stringBuilder.Append("does not have item that ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(_options.GetDescription());
+			stringBuilder.Append(_options.Match.GetDescription());
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)

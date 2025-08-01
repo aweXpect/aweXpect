@@ -141,6 +141,25 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IEnumerable<int> subject = [0, 1, 2, 3, 4,];
+
+				async Task Act()
+					=> await That(subject).HasItem(_ => true).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item _ => true with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
@@ -320,6 +339,25 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             has item 42 at index 0,
 					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IEnumerable<int> subject = [0, 1, 2, 3, 4,];
+
+				async Task Act()
+					=> await That(subject).HasItem(2).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item 2 with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
 					             """);
 			}
 
@@ -727,6 +765,29 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).HasItem("bAr").Using(new IgnoreCaseForVocalsComparer()).AtIndex(1);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IEnumerable<string> subject = ["foo", "bar", "baz",];
+
+				async Task Act()
+					=> await That(subject).HasItem("foo").WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item equal to "foo" with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
+					             """);
 			}
 
 			[Fact]

@@ -20,7 +20,11 @@ public class HasItemResultAtIndex<TCollection>(
 	/// </summary>
 	public AndOrResult<TCollection, IThat<TCollection>> FromEnd()
 	{
-		collectionIndexOptions.SetFromEnd();
+		if (collectionIndexOptions.Match is CollectionIndexOptions.IMatchFromBeginning match)
+		{
+			collectionIndexOptions.SetMatch(match.FromEnd());
+		}
+
 		return this;
 	}
 }
