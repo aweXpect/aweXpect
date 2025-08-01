@@ -93,15 +93,21 @@ public static partial class ThatEnumerable
 			Outcome = Outcome.Failure;
 
 			int? count = null;
-			if (_options.FromEnd)
+			if (_options.Match is CollectionIndexOptions.IMatchFromEnd)
 			{
 				count = actual is ICollection<TItem> collection ? collection.Count : materialized.Count();
 			}
+
 			int index = -1;
 			foreach (TItem item in materialized)
 			{
 				index++;
-				bool? isIndexInRange = _options.DoesIndexMatch(index, count);
+				bool? isIndexInRange = _options.Match switch
+				{
+					CollectionIndexOptions.IMatchFromBeginning fromBeginning => fromBeginning.MatchesIndex(index),
+					CollectionIndexOptions.IMatchFromEnd fromEnd => fromEnd.MatchesIndex(index, count),
+					_ => false
+				};
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -129,7 +135,7 @@ public static partial class ThatEnumerable
 		{
 			stringBuilder.Append("has item that ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(_options.GetDescription());
+			stringBuilder.Append(_options.Match.GetDescription());
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -140,15 +146,15 @@ public static partial class ThatEnumerable
 			}
 			else if (_hasIndex)
 			{
-				if (_options.MatchesOnlySingleIndex())
+				if (_options.Match.OnlySingleIndex())
 				{
 					stringBuilder.Append(_it).Append(" had item ");
 					Formatter.Format(stringBuilder, _actual);
-					stringBuilder.Append(_options.GetDescription());
+					stringBuilder.Append(_options.Match.GetDescription());
 				}
 				else
 				{
-					string optionDescription = _options.GetDescription();
+					string optionDescription = _options.Match.GetDescription();
 					if (string.IsNullOrEmpty(optionDescription))
 					{
 						optionDescription = " at any index";
@@ -159,7 +165,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				stringBuilder.Append(_it).Append(" did not contain any item").Append(_options.GetDescription());
+				stringBuilder.Append(_it).Append(" did not contain any item").Append(_options.Match.GetDescription());
 			}
 		}
 
@@ -167,7 +173,7 @@ public static partial class ThatEnumerable
 		{
 			stringBuilder.Append("does not have item that ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(_options.GetDescription());
+			stringBuilder.Append(_options.Match.GetDescription());
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
@@ -224,15 +230,21 @@ public static partial class ThatEnumerable
 			Outcome = Outcome.Failure;
 
 			int? count = null;
-			if (_options.FromEnd)
+			if (_options.Match is CollectionIndexOptions.IMatchFromEnd)
 			{
 				count = actual is ICollection collection ? collection.Count : materialized.Cast<TItem>().Count();
 			}
+
 			int index = -1;
 			foreach (TItem item in materialized.Cast<TItem>())
 			{
 				index++;
-				bool? isIndexInRange = _options.DoesIndexMatch(index, count);
+				bool? isIndexInRange = _options.Match switch
+				{
+					CollectionIndexOptions.IMatchFromBeginning fromBeginning => fromBeginning.MatchesIndex(index),
+					CollectionIndexOptions.IMatchFromEnd fromEnd => fromEnd.MatchesIndex(index, count),
+					_ => false
+				};
 				if (isIndexInRange != true)
 				{
 					if (isIndexInRange == false)
@@ -259,7 +271,7 @@ public static partial class ThatEnumerable
 		{
 			stringBuilder.Append("has item that ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(_options.GetDescription());
+			stringBuilder.Append(_options.Match.GetDescription());
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -270,15 +282,15 @@ public static partial class ThatEnumerable
 			}
 			else if (_actual is not null)
 			{
-				if (_options.MatchesOnlySingleIndex())
+				if (_options.Match.OnlySingleIndex())
 				{
 					stringBuilder.Append(_it).Append(" had item ");
 					Formatter.Format(stringBuilder, _actual);
-					stringBuilder.Append(_options.GetDescription());
+					stringBuilder.Append(_options.Match.GetDescription());
 				}
 				else
 				{
-					string optionDescription = _options.GetDescription();
+					string optionDescription = _options.Match.GetDescription();
 					if (string.IsNullOrEmpty(optionDescription))
 					{
 						optionDescription = " at any index";
@@ -289,7 +301,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				stringBuilder.Append(_it).Append(" did not contain any item").Append(_options.GetDescription());
+				stringBuilder.Append(_it).Append(" did not contain any item").Append(_options.Match.GetDescription());
 			}
 		}
 
@@ -297,7 +309,7 @@ public static partial class ThatEnumerable
 		{
 			stringBuilder.Append("does not have item that ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(_options.GetDescription());
+			stringBuilder.Append(_options.Match.GetDescription());
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)

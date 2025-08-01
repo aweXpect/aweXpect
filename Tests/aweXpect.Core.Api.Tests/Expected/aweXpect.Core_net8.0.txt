@@ -753,13 +753,22 @@ namespace aweXpect.Options
     public class CollectionIndexOptions
     {
         public CollectionIndexOptions() { }
-        public bool FromEnd { get; }
-        public bool? DoesIndexMatch(int index, int? count) { }
-        public string GetDescription() { }
-        public bool MatchesOnlySingleIndex() { }
-        public void SetFromEnd() { }
-        public void SetIndex(int index) { }
-        public void SetIndexMatch(System.Func<int, int?, bool?> isIndexMatch, bool matchesOnlySingleIndex, string description) { }
+        public aweXpect.Options.CollectionIndexOptions.IMatch Match { get; }
+        public void SetMatch(aweXpect.Options.CollectionIndexOptions.IMatch match) { }
+        public interface IMatch
+        {
+            string GetDescription();
+            bool OnlySingleIndex();
+        }
+        public interface IMatchFromBeginning : aweXpect.Options.CollectionIndexOptions.IMatch
+        {
+            aweXpect.Options.CollectionIndexOptions.IMatchFromEnd FromEnd();
+            bool? MatchesIndex(int index);
+        }
+        public interface IMatchFromEnd : aweXpect.Options.CollectionIndexOptions.IMatch
+        {
+            bool? MatchesIndex(int index, int? count);
+        }
     }
     public class CollectionMatchOptions
     {
@@ -1095,7 +1104,7 @@ namespace aweXpect.Results
         public HasItemResultAtIndex(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
         public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> FromEnd() { }
     }
-    public class HasItemResult<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>
+    public class HasItemResult<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.CollectionIndexOptions>
     {
         public HasItemResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
         public aweXpect.Results.HasItemResultAtIndex<TCollection> AtIndex(int index) { }

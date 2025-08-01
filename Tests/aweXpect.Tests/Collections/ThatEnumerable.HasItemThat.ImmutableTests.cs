@@ -80,6 +80,25 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				ImmutableArray<int> subject = [0, 1, 2, 3, 4,];
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(2)).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item that is equal to 2 with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
 				ImmutableArray<string> subject = ["a", "b", "c",];

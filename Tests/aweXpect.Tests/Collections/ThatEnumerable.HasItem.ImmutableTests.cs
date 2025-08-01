@@ -82,6 +82,25 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				ImmutableArray<int> subject = [0, 1, 2, 3, 4,];
+
+				async Task Act()
+					=> await That(subject).HasItem(_ => true).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item _ => true with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
 				ImmutableArray<string> subject = ["a", "b", "c",];
@@ -89,7 +108,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).HasItem(_ => false).AtIndex(0).And.HasItem(_ => false).AtIndex(1).And
 						.HasItem(_ => false)
-						;
+				;
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -179,13 +198,32 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				ImmutableArray<int> subject = [0, 1, 2, 3, 4,];
+
+				async Task Act()
+					=> await That(subject).HasItem(2).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item 2 with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
 				ImmutableArray<string?> subject = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).HasItem("d").AtIndex(0).And.HasItem("e").AtIndex(1).And.HasItem("f")
-						;
+				;
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

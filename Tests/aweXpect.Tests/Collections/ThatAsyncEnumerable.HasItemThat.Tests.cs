@@ -123,6 +123,25 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(0, 1, 2, 3, 4);
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.IsEqualTo(3)).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item that is equal to 3 with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
@@ -146,7 +165,7 @@ public sealed partial class ThatAsyncEnumerable
 					             """);
 			}
 		}
-		
+
 		public sealed class FromEndTests
 		{
 			[Theory]

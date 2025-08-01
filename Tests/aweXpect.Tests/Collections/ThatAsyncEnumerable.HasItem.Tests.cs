@@ -137,6 +137,25 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(0, 1, 2, 3, 4);
+
+				async Task Act()
+					=> await That(subject).HasItem(_ => true).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item _ => true with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
+					             """);
+			}
+
+			[Fact]
 			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
@@ -319,6 +338,25 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             has item 42 at index 0 from end,
 					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(0, 1, 2, 3, 4);
+
+				async Task Act()
+					=> await That(subject).HasItem(2).WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item 2 with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [0, 1, 2, 3, 4]
 					             """);
 			}
 
@@ -723,6 +761,29 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).HasItem("bAr").Using(new IgnoreCaseForVocalsComparer()).AtIndex(1);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInvalidMatch_ShouldNotMatch()
+			{
+				IAsyncEnumerable<string?> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
+
+				async Task Act()
+					=> await That(subject).HasItem("foo").WithInvalidMatch();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has item equal to "foo" with invalid match,
+					             but it did not contain any item with invalid match
+
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
+					             """);
 			}
 
 			[Fact]
