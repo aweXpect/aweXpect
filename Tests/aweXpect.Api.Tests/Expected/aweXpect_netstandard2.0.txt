@@ -1206,7 +1206,7 @@ namespace aweXpect.Results
     {
         public aweXpect.ThatEnumerable.Elements<TValue> WhoseValues { get; }
     }
-    public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>, aweXpect.Results.EventTriggerResult<TSubject>.IExtensions
+    public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.RepeatedCheckOptions>, aweXpect.Results.EventTriggerResult<TSubject>.IExtensions
         where TSubject :  notnull
     {
         public EventTriggerResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> returnValue, aweXpect.Options.TriggerEventFilter filter, aweXpect.Options.Quantifier quantifier, aweXpect.Options.RepeatedCheckOptions options) { }
@@ -1235,7 +1235,7 @@ namespace aweXpect.Results
     {
         public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TElement> options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
     }
-    public class ObjectCollectionMatchResult<TType, TThat, TElement, TSelf> : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf>
+    public class ObjectCollectionMatchResult<TType, TThat, TElement, TSelf> : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.CollectionMatchOptions>
         where TSelf : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TElement, TSelf>
     {
         public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TElement> options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
@@ -1252,14 +1252,14 @@ namespace aweXpect.Results
     {
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
     }
-    public class ObjectCountResult<TType, TThat, TElement, TSelf> : aweXpect.Results.CountResult<TType, TThat, TSelf>
+    public class ObjectCountResult<TType, TThat, TElement, TSelf> : aweXpect.Results.CountResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions<TElement>>
         where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TElement, TSelf>
     {
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
         public TSelf Equivalent(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
-    public class RepeatedCheckResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
+    public class RepeatedCheckResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>, aweXpect.Core.IOptionsProvider<aweXpect.Options.RepeatedCheckOptions>
     {
         public RepeatedCheckResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.RepeatedCheckOptions options) { }
         public aweXpect.Results.RepeatedCheckResult<TType, TThat>.WithRepetition Within(System.TimeSpan timeout) { }
@@ -1269,7 +1269,7 @@ namespace aweXpect.Results
             public aweXpect.Results.AndOrResult<TType, TThat> CheckEvery(System.TimeSpan interval) { }
         }
     }
-    public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>
+    public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.SignalerOptions>
     {
         public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler> returnValue, aweXpect.Options.SignalerOptions options) { }
         public aweXpect.Results.SignalCountResult Within(System.TimeSpan timeout) { }
@@ -1278,7 +1278,7 @@ namespace aweXpect.Results
     {
         public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
     }
-    public class SignalCountResult<TParameter, TSelf> : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult<TParameter>, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>>>
+    public class SignalCountResult<TParameter, TSelf> : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult<TParameter>, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.SignalerOptions>
         where TSelf : aweXpect.Results.SignalCountResult<TParameter, TSelf>
     {
         public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
@@ -1290,13 +1290,13 @@ namespace aweXpect.Results
         public SignalCountWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
         public aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TParameter>> WhoseParameters { get; }
     }
-    public class SingleItemResult<TCollection, TItem> : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>>
+    public class SingleItemResult<TCollection, TItem> : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.PredicateOptions<TItem>>
     {
         public aweXpect.Core.IThat<TItem> Which { get; }
         public aweXpect.Results.SingleItemResult<TCollection, TItem> Matching(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public aweXpect.Results.SingleItemResult<TCollection, T> Matching<T>() { }
         public aweXpect.Results.SingleItemResult<TCollection, T> Matching<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public class Async : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>.Async>
+        public class Async : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>.Async>, aweXpect.Core.IOptionsProvider<aweXpect.Options.PredicateOptions<TItem>>
         {
             public aweXpect.Core.IThat<TItem> Which { get; }
             public aweXpect.Results.SingleItemResult<TCollection, TItem>.Async Matching(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
@@ -1318,7 +1318,7 @@ namespace aweXpect.Results
     {
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
     }
-    public class StringCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.StringEqualityTypeResult<TType, TThat, TSelf>
+    public class StringCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.StringEqualityTypeResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.CollectionMatchOptions>
         where TSelf : aweXpect.Results.StringCollectionMatchResult<TType, TThat, TSelf>
     {
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }

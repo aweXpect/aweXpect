@@ -11,10 +11,14 @@ public class RepeatedCheckResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	RepeatedCheckOptions options)
-	: AndOrResult<TType, TThat>(expectationBuilder, returnValue)
+	: AndOrResult<TType, TThat>(expectationBuilder, returnValue),
+		IOptionsProvider<RepeatedCheckOptions>
 {
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 	private readonly TThat _returnValue = returnValue;
+
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	RepeatedCheckOptions IOptionsProvider<RepeatedCheckOptions>.Options => options;
 
 	/// <summary>
 	///     Allows a <paramref name="timeout" /> until the condition must be met.

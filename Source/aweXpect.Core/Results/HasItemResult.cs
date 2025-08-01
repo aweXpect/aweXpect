@@ -20,7 +20,7 @@ public class HasItemResult<TCollection>(
 	private readonly IThat<TCollection> _collection = collection;
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 
-	/// <inheritdoc cref="IOptionsProvider{CollectionIndexOptions}.Options" />
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
 	CollectionIndexOptions IOptionsProvider<CollectionIndexOptions>.Options => collectionIndexOptions;
 
 	/// <summary>

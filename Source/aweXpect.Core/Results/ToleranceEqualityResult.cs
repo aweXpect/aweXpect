@@ -32,11 +32,12 @@ public class ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf>(
 	TThat returnValue,
 	ObjectEqualityWithToleranceOptions<TElement, TTolerance> options)
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
-		IOptionsProvider<ObjectEqualityOptions<TElement>>
+		IOptionsProvider<ObjectEqualityWithToleranceOptions<TElement, TTolerance>>
 	where TSelf : ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf>
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
-	ObjectEqualityOptions<TElement> IOptionsProvider<ObjectEqualityOptions<TElement>>.Options => options;
+	ObjectEqualityWithToleranceOptions<TElement, TTolerance>
+		IOptionsProvider<ObjectEqualityWithToleranceOptions<TElement, TTolerance>>.Options => options;
 
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply.

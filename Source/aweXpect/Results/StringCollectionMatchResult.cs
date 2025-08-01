@@ -32,9 +32,13 @@ public class StringCollectionMatchResult<TType, TThat, TSelf>(
 	TThat returnValue,
 	StringEqualityOptions options,
 	CollectionMatchOptions collectionMatchOptions)
-	: StringEqualityTypeResult<TType, TThat, TSelf>(expectationBuilder, returnValue, options)
+	: StringEqualityTypeResult<TType, TThat, TSelf>(expectationBuilder, returnValue, options),
+		IOptionsProvider<CollectionMatchOptions>
 	where TSelf : StringCollectionMatchResult<TType, TThat, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	CollectionMatchOptions IOptionsProvider<CollectionMatchOptions>.Options => collectionMatchOptions;
+
 	/// <summary>
 	///     Ignores the order in the subject and expected values.
 	/// </summary>

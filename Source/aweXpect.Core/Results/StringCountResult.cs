@@ -33,9 +33,13 @@ public class StringCountResult<TType, TThat, TSelf>(
 	TThat returnValue,
 	Quantifier quantifier,
 	StringEqualityOptions options)
-	: CountResult<TType, TThat, TSelf>(expectationBuilder, returnValue, quantifier)
+	: CountResult<TType, TThat, TSelf>(expectationBuilder, returnValue, quantifier),
+		IOptionsProvider<StringEqualityOptions>
 	where TSelf : StringCountResult<TType, TThat, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	StringEqualityOptions IOptionsProvider<StringEqualityOptions>.Options => options;
+
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
 	/// </summary>

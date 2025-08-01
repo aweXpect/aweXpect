@@ -996,7 +996,7 @@ namespace aweXpect.Results
         public BetweenResult(System.Func<TType, TTarget> callback) { }
         public TTarget And(TType maximum) { }
     }
-    public class CollectionOrderResult<TMember, TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
+    public class CollectionOrderResult<TMember, TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>, aweXpect.Core.IOptionsProvider<aweXpect.Options.CollectionOrderOptions<TMember>>
     {
         public CollectionOrderResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.CollectionOrderOptions<TMember> options) { }
         public aweXpect.Results.AndOrResult<TType, TThat> Using(System.Collections.Generic.IComparer<TMember> comparer) { }
@@ -1005,7 +1005,7 @@ namespace aweXpect.Results
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
     }
-    public class CountResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class CountResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.Quantifier>
         where TSelf : aweXpect.Results.CountResult<TType, TThat, TSelf>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
@@ -1034,7 +1034,7 @@ namespace aweXpect.Results
         public DelegateWithValueResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Core.IThat<T> AndWhoseResult { get; }
     }
-    public class ExecutesInResult<TResult>
+    public class ExecutesInResult<TResult> : aweXpect.Core.IOptionsProvider<aweXpect.Options.TimeSpanEqualityOptions>
     {
         public ExecutesInResult(TResult returnValue, aweXpect.Options.TimeSpanEqualityOptions options) { }
         public TResult Approximately(System.TimeSpan expected, System.TimeSpan tolerance) { }
@@ -1099,7 +1099,7 @@ namespace aweXpect.Results
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public TSelf WithTimeout(System.TimeSpan timeout) { }
     }
-    public class HasItemResultAtIndex<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>
+    public class HasItemResultAtIndex<TCollection> : aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.CollectionIndexOptions>
     {
         public HasItemResultAtIndex(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCollection> collection, aweXpect.Options.CollectionIndexOptions collectionIndexOptions) { }
         public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> FromEnd() { }
@@ -1114,7 +1114,7 @@ namespace aweXpect.Results
     {
         public NullableNumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
     }
-    public class NullableNumberToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType?, TThat, TSelf>
+    public class NullableNumberToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType?, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.NumberTolerance<TType>>
         where TType :  struct, System.Numerics.INumber<TType>
         where TSelf : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, TSelf>
     {
@@ -1126,7 +1126,7 @@ namespace aweXpect.Results
     {
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
     }
-    public class NumberToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class NumberToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.NumberTolerance<TType>>
         where TType :  struct, System.Numerics.INumber<TType>
         where TSelf : aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf>
     {
@@ -1196,7 +1196,7 @@ namespace aweXpect.Results
     {
         public StringCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
     }
-    public class StringCountResult<TType, TThat, TSelf> : aweXpect.Results.CountResult<TType, TThat, TSelf>
+    public class StringCountResult<TType, TThat, TSelf> : aweXpect.Results.CountResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.StringEqualityOptions>
         where TSelf : aweXpect.Results.StringCountResult<TType, TThat, TSelf>
     {
         public StringCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
@@ -1263,7 +1263,7 @@ namespace aweXpect.Results
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
     }
-    public class TimeToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class TimeToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.TimeTolerance>
         where TSelf : aweXpect.Results.TimeToleranceResult<TType, TThat, TSelf>
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
@@ -1273,7 +1273,7 @@ namespace aweXpect.Results
     {
         public ToleranceEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance> options) { }
     }
-    public class ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions<TElement>>
+    public class ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance>>
         where TSelf : aweXpect.Results.ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf>
     {
         public ToleranceEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance> options) { }
