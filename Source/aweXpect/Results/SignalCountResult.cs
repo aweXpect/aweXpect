@@ -14,8 +14,12 @@ public class SignalCountResult(
 	ExpectationBuilder expectationBuilder,
 	IThat<Signaler> returnValue,
 	SignalerOptions options)
-	: AndOrResult<SignalerResult, IThat<Signaler>>(expectationBuilder, returnValue)
+	: AndOrResult<SignalerResult, IThat<Signaler>>(expectationBuilder, returnValue),
+		IOptionsProvider<SignalerOptions>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	SignalerOptions IOptionsProvider<SignalerOptions>.Options => options;
+
 	/// <summary>
 	///     Specifies a timeout for waiting on the callback.
 	/// </summary>
@@ -42,9 +46,13 @@ public class SignalCountResult<TParameter, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	IThat<Signaler<TParameter>> returnValue,
 	SignalerOptions<TParameter> options)
-	: AndOrResult<SignalerResult<TParameter>, IThat<Signaler<TParameter>>>(expectationBuilder, returnValue)
+	: AndOrResult<SignalerResult<TParameter>, IThat<Signaler<TParameter>>>(expectationBuilder, returnValue),
+		IOptionsProvider<SignalerOptions>
 	where TSelf : SignalCountResult<TParameter, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	SignalerOptions IOptionsProvider<SignalerOptions>.Options => options;
+
 	/// <summary>
 	///     Specifies a timeout for waiting on the callback.
 	/// </summary>

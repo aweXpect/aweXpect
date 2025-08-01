@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -9,7 +10,11 @@ namespace aweXpect.Results;
 public class ExecutesInResult<TResult>(
 	TResult returnValue,
 	TimeSpanEqualityOptions options)
+	: IOptionsProvider<TimeSpanEqualityOptions>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	TimeSpanEqualityOptions IOptionsProvider<TimeSpanEqualityOptions>.Options => options;
+
 	/// <summary>
 	///     …at most <paramref name="maximum" /> time.
 	/// </summary>

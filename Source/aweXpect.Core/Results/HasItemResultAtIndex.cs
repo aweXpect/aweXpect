@@ -13,8 +13,12 @@ public class HasItemResultAtIndex<TCollection>(
 	ExpectationBuilder expectationBuilder,
 	IThat<TCollection> collection,
 	CollectionIndexOptions collectionIndexOptions)
-	: AndOrResult<TCollection, IThat<TCollection>>(expectationBuilder, collection)
+	: AndOrResult<TCollection, IThat<TCollection>>(expectationBuilder, collection),
+		IOptionsProvider<CollectionIndexOptions>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	CollectionIndexOptions IOptionsProvider<CollectionIndexOptions>.Options => collectionIndexOptions;
+
 	/// <summary>
 	///     …from end.
 	/// </summary>

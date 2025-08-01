@@ -1,4 +1,6 @@
 ﻿using aweXpect.Core;
+using aweXpect.Helpers;
+using aweXpect.Options;
 using aweXpect.Recording;
 using aweXpect.Results;
 
@@ -6,6 +8,28 @@ namespace aweXpect.Internal.Tests.Results;
 
 public sealed class EventTriggerResultTests
 {
+	[Fact]
+	public async Task ShouldBeOptionsProvider_ForRepeatedCheckOptions()
+	{
+		Quantifier quantifier = new();
+		RepeatedCheckOptions options = new();
+		EventTriggerResult<EventTriggerResultTests> sut = CreateSut(new EventTriggerResultTests(), quantifier, options);
+
+		await That(sut).Is<IOptionsProvider<RepeatedCheckOptions>>()
+			.Whose(x => x.Options, it => it.IsSameAs(options));
+	}
+
+	[Fact]
+	public async Task ShouldBeOptionsProvider_ForQuantifier()
+	{
+		Quantifier quantifier = new();
+		RepeatedCheckOptions options = new();
+		EventTriggerResult<EventTriggerResultTests> sut = CreateSut(new EventTriggerResultTests(), quantifier, options);
+
+		await That(sut).Is<IOptionsProvider<Quantifier>>()
+			.Whose(x => x.Options, it => it.IsSameAs(quantifier));
+	}
+
 	[Fact]
 	public async Task WhenCastingToIExtensions_CanSpecifyNameOfParameter()
 	{
@@ -159,5 +183,21 @@ public sealed class EventTriggerResultTests
 
 		public void NotifyCustomEvent(T1 arg1, T2 arg2, T3 arg3)
 			=> CustomEvent?.Invoke(arg1, arg2, arg3);
+	}
+
+	private static EventTriggerResult<T> CreateSut<T>(T subject, Quantifier quantifier, RepeatedCheckOptions options,
+		TriggerEventFilter? filter = null)
+		where T : notnull
+	{
+		RecordingFactory<T> recording = new(subject, nameof(subject));
+		filter ??= new TriggerEventFilter();
+#pragma warning disable aweXpect0001
+		IThat<IEventRecording<T>> source = That(recording.Events());
+#pragma warning restore aweXpect0001
+		return new EventTriggerResult<T>(source.Get().ExpectationBuilder,
+			source,
+			filter,
+			quantifier,
+			options);
 	}
 }

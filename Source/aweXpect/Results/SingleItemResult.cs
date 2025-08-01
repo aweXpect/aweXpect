@@ -14,7 +14,8 @@ namespace aweXpect.Results;
 ///     <seealso cref="ExpectationResult{TType,TSelf}" />
 /// </remarks>
 public class SingleItemResult<TCollection, TItem>
-	: ExpectationResult<TItem, SingleItemResult<TCollection, TItem>>
+	: ExpectationResult<TItem, SingleItemResult<TCollection, TItem>>,
+		IOptionsProvider<PredicateOptions<TItem>>
 {
 	private readonly ExpectationBuilder _expectationBuilder;
 	private readonly Func<TCollection, TItem?> _memberAccessor;
@@ -35,6 +36,9 @@ public class SingleItemResult<TCollection, TItem>
 	/// </summary>
 	public IThat<TItem> Which
 		=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_memberAccessor, " which "));
+
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	PredicateOptions<TItem> IOptionsProvider<PredicateOptions<TItem>>.Options => _options;
 
 	/// <summary>
 	///     …that satisfies the <paramref name="predicate" />.
@@ -78,7 +82,8 @@ public class SingleItemResult<TCollection, TItem>
 	/// <summary>
 	///     An <see cref="ExpectationResult" /> for a single item from an asynchronous collection.
 	/// </summary>
-	public class Async : ExpectationResult<TItem, Async>
+	public class Async : ExpectationResult<TItem, Async>,
+		IOptionsProvider<PredicateOptions<TItem>>
 	{
 		private readonly Func<TCollection, Task<TItem?>> _asyncMemberAccessor;
 		private readonly ExpectationBuilder _expectationBuilder;
@@ -99,6 +104,9 @@ public class SingleItemResult<TCollection, TItem>
 		/// </summary>
 		public IThat<TItem> Which
 			=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_asyncMemberAccessor, " which "));
+
+		/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+		PredicateOptions<TItem> IOptionsProvider<PredicateOptions<TItem>>.Options => _options;
 
 		/// <summary>
 		///     …that satisfies the <paramref name="predicate" />.

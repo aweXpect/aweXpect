@@ -29,9 +29,13 @@ public class CountResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	Quantifier quantifier)
-	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
+	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
+		IOptionsProvider<Quantifier>
 	where TSelf : CountResult<TType, TThat, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	Quantifier IOptionsProvider<Quantifier>.Options => quantifier;
+	
 	/// <summary>
 	///     Verifies, that it occurs at least…
 	/// </summary>

@@ -19,7 +19,8 @@ public class EventTriggerResult<TSubject>(
 	RepeatedCheckOptions options)
 	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(
 			expectationBuilder, returnValue, quantifier),
-		EventTriggerResult<TSubject>.IExtensions
+		EventTriggerResult<TSubject>.IExtensions,
+		IOptionsProvider<RepeatedCheckOptions>
 	where TSubject : notnull
 {
 	/// <inheritdoc cref="IExtensions.WithParameter{TParameter}(string, int?, Func{TParameter, bool})" />
@@ -36,6 +37,9 @@ public class EventTriggerResult<TSubject>(
 			expression);
 		return this;
 	}
+
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	RepeatedCheckOptions IOptionsProvider<RepeatedCheckOptions>.Options => options;
 
 	/// <summary>
 	///     Adds a predicate for the sender of the event.
@@ -117,7 +121,7 @@ public class EventTriggerResult<TSubject>(
 		options.Within(timeout);
 		return this;
 	}
-	
+
 	/// <summary>
 	///     Gives access to additional methods for extensions.
 	/// </summary>
