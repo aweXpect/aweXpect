@@ -20,7 +20,7 @@ public class CollectionIndexOptions
 	public void SetMatch(IMatch match)
 		=> Match = match;
 
-	private class AlwaysMatch : IMatchFromBeginning
+	private sealed class AlwaysMatch : IMatchFromBeginning
 	{
 		/// <inheritdoc cref="CollectionIndexOptions.IMatch.GetDescription()" />
 		public string GetDescription()

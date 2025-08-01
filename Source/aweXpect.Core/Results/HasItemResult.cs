@@ -32,7 +32,7 @@ public class HasItemResult<TCollection>(
 		return new HasItemResultAtIndex<TCollection>(_expectationBuilder, _collection, collectionIndexOptions);
 	}
 
-	private class HasItemResultAtIndexMatch : CollectionIndexOptions.IMatchFromBeginning
+	private sealed class HasItemResultAtIndexMatch : CollectionIndexOptions.IMatchFromBeginning
 	{
 		private readonly int _index;
 
@@ -66,7 +66,7 @@ public class HasItemResult<TCollection>(
 		/// <inheritdoc cref="CollectionIndexOptions.IMatchFromBeginning.FromEnd()" />
 		public CollectionIndexOptions.IMatchFromEnd FromEnd() => new HasItemResultAtIndexMatchFromEnd(this);
 
-		private class HasItemResultAtIndexMatchFromEnd(HasItemResultAtIndexMatch inner)
+		private sealed class HasItemResultAtIndexMatchFromEnd(HasItemResultAtIndexMatch inner)
 			: CollectionIndexOptions.IMatchFromEnd
 		{
 			/// <inheritdoc cref="CollectionIndexOptions.IMatch.GetDescription()" />

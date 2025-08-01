@@ -199,6 +199,7 @@ public static partial class ThatEnumerable
 		private TItem? _actual;
 		private bool _hasIndex;
 
+#pragma warning disable S3776 // Cognitive Complexity of methods should not be too high
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
 			Actual = actual;
@@ -250,6 +251,7 @@ public static partial class ThatEnumerable
 
 			return this;
 		}
+#pragma warning restore S3776
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("has item ").Append(predicateDescription()).Append(options.Match.GetDescription());
@@ -315,6 +317,7 @@ public static partial class ThatEnumerable
 	{
 		private object? _actual;
 
+#pragma warning disable S3776 // Cognitive Complexity of methods should not be too high
 		public ConstraintResult IsMetBy(TEnumerable actual, IEvaluationContext context)
 		{
 			Actual = actual;
@@ -364,6 +367,7 @@ public static partial class ThatEnumerable
 
 			return this;
 		}
+#pragma warning restore S3776
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("has item ").Append(predicateDescription()).Append(options.Match.GetDescription());

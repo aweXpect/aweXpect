@@ -39,10 +39,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsDifferentItemAtGivenIndex_ShouldSucceed()
 			{
-				IEnumerable subject = new[]
-				{
-					0, 1, 2
-				};
+				IEnumerable subject = new []{0, 1, 2,};
 
 				async Task Act()
 					=> await That(subject).HasItem(_ => false).AtIndex(2);
@@ -61,10 +58,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedItemAtGivenIndex_ShouldSucceed()
 			{
-				IEnumerable subject = new[]
-				{
-					0, 1, 2
-				};
+				IEnumerable subject = new []{0, 1, 2,};
 
 				async Task Act()
 					=> await That(subject).HasItem(_ => true).AtIndex(2);
@@ -75,10 +69,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
 			{
-				IEnumerable subject = new[]
-				{
-					0, 1, 2
-				};
+				IEnumerable subject = new []{0, 1, 2,};
 
 				async Task Act()
 					=> await That(subject).HasItem(_ => true).AtIndex(3);
@@ -265,10 +256,7 @@ public sealed partial class ThatEnumerable
 			[AutoData]
 			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed(int expected)
 			{
-				IEnumerable subject = new[]
-				{
-					0, 1, expected
-				};
+				IEnumerable subject = new []{0, 1, expected,};
 
 				async Task Act()
 					=> await That(subject).HasItem(expected).AtIndex(3);
