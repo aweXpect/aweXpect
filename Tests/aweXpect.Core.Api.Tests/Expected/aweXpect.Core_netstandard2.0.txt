@@ -1256,7 +1256,7 @@ namespace aweXpect.Results
     {
         public ToleranceEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance> options) { }
     }
-    public class ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance>>
+    public class ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions<TElement>>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance>>
         where TSelf : aweXpect.Results.ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf>
     {
         public ToleranceEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityWithToleranceOptions<TElement, TTolerance> options) { }

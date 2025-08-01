@@ -10,9 +10,19 @@ namespace aweXpect.Core.Tests.Results;
 public sealed class ToleranceEqualityResultTests
 {
 	[Fact]
+	public async Task ShouldBeOptionsProvider_ForObjectEqualityOptions()
+	{
+		ObjectEqualityWithToleranceOptions<int, double> options = new((_, _, _) => true);
+		ToleranceEqualityResult<int, IThat<int>, int, double> sut = CreateSut(2, options);
+
+		await That(sut).Is<IOptionsProvider<ObjectEqualityOptions<int>>>()
+			.Whose(x => x.Options, it => it.IsSameAs(options));
+	}
+
+	[Fact]
 	public async Task ShouldBeOptionsProvider_ForObjectEqualityWithToleranceOptions()
 	{
-		ObjectEqualityWithToleranceOptions<int, double> options = new((a, b, t) => true);
+		ObjectEqualityWithToleranceOptions<int, double> options = new((_, _, _) => true);
 		ToleranceEqualityResult<int, IThat<int>, int, double> sut = CreateSut(2, options);
 
 		await That(sut).Is<IOptionsProvider<ObjectEqualityWithToleranceOptions<int, double>>>()
