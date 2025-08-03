@@ -18,6 +18,26 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
+	///     Verifies that the collection has an item…
+	/// </summary>
+	public static HasItemWithConditionResult<IAsyncEnumerable<TItem>?, TItem> HasItem<TItem>(
+		this IThat<IAsyncEnumerable<TItem>?> source)
+	{
+		CollectionIndexOptions indexOptions = new();
+		PredicateOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new HasItemWithConditionResult<IAsyncEnumerable<TItem>?, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemConstraint<TItem>(expectationBuilder, it, grammars,
+					x => options.Matches(x),
+					options.GetDescription,
+					indexOptions)),
+			source,
+			indexOptions,
+			options);
+	}
+
+	/// <summary>
 	///     Verifies that the collection has an item matching the <paramref name="predicate" />…
 	/// </summary>
 	public static HasItemResult<IAsyncEnumerable<TItem>?> HasItem<TItem>(

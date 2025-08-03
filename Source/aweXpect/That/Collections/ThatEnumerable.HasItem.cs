@@ -20,6 +20,26 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
+	///     Verifies that the collection has an item…
+	/// </summary>
+	public static HasItemWithConditionResult<IEnumerable<TItem>, TItem> HasItem<TItem>(
+		this IThat<IEnumerable<TItem>?> source)
+	{
+		CollectionIndexOptions indexOptions = new();
+		PredicateOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new HasItemWithConditionResult<IEnumerable<TItem>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemConstraint<TItem>(expectationBuilder, it, grammars,
+					x => options.Matches(x),
+					options.GetDescription,
+					indexOptions)),
+			source,
+			indexOptions,
+			options);
+	}
+
+	/// <summary>
 	///     Verifies that the collection has an item matching the <paramref name="predicate" />…
 	/// </summary>
 	public static HasItemResult<IEnumerable<TItem>?> HasItem<TItem>(
@@ -72,6 +92,23 @@ public static partial class ThatEnumerable
 					a => options.AreConsideredEqual(a, expected),
 					() => options.GetExpectation(expected, grammars),
 					indexOptions)),
+			source,
+			indexOptions,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the collection has an item…
+	/// </summary>
+	public static HasItemWithConditionResult<IEnumerable, object?> HasItem(
+		this IThat<IEnumerable?> source)
+	{
+		CollectionIndexOptions indexOptions = new();
+		PredicateOptions<object?> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new HasItemWithConditionResult<IEnumerable, object?>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemForEnumerableConstraint<IEnumerable, object?>(expectationBuilder, it, grammars, x => options.Matches(x), options.GetDescription, indexOptions)),
 			source,
 			indexOptions,
 			options);
@@ -137,6 +174,25 @@ public static partial class ThatEnumerable
 					indexOptions)),
 			source,
 			indexOptions);
+	}
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the collection has an item…
+	/// </summary>
+	public static HasItemWithConditionResult<ImmutableArray<TItem>, TItem> HasItem<TItem>(
+		this IThat<ImmutableArray<TItem>> source)
+	{
+		CollectionIndexOptions indexOptions = new();
+		PredicateOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new HasItemWithConditionResult<ImmutableArray<TItem>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new HasItemForEnumerableConstraint<ImmutableArray<TItem>, TItem>(expectationBuilder, it, grammars, x => options.Matches(x), options.GetDescription, indexOptions)),
+			source,
+			indexOptions,
+			options);
 	}
 #endif
 

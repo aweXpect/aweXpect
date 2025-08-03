@@ -67,7 +67,7 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail()
 			{
 				IEnumerable subject = new []{0, 1, 2,};
 
@@ -254,7 +254,7 @@ public sealed partial class ThatEnumerable
 
 			[Theory]
 			[AutoData]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed(int expected)
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail(int expected)
 			{
 				IEnumerable subject = new []{0, 1, expected,};
 
