@@ -9,7 +9,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public sealed class HasItem
+	public sealed partial class HasItem
 	{
 		public sealed class PredicateTests
 		{
@@ -67,7 +67,7 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(0, 1, 2);
 
@@ -237,7 +237,7 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(0, 1, 2);
 
@@ -656,7 +656,7 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
 
@@ -974,7 +974,7 @@ public sealed partial class ThatAsyncEnumerable
 
 			[Theory]
 			[AutoData]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed(int expected)
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail(int expected)
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(expected, 3, 4);
 

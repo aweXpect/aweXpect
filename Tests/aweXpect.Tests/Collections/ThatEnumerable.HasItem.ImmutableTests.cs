@@ -44,7 +44,7 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail()
 			{
 				ImmutableArray<int> subject = [0, 1, 2,];
 
@@ -159,7 +159,7 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsNoItemAtGivenIndex_ShouldFail()
 			{
 				ImmutableArray<int> subject = [0, 1, 2,];
 

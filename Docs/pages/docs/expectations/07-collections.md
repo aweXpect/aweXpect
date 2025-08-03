@@ -500,6 +500,21 @@ await Expect.That(values).HasItem("2nd item").AtIndex(1).FromEnd(); // at the ze
 await Expect.That(values).HasItem(it => it.StartsWith("2nd")); // at any index
 ```
 
+You can also check that the item matches a specific type
+
+```csharp
+IEnumerable<INotification> values = //...
+
+// Verify that the item at index 1 is of type `UserCreatedNotification`
+await Expect.That(values).HasItem().Matching<UserCreatedNotification>().AtIndex(1);
+// Verify that an item of type `UserDeletedNotification` for user with ID 3 exists
+await Expect.That(values).HasItem().Matching<UserDeletedNotification>(x => x.UserId == 3);
+
+// Similar to the expectations above, but verify the type exactly:
+await Expect.That(values).HasItem().MatchingExactly<UserCreatedNotification>().AtIndex(1);
+await Expect.That(values).HasItem().MatchingExactly<UserDeletedNotification>(x => x.UserId == 3);
+```
+
 You can also use expectations on the individual items.
 
 ```csharp
