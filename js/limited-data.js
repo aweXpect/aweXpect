@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
-      {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 13 22:13:18 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          183.1565568447113,
           185.69063130446844,
           176.56466901302338,
           181.85792638705328,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           181.16817440305437,
           222.4091583887736,
           187.8123941898346,
-          201.67068230311077
+          201.67068230311077,
+          183.16259825229645
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          239.32023528906015,
           247.5450408299764,
           239.77524970127985,
           245.60798845972334,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           229.4973970926725,
           260.7228520711263,
           246.78084295136588,
-          253.4114258105938
+          253.4114258105938,
+          258.0066506703695
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          868.1225101764386,
           937.8384531021118,
           955.4121081488473,
           933.2471395639272,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           878.6506560643514,
           976.8775165557861,
           1000.9559218088785,
-          928.3339724222819
+          928.3339724222819,
+          926.0294194588295
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -717,7 +717,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
-          2416,
+          2408,
           2408,
           2408
         ],
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
       {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          274259.0256347656,
           319019.65481770836,
           289293.5729282924,
           304438.33357747394,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           277663.09716796875,
           296252.76471354166,
           291553.2405598958,
-          282592.817594401
+          282592.817594401,
+          285779.6776041667
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1155,7 +1155,7 @@ window.BENCHMARK_DATA = {
         "data": [
           284932,
           284932,
-          284932,
+          284940,
           284940,
           284940,
           284940,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2108974.5442708335,
           2333895.5747395833,
           2206017.678485577,
           2158297.6032366073,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2188113.1554129464,
           2280574.0807291665,
           2145306.1950334823,
-          2200528.5558035714
+          2200528.5558035714,
+          2312143.6533854166
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          679276.8425641741,
           684365.9799804688,
           640980.4684119591,
           698330.6254557292,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           644279.6036658654,
           670150.5030598958,
           715610.8302734375,
-          660658.7146935096
+          660658.7146935096,
+          705901.6427083333
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1450,7 +1450,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
+          880545,
           880545,
           880545
         ],
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
       {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          362.6544739859445,
           325.21678336461383,
           339.6146778424581,
           348.59646558761597,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           436.4478760957718,
           540.0252120335897,
           474.40931669871014,
-          445.8051390647888
+          445.8051390647888,
+          496.9212555567423
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1896,7 +1896,6 @@ window.BENCHMARK_DATA = {
           944,
           944,
           944,
-          944,
           1392,
           1392,
           1392,
@@ -1910,6 +1909,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          459.3024407166701,
           496.3316465377808,
           455.8286646525065,
           482.9320753642491,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           455.67637736002604,
           536.8774253209432,
           489.0695689519246,
-          463.3342012405395
+          463.3342012405395,
+          517.9528502055576
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          14437.871959431966,
           17988.768332345146,
           15327.146318562825,
           17783.274465707633,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           17010.147953578406,
           15600.861376953126,
           17216.616196695963,
-          17085.50487811749
+          17085.50487811749,
+          15631.03139444987
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2183,7 +2183,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
-          27488,
+          27480,
           27480,
           27480
         ],
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
       {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          206.88466135660806,
           212.69255474408467,
           217.37395300183977,
           218.01195632494412,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           210.77775965418135,
           230.31878840128581,
           220.96304415067036,
-          223.3938834031423
+          223.3938834031423,
+          219.33342045148214
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          239.97829926013947,
           251.0352339108785,
           238.17091957728067,
           243.0531065940857,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           238.76411172321863,
           267.93215574537004,
           247.0707947095235,
-          239.2147964477539
+          239.2147964477539,
+          260.8703421592712
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1199.157282755925,
           1278.3025305611748,
           1258.132548014323,
           1261.0896020616804,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1194.3955711364747,
           1276.2503092447917,
           1305.1850892384848,
-          1194.854056767055
+          1194.854056767055,
+          1273.2518525441487
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2916,7 +2916,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
-          2992,
+          2984,
           2984,
           2984
         ],
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
       {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          328.04169661658153,
           339.63557319641114,
           324.88600904600963,
           345.48704694112143,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           327.1133761405945,
           382.6746514002482,
           383.23816747665404,
-          328.71765829722085
+          328.71765829722085,
+          370.3406238555908
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3354,7 +3354,7 @@ window.BENCHMARK_DATA = {
         "data": [
           1120,
           1120,
-          1120,
+          1128,
           1128,
           1128,
           1128,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          462.79691820144654,
           548.6617100579398,
           459.0914795215313,
           468.7973273595174,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           448.39687801996865,
           506.03544780186246,
           502.4566553115845,
-          464.93153654734294
+          464.93153654734294,
+          502.4130224863688
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1304.5458305903844,
           1337.9339028767176,
           1303.8324706737812,
           1340.2455825805664,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1263.2115392049154,
           1356.8428757985432,
           1378.278262201945,
-          1212.4941590627034
+          1212.4941590627034,
+          1320.0628235680717
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3649,7 +3649,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
-          3096,
+          3072,
           3072,
           3072
         ],
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
       {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1093.5680886782134,
           1153.3302586873372,
           1151.8838663736979,
           1182.2483853560227,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1320.1893612997872,
           1435.9492445627848,
           1493.3558091481527,
-          1360.3424818856377
+          1360.3424818856377,
+          1471.434380395072
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2008,
           2008,
           2008,
           2008,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
+          2744,
           2744
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1308.0396700541178,
           1334.178370030721,
           1316.5972109476725,
           1316.080820465088,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1297.9943272908529,
           1517.3338939666749,
           1290.910200881958,
-          1286.9698220661708
+          1286.9698220661708,
+          1425.3927232106528
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2714.7299613952637,
           2893.5176718575613,
           2883.8154560969424,
           2854.6876068115234,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2758.346117655436,
           2891.937257033128,
           3429.860407511393,
-          3345.048651286534
+          3345.048651286534,
+          3488.583327429635
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4382,7 +4382,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
-          4576,
+          5296,
           5296,
           5296
         ],
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "113fe27ab148acbea339199c8772340081521094",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 11 21:31:57 2025 \u002B0200",
-        "message": "chore: update aweXpect.Core to v2.9.0 (#597)"
-      },
       {
         "sha": "d14f8f5ea10e099cc9cc62c125b55fd400c979ec",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
         "message": "chore: Bump the tunit group with 2 updates (#704)"
+      },
+      {
+        "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
+        "author": "Copilot",
+        "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
+        "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
       }
     ],
     "labels": [
-      "113fe27a",
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "cbbba547",
       "f6385ef8",
       "13eb8350",
-      "805ad539"
+      "805ad539",
+      "7e317926"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1134.4423095703125,
           1289.5509152730306,
           1280.267301940918,
           1294.3653736114502,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1529.1835323061262,
           1665.3837093353272,
           1694.1988110860188,
-          1509.960815838405
+          1509.960815838405,
+          1740.1572650909425
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4818,7 +4818,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1976,
           2168,
           2168,
           2168,
@@ -4844,6 +4843,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149066.2755859375,
           153322.8752629207,
           151527.09891764322,
           149367.17076822917,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           146848.20814732142,
           151717.91123046874,
           152190.29711914062,
-          149139.7333608774
+          149139.7333608774,
+          155132.974609375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63788,
           63787,
           63787,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63788,
           63352,
-          64323
+          64323,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4719.291020529611,
           4642.793583170573,
           4618.420261128744,
           4780.975473844088,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4521.341124852498,
           4875.538044520787,
           3940.406415049235,
-          3932.8456780569895
+          3932.8456780569895,
+          4083.8722935994465
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5115,7 +5115,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
-          6744,
+          6488,
           6488,
           6488
         ],
