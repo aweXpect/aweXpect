@@ -81,6 +81,14 @@ The library supports multiple testing frameworks. Test projects are in `Tests/Fr
 
 ## Known Issues and Workarounds
 
+### Pull Request title
+To communicate intent to the consumers of your library, the title of the pull requests is prefixed with one of the following elements:
+- `fix:`: patches a bug
+- `feat:`: introduces a new feature
+- `refactor`: improves internal structure without changing the observable behavior
+- `docs`: updates documentation or XML comments
+- `chore`: updates to dependencies, build pipelines, ...
+
 ### GitVersion Failures
 **Symptom**: Build fails with `LibGit2SharpException: ref doesn't match destination`
 **Cause**: Branch reference issues or shallow clone
