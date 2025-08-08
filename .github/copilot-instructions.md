@@ -81,7 +81,7 @@ The library supports multiple testing frameworks. Test projects are in `Tests/Fr
 
 ## Known Issues and Workarounds
 
-### Pull Request title
+### Pull Request Title
 To communicate intent to the consumers of your library, the title of the pull requests is prefixed with one of the following elements:
 - `fix:`: patches a bug
 - `feat:`: introduces a new feature
