@@ -37,7 +37,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		private IAsyncEnumerable<TItem>? _materializedEnumerable;
 
-		public async ValueTask<ConstraintResult> IsMetByAsync(IAsyncEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)

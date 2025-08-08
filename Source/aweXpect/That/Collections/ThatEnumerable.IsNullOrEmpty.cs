@@ -45,6 +45,16 @@ public static partial class ThatEnumerable
 				.AddConstraint((it, grammars) => new IsNullOrEmptyConstraint<TItem>(it, grammars).Invert()),
 			source);
 
+	/// <summary>
+	///     Verifies that the collection is not <see langword="null" /> or empty.
+	/// </summary>
+	public static AndOrResult<TEnumerable, IThat<TEnumerable?>> IsNotNullOrEmpty<TEnumerable>(
+		this IThat<TEnumerable?> source)
+		where TEnumerable : IEnumerable
+		=> new(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) => new IsNullOrEmptyForEnumerableConstraint<TEnumerable>(it, grammars).Invert()),
+			source);
+
 	private sealed class IsNullOrEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<IEnumerable<TItem>?>(grammars),
 			IContextConstraint<IEnumerable<TItem>?>
