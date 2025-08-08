@@ -1,0 +1,135 @@
+using System.Collections.Generic;
+
+// ReSharper disable PossibleMultipleEnumeration
+
+namespace aweXpect.Tests;
+
+public sealed partial class ThatEnumerable
+{
+	public class IsNullOrEmpty
+	{
+		public sealed class Tests
+		{
+			[Fact]
+			public async Task DoesNotMaterializeEnumerable_WhenEmpty()
+			{
+				IEnumerable<int> subject = ToEnumerable((int[]) []);
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task DoesNotMaterializeEnumerable_WhenNotEmpty()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is null or empty,
+					             but it was [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task ShouldCallEnumeratorOnlyOnce()
+			{
+				IEnumerable<int> subject = new ThrowWhenIteratingTwiceEnumerable();
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).Throws<XunitException>();
+			}
+
+			[Fact]
+			public async Task WhenArrayContainsValues_ShouldFail()
+			{
+				string[] subject = ["foo",];
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is null or empty,
+					             but it was [
+					               "foo"
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenArrayIsEmpty_ShouldSucceed()
+			{
+				string[] subject = [];
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsValues_ShouldFail()
+			{
+				IEnumerable<int> subject = ToEnumerable([1, 1, 2,]);
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is null or empty,
+					             but it was [
+					               1,
+					               1,
+					               2
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenEnumerableIsEmpty_ShouldSucceed()
+			{
+				IEnumerable<int> subject = ToEnumerable((int[]) []);
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNullOrEmpty();
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+	}
+}
