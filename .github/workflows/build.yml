@@ -182,6 +182,8 @@ jobs:
                 with:
                     name: Packages
                     path: Artifacts/Packages
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
             -   name: Publish
                 run: |
                     echo "Found the following packages to push:"
@@ -192,7 +194,7 @@ jobs:
                     done
                     for entry in Artifacts/Packages/aweXpect/*.nupkg
                     do
-                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+                      dotnet nuget push $entry --source https://api.nuget.org/v3/index.json --api-key "${{secrets.NUGET_API_KEY}}" --skip-duplicate
                     done
             -   name: Check pre-release
                 id: check-pre-release
@@ -222,6 +224,8 @@ jobs:
                 with:
                     name: Packages
                     path: Artifacts/Packages
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
             -   name: Publish
                 run: |
                     echo "Found the following packages to push:"
@@ -232,7 +236,7 @@ jobs:
                     done
                     for entry in Artifacts/Packages/aweXpect.Core/*.nupkg
                     do
-                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+                      dotnet nuget push $entry --source https://api.nuget.org/v3/index.json --api-key "${{secrets.NUGET_API_KEY}}" --skip-duplicate
                     done
     
     finalize-release:
