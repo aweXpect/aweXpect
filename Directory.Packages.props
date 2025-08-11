@@ -19,11 +19,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageVersion Include="Meziantou.Analyzer" Version="2.0.163" />
-		<PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
+		<PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" />
 		<PackageVersion Include="Microsoft.CodeAnalysis" Version="4.11.0" />
-		<PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
-		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
-		<PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.11.0" />
+		<PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
+		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+		<PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.14.0" />
 		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.11.0" />
 		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" Version="1.1.2" />
 		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp.CodeFix.Testing" Version="1.1.2" />
@@ -32,11 +32,11 @@
 	<ItemGroup>
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
-		<PackageVersion Include="NUnit" Version="4.3.2" />
-		<PackageVersion Include="NUnit3TestAdapter" Version="5.0.0" />
-		<PackageVersion Include="NUnit.Analyzers" Version="4.9.2" />
-		<PackageVersion Include="TUnit" Version="0.50.0" />
-		<PackageVersion Include="TUnit.Assertions" Version="0.50.0" />
+		<PackageVersion Include="NUnit" Version="4.4.0" />
+		<PackageVersion Include="NUnit3TestAdapter" Version="5.1.0" />
+		<PackageVersion Include="NUnit.Analyzers" Version="4.10.0" />
+		<PackageVersion Include="TUnit" Version="0.53.0" />
+		<PackageVersion Include="TUnit.Assertions" Version="0.53.0" />
 		<PackageVersion Include="xunit" Version="2.9.3" />
 		<PackageVersion Include="xunit.v3" Version="3.0.0" />
 		<PackageVersion Include="xunit.v3.core" Version="3.0.0" />
@@ -47,7 +47,7 @@
 		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.6.3" />
 		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
 		<PackageVersion Include="PublicApiGenerator" Version="11.4.6" />
-		<PackageVersion Include="MSTest.TestAdapter" Version="3.10.0" />
-		<PackageVersion Include="MSTest.TestFramework" Version="3.10.0" />
+		<PackageVersion Include="MSTest.TestAdapter" Version="3.10.1" />
+		<PackageVersion Include="MSTest.TestFramework" Version="3.10.1" />
 	</ItemGroup>
 </Project>
