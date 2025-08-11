@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
-      {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 10:51:02 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          187.2770541826884,
           187.6169864018758,
           181.5952605565389,
           187.63515160878498,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           212.2416773693902,
           198.17753066335405,
           190.1297850926717,
-          234.02060882250467
+          234.02060882250467,
+          185.16794306891305
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          249.72692476908367,
           248.11447817484537,
           258.12571522394813,
           246.8474992605356,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           248.35815003712972,
           258.432616964976,
           245.98242822060217,
-          249.71872707513663
+          249.71872707513663,
+          257.1052480061849
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          974.7824089050293,
           927.7966883977255,
           880.0973598480225,
           940.4764093399048,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           899.5456271489461,
           930.0936544418335,
           883.940659014384,
-          896.0688382466634
+          896.0688382466634,
+          888.4331371600812
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -711,7 +711,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
-          2416,
+          2408,
           2408,
           2408,
           2408,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
       {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          284138.01133510045,
           310147.3642252604,
           287579.0711844308,
           299423.3176967076,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           326899.0633463542,
           305111.10367838544,
           292140.8224158654,
-          292236.50840541295
+          292236.50840541295,
+          284261.90164620534
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2180274.0071614585,
           2277128.902604167,
           2335998.4235491073,
           2197807.0786458333,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2231771.1684895833,
           2220154.4231770835,
           2191079.2848772323,
-          2360559.8858173075
+          2360559.8858173075,
+          2185807.382552083
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          691549.9870042067,
           700539.7150716146,
           699778.2192382812,
           659679.575,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           683418.992578125,
           701510.5596354167,
           686821.1316266741,
-          698028.2536458333
+          698028.2536458333,
+          708570.1418108259
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1444,7 +1444,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
+          880545,
           880545,
           880545,
           880545,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
       {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          325.84510056177777,
           350.76919905344647,
           347.9542342821757,
           333.9025814374288,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           471.7225412050883,
           475.08565584818524,
           504.9109592437744,
-          480.5751190185547
+          480.5751190185547,
+          471.58090145247326
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1890,7 +1890,6 @@ window.BENCHMARK_DATA = {
           944,
           944,
           944,
-          944,
           1392,
           1392,
           1392,
@@ -1904,6 +1903,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          485.23061116536456,
           504.842479578654,
           492.4458077294486,
           489.7146891866411,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           512.5270672525678,
           523.9816182000296,
           543.4679034550985,
-          538.7194717407226
+          538.7194717407226,
+          473.38043030103046
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          19430.179524739582,
           17608.677599225724,
           16844.23057047526,
           23868.770422363283,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           15533.807183837891,
           23085.48228963216,
           16267.27124633789,
-          15407.828228759765
+          15407.828228759765,
+          14607.753365071614
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2177,7 +2177,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
-          27488,
+          27480,
           27480,
           27480,
           27480,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
       {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          207.67853968938192,
           214.94125425020854,
           216.55600725809734,
           219.55566101807815,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           218.0721269130707,
           218.3774802003588,
           224.6800581296285,
-          237.9080223719279
+          237.9080223719279,
+          212.9125053201403
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          247.6669745763143,
           251.83838173321314,
           252.34174184799195,
           252.67604320389884,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           251.1948874473572,
           255.63850485483806,
           281.35247004826863,
-          283.3998212814331
+          283.3998212814331,
+          284.691321849823
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1280.43976949056,
           1268.9633193969726,
           1234.527002628033,
           1244.4499455769858,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1241.5252298990886,
           1273.364831161499,
           1342.2946872711182,
-          1257.7739298502604
+          1257.7739298502604,
+          1206.465983581543
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2910,7 +2910,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
-          2992,
+          2984,
           2984,
           2984,
           2984,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
       {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          360.8786482810974,
           369.8556284268697,
           337.4909543650491,
           344.6681323732649,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           359.9394147946284,
           332.38635169542755,
           403.75442225138346,
-          363.8827963511149
+          363.8827963511149,
+          340.064981396993
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          533.010534286499,
           491.16339473724366,
           471.05012060801187,
           480.88228034973145,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           540.6979899406433,
           469.28064911706105,
           475.27943270547047,
-          576.4057349522908
+          576.4057349522908,
+          484.9827379862467
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1402.9790326527186,
           1337.3471445356097,
           1235.8453269958495,
           1340.974303817749,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1238.5422481536866,
           1278.82953859965,
           1355.6293227855977,
-          1293.9423133850098
+          1293.9423133850098,
+          1245.648823038737
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3643,7 +3643,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
-          3096,
+          3072,
           3072,
           3072,
           3072,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
       {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1124.2899721690587,
           1156.6017702738443,
           1052.1590765635171,
           1166.9130198160808,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1361.954124323527,
           1383.401475906372,
           1459.6668649400983,
-          1416.8200059618268
+          1416.8200059618268,
+          1422.5139600208827
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2008,
           2008,
           2008,
           2008,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
+          2744,
           2744
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1325.0280788739522,
           1350.41394627889,
           1282.548368181501,
           1331.6883131663005,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1406.6185943896953,
           1433.4731702168783,
           1313.9129651387532,
-          1455.476150004069
+          1455.476150004069,
+          1307.4820973322942
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2924.1092814127605,
           2862.940421295166,
           2888.138011423747,
           2872.930598122733,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3296.890184020996,
           3484.4482836405437,
           3244.4809435330903,
-          3433.105632019043
+          3433.105632019043,
+          3258.705184664045
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4376,7 +4376,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
-          4576,
+          5296,
           5296,
           5296,
           5296,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "da79591d7f38c6400874a36448979b03e448f0bc",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:15:02 2025 \u002B0200",
-        "message": "coverage: ensure usage of invariant culture in string equality (#611)"
-      },
       {
         "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
-      "da79591d",
       "1b058cd0",
       "76f35d15",
       "a0b9d93b",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1303.7658267702375,
           1244.2378768920898,
           1215.7861814498901,
           1270.4497479030065,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1654.3628726959228,
           1569.1162965138753,
           1711.3150469916206,
-          1649.2603721618652
+          1649.2603721618652,
+          1631.4195346832275
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4822,7 +4822,6 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           2184,
           2184,
           2184,
@@ -4838,6 +4837,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          153746.45620492788,
           153676.858921596,
           153453.19403545672,
           152473.55006510418,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           154250.29873046876,
           152821.7036783854,
           157078.56497395833,
-          155141.36845703126
+          155141.36845703126,
+          150156.30393629806
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63787,
           63787,
           63788,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63788,
-          63788
+          63788,
+          63351
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4806.996161397298,
           4809.24713570731,
           4705.367414202009,
           4787.81876373291,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3943.2060650416784,
           3955.43299974714,
           3917.860544644869,
-          3978.8337814331053
+          3978.8337814331053,
+          3930.4506861368814
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5109,7 +5109,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
-          6744,
+          6488,
           6488,
           6488,
           6488,

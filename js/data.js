@@ -1986,6 +1986,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -2319,7 +2325,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -2656,7 +2663,8 @@ window.BENCHMARK_DATA = {
           212.2416773693902,
           198.17753066335405,
           190.1297850926717,
-          234.02060882250467
+          234.02060882250467,
+          185.16794306891305
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2851,6 +2859,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3343,7 +3352,8 @@ window.BENCHMARK_DATA = {
           248.35815003712972,
           258.432616964976,
           245.98242822060217,
-          249.71872707513663
+          249.71872707513663,
+          257.1052480061849
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3536,6 +3546,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4030,7 +4041,8 @@ window.BENCHMARK_DATA = {
           899.5456271489461,
           930.0936544418335,
           883.940659014384,
-          896.0688382466634
+          896.0688382466634,
+          888.4331371600812
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4365,6 +4377,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -5910,6 +5923,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -6166,7 +6185,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -6426,7 +6446,8 @@ window.BENCHMARK_DATA = {
           326899.0633463542,
           305111.10367838544,
           292140.8224158654,
-          292236.50840541295
+          292236.50840541295,
+          284261.90164620534
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6639,6 +6660,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6959,7 +6981,8 @@ window.BENCHMARK_DATA = {
           2231771.1684895833,
           2220154.4231770835,
           2191079.2848772323,
-          2360559.8858173075
+          2360559.8858173075,
+          2185807.382552083
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7075,6 +7098,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7492,7 +7516,8 @@ window.BENCHMARK_DATA = {
           683418.992578125,
           701510.5596354167,
           686821.1316266741,
-          698028.2536458333
+          698028.2536458333,
+          708570.1418108259
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7750,6 +7775,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -9757,6 +9783,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -10090,7 +10122,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -10427,7 +10460,8 @@ window.BENCHMARK_DATA = {
           471.7225412050883,
           475.08565584818524,
           504.9109592437744,
-          480.5751190185547
+          480.5751190185547,
+          471.58090145247326
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10738,6 +10772,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -11114,7 +11149,8 @@ window.BENCHMARK_DATA = {
           512.5270672525678,
           523.9816182000296,
           543.4679034550985,
-          538.7194717407226
+          538.7194717407226,
+          473.38043030103046
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11307,6 +11343,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11801,7 +11838,8 @@ window.BENCHMARK_DATA = {
           15533.807183837891,
           23085.48228963216,
           16267.27124633789,
-          15407.828228759765
+          15407.828228759765,
+          14607.753365071614
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12136,6 +12174,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -14143,6 +14182,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -14476,7 +14521,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -14813,7 +14859,8 @@ window.BENCHMARK_DATA = {
           218.0721269130707,
           218.3774802003588,
           224.6800581296285,
-          237.9080223719279
+          237.9080223719279,
+          212.9125053201403
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15009,6 +15056,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15500,7 +15548,8 @@ window.BENCHMARK_DATA = {
           251.1948874473572,
           255.63850485483806,
           281.35247004826863,
-          283.3998212814331
+          283.3998212814331,
+          284.691321849823
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15693,6 +15742,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -16187,7 +16237,8 @@ window.BENCHMARK_DATA = {
           1241.5252298990886,
           1273.364831161499,
           1342.2946872711182,
-          1257.7739298502604
+          1257.7739298502604,
+          1206.465983581543
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16522,6 +16573,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -18529,6 +18581,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -18862,7 +18920,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -19199,7 +19258,8 @@ window.BENCHMARK_DATA = {
           359.9394147946284,
           332.38635169542755,
           403.75442225138346,
-          363.8827963511149
+          363.8827963511149,
+          340.064981396993
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19489,6 +19549,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -19886,7 +19947,8 @@ window.BENCHMARK_DATA = {
           540.6979899406433,
           469.28064911706105,
           475.27943270547047,
-          576.4057349522908
+          576.4057349522908,
+          484.9827379862467
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20079,6 +20141,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20573,7 +20636,8 @@ window.BENCHMARK_DATA = {
           1238.5422481536866,
           1278.82953859965,
           1355.6293227855977,
-          1293.9423133850098
+          1293.9423133850098,
+          1245.648823038737
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20908,6 +20972,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -22915,6 +22980,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -23248,7 +23319,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -23585,7 +23657,8 @@ window.BENCHMARK_DATA = {
           1361.954124323527,
           1383.401475906372,
           1459.6668649400983,
-          1416.8200059618268
+          1416.8200059618268,
+          1422.5139600208827
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23898,6 +23971,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -24272,7 +24346,8 @@ window.BENCHMARK_DATA = {
           1406.6185943896953,
           1433.4731702168783,
           1313.9129651387532,
-          1455.476150004069
+          1455.476150004069,
+          1307.4820973322942
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24465,6 +24540,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -24959,7 +25035,8 @@ window.BENCHMARK_DATA = {
           3296.890184020996,
           3484.4482836405437,
           3244.4809435330903,
-          3433.105632019043
+          3433.105632019043,
+          3258.705184664045
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25294,6 +25371,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -27301,6 +27379,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
         "message": "fix: use dotnet nuget to push packages (#716)"
+      },
+      {
+        "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
       }
     ],
     "labels": [
@@ -27634,7 +27718,8 @@ window.BENCHMARK_DATA = {
       "c5f67910",
       "13b82945",
       "4e412112",
-      "d08341b5"
+      "d08341b5",
+      "df0c03be"
     ],
     "datasets": [
       {
@@ -27971,7 +28056,8 @@ window.BENCHMARK_DATA = {
           1654.3628726959228,
           1569.1162965138753,
           1711.3150469916206,
-          1649.2603721618652
+          1649.2603721618652,
+          1631.4195346832275
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28284,6 +28370,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -28658,7 +28745,8 @@ window.BENCHMARK_DATA = {
           154250.29873046876,
           152821.7036783854,
           157078.56497395833,
-          155141.36845703126
+          155141.36845703126,
+          150156.30393629806
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29000,7 +29088,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63788,
-          63788
+          63788,
+          63351
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29345,7 +29434,8 @@ window.BENCHMARK_DATA = {
           3943.2060650416784,
           3955.43299974714,
           3917.860544644869,
-          3978.8337814331053
+          3978.8337814331053,
+          3930.4506861368814
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29680,6 +29770,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
