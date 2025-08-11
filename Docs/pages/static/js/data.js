@@ -1974,6 +1974,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -2305,7 +2311,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -2640,7 +2647,8 @@ window.BENCHMARK_DATA = {
           183.16259825229645,
           193.51406540870667,
           212.2416773693902,
-          198.17753066335405
+          198.17753066335405,
+          190.1297850926717
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2835,6 +2843,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3323,7 +3332,8 @@ window.BENCHMARK_DATA = {
           258.0066506703695,
           284.2495718955994,
           248.35815003712972,
-          258.432616964976
+          258.432616964976,
+          245.98242822060217
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3516,6 +3526,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4006,7 +4017,8 @@ window.BENCHMARK_DATA = {
           926.0294194588295,
           948.3558192934308,
           899.5456271489461,
-          930.0936544418335
+          930.0936544418335,
+          883.940659014384
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4341,6 +4353,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -5872,6 +5885,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -6126,7 +6145,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -6384,7 +6404,8 @@ window.BENCHMARK_DATA = {
           285779.6776041667,
           317209.502734375,
           326899.0633463542,
-          305111.10367838544
+          305111.10367838544,
+          292140.8224158654
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6597,6 +6618,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6913,7 +6935,8 @@ window.BENCHMARK_DATA = {
           2312143.6533854166,
           2377250.5354352677,
           2231771.1684895833,
-          2220154.4231770835
+          2220154.4231770835,
+          2191079.2848772323
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7029,6 +7052,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7442,7 +7466,8 @@ window.BENCHMARK_DATA = {
           705901.6427083333,
           746233.8064453125,
           683418.992578125,
-          701510.5596354167
+          701510.5596354167,
+          686821.1316266741
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7700,6 +7725,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -9693,6 +9719,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -10024,7 +10056,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -10359,7 +10392,8 @@ window.BENCHMARK_DATA = {
           496.9212555567423,
           484.10148525238037,
           471.7225412050883,
-          475.08565584818524
+          475.08565584818524,
+          504.9109592437744
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10670,6 +10704,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -11042,7 +11077,8 @@ window.BENCHMARK_DATA = {
           517.9528502055576,
           532.8483978271485,
           512.5270672525678,
-          523.9816182000296
+          523.9816182000296,
+          543.4679034550985
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11235,6 +11271,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11725,7 +11762,8 @@ window.BENCHMARK_DATA = {
           15631.03139444987,
           17836.73065999349,
           15533.807183837891,
-          23085.48228963216
+          23085.48228963216,
+          16267.27124633789
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12060,6 +12098,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -14053,6 +14092,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -14384,7 +14429,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -14719,7 +14765,8 @@ window.BENCHMARK_DATA = {
           219.33342045148214,
           247.75661617914835,
           218.0721269130707,
-          218.3774802003588
+          218.3774802003588,
+          224.6800581296285
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14915,6 +14962,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15402,7 +15450,8 @@ window.BENCHMARK_DATA = {
           260.8703421592712,
           263.8302961417607,
           251.1948874473572,
-          255.63850485483806
+          255.63850485483806,
+          281.35247004826863
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15595,6 +15644,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -16085,7 +16135,8 @@ window.BENCHMARK_DATA = {
           1273.2518525441487,
           1267.596497263227,
           1241.5252298990886,
-          1273.364831161499
+          1273.364831161499,
+          1342.2946872711182
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16420,6 +16471,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -18413,6 +18465,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -18744,7 +18802,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -19079,7 +19138,8 @@ window.BENCHMARK_DATA = {
           370.3406238555908,
           361.7065555027553,
           359.9394147946284,
-          332.38635169542755
+          332.38635169542755,
+          403.75442225138346
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19369,6 +19429,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -19762,7 +19823,8 @@ window.BENCHMARK_DATA = {
           502.4130224863688,
           554.466837946574,
           540.6979899406433,
-          469.28064911706105
+          469.28064911706105,
+          475.27943270547047
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19955,6 +20017,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20445,7 +20508,8 @@ window.BENCHMARK_DATA = {
           1320.0628235680717,
           1327.820097732544,
           1238.5422481536866,
-          1278.82953859965
+          1278.82953859965,
+          1355.6293227855977
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20780,6 +20844,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -22773,6 +22838,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -23104,7 +23175,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -23439,7 +23511,8 @@ window.BENCHMARK_DATA = {
           1471.434380395072,
           1498.089180246989,
           1361.954124323527,
-          1383.401475906372
+          1383.401475906372,
+          1459.6668649400983
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23752,6 +23825,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -24122,7 +24196,8 @@ window.BENCHMARK_DATA = {
           1425.3927232106528,
           1418.5389539082846,
           1406.6185943896953,
-          1433.4731702168783
+          1433.4731702168783,
+          1313.9129651387532
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24315,6 +24390,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -24805,7 +24881,8 @@ window.BENCHMARK_DATA = {
           3488.583327429635,
           3338.2258743286134,
           3296.890184020996,
-          3484.4482836405437
+          3484.4482836405437,
+          3244.4809435330903
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25140,6 +25217,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -27133,6 +27211,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:20:27 2025 \u002B0200",
         "message": "chore: revert Tunit to v0.25.21 (#713)"
+      },
+      {
+        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
+        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
       }
     ],
     "labels": [
@@ -27464,7 +27548,8 @@ window.BENCHMARK_DATA = {
       "7e317926",
       "c5477b05",
       "c5f67910",
-      "13b82945"
+      "13b82945",
+      "4e412112"
     ],
     "datasets": [
       {
@@ -27799,7 +27884,8 @@ window.BENCHMARK_DATA = {
           1740.1572650909425,
           1695.6364364624023,
           1654.3628726959228,
-          1569.1162965138753
+          1569.1162965138753,
+          1711.3150469916206
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28112,6 +28198,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -28482,7 +28569,8 @@ window.BENCHMARK_DATA = {
           155132.974609375,
           152727.65504807694,
           154250.29873046876,
-          152821.7036783854
+          152821.7036783854,
+          157078.56497395833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28822,7 +28910,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
-          63787
+          63787,
+          63788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29165,7 +29254,8 @@ window.BENCHMARK_DATA = {
           4083.8722935994465,
           3990.693612162272,
           3943.2060650416784,
-          3955.43299974714
+          3955.43299974714,
+          3917.860544644869
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29500,6 +29590,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
