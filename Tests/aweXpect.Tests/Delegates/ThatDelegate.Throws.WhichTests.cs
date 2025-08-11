@@ -6,7 +6,7 @@ public sealed partial class ThatDelegate
 	{
 		public class WhichTests
 		{
-			[Fact(Skip = "TODO: Remove after core version update")]
+			[Fact]
 			public async Task ShouldGiveAccessToThrowsException()
 			{
 				MyException exception = new();
@@ -19,7 +19,7 @@ public sealed partial class ThatDelegate
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact(Skip = "TODO: Remove after core version update")]
+			[Fact]
 			public async Task ShouldIncludeWhichInErrorMessage()
 			{
 				MyException exception = new();
@@ -44,7 +44,7 @@ public sealed partial class ThatDelegate
 					             """);
 			}
 
-			[Fact(Skip = "TODO: Remove after core version update")]
+			[Fact]
 			public async Task ShouldSupportWhichSatisfies()
 			{
 				MyException exception = new();
