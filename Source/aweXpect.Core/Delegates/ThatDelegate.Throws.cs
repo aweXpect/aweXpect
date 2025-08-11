@@ -19,7 +19,7 @@ public abstract partial class ThatDelegate
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<TException>(ExpectationBuilder
 				.AddConstraint((it, grammars) => new DelegateIsNotNullWithinTimeoutConstraint(it, grammars, throwOptions))
-				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
+				.ForWhich<DelegateValue, TException?>(d => d.Exception as TException)
 				.AddConstraint((it, grammars) => new ThrowsConstraint(it, grammars, typeof(TException), throwOptions))
 				.And(" "),
 			throwOptions);
