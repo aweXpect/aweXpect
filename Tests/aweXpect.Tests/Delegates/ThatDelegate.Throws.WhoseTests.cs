@@ -6,7 +6,7 @@ public sealed partial class ThatDelegate
 	{
 		public class WhoseTests
 		{
-			[Theory(Skip = "TODO: Remove after core version update")]
+			[Theory]
 			[AutoData]
 			public async Task ShouldResetItAfterWhichClause(int hResult)
 			{
@@ -27,7 +27,7 @@ public sealed partial class ThatDelegate
 					              """);
 			}
 
-			[Theory(Skip = "TODO: Remove after core version update")]
+			[Theory]
 			[AutoData]
 			public async Task WhenMemberIsDifferent_ShouldFail(int hResult)
 			{
@@ -48,7 +48,7 @@ public sealed partial class ThatDelegate
 					              """);
 			}
 
-			[Theory(Skip = "TODO: Remove after core version update")]
+			[Theory]
 			[AutoData]
 			public async Task WhenMemberMatchesExpected_ShouldSucceed(int hResult)
 			{
