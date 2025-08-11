@@ -71,6 +71,10 @@ internal class WhichNode<TSource, TMember> : Node
 		if (_parent != null)
 		{
 			parentResult = await _parent.IsMetBy(value, context, cancellationToken);
+			if (parentResult.FurtherProcessingStrategy == FurtherProcessingStrategy.IgnoreCompletely)
+			{
+				return parentResult;
+			}
 		}
 
 		if (_inner == null)
