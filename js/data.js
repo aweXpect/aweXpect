@@ -1962,6 +1962,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -2291,7 +2297,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -2624,7 +2631,8 @@ window.BENCHMARK_DATA = {
           187.8123941898346,
           201.67068230311077,
           183.16259825229645,
-          193.51406540870667
+          193.51406540870667,
+          212.2416773693902
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2819,6 +2827,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3303,7 +3312,8 @@ window.BENCHMARK_DATA = {
           246.78084295136588,
           253.4114258105938,
           258.0066506703695,
-          284.2495718955994
+          284.2495718955994,
+          248.35815003712972
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3496,6 +3506,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3982,7 +3993,8 @@ window.BENCHMARK_DATA = {
           1000.9559218088785,
           928.3339724222819,
           926.0294194588295,
-          948.3558192934308
+          948.3558192934308,
+          899.5456271489461
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4317,6 +4329,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -5834,6 +5847,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -6086,7 +6105,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -6342,7 +6362,8 @@ window.BENCHMARK_DATA = {
           291553.2405598958,
           282592.817594401,
           285779.6776041667,
-          317209.502734375
+          317209.502734375,
+          326899.0633463542
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6555,6 +6576,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6867,7 +6889,8 @@ window.BENCHMARK_DATA = {
           2145306.1950334823,
           2200528.5558035714,
           2312143.6533854166,
-          2377250.5354352677
+          2377250.5354352677,
+          2231771.1684895833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6983,6 +7006,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7392,7 +7416,8 @@ window.BENCHMARK_DATA = {
           715610.8302734375,
           660658.7146935096,
           705901.6427083333,
-          746233.8064453125
+          746233.8064453125,
+          683418.992578125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7650,6 +7675,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -9629,6 +9655,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -9958,7 +9990,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -10291,7 +10324,8 @@ window.BENCHMARK_DATA = {
           474.40931669871014,
           445.8051390647888,
           496.9212555567423,
-          484.10148525238037
+          484.10148525238037,
+          471.7225412050883
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10602,6 +10636,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -10970,7 +11005,8 @@ window.BENCHMARK_DATA = {
           489.0695689519246,
           463.3342012405395,
           517.9528502055576,
-          532.8483978271485
+          532.8483978271485,
+          512.5270672525678
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11163,6 +11199,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11649,7 +11686,8 @@ window.BENCHMARK_DATA = {
           17216.616196695963,
           17085.50487811749,
           15631.03139444987,
-          17836.73065999349
+          17836.73065999349,
+          15533.807183837891
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11984,6 +12022,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -13963,6 +14002,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -14292,7 +14337,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -14625,7 +14671,8 @@ window.BENCHMARK_DATA = {
           220.96304415067036,
           223.3938834031423,
           219.33342045148214,
-          247.75661617914835
+          247.75661617914835,
+          218.0721269130707
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14821,6 +14868,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15304,7 +15352,8 @@ window.BENCHMARK_DATA = {
           247.0707947095235,
           239.2147964477539,
           260.8703421592712,
-          263.8302961417607
+          263.8302961417607,
+          251.1948874473572
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15497,6 +15546,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -15983,7 +16033,8 @@ window.BENCHMARK_DATA = {
           1305.1850892384848,
           1194.854056767055,
           1273.2518525441487,
-          1267.596497263227
+          1267.596497263227,
+          1241.5252298990886
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16318,6 +16369,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -18297,6 +18349,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -18626,7 +18684,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -18959,7 +19018,8 @@ window.BENCHMARK_DATA = {
           383.23816747665404,
           328.71765829722085,
           370.3406238555908,
-          361.7065555027553
+          361.7065555027553,
+          359.9394147946284
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19249,6 +19309,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -19638,7 +19699,8 @@ window.BENCHMARK_DATA = {
           502.4566553115845,
           464.93153654734294,
           502.4130224863688,
-          554.466837946574
+          554.466837946574,
+          540.6979899406433
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19831,6 +19893,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20317,7 +20380,8 @@ window.BENCHMARK_DATA = {
           1378.278262201945,
           1212.4941590627034,
           1320.0628235680717,
-          1327.820097732544
+          1327.820097732544,
+          1238.5422481536866
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20652,6 +20716,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -22631,6 +22696,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -22960,7 +23031,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -23293,7 +23365,8 @@ window.BENCHMARK_DATA = {
           1493.3558091481527,
           1360.3424818856377,
           1471.434380395072,
-          1498.089180246989
+          1498.089180246989,
+          1361.954124323527
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23606,6 +23679,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -23972,7 +24046,8 @@ window.BENCHMARK_DATA = {
           1290.910200881958,
           1286.9698220661708,
           1425.3927232106528,
-          1418.5389539082846
+          1418.5389539082846,
+          1406.6185943896953
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24165,6 +24240,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -24651,7 +24727,8 @@ window.BENCHMARK_DATA = {
           3429.860407511393,
           3345.048651286534,
           3488.583327429635,
-          3338.2258743286134
+          3338.2258743286134,
+          3296.890184020996
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24986,6 +25063,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -26965,6 +27043,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
         "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
+      },
+      {
+        "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
+        "message": "fix: Correctly handle \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#714)"
       }
     ],
     "labels": [
@@ -27294,7 +27378,8 @@ window.BENCHMARK_DATA = {
       "13eb8350",
       "805ad539",
       "7e317926",
-      "c5477b05"
+      "c5477b05",
+      "c5f67910"
     ],
     "datasets": [
       {
@@ -27627,7 +27712,8 @@ window.BENCHMARK_DATA = {
           1694.1988110860188,
           1509.960815838405,
           1740.1572650909425,
-          1695.6364364624023
+          1695.6364364624023,
+          1654.3628726959228
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27940,6 +28026,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -28306,7 +28393,8 @@ window.BENCHMARK_DATA = {
           152190.29711914062,
           149139.7333608774,
           155132.974609375,
-          152727.65504807694
+          152727.65504807694,
+          154250.29873046876
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28643,6 +28731,7 @@ window.BENCHMARK_DATA = {
           63788,
           63352,
           64323,
+          63787,
           63787,
           63787
         ],
@@ -28985,7 +29074,8 @@ window.BENCHMARK_DATA = {
           3940.406415049235,
           3932.8456780569895,
           4083.8722935994465,
-          3990.693612162272
+          3990.693612162272,
+          3943.2060650416784
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29320,6 +29410,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
