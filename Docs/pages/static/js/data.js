@@ -1956,6 +1956,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -2284,7 +2290,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -2616,7 +2623,8 @@ window.BENCHMARK_DATA = {
           222.4091583887736,
           187.8123941898346,
           201.67068230311077,
-          183.16259825229645
+          183.16259825229645,
+          193.51406540870667
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2811,6 +2819,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3293,7 +3302,8 @@ window.BENCHMARK_DATA = {
           260.7228520711263,
           246.78084295136588,
           253.4114258105938,
-          258.0066506703695
+          258.0066506703695,
+          284.2495718955994
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3486,6 +3496,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3970,7 +3981,8 @@ window.BENCHMARK_DATA = {
           976.8775165557861,
           1000.9559218088785,
           928.3339724222819,
-          926.0294194588295
+          926.0294194588295,
+          948.3558192934308
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4305,6 +4317,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408
@@ -5815,6 +5828,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -6066,7 +6085,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -6321,7 +6341,8 @@ window.BENCHMARK_DATA = {
           296252.76471354166,
           291553.2405598958,
           282592.817594401,
-          285779.6776041667
+          285779.6776041667,
+          317209.502734375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6534,6 +6555,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -6844,7 +6866,8 @@ window.BENCHMARK_DATA = {
           2280574.0807291665,
           2145306.1950334823,
           2200528.5558035714,
-          2312143.6533854166
+          2312143.6533854166,
+          2377250.5354352677
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6960,6 +6983,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7367,7 +7391,8 @@ window.BENCHMARK_DATA = {
           670150.5030598958,
           715610.8302734375,
           660658.7146935096,
-          705901.6427083333
+          705901.6427083333,
+          746233.8064453125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7625,6 +7650,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545
@@ -9597,6 +9623,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -9925,7 +9957,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -10257,7 +10290,8 @@ window.BENCHMARK_DATA = {
           540.0252120335897,
           474.40931669871014,
           445.8051390647888,
-          496.9212555567423
+          496.9212555567423,
+          484.10148525238037
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10568,6 +10602,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -10934,7 +10969,8 @@ window.BENCHMARK_DATA = {
           536.8774253209432,
           489.0695689519246,
           463.3342012405395,
-          517.9528502055576
+          517.9528502055576,
+          532.8483978271485
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11127,6 +11163,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11611,7 +11648,8 @@ window.BENCHMARK_DATA = {
           15600.861376953126,
           17216.616196695963,
           17085.50487811749,
-          15631.03139444987
+          15631.03139444987,
+          17836.73065999349
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11946,6 +11984,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480
@@ -13918,6 +13957,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -14246,7 +14291,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -14578,7 +14624,8 @@ window.BENCHMARK_DATA = {
           230.31878840128581,
           220.96304415067036,
           223.3938834031423,
-          219.33342045148214
+          219.33342045148214,
+          247.75661617914835
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14774,6 +14821,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15255,7 +15303,8 @@ window.BENCHMARK_DATA = {
           267.93215574537004,
           247.0707947095235,
           239.2147964477539,
-          260.8703421592712
+          260.8703421592712,
+          263.8302961417607
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15448,6 +15497,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -15932,7 +15982,8 @@ window.BENCHMARK_DATA = {
           1276.2503092447917,
           1305.1850892384848,
           1194.854056767055,
-          1273.2518525441487
+          1273.2518525441487,
+          1267.596497263227
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16267,6 +16318,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984
@@ -18239,6 +18291,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -18567,7 +18625,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -18899,7 +18958,8 @@ window.BENCHMARK_DATA = {
           382.6746514002482,
           383.23816747665404,
           328.71765829722085,
-          370.3406238555908
+          370.3406238555908,
+          361.7065555027553
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19189,6 +19249,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -19576,7 +19637,8 @@ window.BENCHMARK_DATA = {
           506.03544780186246,
           502.4566553115845,
           464.93153654734294,
-          502.4130224863688
+          502.4130224863688,
+          554.466837946574
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19769,6 +19831,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20253,7 +20316,8 @@ window.BENCHMARK_DATA = {
           1356.8428757985432,
           1378.278262201945,
           1212.4941590627034,
-          1320.0628235680717
+          1320.0628235680717,
+          1327.820097732544
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20588,6 +20652,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072
@@ -22560,6 +22625,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -22888,7 +22959,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -23220,7 +23292,8 @@ window.BENCHMARK_DATA = {
           1435.9492445627848,
           1493.3558091481527,
           1360.3424818856377,
-          1471.434380395072
+          1471.434380395072,
+          1498.089180246989
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23533,6 +23606,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -23897,7 +23971,8 @@ window.BENCHMARK_DATA = {
           1517.3338939666749,
           1290.910200881958,
           1286.9698220661708,
-          1425.3927232106528
+          1425.3927232106528,
+          1418.5389539082846
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24090,6 +24165,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -24574,7 +24650,8 @@ window.BENCHMARK_DATA = {
           2891.937257033128,
           3429.860407511393,
           3345.048651286534,
-          3488.583327429635
+          3488.583327429635,
+          3338.2258743286134
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24909,6 +24986,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296
@@ -26881,6 +26959,12 @@ window.BENCHMARK_DATA = {
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
         "message": "feat: Add comprehensive GitHub Copilot instructions for aweXpect repository (#708)"
+      },
+      {
+        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
+        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
       }
     ],
     "labels": [
@@ -27209,7 +27293,8 @@ window.BENCHMARK_DATA = {
       "f6385ef8",
       "13eb8350",
       "805ad539",
-      "7e317926"
+      "7e317926",
+      "c5477b05"
     ],
     "datasets": [
       {
@@ -27541,7 +27626,8 @@ window.BENCHMARK_DATA = {
           1665.3837093353272,
           1694.1988110860188,
           1509.960815838405,
-          1740.1572650909425
+          1740.1572650909425,
+          1695.6364364624023
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27854,6 +27940,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -28218,7 +28305,8 @@ window.BENCHMARK_DATA = {
           151717.91123046874,
           152190.29711914062,
           149139.7333608774,
-          155132.974609375
+          155132.974609375,
+          152727.65504807694
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28555,6 +28643,7 @@ window.BENCHMARK_DATA = {
           63788,
           63352,
           64323,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -28895,7 +28984,8 @@ window.BENCHMARK_DATA = {
           4875.538044520787,
           3940.406415049235,
           3932.8456780569895,
-          4083.8722935994465
+          4083.8722935994465,
+          3990.693612162272
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29230,6 +29320,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488
