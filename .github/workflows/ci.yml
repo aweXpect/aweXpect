@@ -64,8 +64,8 @@ jobs:
                         ./Artifacts/*
                         ./TestResults/*.trx
     
-    mutation-tests:
-        name: "Mutation tests"
+    mutation-tests-main:
+        name: "Mutation tests (aweXpect)"
         runs-on: ubuntu-latest
         env:
             DOTNET_NOLOGO: true
@@ -80,7 +80,32 @@ jobs:
                         8.0.x
                         9.0.x
             -   name: Run mutation tests
-                run: ./build.sh MutationTests
+                run: ./build.sh MutationTestsMain
+            -   name: Upload artifacts
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: MutationTests
+                    path: |
+                        ./Artifacts/*
+
+    mutation-tests-core:
+        name: "Mutation tests (aweXpect.Core)"
+        runs-on: ubuntu-latest
+        env:
+            DOTNET_NOLOGO: true
+        steps:
+            -   uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
+                with:
+                    dotnet-version: |
+                        8.0.x
+                        9.0.x
+            -   name: Run mutation tests
+                run: ./build.sh MutationTestsCore
             -   name: Upload artifacts
                 if: always()
                 uses: actions/upload-artifact@v4

@@ -22,124 +22,105 @@ namespace Build;
 
 partial class Build
 {
-	static string MutationCommentBody = "";
+	/// <summary>
+	///     The markdown texts for each project.
+	/// </summary>
+	static readonly Dictionary<string, string> MutationCommentBodies = new();
 
-	Target MutationTests => _ => _
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
-		.DependsOn(MutationTestExecution)
-		.DependsOn(MutationComment);
-
-	Target MutationTestExecution => _ => _
-		.DependsOn(Compile)
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
-		.Executes(() =>
-		{
-			AbsolutePath toolPath = TestResultsDirectory / "dotnet-stryker";
-			AbsolutePath configFile = toolPath / "Stryker.Config.json";
-			AbsolutePath strykerOutputDirectory = ArtifactsDirectory / "Stryker";
-			strykerOutputDirectory.CreateOrCleanDirectory();
-			toolPath.CreateOrCleanDirectory();
-
-			DotNetToolInstall(_ => _
-				.SetPackageName("dotnet-stryker")
-				.SetVersion("4.7.0")
-				.SetToolInstallationPath(toolPath));
-
-			Dictionary<Project, Project[]> projects = new()
-			{
-				{
-					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]
-				},
-				{
-					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]
-				},
-			};
-
-			foreach (KeyValuePair<Project, Project[]> project in projects)
-			{
-				string branchName = BranchName;
-				if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
-				{
-					string version = GitHubActions.Ref.Substring("refs/tags/".Length);
-					branchName = "release/" + version;
-					Log.Information("Use release branch analysis for '{BranchName}'", branchName);
-				}
-
-				File.WriteAllText(ArtifactsDirectory / "BranchName.txt", branchName);
-
-				string configText = $$"""
-				                      {
-				                      	"stryker-config": {
-				                      		"project-info": {
-				                      			"name": "github.com/aweXpect/aweXpect",
-				                      			"module": "{{project.Key.Name}}",
-				                      			"version": "{{branchName}}"
-				                      		},
-				                      		"test-projects": [
-				                      			{{string.Join(",\n\t\t\t", project.Value.Select(PathForJson))}}
-				                      		],
-				                      		"project": {{PathForJson(project.Key)}},
-				                      		"target-framework": "net8.0",
-				                      		"since": {
-				                      			"target": "main",
-				                      			"enabled": {{(BranchName != "main").ToString().ToLowerInvariant()}},
-				                      			"ignore-changes-in": [
-				                      				"**/.github/**/*.*"
-				                      			]
-				                      		},
-				                      		"mutation-level": "Advanced"
-				                      	}
-				                      }
-				                      """;
-				File.WriteAllText(configFile, configText);
-				Log.Debug($"Created '{configFile}':{Environment.NewLine}{configText}");
-
-				string arguments =
-					$"-f \"{configFile}\" -O \"{strykerOutputDirectory}\" -r \"Markdown\" -r \"cleartext\" -r \"json\"";
-
-				string executable = EnvironmentInfo.IsWin ? "dotnet-stryker.exe" : "dotnet-stryker";
-				IProcess process = ProcessTasks.StartProcess(
-						Path.Combine(toolPath, executable),
-						arguments,
-						Solution.Directory)
-					.AssertWaitForExit();
-				if (process.ExitCode != 0)
-				{
-					Assert.Fail(
-						$"Stryker did not execute successfully for {project.Key.Name}: (exit code {process.ExitCode}).");
-				}
-
-				MutationCommentBody += Environment.NewLine + CreateMutationCommentBody(project.Key.Name);
-			}
-		});
-
+	AbsolutePath StrykerOutputDirectory => ArtifactsDirectory / "Stryker";
+	AbsolutePath StrykerToolPath => TestResultsDirectory / "dotnet-stryker";
 	Target MutationComment => _ => _
-		.After(MutationTestExecution)
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default && GitHubActions.IsPullRequest)
-		.Executes(() =>
+		.After(MutationTestsMain)
+		.After(MutationTestsCore)
+		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
+		.Executes(async () =>
 		{
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
-			if (string.IsNullOrWhiteSpace(MutationCommentBody))
+			if (MutationCommentBodies.Count == 0)
 			{
 				return;
 			}
 
-			string body = "## :alien: Mutation Results"
-			              + Environment.NewLine
-			              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
-			              + Environment.NewLine
-			              + MutationCommentBody;
-			File.WriteAllText(ArtifactsDirectory / "PR_Comment.md", body);
-
 			if (prId != null)
 			{
-				File.WriteAllText(ArtifactsDirectory / "PR.txt", prId.Value.ToString());
+				GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
+				Credentials tokenAuth = new(GithubToken);
+				gitHubClient.Credentials = tokenAuth;
+				IReadOnlyList<IssueComment> comments =
+					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect",
+						"aweXpect", prId.Value);
+				IssueComment? existingComment = null;
+				Log.Information($"Found {comments.Count} comments");
+				foreach (IssueComment comment in comments)
+				{
+					if (comment.Body.Contains("## :alien: Mutation Results"))
+					{
+						Log.Information($"Found comment: {comment.Body}");
+						existingComment = comment;
+					}
+				}
+
+				if (existingComment == null)
+				{
+					string body = "## :alien: Mutation Results"
+					              + Environment.NewLine
+					              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
+					              + Environment.NewLine
+					              + string.Join(Environment.NewLine, MutationCommentBodies.Values);
+
+					Log.Information($"Create comment:\n{body}");
+					await gitHubClient.Issue.Comment.Create("Testably", "Testably.Abstractions",
+						prId.Value, body);
+				}
+				else
+				{
+					string body = existingComment.Body;
+					foreach ((string project, string value) in MutationCommentBodies)
+					{
+						body = ReplaceProject(body, project, value);
+					}
+
+					Log.Information($"Update comment:\n{body}");
+					await gitHubClient.Issue.Comment.Update("Testably", "Testably.Abstractions",
+						existingComment.Id, body);
+				}
 			}
 		});
 
-	Target MutationTestDashboard => _ => _
-		.After(MutationTestExecution)
+	Target MutationTestPreparation => _ => _
+		.Executes(() =>
+		{
+			StrykerToolPath.CreateOrCleanDirectory();
+
+			DotNetToolInstall(_ => _
+				.SetPackageName("dotnet-stryker")
+				.SetToolInstallationPath(StrykerToolPath));
+
+			StrykerOutputDirectory.CreateOrCleanDirectory();
+		});
+
+	Target MutationTestsMain => _ => _
+		.DependsOn(Compile)
+		.DependsOn(MutationTestPreparation)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
+		.Executes(() =>
+		{
+			ExecuteMutationTest(Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]);
+		});
+
+	Target MutationTestsCore => _ => _
+		.DependsOn(Compile)
+		.DependsOn(MutationTestPreparation)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
+		.Executes(() =>
+		{
+			ExecuteMutationTest(Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]);
+		});
+
+	Target MutationTestsDashboard => _ => _
+		.After(MutationTestsMain)
+		.After(MutationTestsCore)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
@@ -205,10 +186,81 @@ partial class Build
 			}
 		});
 
+	private void ExecuteMutationTest(Project project, Project[] testProjects)
+	{
+		AbsolutePath toolPath = TestResultsDirectory / "dotnet-stryker";
+		AbsolutePath configFile = toolPath / "Stryker.Config.json";
+		AbsolutePath strykerOutputDirectory = ArtifactsDirectory / "Stryker";
+		strykerOutputDirectory.CreateOrCleanDirectory();
+		toolPath.CreateOrCleanDirectory();
+
+		DotNetToolInstall(_ => _
+			.SetPackageName("dotnet-stryker")
+			.SetVersion("4.7.0")
+			.SetToolInstallationPath(toolPath));
+
+		string branchName = BranchName;
+		if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
+		{
+			string version = GitHubActions.Ref.Substring("refs/tags/".Length);
+			branchName = "release/" + version;
+			Log.Information("Use release branch analysis for '{BranchName}'", branchName);
+		}
+
+		File.WriteAllText(ArtifactsDirectory / "BranchName.txt", branchName);
+
+		string configText = $$"""
+		                      {
+		                      	"stryker-config": {
+		                      		"project-info": {
+		                      			"name": "github.com/aweXpect/aweXpect",
+		                      			"module": "{{project.Name}}",
+		                      			"version": "{{branchName}}"
+		                      		},
+		                      		"test-projects": [
+		                      			{{string.Join(",\n\t\t\t", testProjects.Select(PathForJson))}}
+		                      		],
+		                      		"project": {{PathForJson(project)}},
+		                      		"target-framework": "net8.0",
+		                      		"since": {
+		                      			"target": "main",
+		                      			"enabled": {{(BranchName != "main").ToString().ToLowerInvariant()}},
+		                      			"ignore-changes-in": [
+		                      				"**/.github/**/*.*"
+		                      			]
+		                      		},
+		                      		"mutation-level": "Advanced"
+		                      	}
+		                      }
+		                      """;
+		File.WriteAllText(configFile, configText);
+		Log.Debug($"Created '{configFile}':{Environment.NewLine}{configText}");
+
+		string arguments =
+			$"-f \"{configFile}\" -O \"{strykerOutputDirectory}\" -r \"Markdown\" -r \"cleartext\" -r \"json\"";
+
+		string executable = EnvironmentInfo.IsWin ? "dotnet-stryker.exe" : "dotnet-stryker";
+		IProcess process = ProcessTasks.StartProcess(
+				Path.Combine(toolPath, executable),
+				arguments,
+				Solution.Directory)
+			.AssertWaitForExit();
+		if (process.ExitCode != 0)
+		{
+			Assert.Fail(
+				$"Stryker did not execute successfully for {project.Name}: (exit code {process.ExitCode}).");
+		}
+
+		MutationCommentBodies.Add(project.Name,
+			CreateMutationCommentBody(project.Name));
+	}
+
 	string CreateMutationCommentBody(string projectName)
 	{
-		string[] fileContent = File.ReadAllLines(ArtifactsDirectory / "Stryker" / "reports" / "mutation-report.md");
+		string[] fileContent =
+			File.ReadAllLines(ArtifactsDirectory / "Stryker" / "reports" / "mutation-report.md");
 		StringBuilder sb = new();
+		sb.AppendLine($"<!-- START {projectName} -->");
 		sb.AppendLine($"### {projectName}");
 		sb.AppendLine("<details>");
 		sb.AppendLine("<summary>Details</summary>");
@@ -244,9 +296,26 @@ partial class Build
 			sb.AppendLine(line);
 		}
 
+		sb.AppendLine($"<!-- END {projectName} -->");
 		string body = sb.ToString();
 		return body;
 	}
 
-	static string PathForJson(Project project) => $"\"{project.Path.ToString().Replace(@"\", @"\\")}\"";
+	static string PathForJson(Project project)
+		=> $"\"{project.Path.ToString().Replace(@"\", @"\\")}\"";
+
+	string ReplaceProject(string body, string project, string value)
+	{
+		int startIndex =
+			body.IndexOf($"<!-- START {project} -->", StringComparison.OrdinalIgnoreCase);
+		int endIndex = body.IndexOf($"<!-- END {project} -->", StringComparison.OrdinalIgnoreCase);
+		if (startIndex >= 0 && endIndex > startIndex)
+		{
+			string prefix = body.Substring(0, startIndex);
+			string suffix = body.Substring(endIndex + $"<!-- END {project} -->".Length);
+			return prefix + value + suffix;
+		}
+
+		return body + Environment.NewLine + value;
+	}
 }
