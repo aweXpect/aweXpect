@@ -47,8 +47,13 @@ partial class Build
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
-			int? prId = GitHubActions.PullRequestNumber;
-			Log.Debug("Pull request number: {PullRequestId}", prId);
+			if (!File.Exists(ArtifactsDirectory / "PR.txt"))
+			{
+				Log.Debug("Missing PR.txt file in artifacts");
+			}
+			
+			string prNumber = File.ReadAllText(ArtifactsDirectory / "PR.txt");
+			Log.Debug("Pull request number: {PullRequestId}", prNumber);
 			var mutationCommentBodies = new List<string>();
 			foreach (var file in ArtifactsDirectory.GetFiles("MutationTest_*.md"))
 			{
@@ -61,14 +66,14 @@ partial class Build
 				return;
 			}
 
-			if (prId != null)
+			if (int.TryParse(prNumber, out int prId))
 			{
 				GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
 				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
 					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect",
-						"aweXpect", prId.Value);
+						"aweXpect", prId);
 				IssueComment existingComment = null;
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
@@ -89,7 +94,7 @@ partial class Build
 				{
 					Log.Information($"Create comment:\n{body}");
 					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect",
-						prId.Value, body);
+						prId, body);
 				}
 				else
 				{
@@ -200,6 +205,12 @@ partial class Build
 		}
 
 		File.WriteAllText(ArtifactsDirectory / $"MutationTest_{project.Name}.md", CreateMutationCommentBody(project.Name));
+			
+		int? prId = GitHubActions?.PullRequestNumber;
+		if (prId != null)
+		{
+			File.WriteAllText(ArtifactsDirectory / "PR.txt", prId.Value.ToString());
+		}
 	}
 
 	string CreateMutationCommentBody(string projectName)
