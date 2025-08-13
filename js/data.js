@@ -1998,6 +1998,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -2333,7 +2339,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -2672,7 +2679,8 @@ window.BENCHMARK_DATA = {
           190.1297850926717,
           234.02060882250467,
           185.16794306891305,
-          200.1135129928589
+          200.1135129928589,
+          199.90198740959167
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2867,6 +2875,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3363,7 +3372,8 @@ window.BENCHMARK_DATA = {
           245.98242822060217,
           249.71872707513663,
           257.1052480061849,
-          288.7689599672953
+          288.7689599672953,
+          271.3134614626567
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3556,6 +3566,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4054,7 +4065,8 @@ window.BENCHMARK_DATA = {
           883.940659014384,
           896.0688382466634,
           888.4331371600812,
-          950.8576468785603
+          950.8576468785603,
+          961.274909845988
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4389,6 +4401,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -5948,6 +5961,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -6206,7 +6225,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -6468,7 +6488,8 @@ window.BENCHMARK_DATA = {
           292140.8224158654,
           292236.50840541295,
           284261.90164620534,
-          291641.52945963544
+          291641.52945963544,
+          314921.4136393229
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6681,6 +6702,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -7005,7 +7027,8 @@ window.BENCHMARK_DATA = {
           2191079.2848772323,
           2360559.8858173075,
           2185807.382552083,
-          2446740.6380208335
+          2446740.6380208335,
+          2399744.9088541665
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7121,6 +7144,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7542,7 +7566,8 @@ window.BENCHMARK_DATA = {
           686821.1316266741,
           698028.2536458333,
           708570.1418108259,
-          724211.8733258928
+          724211.8733258928,
+          727263.4899088541
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7800,6 +7825,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -9821,6 +9847,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -10156,7 +10188,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -10495,7 +10528,8 @@ window.BENCHMARK_DATA = {
           504.9109592437744,
           480.5751190185547,
           471.58090145247326,
-          513.2954837799073
+          513.2954837799073,
+          507.9237178166707
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10806,6 +10840,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -11186,7 +11221,8 @@ window.BENCHMARK_DATA = {
           543.4679034550985,
           538.7194717407226,
           473.38043030103046,
-          579.4196901321411
+          579.4196901321411,
+          625.1886011123657
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11379,6 +11415,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11877,7 +11914,8 @@ window.BENCHMARK_DATA = {
           16267.27124633789,
           15407.828228759765,
           14607.753365071614,
-          17891.715669904435
+          17891.715669904435,
+          19982.52837524414
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12212,6 +12250,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -14233,6 +14272,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -14568,7 +14613,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -14907,7 +14953,8 @@ window.BENCHMARK_DATA = {
           224.6800581296285,
           237.9080223719279,
           212.9125053201403,
-          246.97699890136718
+          246.97699890136718,
+          249.13954078356426
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15103,6 +15150,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15598,7 +15646,8 @@ window.BENCHMARK_DATA = {
           281.35247004826863,
           283.3998212814331,
           284.691321849823,
-          290.2568111101786
+          290.2568111101786,
+          270.8660439491272
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15791,6 +15840,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -16289,7 +16339,8 @@ window.BENCHMARK_DATA = {
           1342.2946872711182,
           1257.7739298502604,
           1206.465983581543,
-          1289.8312764485677
+          1289.8312764485677,
+          1238.3823009490966
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16624,6 +16675,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -18645,6 +18697,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -18980,7 +19038,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -19319,7 +19378,8 @@ window.BENCHMARK_DATA = {
           403.75442225138346,
           363.8827963511149,
           340.064981396993,
-          392.8086578845978
+          392.8086578845978,
+          377.83654537200925
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19609,6 +19669,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -20010,7 +20071,8 @@ window.BENCHMARK_DATA = {
           475.27943270547047,
           576.4057349522908,
           484.9827379862467,
-          564.8904190063477
+          564.8904190063477,
+          529.1992258071899
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20203,6 +20265,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20701,7 +20764,8 @@ window.BENCHMARK_DATA = {
           1355.6293227855977,
           1293.9423133850098,
           1245.648823038737,
-          1347.8842615400042
+          1347.8842615400042,
+          1265.9992123921713
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -21036,6 +21100,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -23057,6 +23122,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -23392,7 +23463,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -23731,7 +23803,8 @@ window.BENCHMARK_DATA = {
           1459.6668649400983,
           1416.8200059618268,
           1422.5139600208827,
-          1437.587763595581
+          1437.587763595581,
+          1559.861279296875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24044,6 +24117,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -24422,7 +24496,8 @@ window.BENCHMARK_DATA = {
           1313.9129651387532,
           1455.476150004069,
           1307.4820973322942,
-          1477.973246383667
+          1477.973246383667,
+          1480.9022111256918
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24615,6 +24690,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -25113,7 +25189,8 @@ window.BENCHMARK_DATA = {
           3244.4809435330903,
           3433.105632019043,
           3258.705184664045,
-          3480.661188252767
+          3480.661188252767,
+          3493.469972229004
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25448,6 +25525,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -27469,6 +27547,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
@@ -27804,7 +27888,8 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
@@ -28143,7 +28228,8 @@ window.BENCHMARK_DATA = {
           1711.3150469916206,
           1649.2603721618652,
           1631.4195346832275,
-          1731.8070226033528
+          1731.8070226033528,
+          1747.4298141479492
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28456,6 +28542,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -28834,7 +28921,8 @@ window.BENCHMARK_DATA = {
           157078.56497395833,
           155141.36845703126,
           150156.30393629806,
-          156166.65538611778
+          156166.65538611778,
+          155727.4384765625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29178,6 +29266,7 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63351,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -29525,7 +29614,8 @@ window.BENCHMARK_DATA = {
           3917.860544644869,
           3978.8337814331053,
           3930.4506861368814,
-          4092.1461588541665
+          4092.1461588541665,
+          4155.465719604492
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29860,6 +29950,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
