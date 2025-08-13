@@ -112,27 +112,6 @@ jobs:
                     path: |
                         ./Artifacts/*
     
-    mutation-tests-comment:
-        name: "Mutation tests Comment"
-        needs: [ mutation-tests-main, mutation-tests-core ]
-        runs-on: ubuntu-latest
-        env:
-            STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
-            DOTNET_NOLOGO: true
-        steps:
-            -   uses: actions/checkout@v4
-                with:
-                    fetch-depth: 0
-            -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
-                with:
-                    dotnet-version: |
-                        8.0.x
-            -   name: Run mutation tests
-                run: ./build.sh MutationTestsComment
-                env:
-                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
-    
     benchmarks:
         name: "Benchmarks"
         runs-on: ubuntu-latest
