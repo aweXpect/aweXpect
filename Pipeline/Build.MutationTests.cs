@@ -22,14 +22,25 @@ namespace Build;
 
 partial class Build
 {
-	/// <summary>
-	///     The markdown texts for each project.
-	/// </summary>
-	static readonly Dictionary<string, string> MutationCommentBodies = new();
-
 	AbsolutePath StrykerOutputDirectory => ArtifactsDirectory / "Stryker";
 	AbsolutePath StrykerToolPath => TestResultsDirectory / "dotnet-stryker";
-	Target MutationComment => _ => _
+
+	Target MutationTestsCore => _ => _
+		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
+		.Executes(() =>
+		{
+			ExecuteMutationTest(Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]);
+		});
+
+	Target MutationTestsMain => _ => _
+		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
+		.Executes(() =>
+		{
+			ExecuteMutationTest(Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]);
+		});
+	Target MutationTestsComment => _ => _
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
@@ -37,7 +48,14 @@ partial class Build
 		{
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
-			if (MutationCommentBodies.Count == 0)
+			var mutationCommentBodies = new List<string>();
+			foreach (var file in ArtifactsDirectory.GetFiles("MutationTest_*.md"))
+			{
+				var body = await File.ReadAllTextAsync(file);
+				mutationCommentBodies.Add(body);
+			}
+
+			if (mutationCommentBodies.Count == 0)
 			{
 				return;
 			}
@@ -61,61 +79,24 @@ partial class Build
 					}
 				}
 
+				string body = "## :alien: Mutation Results"
+				              + Environment.NewLine
+				              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
+				              + Environment.NewLine
+				              + string.Join(Environment.NewLine, mutationCommentBodies);
 				if (existingComment == null)
 				{
-					string body = "## :alien: Mutation Results"
-					              + Environment.NewLine
-					              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
-					              + Environment.NewLine
-					              + string.Join(Environment.NewLine, MutationCommentBodies.Values);
-
 					Log.Information($"Create comment:\n{body}");
-					await gitHubClient.Issue.Comment.Create("Testably", "Testably.Abstractions",
+					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect",
 						prId.Value, body);
 				}
 				else
 				{
-					string body = existingComment.Body;
-					foreach ((string project, string value) in MutationCommentBodies)
-					{
-						body = ReplaceProject(body, project, value);
-					}
-
 					Log.Information($"Update comment:\n{body}");
-					await gitHubClient.Issue.Comment.Update("Testably", "Testably.Abstractions",
+					await gitHubClient.Issue.Comment.Update("aweXpect", "aweXpect",
 						existingComment.Id, body);
 				}
 			}
-		});
-
-	Target MutationTestPreparation => _ => _
-		.Executes(() =>
-		{
-			StrykerToolPath.CreateOrCleanDirectory();
-
-			DotNetToolInstall(_ => _
-				.SetPackageName("dotnet-stryker")
-				.SetToolInstallationPath(StrykerToolPath));
-
-			StrykerOutputDirectory.CreateOrCleanDirectory();
-		});
-
-	Target MutationTestsMain => _ => _
-		.DependsOn(Compile)
-		.DependsOn(MutationTestPreparation)
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
-		.Executes(() =>
-		{
-			ExecuteMutationTest(Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]);
-		});
-
-	Target MutationTestsCore => _ => _
-		.DependsOn(Compile)
-		.DependsOn(MutationTestPreparation)
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
-		.Executes(() =>
-		{
-			ExecuteMutationTest(Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]);
 		});
 
 	Target MutationTestsDashboard => _ => _
@@ -124,8 +105,6 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
-			await "MutationTests".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
-
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{
@@ -147,42 +126,6 @@ partial class Build
 				await client.PutAsync(
 					$"https://dashboard.stryker-mutator.io/api/reports/github.com/aweXpect/aweXpect/{branchName}?module={project.Key.Name}",
 					new StringContent(reportComment, new MediaTypeHeaderValue("application/json")));
-			}
-
-			if (File.Exists(ArtifactsDirectory / "PR.txt"))
-			{
-				string prNumber = File.ReadAllText(ArtifactsDirectory / "PR.txt");
-				Log.Debug("Pull request number: {PullRequestId}", prNumber);
-				string body = File.ReadAllText(ArtifactsDirectory / "PR_Comment.md");
-				if (int.TryParse(prNumber, out int prId))
-				{
-					GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
-					Credentials tokenAuth = new(GithubToken);
-					gitHubClient.Credentials = tokenAuth;
-					IReadOnlyList<IssueComment> comments =
-						await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId);
-					long? commentId = null;
-					Log.Information($"Found {comments.Count} comments");
-					foreach (IssueComment comment in comments)
-					{
-						if (comment.Body.Contains("## :alien: Mutation Results"))
-						{
-							Log.Information($"Found comment: {comment.Body}");
-							commentId = comment.Id;
-						}
-					}
-
-					if (commentId == null)
-					{
-						Log.Information($"Create comment:\n{body}");
-						await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId, body);
-					}
-					else
-					{
-						Log.Information($"Update comment:\n{body}");
-						await gitHubClient.Issue.Comment.Update("aweXpect", "aweXpect", commentId.Value, body);
-					}
-				}
 			}
 		});
 
@@ -251,8 +194,7 @@ partial class Build
 				$"Stryker did not execute successfully for {project.Name}: (exit code {process.ExitCode}).");
 		}
 
-		MutationCommentBodies.Add(project.Name,
-			CreateMutationCommentBody(project.Name));
+		File.WriteAllText(ArtifactsDirectory / $"MutationTest_{project.Name}.md", CreateMutationCommentBody(project.Name));
 	}
 
 	string CreateMutationCommentBody(string projectName)
@@ -303,19 +245,4 @@ partial class Build
 
 	static string PathForJson(Project project)
 		=> $"\"{project.Path.ToString().Replace(@"\", @"\\")}\"";
-
-	string ReplaceProject(string body, string project, string value)
-	{
-		int startIndex =
-			body.IndexOf($"<!-- START {project} -->", StringComparison.OrdinalIgnoreCase);
-		int endIndex = body.IndexOf($"<!-- END {project} -->", StringComparison.OrdinalIgnoreCase);
-		if (startIndex >= 0 && endIndex > startIndex)
-		{
-			string prefix = body.Substring(0, startIndex);
-			string suffix = body.Substring(endIndex + $"<!-- END {project} -->".Length);
-			return prefix + value + suffix;
-		}
-
-		return body + Environment.NewLine + value;
-	}
 }
