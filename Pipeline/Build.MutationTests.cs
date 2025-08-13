@@ -43,13 +43,10 @@ partial class Build
 	Target MutationTestsComment => _ => _
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
+		.DependsOn(MutationTestsDashboard)
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
-			ArtifactsDirectory.CreateDirectory();
-			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
-			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
-			
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
 			var mutationCommentBodies = new List<string>();
