@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
-      {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 19:34:53 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          181.5952605565389,
           187.63515160878498,
           178.71268560091656,
           187.2513000488281,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           190.1297850926717,
           234.02060882250467,
           185.16794306891305,
-          200.1135129928589
+          200.1135129928589,
+          199.90198740959167
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          258.12571522394813,
           246.8474992605356,
           233.49430828094484,
           262.96148611704507,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           245.98242822060217,
           249.71872707513663,
           257.1052480061849,
-          288.7689599672953
+          288.7689599672953,
+          271.3134614626567
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          880.0973598480225,
           940.4764093399048,
           911.5036448160807,
           964.9681312561036,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           883.940659014384,
           896.0688382466634,
           888.4331371600812,
-          950.8576468785603
+          950.8576468785603,
+          961.274909845988
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -709,7 +709,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
-          2416,
+          2408,
           2408,
           2408,
           2408,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
       {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          287579.0711844308,
           299423.3176967076,
           303430.55691731774,
           287811.86746651784,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           292140.8224158654,
           292236.50840541295,
           284261.90164620534,
-          291641.52945963544
+          291641.52945963544,
+          314921.4136393229
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2335998.4235491073,
           2197807.0786458333,
           2164692.598214286,
           2293917.0736979167,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2191079.2848772323,
           2360559.8858173075,
           2185807.382552083,
-          2446740.6380208335
+          2446740.6380208335,
+          2399744.9088541665
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          699778.2192382812,
           659679.575,
           671342.2019042969,
           667591.9186662947,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           686821.1316266741,
           698028.2536458333,
           708570.1418108259,
-          724211.8733258928
+          724211.8733258928,
+          727263.4899088541
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1442,7 +1442,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
+          880545,
           880545,
           880545,
           880545,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
       {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          347.9542342821757,
           333.9025814374288,
           375.576119073232,
           485.60283679962157,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           504.9109592437744,
           480.5751190185547,
           471.58090145247326,
-          513.2954837799073
+          513.2954837799073,
+          507.9237178166707
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1888,7 +1888,6 @@ window.BENCHMARK_DATA = {
         "data": [
           944,
           944,
-          944,
           1392,
           1392,
           1392,
@@ -1902,6 +1901,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          492.4458077294486,
           489.7146891866411,
           509.7335442860921,
           551.2972931543986,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           543.4679034550985,
           538.7194717407226,
           473.38043030103046,
-          579.4196901321411
+          579.4196901321411,
+          625.1886011123657
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          16844.23057047526,
           23868.770422363283,
           21570.691965738934,
           15904.086994716099,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           16267.27124633789,
           15407.828228759765,
           14607.753365071614,
-          17891.715669904435
+          17891.715669904435,
+          19982.52837524414
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2175,7 +2175,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
-          27488,
+          27480,
           27480,
           27480,
           27480,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
       {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          216.55600725809734,
           219.55566101807815,
           203.61079907417297,
           240.67839549382526,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           224.6800581296285,
           237.9080223719279,
           212.9125053201403,
-          246.97699890136718
+          246.97699890136718,
+          249.13954078356426
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          252.34174184799195,
           252.67604320389884,
           239.97455263137817,
           273.18821805318197,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           281.35247004826863,
           283.3998212814331,
           284.691321849823,
-          290.2568111101786
+          290.2568111101786,
+          270.8660439491272
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1234.527002628033,
           1244.4499455769858,
           1292.8344411214193,
           1302.40148340861,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1342.2946872711182,
           1257.7739298502604,
           1206.465983581543,
-          1289.8312764485677
+          1289.8312764485677,
+          1238.3823009490966
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2908,7 +2908,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
-          2992,
+          2984,
           2984,
           2984,
           2984,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
       {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          337.4909543650491,
           344.6681323732649,
           344.58875094927276,
           404.3627974305834,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           403.75442225138346,
           363.8827963511149,
           340.064981396993,
-          392.8086578845978
+          392.8086578845978,
+          377.83654537200925
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          471.05012060801187,
           480.88228034973145,
           474.36408478418986,
           552.2087310791015,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           475.27943270547047,
           576.4057349522908,
           484.9827379862467,
-          564.8904190063477
+          564.8904190063477,
+          529.1992258071899
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1235.8453269958495,
           1340.974303817749,
           1368.1809170586723,
           1446.4890033176966,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1355.6293227855977,
           1293.9423133850098,
           1245.648823038737,
-          1347.8842615400042
+          1347.8842615400042,
+          1265.9992123921713
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3641,7 +3641,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
-          3096,
+          3072,
           3072,
           3072,
           3072,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
       {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1052.1590765635171,
           1166.9130198160808,
           1131.3778129305158,
           1225.8498344421387,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1459.6668649400983,
           1416.8200059618268,
           1422.5139600208827,
-          1437.587763595581
+          1437.587763595581,
+          1559.861279296875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2008,
           2008,
           2008,
           2024,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
+          2744,
           2744
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1282.548368181501,
           1331.6883131663005,
           1416.3262522379557,
           1502.0562735239664,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1313.9129651387532,
           1455.476150004069,
           1307.4820973322942,
-          1477.973246383667
+          1477.973246383667,
+          1480.9022111256918
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2888.138011423747,
           2872.930598122733,
           2761.133438873291,
           3045.4570511409215,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3244.4809435330903,
           3433.105632019043,
           3258.705184664045,
-          3480.661188252767
+          3480.661188252767,
+          3493.469972229004
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4374,7 +4374,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
-          4576,
+          5296,
           5296,
           5296,
           5296,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 11:26:26 2025 \u002B0200",
-        "message": "docs: add migration guide (#613)"
-      },
       {
         "sha": "a0b9d93b1780c1fbf1011b484f1dd3b618814b1d",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
         "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
+      },
+      {
+        "sha": "6c33916eba22c865f247eb4acb8fa3ada723851d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
+        "message": "refactor: split mutation tests in two separate actions (#718)"
       }
     ],
     "labels": [
-      "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
       "67d0ad6a",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "4e412112",
       "d08341b5",
       "df0c03be",
-      "02df3871"
+      "02df3871",
+      "6c33916e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1215.7861814498901,
           1270.4497479030065,
           1271.0965385437012,
           1388.1481117248536,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1711.3150469916206,
           1649.2603721618652,
           1631.4195346832275,
-          1731.8070226033528
+          1731.8070226033528,
+          1747.4298141479492
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4820,7 +4820,6 @@ window.BENCHMARK_DATA = {
         "data": [
           2168,
           2168,
-          2168,
           2184,
           2184,
           2184,
@@ -4836,6 +4835,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          153453.19403545672,
           152473.55006510418,
           149318.6705078125,
           155861.46683175224,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           157078.56497395833,
           155141.36845703126,
           150156.30393629806,
-          156166.65538611778
+          156166.65538611778,
+          155727.4384765625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63788,
           63787,
           63788,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63351,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4705.367414202009,
           4787.81876373291,
           4683.222218577067,
           4909.099930354527,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3917.860544644869,
           3978.8337814331053,
           3930.4506861368814,
-          4092.1461588541665
+          4092.1461588541665,
+          4155.465719604492
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5107,7 +5107,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
-          6744,
+          6488,
           6488,
           6488,
           6488,
