@@ -2004,6 +2004,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -2340,7 +2346,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -2680,7 +2687,8 @@ window.BENCHMARK_DATA = {
           234.02060882250467,
           185.16794306891305,
           200.1135129928589,
-          199.90198740959167
+          199.90198740959167,
+          203.2699544089181
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2875,6 +2883,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3373,7 +3382,8 @@ window.BENCHMARK_DATA = {
           249.71872707513663,
           257.1052480061849,
           288.7689599672953,
-          271.3134614626567
+          271.3134614626567,
+          272.4818913936615
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3566,6 +3576,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4066,7 +4077,8 @@ window.BENCHMARK_DATA = {
           896.0688382466634,
           888.4331371600812,
           950.8576468785603,
-          961.274909845988
+          961.274909845988,
+          990.8652286529541
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4401,6 +4413,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -5967,6 +5980,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -6226,7 +6245,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -6489,7 +6509,8 @@ window.BENCHMARK_DATA = {
           292236.50840541295,
           284261.90164620534,
           291641.52945963544,
-          314921.4136393229
+          314921.4136393229,
+          289201.03681640624
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6702,6 +6723,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -7028,7 +7050,8 @@ window.BENCHMARK_DATA = {
           2360559.8858173075,
           2185807.382552083,
           2446740.6380208335,
-          2399744.9088541665
+          2399744.9088541665,
+          2344961.8111979165
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7144,6 +7167,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7567,7 +7591,8 @@ window.BENCHMARK_DATA = {
           698028.2536458333,
           708570.1418108259,
           724211.8733258928,
-          727263.4899088541
+          727263.4899088541,
+          730282.8316127232
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7825,6 +7850,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -9853,6 +9879,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -10189,7 +10221,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -10529,7 +10562,8 @@ window.BENCHMARK_DATA = {
           480.5751190185547,
           471.58090145247326,
           513.2954837799073,
-          507.9237178166707
+          507.9237178166707,
+          471.82289252962386
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10840,6 +10874,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -11222,7 +11257,8 @@ window.BENCHMARK_DATA = {
           538.7194717407226,
           473.38043030103046,
           579.4196901321411,
-          625.1886011123657
+          625.1886011123657,
+          491.2681080500285
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11415,6 +11451,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11915,7 +11952,8 @@ window.BENCHMARK_DATA = {
           15407.828228759765,
           14607.753365071614,
           17891.715669904435,
-          19982.52837524414
+          19982.52837524414,
+          15270.539393107096
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12250,6 +12288,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -14278,6 +14317,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -14614,7 +14659,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -14954,7 +15000,8 @@ window.BENCHMARK_DATA = {
           237.9080223719279,
           212.9125053201403,
           246.97699890136718,
-          249.13954078356426
+          249.13954078356426,
+          236.79688254992166
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15150,6 +15197,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15647,7 +15695,8 @@ window.BENCHMARK_DATA = {
           283.3998212814331,
           284.691321849823,
           290.2568111101786,
-          270.8660439491272
+          270.8660439491272,
+          276.47194420496623
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15840,6 +15889,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -16340,7 +16390,8 @@ window.BENCHMARK_DATA = {
           1257.7739298502604,
           1206.465983581543,
           1289.8312764485677,
-          1238.3823009490966
+          1238.3823009490966,
+          1206.8911201477051
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16675,6 +16726,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -18703,6 +18755,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -19039,7 +19097,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -19379,7 +19438,8 @@ window.BENCHMARK_DATA = {
           363.8827963511149,
           340.064981396993,
           392.8086578845978,
-          377.83654537200925
+          377.83654537200925,
+          394.5958653177534
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19669,6 +19729,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -20072,7 +20133,8 @@ window.BENCHMARK_DATA = {
           576.4057349522908,
           484.9827379862467,
           564.8904190063477,
-          529.1992258071899
+          529.1992258071899,
+          497.35900224049885
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20265,6 +20327,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20765,7 +20828,8 @@ window.BENCHMARK_DATA = {
           1293.9423133850098,
           1245.648823038737,
           1347.8842615400042,
-          1265.9992123921713
+          1265.9992123921713,
+          1214.712830734253
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -21100,6 +21164,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -23128,6 +23193,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -23464,7 +23535,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -23804,7 +23876,8 @@ window.BENCHMARK_DATA = {
           1416.8200059618268,
           1422.5139600208827,
           1437.587763595581,
-          1559.861279296875
+          1559.861279296875,
+          1360.6034299214682
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24117,6 +24190,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -24497,7 +24571,8 @@ window.BENCHMARK_DATA = {
           1455.476150004069,
           1307.4820973322942,
           1477.973246383667,
-          1480.9022111256918
+          1480.9022111256918,
+          1351.5406889597575
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24690,6 +24765,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -25190,7 +25266,8 @@ window.BENCHMARK_DATA = {
           3433.105632019043,
           3258.705184664045,
           3480.661188252767,
-          3493.469972229004
+          3493.469972229004,
+          3203.943726348877
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25525,6 +25602,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -27553,6 +27631,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 15:38:21 2025 \u002B0200",
         "message": "refactor: split mutation tests in two separate actions (#718)"
+      },
+      {
+        "sha": "e13592d896810a6f4370d1ee373ab6a4574918a1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
+        "message": "fix: error in build pipeline (#720)"
       }
     ],
     "labels": [
@@ -27889,7 +27973,8 @@ window.BENCHMARK_DATA = {
       "d08341b5",
       "df0c03be",
       "02df3871",
-      "6c33916e"
+      "6c33916e",
+      "e13592d8"
     ],
     "datasets": [
       {
@@ -28229,7 +28314,8 @@ window.BENCHMARK_DATA = {
           1649.2603721618652,
           1631.4195346832275,
           1731.8070226033528,
-          1747.4298141479492
+          1747.4298141479492,
+          1536.9937772750854
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28542,6 +28628,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -28922,7 +29009,8 @@ window.BENCHMARK_DATA = {
           155141.36845703126,
           150156.30393629806,
           156166.65538611778,
-          155727.4384765625
+          155727.4384765625,
+          147366.4920828683
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29267,7 +29355,8 @@ window.BENCHMARK_DATA = {
           63788,
           63351,
           63788,
-          63788
+          63788,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29615,7 +29704,8 @@ window.BENCHMARK_DATA = {
           3978.8337814331053,
           3930.4506861368814,
           4092.1461588541665,
-          4155.465719604492
+          4155.465719604492,
+          3889.4913177490234
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29950,6 +30040,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
