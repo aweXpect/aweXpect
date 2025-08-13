@@ -484,12 +484,12 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int expected) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Immutable.ImmutableArray<TItem>, aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject, int expected) { }
         public static aweXpect.Results.AndOrResult<TItem[], aweXpect.Core.IThat<TItem[]?>> HasCount<TItem>(this aweXpect.Core.IThat<TItem[]?> subject, int expected) { }
-        public static aweXpect.Results.HasItemWithConditionResult<System.Collections.IEnumerable, object?> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable?> source) { }
+        public static aweXpect.Results.HasItemWithConditionResult<System.Collections.IEnumerable?, object?> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable?> source) { }
         public static aweXpect.Results.StringHasItemResult<System.Collections.Generic.IEnumerable<string?>?> HasItem(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, string? expected) { }
         public static aweXpect.Results.ObjectHasItemResult<System.Collections.IEnumerable, object?> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable> source, object? expected) { }
         public static aweXpect.Results.StringHasItemResult<System.Collections.Immutable.ImmutableArray<string?>> HasItem(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> source, string? expected) { }
         public static aweXpect.Results.HasItemResult<System.Collections.IEnumerable> HasItem(this aweXpect.Core.IThat<System.Collections.IEnumerable> source, System.Func<object?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.HasItemWithConditionResult<System.Collections.Generic.IEnumerable<TItem>, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source) { }
+        public static aweXpect.Results.HasItemWithConditionResult<System.Collections.Generic.IEnumerable<TItem>?, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source) { }
         public static aweXpect.Results.HasItemWithConditionResult<System.Collections.Immutable.ImmutableArray<TItem>, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> source) { }
         public static aweXpect.Results.ObjectHasItemResult<System.Collections.Generic.IEnumerable<TItem>?, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, TItem expected) { }
         public static aweXpect.Results.ObjectHasItemResult<System.Collections.Immutable.ImmutableArray<TItem>, TItem> HasItem<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> source, TItem expected) { }
@@ -1254,13 +1254,13 @@ namespace aweXpect.Results
             aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate);
         }
     }
-    public class HasItemWithConditionResult<TCollection, TItem> : aweXpect.Results.HasItemResult<TCollection?>, aweXpect.Core.IOptionsProvider<aweXpect.Options.PredicateOptions<TItem>>
+    public class HasItemWithConditionResult<TCollection, TItem> : aweXpect.Core.IOptionsProvider<aweXpect.Options.PredicateOptions<TItem>>
     {
-        public aweXpect.Results.HasItemWithConditionResult<TCollection, TItem> Matching(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public aweXpect.Results.HasItemWithConditionResult<TCollection, T> Matching<T>() { }
-        public aweXpect.Results.HasItemWithConditionResult<TCollection, T> Matching<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public aweXpect.Results.HasItemWithConditionResult<TCollection, T> MatchingExactly<T>() { }
-        public aweXpect.Results.HasItemWithConditionResult<TCollection, T> MatchingExactly<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.HasItemResult<TCollection> Matching(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.HasItemResult<TCollection> Matching<T>() { }
+        public aweXpect.Results.HasItemResult<TCollection> Matching<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.HasItemResult<TCollection> MatchingExactly<T>() { }
+        public aweXpect.Results.HasItemResult<TCollection> MatchingExactly<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public class IsParsableResult<TType> : aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>>
         where TType : System.IParsable<TType>
