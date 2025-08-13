@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
-      {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 19 22:34:18 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          178.71268560091656,
           187.2513000488281,
           191.27877269472395,
           173.9553770167487,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           185.16794306891305,
           200.1135129928589,
           199.90198740959167,
-          203.2699544089181
+          203.2699544089181,
+          186.45356362660726
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          233.49430828094484,
           262.96148611704507,
           251.27184425081526,
           247.52893355914526,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           257.1052480061849,
           288.7689599672953,
           271.3134614626567,
-          272.4818913936615
+          272.4818913936615,
+          254.98880185399736
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          911.5036448160807,
           964.9681312561036,
           936.8103875478108,
           894.1112631284274,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           888.4331371600812,
           950.8576468785603,
           961.274909845988,
-          990.8652286529541
+          990.8652286529541,
+          910.1409365971883
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -707,7 +707,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
-          2416,
+          2408,
           2408,
           2408,
           2408,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
       {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          303430.55691731774,
           287811.86746651784,
           287180.96611328126,
           281234.68694196426,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           284261.90164620534,
           291641.52945963544,
           314921.4136393229,
-          289201.03681640624
+          289201.03681640624,
+          287544.3777018229
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2164692.598214286,
           2293917.0736979167,
           2215618.6690848214,
           2266668.7569754464,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2185807.382552083,
           2446740.6380208335,
           2399744.9088541665,
-          2344961.8111979165
+          2344961.8111979165,
+          2192660.978385417
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          671342.2019042969,
           667591.9186662947,
           651275.3385416666,
           662703.6919642857,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           708570.1418108259,
           724211.8733258928,
           727263.4899088541,
-          730282.8316127232
+          730282.8316127232,
+          664453.5528645833
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1440,7 +1440,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
+          880545,
           880545,
           880545,
           880545,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
       {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          375.576119073232,
           485.60283679962157,
           449.27902053197226,
           439.43279056549073,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           471.58090145247326,
           513.2954837799073,
           507.9237178166707,
-          471.82289252962386
+          471.82289252962386,
+          464.03949581782024
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1886,7 +1886,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          944,
           1392,
           1392,
           1392,
@@ -1900,6 +1899,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          509.7335442860921,
           551.2972931543986,
           494.9433223088582,
           477.7858723004659,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           473.38043030103046,
           579.4196901321411,
           625.1886011123657,
-          491.2681080500285
+          491.2681080500285,
+          490.3109907786051
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          21570.691965738934,
           15904.086994716099,
           14826.510661824545,
           17115.871579851424,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14607.753365071614,
           17891.715669904435,
           19982.52837524414,
-          15270.539393107096
+          15270.539393107096,
+          14705.126055908204
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2173,7 +2173,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
-          27488,
+          27480,
           27480,
           27480,
           27480,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
       {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          203.61079907417297,
           240.67839549382526,
           223.5206732749939,
           209.79220821176256,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           212.9125053201403,
           246.97699890136718,
           249.13954078356426,
-          236.79688254992166
+          236.79688254992166,
+          218.7941171805064
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          239.97455263137817,
           273.18821805318197,
           249.18802884646826,
           247.25985822677612,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           284.691321849823,
           290.2568111101786,
           270.8660439491272,
-          276.47194420496623
+          276.47194420496623,
+          246.74475710732597
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1292.8344411214193,
           1302.40148340861,
           1231.6905220031738,
           1215.2747761862618,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1206.465983581543,
           1289.8312764485677,
           1238.3823009490966,
-          1206.8911201477051
+          1206.8911201477051,
+          1191.4142826080322
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2906,7 +2906,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
-          2992,
+          2984,
           2984,
           2984,
           2984,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
       {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          344.58875094927276,
           404.3627974305834,
           346.1702092034476,
           337.8303912480672,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           340.064981396993,
           392.8086578845978,
           377.83654537200925,
-          394.5958653177534
+          394.5958653177534,
+          348.3294795581273
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          474.36408478418986,
           552.2087310791015,
           471.5006531935472,
           452.5546978541783,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           484.9827379862467,
           564.8904190063477,
           529.1992258071899,
-          497.35900224049885
+          497.35900224049885,
+          477.90038274129233
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1368.1809170586723,
           1446.4890033176966,
           1305.0158487047468,
           1300.7130370821271,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1245.648823038737,
           1347.8842615400042,
           1265.9992123921713,
-          1214.712830734253
+          1214.712830734253,
+          1227.992769241333
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3639,7 +3639,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
-          3096,
+          3072,
           3072,
           3072,
           3072,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
       {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1131.3778129305158,
           1225.8498344421387,
           1195.2742523780237,
           1113.352572807899,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1422.5139600208827,
           1437.587763595581,
           1559.861279296875,
-          1360.6034299214682
+          1360.6034299214682,
+          1368.3301949818929
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2008,
           2024,
           2024,
           2024,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
+          2744,
           2744
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1416.3262522379557,
           1502.0562735239664,
           1336.538775507609,
           1347.518753306071,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1307.4820973322942,
           1477.973246383667,
           1480.9022111256918,
-          1351.5406889597575
+          1351.5406889597575,
+          1358.9983839670817
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2761.133438873291,
           3045.4570511409215,
           2808.122027842204,
           2795.4036272684734,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3258.705184664045,
           3480.661188252767,
           3493.469972229004,
-          3203.943726348877
+          3203.943726348877,
+          3323.2729583740233
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4372,7 +4372,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
-          4576,
+          5296,
           5296,
           5296,
           5296,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "6ee0b58b48cfee871a4d0717065b257735d143e8",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon May 19 12:11:24 2025 \u002B0200",
-        "message": "feat: add \u0060IsBetween\u0060/\u0060IsNotBetween\u0060 for \u0060DateTime\u0060 and \u0060DateTimeOffset\u0060 (#620)"
-      },
       {
         "sha": "67d0ad6a9c5b6ec715a14dbd2b2ce015419369a6",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Aug 13 19:30:50 2025 \u002B0200",
         "message": "fix: error in build pipeline (#720)"
+      },
+      {
+        "sha": "b4cae97b90c350b33b31e1b19402974af01fbb4c",
+        "author": "dependabot[bot]",
+        "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
+        "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
       }
     ],
     "labels": [
-      "6ee0b58b",
       "67d0ad6a",
       "905faa41",
       "9006a8c5",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "df0c03be",
       "02df3871",
       "6c33916e",
-      "e13592d8"
+      "e13592d8",
+      "b4cae97b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1271.0965385437012,
           1388.1481117248536,
           1268.3262772193323,
           1267.8402309417725,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1631.4195346832275,
           1731.8070226033528,
           1747.4298141479492,
-          1536.9937772750854
+          1536.9937772750854,
+          1608.6768086751301
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4818,7 +4818,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2168,
           2184,
           2184,
           2184,
@@ -4834,6 +4833,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149318.6705078125,
           155861.46683175224,
           153176.94580078125,
           152456.72589983259,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           150156.30393629806,
           156166.65538611778,
           155727.4384765625,
-          147366.4920828683
+          147366.4920828683,
+          153268.76634114582
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63788,
           64323,
           63787,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63351,
           63788,
           63788,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4683.222218577067,
           4909.099930354527,
           4628.737167945275,
           4710.638694254557,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3930.4506861368814,
           4092.1461588541665,
           4155.465719604492,
-          3889.4913177490234
+          3889.4913177490234,
+          3909.6036544799804
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5105,7 +5105,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
-          6744,
+          6488,
           6488,
           6488,
           6488,
