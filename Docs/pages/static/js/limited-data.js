@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
-      {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 18 11:26:26 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          187.6169864018758,
           181.5952605565389,
           187.63515160878498,
           178.71268560091656,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           198.17753066335405,
           190.1297850926717,
           234.02060882250467,
-          185.16794306891305
+          185.16794306891305,
+          200.1135129928589
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          248.11447817484537,
           258.12571522394813,
           246.8474992605356,
           233.49430828094484,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           258.432616964976,
           245.98242822060217,
           249.71872707513663,
-          257.1052480061849
+          257.1052480061849,
+          288.7689599672953
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          927.7966883977255,
           880.0973598480225,
           940.4764093399048,
           911.5036448160807,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           930.0936544418335,
           883.940659014384,
           896.0688382466634,
-          888.4331371600812
+          888.4331371600812,
+          950.8576468785603
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -710,7 +710,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
-          2416,
+          2408,
           2408,
           2408,
           2408,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
       {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          310147.3642252604,
           287579.0711844308,
           299423.3176967076,
           303430.55691731774,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           305111.10367838544,
           292140.8224158654,
           292236.50840541295,
-          284261.90164620534
+          284261.90164620534,
+          291641.52945963544
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2277128.902604167,
           2335998.4235491073,
           2197807.0786458333,
           2164692.598214286,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2220154.4231770835,
           2191079.2848772323,
           2360559.8858173075,
-          2185807.382552083
+          2185807.382552083,
+          2446740.6380208335
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          700539.7150716146,
           699778.2192382812,
           659679.575,
           671342.2019042969,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           701510.5596354167,
           686821.1316266741,
           698028.2536458333,
-          708570.1418108259
+          708570.1418108259,
+          724211.8733258928
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1443,7 +1443,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
+          880545,
           880545,
           880545,
           880545,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
       {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          350.76919905344647,
           347.9542342821757,
           333.9025814374288,
           375.576119073232,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           475.08565584818524,
           504.9109592437744,
           480.5751190185547,
-          471.58090145247326
+          471.58090145247326,
+          513.2954837799073
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1889,7 +1889,6 @@ window.BENCHMARK_DATA = {
           944,
           944,
           944,
-          944,
           1392,
           1392,
           1392,
@@ -1903,6 +1902,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          504.842479578654,
           492.4458077294486,
           489.7146891866411,
           509.7335442860921,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           523.9816182000296,
           543.4679034550985,
           538.7194717407226,
-          473.38043030103046
+          473.38043030103046,
+          579.4196901321411
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          17608.677599225724,
           16844.23057047526,
           23868.770422363283,
           21570.691965738934,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           23085.48228963216,
           16267.27124633789,
           15407.828228759765,
-          14607.753365071614
+          14607.753365071614,
+          17891.715669904435
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2176,7 +2176,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
-          27488,
+          27480,
           27480,
           27480,
           27480,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
       {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          214.94125425020854,
           216.55600725809734,
           219.55566101807815,
           203.61079907417297,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           218.3774802003588,
           224.6800581296285,
           237.9080223719279,
-          212.9125053201403
+          212.9125053201403,
+          246.97699890136718
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          251.83838173321314,
           252.34174184799195,
           252.67604320389884,
           239.97455263137817,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           255.63850485483806,
           281.35247004826863,
           283.3998212814331,
-          284.691321849823
+          284.691321849823,
+          290.2568111101786
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1268.9633193969726,
           1234.527002628033,
           1244.4499455769858,
           1292.8344411214193,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1273.364831161499,
           1342.2946872711182,
           1257.7739298502604,
-          1206.465983581543
+          1206.465983581543,
+          1289.8312764485677
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2909,7 +2909,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
-          2992,
+          2984,
           2984,
           2984,
           2984,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
       {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          369.8556284268697,
           337.4909543650491,
           344.6681323732649,
           344.58875094927276,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           332.38635169542755,
           403.75442225138346,
           363.8827963511149,
-          340.064981396993
+          340.064981396993,
+          392.8086578845978
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          491.16339473724366,
           471.05012060801187,
           480.88228034973145,
           474.36408478418986,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           469.28064911706105,
           475.27943270547047,
           576.4057349522908,
-          484.9827379862467
+          484.9827379862467,
+          564.8904190063477
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1337.3471445356097,
           1235.8453269958495,
           1340.974303817749,
           1368.1809170586723,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1278.82953859965,
           1355.6293227855977,
           1293.9423133850098,
-          1245.648823038737
+          1245.648823038737,
+          1347.8842615400042
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3642,7 +3642,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
-          3096,
+          3072,
           3072,
           3072,
           3072,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
       {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1156.6017702738443,
           1052.1590765635171,
           1166.9130198160808,
           1131.3778129305158,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1383.401475906372,
           1459.6668649400983,
           1416.8200059618268,
-          1422.5139600208827
+          1422.5139600208827,
+          1437.587763595581
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2008,
           2008,
           2008,
           2008,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
+          2744,
           2744
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1350.41394627889,
           1282.548368181501,
           1331.6883131663005,
           1416.3262522379557,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1433.4731702168783,
           1313.9129651387532,
           1455.476150004069,
-          1307.4820973322942
+          1307.4820973322942,
+          1477.973246383667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2862.940421295166,
           2888.138011423747,
           2872.930598122733,
           2761.133438873291,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3484.4482836405437,
           3244.4809435330903,
           3433.105632019043,
-          3258.705184664045
+          3258.705184664045,
+          3480.661188252767
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4375,7 +4375,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
-          4576,
+          5296,
           5296,
           5296,
           5296,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "1b058cd0e4b9fa2ff0c696fe3a45ff2a77ece5de",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun May 18 10:51:02 2025 \u002B0200",
-        "message": "feat: add \u0060MoreThan\u0060 and \u0060LessThan\u0060 for collections (#612)"
-      },
       {
         "sha": "76f35d15b2efe2f043b61d491623453d5c3d30c0",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.16.1 (#717)"
+      },
+      {
+        "sha": "02df3871bcee240a370064534f7ee1dae6c94414",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Aug 13 14:53:12 2025 \u002B0200",
+        "message": "fix: \u0060HasItem\u0060 without parameters does not make sense (#719)"
       }
     ],
     "labels": [
-      "1b058cd0",
       "76f35d15",
       "a0b9d93b",
       "6ee0b58b",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "13b82945",
       "4e412112",
       "d08341b5",
-      "df0c03be"
+      "df0c03be",
+      "02df3871"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1244.2378768920898,
           1215.7861814498901,
           1270.4497479030065,
           1271.0965385437012,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1569.1162965138753,
           1711.3150469916206,
           1649.2603721618652,
-          1631.4195346832275
+          1631.4195346832275,
+          1731.8070226033528
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4821,7 +4821,6 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           2184,
           2184,
           2184,
@@ -4837,6 +4836,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          153676.858921596,
           153453.19403545672,
           152473.55006510418,
           149318.6705078125,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           152821.7036783854,
           157078.56497395833,
           155141.36845703126,
-          150156.30393629806
+          150156.30393629806,
+          156166.65538611778
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63787,
           63788,
           63787,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63788,
           63788,
-          63351
+          63351,
+          63788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4809.24713570731,
           4705.367414202009,
           4787.81876373291,
           4683.222218577067,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3955.43299974714,
           3917.860544644869,
           3978.8337814331053,
-          3930.4506861368814
+          3930.4506861368814,
+          4092.1461588541665
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5108,7 +5108,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
-          6744,
+          6488,
           6488,
           6488,
           6488,
