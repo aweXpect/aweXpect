@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -36,6 +37,7 @@ public static partial class ThatAsyncEnumerable
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private IAsyncEnumerable<TItem>? _materializedEnumerable;
+		private readonly List<TItem> _items = [];
 
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
@@ -48,10 +50,22 @@ public static partial class ThatAsyncEnumerable
 			}
 
 			_materializedEnumerable =
-				await context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual, cancellationToken);
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			await using IAsyncEnumerator<TItem> enumerator = _materializedEnumerable.GetAsyncEnumerator(cancellationToken);
 			if (await enumerator.MoveNextAsync())
 			{
+				int maximumNumberOfCollectionItems =
+					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+				_items.Add(enumerator.Current);
+				while (await enumerator.MoveNextAsync())
+				{
+					_items.Add(enumerator.Current);
+					if (_items.Count > maximumNumberOfCollectionItems)
+					{
+						break;
+					}
+				}
+
 				Outcome = Outcome.Failure;
 				return this;
 			}
@@ -75,7 +89,14 @@ public static partial class ThatAsyncEnumerable
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
+			if (_materializedEnumerable is null)
+			{
+				stringBuilder.Append("<null>");
+			}
+			else
+			{
+				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
+			}
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
@@ -99,7 +120,7 @@ public static partial class ThatAsyncEnumerable
 			}
 			else
 			{
-				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
+				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
 			}
 		}
 	}
