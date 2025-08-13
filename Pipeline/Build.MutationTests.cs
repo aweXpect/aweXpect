@@ -46,6 +46,7 @@ partial class Build
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
+			ArtifactsDirectory.CreateDirectory();
 			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
 			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
 			
@@ -108,6 +109,7 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
+			ArtifactsDirectory.CreateDirectory();
 			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
 			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
 
