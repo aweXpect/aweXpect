@@ -63,8 +63,8 @@ jobs:
                         ./Artifacts/*
                         ./TestResults/*.trx
     
-    mutation-tests:
-        name: "Mutation tests"
+    mutation-tests-core:
+        name: "Mutation tests (aweXpect.Core)"
         runs-on: ubuntu-latest
         env:
             STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
@@ -78,9 +78,61 @@ jobs:
                 with:
                     dotnet-version: |
                         8.0.x
-                        9.0.x
             -   name: Run mutation tests
-                run: ./build.sh MutationTests MutationTestDashboard
+                run: ./build.sh MutationTestsCore
+            -   name: Upload artifacts
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: MutationTestsCore
+                    path: |
+                        ./Artifacts/*
+    
+    mutation-tests-main:
+        name: "Mutation tests (aweXpect)"
+        runs-on: ubuntu-latest
+        env:
+            STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+            DOTNET_NOLOGO: true
+        steps:
+            -   uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
+                with:
+                    dotnet-version: |
+                        8.0.x
+            -   name: Run mutation tests
+                run: ./build.sh MutationTestsMain
+            -   name: Upload artifacts
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: MutationTestsMain
+                    path: |
+                        ./Artifacts/*
+    
+    mutation-tests-dashboard:
+        name: "Mutation tests Dashboard"
+        needs: [ mutation-tests-main, mutation-tests-core ]
+        runs-on: ubuntu-latest
+        env:
+            STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+            DOTNET_NOLOGO: true
+        steps:
+            -   uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
+                with:
+                    dotnet-version: |
+                        8.0.x
+            -   name: Run mutation tests
+                run: ./build.sh MutationTestsDashboard
+                env:
+                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
     
     benchmarks:
         name: "Benchmarks"
@@ -173,7 +225,7 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         runs-on: macos-latest
         environment: production
-        needs: [ pack, build-pages, mutation-tests ]
+        needs: [ pack, build-pages, mutation-tests-dashboard ]
         permissions:
             contents: write
         steps:
@@ -182,6 +234,8 @@ jobs:
                 with:
                     name: Packages
                     path: Artifacts/Packages
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
             -   name: Publish
                 run: |
                     echo "Found the following packages to push:"
@@ -192,7 +246,7 @@ jobs:
                     done
                     for entry in Artifacts/Packages/aweXpect/*.nupkg
                     do
-                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+                      dotnet nuget push $entry --source https://api.nuget.org/v3/index.json --api-key "${{secrets.NUGET_API_KEY}}" --skip-duplicate
                     done
             -   name: Check pre-release
                 id: check-pre-release
@@ -222,6 +276,8 @@ jobs:
                 with:
                     name: Packages
                     path: Artifacts/Packages
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
             -   name: Publish
                 run: |
                     echo "Found the following packages to push:"
@@ -232,7 +288,7 @@ jobs:
                     done
                     for entry in Artifacts/Packages/aweXpect.Core/*.nupkg
                     do
-                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+                      dotnet nuget push $entry --source https://api.nuget.org/v3/index.json --api-key "${{secrets.NUGET_API_KEY}}" --skip-duplicate
                     done
     
     finalize-release:

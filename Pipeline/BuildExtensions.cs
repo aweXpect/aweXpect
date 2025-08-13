@@ -75,7 +75,7 @@ public static class BuildExtensions
 					if (fileResponse.IsSuccessStatusCode)
 					{
 						using ZipArchive archive = new(await fileResponse.Content.ReadAsStreamAsync());
-						archive.ExtractToDirectory(artifactsDirectory);
+						archive.ExtractToDirectory(artifactsDirectory, true);
 						Log.Information(
 							$"Extracted artifact #{artifactId} with {archive.Entries.Count} entries to {artifactsDirectory}:\n - {string.Join("\n - ", archive.Entries.Select(entry => $"{entry.Name} ({entry.Length})"))}");
 					}
