@@ -46,6 +46,9 @@ partial class Build
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
+			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+			
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
 			var mutationCommentBodies = new List<string>();
@@ -105,6 +108,9 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
+			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{
