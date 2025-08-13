@@ -68,7 +68,7 @@ partial class Build
 				IReadOnlyList<IssueComment> comments =
 					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect",
 						"aweXpect", prId.Value);
-				IssueComment? existingComment = null;
+				IssueComment existingComment = null;
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
 				{
