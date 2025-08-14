@@ -2016,6 +2016,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -2354,7 +2360,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -2696,7 +2703,8 @@ window.BENCHMARK_DATA = {
           200.1135129928589,
           199.90198740959167,
           203.2699544089181,
-          186.45356362660726
+          186.45356362660726,
+          183.13216352462769
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2891,6 +2899,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -3393,7 +3402,8 @@ window.BENCHMARK_DATA = {
           288.7689599672953,
           271.3134614626567,
           272.4818913936615,
-          254.98880185399736
+          254.98880185399736,
+          248.19299169949122
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3586,6 +3596,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4090,7 +4101,8 @@ window.BENCHMARK_DATA = {
           950.8576468785603,
           961.274909845988,
           990.8652286529541,
-          910.1409365971883
+          910.1409365971883,
+          930.995847775386
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4425,6 +4437,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6005,6 +6018,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -6266,7 +6285,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -6531,7 +6551,8 @@ window.BENCHMARK_DATA = {
           291641.52945963544,
           314921.4136393229,
           289201.03681640624,
-          287544.3777018229
+          287544.3777018229,
+          288603.015234375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6744,6 +6765,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940,
           284940,
@@ -7074,7 +7096,8 @@ window.BENCHMARK_DATA = {
           2446740.6380208335,
           2399744.9088541665,
           2344961.8111979165,
-          2192660.978385417
+          2192660.978385417,
+          2202577.6903645834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7190,6 +7213,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7617,7 +7641,8 @@ window.BENCHMARK_DATA = {
           724211.8733258928,
           727263.4899088541,
           730282.8316127232,
-          664453.5528645833
+          664453.5528645833,
+          658883.3915364583
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7875,6 +7900,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -9917,6 +9943,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -10255,7 +10287,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -10597,7 +10630,8 @@ window.BENCHMARK_DATA = {
           513.2954837799073,
           507.9237178166707,
           471.82289252962386,
-          464.03949581782024
+          464.03949581782024,
+          442.4040372031076
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10908,6 +10942,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
+          1432,
           1432,
           1432,
           1432,
@@ -11294,7 +11329,8 @@ window.BENCHMARK_DATA = {
           579.4196901321411,
           625.1886011123657,
           491.2681080500285,
-          490.3109907786051
+          490.3109907786051,
+          479.5578879674276
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11487,6 +11523,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -11991,7 +12028,8 @@ window.BENCHMARK_DATA = {
           17891.715669904435,
           19982.52837524414,
           15270.539393107096,
-          14705.126055908204
+          14705.126055908204,
+          20889.49923095703
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12326,6 +12364,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -14368,6 +14407,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -14706,7 +14751,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -15048,7 +15094,8 @@ window.BENCHMARK_DATA = {
           246.97699890136718,
           249.13954078356426,
           236.79688254992166,
-          218.7941171805064
+          218.7941171805064,
+          217.4677364349365
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15244,6 +15291,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -15745,7 +15793,8 @@ window.BENCHMARK_DATA = {
           290.2568111101786,
           270.8660439491272,
           276.47194420496623,
-          246.74475710732597
+          246.74475710732597,
+          249.4118927637736
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15938,6 +15987,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -16442,7 +16492,8 @@ window.BENCHMARK_DATA = {
           1289.8312764485677,
           1238.3823009490966,
           1206.8911201477051,
-          1191.4142826080322
+          1191.4142826080322,
+          1193.1783335549492
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16777,6 +16828,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -18819,6 +18871,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -19157,7 +19215,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -19499,7 +19558,8 @@ window.BENCHMARK_DATA = {
           392.8086578845978,
           377.83654537200925,
           394.5958653177534,
-          348.3294795581273
+          348.3294795581273,
+          353.49674501419065
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19789,6 +19849,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128,
           1128,
@@ -20196,7 +20257,8 @@ window.BENCHMARK_DATA = {
           564.8904190063477,
           529.1992258071899,
           497.35900224049885,
-          477.90038274129233
+          477.90038274129233,
+          485.5436551411947
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20389,6 +20451,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -20893,7 +20956,8 @@ window.BENCHMARK_DATA = {
           1347.8842615400042,
           1265.9992123921713,
           1214.712830734253,
-          1227.992769241333
+          1227.992769241333,
+          1214.6202109200615
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -21228,6 +21292,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -23270,6 +23335,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -23608,7 +23679,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -23950,7 +24022,8 @@ window.BENCHMARK_DATA = {
           1437.587763595581,
           1559.861279296875,
           1360.6034299214682,
-          1368.3301949818929
+          1368.3301949818929,
+          1363.9384354182653
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24263,6 +24336,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -24647,7 +24721,8 @@ window.BENCHMARK_DATA = {
           1477.973246383667,
           1480.9022111256918,
           1351.5406889597575,
-          1358.9983839670817
+          1358.9983839670817,
+          1310.710327557155
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24840,6 +24915,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -25344,7 +25420,8 @@ window.BENCHMARK_DATA = {
           3480.661188252767,
           3493.469972229004,
           3203.943726348877,
-          3323.2729583740233
+          3323.2729583740233,
+          3214.10625239781
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25679,6 +25756,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -27721,6 +27799,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Aug 13 20:05:33 2025 \u002B0200",
         "message": "chore: Bump actions/download-artifact from 4 to 5 (#709)"
+      },
+      {
+        "sha": "835bc0d48338cbc25c4bd0798a397e7e0af05571",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Aug 14 21:30:12 2025 \u002B0200",
+        "message": "docs: avoid duplicate documentation in extension projects (#721)"
       }
     ],
     "labels": [
@@ -28059,7 +28143,8 @@ window.BENCHMARK_DATA = {
       "02df3871",
       "6c33916e",
       "e13592d8",
-      "b4cae97b"
+      "b4cae97b",
+      "835bc0d4"
     ],
     "datasets": [
       {
@@ -28401,7 +28486,8 @@ window.BENCHMARK_DATA = {
           1731.8070226033528,
           1747.4298141479492,
           1536.9937772750854,
-          1608.6768086751301
+          1608.6768086751301,
+          1638.9181364604406
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28714,6 +28800,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -29098,7 +29185,8 @@ window.BENCHMARK_DATA = {
           156166.65538611778,
           155727.4384765625,
           147366.4920828683,
-          153268.76634114582
+          153268.76634114582,
+          147517.8103515625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29444,6 +29532,7 @@ window.BENCHMARK_DATA = {
           63351,
           63788,
           63788,
+          63787,
           63787,
           63787
         ],
@@ -29795,7 +29884,8 @@ window.BENCHMARK_DATA = {
           4092.1461588541665,
           4155.465719604492,
           3889.4913177490234,
-          3909.6036544799804
+          3909.6036544799804,
+          3847.70875784067
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -30130,6 +30220,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
