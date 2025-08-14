@@ -40,6 +40,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# NUKE build artifacts
+.nuke/temp/
+
 # User-specific files
 *.rsuser
 *.suo

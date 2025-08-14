@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -727,6 +730,42 @@ public static partial class ThatEnumerable
 	}
 #endif
 
+	/// <summary>
+	///     Verifies that the collection contains items that satisfy all the provided <paramref name="predicates" />.
+	/// </summary>
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		Contains<TItem>(
+			this IThat<IEnumerable<TItem>?> source,
+			IEnumerable<Func<TItem, bool>> predicates,
+			[CallerArgumentExpression("predicates")] string doNotPopulateThisValue = "")
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainsPredicatesConstraint<TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					predicates)),
+			source);
+	}
+
+	/// <summary>
+	///     Verifies that the collection contains items that satisfy all the provided <paramref name="expectations" />.
+	/// </summary>
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		Contains<TItem>(
+			this IThat<IEnumerable<TItem>?> source,
+			IEnumerable<Action<IThat<TItem>>> expectations,
+			[CallerArgumentExpression("expectations")] string doNotPopulateThisValue = "")
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainsExpectationsConstraint<TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expectations)),
+			source);
+	}
+
 	private sealed class ContainConstraint<TItem>(
 		ExpectationBuilder expectationBuilder,
 		string it,
@@ -978,6 +1017,247 @@ public static partial class ThatEnumerable
 		{
 			_isNegated = !_isNegated;
 			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
+		}
+	}
+
+	private sealed class ContainsPredicatesConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		string predicatesExpression,
+		IEnumerable<Func<TItem, bool>> predicates)
+		: ConstraintResult(grammars),
+			IContextConstraint<IEnumerable<TItem>?>
+	{
+		private IEnumerable<TItem>? _actual;
+		private IList<Func<TItem, bool>>? _materializedPredicates;
+		private IEnumerable<TItem>? _materializedEnumerable;
+		private readonly List<int> _unsatisfiedPredicateIndices = new();
+
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		{
+			_actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			_materializedEnumerable = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			_materializedPredicates = predicates.ToList();
+			
+			var satisfiedPredicates = new bool[_materializedPredicates.Count];
+			
+			// Check each item against all predicates
+			foreach (var item in _materializedEnumerable)
+			{
+				for (int i = 0; i < _materializedPredicates.Count; i++)
+				{
+					if (!satisfiedPredicates[i] && _materializedPredicates[i](item))
+					{
+						satisfiedPredicates[i] = true;
+					}
+				}
+			}
+
+			// Collect unsatisfied predicates
+			for (int i = 0; i < satisfiedPredicates.Length; i++)
+			{
+				if (!satisfiedPredicates[i])
+				{
+					_unsatisfiedPredicateIndices.Add(i);
+				}
+			}
+
+			if (_unsatisfiedPredicateIndices.Any())
+			{
+				Outcome = Outcome.Failure;
+				expectationBuilder.AddCollectionContext(_materializedEnumerable);
+				return this;
+			}
+
+			Outcome = Outcome.Success;
+			return this;
+		}
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append($"contains items satisfying all predicates in {predicatesExpression}");
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual == null)
+			{
+				stringBuilder.Append(it).Append(" was <null>");
+			}
+			else if (_materializedPredicates == null)
+			{
+				stringBuilder.Append(it).Append(" was not evaluated");
+			}
+			else if (_unsatisfiedPredicateIndices.Any())
+			{
+				stringBuilder.Append(it).Append($" did not contain items satisfying {_unsatisfiedPredicateIndices.Count} of {_materializedPredicates.Count} predicates");
+				if (_unsatisfiedPredicateIndices.Count <= 3)
+				{
+					stringBuilder.Append($" (predicates at indices: {string.Join(", ", _unsatisfiedPredicateIndices)})");
+				}
+				else
+				{
+					stringBuilder.Append($" (predicates at indices: {string.Join(", ", _unsatisfiedPredicateIndices.Take(3))} and {_unsatisfiedPredicateIndices.Count - 3} more)");
+				}
+			}
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(IEnumerable<TItem>));
+		}
+
+		public override ConstraintResult Negate()
+		{
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
+		}
+	}
+
+	private sealed class ContainsExpectationsConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		string expectationsExpression,
+		IEnumerable<Action<IThat<TItem>>> expectations)
+		: ConstraintResult(grammars),
+			IAsyncContextConstraint<IEnumerable<TItem>?>
+	{
+		private readonly ExpectationGrammars _grammars = grammars;
+		private IEnumerable<TItem>? _actual;
+		private IList<Action<IThat<TItem>>>? _materializedExpectations;
+		private IEnumerable<TItem>? _materializedEnumerable;
+		private readonly List<(int Index, string? FailureMessage)> _unsatisfiedExpectations = new();
+
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		{
+			_actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			_materializedEnumerable = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			_materializedExpectations = expectations.ToList();
+			
+			var satisfiedExpectations = new bool[_materializedExpectations.Count];
+			var lastFailureMessages = new string?[_materializedExpectations.Count];
+			
+			// Check each item against all expectations
+			foreach (var item in _materializedEnumerable)
+			{
+				for (int i = 0; i < _materializedExpectations.Count; i++)
+				{
+					if (!satisfiedExpectations[i])
+					{
+						try
+						{
+							var itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder, _grammars);
+							_materializedExpectations[i](new ThatSubject<TItem>(itemExpectationBuilder));
+							var isMatch = await itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
+							if (isMatch.Outcome == Outcome.Success)
+							{
+								satisfiedExpectations[i] = true;
+							}
+							else
+							{
+								lastFailureMessages[i] = isMatch.ToString();
+							}
+						}
+						catch (Exception ex)
+						{
+							lastFailureMessages[i] = ex.Message;
+						}
+					}
+				}
+			}
+
+			// Collect unsatisfied expectations
+			for (int i = 0; i < satisfiedExpectations.Length; i++)
+			{
+				if (!satisfiedExpectations[i])
+				{
+					_unsatisfiedExpectations.Add((i, lastFailureMessages[i]));
+				}
+			}
+
+			if (_unsatisfiedExpectations.Any())
+			{
+				Outcome = Outcome.Failure;
+				expectationBuilder.AddCollectionContext(_materializedEnumerable);
+				return this;
+			}
+
+			Outcome = Outcome.Success;
+			return this;
+		}
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append($"contains items satisfying all expectations in {expectationsExpression}");
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual == null)
+			{
+				stringBuilder.Append(it).Append(" was <null>");
+			}
+			else if (_materializedExpectations == null)
+			{
+				stringBuilder.Append(it).Append(" was not evaluated");
+			}
+			else if (_unsatisfiedExpectations.Any())
+			{
+				stringBuilder.Append(it).Append($" did not contain items satisfying {_unsatisfiedExpectations.Count} of {_materializedExpectations.Count} expectations");
+				foreach (var unsatisfied in _unsatisfiedExpectations.Take(3))
+				{
+					stringBuilder.Append($"\n  - Expectation at index {unsatisfied.Index}: {unsatisfied.FailureMessage}");
+				}
+				if (_unsatisfiedExpectations.Count > 3)
+				{
+					stringBuilder.Append($"\n  - (and {_unsatisfiedExpectations.Count - 3} more)");
+				}
+			}
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(IEnumerable<TItem>));
+		}
+
+		public override ConstraintResult Negate()
+		{
 			Outcome = Outcome switch
 			{
 				Outcome.Failure => Outcome.Success,
