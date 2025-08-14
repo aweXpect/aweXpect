@@ -92,11 +92,11 @@ const config: Config = {
           label: 'Benchmarks',
           position: 'left'
         },
-        {
-          to: '/blog',
-          label: 'Blog',
-          position: 'right'
-        },
+        //{
+        //  to: '/blog',
+        //  label: 'Blog',
+        //  position: 'right'
+        //},
       ],
     },
     footer: {
@@ -113,10 +113,10 @@ const config: Config = {
               label: 'Benchmarks',
               to: '/benchmarks',
             },
-            {
-              label: "Blog",
-              to: "/blog"
-            },
+            //{
+            //  label: "Blog",
+            //  to: "/blog"
+            //},
           ],
         },
         {
