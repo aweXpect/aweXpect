@@ -734,7 +734,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection contains items that satisfy all the provided <paramref name="predicates" />.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
-		Contains<TItem>(
+		ContainsWithPredicates<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<Func<TItem, bool>> predicates,
 			[CallerArgumentExpression("predicates")] string doNotPopulateThisValue = "")
@@ -752,7 +752,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection contains items that satisfy all the provided <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
-		Contains<TItem>(
+		ContainsWithExpectations<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<Action<IThat<TItem>>> expectations,
 			[CallerArgumentExpression("expectations")] string doNotPopulateThisValue = "")
