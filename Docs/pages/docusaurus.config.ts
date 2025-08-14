@@ -92,11 +92,7 @@ const config: Config = {
           label: 'Benchmarks',
           position: 'left'
         },
-        {
-          to: '/blog',
-          label: 'Blog',
-          position: 'right'
-        },
+        // Add blog link here if blog functionality is re-enabled in the future (https://github.com/aweXpect/aweXpect/pull/722)
       ],
     },
     footer: {
@@ -110,12 +106,12 @@ const config: Config = {
               to: '/docs/expectations/getting-started',
             },
             {
-              label: 'Benchmarks',
-              to: '/benchmarks',
+              label: 'Extensions',
+              to: '/docs/category/extension-projects',
             },
             {
-              label: "Blog",
-              to: "/blog"
+              label: 'Benchmarks',
+              to: '/benchmarks',
             },
           ],
         },
