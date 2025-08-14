@@ -44,18 +44,17 @@ partial class Build
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
 		.DependsOn(MutationTestsDashboard)
-		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
-			if (!File.Exists(ArtifactsDirectory / "PR.txt"))
+			if (!File.Exists(ArtifactsDirectory / "aweXpect" / "PR.txt"))
 			{
 				Log.Debug("Missing PR.txt file in artifacts");
 			}
 			
-			string prNumber = File.ReadAllText(ArtifactsDirectory / "PR.txt");
+			string prNumber = File.ReadAllText(ArtifactsDirectory / "aweXpect" / "PR.txt");
 			Log.Debug("Pull request number: {PullRequestId}", prNumber);
 			var mutationCommentBodies = new List<string>();
-			foreach (var file in ArtifactsDirectory.GetFiles("MutationTest_*.md"))
+			foreach (var file in ArtifactsDirectory.GetFiles("MutationTest_*.md", 2))
 			{
 				var body = await File.ReadAllTextAsync(file);
 				mutationCommentBodies.Add(body);
@@ -63,6 +62,7 @@ partial class Build
 
 			if (mutationCommentBodies.Count == 0)
 			{
+				Log.Warning("No files matching \"MutationTest_*.md\" found");
 				return;
 			}
 
@@ -112,8 +112,8 @@ partial class Build
 		.Executes(async () =>
 		{
 			ArtifactsDirectory.CreateDirectory();
-			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
-			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory / "aweXpect.Core", GithubToken);
+			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory / "aweXpect", GithubToken);
 
 			Dictionary<Project, Project[]> projects = new()
 			{
@@ -125,11 +125,11 @@ partial class Build
 				},
 			};
 			string apiKey = Environment.GetEnvironmentVariable("STRYKER_DASHBOARD_API_KEY");
-			string branchName = File.ReadAllText(ArtifactsDirectory / "BranchName.txt");
 			foreach (KeyValuePair<Project, Project[]> project in projects)
 			{
+				string branchName = File.ReadAllText(ArtifactsDirectory / project.Key.Name / "BranchName.txt");
 				string reportComment =
-					File.ReadAllText(ArtifactsDirectory / "Stryker" / "reports" / "mutation-report.json");
+					File.ReadAllText(ArtifactsDirectory / project.Key.Name / "Stryker" / "reports" / "mutation-report.json");
 				using HttpClient client = new();
 				client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 				// https://stryker-mutator.io/docs/General/dashboard/#send-a-report-via-curl
@@ -205,11 +205,11 @@ partial class Build
 		}
 
 		File.WriteAllText(ArtifactsDirectory / $"MutationTest_{project.Name}.md", CreateMutationCommentBody(project.Name));
-			
-		int? prId = GitHubActions?.PullRequestNumber;
-		if (prId != null)
+
+		if (GitHubActions?.IsPullRequest == true)
 		{
-			File.WriteAllText(ArtifactsDirectory / "PR.txt", prId.Value.ToString());
+			Log.Information($"Write pull request number to PR.txt: {GitHubActions?.PullRequestNumber}");
+			File.WriteAllText(ArtifactsDirectory / "PR.txt", GitHubActions?.PullRequestNumber?.ToString());
 		}
 	}
 
