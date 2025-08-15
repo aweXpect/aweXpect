@@ -43,6 +43,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Api.Tests", "Tests\aweXpect.Api.Tests\aweXpect.Api.Tests.csproj", "{A739E471-FF01-46E0-822D-7857F9D34535}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{DFD09AAE-5400-42DA-BF53-A06D27390BC7}"
+	ProjectSection(SolutionItems) = preProject
+		.github\copilot-instructions.md = .github\copilot-instructions.md
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{7819A5D7-30A2-4ADE-A84B-C1791BF9F21F}"
 	ProjectSection(SolutionItems) = preProject
