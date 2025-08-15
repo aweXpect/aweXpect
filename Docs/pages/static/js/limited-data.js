@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
-      {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 20 20:51:43 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          199.80228233337402,
           178.76434304033006,
           184.1249951203664,
           174.9670513788859,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           186.45356362660726,
           183.13216352462769,
           185.4529879728953,
-          209.4766722236361
+          209.4766722236361,
+          176.3403208439167
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          255.03110618591307,
           238.30563385146004,
           247.57854792049952,
           233.77054506937662,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           254.98880185399736,
           248.19299169949122,
           248.3575360774994,
-          250.19637956619263
+          250.19637956619263,
+          242.52819787538968
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          915.0066973822458,
           888.9810293197631,
           890.8840222676595,
           939.4979274749755,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           910.1409365971883,
           930.995847775386,
           887.0790412902832,
-          897.0460566838582
+          897.0460566838582,
+          891.5001493862698
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -703,7 +703,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
-          2416,
+          2408,
           2408,
           2408,
           2408,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
       {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          292183.7704101562,
           279505.085543119,
           302241.97431640624,
           287348.23465401784,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           287544.3777018229,
           288603.015234375,
           296501.3355794271,
-          288674.4901041667
+          288674.4901041667,
+          279407.5891113281
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2235792.8703125,
           2154650.2026041667,
           2362824.2916666665,
           2226640.401785714,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2192660.978385417,
           2202577.6903645834,
           2321438.3841145835,
-          2218867.88671875
+          2218867.88671875,
+          2141177.5106770834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          705797.3111328125,
           640466.5045572916,
           651360.494140625,
           659977.0431640625,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           664453.5528645833,
           658883.3915364583,
           688437.5030598958,
-          667132.234765625
+          667132.234765625,
+          677646.1714242789
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1436,7 +1436,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
+          880545,
           880545,
           880545,
           880545,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
       {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          436.89987319310507,
           456.5969689809359,
           455.9862754895137,
           437.305313428243,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           464.03949581782024,
           442.4040372031076,
           468.1060153521024,
-          473.73761469977245
+          473.73761469977245,
+          465.90790071487424
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1895,7 +1895,7 @@ window.BENCHMARK_DATA = {
           1392,
           1392,
           1392,
-          1392,
+          1432,
           1432,
           1432,
           1432,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          497.14046141306557,
           461.869382926396,
           484.6119711240133,
           466.8386217435201,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           490.3109907786051,
           479.5578879674276,
           514.7982196807861,
-          491.8068495477949
+          491.8068495477949,
+          469.4444543031546
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          21097.721282958984,
           16159.960723876953,
           15633.118927001953,
           16513.952407836914,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14705.126055908204,
           20889.49923095703,
           15895.511519368489,
-          20338.036645071847
+          20338.036645071847,
+          17330.356608799524
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2169,7 +2169,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
-          27488,
+          27480,
           27480,
           27480,
           27480,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
       {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          222.61224433581035,
           215.3104007755007,
           216.4665387948354,
           215.28101360003154,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           218.7941171805064,
           217.4677364349365,
           212.88218239148458,
-          222.21233277320863
+          222.21233277320863,
+          213.34604659080506
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          252.6089560508728,
           240.32801624706812,
           247.87021067937215,
           239.42126148087638,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           246.74475710732597,
           249.4118927637736,
           244.355327129364,
-          245.77705917358398
+          245.77705917358398,
+          255.3247394879659
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1230.7774927775065,
           1200.9123689015707,
           1274.7580629984539,
           1223.7221062978108,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1191.4142826080322,
           1193.1783335549492,
           1166.639362716675,
-          1161.9469874064127
+          1161.9469874064127,
+          1213.7299304962157
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2902,7 +2902,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
-          2992,
+          2984,
           2984,
           2984,
           2984,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
       {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          344.9213002522786,
           386.86575280703033,
           343.8973602881798,
           329.9240467389425,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           348.3294795581273,
           353.49674501419065,
           356.28253671101163,
-          343.1581967353821
+          343.1581967353821,
+          330.7347277959188
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          487.6526235580444,
           473.23411293029784,
           491.4839486440023,
           464.06545241673786,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           477.90038274129233,
           485.5436551411947,
           461.56122985252966,
-          475.9392600695292
+          475.9392600695292,
+          463.1377405166626
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1352.8751158396403,
           1253.971019744873,
           1401.2979301452638,
           1291.7464790344238,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1227.992769241333,
           1214.6202109200615,
           1190.7407019478935,
-          1195.00108228411
+          1195.00108228411,
+          1235.7507792252761
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3635,7 +3635,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
-          3096,
+          3072,
           3072,
           3072,
           3072,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
       {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1133.4418055216472,
           1139.8615409306117,
           1314.327764638265,
           1277.475847117106,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1368.3301949818929,
           1363.9384354182653,
           1385.534526007516,
-          1373.8977586110434
+          1373.8977586110434,
+          1395.3268552144368
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4086,7 +4086,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           2024,
-          2024,
           2712,
           2712,
           2712,
@@ -4097,6 +4096,7 @@ window.BENCHMARK_DATA = {
           2712,
           2752,
           2728,
+          2744,
           2744,
           2744,
           2744,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1268.2270727157593,
           1286.8146965026856,
           1251.6614463806152,
           1288.9248940785726,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1358.9983839670817,
           1310.710327557155,
           1259.4306265024038,
-          1375.0749058356653
+          1375.0749058356653,
+          1322.9255753835043
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2966.494485982259,
           2830.953411102295,
           2789.146853383382,
           2820.958183288574,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3323.2729583740233,
           3214.10625239781,
           3247.9143941243487,
-          3252.6870641708374
+          3252.6870641708374,
+          3286.5660087585447
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4368,7 +4368,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
-          4576,
+          5296,
           5296,
           5296,
           5296,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "c665913bed7ceea89cd2c16141df8ecb0dc1c170",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue May 20 17:58:52 2025 \u002B0200",
-        "message": "feat: add \u0060IsNotBetween\u0060 for numbers (#624)"
-      },
       {
         "sha": "62a44ebcb73663dde498890e86ea683ab059257f",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Aug 15 07:07:48 2025 \u002B0200",
         "message": "fix: Missing WorkflowRunId in Mutation tests dashboard (#724)"
+      },
+      {
+        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
+        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
       }
     ],
     "labels": [
-      "c665913b",
       "62a44ebc",
       "3b468751",
       "92695835",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "b4cae97b",
       "835bc0d4",
       "af1cf72b",
-      "e73d4c74"
+      "e73d4c74",
+      "fe5c680d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1248.9589369455973,
           1253.394433430263,
           1394.1471372331891,
           1439.8894724845886,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1608.6768086751301,
           1638.9181364604406,
           1599.0557992117745,
-          1745.816595586141
+          1745.816595586141,
+          1665.8869389851889
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4819,7 +4819,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           2184,
-          2184,
           2872,
           2872,
           2872,
@@ -4830,6 +4829,7 @@ window.BENCHMARK_DATA = {
           2872,
           2912,
           2912,
+          2920,
           2920,
           2920,
           2920,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          150551.5698939732,
           149901.7881905692,
           154714.4334309896,
           148651.33056640625,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           153268.76634114582,
           147517.8103515625,
           150363.7704031808,
-          151187.66751802884
+          151187.66751802884,
+          145882.68819754463
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4944,7 +4944,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           63787,
-          63787,
           63788,
           63787,
           63787,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63352,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4713.269641621908,
           4761.645504252116,
           4872.022634379069,
           4583.164693705241,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3909.6036544799804,
           3847.70875784067,
           3863.784993307931,
-          3921.70007019043
+          3921.70007019043,
+          3880.4755516052246
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5101,7 +5101,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
-          6744,
+          6488,
           6488,
           6488,
           6488,
