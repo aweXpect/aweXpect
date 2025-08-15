@@ -133,6 +133,7 @@ jobs:
                 run: ./build.sh MutationTestsDashboard
                 env:
                     GithubToken: ${{ secrets.GITHUB_TOKEN }}
+                    WorkflowRunId: ${{ github.run_id }}
     
     benchmarks:
         name: "Benchmarks"
