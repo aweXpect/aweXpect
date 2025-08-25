@@ -4,7 +4,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
 using aweXpect.Core.Helpers;
+using aweXpect.Results;
 
 namespace aweXpect.Equivalency;
 
@@ -100,6 +105,31 @@ public static partial class EquivalencyComparison
 		MemberType memberType,
 		EquivalencyContext context)
 	{
+		if (expected is Expectation &&
+		    expected is IOptionsProvider<ExpectationBuilder> { Options: EquivalencyExpectationBuilder equivalencyExpectationBuilder })
+		{
+			// Unfortunately this cannot be async, as it is used extensively in the `CollectionMatchOptions` :-(
+			var result = equivalencyExpectationBuilder.IsMetBy(actual, new EvaluationContext(), CancellationToken.None).GetAwaiter().GetResult();
+			if (result.Outcome == Outcome.Success)
+			{
+				return true;
+			}
+
+			if (result.Outcome == Outcome.Failure)
+			{
+				failureBuilder.AppendLine();
+				if (failureBuilder.Length > 2)
+				{
+					failureBuilder.AppendLine("and");
+				}
+
+				failureBuilder.Append("  ");
+				failureBuilder.Append(GetMemberPath(memberType, memberPath));
+				result.AppendResult(failureBuilder, "  ");
+				return false;
+			}
+		}
+		
 		if (actual is null || expected is null)
 		{
 			return CompareNulls(actual, expected, failureBuilder, memberPath, memberType);

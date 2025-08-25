@@ -17,8 +17,16 @@ namespace aweXpect.Results;
 ///     The result of an expectation without an underlying value.
 /// </summary>
 [StackTraceHidden]
-public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectation
+public class ExpectationResult(ExpectationBuilder expectationBuilder)
+	: Expectation, IOptionsProvider<ExpectationBuilder>
 {
+	/// <inheritdoc cref="IOptionsProvider{ExpectationBuilder}.Options" />
+	ExpectationBuilder IOptionsProvider<ExpectationBuilder>.Options => expectationBuilder;
+
+	/// <inheritdoc cref="object.ToString()" />
+	public override string? ToString()
+		=> expectationBuilder.ToString();
+
 	/// <summary>
 	///     Provide a <paramref name="reason" /> explaining why the constraint is needed.<br />
 	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.
@@ -133,9 +141,18 @@ public class ExpectationResult<TType>(ExpectationBuilder expectationBuilder)
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
 /// </summary>
 [StackTraceHidden]
-public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuilder) : Expectation
+public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuilder)
+	: Expectation,
+		IOptionsProvider<ExpectationBuilder>
 	where TSelf : ExpectationResult<TType, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{ExpectationBuilder}.Options" />
+	ExpectationBuilder IOptionsProvider<ExpectationBuilder>.Options => expectationBuilder;
+
+	/// <inheritdoc cref="object.ToString()" />
+	public override string? ToString()
+		=> expectationBuilder.ToString();
+
 	/// <summary>
 	///     Provide a <paramref name="reason" /> explaining why the constraint is needed.<br />
 	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.

@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatObject
 {
-	public sealed class IsEquivalentTo
+	public sealed partial class IsEquivalentTo
 	{
 		public sealed class Tests
 		{
