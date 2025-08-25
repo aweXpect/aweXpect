@@ -193,7 +193,7 @@ public partial class ValueFormatters
 		public async Task WhenGenericParameter_ShouldUseOnlyName()
 		{
 			MethodInfo method = GetType()
-				.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+				.GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
 				.Single(x => x.Name.StartsWith(nameof(DummyMethodToGetSpecialTypes)));
 			string expectedResult = "TParameter";
 			Type value = method.GetGenericArguments()[0];
@@ -227,7 +227,7 @@ public partial class ValueFormatters
 		public async Task WhenVoid_ShouldUseSimpleName()
 		{
 			MethodInfo method = GetType()
-				.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+				.GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
 				.Single(x => x.Name.StartsWith(nameof(DummyMethodToGetSpecialTypes)));
 			string expectedResult = "void";
 			Type value = method.ReturnType;
@@ -246,7 +246,7 @@ public partial class ValueFormatters
 		private class NestedGenericType<T>;
 
 		// ReSharper disable once UnusedParameter.Local
-		private void DummyMethodToGetSpecialTypes<TParameter>(TParameter value)
+		private static void DummyMethodToGetSpecialTypes<TParameter>(TParameter value)
 		{
 			// This method is only used to get a void return type and generic parameter types.
 		}
