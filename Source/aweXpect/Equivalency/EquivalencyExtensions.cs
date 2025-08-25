@@ -47,7 +47,6 @@ public static class EquivalencyExtensions
 		return options;
 	}
 
-
 	internal static void AddEquivalencyContext(this ExpectationBuilder expectationBuilder,
 		EquivalencyOptions equivalencyOptions)
 		=> expectationBuilder.UpdateContexts(contexts => contexts.Add(
