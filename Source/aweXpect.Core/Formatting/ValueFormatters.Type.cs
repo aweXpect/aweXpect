@@ -108,7 +108,15 @@ public static partial class ValueFormatters
 		Type value,
 		StringBuilder stringBuilder)
 	{
-		if (value.IsArray)
+		if (value == typeof(void))
+		{
+			stringBuilder.Append("void");
+		}
+		else if (value.IsGenericParameter)
+		{
+			stringBuilder.Append(value.Name);
+		}
+		else if (value.IsArray)
 		{
 			FormatType(value.GetElementType()!, stringBuilder);
 			stringBuilder.Append("[]");
