@@ -4,12 +4,12 @@ using aweXpect.Results;
 namespace aweXpect.Equivalency;
 
 /// <summary>
-/// Static class to support equivalence checks on individual properties.
+///     Static class to support equivalence checks on individual properties.
 /// </summary>
 public static class It
 {
 	/// <summary>
-	/// Expects the property to be of type <typeparamref name="T"/>.
+	///     Expects the property to be of type <typeparamref name="T" />.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <returns></returns>
@@ -18,7 +18,7 @@ public static class It
 	/// <summary>
 	///     Expectations on properties for equivalence.
 	/// </summary>
-	public class IsEquivalent<T> : ExpectationResult, IThat<T>, IExpectThat<T>
+	public class IsEquivalent<T> : ExpectationResult, IExpectThat<T>
 	{
 		/// <inheritdoc cref="IsEquivalent{T}" />
 		public IsEquivalent() : this(new EquivalencyExpectationBuilder<T>())
