@@ -1,0 +1,44 @@
+﻿using aweXpect.Core;
+using aweXpect.Results;
+
+namespace aweXpect.Equivalency;
+
+/// <summary>
+/// Static class to support equivalence checks on individual properties.
+/// </summary>
+public static class It
+{
+	/// <summary>
+	/// Expects the property to be of type <typeparamref name="T"/>.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <returns></returns>
+	public static IsEquivalent<T> Is<T>() => new();
+
+	/// <summary>
+	///     Expectations on properties for equivalence.
+	/// </summary>
+	public class IsEquivalent<T> : ExpectationResult, IThat<T>, IExpectThat<T>
+	{
+		/// <inheritdoc cref="IsEquivalent{T}" />
+		public IsEquivalent() : this(new EquivalencyExpectationBuilder<T>())
+		{
+		}
+
+		private IsEquivalent(EquivalencyExpectationBuilder<T> expectationBuilder) : base(expectationBuilder)
+		{
+			ExpectationBuilder = expectationBuilder;
+		}
+
+		/// <summary>
+		///     …that…
+		/// </summary>
+		public IThat<T> That => this;
+
+		/// <inheritdoc cref="IExpectThat{T}.ExpectationBuilder" />
+		public ExpectationBuilder ExpectationBuilder { get; }
+
+		/// <inheritdoc cref="object.ToString()" />
+		public override string? ToString() => ExpectationBuilder.ToString();
+	}
+}

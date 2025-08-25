@@ -49,6 +49,17 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Initializes the <see cref="ExpectationBuilder" /> with an empty <see cref="Subject"/>.
+	/// </summary>
+	internal ExpectationBuilder()
+	{
+		AweXpectInitialization.EnsureInitialized();
+		Subject = "";
+		_it = "";
+		ExpectationGrammars = ExpectationGrammars.None;
+	}
+
+	/// <summary>
 	///     The expected grammatical form of the expectation text.
 	/// </summary>
 	public ExpectationGrammars ExpectationGrammars { get; private set; }
