@@ -51,7 +51,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Initializes the <see cref="ExpectationBuilder" /> with an empty <see cref="Subject"/>.
 	/// </summary>
-	internal ExpectationBuilder()
+	private protected ExpectationBuilder()
 	{
 		AweXpectInitialization.EnsureInitialized();
 		Subject = "";
