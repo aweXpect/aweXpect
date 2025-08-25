@@ -116,7 +116,7 @@ internal abstract class EquivalencyExpectationBuilder : ExpectationBuilder
 		ITimeSystem timeSystem,
 		TimeSpan? timeout,
 		CancellationToken cancellationToken)
-		=> throw new NotSupportedException($"Use {nameof(IsMetBy)} for ManualExpectationBuilder!")
+		=> throw new NotSupportedException($"Use {nameof(IsMetBy)} for EquivalencyExpectationBuilder!")
 			.LogTrace();
 
 	/// <inheritdoc cref="ExpectationBuilder.UpdateContexts(Action{ResultContexts})" />

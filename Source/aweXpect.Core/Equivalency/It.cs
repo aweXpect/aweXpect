@@ -11,8 +11,6 @@ public static class It
 	/// <summary>
 	///     Expects the property to be of type <typeparamref name="T" />.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <returns></returns>
 	public static IsEquivalent<T> Is<T>() => new();
 
 	/// <summary>
@@ -25,6 +23,7 @@ public static class It
 		{
 		}
 
+		/// <inheritdoc cref="IsEquivalent{T}" />
 		private IsEquivalent(EquivalencyExpectationBuilder<T> expectationBuilder) : base(expectationBuilder)
 		{
 			ExpectationBuilder = expectationBuilder;
