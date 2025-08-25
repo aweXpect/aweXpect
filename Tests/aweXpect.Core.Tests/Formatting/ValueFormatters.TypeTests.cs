@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace aweXpect.Core.Tests.Formatting;
@@ -105,9 +107,9 @@ public partial class ValueFormatters
 		}
 
 		[Theory]
-		[InlineData(typeof(IDictionary<,>), 0, "IDictionary<, >.TKey")]
-		[InlineData(typeof(IDictionary<,>), 1, "IDictionary<, >.TValue")]
-		[InlineData(typeof(IEnumerable<>), 0, "IEnumerable<>.T")]
+		[InlineData(typeof(IDictionary<,>), 0, "TKey")]
+		[InlineData(typeof(IDictionary<,>), 1, "TValue")]
+		[InlineData(typeof(IEnumerable<>), 0, "T")]
 		public async Task ShouldSupportOpenGenericParametersOfIDictionary(
 			Type genericType, int argumentIndex, string expectedResult)
 		{
@@ -188,6 +190,25 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task WhenGenericParameter_ShouldUseOnlyName()
+		{
+			MethodInfo method = GetType()
+				.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+				.Single(x => x.Name.StartsWith(nameof(DummyMethodToGetSpecialTypes)));
+			string expectedResult = "TParameter";
+			Type value = method.GetGenericArguments()[0];
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task WhenNull_ShouldUseDefaultNullString()
 		{
 			Type? value = null;
@@ -202,8 +223,33 @@ public partial class ValueFormatters
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
 
+		[Fact]
+		public async Task WhenVoid_ShouldUseSimpleName()
+		{
+			MethodInfo method = GetType()
+				.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+				.Single(x => x.Name.StartsWith(nameof(DummyMethodToGetSpecialTypes)));
+			string expectedResult = "void";
+			Type value = method.ReturnType;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
 		// ReSharper disable once UnusedTypeParameter
 		private class NestedGenericType<T>;
+
+		// ReSharper disable once UnusedParameter.Local
+		private void DummyMethodToGetSpecialTypes<TParameter>(TParameter value)
+		{
+			// This method is only used to get a void return type and generic parameter types.
+		}
 
 		public static TheoryData<Type, string> SimpleTypes
 			=> new()
@@ -306,7 +352,7 @@ public partial class ValueFormatters
 				},
 				{
 					typeof(void), "void"
-				},
+				}
 			};
 	}
 }
