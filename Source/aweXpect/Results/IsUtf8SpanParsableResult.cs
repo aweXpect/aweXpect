@@ -5,15 +5,15 @@ using aweXpect.Core;
 namespace aweXpect.Results;
 
 /// <summary>
-///     The result for verifying that the <see cref="IParsable{TType}" /> subject is parsable
+///     The result for verifying that the <see cref="IUtf8SpanParsable{TType}" /> subject is parsable
 ///     into <typeparamref name="TType" />.
 /// </summary>
-public class IsParsableResult<TType>(
+public class IsUtf8SpanParsableResult<TType>(
 	ExpectationBuilder expectationBuilder,
-	IThat<string?> subject,
+	IThat<SpanWrapper<byte>> subject,
 	IFormatProvider? formatProvider)
-	: AndOrResult<string?, IThat<string?>>(expectationBuilder, subject)
-	where TType : IParsable<TType>
+	: AndOrResult<SpanWrapper<byte>, IThat<SpanWrapper<byte>>>(expectationBuilder, subject)
+	where TType : IUtf8SpanParsable<TType>
 {
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 
@@ -22,9 +22,9 @@ public class IsParsableResult<TType>(
 	/// </summary>
 	public IThat<TType> Which
 		=> new ThatSubject<TType>(_expectationBuilder
-			.ForWhich<string, TType?>(d =>
+			.ForWhich<SpanWrapper<byte>, TType?>(d =>
 			{
-				if (TType.TryParse(d, formatProvider, out TType? result))
+				if (TType.TryParse(d.AsSpan(), formatProvider, out TType? result))
 				{
 					return result;
 				}

@@ -40,6 +40,26 @@ public static class Expect
 
 #if NET8_0_OR_GREATER
 	/// <summary>
+	///     Specify expectations for the current <paramref name="subject" />.
+	/// </summary>
+	public static IThat<SpanWrapper<T>> That<T>(ReadOnlySpan<T> subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new ThatSubject<SpanWrapper<T>>(new ExpectationBuilder<SpanWrapper<T>>(
+			new ValueSource<SpanWrapper<T>>(new SpanWrapper<T>(subject)), doNotPopulateThisValue));
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Specify expectations for the current <paramref name="subject" />.
+	/// </summary>
+	public static IThat<SpanWrapper<T>> That<T>(Span<T> subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new ThatSubject<SpanWrapper<T>>(new ExpectationBuilder<SpanWrapper<T>>(
+			new ValueSource<SpanWrapper<T>>(new SpanWrapper<T>(subject)), doNotPopulateThisValue));
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
 	public static IThat<T> That<T>(ValueTask<T> subject,

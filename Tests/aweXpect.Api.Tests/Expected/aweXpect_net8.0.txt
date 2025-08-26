@@ -1088,6 +1088,17 @@ namespace aweXpect
         public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
         public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Core.Times times) { }
     }
+    public static class ThatSpan
+    {
+        public static aweXpect.Results.AndOrResult<aweXpect.Core.SpanWrapper<byte>, aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<byte>>> IsNotParsableInto<TType>(this aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<byte>> source, System.IFormatProvider? formatProvider = null)
+            where TType : System.IUtf8SpanParsable<TType> { }
+        public static aweXpect.Results.AndOrResult<aweXpect.Core.SpanWrapper<char>, aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<char>>> IsNotParsableInto<TType>(this aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<char>> source, System.IFormatProvider? formatProvider = null)
+            where TType : System.ISpanParsable<TType> { }
+        public static aweXpect.Results.IsUtf8SpanParsableResult<TType> IsParsableInto<TType>(this aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<byte>> source, System.IFormatProvider? formatProvider = null)
+            where TType : System.IUtf8SpanParsable<TType> { }
+        public static aweXpect.Results.IsSpanParsableResult<TType> IsParsableInto<TType>(this aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<char>> source, System.IFormatProvider? formatProvider = null)
+            where TType : System.ISpanParsable<TType> { }
+    }
     public static class ThatStream
     {
         public static aweXpect.Results.PropertyResult.Long<System.IO.Stream?> HasLength(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
@@ -1266,6 +1277,18 @@ namespace aweXpect.Results
         where TType : System.IParsable<TType>
     {
         public IsParsableResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<string?> subject, System.IFormatProvider? formatProvider) { }
+        public aweXpect.Core.IThat<TType> Which { get; }
+    }
+    public class IsSpanParsableResult<TType> : aweXpect.Results.AndOrResult<aweXpect.Core.SpanWrapper<char>, aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<char>>>
+        where TType : System.ISpanParsable<TType>
+    {
+        public IsSpanParsableResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<char>> subject, System.IFormatProvider? formatProvider) { }
+        public aweXpect.Core.IThat<TType> Which { get; }
+    }
+    public class IsUtf8SpanParsableResult<TType> : aweXpect.Results.AndOrResult<aweXpect.Core.SpanWrapper<byte>, aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<byte>>>
+        where TType : System.IUtf8SpanParsable<TType>
+    {
+        public IsUtf8SpanParsableResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<byte>> subject, System.IFormatProvider? formatProvider) { }
         public aweXpect.Core.IThat<TType> Which { get; }
     }
     public class ObjectCollectionBeContainedInResult<TType, TThat, TItem> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TItem>
