@@ -44,7 +44,7 @@ public abstract class ExpectationBuilder
 	protected ExpectationBuilder(string subjectExpression, ExpectationGrammars grammars = ExpectationGrammars.None)
 	{
 		AweXpectInitialization.EnsureInitialized();
-		Subject = subjectExpression;
+		Subject = subjectExpression.TrimCommonWhiteSpace();
 		ExpectationGrammars = grammars;
 	}
 
