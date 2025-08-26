@@ -44,6 +44,7 @@ partial class Build
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
 		.DependsOn(MutationTestsDashboard)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
 			if (!File.Exists(ArtifactsDirectory / "aweXpect" / "PR.txt"))
