@@ -2088,6 +2088,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -2438,7 +2444,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -2792,7 +2799,8 @@ window.BENCHMARK_DATA = {
           197.83367367891165,
           198.93916673660277,
           188.16524457931519,
-          230.79016005075894
+          230.79016005075894,
+          224.20339789390565
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3151,6 +3159,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504
         ],
         "borderColor": "#63A2AC",
@@ -3513,7 +3522,8 @@ window.BENCHMARK_DATA = {
           248.974903685706,
           257.3459639867147,
           249.61016454015459,
-          279.4127022425334
+          279.4127022425334,
+          249.7768438657125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3706,6 +3716,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4234,7 +4245,8 @@ window.BENCHMARK_DATA = {
           902.7487815856933,
           912.7575066884359,
           887.224007542928,
-          960.2216076169695
+          960.2216076169695,
+          894.4146935599191
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4569,6 +4581,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6233,6 +6246,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -6506,7 +6525,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -6783,7 +6803,8 @@ window.BENCHMARK_DATA = {
           292013.7935872396,
           306502.0924595424,
           308377.2412458147,
-          314154.69566127233
+          314154.69566127233,
+          289281.74943659856
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7065,6 +7086,7 @@ window.BENCHMARK_DATA = {
           284940,
           284940,
           284940,
+          284972,
           284972
         ],
         "borderColor": "#63A2AC",
@@ -7350,7 +7372,8 @@ window.BENCHMARK_DATA = {
           2256157.2156808036,
           2119905.581770833,
           2214350.9953125,
-          2384878.0206473214
+          2384878.0206473214,
+          2230857.3127790177
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7466,6 +7489,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7917,7 +7941,8 @@ window.BENCHMARK_DATA = {
           726026.6886067708,
           685009.4026041667,
           722973.2057059152,
-          744454.7732421875
+          744454.7732421875,
+          700322.3785807291
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8175,6 +8200,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10301,6 +10327,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -10651,7 +10683,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -11005,7 +11038,8 @@ window.BENCHMARK_DATA = {
           473.08241618474324,
           481.8058657964071,
           482.8597485224406,
-          497.4869239171346
+          497.4869239171346,
+          483.16165409088137
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11364,6 +11398,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464
         ],
         "borderColor": "#63A2AC",
@@ -11726,7 +11761,8 @@ window.BENCHMARK_DATA = {
           484.6172863415309,
           529.1651661946223,
           487.0820019404093,
-          519.8778990427653
+          519.8778990427653,
+          498.70581474304197
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11919,6 +11955,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -12447,7 +12484,8 @@ window.BENCHMARK_DATA = {
           14595.17012677874,
           16640.422780354816,
           14828.541477457682,
-          19369.866958618164
+          19369.866958618164,
+          15213.613295491536
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12782,6 +12820,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -14908,6 +14947,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -15258,7 +15303,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -15612,7 +15658,8 @@ window.BENCHMARK_DATA = {
           215.42727305094402,
           220.98084661165873,
           224.68980863889058,
-          261.67816982950484
+          261.67816982950484,
+          240.68385581970216
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15971,6 +16018,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816
         ],
         "borderColor": "#63A2AC",
@@ -16333,7 +16381,8 @@ window.BENCHMARK_DATA = {
           259.6557674748557,
           250.4341236114502,
           246.80854864120482,
-          264.0749408086141
+          264.0749408086141,
+          261.1045164108276
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16526,6 +16575,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -17054,7 +17104,8 @@ window.BENCHMARK_DATA = {
           1225.177967951848,
           1223.0660238901773,
           1188.6602825164796,
-          1214.9761388142904
+          1214.9761388142904,
+          1238.0499062856038
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17389,6 +17440,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -19515,6 +19567,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -19865,7 +19923,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -20219,7 +20278,8 @@ window.BENCHMARK_DATA = {
           341.68189595540366,
           372.183012008667,
           351.94055821345404,
-          393.65715618133544
+          393.65715618133544,
+          387.4294823646545
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20578,6 +20638,7 @@ window.BENCHMARK_DATA = {
           1128,
           1128,
           1128,
+          1160,
           1160
         ],
         "borderColor": "#63A2AC",
@@ -20940,7 +21001,8 @@ window.BENCHMARK_DATA = {
           459.5084365698007,
           487.8498085021973,
           486.51093877156575,
-          502.00601793924966
+          502.00601793924966,
+          478.31025444666545
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21133,6 +21195,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -21661,7 +21724,8 @@ window.BENCHMARK_DATA = {
           1185.3810165111836,
           1260.1058961232504,
           1229.4075726826986,
-          1224.4789414723714
+          1224.4789414723714,
+          1269.9115328470866
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -21996,6 +22060,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -24122,6 +24187,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -24472,7 +24543,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -24826,7 +24898,8 @@ window.BENCHMARK_DATA = {
           1388.179148832957,
           1429.424225616455,
           1395.8590058644613,
-          1454.7043769836425
+          1454.7043769836425,
+          1448.783856455485
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25185,6 +25258,7 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
+          2776,
           2776
         ],
         "borderColor": "#63A2AC",
@@ -25547,7 +25621,8 @@ window.BENCHMARK_DATA = {
           1298.2002841949463,
           1319.0095249176024,
           1349.9853496551514,
-          1382.81140238444
+          1382.81140238444,
+          1334.5607617696126
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25740,6 +25815,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -26268,7 +26344,8 @@ window.BENCHMARK_DATA = {
           3304.1789906819663,
           3373.668773651123,
           3190.610885620117,
-          3369.1244720458985
+          3369.1244720458985,
+          3305.4239794413247
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26603,6 +26680,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -28729,6 +28807,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 26 20:53:02 2025 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.18.0 (#741)"
+      },
+      {
+        "sha": "deb356b2c9211b6eeae47e68203965259261b688",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Aug 26 21:30:32 2025 \u002B0200",
+        "message": "fix: failing CI-Analysis build when BuildScope is not default (#742)"
       }
     ],
     "labels": [
@@ -29079,7 +29163,8 @@ window.BENCHMARK_DATA = {
       "9fa48544",
       "7f21274a",
       "ea878879",
-      "5178a388"
+      "5178a388",
+      "deb356b2"
     ],
     "datasets": [
       {
@@ -29433,7 +29518,8 @@ window.BENCHMARK_DATA = {
           1560.4611936715933,
           1624.0807474772134,
           1612.0676550547282,
-          1708.0983632405598
+          1708.0983632405598,
+          1649.7964547475178
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29792,6 +29878,7 @@ window.BENCHMARK_DATA = {
           2920,
           2920,
           2920,
+          2952,
           2952
         ],
         "borderColor": "#63A2AC",
@@ -30154,7 +30241,8 @@ window.BENCHMARK_DATA = {
           149407.26240234374,
           153628.15196814903,
           151896.63108723957,
-          155158.05862630208
+          155158.05862630208,
+          151343.4637625558
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30509,6 +30597,7 @@ window.BENCHMARK_DATA = {
           63787,
           63352,
           63788,
+          63787,
           63787,
           63787,
           63787,
@@ -30875,7 +30964,8 @@ window.BENCHMARK_DATA = {
           3893.0731806437175,
           3908.1789611816407,
           3928.2444927509014,
-          4161.362296295166
+          4161.362296295166,
+          3996.4891995021276
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -31210,6 +31300,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
