@@ -115,6 +115,7 @@ public class ExpectTests
 	{
 		internal override Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes)
 			=> Task.FromResult(result);
+
 		internal override IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes)
 			=> contexts;
 	}

@@ -272,6 +272,20 @@ namespace aweXpect.Core
         public aweXpect.Core.ResultContexts Remove(System.Predicate<aweXpect.Core.ResultContext> predicate) { }
         public aweXpect.Core.ResultContexts Remove(string title, System.StringComparison stringComparison = 5) { }
     }
+    public class SpanWrapper<T> : System.Collections.Generic.ICollection<T>, System.Collections.Generic.IEnumerable<T>, System.Collections.IEnumerable
+    {
+        public SpanWrapper(System.ReadOnlySpan<T> span) { }
+        public SpanWrapper(System.Span<T> span) { }
+        public int Count { get; }
+        public bool IsReadOnly { get; }
+        public void Add(T item) { }
+        public System.Span<T> AsSpan() { }
+        public void Clear() { }
+        public bool Contains(T item) { }
+        public void CopyTo(T[] array, int arrayIndex) { }
+        public System.Collections.Generic.IEnumerator<T> GetEnumerator() { }
+        public bool Remove(T item) { }
+    }
     public sealed class StringDifference
     {
         public StringDifference(string? actual, string? expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null, aweXpect.Core.StringDifferenceSettings? settings = null) { }
@@ -585,6 +599,8 @@ namespace aweXpect
         public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.ValueTask<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.CancellationToken, TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<T>> That<T>(System.ReadOnlySpan<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<T>> That<T>(System.Span<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.Task<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.ValueTask<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(T subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
