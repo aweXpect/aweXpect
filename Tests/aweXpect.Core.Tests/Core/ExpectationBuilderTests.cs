@@ -67,6 +67,29 @@ public class ExpectationBuilderTests
 	}
 
 	[Fact]
+	public async Task WhenSubjectHasMultipleLines_ShouldTrimCommonWhiteSpace()
+	{
+		async Task Act() => await That(new[]
+		{
+			1, 2, 3,
+		}).IsEmpty();
+
+		await That(Act).Throws<XunitException>()
+			.WithMessage("""
+			             Expected that new[]
+			             {
+			             	1, 2, 3,
+			             }
+			             is empty,
+			             but it was [
+			               1,
+			               2,
+			               3
+			             ]
+			             """);
+	}
+
+	[Fact]
 	public async Task WhenTypeImplementsIDescribableSubject_ShouldUseToStringFromIt()
 	{
 		MyDescribableSubject subject = new("this long description for the subject");
