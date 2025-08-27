@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
 
@@ -6,18 +7,38 @@ namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2> : ICollectionMatcher<T, T2>
+	private class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<T> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+			=> options.AreConsideredEqual(value, expected);
+	}
+
+	private class AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<Func<T, bool>> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
+			=> expected(value);
+	}
+
+	private abstract class AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelations _equivalenceRelations;
-		private readonly List<T> _missingItems;
+		private readonly List<T3> _missingItems;
 		private readonly int _totalExpectedCount;
 		private readonly HashSet<T> _uniqueItems = new();
 		private int _index;
 
-		public AnyOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T> expected)
+		protected AnyOrderIgnoreDuplicatesCollectionMatcherBase(EquivalenceRelations equivalenceRelation,
+			IEnumerable<T3> expected)
 		{
 			_equivalenceRelations = equivalenceRelation;
 			_missingItems = expected.Distinct().ToList();
@@ -32,12 +53,12 @@ public partial class CollectionMatchOptions
 				return false;
 			}
 
-			if (_missingItems.All(e => !options.AreConsideredEqual(value, e)))
+			if (_missingItems.All(e => !AreConsideredEqual(value, e, options)))
 			{
 				_additionalItems.Add(_index, value);
 			}
 
-			_missingItems.Remove(value);
+			RemoveFirst(_missingItems, e => AreConsideredEqual(value, e, options));
 			_uniqueItems.Add(value);
 			_index++;
 
@@ -73,6 +94,22 @@ public partial class CollectionMatchOptions
 
 			error = ReturnErrorString(it, errors);
 			return error != null;
+		}
+
+		protected abstract bool AreConsideredEqual(T value, T3 expected, IOptionsEquality<T2> options);
+
+		private static void RemoveFirst(List<T3> items, Func<T3, bool> predicate)
+		{
+			int index = -1;
+			foreach (T3? item in items)
+			{
+				index++;
+				if (predicate(item))
+				{
+					items.RemoveAt(index);
+					break;
+				}
+			}
 		}
 	}
 }

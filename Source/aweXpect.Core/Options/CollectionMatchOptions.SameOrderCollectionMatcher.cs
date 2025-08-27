@@ -8,25 +8,47 @@ namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private sealed class SameOrderCollectionMatcher<T, T2> : ICollectionMatcher<T, T2>
+	private class SameOrderCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<T> expected,
+		bool ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected, ignoreInterspersedItems)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+			=> options.AreConsideredEqual(value, expected);
+	}
+
+	private class SameOrderFromPredicateCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<Func<T, bool>> expected,
+		bool ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
+			=> expected(value);
+	}
+
+	private abstract class SameOrderCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelations _equivalenceRelations;
-		private readonly T[] _expectedItems;
+		private readonly T3[] _expectedItems;
 		private readonly List<T> _foundItems = new();
 		private readonly bool _ignoreInterspersedItems;
-		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
+		private readonly Dictionary<int, (T Item, T3 Expected)> _incorrectItems = new();
 		private readonly List<T> _matchingItems = new();
-		private readonly List<T> _missingItems = new();
+		private readonly List<T3> _missingItems = new();
 		private readonly int _totalExpectedItems;
 		private int _expectationIndex = -1;
 		private int _index;
 		private int _matchIndex;
 		private int _maxMatchIndex;
 
-		public SameOrderCollectionMatcher(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T> expected,
+		protected SameOrderCollectionMatcherBase(EquivalenceRelations equivalenceRelation,
+			IEnumerable<T3> expected,
 			bool ignoreInterspersedItems)
 		{
 			_equivalenceRelations = equivalenceRelation;
@@ -44,7 +66,7 @@ public partial class CollectionMatchOptions
 				// All expected items were found -> additional items
 				_additionalItems.Add(_index, value);
 			}
-			else if (options.AreConsideredEqual(value, _expectedItems[_matchIndex]))
+			else if (AreConsideredEqual(value, _expectedItems[_matchIndex], options))
 			{
 				VerifyTheCurrentValueIsEqualToTheExpectedValue(value);
 			}
@@ -77,16 +99,16 @@ public partial class CollectionMatchOptions
 			{
 				for (int i = consideredExpectedItems; i < _expectedItems.Length; i++)
 				{
-					T item = _expectedItems[i];
+					T3 item = _expectedItems[i];
 					KeyValuePair<int, T> additionalItem = _additionalItems
-						.FirstOrDefault(a => options.AreConsideredEqual(a.Value, item));
+						.FirstOrDefault(a => AreConsideredEqual(a.Value, item, options));
 					if (!additionalItem.IsDefault())
 					{
 						_additionalItems.Remove(additionalItem.Key);
-						_missingItems.Add(additionalItem.Value);
+						_missingItems.Add(item);
 					}
-					else if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value, item)) &&
-					         _incorrectItems.All(x => !options.AreConsideredEqual(x.Value.Item, item)))
+					else if (_additionalItems.All(x => !AreConsideredEqual(x.Value, item, options)) &&
+					         _incorrectItems.All(x => !AreConsideredEqual(x.Value.Item, item, options)))
 					{
 						_missingItems.Add(item);
 					}
@@ -147,7 +169,7 @@ public partial class CollectionMatchOptions
 				_matchIndex = 0;
 			}
 
-			if (options.AreConsideredEqual(value, _expectedItems[_matchIndex]))
+			if (AreConsideredEqual(value, _expectedItems[_matchIndex], options))
 			{
 				if (!movedMatch)
 				{
@@ -178,12 +200,13 @@ public partial class CollectionMatchOptions
 		{
 			for (int i = 1; i < _expectedItems.Length - _matchingItems.Count; i++)
 			{
-				if (options.AreConsideredEqual(value, _expectedItems[_matchIndex + i]))
+				var expectedItem = _expectedItems[_matchIndex + i];
+				if (AreConsideredEqual(value, _expectedItems[_matchIndex + i], options))
 				{
 					bool couldBeMatch = true;
 					for (int j = 0; j < _matchingItems.Count; j++)
 					{
-						if (!options.AreConsideredEqual(_matchingItems[j], _expectedItems[j + i]))
+						if (!AreConsideredEqual(_matchingItems[j], _expectedItems[j + i], options))
 						{
 							couldBeMatch = false;
 						}
@@ -195,7 +218,7 @@ public partial class CollectionMatchOptions
 
 						for (int j = 0; j < i; j++)
 						{
-							_missingItems.Add(_matchingItems[j]);
+							_missingItems.Add(expectedItem);
 						}
 
 						return true;
@@ -222,7 +245,7 @@ public partial class CollectionMatchOptions
 				bool isMatch = true;
 				for (int j = 0; j < _foundItems.Count; j++)
 				{
-					if (!options.AreConsideredEqual(_foundItems[j], _expectedItems[i + j]))
+					if (!AreConsideredEqual(_foundItems[j], _expectedItems[i + j], options))
 					{
 						isMatch = false;
 						break;
@@ -236,5 +259,7 @@ public partial class CollectionMatchOptions
 				}
 			}
 		}
+
+		protected abstract bool AreConsideredEqual(T value, T3 expected, IOptionsEquality<T2> options);
 	}
 }

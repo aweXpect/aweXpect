@@ -7,17 +7,36 @@ namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private sealed class AnyOrderCollectionMatcher<T, T2> : ICollectionMatcher<T, T2>
+	private class AnyOrderCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<T> expected)
+		: AnyOrderCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+			=> options.AreConsideredEqual(value, expected);
+	}
+
+	private class AnyOrderFromPredicateCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<Func<T, bool>> expected)
+		: AnyOrderCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
+			=> expected(value);
+	}
+
+	private abstract class AnyOrderCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelations _equivalenceRelations;
-		private readonly List<T> _missingItems;
+		private readonly List<T3> _missingItems;
 		private readonly int _totalExpectedCount;
 		private int _index;
 
-		public AnyOrderCollectionMatcher(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T> expected)
+		protected AnyOrderCollectionMatcherBase(EquivalenceRelations equivalenceRelation, IEnumerable<T3> expected)
 		{
 			_equivalenceRelations = equivalenceRelation;
 			_missingItems = expected.ToList();
@@ -26,12 +45,12 @@ public partial class CollectionMatchOptions
 
 		public bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
-			if (_missingItems.All(e => !options.AreConsideredEqual(value, e)))
+			if (_missingItems.All(e => !AreConsideredEqual(value, e, options)))
 			{
 				_additionalItems.Add(_index, value);
 			}
 
-			RemoveFirst(_missingItems, e => options.AreConsideredEqual(value, e));
+			RemoveFirst(_missingItems, e => AreConsideredEqual(value, e, options));
 			_index++;
 			error = null;
 			return _additionalItems.Count > 2 * maximumNumber;
@@ -68,10 +87,12 @@ public partial class CollectionMatchOptions
 			return error != null;
 		}
 
-		private static void RemoveFirst(List<T> items, Func<T, bool> predicate)
+		protected abstract bool AreConsideredEqual(T value, T3 expected, IOptionsEquality<T2> options);
+
+		private static void RemoveFirst(List<T3> items, Func<T3, bool> predicate)
 		{
 			int index = -1;
-			foreach (T? item in items)
+			foreach (T3? item in items)
 			{
 				index++;
 				if (predicate(item))

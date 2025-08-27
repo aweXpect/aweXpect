@@ -90,6 +90,21 @@ public partial class CollectionMatchOptions(
 		};
 
 	/// <summary>
+	///     Get the collection matcher for the <paramref name="expected" /> enumerable of predicates.
+	/// </summary>
+	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<Func<T, bool>> expected)
+		where T : T2
+		=> (_inAnyOrder, _ignoringDuplicates) switch
+		{
+			(true, true) => new AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(true, false) => new AnyOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+			(false, false) => new SameOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+		};
+
+	/// <summary>
 	///     Specifies the expectation for the <paramref name="expectedExpression" /> using the provided
 	///     <paramref name="grammars" />.
 	/// </summary>
@@ -168,12 +183,12 @@ public partial class CollectionMatchOptions(
 		}
 	}
 
-	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems)
+	private static IEnumerable<string> IncorrectItemsError<T, TExpected>(Dictionary<int, (T Item, TExpected Expected)> incorrectItems)
 	{
 		bool hasIncorrectItems = incorrectItems.Any();
 		if (hasIncorrectItems)
 		{
-			foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
+			foreach (KeyValuePair<int, (T Item, TExpected Expected)> incorrectItem in incorrectItems)
 			{
 				yield return
 					$"contained item {Formatter.Format(incorrectItem.Value.Item)} at index {incorrectItem.Key} instead of {Formatter.Format(incorrectItem.Value.Expected)}";
