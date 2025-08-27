@@ -122,6 +122,101 @@ public static partial class ThatEnumerable
 			}
 		}
 	}
+	
+	private sealed class IsEqualToFromPredicateConstraint<TItem, TMatch>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		string? expectedExpression,
+		IEnumerable<Func<TItem, bool>>? expected,
+		CollectionMatchOptions matchOptions)
+		: ConstraintResult.WithEqualToValue<IEnumerable<TItem>?>(it, grammars, expected is null),
+			IContextConstraint<IEnumerable<TItem>?>
+		where TItem : TMatch
+	{
+		private sealed class NoOptions : IOptionsEquality<TMatch>
+		{
+			public bool AreConsideredEqual<TExpected>(TMatch actual, TExpected expected)
+				=> false;
+		} 
+		
+		private string? _failure;
+
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		{
+			Actual = actual;
+			if (actual is null || expected is null)
+			{
+				Outcome = actual is null && expected is null ? Outcome.Success : Outcome.Failure;
+				return this;
+			}
+
+			IEnumerable<TItem> materializedEnumerable =
+				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
+			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+
+			var noOptions = new NoOptions();
+			foreach (TItem item in materializedEnumerable)
+			{
+				if (matcher.Verify(It, item, noOptions, maximumNumber, out _failure))
+				{
+					_failure ??= TooManyDeviationsError();
+					Outcome = Outcome.Failure;
+					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
+					return this;
+				}
+			}
+
+			if (matcher.VerifyComplete(It, noOptions, maximumNumber, out _failure))
+			{
+				_failure ??= TooManyDeviationsError();
+				Outcome = Outcome.Failure;
+				expectationBuilder.AddCollectionContext(materializedEnumerable);
+				return this;
+			}
+
+			expectationBuilder.AddCollectionContext(materializedEnumerable);
+			Outcome = Outcome.Success;
+			return this;
+		}
+
+		private string TooManyDeviationsError()
+			=> $"{It} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations";
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(matchOptions.GetExpectation(
+				expectedExpression ?? Formatter.Format(expected, FormattingOptions.SingleLine), Grammars));
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (expected is null)
+			{
+				stringBuilder.Append(It).Append(CannotCompareToNull);
+			}
+			else if (_failure is not null)
+			{
+				stringBuilder.Append(_failure);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalExpectation(stringBuilder, indentation);
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (expected is null)
+			{
+				stringBuilder.Append(It).Append(CannotCompareToNull);
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" did");
+			}
+		}
+	}
 
 	private sealed class IsEqualToForEnumerableConstraint<TEnumerable, TItem, TMatch>(
 		ExpectationBuilder expectationBuilder,

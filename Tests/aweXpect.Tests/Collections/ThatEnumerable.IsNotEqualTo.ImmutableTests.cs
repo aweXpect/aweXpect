@@ -95,7 +95,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo([]);
+					=> await That(subject).IsNotEqualTo(Array.Empty<string>());
 
 				await That(Act).DoesNotThrow();
 			}
