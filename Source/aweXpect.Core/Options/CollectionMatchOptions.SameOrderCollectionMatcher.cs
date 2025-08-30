@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -8,7 +9,7 @@ namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private class SameOrderCollectionMatcher<T, T2>(
+	private sealed class SameOrderCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<T> expected,
 		bool ignoreInterspersedItems)
@@ -19,15 +20,15 @@ public partial class CollectionMatchOptions
 			=> options.AreConsideredEqual(value, expected);
 	}
 
-	private class SameOrderFromPredicateCollectionMatcher<T, T2>(
+	private sealed class SameOrderFromPredicateCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<Func<T, bool>> expected,
+		IEnumerable<Expression<Func<T, bool>>> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(equivalenceRelation, expected, ignoreInterspersedItems)
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
-			=> expected(value);
+		protected override bool AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+			=> expected.Compile().Invoke(value);
 	}
 
 	private abstract class SameOrderCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>

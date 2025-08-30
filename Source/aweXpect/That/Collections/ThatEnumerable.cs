@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -128,7 +129,7 @@ public static partial class ThatEnumerable
 		string it,
 		ExpectationGrammars grammars,
 		string? expectedExpression,
-		IEnumerable<Func<TItem, bool>>? expected,
+		IEnumerable<Expression<Func<TItem, bool>>>? expected,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<IEnumerable<TItem>?>(it, grammars, expected is null),
 			IContextConstraint<IEnumerable<TItem>?>
@@ -151,6 +152,15 @@ public static partial class ThatEnumerable
 				return this;
 			}
 
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Expected",
+					() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
+					{
+						ICollection<TItem> coll => coll.Count,
+						ICountable countable => countable.Count,
+						_ => null,
+					})),
+					-2)));
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);

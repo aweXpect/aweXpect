@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -361,7 +362,7 @@ public static partial class ThatEnumerable
 	public static CollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsEqualTo<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Func<TItem, bool>> expected,
+			IEnumerable<Expression<Func<TItem, bool>>> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new();
@@ -735,7 +736,7 @@ public static partial class ThatEnumerable
 	public static CollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsNotEqualTo<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Func<TItem, bool>> unexpected,
+			IEnumerable<Expression<Func<TItem, bool>>> unexpected,
 			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new();

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private class AnyOrderCollectionMatcher<T, T2>(
+	private sealed class AnyOrderCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<T> expected)
 		: AnyOrderCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected)
@@ -17,14 +18,14 @@ public partial class CollectionMatchOptions
 			=> options.AreConsideredEqual(value, expected);
 	}
 
-	private class AnyOrderFromPredicateCollectionMatcher<T, T2>(
+	private sealed class AnyOrderFromPredicateCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<Func<T, bool>> expected)
-		: AnyOrderCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected)
+		IEnumerable<Expression<Func<T, bool>>> expected)
+		: AnyOrderCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(equivalenceRelation, expected)
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
-			=> expected(value);
+		protected override bool AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+			=> expected.Compile().Invoke(value);
 	}
 
 	private abstract class AnyOrderCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>

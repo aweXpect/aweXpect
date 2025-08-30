@@ -46,24 +46,6 @@ public partial class ThatEnumerable
 		}
 	}
 
-	public static IEnumerable<Func<T, bool>> ToFuncEnumerable<T>(params T[] items)
-	{
-		Dictionary<T, Func<T, bool>> dictionary = new();
-		foreach (T item in items)
-		{
-			if (dictionary.TryGetValue(item, out Func<T, bool>? func))
-			{
-				yield return func;
-			}
-			else
-			{
-				Func<T, bool> newFunc = x => Equals(x, item);
-				dictionary.Add(item, newFunc);
-				yield return newFunc;
-			}
-		}
-	}
-
 	/// <summary>
 	///     Returns an <see cref="IEnumerable{T}" /> with incrementing numbers, starting with 0, which cancels the
 	///     <paramref name="cancellationTokenSource" /> after <paramref name="cancelAfter" /> iteration.

@@ -1,30 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using aweXpect.Core;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
+	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<T> expected)
-		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(
+			equivalenceRelation,
+			expected.Distinct())
 		where T : T2
 	{
 		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
 			=> options.AreConsideredEqual(value, expected);
 	}
 
-	private class AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
+	private sealed class AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<Func<T, bool>> expected)
-		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected)
+		IEnumerable<Expression<Func<T, bool>>> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(
+			equivalenceRelation,
+			expected.Distinct(new ExpressionEqualityComparer<T, bool>()))
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
-			=> expected(value);
+		protected override bool AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+			=> expected.Compile().Invoke(value);
 	}
 
 	private abstract class AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
@@ -41,7 +47,7 @@ public partial class CollectionMatchOptions
 			IEnumerable<T3> expected)
 		{
 			_equivalenceRelations = equivalenceRelation;
-			_missingItems = expected.Distinct().ToList();
+			_missingItems = expected.ToList();
 			_totalExpectedCount = _missingItems.Count;
 		}
 

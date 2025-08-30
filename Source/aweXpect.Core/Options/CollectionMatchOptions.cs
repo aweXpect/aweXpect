@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
@@ -92,7 +93,7 @@ public partial class CollectionMatchOptions(
 	/// <summary>
 	///     Get the collection matcher for the <paramref name="expected" /> enumerable of predicates.
 	/// </summary>
-	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<Func<T, bool>> expected)
+	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<Expression<Func<T, bool>>> expected)
 		where T : T2
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{

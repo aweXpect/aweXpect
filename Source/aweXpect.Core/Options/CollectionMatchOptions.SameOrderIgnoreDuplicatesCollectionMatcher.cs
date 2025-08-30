@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -8,26 +9,32 @@ namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private class SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
+	private sealed class SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<T> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected, ignoreInterspersedItems)
+		: SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(
+			equivalenceRelation,
+			expected.Distinct(),
+			ignoreInterspersedItems)
 		where T : T2
 	{
 		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
 			=> options.AreConsideredEqual(value, expected);
 	}
 
-	private class SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
+	private sealed class SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<Func<T, bool>> expected,
+		IEnumerable<Expression<Func<T, bool>>> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Func<T, bool>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		: SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(
+			equivalenceRelation,
+			expected.Distinct(new ExpressionEqualityComparer<T, bool>()),
+			ignoreInterspersedItems)
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, Func<T, bool> expected, IOptionsEquality<T2> options)
-			=> expected(value);
+		protected override bool AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+			=> expected.Compile().Invoke(value);
 	}
 
 	private abstract class SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
@@ -54,7 +61,7 @@ public partial class CollectionMatchOptions
 		{
 			_equivalenceRelations = equivalenceRelation;
 			_ignoreInterspersedItems = ignoreInterspersedItems;
-			_expectedDistinctItems = expected.Distinct().ToArray();
+			_expectedDistinctItems = expected.ToArray();
 			_totalExpectedItems = _expectedDistinctItems.Length;
 		}
 
