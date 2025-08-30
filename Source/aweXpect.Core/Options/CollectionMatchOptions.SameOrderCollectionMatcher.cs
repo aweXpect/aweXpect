@@ -20,6 +20,17 @@ public partial class CollectionMatchOptions
 			=> options.AreConsideredEqual(value, expected);
 	}
 
+	private sealed class SameOrderFromExpectationCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<ItemExpectation<T>> expected,
+		bool ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, ItemExpectation<T>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+			=> expected.IsMetBy(value);
+	}
+
 	private sealed class SameOrderFromPredicateCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<Expression<Func<T, bool>>> expected,

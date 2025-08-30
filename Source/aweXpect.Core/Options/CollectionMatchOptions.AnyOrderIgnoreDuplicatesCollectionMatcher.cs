@@ -14,11 +14,23 @@ public partial class CollectionMatchOptions
 		IEnumerable<T> expected)
 		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(
 			equivalenceRelation,
-			expected.Distinct())
+			expected.Distinct().ToList())
 		where T : T2
 	{
 		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
 			=> options.AreConsideredEqual(value, expected);
+	}
+
+	private sealed class AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<ItemExpectation<T>> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, ItemExpectation<T>>(
+			equivalenceRelation,
+			expected.Distinct(new ItemExpectationEqualityComparer<T>()).ToList())
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+			=> expected.IsMetBy(value);
 	}
 
 	private sealed class AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
@@ -26,7 +38,7 @@ public partial class CollectionMatchOptions
 		IEnumerable<Expression<Func<T, bool>>> expected)
 		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(
 			equivalenceRelation,
-			expected.Distinct(new ExpressionEqualityComparer<T, bool>()))
+			expected.Distinct(new ExpressionEqualityComparer<T, bool>()).ToList())
 		where T : T2
 	{
 		protected override bool AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
@@ -44,10 +56,10 @@ public partial class CollectionMatchOptions
 		private int _index;
 
 		protected AnyOrderIgnoreDuplicatesCollectionMatcherBase(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T3> expected)
+			List<T3> expected)
 		{
 			_equivalenceRelations = equivalenceRelation;
-			_missingItems = expected.ToList();
+			_missingItems = expected;
 			_totalExpectedCount = _missingItems.Count;
 		}
 

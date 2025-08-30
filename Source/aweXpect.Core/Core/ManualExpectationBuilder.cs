@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,6 +18,14 @@ public class ManualExpectationBuilder<TValue>(
 	ExpectationGrammars grammars = ExpectationGrammars.None)
 	: ExpectationBuilder("", grammars)
 {
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is ManualExpectationBuilder<TValue> other && Equals(other);
+	
+	protected bool Equals(ManualExpectationBuilder<TValue> other) => GetRootNode().Equals(other.GetRootNode());
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => GetRootNode().GetHashCode();
+
 	/// <summary>
 	///     Appends the expectation of the root node to the <paramref name="stringBuilder" />.
 	/// </summary>
@@ -49,5 +56,14 @@ public class ManualExpectationBuilder<TValue>(
 		inner?.UpdateContexts(callback);
 		base.UpdateContexts(callback);
 		return this;
+	}
+
+	/// <inheritdoc cref="object.ToString()" />
+	public override string? ToString()
+	{
+		StringBuilder sb = new();
+		sb.Append("it ");
+		AppendExpectation(sb);
+		return sb.ToString();
 	}
 }

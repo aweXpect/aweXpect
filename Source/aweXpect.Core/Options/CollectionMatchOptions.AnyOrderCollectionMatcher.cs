@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
 
 namespace aweXpect.Options;
 
@@ -16,6 +19,16 @@ public partial class CollectionMatchOptions
 	{
 		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
 			=> options.AreConsideredEqual(value, expected);
+	}
+
+	private sealed class AnyOrderFromExpectationCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<ItemExpectation<T>> expected)
+		: AnyOrderCollectionMatcherBase<T, T2, ItemExpectation<T>>(equivalenceRelation, expected)
+		where T : T2
+	{
+		protected override bool AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+			=> expected.IsMetBy(value);
 	}
 
 	private sealed class AnyOrderFromPredicateCollectionMatcher<T, T2>(

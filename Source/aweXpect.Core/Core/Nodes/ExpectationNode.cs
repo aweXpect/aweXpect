@@ -131,4 +131,28 @@ internal class ExpectationNode : Node
 		_constraint?.AppendExpectation(stringBuilder, indentation);
 		_inner?.AppendExpectation(stringBuilder, indentation);
 	}
+	
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is ExpectationNode other && Equals(other);
+
+	private bool Equals(ExpectationNode other)
+	{
+		if (_constraint is null && other._constraint is null)
+		{
+			return _inner?.Equals(other._inner) == true;
+		}
+
+		if (_constraint is null || other._constraint is null)
+		{
+			return false;
+		}
+		var sb1 = new StringBuilder();
+		var sb2 = new StringBuilder();
+		_constraint.AppendExpectation(sb1);
+		other._constraint.AppendExpectation(sb2);
+		return sb1.ToString() == sb2.ToString() && _inner?.Equals(other._inner) != false;
+	}
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => _inner?.GetHashCode() ?? 23;
 }

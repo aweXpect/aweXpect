@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
 using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
@@ -102,6 +105,93 @@ public partial class CollectionMatchOptions(
 			(false, true) => new SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
 				_ignoringInterspersedItems),
 			(false, false) => new SameOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+		};
+
+	
+	public class ItemExpectation<TItem>
+	{
+		private readonly IEvaluationContext _context;
+		private readonly CancellationToken _cancellationToken;
+		internal readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+
+		public ItemExpectation(Action<IThat<TItem>> expectation,
+			ExpectationGrammars grammars,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			_context = context;
+			_cancellationToken = cancellationToken;
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
+			expectation.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
+		}
+
+		public bool IsMetBy(TItem value)
+		{
+			var result = _itemExpectationBuilder.IsMetBy(value, _context, _cancellationToken).GetAwaiter().GetResult();
+			return result.Outcome == Outcome.Success;
+		}
+
+		public void AppendExpectation(StringBuilder builder, string? indentation = null)
+		{
+			_itemExpectationBuilder.AppendExpectation(builder, indentation);
+		}
+
+		/// <inheritdoc cref="object.Equals(object?)" />
+		public override bool Equals(object? obj)
+		{
+			return obj is ItemExpectation<TItem> other && Equals(other);
+		}
+
+		protected bool Equals(ItemExpectation<TItem> other) => _itemExpectationBuilder.Equals(other._itemExpectationBuilder);
+
+		/// <inheritdoc cref="object.GetHashCode()" />
+		public override int GetHashCode() => _itemExpectationBuilder.GetHashCode();
+
+		/// <inheritdoc cref="object.ToString()"/>
+		public override string? ToString() => _itemExpectationBuilder.ToString();
+
+	}
+	internal class ItemExpectationEqualityComparer<TItem> : IEqualityComparer<ItemExpectation<TItem>>
+	{
+		public bool Equals(ItemExpectation<TItem>? x, ItemExpectation<TItem>? y)
+		{
+			if (ReferenceEquals(x, y))
+			{
+				return true;
+			}
+
+			if (x is null || y is null)
+			{
+				return false;
+			}
+
+			if (x.GetType() != y.GetType())
+			{
+				return false;
+			}
+
+			return x._itemExpectationBuilder.Equals(y._itemExpectationBuilder);
+		}
+
+		public int GetHashCode(ItemExpectation<TItem> obj)
+		{
+			return obj._itemExpectationBuilder.GetHashCode();
+		}
+	}
+
+	/// <summary>
+	///     Get the collection matcher for the <paramref name="expected" /> enumerable of predicates.
+	/// </summary>
+	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<ItemExpectation<T>> expected)
+		where T : T2
+		=> (_inAnyOrder, _ignoringDuplicates) switch
+		{
+			(true, true) => new AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(true, false) => new AnyOrderFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+			(false, false) => new SameOrderFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected,
 				_ignoringInterspersedItems),
 		};
 

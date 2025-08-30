@@ -378,6 +378,27 @@ public static partial class ThatEnumerable
 	}
 
 	/// <summary>
+	///     Verifies that the collection matches the <paramref name="expected" /> collection of expectations.
+	/// </summary>
+	public static CollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		IsEqualTo<TItem>(
+			this IThat<IEnumerable<TItem>?> source,
+			IEnumerable<Action<IThat<TItem?>>> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToFromExpectationsConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					matchOptions)),
+			source,
+			matchOptions);
+	}
+
+	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
 	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>

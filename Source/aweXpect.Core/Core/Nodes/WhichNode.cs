@@ -111,6 +111,18 @@ internal class WhichNode<TSource, TMember> : Node
 		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
 			matchingValue);
 	}
+	
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is WhichNode<TSource, TMember> other && Equals(other);
+
+	private bool Equals(WhichNode<TSource, TMember> other) =>
+		_parent?.Equals(other._parent) != false &&
+		_inner?.Equals(other._inner) != false &&
+		_memberAccessor?.ToString()?.Equals(other._memberAccessor?.ToString()) != false &&
+		_asyncMemberAccessor?.ToString()?.Equals(other._asyncMemberAccessor?.ToString()) != false;
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => (_parent?.GetHashCode() ?? 17) ^ (_inner?.GetHashCode() ?? 23);
 
 	private static ConstraintResult CombineResults(ConstraintResult? leftResult,
 		ConstraintResult rightResult,

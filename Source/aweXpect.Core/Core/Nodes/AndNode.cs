@@ -101,6 +101,13 @@ internal class AndNode : Node
 
 		Current.AppendExpectation(stringBuilder, indentation);
 	}
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is AndNode other && Equals(other);
+
+	private bool Equals(AndNode other) => Current.Equals(other.Current) && _nodes.SequenceEqual(other._nodes);
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => Current.GetHashCode() ^ _nodes.GetHashCode();
 
 	private static ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,

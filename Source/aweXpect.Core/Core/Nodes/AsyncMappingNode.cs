@@ -54,6 +54,14 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
 		return memberResult.UseValue(value);
 	}
+	
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is AsyncMappingNode<TSource, TTarget> other && Equals(other);
+
+	private bool Equals(AsyncMappingNode<TSource, TTarget> other) => _memberAccessor.Equals(other._memberAccessor);
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => _memberAccessor.GetHashCode();
 
 	internal ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
