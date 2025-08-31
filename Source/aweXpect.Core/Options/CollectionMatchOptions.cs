@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -100,85 +101,15 @@ public partial class CollectionMatchOptions(
 		where T : T2
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => new AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(true, true) => new AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected),
 			(true, false) => new AnyOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected),
-			(false, true) => new SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+			(false, true) => new SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected,
 				_ignoringInterspersedItems),
 			(false, false) => new SameOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
 				_ignoringInterspersedItems),
 		};
-
-	
-	public class ItemExpectation<TItem>
-	{
-		private readonly IEvaluationContext _context;
-		private readonly CancellationToken _cancellationToken;
-		internal readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
-
-		public ItemExpectation(Action<IThat<TItem>> expectation,
-			ExpectationGrammars grammars,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
-		{
-			_context = context;
-			_cancellationToken = cancellationToken;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
-			expectation.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
-		}
-
-		public bool IsMetBy(TItem value)
-		{
-			var result = _itemExpectationBuilder.IsMetBy(value, _context, _cancellationToken).GetAwaiter().GetResult();
-			return result.Outcome == Outcome.Success;
-		}
-
-		public void AppendExpectation(StringBuilder builder, string? indentation = null)
-		{
-			_itemExpectationBuilder.AppendExpectation(builder, indentation);
-		}
-
-		/// <inheritdoc cref="object.Equals(object?)" />
-		public override bool Equals(object? obj)
-		{
-			return obj is ItemExpectation<TItem> other && Equals(other);
-		}
-
-		protected bool Equals(ItemExpectation<TItem> other) => _itemExpectationBuilder.Equals(other._itemExpectationBuilder);
-
-		/// <inheritdoc cref="object.GetHashCode()" />
-		public override int GetHashCode() => _itemExpectationBuilder.GetHashCode();
-
-		/// <inheritdoc cref="object.ToString()"/>
-		public override string? ToString() => _itemExpectationBuilder.ToString();
-
-	}
-	internal class ItemExpectationEqualityComparer<TItem> : IEqualityComparer<ItemExpectation<TItem>>
-	{
-		public bool Equals(ItemExpectation<TItem>? x, ItemExpectation<TItem>? y)
-		{
-			if (ReferenceEquals(x, y))
-			{
-				return true;
-			}
-
-			if (x is null || y is null)
-			{
-				return false;
-			}
-
-			if (x.GetType() != y.GetType())
-			{
-				return false;
-			}
-
-			return x._itemExpectationBuilder.Equals(y._itemExpectationBuilder);
-		}
-
-		public int GetHashCode(ItemExpectation<TItem> obj)
-		{
-			return obj._itemExpectationBuilder.GetHashCode();
-		}
-	}
 
 	/// <summary>
 	///     Get the collection matcher for the <paramref name="expected" /> enumerable of predicates.
@@ -187,9 +118,11 @@ public partial class CollectionMatchOptions(
 		where T : T2
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => new AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(true, true) => new AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected),
 			(true, false) => new AnyOrderFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected),
-			(false, true) => new SameOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+			(false, true) => new SameOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected,
 				_ignoringInterspersedItems),
 			(false, false) => new SameOrderFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected,
 				_ignoringInterspersedItems),
@@ -274,7 +207,8 @@ public partial class CollectionMatchOptions(
 		}
 	}
 
-	private static IEnumerable<string> IncorrectItemsError<T, TExpected>(Dictionary<int, (T Item, TExpected Expected)> incorrectItems)
+	private static IEnumerable<string> IncorrectItemsError<T, TExpected>(
+		Dictionary<int, (T Item, TExpected Expected)> incorrectItems)
 	{
 		bool hasIncorrectItems = incorrectItems.Any();
 		if (hasIncorrectItems)
@@ -327,6 +261,146 @@ public partial class CollectionMatchOptions(
 
 			sb.Length--;
 			yield return sb.ToString();
+		}
+	}
+
+
+	public class ItemExpectation<TItem>
+	{
+		private readonly IEvaluationContext _context;
+		private readonly CancellationToken _cancellationToken;
+		internal readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+
+		public ItemExpectation(Action<IThat<TItem>> expectation,
+			ExpectationGrammars grammars,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			_context = context;
+			_cancellationToken = cancellationToken;
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
+			expectation.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
+		}
+
+#if NET8_0_OR_GREATER
+		public async ValueTask<bool> IsMetBy(TItem value)
+#else
+		public async Task<bool> IsMetBy(TItem value)
+#endif
+		{
+			ConstraintResult result = await _itemExpectationBuilder.IsMetBy(value, _context, _cancellationToken);
+			return result.Outcome == Outcome.Success;
+		}
+
+		public void AppendExpectation(StringBuilder builder, string? indentation = null)
+			=> _itemExpectationBuilder.AppendExpectation(builder, indentation);
+
+		/// <inheritdoc cref="object.Equals(object?)" />
+		public override bool Equals(object? obj) => obj is ItemExpectation<TItem> other && Equals(other);
+
+		protected bool Equals(ItemExpectation<TItem> other)
+			=> _itemExpectationBuilder.Equals(other._itemExpectationBuilder);
+
+		/// <inheritdoc cref="object.GetHashCode()" />
+		public override int GetHashCode() => _itemExpectationBuilder.GetHashCode();
+
+		/// <inheritdoc cref="object.ToString()" />
+		public override string? ToString() => _itemExpectationBuilder.ToString();
+	}
+
+	internal class ItemExpectationEqualityComparer<TItem> : IEqualityComparer<ItemExpectation<TItem>>
+	{
+		public bool Equals(ItemExpectation<TItem>? x, ItemExpectation<TItem>? y)
+		{
+			if (ReferenceEquals(x, y))
+			{
+				return true;
+			}
+
+			if (x is null || y is null)
+			{
+				return false;
+			}
+
+			if (x.GetType() != y.GetType())
+			{
+				return false;
+			}
+
+			return x._itemExpectationBuilder.Equals(y._itemExpectationBuilder);
+		}
+
+		public int GetHashCode(ItemExpectation<TItem> obj) => obj._itemExpectationBuilder.GetHashCode();
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool> All<T>(IEnumerable<T> items, Func<T, ValueTask<bool>> predicate, bool invert =
+		false)
+#else
+	private static async Task<bool> All<T>(IEnumerable<T> items, Func<T, Task<bool>> predicate, bool invert = false)
+#endif
+	{
+		foreach (T item in items)
+		{
+			if (await predicate(item) == invert)
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool> Any<T>(IEnumerable<T> items, Func<T, ValueTask<bool>> predicate, bool invert =
+		false)
+#else
+	private static async Task<bool> Any<T>(IEnumerable<T> items, Func<T, Task<bool>> predicate, bool invert = false)
+#endif
+	{
+		foreach (T item in items)
+		{
+			if (await predicate(item) != invert)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<T?> FirstOrDefault<T>(IEnumerable<T> items, Func<T, ValueTask<bool>> predicate)
+#else
+	private static async Task<T?> FirstOrDefault<T>(IEnumerable<T> items, Func<T, Task<bool>> predicate)
+#endif
+	{
+		foreach (T item in items)
+		{
+			if (await predicate(item))
+			{
+				return item;
+			}
+		}
+
+		return default;
+	}
+		
+#if NET8_0_OR_GREATER
+	private static async ValueTask RemoveFirst<T>(List<T> items, Func<T, ValueTask<bool>> predicate)
+#else
+		private static async Task RemoveFirst<T>(List<T> items, Func<T, Task<bool>> predicate)
+#endif
+	{
+		int index = -1;
+		foreach (T item in items)
+		{
+			index++;
+			if (await predicate(item))
+			{
+				items.RemoveAt(index);
+				break;
+			}
 		}
 	}
 }

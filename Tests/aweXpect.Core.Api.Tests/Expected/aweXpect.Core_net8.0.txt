@@ -193,8 +193,8 @@ namespace aweXpect.Core
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
     {
-        bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
-        bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
+        System.Threading.Tasks.ValueTask<System.ValueTuple<bool, string?>> Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber);
+        System.Threading.Tasks.ValueTask<System.ValueTuple<bool, string?>> VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber);
     }
     public interface IDescribableSubject
     {
@@ -238,7 +238,11 @@ namespace aweXpect.Core
     {
         public ManualExpectationBuilder(aweXpect.Core.ExpectationBuilder? inner, aweXpect.Core.ExpectationGrammars grammars = 0) { }
         public void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        protected bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue> other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
         public System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
+        public override string? ToString() { }
         public override aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
     }
     public abstract class MemberAccessor
@@ -248,6 +252,8 @@ namespace aweXpect.Core
     }
     public class MemberAccessor<TSource, TTarget> : aweXpect.Core.MemberAccessor
     {
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFunc(System.Func<TSource, TTarget> func, string name) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(System.Func<TSource, TTarget> func, string name) { }
@@ -804,6 +810,8 @@ namespace aweXpect.Options
             where T : T2 { }
         public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<T> expected)
             where T : T2 { }
+        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<aweXpect.Options.CollectionMatchOptions.ItemExpectation<T>> expected)
+            where T : T2 { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public void IgnoringDuplicates() { }
         public void IgnoringInterspersedItems() { }
@@ -817,6 +825,16 @@ namespace aweXpect.Options
             ContainsProperly = 10,
             IsContainedIn = 4,
             Contains = 8,
+        }
+        public class ItemExpectation<TItem>
+        {
+            public ItemExpectation(System.Action<aweXpect.Core.IThat<TItem>> expectation, aweXpect.Core.ExpectationGrammars grammars, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
+            public void AppendExpectation(System.Text.StringBuilder builder, string? indentation = null) { }
+            protected bool Equals(aweXpect.Options.CollectionMatchOptions.ItemExpectation<TItem> other) { }
+            public override bool Equals(object? obj) { }
+            public override int GetHashCode() { }
+            public System.Threading.Tasks.ValueTask<bool> IsMetBy(TItem value) { }
+            public override string? ToString() { }
         }
     }
     public class CollectionOrderOptions<TItem> : System.IEquatable<aweXpect.Options.CollectionOrderOptions<TItem>>

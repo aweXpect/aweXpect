@@ -359,9 +359,10 @@ public static partial class ThatAsyncEnumerable
 					_items.Add(item);
 				}
 
-				if (matcher.Verify(It, item, options, maximumNumber, out _failure))
+				var (result, failure) = await matcher.Verify(It, item, options, maximumNumber);
+				if (result)
 				{
-					_failure ??= TooManyDeviationsError();
+					_failure = failure ?? TooManyDeviationsError();
 					Outcome = Outcome.Failure;
 					await expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
 					return this;
@@ -369,9 +370,10 @@ public static partial class ThatAsyncEnumerable
 			}
 
 			await expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
-			if (matcher.VerifyComplete(It, options, maximumNumber, out _failure))
+			var (completedResult, completedFailure) = await matcher.VerifyComplete(It, options, maximumNumber);
+			if (completedResult)
 			{
-				_failure ??= TooManyDeviationsError();
+				_failure = completedFailure ?? TooManyDeviationsError();
 				Outcome = Outcome.Failure;
 				return this;
 			}

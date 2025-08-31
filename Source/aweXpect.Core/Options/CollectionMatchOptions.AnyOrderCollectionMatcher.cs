@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Core.EvaluationContext;
 
 namespace aweXpect.Options;
 
@@ -17,8 +15,13 @@ public partial class CollectionMatchOptions
 		: AnyOrderCollectionMatcherBase<T, T2, T>(equivalenceRelation, expected)
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> options.AreConsideredEqual(value, expected);
+#if NET8_0_OR_GREATER
+		protected override ValueTask<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+			=> ValueTask.FromResult(options.AreConsideredEqual(value, expected));
+#else
+		protected override Task<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+			=> Task.FromResult(options.AreConsideredEqual(value, expected));
+#endif
 	}
 
 	private sealed class AnyOrderFromExpectationCollectionMatcher<T, T2>(
@@ -27,7 +30,12 @@ public partial class CollectionMatchOptions
 		: AnyOrderCollectionMatcherBase<T, T2, ItemExpectation<T>>(equivalenceRelation, expected)
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+#if NET8_0_OR_GREATER
+		protected override ValueTask<bool>
+#else
+		protected override Task<bool>
+#endif
+			AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
 			=> expected.IsMetBy(value);
 	}
 
@@ -37,8 +45,14 @@ public partial class CollectionMatchOptions
 		: AnyOrderCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(equivalenceRelation, expected)
 		where T : T2
 	{
-		protected override bool AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
-			=> expected.Compile().Invoke(value);
+#if NET8_0_OR_GREATER
+		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+			=> ValueTask.FromResult(expected.Compile().Invoke(value));
+#else
+		protected override Task<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
+			IOptionsEquality<T2> options)
+			=> Task.FromResult(expected.Compile().Invoke(value));
+#endif
 	}
 
 	private abstract class AnyOrderCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
@@ -57,25 +71,37 @@ public partial class CollectionMatchOptions
 			_totalExpectedCount = _missingItems.Count;
 		}
 
-		public bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error)
+#if NET8_0_OR_GREATER
+		public async ValueTask<(bool, string?)>
+#else
+		public async Task<(bool, string?)>
+#endif
+			Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber)
 		{
-			if (_missingItems.All(e => !AreConsideredEqual(value, e, options)))
+			if (await All(_missingItems, e => AreConsideredEqual(value, e, options), true))
 			{
 				_additionalItems.Add(_index, value);
 			}
 
-			RemoveFirst(_missingItems, e => AreConsideredEqual(value, e, options));
+			await RemoveFirst(_missingItems, e => AreConsideredEqual(value, e, options));
 			_index++;
-			error = null;
-			return _additionalItems.Count > 2 * maximumNumber;
+			return (_additionalItems.Count > 2 * maximumNumber, null);
 		}
 
-		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
+#if NET8_0_OR_GREATER
+		public ValueTask<(bool, string?)>
+#else
+		public Task<(bool, string?)>
+#endif
+			VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber)
 		{
 			if (_additionalItems.Count + _missingItems.Count > 2 * maximumNumber)
 			{
-				error = null;
-				return true;
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult<(bool, string?)>((true, null));
+#else
+				return Task.FromResult<(bool, string?)>((true, null));
+#endif
 			}
 
 			List<string> errors = new();
@@ -97,24 +123,19 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			error = ReturnErrorString(it, errors);
-			return error != null;
+			var error = ReturnErrorString(it, errors);
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult<(bool, string?)>((error != null, error));
+#else
+				return Task.FromResult<(bool, string?)>((error != null, error));
+#endif
 		}
 
-		protected abstract bool AreConsideredEqual(T value, T3 expected, IOptionsEquality<T2> options);
-
-		private static void RemoveFirst(List<T3> items, Func<T3, bool> predicate)
-		{
-			int index = -1;
-			foreach (T3? item in items)
-			{
-				index++;
-				if (predicate(item))
-				{
-					items.RemoveAt(index);
-					break;
-				}
-			}
-		}
+#if NET8_0_OR_GREATER
+		protected abstract ValueTask<bool>
+#else
+		protected abstract Task<bool>
+#endif
+			AreConsideredEqual(T value, T3 expected, IOptionsEquality<T2> options);
 	}
 }

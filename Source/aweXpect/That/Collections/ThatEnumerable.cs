@@ -35,12 +35,13 @@ public static partial class ThatEnumerable
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<IEnumerable<TItem>?>(it, grammars, expected is null),
-			IContextConstraint<IEnumerable<TItem>?>
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private string? _failure;
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null || expected is null)
@@ -65,18 +66,20 @@ public static partial class ThatEnumerable
 
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (matcher.Verify(It, item, options, maximumNumber, out _failure))
+				var (result, failure) = await matcher.Verify(It, item, options, maximumNumber);
+				if (result)
 				{
-					_failure ??= TooManyDeviationsError();
+					_failure = failure ?? TooManyDeviationsError();
 					Outcome = Outcome.Failure;
 					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
 					return this;
 				}
 			}
 
-			if (matcher.VerifyComplete(It, options, maximumNumber, out _failure))
+			var (completedResult, completedFailure) = await matcher.VerifyComplete(It, options, maximumNumber);
+			if (completedResult)
 			{
-				_failure ??= TooManyDeviationsError();
+				_failure = completedFailure ?? TooManyDeviationsError();
 				Outcome = Outcome.Failure;
 				expectationBuilder.AddCollectionContext(materializedEnumerable);
 				return this;
@@ -133,14 +136,14 @@ public static partial class ThatEnumerable
 		IEnumerable<Action<IThat<TItem?>>>? expected,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<IEnumerable<TItem>?>(it, grammars, expected is null),
-			IContextConstraint<IEnumerable<TItem>?>
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private CollectionMatchOptions.ItemExpectation<TItem>[] _expectations = [];
 
 		private string? _failure;
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null || expected is null)
@@ -166,18 +169,20 @@ public static partial class ThatEnumerable
 			NoOptions noOptions = new();
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (matcher.Verify(It, item, noOptions, maximumNumber, out _failure))
+				var (result, failure) = await matcher.Verify(It, item, noOptions, maximumNumber);
+				if (result)
 				{
-					_failure ??= TooManyDeviationsError();
+					_failure = failure ?? TooManyDeviationsError();
 					Outcome = Outcome.Failure;
 					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
 					return this;
 				}
 			}
 
-			if (matcher.VerifyComplete(It, noOptions, maximumNumber, out _failure))
+			var (completedResult, completedFailure) = await matcher.VerifyComplete(It, noOptions, maximumNumber);
+			if (completedResult)
 			{
-				_failure ??= TooManyDeviationsError();
+				_failure = completedFailure ?? TooManyDeviationsError();
 				Outcome = Outcome.Failure;
 				expectationBuilder.AddCollectionContext(materializedEnumerable);
 				return this;
@@ -237,12 +242,12 @@ public static partial class ThatEnumerable
 		IEnumerable<Expression<Func<TItem, bool>>>? expected,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<IEnumerable<TItem>?>(it, grammars, expected is null),
-			IContextConstraint<IEnumerable<TItem>?>
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private string? _failure;
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null || expected is null)
@@ -268,18 +273,20 @@ public static partial class ThatEnumerable
 			NoOptions noOptions = new();
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (matcher.Verify(It, item, noOptions, maximumNumber, out _failure))
+				var (result, failure) = await matcher.Verify(It, item, noOptions, maximumNumber);
+				if (result)
 				{
-					_failure ??= TooManyDeviationsError();
+					_failure = failure ?? TooManyDeviationsError();
 					Outcome = Outcome.Failure;
 					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
 					return this;
 				}
 			}
 
-			if (matcher.VerifyComplete(It, noOptions, maximumNumber, out _failure))
+			var (completedResult, completedFailure) = await matcher.VerifyComplete(It, noOptions, maximumNumber);
+			if (completedResult)
 			{
-				_failure ??= TooManyDeviationsError();
+				_failure = completedFailure ?? TooManyDeviationsError();
 				Outcome = Outcome.Failure;
 				expectationBuilder.AddCollectionContext(materializedEnumerable);
 				return this;
@@ -340,13 +347,13 @@ public static partial class ThatEnumerable
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<TEnumerable?>(it, grammars, expected is null),
-			IContextConstraint<TEnumerable?>
+			IAsyncContextConstraint<TEnumerable?>
 		where TEnumerable : IEnumerable?
 		where TItem : TMatch
 	{
 		private string? _failure;
 
-		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null || expected is null)
@@ -370,18 +377,20 @@ public static partial class ThatEnumerable
 
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (matcher.Verify(It, item, options, maximumNumber, out _failure))
+				var (result, failure) = await matcher.Verify(It, item, options, maximumNumber);
+				if (result)
 				{
-					_failure ??= TooManyDeviationsError();
+					_failure = failure ?? TooManyDeviationsError();
 					Outcome = Outcome.Failure;
 					expectationBuilder.AddCollectionContext(materializedEnumerable, true);
 					return this;
 				}
 			}
 
-			if (matcher.VerifyComplete(It, options, maximumNumber, out _failure))
+			var (completedResult, completedFailure) = await matcher.VerifyComplete(It, options, maximumNumber);
+			if (completedResult)
 			{
-				_failure ??= TooManyDeviationsError();
+				_failure = completedFailure ?? TooManyDeviationsError();
 				Outcome = Outcome.Failure;
 				expectationBuilder.AddCollectionContext(materializedEnumerable);
 				return this;
