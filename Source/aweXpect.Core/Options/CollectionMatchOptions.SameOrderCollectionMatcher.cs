@@ -28,9 +28,9 @@ public partial class CollectionMatchOptions
 
 	private sealed class SameOrderFromExpectationCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<ItemExpectation<T>> expected,
+		IEnumerable<ExpectationItem<T>> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderCollectionMatcherBase<T, T2, ItemExpectation<T>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, ExpectationItem<T>>(equivalenceRelation, expected, ignoreInterspersedItems)
 		where T : T2
 	{
 #if NET8_0_OR_GREATER
@@ -38,7 +38,7 @@ public partial class CollectionMatchOptions
 #else
 		protected override Task<bool>
 #endif
-			AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+			AreConsideredEqual(T value, ExpectationItem<T> expected, IOptionsEquality<T2> options)
 			=> expected.IsMetBy(value);
 	}
 

@@ -234,15 +234,17 @@ namespace aweXpect.Core
         System.Type GetType();
         string? ToString();
     }
-    public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder
+    public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder, System.Collections.Generic.IEqualityComparer<aweXpect.Core.ManualExpectationBuilder<TValue>>
     {
         public ManualExpectationBuilder(aweXpect.Core.ExpectationBuilder? inner, aweXpect.Core.ExpectationGrammars grammars = 0) { }
         public void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-        protected bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue> other) { }
+        protected virtual bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue> other) { }
         public override bool Equals(object? obj) { }
+        public bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue>? x, aweXpect.Core.ManualExpectationBuilder<TValue>? y) { }
         public override int GetHashCode() { }
+        public int GetHashCode(aweXpect.Core.ManualExpectationBuilder<TValue> obj) { }
         public System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
-        public override string? ToString() { }
+        public override string ToString() { }
         public override aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
     }
     public abstract class MemberAccessor
@@ -810,7 +812,7 @@ namespace aweXpect.Options
             where T : T2 { }
         public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<T> expected)
             where T : T2 { }
-        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<aweXpect.Options.CollectionMatchOptions.ItemExpectation<T>> expected)
+        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<aweXpect.Options.CollectionMatchOptions.ExpectationItem<T>> expected)
             where T : T2 { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public void IgnoringDuplicates() { }
@@ -826,15 +828,13 @@ namespace aweXpect.Options
             IsContainedIn = 4,
             Contains = 8,
         }
-        public class ItemExpectation<TItem>
+        public sealed class ExpectationItem<TItem>
         {
-            public ItemExpectation(System.Action<aweXpect.Core.IThat<TItem>> expectation, aweXpect.Core.ExpectationGrammars grammars, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
-            public void AppendExpectation(System.Text.StringBuilder builder, string? indentation = null) { }
-            protected bool Equals(aweXpect.Options.CollectionMatchOptions.ItemExpectation<TItem> other) { }
+            public ExpectationItem(System.Action<aweXpect.Core.IThat<TItem>> expectation, aweXpect.Core.ExpectationGrammars grammars, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
             public override bool Equals(object? obj) { }
             public override int GetHashCode() { }
             public System.Threading.Tasks.ValueTask<bool> IsMetBy(TItem value) { }
-            public override string? ToString() { }
+            public override string ToString() { }
         }
     }
     public class CollectionOrderOptions<TItem> : System.IEquatable<aweXpect.Options.CollectionOrderOptions<TItem>>

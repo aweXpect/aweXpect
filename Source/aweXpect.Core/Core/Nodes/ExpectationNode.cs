@@ -131,7 +131,7 @@ internal class ExpectationNode : Node
 		_constraint?.AppendExpectation(stringBuilder, indentation);
 		_inner?.AppendExpectation(stringBuilder, indentation);
 	}
-	
+
 	/// <inheritdoc cref="object.Equals(object?)" />
 	public override bool Equals(object? obj) => obj is ExpectationNode other && Equals(other);
 
@@ -146,13 +146,14 @@ internal class ExpectationNode : Node
 		{
 			return false;
 		}
-		var sb1 = new StringBuilder();
-		var sb2 = new StringBuilder();
+
+		StringBuilder sb1 = new();
+		StringBuilder sb2 = new();
 		_constraint.AppendExpectation(sb1);
 		other._constraint.AppendExpectation(sb2);
 		return sb1.ToString() == sb2.ToString() && _inner?.Equals(other._inner) != false;
 	}
 
 	/// <inheritdoc cref="object.GetHashCode()" />
-	public override int GetHashCode() => _inner?.GetHashCode() ?? 23;
+	public override int GetHashCode() => GetType().GetHashCode();
 }

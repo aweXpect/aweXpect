@@ -29,10 +29,10 @@ public partial class CollectionMatchOptions
 
 	private sealed class AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<ItemExpectation<T>> expected)
-		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, ItemExpectation<T>>(
+		IEnumerable<ExpectationItem<T>> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, ExpectationItem<T>>(
 			equivalenceRelation,
-			expected.Distinct(new ItemExpectationEqualityComparer<T>()).ToList())
+			expected.Distinct(new ExpectationItemEqualityComparer<T>()).ToList())
 		where T : T2
 	{
 #if NET8_0_OR_GREATER
@@ -40,7 +40,7 @@ public partial class CollectionMatchOptions
 #else
 		protected override Task<bool>
 #endif
-			AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+			AreConsideredEqual(T value, ExpectationItem<T> expected, IOptionsEquality<T2> options)
 			=> expected.IsMetBy(value);
 	}
 

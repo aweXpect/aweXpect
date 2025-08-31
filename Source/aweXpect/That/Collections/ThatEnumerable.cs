@@ -139,7 +139,7 @@ public static partial class ThatEnumerable
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		private CollectionMatchOptions.ItemExpectation<TItem>[] _expectations = [];
+		private CollectionMatchOptions.ExpectationItem<TItem>[] _expectations = [];
 
 		private string? _failure;
 
@@ -155,7 +155,7 @@ public static partial class ThatEnumerable
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			_expectations = expected.Select(expectation
-					=> new CollectionMatchOptions.ItemExpectation<TItem>(expectation, Grammars,
+					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation, Grammars,
 						context,
 						CancellationToken.None))
 				.ToArray();

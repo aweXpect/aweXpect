@@ -122,7 +122,7 @@ internal class WhichNode<TSource, TMember> : Node
 		_asyncMemberAccessor?.ToString()?.Equals(other._asyncMemberAccessor?.ToString()) != false;
 
 	/// <inheritdoc cref="object.GetHashCode()" />
-	public override int GetHashCode() => (_parent?.GetHashCode() ?? 17) ^ (_inner?.GetHashCode() ?? 23);
+	public override int GetHashCode() => _parent?.GetHashCode() ?? 17;
 
 	private static ConstraintResult CombineResults(ConstraintResult? leftResult,
 		ConstraintResult rightResult,

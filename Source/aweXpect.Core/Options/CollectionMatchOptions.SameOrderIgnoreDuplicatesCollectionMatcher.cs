@@ -31,11 +31,11 @@ public partial class CollectionMatchOptions
 
 	private sealed class SameOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
-		IEnumerable<ItemExpectation<T>> expected,
+		IEnumerable<ExpectationItem<T>> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, ItemExpectation<T>>(
+		: SameOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, ExpectationItem<T>>(
 			equivalenceRelation,
-			expected.Distinct(new ItemExpectationEqualityComparer<T>()),
+			expected.Distinct(new ExpectationItemEqualityComparer<T>()),
 			ignoreInterspersedItems)
 		where T : T2
 	{
@@ -44,7 +44,7 @@ public partial class CollectionMatchOptions
 #else
 		protected override Task<bool>
 #endif
-			AreConsideredEqual(T value, ItemExpectation<T> expected, IOptionsEquality<T2> options)
+			AreConsideredEqual(T value, ExpectationItem<T> expected, IOptionsEquality<T2> options)
 			=> expected.IsMetBy(value);
 	}
 

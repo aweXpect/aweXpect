@@ -89,7 +89,7 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 
 		protected override LabelTarget? VisitLabelTarget(LabelTarget? node)
 		{
-			if (node != null)
+			if (node is not null)
 			{
 				_runningTotal += GetHashCodeFor(node.Name, node.Type);
 				return base.VisitLabelTarget(node);
@@ -173,7 +173,7 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 		private static int GetHashCodeFor<TProperty>(TProperty prop)
 		{
 			int hash = 17;
-			if (prop != null)
+			if (prop is not null)
 			{
 				hash = (hash * 23) + prop.GetHashCode();
 			}
@@ -184,12 +184,12 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 		private static int GetHashCodeFor<TProperty1, TProperty2>(TProperty1 prop1, TProperty2 prop2)
 		{
 			int hash = 17;
-			if (prop1 != null)
+			if (prop1 is not null)
 			{
 				hash = (hash * 23) + prop1.GetHashCode();
 			}
 
-			if (prop2 != null)
+			if (prop2 is not null)
 			{
 				hash = (hash * 23) + prop2.GetHashCode();
 			}
@@ -201,17 +201,17 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 			TProperty3 prop3)
 		{
 			int hash = 17;
-			if (prop1 != null)
+			if (prop1 is not null)
 			{
 				hash = (hash * 23) + prop1.GetHashCode();
 			}
 
-			if (prop2 != null)
+			if (prop2 is not null)
 			{
 				hash = (hash * 23) + prop2.GetHashCode();
 			}
 
-			if (prop3 != null)
+			if (prop3 is not null)
 			{
 				hash = (hash * 23) + prop3.GetHashCode();
 			}
@@ -491,15 +491,15 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 
 		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-		public override Expression? Visit(Expression? expression)
+		public override Expression? Visit(Expression? node)
 		{
-			if (expression == null)
+			if (node == null)
 			{
 				return null;
 			}
 
-			_expressions.Add(expression);
-			return base.Visit(expression);
+			_expressions.Add(node);
+			return base.Visit(node);
 		}
 	}
 }
