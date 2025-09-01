@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -22,12 +23,22 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	private IStringMatchType _matchType = ExactMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+#if NET8_0_OR_GREATER
+	public ValueTask<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+#else
+	public Task<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+#endif
 	{
+		bool result;
 		if (expected is not string expectedString)
 		{
-			return _matchType.AreConsideredEqual(actual, null, _ignoreCase,
+			result = _matchType.AreConsideredEqual(actual, null, _ignoreCase,
 				_comparer ?? UseDefaultComparer(_ignoreCase));
+#if NET8_0_OR_GREATER
+			return ValueTask.FromResult(result);
+#else
+			return Task.FromResult(result);
+#endif
 		}
 
 		if (_ignoreNewlineStyle)
@@ -48,8 +59,13 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expectedString = expectedString.TrimEnd();
 		}
 
-		return _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
+		result = _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
 			_comparer ?? UseDefaultComparer(_ignoreCase));
+#if NET8_0_OR_GREATER
+		return ValueTask.FromResult(result);
+#else
+		return Task.FromResult(result);
+#endif
 	}
 
 	/// <summary>

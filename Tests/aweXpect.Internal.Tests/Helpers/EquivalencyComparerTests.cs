@@ -18,7 +18,7 @@ public sealed partial class EquivalencyComparerTests
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, actual);
+			bool result = await sut.AreConsideredEqual(actual, actual);
 
 			await That(result).IsTrue();
 		}
@@ -38,7 +38,7 @@ public sealed partial class EquivalencyComparerTests
 			expected.Nested = actual;
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -61,7 +61,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClass? expected = null;
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsTrue();
 		}
@@ -73,7 +73,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClass expected = new();
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -89,7 +89,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClass? expected = null;
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();

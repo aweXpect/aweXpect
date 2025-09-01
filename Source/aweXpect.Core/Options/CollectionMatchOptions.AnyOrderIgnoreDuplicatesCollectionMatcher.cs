@@ -20,11 +20,10 @@ public partial class CollectionMatchOptions
 	{
 #if NET8_0_OR_GREATER
 		protected override ValueTask<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> ValueTask.FromResult(options.AreConsideredEqual(value, expected));
 #else
 		protected override Task<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> Task.FromResult(options.AreConsideredEqual(value, expected));
 #endif
+			=> options.AreConsideredEqual(value, expected);
 	}
 
 	private sealed class AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(
@@ -53,7 +52,8 @@ public partial class CollectionMatchOptions
 		where T : T2
 	{
 #if NET8_0_OR_GREATER
-		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
+			IOptionsEquality<T2> options)
 			=> ValueTask.FromResult(expected.Compile().Invoke(value));
 #else
 		protected override Task<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
@@ -139,14 +139,14 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			var error = ReturnErrorString(it, errors);
+			string? error = ReturnErrorString(it, errors);
 #if NET8_0_OR_GREATER
-				return ValueTask.FromResult<(bool, string?)>((error != null, error));
+			return ValueTask.FromResult<(bool, string?)>((error != null, error));
 #else
 			return Task.FromResult<(bool, string?)>((error != null, error));
 #endif
 		}
-		
+
 #if NET8_0_OR_GREATER
 		protected abstract ValueTask<bool>
 #else

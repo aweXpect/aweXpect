@@ -1,4 +1,6 @@
-﻿using aweXpect.Core;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -44,9 +46,9 @@ public static partial class ThatString
 		string? expected,
 		StringEqualityOptions options)
 		: ConstraintResult.WithNotNullValue<string?>(it, grammars),
-			IValueConstraint<string?>
+			IAsyncConstraint<string?>
 	{
-		public ConstraintResult IsMetBy(string? actual)
+		public async Task<ConstraintResult> IsMetBy(string? actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (expected is null)
@@ -56,7 +58,7 @@ public static partial class ThatString
 			}
 
 			Outcome = expected.Length <= actual?.Length &&
-			          options.AreConsideredEqual(actual[..expected.Length], expected)
+			          await options.AreConsideredEqual(actual[..expected.Length], expected)
 				? Outcome.Success
 				: Outcome.Failure;
 			return this;

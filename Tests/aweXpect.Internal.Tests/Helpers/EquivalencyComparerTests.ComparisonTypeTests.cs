@@ -40,7 +40,7 @@ public sealed partial class EquivalencyComparerTests
 					ComparisonType = EquivalencyComparisonType.ByValue,
 				}));
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -68,7 +68,7 @@ public sealed partial class EquivalencyComparerTests
 				DefaultComparisonTypeSelector = _ => EquivalencyComparisonType.ByValue,
 			});
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();

@@ -66,7 +66,7 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectHasItemResult<IAsyncEnumerable<TItem>?, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new HasItemConstraint<TItem>(expectationBuilder, it, grammars,
+				=> new AsyncHasItemConstraint<TItem>(expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),
 					() => $"{Formatter.Format(expected)}{options}",
 					indexOptions)),
@@ -86,7 +86,7 @@ public static partial class ThatAsyncEnumerable
 		StringEqualityOptions options = new();
 		return new StringHasItemResult<IAsyncEnumerable<string?>?>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new HasItemConstraint<string?>(expectationBuilder, it, grammars,
+				=> new AsyncHasItemConstraint<string?>(expectationBuilder, it, grammars,
 					a => options.AreConsideredEqual(a, expected),
 					() => options.GetExpectation(expected, grammars),
 					indexOptions)),
@@ -153,6 +153,128 @@ public static partial class ThatAsyncEnumerable
 				_hasIndex = true;
 				_actual = item;
 				Outcome = predicate(item) ? Outcome.Success : Outcome.Failure;
+				if (Outcome == Outcome.Success)
+				{
+					break;
+				}
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("has item ").Append(predicateDescription()).Append(options.Match.GetDescription());
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else if (_hasIndex)
+			{
+				if (options.Match.OnlySingleIndex())
+				{
+					stringBuilder.Append(it).Append(" had item ");
+					Formatter.Format(stringBuilder, _actual);
+					stringBuilder.Append(options.Match.GetDescription());
+				}
+				else
+				{
+					string optionDescription = options.Match.GetDescription();
+					if (string.IsNullOrEmpty(optionDescription))
+					{
+						optionDescription = " at any index";
+					}
+
+					stringBuilder.Append(it).Append(" did not match").Append(optionDescription);
+				}
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" did not contain any item").Append(options.Match.GetDescription());
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("does not have item ").Append(predicateDescription())
+				.Append(options.Match.GetDescription());
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual is null)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" did");
+			}
+		}
+	}
+
+	private sealed class AsyncHasItemConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+#if NET8_0_OR_GREATER
+		Func<TItem, ValueTask<bool>> predicate,
+#else
+			Func<TItem, Task<bool>> predicate,
+#endif
+		Func<string> predicateDescription,
+		CollectionIndexOptions options)
+		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>(grammars),
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	{
+		private TItem? _actual;
+		private bool _hasIndex;
+
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			Actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			IAsyncEnumerable<TItem> materialized =
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
+			await expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
+			_hasIndex = false;
+			Outcome = Outcome.Failure;
+
+			int? count = null;
+			if (options.Match is CollectionIndexOptions.IMatchFromEnd)
+			{
+				count = (await (materialized as IMaterializedEnumerable<TItem>)!.MaterializeItems(null)).Count;
+			}
+
+			int index = -1;
+			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
+			{
+				index++;
+				bool? isIndexInRange = options.Match switch
+				{
+					CollectionIndexOptions.IMatchFromBeginning fromBeginning => fromBeginning.MatchesIndex(index),
+					CollectionIndexOptions.IMatchFromEnd fromEnd => fromEnd.MatchesIndex(index, count),
+					_ => false
+				};
+				if (isIndexInRange != true)
+				{
+					if (isIndexInRange == false)
+					{
+						break;
+					}
+
+					continue;
+				}
+
+				_hasIndex = true;
+				_actual = item;
+				Outcome = await predicate(item) ? Outcome.Success : Outcome.Failure;
 				if (Outcome == Outcome.Success)
 				{
 					break;

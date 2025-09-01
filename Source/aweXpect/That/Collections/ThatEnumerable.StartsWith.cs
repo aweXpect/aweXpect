@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -460,7 +462,7 @@ public static partial class ThatEnumerable
 
 	private sealed class StartsWithConstraint<TItem, TMatch>
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
-			IContextConstraint<IEnumerable<TItem>?>
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly ExpectationBuilder _expectationBuilder;
@@ -487,7 +489,7 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -508,7 +510,7 @@ public static partial class ThatEnumerable
 			foreach (TItem item in materializedEnumerable)
 			{
 				TItem expectedItem = _expected[_index++];
-				if (!_options.AreConsideredEqual(item, expectedItem))
+				if (!await _options.AreConsideredEqual(item, expectedItem))
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;
@@ -575,7 +577,7 @@ public static partial class ThatEnumerable
 
 	private sealed class StartsWithForEnumerableConstraint<TEnumerable, TMatch>
 		: ConstraintResult.WithNotNullValue<TEnumerable?>,
-			IContextConstraint<TEnumerable?>
+			IAsyncContextConstraint<TEnumerable?>
 		where TEnumerable : IEnumerable
 	{
 		private readonly ExpectationBuilder _expectationBuilder;
@@ -602,7 +604,7 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -622,7 +624,7 @@ public static partial class ThatEnumerable
 			foreach (object? item in materializedEnumerable)
 			{
 				object? expectedItem = _expected[_index++];
-				if (item is not TMatch matchedItem || !_options.AreConsideredEqual(matchedItem, expectedItem))
+				if (item is not TMatch matchedItem || !await _options.AreConsideredEqual(matchedItem, expectedItem))
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;

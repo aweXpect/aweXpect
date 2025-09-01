@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -75,9 +77,9 @@ public static partial class ThatString
 		IEnumerable<string?> expectedValues,
 		StringEqualityOptions options)
 		: ConstraintResult.WithValue<string?>(grammars),
-			IValueConstraint<string?>
+			IAsyncConstraint<string?>
 	{
-		public ConstraintResult IsMetBy(string? actual)
+		public async Task<ConstraintResult> IsMetBy(string? actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			StringEqualityOptions stringEqualityOptions = options;
@@ -85,7 +87,7 @@ public static partial class ThatString
 			foreach (string? value in expectedValues)
 			{
 				hasValues = true;
-				if (stringEqualityOptions
+				if (await stringEqualityOptions
 				    .AreConsideredEqual(actual, value))
 				{
 					Outcome = Outcome.Success;

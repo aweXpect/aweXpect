@@ -1,4 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -115,12 +117,12 @@ public static partial class ThatObject
 		TExpected expected,
 		ObjectEqualityOptions<TSubject> options)
 		: ConstraintResult.WithEqualToValue<TSubject>(it, grammars, expected is null),
-			IValueConstraint<TSubject>
+			IAsyncConstraint<TSubject>
 	{
-		public ConstraintResult IsMetBy(TSubject actual)
+		public async Task<ConstraintResult> IsMetBy(TSubject actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
-			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
+			Outcome = await options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 
@@ -145,13 +147,13 @@ public static partial class ThatObject
 		T? expected,
 		ObjectEqualityOptions<T> options)
 		: ConstraintResult.WithValue<T>(grammars),
-			IValueConstraint<T>
+			IAsyncConstraint<T>
 		where T : struct
 	{
-		public ConstraintResult IsMetBy(T actual)
+		public async Task<ConstraintResult> IsMetBy(T actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
-			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
+			Outcome = await options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 
@@ -176,13 +178,13 @@ public static partial class ThatObject
 		T? expected,
 		ObjectEqualityOptions<T?> options)
 		: ConstraintResult.WithEqualToValue<T?>(it, grammars, expected is null),
-			IValueConstraint<T?>
+			IAsyncConstraint<T?>
 		where T : struct
 	{
-		public ConstraintResult IsMetBy(T? actual)
+		public async Task<ConstraintResult> IsMetBy(T? actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
-			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
+			Outcome = await options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 

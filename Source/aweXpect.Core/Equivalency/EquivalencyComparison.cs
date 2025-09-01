@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace aweXpect.Equivalency;
 
@@ -15,7 +16,12 @@ public static partial class EquivalencyComparison
 	/// <remarks>
 	///     In case of a difference, the <paramref name="failureBuilder" /> contains a human readable explanation.
 	/// </remarks>
-	public static bool Compare<TActual, TExpected>(
+#if NET8_0_OR_GREATER
+	public static ValueTask<bool>
+#else
+	public static Task<bool>
+#endif
+		Compare<TActual, TExpected>(
 		TActual actual,
 		TExpected expected,
 		EquivalencyOptions equivalencyOptions,

@@ -22,11 +22,10 @@ public partial class CollectionMatchOptions
 	{
 #if NET8_0_OR_GREATER
 		protected override ValueTask<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> ValueTask.FromResult(options.AreConsideredEqual(value, expected));
 #else
 		protected override Task<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> Task.FromResult(options.AreConsideredEqual(value, expected));
 #endif
+			=> options.AreConsideredEqual(value, expected);
 	}
 
 	private sealed class SameOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(
@@ -59,7 +58,8 @@ public partial class CollectionMatchOptions
 		where T : T2
 	{
 #if NET8_0_OR_GREATER
-		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
+			IOptionsEquality<T2> options)
 			=> ValueTask.FromResult(expected.Compile().Invoke(value));
 #else
 		protected override Task<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
@@ -73,9 +73,9 @@ public partial class CollectionMatchOptions
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelations _equivalenceRelations;
-		private readonly bool _ignoreInterspersedItems;
 		private readonly T3[] _expectedDistinctItems;
 		private readonly List<T> _foundItems = new();
+		private readonly bool _ignoreInterspersedItems;
 		private readonly Dictionary<int, (T Item, T3 Expected)> _incorrectItems = new();
 		private readonly List<T> _matchingItems = new();
 		private readonly List<T3> _missingItems = new();
@@ -120,7 +120,7 @@ public partial class CollectionMatchOptions
 			}
 			else if (await AreConsideredEqual(value, _expectedDistinctItems[_matchIndex], options))
 			{
-				VerifyTheCurrentValueIsEqualToTheExpectedValue(value, options);
+				await VerifyTheCurrentValueIsEqualToTheExpectedValue(value, options);
 			}
 			else if (_ignoreInterspersedItems)
 			{
@@ -143,7 +143,7 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			return (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count >
-			       2 * maximumNumber, null);
+			        2 * maximumNumber, null);
 		}
 
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
@@ -158,18 +158,19 @@ public partial class CollectionMatchOptions
 				maximumNumber;
 			foreach (T3 item in _expectedDistinctItems.Skip(Math.Max(_expectationIndex - 1, _maxMatchIndex)))
 			{
-				KeyValuePair<int, T> additionalItem = await FirstOrDefault(_additionalItems, a => AreConsideredEqual(a.Value, item, options));
+				KeyValuePair<int, T> additionalItem =
+					await FirstOrDefault(_additionalItems, a => AreConsideredEqual(a.Value, item, options));
 				if (!additionalItem.IsDefault())
 				{
 					_additionalItems.Remove(additionalItem.Key);
 					_missingItems.Add(item);
 				}
-				
+
 				if (await Any(_uniqueItems, v => AreConsideredEqual(v, item, options)))
 				{
 					continue;
 				}
-				
+
 				if (await All(_additionalItems, x => AreConsideredEqual(x.Value, item, options), true) &&
 				    await All(_incorrectItems, x => AreConsideredEqual(x.Value.Item, item, options), true))
 				{
@@ -212,7 +213,7 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			var error = ReturnErrorString(it, errors);
+			string? error = ReturnErrorString(it, errors);
 			return (error != null, error);
 		}
 #pragma warning restore S3776
@@ -282,17 +283,20 @@ public partial class CollectionMatchOptions
 			}
 		}
 
-		private void VerifyTheCurrentValueIsEqualToTheExpectedValue(T value, IOptionsEquality<T2> options)
+#if NET8_0_OR_GREATER
+		private async ValueTask
+#else
+		private async Task
+#endif
+			VerifyTheCurrentValueIsEqualToTheExpectedValue(T value, IOptionsEquality<T2> options)
 		{
 			_matchIndex++;
 			_maxMatchIndex = Math.Max(_matchIndex, _maxMatchIndex);
 			_expectationIndex++;
 			_matchingItems.Add(value);
 			_uniqueItems.Add(value);
-			foreach (int key in _additionalItems
-				         .Where(item => options.AreConsideredEqual(item.Value, value))
-				         .Select(x => x.Key)
-				         .ToList())
+			foreach (int key in await Filter(_additionalItems, item => options.AreConsideredEqual(item.Value, value),
+				         x => x.Key))
 			{
 				_additionalItems.Remove(key);
 			}

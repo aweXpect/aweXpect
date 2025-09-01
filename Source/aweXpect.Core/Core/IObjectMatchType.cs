@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Core;
+﻿using System.Threading.Tasks;
+
+namespace aweXpect.Core;
 
 /// <summary>
 ///     The type defining how two objects are compared.
@@ -9,7 +11,11 @@ public interface IObjectMatchType
 	///     Returns <see langword="true" /> if the two objects <paramref name="actual" /> and <paramref name="expected" /> are
 	///     considered equal; otherwise <see langword="false" />.
 	/// </summary>
-	bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
+#if NET8_0_OR_GREATER
+	ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
+#else
+	Task<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
+#endif
 
 	/// <summary>
 	///     Get the expectations text.

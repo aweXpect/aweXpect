@@ -272,7 +272,7 @@ public static partial class ThatAsyncEnumerable
 
 				TItem item = _foundValues[_index + _offset];
 				TItem expectedItem = _expected[_index];
-				if (!_options.AreConsideredEqual(item, expectedItem))
+				if (!await _options.AreConsideredEqual(item, expectedItem))
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;

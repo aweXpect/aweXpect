@@ -19,18 +19,18 @@ public partial class CollectionMatchOptions
 	{
 #if NET8_0_OR_GREATER
 		protected override ValueTask<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> ValueTask.FromResult(options.AreConsideredEqual(value, expected));
 #else
 		protected override Task<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
-			=> Task.FromResult(options.AreConsideredEqual(value, expected));
 #endif
+			=> options.AreConsideredEqual(value, expected);
 	}
 
 	private sealed class SameOrderFromExpectationCollectionMatcher<T, T2>(
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<ExpectationItem<T>> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderCollectionMatcherBase<T, T2, ExpectationItem<T>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, ExpectationItem<T>>(equivalenceRelation, expected,
+			ignoreInterspersedItems)
 		where T : T2
 	{
 #if NET8_0_OR_GREATER
@@ -46,11 +46,13 @@ public partial class CollectionMatchOptions
 		EquivalenceRelations equivalenceRelation,
 		IEnumerable<Expression<Func<T, bool>>> expected,
 		bool ignoreInterspersedItems)
-		: SameOrderCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(equivalenceRelation, expected, ignoreInterspersedItems)
+		: SameOrderCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(equivalenceRelation, expected,
+			ignoreInterspersedItems)
 		where T : T2
 	{
 #if NET8_0_OR_GREATER
-		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected, IOptionsEquality<T2> options)
+		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
+			IOptionsEquality<T2> options)
 			=> ValueTask.FromResult(expected.Compile().Invoke(value));
 #else
 		protected override Task<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
@@ -125,7 +127,7 @@ public partial class CollectionMatchOptions
 		}
 
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
-		
+
 #if NET8_0_OR_GREATER
 		public async ValueTask<(bool, string?)>
 #else
@@ -139,7 +141,8 @@ public partial class CollectionMatchOptions
 				for (int i = consideredExpectedItems; i < _expectedItems.Length; i++)
 				{
 					T3 item = _expectedItems[i];
-					KeyValuePair<int, T> additionalItem = await FirstOrDefault(_additionalItems, a => AreConsideredEqual(a.Value, item, options));
+					KeyValuePair<int, T> additionalItem = await FirstOrDefault(_additionalItems,
+						a => AreConsideredEqual(a.Value, item, options));
 					if (!additionalItem.IsDefault())
 					{
 						_additionalItems.Remove(additionalItem.Key);
@@ -185,7 +188,7 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			var error = ReturnErrorString(it, errors);
+			string? error = ReturnErrorString(it, errors);
 			return (error != null, error);
 		}
 #pragma warning restore S3776
@@ -247,13 +250,13 @@ public partial class CollectionMatchOptions
 		{
 			for (int i = 1; i < _expectedItems.Length - _matchingItems.Count; i++)
 			{
-				var expectedItem = _expectedItems[_matchIndex + i];
+				T3 expectedItem = _expectedItems[_matchIndex + i];
 				if (await AreConsideredEqual(value, _expectedItems[_matchIndex + i], options))
 				{
 					bool couldBeMatch = true;
 					for (int j = 0; j < _matchingItems.Count; j++)
 					{
-						if (!(await AreConsideredEqual(_matchingItems[j], _expectedItems[j + i], options)))
+						if (!await AreConsideredEqual(_matchingItems[j], _expectedItems[j + i], options))
 						{
 							couldBeMatch = false;
 						}
@@ -290,14 +293,14 @@ public partial class CollectionMatchOptions
 #else
 		private async Task
 #endif
-		VerifyCompleteForSubsetMatch(IOptionsEquality<T2> options)
+			VerifyCompleteForSubsetMatch(IOptionsEquality<T2> options)
 		{
 			for (int i = 0; i < _expectedItems.Length - _foundItems.Count; i++)
 			{
 				bool isMatch = true;
 				for (int j = 0; j < _foundItems.Count; j++)
 				{
-					if (!(await AreConsideredEqual(_foundItems[j], _expectedItems[i + j], options)))
+					if (!await AreConsideredEqual(_foundItems[j], _expectedItems[i + j], options))
 					{
 						isMatch = false;
 						break;
@@ -311,7 +314,7 @@ public partial class CollectionMatchOptions
 				}
 			}
 		}
-		
+
 #if NET8_0_OR_GREATER
 		protected abstract ValueTask<bool>
 #else

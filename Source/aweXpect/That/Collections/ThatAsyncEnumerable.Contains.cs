@@ -32,7 +32,7 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<TItem>(
+				new AsyncContainConstraint<TItem>(
 					expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(expected)}{options}"
@@ -57,7 +57,7 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<string?>(
+				new AsyncContainConstraint<string?>(
 					expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(expected)}{options}"
@@ -154,7 +154,7 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<TItem>(
+				new AsyncContainConstraint<TItem>(
 					expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
@@ -179,7 +179,7 @@ public static partial class ThatAsyncEnumerable
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars) =>
-				new ContainConstraint<string?>(
+				new AsyncContainConstraint<string?>(
 					expectationBuilder, it, grammars,
 					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
@@ -303,6 +303,158 @@ public static partial class ThatAsyncEnumerable
 				}
 
 				if (predicate(item))
+				{
+					_count++;
+					bool? check = quantifier.Check(_count, false);
+					if (check == false)
+					{
+						isFailed = true;
+					}
+
+					if (check == true)
+					{
+						Outcome = Outcome.Success;
+						return this;
+					}
+				}
+
+				if (_items.Count > maximumNumberOfCollectionItems && isFailed)
+				{
+					Outcome = Outcome.Failure;
+					expectationBuilder.AddCollectionContext(_items, true);
+					return this;
+				}
+			}
+
+			expectationBuilder.AddCollectionContext(_items);
+			if (quantifier.Check(_count, true) ?? _isNegated)
+			{
+				Outcome = Outcome.Success;
+				return this;
+			}
+
+			_isFinished = true;
+			Outcome = Outcome.Failure;
+			return this;
+		}
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectationText.Invoke(quantifier));
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual == null)
+			{
+				stringBuilder.Append(it).Append(" was <null>");
+			}
+			else if (_isFinished)
+			{
+				if (_count == 0)
+				{
+					stringBuilder.Append(it).Append(" did not contain it");
+				}
+				else if (_count == 1)
+				{
+					stringBuilder.Append(it).Append(" contained it once");
+				}
+				else if (_count == 2)
+				{
+					stringBuilder.Append(it).Append(" contained it twice");
+				}
+				else
+				{
+					stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times");
+				}
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" contained it at least ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once");
+				}
+				else if (_count == 2)
+				{
+					stringBuilder.Append("twice");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times");
+				}
+			}
+		}
+
+		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(IAsyncEnumerable<TItem>));
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
+		}
+	}
+
+	private sealed class AsyncContainConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		Func<Quantifier, string> expectationText,
+#if NET8_0_OR_GREATER
+		Func<TItem, ValueTask<bool>> predicate,
+#else
+		Func<TItem, Task<bool>> predicate,
+#endif
+		Quantifier quantifier)
+		: ConstraintResult(grammars),
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	{
+		private readonly List<TItem> _items = [];
+		private IAsyncEnumerable<TItem>? _actual;
+		private int _count;
+		private bool _isFinished;
+		private bool _isNegated;
+
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			_actual = actual;
+			if (actual is null)
+			{
+				Outcome = Outcome.Failure;
+				return this;
+			}
+
+			IAsyncEnumerable<TItem> materializedEnumerable =
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
+			int maximumNumberOfCollectionItems =
+				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			_count = 0;
+			bool isFailed = false;
+			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
+			{
+				if (_items.Count <= maximumNumberOfCollectionItems)
+				{
+					_items.Add(item);
+				}
+
+				if (await predicate(item))
 				{
 					_count++;
 					bool? check = quantifier.Check(_count, false);

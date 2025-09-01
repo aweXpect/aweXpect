@@ -124,9 +124,8 @@ public static partial class ThatAsyncEnumerable
 			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(item, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(item, x))))
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
 					_duplicates.Add(item);
 				}
@@ -191,9 +190,8 @@ public static partial class ThatAsyncEnumerable
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				TMember itemMember = memberAccessor(item);
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);
 				}

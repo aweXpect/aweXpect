@@ -27,7 +27,7 @@ public sealed partial class EquivalencyComparerTests
 				},
 			});
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -50,7 +50,7 @@ public sealed partial class EquivalencyComparerTests
 			SomeRecord expected = new(new SomeCustomRecord([2, 1,]), new SomeOtherRecord([2, 1,]));
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -84,7 +84,7 @@ public sealed partial class EquivalencyComparerTests
 				IgnoreCollectionOrder = true,
 			});
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsTrue();
 		}

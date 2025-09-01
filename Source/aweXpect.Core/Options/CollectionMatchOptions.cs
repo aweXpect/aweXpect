@@ -135,19 +135,19 @@ public partial class CollectionMatchOptions(
 	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
 		=> (_inAnyOrder, _ignoringDuplicates, _ignoringInterspersedItems) switch
 		{
-			(true, true, _) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(true, true, _) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                   " in any order ignoring duplicates",
-			(true, false, _) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
-			(false, true, false) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(true, false, _) => GetString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
+			(false, true, false) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                        " in order ignoring duplicates",
-			(false, false, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order",
-			(false, true, true) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(false, false, false) => GetString(_equivalenceRelations, expectedExpression, grammars) + " in order",
+			(false, true, true) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                       " in order ignoring duplicates and interspersed items",
-			(false, false, true) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(false, false, true) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                        " in order ignoring interspersed items",
 		};
 
-	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression,
+	private static string GetString(EquivalenceRelations equivalenceRelation, string expectedExpression,
 		ExpectationGrammars grammars)
 		=> (equivalenceRelation, grammars.IsNegated()) switch
 		{
@@ -300,6 +300,26 @@ public partial class CollectionMatchOptions(
 		}
 
 		return false;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<List<TMember>> Filter<T, TMember>(IEnumerable<T> items,
+		Func<T, ValueTask<bool>> predicate, Func<T, TMember> memberSelector)
+#else
+	private static async Task<List<TMember>> Filter<T, TMember>(IEnumerable<T> items,
+		Func<T, Task<bool>> predicate, Func<T, TMember> memberSelector)
+#endif
+	{
+		List<TMember> list = new();
+		foreach (T item in items)
+		{
+			if (await predicate(item))
+			{
+				list.Add(memberSelector(item));
+			}
+		}
+
+		return list;
 	}
 
 #if NET8_0_OR_GREATER

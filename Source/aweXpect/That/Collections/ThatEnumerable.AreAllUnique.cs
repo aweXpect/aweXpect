@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -233,12 +235,13 @@ public static partial class ThatEnumerable
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
-			IContextConstraint<IEnumerable<TItem>?>
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly List<TItem> _duplicates = [];
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -254,9 +257,8 @@ public static partial class ThatEnumerable
 			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
 			{
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(item, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(item, x))))
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
 					_duplicates.Add(item);
 				}
@@ -296,12 +298,13 @@ public static partial class ThatEnumerable
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
-			IContextConstraint<IEnumerable<TItem>?>
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 		where TMember : TMatch
 	{
 		private readonly List<TMember> _duplicates = [];
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -318,9 +321,8 @@ public static partial class ThatEnumerable
 			foreach (TItem item in materialized)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);
 				}
@@ -358,12 +360,13 @@ public static partial class ThatEnumerable
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
 		: ConstraintResult.WithNotNullValue<TEnumerable?>(it, grammars),
-			IContextConstraint<TEnumerable?>
+			IAsyncContextConstraint<TEnumerable?>
 		where TEnumerable : IEnumerable?
 	{
 		private readonly List<object?> _duplicates = [];
 
-		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -378,10 +381,9 @@ public static partial class ThatEnumerable
 			IOptionsEquality<TMatch> o = options;
 			foreach (object? item in materialized)
 			{
-				if (checkedItems.Any(compareWith =>
-					    item is TMatch matchedItem &&
-					    o.AreConsideredEqual(matchedItem, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(matchedItem, x))))
+				if (item is TMatch matchedItem &&
+				    await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(matchedItem, compareWith)))
 				{
 					_duplicates.Add(item);
 				}
@@ -421,13 +423,13 @@ public static partial class ThatEnumerable
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
 		: ConstraintResult.WithNotNullValue<TEnumerable?>(it, grammars),
-			IContextConstraint<TEnumerable?>
+			IAsyncContextConstraint<TEnumerable?>
 		where TEnumerable : IEnumerable?
 		where TMember : TMatch
 	{
 		private readonly List<TMember> _duplicates = [];
 
-		public ConstraintResult IsMetBy(TEnumerable? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -443,9 +445,8 @@ public static partial class ThatEnumerable
 			foreach (object? item in materialized)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);
 				}

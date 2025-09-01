@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -81,16 +83,16 @@ public static partial class ThatObject
 		IEnumerable<TExpected?> expected,
 		ObjectEqualityOptions<TSubject> options)
 		: ConstraintResult.WithValue<TSubject>(grammars),
-			IValueConstraint<TSubject>
+			IAsyncConstraint<TSubject>
 	{
-		public ConstraintResult IsMetBy(TSubject actual)
+		public async Task<ConstraintResult> IsMetBy(TSubject actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			bool hasValues = false;
 			foreach (TExpected? value in expected)
 			{
 				hasValues = true;
-				if (options.AreConsideredEqual(actual, value))
+				if (await options.AreConsideredEqual(actual, value))
 				{
 					Outcome = Outcome.Success;
 					return this;

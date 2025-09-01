@@ -206,13 +206,13 @@ namespace aweXpect.Core
     }
     public interface IObjectMatchType
     {
-        bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
+        System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
         string GetExpectation(string expected, aweXpect.Core.ExpectationGrammars grammars);
         string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, object? actual, object? expected);
     }
     public interface IOptionsEquality<in TSubject>
     {
-        bool AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
+        System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
     }
     public interface IOptionsProvider<out TOptions>
     {
@@ -537,7 +537,7 @@ namespace aweXpect.Equivalency
 {
     public static class EquivalencyComparison
     {
-        public static bool Compare<TActual, TExpected>(TActual actual, TExpected expected, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions, System.Text.StringBuilder failureBuilder) { }
+        public static System.Threading.Tasks.ValueTask<bool> Compare<TActual, TExpected>(TActual actual, TExpected expected, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions, System.Text.StringBuilder failureBuilder) { }
     }
     public enum EquivalencyComparisonType
     {
@@ -858,7 +858,7 @@ namespace aweXpect.Options
     {
         protected aweXpect.Core.IObjectMatchType MatchType;
         public ObjectEqualityOptions() { }
-        public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected) { }
+        public System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TExpected>(TSubject actual, TExpected expected) { }
         public aweXpect.Options.ObjectEqualityOptions<TSubject> Equals() { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, object? actual, object? expected) { }
@@ -902,7 +902,7 @@ namespace aweXpect.Options
     public class StringEqualityOptions : aweXpect.Core.IOptionsEquality<string?>
     {
         public StringEqualityOptions() { }
-        public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected) { }
+        public System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected) { }
         public aweXpect.Options.StringEqualityOptions AsPrefix() { }
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsSuffix() { }

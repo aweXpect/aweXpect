@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
@@ -33,16 +34,29 @@ public class ObjectEqualityWithToleranceOptions<TSubject, TTolerance>(
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+#if NET8_0_OR_GREATER
+		public ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 		{
 			if (actual is null && expected is null)
 			{
-				return true;
+				return ValueTask.FromResult(true);
 			}
 
-			return actual is TSubject typedActual && expected is TSubject typedExpected &&
-			       isWithinTolerance(typedActual, typedExpected, tolerance);
+			return ValueTask.FromResult(actual is TSubject typedActual && expected is TSubject typedExpected &&
+			                            isWithinTolerance(typedActual, typedExpected, tolerance));
 		}
+#else
+		public Task<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+		{
+			if (actual is null && expected is null)
+			{
+				return Task.FromResult(true);
+			}
+
+			return Task.FromResult(actual is TSubject typedActual && expected is TSubject typedExpected &&
+			                       isWithinTolerance(typedActual, typedExpected, tolerance));
+		}
+#endif
 
 		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
 		public string GetExpectation(string expected, ExpectationGrammars grammars)

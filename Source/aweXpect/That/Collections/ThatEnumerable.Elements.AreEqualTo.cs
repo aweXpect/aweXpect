@@ -22,7 +22,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<double>, IThat<IEnumerable<double>?>, double, double>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<double>(
+				=> new AsyncCollectionConstraint<double>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -52,7 +52,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<double?>, IThat<IEnumerable<double?>?>, double?, double>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<double?>(
+				=> new AsyncCollectionConstraint<double?>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -82,7 +82,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<float>, IThat<IEnumerable<float>?>, float, float>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<float>(
+				=> new AsyncCollectionConstraint<float>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -112,7 +112,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<float?>, IThat<IEnumerable<float?>?>, float?, float>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<float?>(
+				=> new AsyncCollectionConstraint<float?>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -142,7 +142,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<decimal>, IThat<IEnumerable<decimal>?>, decimal, decimal>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<decimal>(
+				=> new AsyncCollectionConstraint<decimal>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -172,7 +172,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<decimal?>, IThat<IEnumerable<decimal?>?>, decimal?, decimal>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<decimal?>(
+				=> new AsyncCollectionConstraint<decimal?>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -202,7 +202,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<DateTime>, IThat<IEnumerable<DateTime>?>, DateTime, TimeSpan>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<DateTime>(
+				=> new AsyncCollectionConstraint<DateTime>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -232,7 +232,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IEnumerable<DateTime?>, IThat<IEnumerable<DateTime?>?>, DateTime?, TimeSpan>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<DateTime?>(
+				=> new AsyncCollectionConstraint<DateTime?>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -261,7 +261,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IEnumerable<TItem>?, IThat<IEnumerable<TItem>?>, TItem>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<TItem>(
+				=> new AsyncCollectionConstraint<TItem>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -290,7 +290,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, object?>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionForEnumerableConstraint<IEnumerable>(
+				=> new AsyncCollectionForEnumerableConstraint<IEnumerable>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -320,7 +320,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionForEnumerableConstraint<TEnumerable>(
+				=> new AsyncCollectionForEnumerableConstraint<TEnumerable>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -350,7 +350,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionConstraint<string?>(
+				=> new AsyncCollectionConstraint<string?>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
@@ -381,7 +381,7 @@ public static partial class ThatEnumerable
 		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new StringEqualityResult<TEnumerable, IThat<TEnumerable>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new CollectionForEnumerableConstraint<TEnumerable>(
+				=> new AsyncCollectionForEnumerableConstraint<TEnumerable>(
 					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
