@@ -111,7 +111,7 @@ internal class WhichNode<TSource, TMember> : Node
 		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
 			matchingValue);
 	}
-	
+
 	/// <inheritdoc cref="object.Equals(object?)" />
 	public override bool Equals(object? obj) => obj is WhichNode<TSource, TMember> other && Equals(other);
 

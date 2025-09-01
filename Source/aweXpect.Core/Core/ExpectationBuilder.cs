@@ -49,7 +49,7 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
-	///     Initializes the <see cref="ExpectationBuilder" /> with an empty <see cref="Subject"/>.
+	///     Initializes the <see cref="ExpectationBuilder" /> with an empty <see cref="Subject" />.
 	/// </summary>
 	private protected ExpectationBuilder()
 	{

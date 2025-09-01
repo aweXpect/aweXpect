@@ -88,7 +88,7 @@ public static partial class ThatString
 			{
 				hasValues = true;
 				if (await stringEqualityOptions
-				    .AreConsideredEqual(actual, value))
+					    .AreConsideredEqual(actual, value))
 				{
 					Outcome = Outcome.Success;
 					return this;

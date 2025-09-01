@@ -138,7 +138,7 @@ public static partial class ThatAsyncEnumerable
 				{
 					CollectionIndexOptions.IMatchFromBeginning fromBeginning => fromBeginning.MatchesIndex(index),
 					CollectionIndexOptions.IMatchFromEnd fromEnd => fromEnd.MatchesIndex(index, count),
-					_ => false
+					_ => false,
 				};
 				if (isIndexInRange != true)
 				{
@@ -260,7 +260,7 @@ public static partial class ThatAsyncEnumerable
 				{
 					CollectionIndexOptions.IMatchFromBeginning fromBeginning => fromBeginning.MatchesIndex(index),
 					CollectionIndexOptions.IMatchFromEnd fromEnd => fromEnd.MatchesIndex(index, count),
-					_ => false
+					_ => false,
 				};
 				if (isIndexInRange != true)
 				{

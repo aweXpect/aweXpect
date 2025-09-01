@@ -54,7 +54,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
 		return memberResult.UseValue(value);
 	}
-	
+
 	/// <inheritdoc cref="object.Equals(object?)" />
 	public override bool Equals(object? obj) => obj is MappingNode<TSource, TTarget> other && Equals(other);
 

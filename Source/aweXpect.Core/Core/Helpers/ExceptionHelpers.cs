@@ -11,6 +11,7 @@ internal static class ExceptionHelpers
 		Customize.aweXpect.TraceWriter.Value?.WriteException(exception);
 		return exception;
 	}
+
 	public static bool IsDefault<T>(this T value) where T : struct
 	{
 		bool isDefault = value.Equals(default(T));

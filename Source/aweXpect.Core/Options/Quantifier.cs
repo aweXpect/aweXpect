@@ -256,7 +256,7 @@ public class Quantifier
 	///     Negates the quantifier.
 	/// </summary>
 	public void Negate() => _isNegated = !_isNegated;
-	
+
 	private static string ToTimesString(int? value)
 		=> value switch
 		{

@@ -491,7 +491,8 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -612,7 +613,8 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)

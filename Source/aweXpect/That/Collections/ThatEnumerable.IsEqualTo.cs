@@ -758,7 +758,8 @@ public static partial class ThatEnumerable
 		IsNotEqualTo<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<Expression<Func<TItem, bool>>> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;

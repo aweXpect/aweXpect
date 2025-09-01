@@ -429,7 +429,8 @@ public static partial class ThatEnumerable
 	{
 		private readonly List<TMember> _duplicates = [];
 
-		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)

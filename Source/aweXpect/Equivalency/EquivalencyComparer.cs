@@ -16,7 +16,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 #else
 	public async Task<bool>
 #endif
-	AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+		AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 	{
 		_failureBuilder.Clear();
 		if (HandleSpecialCases(actual, expected, _failureBuilder, out bool? specialCaseResult))

@@ -127,7 +127,7 @@ public partial class CollectionMatchOptions
 #if NET8_0_OR_GREATER
 			return ValueTask.FromResult<(bool, string?)>((error != null, error));
 #else
-				return Task.FromResult<(bool, string?)>((error != null, error));
+			return Task.FromResult<(bool, string?)>((error != null, error));
 #endif
 		}
 

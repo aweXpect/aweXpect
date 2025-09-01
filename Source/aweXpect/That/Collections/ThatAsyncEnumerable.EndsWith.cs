@@ -266,7 +266,8 @@ public static partial class ThatAsyncEnumerable
 				if (_index + _offset < 0)
 				{
 					Outcome = Outcome.Failure;
-					await _expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
+					await _expectationBuilder.AddCollectionContext(
+						materializedEnumerable as IMaterializedEnumerable<TItem>);
 					return this;
 				}
 
@@ -276,7 +277,8 @@ public static partial class ThatAsyncEnumerable
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;
-					await _expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
+					await _expectationBuilder.AddCollectionContext(
+						materializedEnumerable as IMaterializedEnumerable<TItem>);
 					Outcome = Outcome.Failure;
 					return this;
 				}

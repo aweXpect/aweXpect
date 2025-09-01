@@ -220,7 +220,8 @@ public static partial class ThatDictionary
 	{
 		private readonly List<TValue> _duplicates = [];
 
-		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -280,7 +281,8 @@ public static partial class ThatDictionary
 	{
 		private readonly List<TMember> _duplicates = [];
 
-		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -295,7 +297,7 @@ public static partial class ThatDictionary
 			foreach (TValue item in actual.Values)
 			{
 				TMember itemMember = memberAccessor(item);
-				
+
 				if (await checkedItems.AnyButNotAllAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{

@@ -7,7 +7,6 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Results;
 #if NET8_0_OR_GREATER
-using System.Collections.Immutable;
 #endif
 
 // ReSharper disable PossibleMultipleEnumeration

@@ -101,20 +101,24 @@ public static partial class EquivalencyComparison
 #else
 	private static async Task<bool>
 #endif
-	Compare<TActual, TExpected>(
-		TActual actual,
-		TExpected expected,
-		EquivalencyOptions equivalencyOptions,
-		EquivalencyTypeOptions typeOptions,
-		StringBuilder failureBuilder,
-		string memberPath,
-		MemberType memberType,
-		EquivalencyContext context)
+		Compare<TActual, TExpected>(
+			TActual actual,
+			TExpected expected,
+			EquivalencyOptions equivalencyOptions,
+			EquivalencyTypeOptions typeOptions,
+			StringBuilder failureBuilder,
+			string memberPath,
+			MemberType memberType,
+			EquivalencyContext context)
 	{
 		if (expected is Expectation &&
-		    expected is IOptionsProvider<ExpectationBuilder> { Options: EquivalencyExpectationBuilder equivalencyExpectationBuilder })
+		    expected is IOptionsProvider<ExpectationBuilder>
+		    {
+			    Options: EquivalencyExpectationBuilder equivalencyExpectationBuilder,
+		    })
 		{
-			var result = await equivalencyExpectationBuilder.IsMetBy(actual, new EvaluationContext(), CancellationToken.None);
+			ConstraintResult? result =
+				await equivalencyExpectationBuilder.IsMetBy(actual, new EvaluationContext(), CancellationToken.None);
 			if (result.Outcome == Outcome.Success)
 			{
 				return true;
@@ -134,7 +138,7 @@ public static partial class EquivalencyComparison
 				return false;
 			}
 		}
-		
+
 		if (actual is null || expected is null)
 		{
 			return CompareNulls(actual, expected, failureBuilder, memberPath, memberType);
@@ -178,16 +182,16 @@ public static partial class EquivalencyComparison
 		return await CompareObjects(actual, expected, failureBuilder, memberType, memberPath,
 			equivalencyOptions, typeOptions, context);
 	}
-	
+
 #if NET8_0_OR_GREATER
 	private static async ValueTask<bool>
 #else
 	private static async Task<bool>
 #endif
 		CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,
-		[DisallowNull] TExpected expected,
-		StringBuilder failureBuilder, MemberType memberType, string memberPath,
-		EquivalencyOptions options, EquivalencyTypeOptions typeOptions, EquivalencyContext context)
+			[DisallowNull] TExpected expected,
+			StringBuilder failureBuilder, MemberType memberType, string memberPath,
+			EquivalencyOptions options, EquivalencyTypeOptions typeOptions, EquivalencyContext context)
 	{
 		bool result = true;
 		int memberCount = 0;
@@ -270,13 +274,13 @@ public static partial class EquivalencyComparison
 	private static async Task<bool>
 #endif
 		CompareDictionaries(
-		IDictionary actual,
-		IDictionary expected,
-		StringBuilder failureBuilder,
-		string memberPath,
-		EquivalencyOptions options,
-		EquivalencyTypeOptions typeOptions,
-		EquivalencyContext context)
+			IDictionary actual,
+			IDictionary expected,
+			StringBuilder failureBuilder,
+			string memberPath,
+			EquivalencyOptions options,
+			EquivalencyTypeOptions typeOptions,
+			EquivalencyContext context)
 	{
 		bool result = true;
 
@@ -353,13 +357,13 @@ public static partial class EquivalencyComparison
 	private static async Task<bool>
 #endif
 		CompareEnumerables(
-		IEnumerable actual,
-		IEnumerable expected,
-		StringBuilder failureBuilder,
-		string memberPath,
-		EquivalencyOptions options,
-		EquivalencyTypeOptions typeOptions,
-		EquivalencyContext context)
+			IEnumerable actual,
+			IEnumerable expected,
+			StringBuilder failureBuilder,
+			string memberPath,
+			EquivalencyOptions options,
+			EquivalencyTypeOptions typeOptions,
+			EquivalencyContext context)
 	{
 		bool result = true;
 		object?[] actualObjects = actual.Cast<object?>().ToArray();

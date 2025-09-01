@@ -101,6 +101,7 @@ internal class AndNode : Node
 
 		Current.AppendExpectation(stringBuilder, indentation);
 	}
+
 	/// <inheritdoc cref="object.Equals(object?)" />
 	public override bool Equals(object? obj) => obj is AndNode other && Equals(other);
 

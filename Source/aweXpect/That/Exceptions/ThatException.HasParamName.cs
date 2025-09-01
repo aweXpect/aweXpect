@@ -33,7 +33,8 @@ public static partial class ThatException
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
 			Actual = actual;
-			Outcome = actual is TArgumentException argumentException && (expected is null || argumentException.ParamName == expected)
+			Outcome = actual is TArgumentException argumentException &&
+			          (expected is null || argumentException.ParamName == expected)
 				? Outcome.Success
 				: Outcome.Failure;
 			return this;

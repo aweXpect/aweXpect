@@ -50,7 +50,7 @@ public class NullableNumberToleranceResult<TType, TThat, TSelf>(
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
 	NumberTolerance<TType> IOptionsProvider<NumberTolerance<TType>>.Options => options;
-	
+
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply on the number comparison.
 	/// </summary>

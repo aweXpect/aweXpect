@@ -15,7 +15,8 @@ public static partial class ThatGeneric
 		this IThat<T> source,
 		Func<T, TMember?> memberSelector,
 		Action<IThat<TMember?>> expectations,
-		[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
+		[CallerArgumentExpression("memberSelector")]
+		string doNotPopulateThisValue = "")
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		expectationBuilder

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+#if !NET8_0_OR_GREATER
+using System;
+#endif
 
 namespace aweXpect;
 
@@ -2442,7 +2444,7 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2455,7 +2457,7 @@ public static partial class ThatNumber
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2498,7 +2500,7 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2511,7 +2513,7 @@ public static partial class ThatNumber
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2554,7 +2556,7 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2567,7 +2569,7 @@ public static partial class ThatNumber
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2610,7 +2612,7 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 
@@ -2623,7 +2625,7 @@ public static partial class ThatNumber
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
-			Formatter.Format(stringBuilder, expected);
+			ValueFormatters.Format(Formatter, stringBuilder, expected);
 			stringBuilder.Append(options);
 		}
 

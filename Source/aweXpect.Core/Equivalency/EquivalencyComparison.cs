@@ -22,10 +22,10 @@ public static partial class EquivalencyComparison
 	public static Task<bool>
 #endif
 		Compare<TActual, TExpected>(
-		TActual actual,
-		TExpected expected,
-		EquivalencyOptions equivalencyOptions,
-		StringBuilder failureBuilder)
+			TActual actual,
+			TExpected expected,
+			EquivalencyOptions equivalencyOptions,
+			StringBuilder failureBuilder)
 		=> Compare(
 			actual,
 			expected,

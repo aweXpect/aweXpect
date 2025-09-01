@@ -18,7 +18,7 @@ public static partial class ThatNumber
 #if NET8_0_OR_GREATER
 		Half h => !Half.IsNaN(h) && !Half.IsInfinity(h),
 #endif
-		_ => true
+		_ => true,
 	};
 
 #if NET8_0_OR_GREATER

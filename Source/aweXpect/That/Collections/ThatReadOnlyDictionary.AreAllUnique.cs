@@ -229,7 +229,8 @@ public static partial class ThatReadOnlyDictionary
 	{
 		private readonly List<TValue> _duplicates = [];
 
-		public async Task<ConstraintResult> IsMetBy(IReadOnlyDictionary<TKey, TValue>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IReadOnlyDictionary<TKey, TValue>? actual,
+			IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -289,7 +290,8 @@ public static partial class ThatReadOnlyDictionary
 	{
 		private readonly List<TMember> _duplicates = [];
 
-		public async Task<ConstraintResult> IsMetBy(IReadOnlyDictionary<TKey, TValue>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IReadOnlyDictionary<TKey, TValue>? actual,
+			IEvaluationContext context, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)

@@ -95,7 +95,7 @@ internal class OrNode : Node
 
 		Current.AppendExpectation(stringBuilder, indentation);
 	}
-	
+
 	/// <inheritdoc cref="object.Equals(object?)" />
 	public override bool Equals(object? obj) => obj is OrNode other && Equals(other);
 

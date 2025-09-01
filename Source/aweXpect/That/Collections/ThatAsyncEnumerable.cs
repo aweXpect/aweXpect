@@ -555,7 +555,8 @@ public static partial class ThatAsyncEnumerable
 				{
 					_failure = failure ?? TooManyDeviationsError();
 					Outcome = Outcome.Failure;
-					await expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
+					await expectationBuilder.AddCollectionContext(
+						materializedEnumerable as IMaterializedEnumerable<TItem>);
 					return this;
 				}
 			}

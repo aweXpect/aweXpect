@@ -878,7 +878,8 @@ public static partial class ThatEnumerable
 		private bool _isNegated;
 		private IEnumerable<TItem>? _materializedEnumerable;
 
-		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			_actual = actual;
 			if (actual is null)
@@ -896,7 +897,7 @@ public static partial class ThatEnumerable
 				{
 					continue;
 				}
-				
+
 				_count++;
 				bool? check = quantifier.Check(_count, false);
 				switch (check)
@@ -1149,7 +1150,8 @@ public static partial class ThatEnumerable
 		private bool _isNegated;
 		private IEnumerable? _materializedEnumerable;
 
-		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(TEnumerable? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			_actual = actual;
 			if (actual is null)

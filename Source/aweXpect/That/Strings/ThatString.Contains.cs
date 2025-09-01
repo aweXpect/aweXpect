@@ -179,6 +179,7 @@ public static partial class ThatString
 				{
 					stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
 				}
+
 				Formatter.Format(stringBuilder, _actual);
 			}
 		}

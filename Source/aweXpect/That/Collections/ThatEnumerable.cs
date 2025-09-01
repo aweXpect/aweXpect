@@ -930,6 +930,7 @@ public static partial class ThatEnumerable
 			}
 		}
 	}
+
 	private sealed class AsyncCollectionForEnumerableConstraint<TEnumerable>
 		: ConstraintResult.WithNotNullValue<TEnumerable>,
 			IAsyncContextConstraint<TEnumerable>

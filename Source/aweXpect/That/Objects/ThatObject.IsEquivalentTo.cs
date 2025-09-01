@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
@@ -36,6 +35,7 @@ public static partial class ThatObject
 				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected, equalityOptions)),
 			source);
 	}
+
 	/// <summary>
 	///     Verifies that the subject is not equivalent to the <paramref name="unexpected" /> value.
 	/// </summary>

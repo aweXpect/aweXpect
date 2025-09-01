@@ -98,7 +98,7 @@ public class StringHasItemResult<TCollection, TSelf>(
 		options.UsingComparer(comparer);
 		return (TSelf)this;
 	}
-	
+
 	/// <summary>
 	///     Interprets the expected <see langword="string" /> as a prefix, so that the actual value starts with it.
 	/// </summary>

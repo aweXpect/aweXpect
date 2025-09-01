@@ -16,5 +16,5 @@ public interface IOptionsEquality<in TSubject>
 #else
 	Task<bool>
 #endif
-	AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
+		AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
 }

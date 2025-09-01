@@ -93,8 +93,8 @@ public static partial class ThatObject
 		{
 			Actual = actual;
 			Outcome = actual?.GetType() == type ||
-			          type.IsGenericTypeDefinition && actual?.GetType().IsGenericType == true &&
-			          actual.GetType().GetGenericTypeDefinition() == type
+			          (type.IsGenericTypeDefinition && actual?.GetType().IsGenericType == true &&
+			           actual.GetType().GetGenericTypeDefinition() == type)
 				? Outcome.Success
 				: Outcome.Failure;
 			return this;

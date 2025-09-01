@@ -62,7 +62,7 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 	public static MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(
 		Func<TSource, TTarget> func, string name)
 		=> new(func, ExtractMemberPath(name.Trim()));
-	
+
 	/// <inheritdoc cref="object.Equals(object?)" />
 	public override bool Equals(object? obj) => obj is MemberAccessor<TSource, TTarget> other && Equals(other);
 
