@@ -232,10 +232,10 @@ public static partial class ThatEnumerable
 		{
 #if NET8_0_OR_GREATER
 			public ValueTask<bool> AreConsideredEqual<TExpected>(TMatch actual, TExpected expected)
-				=> ValueTask.FromResult(false);
+				=> ValueTask.FromResult(Equals(actual, expected));
 #else
 			public Task<bool> AreConsideredEqual<TExpected>(TMatch actual, TExpected expected)
-				=> Task.FromResult(false);
+				=> Task.FromResult(Equals(actual, expected));
 #endif
 		}
 	}
@@ -342,10 +342,10 @@ public static partial class ThatEnumerable
 		{
 #if NET8_0_OR_GREATER
 			public ValueTask<bool> AreConsideredEqual<TExpected>(TMatch actual, TExpected expected)
-				=> ValueTask.FromResult(false);
+				=> ValueTask.FromResult(Equals(actual, expected));
 #else
 			public Task<bool> AreConsideredEqual<TExpected>(TMatch actual, TExpected expected)
-				=> Task.FromResult(false);
+				=> Task.FromResult(Equals(actual, expected));
 #endif
 		}
 	}

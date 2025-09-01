@@ -51,7 +51,7 @@ public sealed partial class ThatEnumerable
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
 				IEnumerable<int> subject = Enumerable.Range(1, 11);
-				IEnumerable<Expression<Func<int, bool>>> expected =[
+				IEnumerable<Expression<Func<int, bool>>> expected = [
 					a => a == 100,
 					a => a == 101,
 					a => a == 102,
