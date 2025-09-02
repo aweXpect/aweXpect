@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public sealed class IsNotContainedIn
+	public sealed partial class IsNotContainedIn
 	{
 		public sealed class InSameOrderTests
 		{
@@ -81,7 +81,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsNotContainedIn([]);
+					=> await That(subject).IsNotContainedIn(Array.Empty<string>());
 
 				await That(Act).DoesNotThrow();
 			}

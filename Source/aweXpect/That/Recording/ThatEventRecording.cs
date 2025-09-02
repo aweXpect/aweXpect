@@ -28,7 +28,8 @@ public static partial class ThatEventRecording
 		private IEventRecording<TSubject>? _actual;
 		private IEventRecordingResult? _result;
 
-		public async Task<ConstraintResult> IsMetBy(IEventRecording<TSubject> actual, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IEventRecording<TSubject> actual,
+			CancellationToken cancellationToken)
 		{
 			_actual = actual;
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract

@@ -71,7 +71,8 @@ public static partial class ThatNullableTimeSpan
 					timeTolerance = timeTolerance.Negate();
 				}
 
-				Outcome = actual.Value.Add(timeTolerance) >= minimum && actual.Value.Add(timeTolerance.Negate()) <= maximum
+				Outcome = actual.Value.Add(timeTolerance) >= minimum &&
+				          actual.Value.Add(timeTolerance.Negate()) <= maximum
 					? Outcome.Success
 					: Outcome.Failure;
 			}

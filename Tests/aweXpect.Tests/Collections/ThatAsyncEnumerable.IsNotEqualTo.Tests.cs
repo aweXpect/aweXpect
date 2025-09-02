@@ -18,7 +18,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo([]);
+					=> await That(subject).IsNotEqualTo(Array.Empty<int>());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -94,7 +94,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo([]);
+					=> await That(subject).IsNotEqualTo(Array.Empty<string>());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -259,7 +259,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo([]).IgnoringDuplicates();
+					=> await That(subject).IsNotEqualTo(Array.Empty<int>()).IgnoringDuplicates();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -584,7 +584,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo([]).InAnyOrder();
+					=> await That(subject).IsNotEqualTo(Array.Empty<int>()).InAnyOrder();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -816,7 +816,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo([]).InAnyOrder().IgnoringDuplicates();
+					=> await That(subject).IsNotEqualTo(Array.Empty<int>()).InAnyOrder().IgnoringDuplicates();
 
 				await That(Act).DoesNotThrow();
 			}

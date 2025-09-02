@@ -193,8 +193,8 @@ namespace aweXpect.Core
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
     {
-        bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
-        bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
+        System.Threading.Tasks.ValueTask<System.ValueTuple<bool, string?>> Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber);
+        System.Threading.Tasks.ValueTask<System.ValueTuple<bool, string?>> VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber);
     }
     public interface IDescribableSubject
     {
@@ -206,13 +206,13 @@ namespace aweXpect.Core
     }
     public interface IObjectMatchType
     {
-        bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
+        System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
         string GetExpectation(string expected, aweXpect.Core.ExpectationGrammars grammars);
         string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, object? actual, object? expected);
     }
     public interface IOptionsEquality<in TSubject>
     {
-        bool AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
+        System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
     }
     public interface IOptionsProvider<out TOptions>
     {
@@ -234,11 +234,17 @@ namespace aweXpect.Core
         System.Type GetType();
         string? ToString();
     }
-    public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder
+    public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder, System.Collections.Generic.IEqualityComparer<aweXpect.Core.ManualExpectationBuilder<TValue>>
     {
         public ManualExpectationBuilder(aweXpect.Core.ExpectationBuilder? inner, aweXpect.Core.ExpectationGrammars grammars = 0) { }
         public void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        protected virtual bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue> other) { }
+        public override bool Equals(object? obj) { }
+        public bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue>? x, aweXpect.Core.ManualExpectationBuilder<TValue>? y) { }
+        public override int GetHashCode() { }
+        public int GetHashCode(aweXpect.Core.ManualExpectationBuilder<TValue> obj) { }
         public System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
+        public override string ToString() { }
         public override aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
     }
     public abstract class MemberAccessor
@@ -248,6 +254,8 @@ namespace aweXpect.Core
     }
     public class MemberAccessor<TSource, TTarget> : aweXpect.Core.MemberAccessor
     {
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFunc(System.Func<TSource, TTarget> func, string name) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(System.Func<TSource, TTarget> func, string name) { }
@@ -529,7 +537,7 @@ namespace aweXpect.Equivalency
 {
     public static class EquivalencyComparison
     {
-        public static bool Compare<TActual, TExpected>(TActual actual, TExpected expected, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions, System.Text.StringBuilder failureBuilder) { }
+        public static System.Threading.Tasks.ValueTask<bool> Compare<TActual, TExpected>(TActual actual, TExpected expected, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions, System.Text.StringBuilder failureBuilder) { }
     }
     public enum EquivalencyComparisonType
     {
@@ -800,7 +808,11 @@ namespace aweXpect.Options
     public class CollectionMatchOptions
     {
         public CollectionMatchOptions(aweXpect.Options.CollectionMatchOptions.EquivalenceRelations equivalenceRelations = 1) { }
+        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression<System.Func<T, bool>>> expected)
+            where T : T2 { }
         public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<T> expected)
+            where T : T2 { }
+        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<aweXpect.Options.CollectionMatchOptions.ExpectationItem<T>> expected)
             where T : T2 { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public void IgnoringDuplicates() { }
@@ -815,6 +827,14 @@ namespace aweXpect.Options
             ContainsProperly = 10,
             IsContainedIn = 4,
             Contains = 8,
+        }
+        public sealed class ExpectationItem<TItem>
+        {
+            public ExpectationItem(System.Action<aweXpect.Core.IThat<TItem>> expectation, aweXpect.Core.ExpectationGrammars grammars, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
+            public override bool Equals(object? obj) { }
+            public override int GetHashCode() { }
+            public System.Threading.Tasks.ValueTask<bool> IsMetBy(TItem value) { }
+            public override string ToString() { }
         }
     }
     public class CollectionOrderOptions<TItem> : System.IEquatable<aweXpect.Options.CollectionOrderOptions<TItem>>
@@ -838,7 +858,7 @@ namespace aweXpect.Options
     {
         protected aweXpect.Core.IObjectMatchType MatchType;
         public ObjectEqualityOptions() { }
-        public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected) { }
+        public System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TExpected>(TSubject actual, TExpected expected) { }
         public aweXpect.Options.ObjectEqualityOptions<TSubject> Equals() { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, object? actual, object? expected) { }
@@ -882,7 +902,7 @@ namespace aweXpect.Options
     public class StringEqualityOptions : aweXpect.Core.IOptionsEquality<string?>
     {
         public StringEqualityOptions() { }
-        public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected) { }
+        public System.Threading.Tasks.ValueTask<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected) { }
         public aweXpect.Options.StringEqualityOptions AsPrefix() { }
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsSuffix() { }

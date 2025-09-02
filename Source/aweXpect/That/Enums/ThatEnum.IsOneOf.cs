@@ -29,7 +29,7 @@ public static partial class ThatEnum
 		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<TEnum>(it, grammars, expected)),
 			source);
-	
+
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>

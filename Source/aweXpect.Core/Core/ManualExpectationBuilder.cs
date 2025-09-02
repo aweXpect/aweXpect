@@ -17,8 +17,39 @@ namespace aweXpect.Core;
 public class ManualExpectationBuilder<TValue>(
 	ExpectationBuilder? inner,
 	ExpectationGrammars grammars = ExpectationGrammars.None)
-	: ExpectationBuilder("", grammars)
+	: ExpectationBuilder("", grammars), IEqualityComparer<ManualExpectationBuilder<TValue>>
 {
+	/// <inheritdoc cref="IEqualityComparer{T}.Equals(T, T)" />
+	public bool Equals(ManualExpectationBuilder<TValue>? x, ManualExpectationBuilder<TValue>? y)
+	{
+		if (x is null && y is null)
+		{
+			return true;
+		}
+
+		if (x is null || y is null)
+		{
+			return false;
+		}
+
+		return x.Equals(y);
+	}
+
+	/// <inheritdoc cref="IEqualityComparer{T}.GetHashCode(T)" />
+	public int GetHashCode(ManualExpectationBuilder<TValue> obj)
+		=> obj.GetHashCode();
+
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is ManualExpectationBuilder<TValue> other && Equals(other);
+
+	/// <summary>
+	///     Determines whether the <paramref name="other" /> object is equal to the current object.
+	/// </summary>
+	protected virtual bool Equals(ManualExpectationBuilder<TValue> other) => GetRootNode().Equals(other.GetRootNode());
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => GetRootNode().GetHashCode();
+
 	/// <summary>
 	///     Appends the expectation of the root node to the <paramref name="stringBuilder" />.
 	/// </summary>
@@ -49,5 +80,14 @@ public class ManualExpectationBuilder<TValue>(
 		inner?.UpdateContexts(callback);
 		base.UpdateContexts(callback);
 		return this;
+	}
+
+	/// <inheritdoc cref="object.ToString()" />
+	public override string ToString()
+	{
+		StringBuilder sb = new();
+		sb.Append("it ");
+		AppendExpectation(sb);
+		return sb.ToString();
 	}
 }

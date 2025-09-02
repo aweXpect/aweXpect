@@ -40,10 +40,12 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 		Which<TMember>(
 			Func<TType, TMember?> memberSelector,
 			Action<IThat<TMember?>> expectations,
-			[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("memberSelector")]
+			string doNotPopulateThisValue = "")
 		=> new(
 			_expectationBuilder
-				.ForMember(MemberAccessor<TType, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
+				.ForMember(
+					MemberAccessor<TType, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
 					(member, stringBuilder) => stringBuilder.Append(" which ").Append(member))
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			_returnValue);
@@ -70,13 +72,15 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 			AndWhich<TMember>(
 				Func<TType, TMember?> memberSelector,
 				Action<IThat<TMember?>> expectations,
-				[CallerArgumentExpression("memberSelector")] string doNotPopulateThisValue = "")
+				[CallerArgumentExpression("memberSelector")]
+				string doNotPopulateThisValue = "")
 		{
 			_expectationBuilder.And(" and");
 			return new AdditionalAndOrWhichResult(
 				_expectationBuilder
 					.ForMember(
-						MemberAccessor<TType, TMember?>.FromFuncAsMemberAccessor(memberSelector, doNotPopulateThisValue),
+						MemberAccessor<TType, TMember?>.FromFuncAsMemberAccessor(memberSelector,
+							doNotPopulateThisValue),
 						(member, stringBuilder) => stringBuilder.Append(" which ").Append(member))
 					.AddExpectations(e
 						=> expectations(new ThatSubject<TMember?>(e))),

@@ -17,12 +17,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Enumerable.Range(1, 21);
 
 				async Task Act()
-					=> await That(subject).IsEqualTo([]);
+					=> await That(subject).IsEqualTo(Array.Empty<int>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             matches collection [] in order,
+					             matches collection Array.Empty<int>() in order,
 					             but it had more than 20 deviations
 
 					             Collection:
@@ -211,12 +211,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsEqualTo([]);
+					=> await That(subject).IsEqualTo(Array.Empty<string>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             matches collection [] in order,
+					             matches collection Array.Empty<string>() in order,
 					             but it was <null>
 					             """);
 			}
@@ -583,12 +583,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Enumerable.Range(1, 21);
 
 				async Task Act()
-					=> await That(subject).IsEqualTo([]).IgnoringDuplicates();
+					=> await That(subject).IsEqualTo(Array.Empty<int>()).IgnoringDuplicates();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             matches collection [] in order ignoring duplicates,
+					             matches collection Array.Empty<int>() in order ignoring duplicates,
 					             but it had more than 20 deviations
 
 					             Collection:
@@ -1046,12 +1046,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Enumerable.Range(1, 21);
 
 				async Task Act()
-					=> await That(subject).IsEqualTo([]).InAnyOrder();
+					=> await That(subject).IsEqualTo(Array.Empty<int>()).InAnyOrder();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             matches collection [] in any order,
+					             matches collection Array.Empty<int>() in any order,
 					             but it had more than 20 deviations
 
 					             Collection:
@@ -1542,12 +1542,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int> subject = Enumerable.Range(1, 21);
 
 				async Task Act()
-					=> await That(subject).IsEqualTo([]).InAnyOrder().IgnoringDuplicates();
+					=> await That(subject).IsEqualTo(Array.Empty<int>()).InAnyOrder().IgnoringDuplicates();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             matches collection [] in any order ignoring duplicates,
+					             matches collection Array.Empty<int>() in any order ignoring duplicates,
 					             but it had more than 20 deviations
 
 					             Collection:

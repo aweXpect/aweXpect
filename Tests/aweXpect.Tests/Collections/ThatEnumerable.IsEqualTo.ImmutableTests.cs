@@ -213,12 +213,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsEqualTo([]);
+					=> await That(subject).IsEqualTo(Array.Empty<string>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             matches collection [] in order,
+					             matches collection Array.Empty<string>() in order,
 					             but it was <null>
 					             """);
 			}

@@ -6,7 +6,8 @@ namespace aweXpect.Helpers;
 
 internal static class ExceptionHelpers
 {
-	public static void ThrowIfNull(this object? parameter, [CallerArgumentExpression(nameof(parameter))] string? paramName = null)
+	public static void ThrowIfNull(this object? parameter,
+		[CallerArgumentExpression(nameof(parameter))] string? paramName = null)
 	{
 		if (parameter is null)
 		{
@@ -14,7 +15,7 @@ internal static class ExceptionHelpers
 			throw new ArgumentNullException(paramName, $"The {paramName} cannot be null.");
 		}
 	}
-	
+
 	public static string FormatForMessage(this Exception exception)
 	{
 		string message = Formatter.Format(exception.GetType()).PrependAOrAn();

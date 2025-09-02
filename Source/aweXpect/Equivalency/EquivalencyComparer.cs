@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using aweXpect.Core;
 
 namespace aweXpect.Equivalency;
@@ -10,7 +11,12 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	private readonly StringBuilder _failureBuilder = new();
 
 	/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-	public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+#if NET8_0_OR_GREATER
+	public async ValueTask<bool>
+#else
+	public async Task<bool>
+#endif
+		AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 	{
 		_failureBuilder.Clear();
 		if (HandleSpecialCases(actual, expected, _failureBuilder, out bool? specialCaseResult))
@@ -18,7 +24,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			return specialCaseResult.Value;
 		}
 
-		return EquivalencyComparison.Compare(actual, expected, equivalencyOptions, _failureBuilder);
+		return await EquivalencyComparison.Compare(actual, expected, equivalencyOptions, _failureBuilder);
 	}
 
 	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />

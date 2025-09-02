@@ -79,24 +79,24 @@ public static partial class ThatTimeOnly
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is between ");
-			ValueFormatters.Format(Formatter, stringBuilder, minimum);
+			Formatter.Format(stringBuilder, minimum);
 			stringBuilder.Append(" and ");
-			ValueFormatters.Format(Formatter, stringBuilder, maximum);
+			Formatter.Format(stringBuilder, maximum);
 			stringBuilder.Append(tolerance);
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was ");
-			ValueFormatters.Format(Formatter, stringBuilder, Actual);
+			Formatter.Format(stringBuilder, Actual);
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not between ");
-			ValueFormatters.Format(Formatter, stringBuilder, minimum);
+			Formatter.Format(stringBuilder, minimum);
 			stringBuilder.Append(" and ");
-			ValueFormatters.Format(Formatter, stringBuilder, maximum);
+			Formatter.Format(stringBuilder, maximum);
 			stringBuilder.Append(tolerance);
 		}
 

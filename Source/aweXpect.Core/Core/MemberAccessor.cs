@@ -63,6 +63,16 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 		Func<TSource, TTarget> func, string name)
 		=> new(func, ExtractMemberPath(name.Trim()));
 
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is MemberAccessor<TSource, TTarget> other && Equals(other);
+
+	private bool Equals(MemberAccessor<TSource, TTarget> other)
+		=> ToString().Equals(other.ToString()) &&
+		   _accessor.ToString()?.Equals(other._accessor.ToString()) == true;
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => ToString().GetHashCode();
+
 	private static string ExtractMemberPath(string expression)
 	{
 		// Example: "x => x.Foo" would result in ".Foo"

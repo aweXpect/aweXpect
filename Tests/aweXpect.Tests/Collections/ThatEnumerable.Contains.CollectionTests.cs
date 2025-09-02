@@ -189,12 +189,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).Contains([]);
+					=> await That(subject).Contains(Array.Empty<string?>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             contains collection [] in order,
+					             contains collection Array.Empty<string?>() in order,
 					             but it was <null>
 					             """);
 			}

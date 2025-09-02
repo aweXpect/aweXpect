@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -63,14 +65,14 @@ public static partial class ThatString
 		Quantifier quantifier,
 		StringEqualityOptions options)
 		: ConstraintResult(grammars),
-			IValueConstraint<string?>
+			IAsyncConstraint<string?>
 	{
 		private string? _actual;
 		private int _actualCount;
 		private bool _isNegated;
 
 		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
+		public async Task<ConstraintResult> IsMetBy(string? actual, CancellationToken cancellationToken)
 		{
 			_actual = actual;
 			if (actual is null || expected is null)
@@ -79,7 +81,7 @@ public static partial class ThatString
 				return this;
 			}
 
-			_actualCount = CountOccurrences(actual, expected, options);
+			_actualCount = await CountOccurrences(actual, expected, options);
 			Outcome = quantifier.Check(_actualCount, true) ?? _isNegated ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
@@ -120,7 +122,7 @@ public static partial class ThatString
 			return typeof(TValue).IsAssignableFrom(typeof(string));
 		}
 
-		private static int CountOccurrences(string actual, string expected,
+		private static async Task<int> CountOccurrences(string actual, string expected,
 			StringEqualityOptions comparer)
 		{
 			if (expected.Length > actual.Length)
@@ -132,7 +134,7 @@ public static partial class ThatString
 			int index = 0;
 			while (index < actual.Length)
 			{
-				if (comparer.AreConsideredEqual(
+				if (await comparer.AreConsideredEqual(
 					    actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
 					    expected))
 				{
@@ -177,6 +179,7 @@ public static partial class ThatString
 				{
 					stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
 				}
+
 				Formatter.Format(stringBuilder, _actual);
 			}
 		}

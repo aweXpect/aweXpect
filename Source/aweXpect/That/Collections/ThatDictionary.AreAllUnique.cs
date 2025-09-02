@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -213,12 +215,13 @@ public static partial class ThatDictionary
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
-			IContextConstraint<IDictionary<TKey, TValue>?>
+			IAsyncContextConstraint<IDictionary<TKey, TValue>?>
 		where TValue : TMatch
 	{
 		private readonly List<TValue> _duplicates = [];
 
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -232,9 +235,8 @@ public static partial class ThatDictionary
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
 			{
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(item, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(item, x))))
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
 					_duplicates.Add(item);
 				}
@@ -274,12 +276,13 @@ public static partial class ThatDictionary
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
-			IContextConstraint<IDictionary<TKey, TValue>?>
+			IAsyncContextConstraint<IDictionary<TKey, TValue>?>
 		where TMember : TMatch
 	{
 		private readonly List<TMember> _duplicates = [];
 
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			if (actual is null)
@@ -294,9 +297,9 @@ public static partial class ThatDictionary
 			foreach (TValue item in actual.Values)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+
+				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);
 				}

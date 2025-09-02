@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -95,21 +96,29 @@ public static partial class EquivalencyComparison
 	}
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 #pragma warning disable S107 // https://rules.sonarsource.com/csharp/RSPEC-107
-	private static bool Compare<TActual, TExpected>(
-		TActual actual,
-		TExpected expected,
-		EquivalencyOptions equivalencyOptions,
-		EquivalencyTypeOptions typeOptions,
-		StringBuilder failureBuilder,
-		string memberPath,
-		MemberType memberType,
-		EquivalencyContext context)
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool>
+#else
+	private static async Task<bool>
+#endif
+		Compare<TActual, TExpected>(
+			TActual actual,
+			TExpected expected,
+			EquivalencyOptions equivalencyOptions,
+			EquivalencyTypeOptions typeOptions,
+			StringBuilder failureBuilder,
+			string memberPath,
+			MemberType memberType,
+			EquivalencyContext context)
 	{
 		if (expected is Expectation &&
-		    expected is IOptionsProvider<ExpectationBuilder> { Options: EquivalencyExpectationBuilder equivalencyExpectationBuilder })
+		    expected is IOptionsProvider<ExpectationBuilder>
+		    {
+			    Options: EquivalencyExpectationBuilder equivalencyExpectationBuilder,
+		    })
 		{
-			// Unfortunately this cannot be async, as it is used extensively in the `CollectionMatchOptions` :-(
-			var result = equivalencyExpectationBuilder.IsMetBy(actual, new EvaluationContext(), CancellationToken.None).GetAwaiter().GetResult();
+			ConstraintResult? result =
+				await equivalencyExpectationBuilder.IsMetBy(actual, new EvaluationContext(), CancellationToken.None);
 			if (result.Outcome == Outcome.Success)
 			{
 				return true;
@@ -129,7 +138,7 @@ public static partial class EquivalencyComparison
 				return false;
 			}
 		}
-		
+
 		if (actual is null || expected is null)
 		{
 			return CompareNulls(actual, expected, failureBuilder, memberPath, memberType);
@@ -160,24 +169,29 @@ public static partial class EquivalencyComparison
 
 		if (actual is IDictionary actualDictionary && expected is IDictionary expectedDictionary)
 		{
-			return CompareDictionaries(actualDictionary, expectedDictionary, failureBuilder, memberPath,
+			return await CompareDictionaries(actualDictionary, expectedDictionary, failureBuilder, memberPath,
 				equivalencyOptions, typeOptions, context);
 		}
 
 		if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
 		{
-			return CompareEnumerables(actualEnumerable, expectedEnumerable, failureBuilder, memberPath,
+			return await CompareEnumerables(actualEnumerable, expectedEnumerable, failureBuilder, memberPath,
 				equivalencyOptions, typeOptions, context);
 		}
 
-		return CompareObjects(actual, expected, failureBuilder, memberType, memberPath,
+		return await CompareObjects(actual, expected, failureBuilder, memberType, memberPath,
 			equivalencyOptions, typeOptions, context);
 	}
 
-	private static bool CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,
-		[DisallowNull] TExpected expected,
-		StringBuilder failureBuilder, MemberType memberType, string memberPath,
-		EquivalencyOptions options, EquivalencyTypeOptions typeOptions, EquivalencyContext context)
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool>
+#else
+	private static async Task<bool>
+#endif
+		CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,
+			[DisallowNull] TExpected expected,
+			StringBuilder failureBuilder, MemberType memberType, string memberPath,
+			EquivalencyOptions options, EquivalencyTypeOptions typeOptions, EquivalencyContext context)
 	{
 		bool result = true;
 		int memberCount = 0;
@@ -198,7 +212,7 @@ public static partial class EquivalencyComparison
 				object? expectedFieldValue =
 					expected.GetType().GetField(fieldName, fieldBindingFlags)?.GetValue(expected);
 
-				if (!Compare(actualFieldValue, expectedFieldValue,
+				if (!await Compare(actualFieldValue, expectedFieldValue,
 					    options, options.GetTypeOptions(actualFieldValue?.GetType(), typeOptions),
 					    failureBuilder, fieldMemberPath, MemberType.Field, context))
 				{
@@ -225,7 +239,7 @@ public static partial class EquivalencyComparison
 				object? expectedPropertyValue =
 					expected.GetType().GetProperty(propertyName, propertyBindingFlags)?.GetValue(expected);
 
-				if (!Compare(actualPropertyValue, expectedPropertyValue,
+				if (!await Compare(actualPropertyValue, expectedPropertyValue,
 					    options, options.GetTypeOptions(actualPropertyValue?.GetType(), typeOptions),
 					    failureBuilder, propertyMemberPath, MemberType.Property, context))
 				{
@@ -254,15 +268,19 @@ public static partial class EquivalencyComparison
 
 		return result;
 	}
-
-	private static bool CompareDictionaries(
-		IDictionary actual,
-		IDictionary expected,
-		StringBuilder failureBuilder,
-		string memberPath,
-		EquivalencyOptions options,
-		EquivalencyTypeOptions typeOptions,
-		EquivalencyContext context)
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool>
+#else
+	private static async Task<bool>
+#endif
+		CompareDictionaries(
+			IDictionary actual,
+			IDictionary expected,
+			StringBuilder failureBuilder,
+			string memberPath,
+			EquivalencyOptions options,
+			EquivalencyTypeOptions typeOptions,
+			EquivalencyContext context)
 	{
 		bool result = true;
 
@@ -279,7 +297,7 @@ public static partial class EquivalencyComparison
 			{
 				object? expectedObject = expected[key];
 
-				if (!Compare(actualObject, expectedObject,
+				if (!await Compare(actualObject, expectedObject,
 					    options, options.GetTypeOptions(actualObject?.GetType(), typeOptions),
 					    failureBuilder, elementMemberPath, MemberType.Element, context))
 				{
@@ -333,15 +351,19 @@ public static partial class EquivalencyComparison
 
 		return result;
 	}
-
-	private static bool CompareEnumerables(
-		IEnumerable actual,
-		IEnumerable expected,
-		StringBuilder failureBuilder,
-		string memberPath,
-		EquivalencyOptions options,
-		EquivalencyTypeOptions typeOptions,
-		EquivalencyContext context)
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool>
+#else
+	private static async Task<bool>
+#endif
+		CompareEnumerables(
+			IEnumerable actual,
+			IEnumerable expected,
+			StringBuilder failureBuilder,
+			string memberPath,
+			EquivalencyOptions options,
+			EquivalencyTypeOptions typeOptions,
+			EquivalencyContext context)
 	{
 		bool result = true;
 		object?[] actualObjects = actual.Cast<object?>().ToArray();
@@ -371,7 +393,7 @@ public static partial class EquivalencyComparison
 			object? actualObject = actualObjects.ElementAtOrDefault(i);
 			object? expectedObject = expectedObjects.ElementAtOrDefault(i);
 
-			if (!Compare(actualObject, expectedObject,
+			if (!await Compare(actualObject, expectedObject,
 				    options, options.GetTypeOptions(actualObject?.GetType(), typeOptions),
 				    failureBuilder, elementMemberPath, MemberType.Element, context))
 			{

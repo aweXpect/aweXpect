@@ -35,7 +35,7 @@ public class CountResult<TType, TThat, TSelf>(
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
 	Quantifier IOptionsProvider<Quantifier>.Options => quantifier;
-	
+
 	/// <summary>
 	///     Verifies, that it occurs at least…
 	/// </summary>

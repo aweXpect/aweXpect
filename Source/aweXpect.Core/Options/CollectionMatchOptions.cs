@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
 using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
@@ -90,25 +95,59 @@ public partial class CollectionMatchOptions(
 		};
 
 	/// <summary>
+	///     Get the collection matcher for the <paramref name="expected" /> enumerable of predicates.
+	/// </summary>
+	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<Expression<Func<T, bool>>> expected)
+		where T : T2
+		=> (_inAnyOrder, _ignoringDuplicates) switch
+		{
+			(true, true) => new AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected),
+			(true, false) => new AnyOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected,
+				_ignoringInterspersedItems),
+			(false, false) => new SameOrderFromPredicateCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+		};
+
+	/// <summary>
+	///     Get the collection matcher for the <paramref name="expected" /> enumerable of predicates.
+	/// </summary>
+	public ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(IEnumerable<ExpectationItem<T>> expected)
+		where T : T2
+		=> (_inAnyOrder, _ignoringDuplicates) switch
+		{
+			(true, true) => new AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected),
+			(true, false) => new AnyOrderFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations,
+				expected,
+				_ignoringInterspersedItems),
+			(false, false) => new SameOrderFromExpectationCollectionMatcher<T, T2>(_equivalenceRelations, expected,
+				_ignoringInterspersedItems),
+		};
+
+	/// <summary>
 	///     Specifies the expectation for the <paramref name="expectedExpression" /> using the provided
 	///     <paramref name="grammars" />.
 	/// </summary>
 	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
 		=> (_inAnyOrder, _ignoringDuplicates, _ignoringInterspersedItems) switch
 		{
-			(true, true, _) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(true, true, _) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                   " in any order ignoring duplicates",
-			(true, false, _) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
-			(false, true, false) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(true, false, _) => GetString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
+			(false, true, false) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                        " in order ignoring duplicates",
-			(false, false, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order",
-			(false, true, true) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(false, false, false) => GetString(_equivalenceRelations, expectedExpression, grammars) + " in order",
+			(false, true, true) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                       " in order ignoring duplicates and interspersed items",
-			(false, false, true) => ToString(_equivalenceRelations, expectedExpression, grammars) +
+			(false, false, true) => GetString(_equivalenceRelations, expectedExpression, grammars) +
 			                        " in order ignoring interspersed items",
 		};
 
-	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression,
+	private static string GetString(EquivalenceRelations equivalenceRelation, string expectedExpression,
 		ExpectationGrammars grammars)
 		=> (equivalenceRelation, grammars.IsNegated()) switch
 		{
@@ -168,12 +207,13 @@ public partial class CollectionMatchOptions(
 		}
 	}
 
-	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems)
+	private static IEnumerable<string> IncorrectItemsError<T, TExpected>(
+		Dictionary<int, (T Item, TExpected Expected)> incorrectItems)
 	{
 		bool hasIncorrectItems = incorrectItems.Any();
 		if (hasIncorrectItems)
 		{
-			foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
+			foreach (KeyValuePair<int, (T Item, TExpected Expected)> incorrectItem in incorrectItems)
 			{
 				yield return
 					$"contained item {Formatter.Format(incorrectItem.Value.Item)} at index {incorrectItem.Key} instead of {Formatter.Format(incorrectItem.Value.Expected)}";
@@ -212,7 +252,7 @@ public partial class CollectionMatchOptions(
 			StringBuilder sb = new();
 			sb.Append("lacked ").Append(missingItems.Count).Append(" of ")
 				.Append(total).Append(" expected items:");
-			foreach (T? missingItem in missingItems)
+			foreach (T missingItem in missingItems)
 			{
 				sb.AppendLine().Append("  ");
 				Formatter.Format(sb, missingItem);
@@ -222,5 +262,170 @@ public partial class CollectionMatchOptions(
 			sb.Length--;
 			yield return sb.ToString();
 		}
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool> All<T>(IEnumerable<T> items, Func<T, ValueTask<bool>> predicate,
+		bool invert = false)
+#else
+	private static async Task<bool> All<T>(IEnumerable<T> items, Func<T, Task<bool>> predicate,
+		bool invert = false)
+#endif
+	{
+		foreach (T item in items)
+		{
+			if (await predicate(item) == invert)
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<bool> Any<T>(IEnumerable<T> items, Func<T, ValueTask<bool>> predicate,
+		bool invert = false)
+#else
+	private static async Task<bool> Any<T>(IEnumerable<T> items, Func<T, Task<bool>> predicate,
+		bool invert = false)
+#endif
+	{
+		foreach (T item in items)
+		{
+			if (await predicate(item) != invert)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<List<TMember>> Filter<T, TMember>(IEnumerable<T> items,
+		Func<T, ValueTask<bool>> predicate, Func<T, TMember> memberSelector)
+#else
+	private static async Task<List<TMember>> Filter<T, TMember>(IEnumerable<T> items,
+		Func<T, Task<bool>> predicate, Func<T, TMember> memberSelector)
+#endif
+	{
+		List<TMember> list = new();
+		foreach (T item in items)
+		{
+			if (await predicate(item))
+			{
+				list.Add(memberSelector(item));
+			}
+		}
+
+		return list;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask<T?> FirstOrDefault<T>(IEnumerable<T> items, Func<T, ValueTask<bool>> predicate)
+#else
+	private static async Task<T?> FirstOrDefault<T>(IEnumerable<T> items, Func<T, Task<bool>> predicate)
+#endif
+	{
+		foreach (T item in items)
+		{
+			if (await predicate(item))
+			{
+				return item;
+			}
+		}
+
+		return default;
+	}
+
+#if NET8_0_OR_GREATER
+	private static async ValueTask RemoveFirst<T>(List<T> items, Func<T, ValueTask<bool>> predicate)
+#else
+	private static async Task RemoveFirst<T>(List<T> items, Func<T, Task<bool>> predicate)
+#endif
+	{
+		int index = -1;
+		foreach (T item in items)
+		{
+			index++;
+			if (await predicate(item))
+			{
+				items.RemoveAt(index);
+				break;
+			}
+		}
+	}
+
+	/// <summary>
+	///     Element of a collection of expectations.
+	/// </summary>
+	public sealed class ExpectationItem<TItem>
+	{
+		private readonly CancellationToken _cancellationToken;
+		private readonly IEvaluationContext _context;
+		internal readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+
+		/// <inheritdoc cref="ExpectationItem{TItem}" />
+		public ExpectationItem(Action<IThat<TItem>> expectation,
+			ExpectationGrammars grammars,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			_context = context;
+			_cancellationToken = cancellationToken;
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
+			expectation.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
+		}
+
+		/// <summary>
+		///     Verifies if the <paramref name="value" /> is met by the expectation.
+		/// </summary>
+#if NET8_0_OR_GREATER
+		public async ValueTask<bool> IsMetBy(TItem value)
+#else
+		public async Task<bool> IsMetBy(TItem value)
+#endif
+		{
+			ConstraintResult result = await _itemExpectationBuilder.IsMetBy(value, _context, _cancellationToken);
+			return result.Outcome == Outcome.Success;
+		}
+
+		/// <inheritdoc cref="object.Equals(object?)" />
+		public override bool Equals(object? obj) => obj is ExpectationItem<TItem> other && Equals(other);
+
+		private bool Equals(ExpectationItem<TItem> other)
+			=> _itemExpectationBuilder.Equals(other._itemExpectationBuilder);
+
+		/// <inheritdoc cref="object.GetHashCode()" />
+		public override int GetHashCode() => _itemExpectationBuilder.GetHashCode();
+
+		/// <inheritdoc cref="object.ToString()" />
+		public override string ToString() => _itemExpectationBuilder.ToString();
+	}
+
+	internal sealed class ExpectationItemEqualityComparer<TItem> : IEqualityComparer<ExpectationItem<TItem>>
+	{
+		public bool Equals(ExpectationItem<TItem>? x, ExpectationItem<TItem>? y)
+		{
+			if (ReferenceEquals(x, y))
+			{
+				return true;
+			}
+
+			if (x is null || y is null)
+			{
+				return false;
+			}
+
+			if (x.GetType() != y.GetType())
+			{
+				return false;
+			}
+
+			return x._itemExpectationBuilder.Equals(y._itemExpectationBuilder);
+		}
+
+		public int GetHashCode(ExpectationItem<TItem> obj) => obj._itemExpectationBuilder.GetHashCode();
 	}
 }

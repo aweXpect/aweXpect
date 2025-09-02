@@ -15,7 +15,7 @@ public sealed partial class EquivalencyComparerTests
 			List<int> expected = [1, 4, 3, 2, 5,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsTrue();
 		}
@@ -27,7 +27,7 @@ public sealed partial class EquivalencyComparerTests
 			int[] expected = [5, 4, 3, 2, 1,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsTrue();
 		}
@@ -39,7 +39,7 @@ public sealed partial class EquivalencyComparerTests
 			List<int> expected = [1, 5, 3, 4, 2,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -56,7 +56,7 @@ public sealed partial class EquivalencyComparerTests
 			List<int> expected = [1, 3, 2, 4,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -76,7 +76,7 @@ public sealed partial class EquivalencyComparerTests
 			List<int> expected = [1, 5, 2, 3, 4,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder(ignoreCollectionOrder));
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsEqualTo(ignoreCollectionOrder);
 		}

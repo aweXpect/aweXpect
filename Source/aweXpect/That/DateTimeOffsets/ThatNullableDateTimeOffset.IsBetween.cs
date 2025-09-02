@@ -13,9 +13,10 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the subject is between the <paramref name="minimum" />…
 	/// </summary>
-	public static BetweenResult<TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>, DateTimeOffset?> IsBetween(
-		this IThat<DateTimeOffset?> source,
-		DateTimeOffset? minimum)
+	public static BetweenResult<TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>, DateTimeOffset?>
+		IsBetween(
+			this IThat<DateTimeOffset?> source,
+			DateTimeOffset? minimum)
 	{
 		TimeTolerance tolerance = new();
 		return new BetweenResult<TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>, DateTimeOffset?>(maximum
@@ -29,9 +30,10 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the subject is not between the <paramref name="minimum" />…
 	/// </summary>
-	public static BetweenResult<TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>, DateTimeOffset?> IsNotBetween(
-		this IThat<DateTimeOffset?> source,
-		DateTimeOffset? minimum)
+	public static BetweenResult<TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>, DateTimeOffset?>
+		IsNotBetween(
+			this IThat<DateTimeOffset?> source,
+			DateTimeOffset? minimum)
 	{
 		TimeTolerance tolerance = new();
 		return new BetweenResult<TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>, DateTimeOffset?>(maximum
@@ -71,7 +73,8 @@ public static partial class ThatNullableDateTimeOffset
 					timeTolerance = timeTolerance.Negate();
 				}
 
-				Outcome = actual.Value.Add(timeTolerance) >= minimum && actual.Value.Add(timeTolerance.Negate()) <= maximum
+				Outcome = actual.Value.Add(timeTolerance) >= minimum &&
+				          actual.Value.Add(timeTolerance.Negate()) <= maximum
 					? Outcome.Success
 					: Outcome.Failure;
 			}

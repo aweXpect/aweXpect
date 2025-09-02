@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
@@ -19,8 +20,13 @@ public partial class ObjectEqualityOptions<TSubject>
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
-			=> comparer.Equals(actual, expected);
+#if NET8_0_OR_GREATER
+		public ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+			=> ValueTask.FromResult(comparer.Equals(actual, expected));
+#else
+		public Task<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+			=> Task.FromResult(comparer.Equals(actual, expected));
+#endif
 
 		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
 		public string GetExpectation(string expected, ExpectationGrammars grammars)

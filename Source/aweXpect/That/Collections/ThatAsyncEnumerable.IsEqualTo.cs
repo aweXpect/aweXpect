@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -284,6 +285,50 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	/// <summary>
+	///     Verifies that the collection matches the <paramref name="expected" /> collection of predicates.
+	/// </summary>
+	public static CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
+		IsEqualTo<TItem>(
+			this IThat<IAsyncEnumerable<TItem>?> source,
+			IEnumerable<Expression<Func<TItem, bool>>> expected,
+			[CallerArgumentExpression("expected")]
+			string doNotPopulateThisValue = "")
+	{
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToFromPredicateConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					matchOptions)),
+			source,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection matches the <paramref name="expected" /> collection of expectations.
+	/// </summary>
+	public static CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
+		IsEqualTo<TItem>(
+			this IThat<IAsyncEnumerable<TItem>?> source,
+			IEnumerable<Action<IThat<TItem?>>> expected,
+			[CallerArgumentExpression("expected")]
+			string doNotPopulateThisValue = "")
+	{
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToFromExpectationsConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected,
+					matchOptions)),
+			source,
+			matchOptions);
+	}
+
+	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
 	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
@@ -562,6 +607,50 @@ public static partial class ThatAsyncEnumerable
 					matchOptions).Invert()),
 			source,
 			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection of predicates.
+	/// </summary>
+	public static CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
+		IsNotEqualTo<TItem>(
+			this IThat<IAsyncEnumerable<TItem>?> source,
+			IEnumerable<Expression<Func<TItem, bool>>> unexpected,
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
+	{
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToFromPredicateConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					matchOptions).Invert()),
+			source,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection of expectations.
+	/// </summary>
+	public static CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
+		IsNotEqualTo<TItem>(
+			this IThat<IAsyncEnumerable<TItem>?> source,
+			IEnumerable<Action<IThat<TItem?>>> unexpected,
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
+	{
+		CollectionMatchOptions matchOptions = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new CollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToFromExpectationsConstraint<TItem, TItem>(expectationBuilder, it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					matchOptions).Invert()),
+			source,
 			matchOptions);
 	}
 }

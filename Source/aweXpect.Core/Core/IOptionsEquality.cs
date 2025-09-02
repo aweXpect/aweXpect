@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Core;
+﻿using System.Threading.Tasks;
+
+namespace aweXpect.Core;
 
 /// <summary>
 ///     Determines if two objects are considered equal.
@@ -9,5 +11,10 @@ public interface IOptionsEquality<in TSubject>
 	///     Returns <see langword="true" /> if the two objects <paramref name="actual" /> and <paramref name="expected" /> are
 	///     considered equal; otherwise <see langword="false" />.
 	/// </summary>
-	bool AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
+#if NET8_0_OR_GREATER
+	ValueTask<bool>
+#else
+	Task<bool>
+#endif
+		AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
 }

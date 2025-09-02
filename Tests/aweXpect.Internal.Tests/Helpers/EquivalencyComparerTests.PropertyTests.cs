@@ -20,7 +20,7 @@ public sealed partial class EquivalencyComparerTests
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsTrue();
 		}
@@ -34,7 +34,7 @@ public sealed partial class EquivalencyComparerTests
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, new
+			bool result = await sut.AreConsideredEqual(actual, new
 			{
 				MyValue = "foo",
 			});
@@ -58,7 +58,7 @@ public sealed partial class EquivalencyComparerTests
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -81,7 +81,7 @@ public sealed partial class EquivalencyComparerTests
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
@@ -106,7 +106,7 @@ public sealed partial class EquivalencyComparerTests
 				Properties = IncludeMembers.Internal,
 			});
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsEqualTo(expectedResult);
 			if (!expectedResult)
@@ -134,7 +134,7 @@ public sealed partial class EquivalencyComparerTests
 				Properties = IncludeMembers.Private,
 			});
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsEqualTo(expectedResult);
 			if (!expectedResult)
@@ -162,7 +162,7 @@ public sealed partial class EquivalencyComparerTests
 				Properties = IncludeMembers.Public,
 			});
 
-			bool result = sut.AreConsideredEqual(actual, expected);
+			bool result = await sut.AreConsideredEqual(actual, expected);
 
 			await That(result).IsEqualTo(expectedResult);
 			if (!expectedResult)

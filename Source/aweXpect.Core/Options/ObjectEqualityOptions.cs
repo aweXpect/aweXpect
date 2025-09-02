@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Threading.Tasks;
 using aweXpect.Core;
+#if !NET8_0_OR_GREATER
+using System.Globalization;
+#endif
 
 namespace aweXpect.Options;
 
@@ -17,32 +20,61 @@ internal static class ObjectEqualityOptions
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+#if NET8_0_OR_GREATER
+		public ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 		{
 			if (actual is null && expected is null)
 			{
-				return true;
+				return ValueTask.FromResult(true);
 			}
 
 			if (actual is null || expected is null)
 			{
-				return false;
+				return ValueTask.FromResult(false);
 			}
 
 			if (expected is TActual castedExpected &&
 			    EqualityComparer<TActual>.Default.Equals(actual, castedExpected))
 			{
-				return true;
+				return ValueTask.FromResult(true);
 			}
 
 			if (typeof(TActual) == typeof(object) &&
 			    AreNumericsEqual(actual, expected))
 			{
-				return true;
+				return ValueTask.FromResult(true);
 			}
 
-			return Equals(actual, expected);
+			return ValueTask.FromResult(Equals(actual, expected));
 		}
+#else
+		public Task<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+		{
+			if (actual is null && expected is null)
+			{
+				return Task.FromResult(true);
+			}
+
+			if (actual is null || expected is null)
+			{
+				return Task.FromResult(false);
+			}
+
+			if (expected is TActual castedExpected &&
+			    EqualityComparer<TActual>.Default.Equals(actual, castedExpected))
+			{
+				return Task.FromResult(true);
+			}
+
+			if (typeof(TActual) == typeof(object) &&
+			    AreNumericsEqual(actual, expected))
+			{
+				return Task.FromResult(true);
+			}
+
+			return Task.FromResult(Equals(actual, expected));
+		}
+#endif
 
 		private static bool AreNumericsEqual(object actual, object expected)
 		{
@@ -177,7 +209,11 @@ public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject
 	protected IObjectMatchType MatchType = ObjectEqualityOptions.EqualsMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected)
+#if NET8_0_OR_GREATER
+	public ValueTask<bool> AreConsideredEqual<TExpected>(TSubject actual, TExpected expected)
+#else
+	public Task<bool> AreConsideredEqual<TExpected>(TSubject actual, TExpected expected)
+#endif
 		=> MatchType.AreConsideredEqual(actual, expected);
 
 	/// <summary>
@@ -196,6 +232,7 @@ public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject
 	/// </summary>
 	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
 		=> MatchType.GetExpectation(expectedExpression, grammars);
+
 
 	/// <inheritdoc />
 	public override string? ToString() => MatchType.ToString();

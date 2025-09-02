@@ -32,7 +32,7 @@ public static partial class ThatNumber
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsInRangeConstraint<TNumber>(it, grammars, minimum, maximum)),
 			source));
-	
+
 	/// <summary>
 	///     Verifies that the subject is not between the <paramref name="minimum" />…
 	/// </summary>
@@ -56,12 +56,12 @@ public static partial class ThatNumber
 			source));
 
 	private sealed class IsInRangeConstraint<TNumber> : ConstraintResult.WithValue<TNumber>,
-			IValueConstraint<TNumber>
+		IValueConstraint<TNumber>
 		where TNumber : struct, INumber<TNumber>
 	{
 		private readonly string _it;
-		private readonly TNumber? _minimum;
 		private readonly TNumber? _maximum;
+		private readonly TNumber? _minimum;
 
 		public IsInRangeConstraint(string it,
 			ExpectationGrammars grammars,
@@ -117,11 +117,11 @@ public static partial class ThatNumber
 	}
 
 	private sealed class NullableIsInRangeConstraint<TNumber> : ConstraintResult.WithEqualToValue<TNumber?>,
-			IValueConstraint<TNumber?>
+		IValueConstraint<TNumber?>
 		where TNumber : struct, INumber<TNumber>
 	{
-		private readonly TNumber? _minimum;
 		private readonly TNumber? _maximum;
+		private readonly TNumber? _minimum;
 
 		public NullableIsInRangeConstraint(string it,
 			ExpectationGrammars grammars,

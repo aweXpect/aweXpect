@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -32,13 +34,13 @@ public static partial class ThatException
 		string? expected,
 		StringEqualityOptions options)
 		: ConstraintResult.WithValue<Exception?>(grammars),
-			IValueConstraint<Exception?>
+			IAsyncConstraint<Exception?>
 	{
-		public ConstraintResult IsMetBy(Exception? actual)
+		public async Task<ConstraintResult> IsMetBy(Exception? actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			options.AsWildcard();
-			Outcome = expected is null || options.AreConsideredEqual(actual?.Message, $"*{expected}*")
+			Outcome = expected is null || await options.AreConsideredEqual(actual?.Message, $"*{expected}*")
 				? Outcome.Success
 				: Outcome.Failure;
 			if (Outcome == Outcome.Failure)

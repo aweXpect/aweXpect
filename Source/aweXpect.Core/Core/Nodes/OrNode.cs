@@ -96,6 +96,14 @@ internal class OrNode : Node
 		Current.AppendExpectation(stringBuilder, indentation);
 	}
 
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is OrNode other && Equals(other);
+
+	private bool Equals(OrNode other) => Current.Equals(other.Current) && _nodes.SequenceEqual(other._nodes);
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => Current.GetHashCode() ^ _nodes.GetHashCode();
+
 	private static ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
 		ConstraintResult result,

@@ -255,11 +255,12 @@ public static partial class ThatAsyncEnumerable
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				TItem expectedItem = _expected[_index++];
-				if (!_options.AreConsideredEqual(item, expectedItem))
+				if (!await _options.AreConsideredEqual(item, expectedItem))
 				{
 					_firstMismatchItem = item;
 					_foundMismatch = true;
-					await _expectationBuilder.AddCollectionContext(materializedEnumerable as IMaterializedEnumerable<TItem>);
+					await _expectationBuilder.AddCollectionContext(
+						materializedEnumerable as IMaterializedEnumerable<TItem>);
 					Outcome = Outcome.Failure;
 					return this;
 				}

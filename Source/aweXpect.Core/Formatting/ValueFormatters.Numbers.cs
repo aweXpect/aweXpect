@@ -35,7 +35,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("byte ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -101,7 +101,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("sbyte ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -167,7 +167,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("short ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -233,7 +233,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("ushort ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -299,7 +299,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("int ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -365,7 +365,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("uint ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -431,7 +431,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("long ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -497,7 +497,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("ulong ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -840,7 +840,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("nint ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 
@@ -906,7 +906,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append("nuint ");
 		}
-		
+
 		stringBuilder.Append(value);
 	}
 

@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public class IsContainedIn
+	public sealed partial class IsContainedIn
 	{
 		public sealed class InSameOrderTests
 		{
@@ -149,12 +149,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsContainedIn([]);
+					=> await That(subject).IsContainedIn(Array.Empty<string>());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is contained in collection [] in order,
+					             is contained in collection Array.Empty<string>() in order,
 					             but it was <null>
 					             """);
 			}

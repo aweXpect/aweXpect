@@ -54,7 +54,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).DoesNotContain([]);
+					=> await That(subject).DoesNotContain(Array.Empty<string>());
 
 				await That(Act).DoesNotThrow();
 			}
