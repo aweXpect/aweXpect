@@ -156,7 +156,7 @@ public static partial class ThatEnumerable
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			_expectations = expected.Select(expectation
-					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation, Grammars,
+					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation, Grammars & ~ExpectationGrammars.Negated,
 						context,
 						CancellationToken.None))
 				.ToArray();
