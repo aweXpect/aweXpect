@@ -140,11 +140,19 @@ public sealed partial class ThatGeneric
 		{
 			public long Value { get; } = value;
 
+			/// <inheritdoc cref="IEquatable{Wrapper}.Equals(Wrapper)" />
 			public bool Equals(Wrapper other)
 				=> Value == other.Value;
 
+			/// <inheritdoc cref="IEquatable{T}.Equals(T)" />
 			public bool Equals(long other)
 				=> Value == other;
+
+			/// <inheritdoc cref="object.Equals(object?)" />
+			public override bool Equals(object? obj) => false;
+
+			/// <inheritdoc cref="object.GetHashCode()" />
+			public override int GetHashCode() => Value.GetHashCode();
 		}
 	}
 }
