@@ -59,11 +59,11 @@ public static partial class ThatException
 			}
 			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
-				stringBuilder.Append("recursive inner exceptions are not ");
+				stringBuilder.Append("recursive inner exceptions are not");
 			}
 			else
 			{
-				stringBuilder.Append("does not have recursive inner exceptions ");
+				stringBuilder.Append("does not have recursive inner exceptions");
 			}
 		}
 	}
