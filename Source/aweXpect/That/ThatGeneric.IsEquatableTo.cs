@@ -9,7 +9,8 @@ namespace aweXpect;
 public static partial class ThatGeneric
 {
 	/// <summary>
-	///     Verifies that the subject is equatable to the <paramref name="expected" /> value.
+	///     Verifies that the subject is equal to the <paramref name="expected" /> value
+	///     using the <see cref="IEquatable{T}.Equals(T)" /> method.
 	/// </summary>
 	public static AndOrResult<TEquatable, IThat<TEquatable>> IsEquatableTo<T, TEquatable>(
 		this IThat<TEquatable> source,
@@ -20,7 +21,8 @@ public static partial class ThatGeneric
 			source);
 
 	/// <summary>
-	///     Verifies that the subject is not equatable to the <paramref name="unexpected" /> value.
+	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value
+	///     using the <see cref="IEquatable{T}.Equals(T)" /> method.
 	/// </summary>
 	public static AndOrResult<TEquatable, IThat<TEquatable>> IsNotEquatableTo<T, TEquatable>(
 		this IThat<TEquatable> source,
