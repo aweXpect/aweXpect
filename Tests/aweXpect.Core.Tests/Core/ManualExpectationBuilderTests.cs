@@ -73,6 +73,46 @@ public class ManualExpectationBuilderTests
 		await That(expectationBuilder).IsSameAs(sut);
 	}
 
+	[Fact]
+	public async Task Equals_BothNull_ShouldBeTrue()
+	{
+		ManualExpectationBuilder<int> sut = new(null);
+
+		bool result = sut.Equals(null, null);
+
+		await That(result).IsTrue();
+	}
+
+	[Fact]
+	public async Task Equals_FirstNull_ShouldBeFalse()
+	{
+		ManualExpectationBuilder<int> sut = new(null);
+
+		bool result = sut.Equals(null, sut);
+
+		await That(result).IsFalse();
+	}
+
+	[Fact]
+	public async Task Equals_SecondNull_ShouldBeFalse()
+	{
+		ManualExpectationBuilder<int> sut = new(null);
+
+		bool result = sut.Equals(sut, null);
+
+		await That(result).IsFalse();
+	}
+
+	[Fact]
+	public async Task Equals_WithSelf_ShouldBeTrue()
+	{
+		ManualExpectationBuilder<int> sut = new(null);
+
+		bool result = sut.Equals(sut, sut);
+
+		await That(result).IsTrue();
+	}
+
 
 	[Fact]
 	public async Task IsMet_ShouldThrowNotSupportedException()
