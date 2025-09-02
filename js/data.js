@@ -2106,6 +2106,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -2459,7 +2465,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -2816,7 +2823,8 @@ window.BENCHMARK_DATA = {
           230.79016005075894,
           224.20339789390565,
           209.96910702265225,
-          226.7467735449473
+          226.7467735449473,
+          230.22447078044598
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3175,6 +3183,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3543,7 +3552,8 @@ window.BENCHMARK_DATA = {
           279.4127022425334,
           249.7768438657125,
           242.73321896332962,
-          248.46673137801034
+          248.46673137801034,
+          254.02081849024847
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3736,6 +3746,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4270,7 +4281,8 @@ window.BENCHMARK_DATA = {
           960.2216076169695,
           894.4146935599191,
           858.8636059443156,
-          883.7907620209915
+          883.7907620209915,
+          931.6560539245605
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4605,6 +4617,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6290,6 +6303,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -6566,7 +6585,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -6846,7 +6866,8 @@ window.BENCHMARK_DATA = {
           314154.69566127233,
           289281.74943659856,
           294604.50390625,
-          300015.41266741074
+          300015.41266741074,
+          324078.19114583335
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7131,7 +7152,8 @@ window.BENCHMARK_DATA = {
           284972,
           284972,
           284972,
-          284972
+          284972,
+          285044
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7419,7 +7441,8 @@ window.BENCHMARK_DATA = {
           2384878.0206473214,
           2230857.3127790177,
           2207511.22109375,
-          2256305.6763020833
+          2256305.6763020833,
+          2229104.431510417
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7535,6 +7558,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -7992,7 +8016,8 @@ window.BENCHMARK_DATA = {
           744454.7732421875,
           700322.3785807291,
           707662.4886997768,
-          718178.1748697917
+          718178.1748697917,
+          712966.6118539664
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8250,6 +8275,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10397,6 +10423,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -10750,7 +10782,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -11107,7 +11140,8 @@ window.BENCHMARK_DATA = {
           497.4869239171346,
           483.16165409088137,
           473.49794425964353,
-          505.2747224807739
+          505.2747224807739,
+          491.5382755279541
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11466,6 +11500,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -11834,7 +11869,8 @@ window.BENCHMARK_DATA = {
           519.8778990427653,
           498.70581474304197,
           465.54679444858004,
-          522.0911407470703
+          522.0911407470703,
+          501.2871218363444
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12027,6 +12063,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -12561,7 +12598,8 @@ window.BENCHMARK_DATA = {
           19369.866958618164,
           15213.613295491536,
           19879.836189778645,
-          15819.575905354817
+          15819.575905354817,
+          16491.752134195962
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12896,6 +12934,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15043,6 +15082,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -15396,7 +15441,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -15753,7 +15799,8 @@ window.BENCHMARK_DATA = {
           261.67816982950484,
           240.68385581970216,
           240.18216381754195,
-          256.79187873431613
+          256.79187873431613,
+          271.05683511098226
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16112,6 +16159,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -16480,7 +16528,8 @@ window.BENCHMARK_DATA = {
           264.0749408086141,
           261.1045164108276,
           237.617872272219,
-          281.37085482052396
+          281.37085482052396,
+          265.3721838315328
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16673,6 +16722,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -17207,7 +17257,8 @@ window.BENCHMARK_DATA = {
           1214.9761388142904,
           1238.0499062856038,
           1156.320486341204,
-          1243.1336473737445
+          1243.1336473737445,
+          1235.3444466908772
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17542,6 +17593,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -19689,6 +19741,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -20042,7 +20100,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -20399,7 +20458,8 @@ window.BENCHMARK_DATA = {
           393.65715618133544,
           387.4294823646545,
           378.324741767003,
-          412.85512048857555
+          412.85512048857555,
+          455.29218649864197
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20761,7 +20821,8 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
-          1160
+          1160,
+          1232
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21126,7 +21187,8 @@ window.BENCHMARK_DATA = {
           502.00601793924966,
           478.31025444666545,
           480.1595137278239,
-          481.1508778889974
+          481.1508778889974,
+          503.26514638264973
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21319,6 +21381,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -21853,7 +21916,8 @@ window.BENCHMARK_DATA = {
           1224.4789414723714,
           1269.9115328470866,
           1201.1532260349818,
-          1327.7192929585774
+          1327.7192929585774,
+          1315.6681606292725
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22188,6 +22252,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -24335,6 +24400,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -24688,7 +24759,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -25045,7 +25117,8 @@ window.BENCHMARK_DATA = {
           1454.7043769836425,
           1448.783856455485,
           1377.8513252258301,
-          1421.8742904663086
+          1421.8742904663086,
+          1812.5641902923585
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25407,7 +25480,8 @@ window.BENCHMARK_DATA = {
           2776,
           2776,
           2776,
-          2776
+          2776,
+          2856
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25772,7 +25846,8 @@ window.BENCHMARK_DATA = {
           1382.81140238444,
           1334.5607617696126,
           1318.9393591199603,
-          1452.7012999216715
+          1452.7012999216715,
+          1306.6645254770915
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25965,6 +26040,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -26499,7 +26575,8 @@ window.BENCHMARK_DATA = {
           3369.1244720458985,
           3305.4239794413247,
           3208.7230099269323,
-          3422.6501825968426
+          3422.6501825968426,
+          3414.921318599156
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26834,6 +26911,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -28981,6 +29059,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Sep 1 20:07:08 2025 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#744)"
+      },
+      {
+        "sha": "25eeff93ab20450fc1f44ae60ebaa7ce020aa81d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 12:41:08 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.22.0 (#747)"
       }
     ],
     "labels": [
@@ -29334,7 +29418,8 @@ window.BENCHMARK_DATA = {
       "5178a388",
       "deb356b2",
       "d92e24a6",
-      "200c148b"
+      "200c148b",
+      "25eeff93"
     ],
     "datasets": [
       {
@@ -29691,7 +29776,8 @@ window.BENCHMARK_DATA = {
           1708.0983632405598,
           1649.7964547475178,
           1596.373366546631,
-          1674.5870900472005
+          1674.5870900472005,
+          2228.8925778525218
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30053,7 +30139,8 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
-          2952
+          2952,
+          3048
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30418,7 +30505,8 @@ window.BENCHMARK_DATA = {
           155158.05862630208,
           151343.4637625558,
           149337.32460239955,
-          152506.21656901043
+          152506.21656901043,
+          148041.2344125601
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30773,6 +30861,7 @@ window.BENCHMARK_DATA = {
           63787,
           63352,
           63788,
+          63787,
           63787,
           63787,
           63787,
@@ -31145,7 +31234,8 @@ window.BENCHMARK_DATA = {
           4161.362296295166,
           3996.4891995021276,
           3913.2067674909317,
-          4052.710710144043
+          4052.710710144043,
+          4031.411852155413
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -31480,6 +31570,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
