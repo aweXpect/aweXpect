@@ -139,7 +139,7 @@ internal class ExpectationNode : Node
 	{
 		if (_constraint is null && other._constraint is null)
 		{
-			return _inner?.Equals(other._inner) == true;
+			return _inner?.Equals(other._inner) != false;
 		}
 
 		if (_constraint is null || other._constraint is null)

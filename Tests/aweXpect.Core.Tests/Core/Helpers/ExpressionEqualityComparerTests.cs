@@ -10,6 +10,36 @@ public sealed class ExpressionEqualityComparerTests
 	public sealed class EqualsTests
 	{
 		[Fact]
+		public async Task AAndBAreNull_ShouldNotBeEqual()
+		{
+			ExpressionEqualityComparer<Order, object> sut = new();
+			Expression<Func<Order, object>>? a = null;
+			Expression<Func<Order, object>>? b = null;
+			bool e = sut.Equals(a, b);
+			await That(e).IsFalse();
+		}
+
+		[Fact]
+		public async Task AIsNull_ShouldNotBeEqual()
+		{
+			ExpressionEqualityComparer<Order, object> sut = new();
+			Expression<Func<Order, object>>? a = null;
+			Expression<Func<Order, object>>? b = order => order.Number;
+			bool e = sut.Equals(a, b);
+			await That(e).IsFalse();
+		}
+
+		[Fact]
+		public async Task BIsNull_ShouldNotBeEqual()
+		{
+			ExpressionEqualityComparer<Order, object> sut = new();
+			Expression<Func<Order, object>> a = order => order.Number;
+			Expression<Func<Order, object>>? b = null;
+			bool e = sut.Equals(a, b);
+			await That(e).IsFalse();
+		}
+
+		[Fact]
 		public async Task DifferentMembers_ShouldNotBeEqual()
 		{
 			ExpressionEqualityComparer<Order, object> sut = new();
@@ -281,7 +311,7 @@ public sealed class ExpressionEqualityComparerTests
 		public int Number { get; set; }
 		public Customer Customer { get; set; }
 
-		public IEnumerable<OrderLineItem> LineItems { get; set; }
+		public OrderLineItem[] LineItems { get; set; }
 	}
 
 	public class Customer

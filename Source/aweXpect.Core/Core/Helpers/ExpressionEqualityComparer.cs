@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 
 namespace aweXpect.Core.Helpers;
 
+[ExcludeFromCodeCoverage]
 internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<Expression<Func<TSource, TTarget>>>
 {
 	private readonly ExpressionComparison _comparison = new();
@@ -95,7 +96,7 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 				return base.VisitLabelTarget(node);
 			}
 
-			return node;
+			return null;
 		}
 
 		protected override Expression VisitLambda<T>(Expression<T> node)

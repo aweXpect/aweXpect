@@ -146,22 +146,9 @@ public static partial class ThatEnumerable
 			}
 			else if (_hasIndex)
 			{
-				if (_options.Match.OnlySingleIndex())
-				{
-					stringBuilder.Append(_it).Append(" had item ");
-					Formatter.Format(stringBuilder, _actual);
-					stringBuilder.Append(_options.Match.GetDescription());
-				}
-				else
-				{
-					string optionDescription = _options.Match.GetDescription();
-					if (string.IsNullOrEmpty(optionDescription))
-					{
-						optionDescription = " at any index";
-					}
-
-					stringBuilder.Append(_it).Append(" did not match").Append(optionDescription);
-				}
+				stringBuilder.Append(_it).Append(" had item ");
+				Formatter.Format(stringBuilder, _actual);
+				stringBuilder.Append(_options.Match.GetDescription());
 			}
 			else
 			{
@@ -177,16 +164,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (_actual is null)
-			{
-				stringBuilder.ItWasNull(_it);
-			}
-			else
-			{
-				stringBuilder.Append(_it).Append(" did");
-			}
-		}
+			=> stringBuilder.Append(_it).Append(" did");
 	}
 
 #if NET8_0_OR_GREATER
@@ -282,22 +260,9 @@ public static partial class ThatEnumerable
 			}
 			else if (_actual is not null)
 			{
-				if (_options.Match.OnlySingleIndex())
-				{
-					stringBuilder.Append(_it).Append(" had item ");
-					Formatter.Format(stringBuilder, _actual);
-					stringBuilder.Append(_options.Match.GetDescription());
-				}
-				else
-				{
-					string optionDescription = _options.Match.GetDescription();
-					if (string.IsNullOrEmpty(optionDescription))
-					{
-						optionDescription = " at any index";
-					}
-
-					stringBuilder.Append(_it).Append(" did not match").Append(optionDescription);
-				}
+				stringBuilder.Append(_it).Append(" had item ");
+				Formatter.Format(stringBuilder, _actual);
+				stringBuilder.Append(_options.Match.GetDescription());
 			}
 			else
 			{
@@ -313,16 +278,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (_actual is null)
-			{
-				stringBuilder.ItWasNull(_it);
-			}
-			else
-			{
-				stringBuilder.Append(_it).Append(" did");
-			}
-		}
+			=> stringBuilder.Append(_it).Append(" did");
 	}
 #endif
 }
