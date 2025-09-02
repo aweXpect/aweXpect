@@ -122,6 +122,41 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 		}
+
+		public sealed class ImmutableNegatedTests
+		{
+			[Fact]
+			public async Task WhenEnumerableContainsDifferentItemAtGivenIndex_ShouldSucceed()
+			{
+				ImmutableArray<int> subject = [0, 1, 2,];
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it
+						.HasItemThat(x => x.IsEqualTo(1)).AtIndex(2));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsExpectedItemAtGivenIndex_ShouldFail()
+			{
+				ImmutableArray<int> subject = [0, 1, 2,];
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it
+						.HasItemThat(x => x.IsEqualTo(2)).AtIndex(2));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have item that is equal to 2 at index 2,
+					             but it did
+
+					             Collection:
+					             [0, 1, 2]
+					             """);
+			}
+		}
 	}
 }
 #endif

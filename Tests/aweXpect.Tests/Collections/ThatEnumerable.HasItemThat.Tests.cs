@@ -34,7 +34,7 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenEnumerableContainsDifferentItemAtGivenIndex_ShouldSucceed()
+			public async Task WhenEnumerableContainsDifferentItemAtGivenIndex_ShouldFail()
 			{
 				int[] subject = [0, 1, 2,];
 
@@ -298,6 +298,53 @@ public sealed partial class ThatEnumerable
 					             has item that is equal to 42 at index 0 from end,
 					             but it was <null>
 					             """);
+			}
+		}
+		
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task WhenEnumerableContainsDifferentItemAtGivenIndex_ShouldSucceed()
+			{
+				int[] subject = [0, 1, 2,];
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it
+						.HasItemThat(x => x.IsEqualTo(1)).AtIndex(2));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsExpectedItemAtGivenIndex_ShouldFail()
+			{
+				int[] subject = [0, 1, 2,];
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it
+						.HasItemThat(x => x.IsEqualTo(2)).AtIndex(2));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have item that is equal to 2 at index 2,
+					             but it did
+					             
+					             Collection:
+					             [0, 1, 2]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it
+						.HasItemThat(x => x.IsNotEqualTo(0)));
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}
