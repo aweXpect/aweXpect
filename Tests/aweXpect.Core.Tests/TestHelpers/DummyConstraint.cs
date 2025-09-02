@@ -9,7 +9,7 @@ internal class DummyConstraint(string expectationText, Func<ConstraintResult>? c
 {
 	public ConstraintResult IsMetBy(int actual)
 		=> constraintResult == null
-			? new DummyConstraintResult(Outcome.Success, expectationText)
+			? new DummyConstraintResult<int>(Outcome.Success, actual, expectationText)
 			: constraintResult();
 
 	public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
