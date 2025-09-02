@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -10,13 +11,26 @@ public sealed partial class ThatAsyncEnumerable
 {
 	public sealed partial class DoesNotContain
 	{
-		public sealed class InSameOrderTests
+		public sealed class PredicatesInSameOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -28,7 +42,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -40,10 +59,34 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldSucceed()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
+				IEnumerable<Expression<Func<int, bool>>>? expected = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(expected!);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -51,10 +94,10 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
-				IAsyncEnumerable<string>? subject = null;
+				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject).DoesNotContain(Array.Empty<string>());
+					=> await That(subject).DoesNotContain(Array.Empty<Expression<Func<string, bool>>>());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -63,7 +106,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -75,7 +126,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -87,7 +146,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -108,9 +172,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -119,7 +183,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -141,9 +210,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -152,7 +221,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -164,7 +238,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -185,9 +264,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -196,7 +275,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -208,7 +293,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -229,9 +319,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -240,7 +330,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -252,7 +348,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -273,9 +374,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -284,7 +385,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -296,7 +403,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -309,7 +423,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected);
@@ -330,21 +449,34 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
 		}
 
-		public sealed class InSameOrderIgnoringDuplicatesTests
+		public sealed class PredicatesInSameOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -356,7 +488,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -368,7 +505,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -380,7 +522,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -392,7 +546,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -404,7 +566,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -416,7 +586,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -438,9 +613,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -449,7 +624,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -471,9 +651,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -482,7 +662,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -494,7 +679,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -516,9 +706,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -527,7 +717,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -548,10 +744,10 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -560,7 +756,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -582,9 +783,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -593,7 +794,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -614,10 +821,10 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -626,7 +833,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -648,9 +860,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -659,7 +871,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -671,7 +889,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -683,7 +908,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).IgnoringDuplicates();
@@ -703,21 +933,34 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
 		}
 
-		public sealed class InAnyOrderTests
+		public sealed class PredicatesInAnyOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -729,7 +972,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -741,7 +989,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -753,7 +1013,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -765,7 +1033,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -777,7 +1053,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -798,9 +1079,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -809,7 +1090,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -831,9 +1117,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -842,7 +1128,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -862,9 +1153,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -873,7 +1164,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -894,9 +1190,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -905,7 +1201,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -917,7 +1219,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -938,9 +1245,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -949,7 +1256,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -961,7 +1274,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -982,9 +1300,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -993,7 +1311,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -1005,7 +1329,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -1018,7 +1349,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder();
@@ -1038,21 +1374,34 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
 		}
 
-		public sealed class InAnyOrderIgnoringDuplicatesTests
+		public sealed class PredicatesInAnyOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1064,7 +1413,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b", "c", "a",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "a",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1076,7 +1432,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1088,7 +1449,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1100,7 +1473,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1112,7 +1493,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1124,7 +1513,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1145,9 +1539,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1156,7 +1550,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1178,9 +1577,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1189,7 +1588,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1209,9 +1613,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1220,7 +1624,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1242,9 +1651,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1253,7 +1662,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1274,10 +1689,10 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1286,7 +1701,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1308,9 +1728,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1319,7 +1739,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1340,10 +1766,10 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1352,7 +1778,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1374,9 +1805,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1385,7 +1816,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1397,7 +1834,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1409,7 +1853,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).InAnyOrder().IgnoringDuplicates();
@@ -1429,21 +1878,34 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
 		}
 
-		public sealed class ProperlyInSameOrderTests
+		public sealed class PredicatesProperlyInSameOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1455,7 +1917,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1467,7 +1934,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1479,7 +1958,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1491,7 +1978,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1503,7 +1998,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1524,9 +2024,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1535,7 +2035,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1557,9 +2062,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1568,7 +2073,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1580,7 +2090,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1601,9 +2116,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1612,7 +2127,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1624,7 +2145,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1645,9 +2171,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1656,7 +2182,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1668,7 +2200,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1689,9 +2226,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1700,7 +2237,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1712,7 +2255,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1725,7 +2275,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly();
@@ -1734,13 +2289,26 @@ public sealed partial class ThatAsyncEnumerable
 			}
 		}
 
-		public sealed class ProperlyInSameOrderIgnoringDuplicatesTests
+		public sealed class PredicatesProperlyInSameOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1752,7 +2320,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1764,7 +2337,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1776,7 +2354,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1788,7 +2378,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1800,7 +2398,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1812,7 +2418,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1833,9 +2444,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1844,7 +2455,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1866,9 +2482,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -1877,7 +2493,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1889,7 +2510,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1901,7 +2527,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1913,7 +2545,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1925,7 +2562,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1937,7 +2580,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1949,7 +2597,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1961,7 +2615,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1973,7 +2634,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().IgnoringDuplicates();
@@ -1982,13 +2648,26 @@ public sealed partial class ThatAsyncEnumerable
 			}
 		}
 
-		public sealed class ProperlyInAnyOrderTests
+		public sealed class PredicatesProperlyInAnyOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2000,7 +2679,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2012,7 +2696,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2024,7 +2720,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2036,7 +2740,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2048,7 +2760,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2069,9 +2786,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2080,7 +2797,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2102,9 +2824,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2113,7 +2835,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2125,7 +2852,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2146,9 +2878,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2157,7 +2889,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2169,7 +2907,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2190,9 +2933,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2201,7 +2944,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2213,7 +2962,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2234,9 +2988,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2245,7 +2999,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2257,7 +3017,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2270,7 +3037,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder();
@@ -2279,13 +3051,26 @@ public sealed partial class ThatAsyncEnumerable
 			}
 		}
 
-		public sealed class ProperlyInAnyOrderIgnoringDuplicatesTests
+		public sealed class PredicatesProperlyInAnyOrderIgnoringDuplicatesTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int> expected = Enumerable.Range(100, 11);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 100,
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2298,7 +3083,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b", "c", "a",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "a",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2311,7 +3103,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2324,7 +3121,19 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task VeryDifferentCollections_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
-				IEnumerable<int> expected = Enumerable.Range(101, 10);
+				IEnumerable<Expression<Func<int, bool>>> expected =
+				[
+					a => a == 101,
+					a => a == 102,
+					a => a == 103,
+					a => a == 104,
+					a => a == 105,
+					a => a == 106,
+					a => a == 107,
+					a => a == 108,
+					a => a == 109,
+					a => a == 110,
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2337,7 +3146,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalAndMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c", "x", "y", "z",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "x",
+					x => x == "y",
+					x => x == "z",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2350,7 +3167,15 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d",]);
-				string[] expected = ["a", "b", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2363,7 +3188,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2385,9 +3215,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2396,7 +3226,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAdditionalItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2419,9 +3254,9 @@ public sealed partial class ThatAsyncEnumerable
 
 					             Expected:
 					             [
-					               "a",
-					               "b",
-					               "c"
+					               x => (x == "a"),
+					               x => (x == "b"),
+					               x => (x == "c")
 					             ]
 					             """);
 			}
@@ -2430,7 +3265,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2443,7 +3283,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2456,7 +3301,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2469,7 +3320,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2482,7 +3338,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2495,7 +3357,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2508,7 +3375,13 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2521,7 +3394,14 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithMissingItems_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c", "d", "e",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+					x => x == "d",
+					x => x == "e",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
@@ -2534,7 +3414,12 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithSameCollection_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c",]);
-				string[] expected = ["a", "b", "c",];
+				IEnumerable<Expression<Func<string, bool>>> expected =
+				[
+					x => x == "a",
+					x => x == "b",
+					x => x == "c",
+				];
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(expected).Properly().InAnyOrder()
