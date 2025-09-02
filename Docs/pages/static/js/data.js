@@ -2118,6 +2118,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -2473,7 +2479,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -2832,7 +2839,8 @@ window.BENCHMARK_DATA = {
           209.96910702265225,
           226.7467735449473,
           230.22447078044598,
-          220.71895449956259
+          220.71895449956259,
+          229.41031105177743
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3191,6 +3199,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3563,7 +3572,8 @@ window.BENCHMARK_DATA = {
           242.73321896332962,
           248.46673137801034,
           254.02081849024847,
-          264.90124190648396
+          264.90124190648396,
+          267.69124329884846
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3756,6 +3766,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4294,7 +4305,8 @@ window.BENCHMARK_DATA = {
           858.8636059443156,
           883.7907620209915,
           931.6560539245605,
-          902.9974038600922
+          902.9974038600922,
+          979.2282815297444
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4629,6 +4641,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6328,6 +6341,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -6606,7 +6625,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -6888,7 +6908,8 @@ window.BENCHMARK_DATA = {
           294604.50390625,
           300015.41266741074,
           324078.19114583335,
-          333814.876188151
+          333814.876188151,
+          348451.4117513021
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7174,6 +7195,7 @@ window.BENCHMARK_DATA = {
           284972,
           284972,
           284972,
+          285044,
           285044,
           285044
         ],
@@ -7465,7 +7487,8 @@ window.BENCHMARK_DATA = {
           2207511.22109375,
           2256305.6763020833,
           2229104.431510417,
-          2298916.150520833
+          2298916.150520833,
+          2282222.3984375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7581,6 +7604,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8042,7 +8066,8 @@ window.BENCHMARK_DATA = {
           707662.4886997768,
           718178.1748697917,
           712966.6118539664,
-          738144.4089192708
+          738144.4089192708,
+          721315.9759765625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8300,6 +8325,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10461,6 +10487,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -10816,7 +10848,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -11175,7 +11208,8 @@ window.BENCHMARK_DATA = {
           473.49794425964353,
           505.2747224807739,
           491.5382755279541,
-          491.7374802907308
+          491.7374802907308,
+          519.9376802444458
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11534,6 +11568,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -11906,7 +11941,8 @@ window.BENCHMARK_DATA = {
           465.54679444858004,
           522.0911407470703,
           501.2871218363444,
-          542.3624642690023
+          542.3624642690023,
+          513.2344771067302
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12099,6 +12135,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -12637,7 +12674,8 @@ window.BENCHMARK_DATA = {
           19879.836189778645,
           15819.575905354817,
           16491.752134195962,
-          19351.34079683744
+          19351.34079683744,
+          16678.13932088216
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12972,6 +13010,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15133,6 +15172,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -15488,7 +15533,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -15847,7 +15893,8 @@ window.BENCHMARK_DATA = {
           240.18216381754195,
           256.79187873431613,
           271.05683511098226,
-          250.94346591404505
+          250.94346591404505,
+          266.67500162124634
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16206,6 +16253,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -16578,7 +16626,8 @@ window.BENCHMARK_DATA = {
           237.617872272219,
           281.37085482052396,
           265.3721838315328,
-          265.35630580357144
+          265.35630580357144,
+          267.5741760571798
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16771,6 +16820,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -17309,7 +17359,8 @@ window.BENCHMARK_DATA = {
           1156.320486341204,
           1243.1336473737445,
           1235.3444466908772,
-          1207.8424547740392
+          1207.8424547740392,
+          1300.8557699839273
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17644,6 +17695,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -19805,6 +19857,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -20160,7 +20218,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -20519,7 +20578,8 @@ window.BENCHMARK_DATA = {
           378.324741767003,
           412.85512048857555,
           455.29218649864197,
-          479.91764661243985
+          479.91764661243985,
+          445.2301510810852
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20882,6 +20942,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232
         ],
@@ -21250,7 +21311,8 @@ window.BENCHMARK_DATA = {
           480.1595137278239,
           481.1508778889974,
           503.26514638264973,
-          505.1947363339938
+          505.1947363339938,
+          504.88905709584554
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21443,6 +21505,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -21981,7 +22044,8 @@ window.BENCHMARK_DATA = {
           1201.1532260349818,
           1327.7192929585774,
           1315.6681606292725,
-          1279.8834077199301
+          1279.8834077199301,
+          1290.3816155024938
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22316,6 +22380,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -24477,6 +24542,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -24832,7 +24903,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -25191,7 +25263,8 @@ window.BENCHMARK_DATA = {
           1377.8513252258301,
           1421.8742904663086,
           1812.5641902923585,
-          1841.9244415283204
+          1841.9244415283204,
+          1871.680981318156
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25554,6 +25627,7 @@ window.BENCHMARK_DATA = {
           2776,
           2776,
           2776,
+          2856,
           2856,
           2856
         ],
@@ -25922,7 +25996,8 @@ window.BENCHMARK_DATA = {
           1318.9393591199603,
           1452.7012999216715,
           1306.6645254770915,
-          1426.7150866644722
+          1426.7150866644722,
+          1409.1931215922039
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26115,6 +26190,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -26653,7 +26729,8 @@ window.BENCHMARK_DATA = {
           3208.7230099269323,
           3422.6501825968426,
           3414.921318599156,
-          3390.344280515398
+          3390.344280515398,
+          3319.769984181722
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26988,6 +27065,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -29149,6 +29227,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 2 13:37:35 2025 \u002B0200",
         "message": "refactor: fix sonar issues in test classes (#748)"
+      },
+      {
+        "sha": "5adc056107d4d47c4208071e5e033bb88dd719c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 2 15:09:58 2025 \u002B0200",
+        "message": "coverage: add missing test cases (#749)"
       }
     ],
     "labels": [
@@ -29504,7 +29588,8 @@ window.BENCHMARK_DATA = {
       "d92e24a6",
       "200c148b",
       "25eeff93",
-      "d5895a68"
+      "d5895a68",
+      "5adc0561"
     ],
     "datasets": [
       {
@@ -29863,7 +29948,8 @@ window.BENCHMARK_DATA = {
           1596.373366546631,
           1674.5870900472005,
           2228.8925778525218,
-          2263.7798670450848
+          2263.7798670450848,
+          2296.430696614583
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30226,6 +30312,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          3048,
           3048,
           3048
         ],
@@ -30594,7 +30681,8 @@ window.BENCHMARK_DATA = {
           149337.32460239955,
           152506.21656901043,
           148041.2344125601,
-          153420.49410807292
+          153420.49410807292,
+          151014.45963541666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30958,7 +31046,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
-          63352
+          63352,
+          63788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31325,7 +31414,8 @@ window.BENCHMARK_DATA = {
           3913.2067674909317,
           4052.710710144043,
           4031.411852155413,
-          4215.755411965506
+          4215.755411965506,
+          3956.0628946940105
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -31660,6 +31750,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
