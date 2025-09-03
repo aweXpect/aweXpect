@@ -156,7 +156,8 @@ public static partial class ThatEnumerable
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			_expectations = expected.Select(expectation
-					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation, Grammars & ~ExpectationGrammars.Negated,
+					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation,
+						Grammars & ~ExpectationGrammars.Negated,
 						context,
 						CancellationToken.None))
 				.ToArray();
@@ -571,7 +572,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				stringBuilder.Append(_expectationText(Grammars.Negate()));
+				stringBuilder.Append(_expectationText(Grammars));
 				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
@@ -580,7 +581,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount,
 				_totalCount, _verb);
 
 		private void AppendContexts(bool isIncomplete)
@@ -720,7 +721,8 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount,
+			_verb);
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -733,7 +735,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				stringBuilder.Append(_expectationText(Grammars.Negate()));
+				stringBuilder.Append(_expectationText(Grammars));
 				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
@@ -742,7 +744,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount,
 				_totalCount, _verb);
 
 		private void AppendContexts(bool isIncomplete)

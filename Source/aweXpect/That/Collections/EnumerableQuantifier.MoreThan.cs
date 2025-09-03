@@ -70,12 +70,7 @@ public abstract partial class EnumerableQuantifier
 				return;
 			}
 
-			if (!totalCount.HasValue)
-			{
-				return;
-			}
-
-			if (verb != null)
+			if (verb != null && totalCount.HasValue)
 			{
 				stringBuilder.Append("only ").Append(matchingCount).Append(" of ").Append(totalCount.Value)
 					.Append(' ').Append(verb);
