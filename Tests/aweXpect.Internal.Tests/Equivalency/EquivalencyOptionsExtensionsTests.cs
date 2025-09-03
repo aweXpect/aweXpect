@@ -1,6 +1,6 @@
 ﻿using aweXpect.Equivalency;
 
-namespace aweXpect.Core.Tests.Equivalency;
+namespace aweXpect.Internal.Tests.Equivalency;
 
 public sealed class EquivalencyOptionsExtensionsTests
 {
