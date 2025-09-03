@@ -380,7 +380,7 @@ public sealed partial class ThatObject
 			[Theory]
 			[InlineData(true)]
 			[InlineData(false)]
-			public async Task WhenExpectedImplementsIEqualityComparer_ShouldShouldUseEqualityComparer(
+			public async Task WhenExpectedImplementsIEqualityComparer_ShouldUseEqualityComparer(
 				bool shouldBeEqual)
 			{
 				OuterClass subject = new()
