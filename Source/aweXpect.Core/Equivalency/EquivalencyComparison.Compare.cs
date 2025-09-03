@@ -198,19 +198,20 @@ public static partial class EquivalencyComparison
 		if (typeOptions.Fields != IncludeMembers.None)
 		{
 			BindingFlags fieldBindingFlags = typeOptions.Fields.GetBindingFlags();
-			foreach (string fieldName in expected.GetType().GetFields(typeOptions.Fields).Select(x => x.Name))
+			foreach (FieldInfo? fieldInfo in expected.GetType().GetFields(typeOptions.Fields))
 			{
 				memberCount++;
-				string fieldMemberPath = ConcatMemberPath(memberPath, fieldName);
-				if (typeOptions.MembersToIgnore.Contains(fieldMemberPath))
+				string fieldMemberPath = ConcatMemberPath(memberPath, fieldInfo.Name);
+				if (typeOptions.MembersToIgnore.Any(memberToIgnore
+					    => memberToIgnore.IgnoreMember(fieldMemberPath, fieldInfo.FieldType, fieldInfo)))
 				{
 					continue;
 				}
 
 				object? actualFieldValue =
-					actual.GetType().GetField(fieldName, fieldBindingFlags)?.GetValue(actual);
+					actual.GetType().GetField(fieldInfo.Name, fieldBindingFlags)?.GetValue(actual);
 				object? expectedFieldValue =
-					expected.GetType().GetField(fieldName, fieldBindingFlags)?.GetValue(expected);
+					expected.GetType().GetField(fieldInfo.Name, fieldBindingFlags)?.GetValue(expected);
 
 				if (!await Compare(actualFieldValue, expectedFieldValue,
 					    options, options.GetTypeOptions(actualFieldValue?.GetType(), typeOptions),
@@ -224,20 +225,20 @@ public static partial class EquivalencyComparison
 		if (typeOptions.Properties != IncludeMembers.None)
 		{
 			BindingFlags propertyBindingFlags = typeOptions.Properties.GetBindingFlags();
-			foreach (string propertyName in expected.GetType().GetProperties(typeOptions.Properties)
-				         .Select(x => x.Name))
+			foreach (PropertyInfo? propertyInfo in expected.GetType().GetProperties(typeOptions.Properties))
 			{
 				memberCount++;
-				string propertyMemberPath = ConcatMemberPath(memberPath, propertyName);
-				if (typeOptions.MembersToIgnore.Contains(propertyMemberPath))
+				string propertyMemberPath = ConcatMemberPath(memberPath, propertyInfo.Name);
+				if (typeOptions.MembersToIgnore.Any(memberToIgnore
+					    => memberToIgnore.IgnoreMember(propertyMemberPath, propertyInfo.PropertyType, propertyInfo)))
 				{
 					continue;
 				}
 
-				object? actualPropertyValue = actual.GetType().GetProperty(propertyName, propertyBindingFlags)
+				object? actualPropertyValue = actual.GetType().GetProperty(propertyInfo.Name, propertyBindingFlags)
 					?.GetValue(actual);
 				object? expectedPropertyValue =
-					expected.GetType().GetProperty(propertyName, propertyBindingFlags)?.GetValue(expected);
+					expected.GetType().GetProperty(propertyInfo.Name, propertyBindingFlags)?.GetValue(expected);
 
 				if (!await Compare(actualPropertyValue, expectedPropertyValue,
 					    options, options.GetTypeOptions(actualPropertyValue?.GetType(), typeOptions),
@@ -287,12 +288,13 @@ public static partial class EquivalencyComparison
 		foreach (object? key in actual.Keys)
 		{
 			string elementMemberPath = $"{memberPath}[{key}]";
-			if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+
+			object? actualObject = actual[key];
+			if (typeOptions.MembersToIgnore.Any(memberToIgnore
+				    => memberToIgnore.IgnoreMember(elementMemberPath, actualObject?.GetType() ?? typeof(object), null)))
 			{
 				continue;
 			}
-
-			object? actualObject = actual[key];
 			if (expected.Contains(key))
 			{
 				object? expectedObject = expected[key];
@@ -328,13 +330,12 @@ public static partial class EquivalencyComparison
 			}
 
 			string elementMemberPath = $"{memberPath}[{key}]";
-			if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+			object? expectedObject = expected[key];
+			if (typeOptions.MembersToIgnore.Any(memberToIgnore
+				    => memberToIgnore.IgnoreMember(elementMemberPath, expectedObject?.GetType() ?? typeof(object), null)))
 			{
 				continue;
 			}
-
-
-			object? expectedObject = expected[key];
 
 			failureBuilder.AppendLine();
 			if (failureBuilder.Length > 2)
@@ -385,12 +386,13 @@ public static partial class EquivalencyComparison
 		for (int i = 0; i < Math.Min(actualObjects.Length, expectedObjects.Length); i++)
 		{
 			string elementMemberPath = $"{memberPath}[{(keys is null ? i : keys[i])}]";
-			if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+			object? actualObject = actualObjects.ElementAtOrDefault(i);
+			if (typeOptions.MembersToIgnore.Any(memberToIgnore
+				    => memberToIgnore.IgnoreMember(elementMemberPath, actualObject?.GetType() ?? typeof(object), null)))
 			{
 				continue;
 			}
-
-			object? actualObject = actualObjects.ElementAtOrDefault(i);
+			
 			object? expectedObject = expectedObjects.ElementAtOrDefault(i);
 
 			if (!await Compare(actualObject, expectedObject,
@@ -406,12 +408,12 @@ public static partial class EquivalencyComparison
 			for (int i = actualObjects.Length; i < expectedObjects.Length; i++)
 			{
 				string elementMemberPath = $"{memberPath}[{i}]";
-				if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+				object? expectedObject = expectedObjects.ElementAtOrDefault(i);
+				if (typeOptions.MembersToIgnore.Any(memberToIgnore
+					    => memberToIgnore.IgnoreMember(elementMemberPath, expectedObject?.GetType() ?? typeof(object), null)))
 				{
 					continue;
 				}
-
-				object? expectedObject = expectedObjects.ElementAtOrDefault(i);
 
 				failureBuilder.AppendLine();
 				if (failureBuilder.Length > 2)
@@ -432,12 +434,12 @@ public static partial class EquivalencyComparison
 			for (int i = expectedObjects.Length; i < actualObjects.Length; i++)
 			{
 				string elementMemberPath = $"{memberPath}[{(keys is null ? i : keys[i])}]";
-				if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+				object? actualObject = actualObjects.ElementAtOrDefault(i);
+				if (typeOptions.MembersToIgnore.Any(memberToIgnore
+					    => memberToIgnore.IgnoreMember(elementMemberPath, actualObject?.GetType() ?? typeof(object), null)))
 				{
 					continue;
 				}
-
-				object? actualObject = actualObjects.ElementAtOrDefault(i);
 
 				failureBuilder.AppendLine();
 				if (failureBuilder.Length > 2)

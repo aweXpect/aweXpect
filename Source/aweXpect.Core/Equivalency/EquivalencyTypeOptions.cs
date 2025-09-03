@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Text;
 
 namespace aweXpect.Equivalency;
@@ -18,7 +19,7 @@ public record EquivalencyTypeOptions
 	/// <summary>
 	///     The members that should be ignored when checking for equivalency.
 	/// </summary>
-	public string[] MembersToIgnore { get; init; } = [];
+	public MemberToIgnore[] MembersToIgnore { get; init; } = [];
 
 	/// <summary>
 	///     Specifies which fields to include in the object comparison.
