@@ -56,7 +56,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is not equivalent to one of [ThatObject.MyClass { Value = 0 }],
-					             but it was considered equivalent to ThatObject.MyClass {
+					             but it was considered equivalent for ThatObject.MyClass {
 					                 Value = 0
 					               }
 					             """);

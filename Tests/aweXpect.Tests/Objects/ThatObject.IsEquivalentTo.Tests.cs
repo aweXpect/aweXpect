@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Equivalency;
 
@@ -346,6 +347,62 @@ public sealed partial class ThatObject
 					              - include public fields and properties
 					             """);
 			}
+
+			[Theory]
+			[InlineData(true)]
+			[InlineData(false)]
+			public async Task WhenActualImplementsIEqualityComparer_ShouldUseEqualityComparer(bool shouldBeEqual)
+			{
+				WithEqualityComparerToOuterClass subject = new(shouldBeEqual);
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!shouldBeEqual)
+					.WithMessage("""
+					             Expected that subject
+					             is equivalent to ThatObject.OuterClass {
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               },
+					             but it was not:
+					               ThatObject.IsEquivalentTo.WithEqualityComparerToOuterClass { } did not equal ThatObject.OuterClass { Inner = <null>, Value = "Foo" }
+
+					             Equivalency options:
+					              - include public fields and properties
+					             """);
+			}
+
+			[Theory]
+			[InlineData(true)]
+			[InlineData(false)]
+			public async Task WhenExpectedImplementsIEqualityComparer_ShouldUseEqualityComparer(
+				bool shouldBeEqual)
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+				};
+				WithEqualityComparerToOuterClass expected = new(shouldBeEqual);
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!shouldBeEqual)
+					.WithMessage("""
+					             Expected that subject
+					             is equivalent to ThatObject.IsEquivalentTo.WithEqualityComparerToOuterClass { },
+					             but it was not:
+					               ThatObject.OuterClass { Inner = <null>, Value = "Foo" } did not equal ThatObject.IsEquivalentTo.WithEqualityComparerToOuterClass { }
+
+					             Equivalency options:
+					              - include public fields and properties
+					             """);
+			}
 		}
 
 		public sealed class CollectionTests
@@ -491,7 +548,7 @@ public sealed partial class ThatObject
 					                 Expected: 3
 					             and
 					               Element [4] was missing 4
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore collection order
@@ -545,7 +602,7 @@ public sealed partial class ThatObject
 					               Element [3] differed:
 					                    Found: 4
 					                 Expected: 5
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore collection order
@@ -584,7 +641,7 @@ public sealed partial class ThatObject
 					             },
 					             but it was not:
 					               Element [B] was missing <null>
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -679,7 +736,7 @@ public sealed partial class ThatObject
 					             },
 					             but it was not:
 					               Element [B] had superfluous <null>
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -1055,6 +1112,73 @@ public sealed partial class ThatObject
 
 				public override int GetHashCode() => Values != null ? Values.GetHashCode() : 0;
 			}
+		}
+
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task EquivalentObjects_ShouldFail()
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass(),
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+				};
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.IsEquivalentTo(expected, o => o.IgnoringMember("Inner")));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not equivalent to ThatObject.OuterClass {
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               },
+					             but it was considered equivalent for ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = <null>,
+					                   Value = <null>
+					                 },
+					                 Value = "Foo"
+					               }
+					             
+					             Equivalency options:
+					              - include public fields and properties
+					              - ignore members: ["Inner"]
+					             """);
+			}
+
+			[Fact]
+			public async Task MismatchedObjects_ShouldSucceed()
+			{
+				OuterClass subject = new();
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+				};
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.IsEquivalentTo(expected));
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		private sealed class WithEqualityComparerToOuterClass(bool shouldBeEqual) : IEqualityComparer
+		{
+			bool IEqualityComparer.Equals(object x, object y)
+				=> shouldBeEqual;
+
+			int IEqualityComparer.GetHashCode(object obj)
+				=> obj.GetHashCode();
 		}
 	}
 }
