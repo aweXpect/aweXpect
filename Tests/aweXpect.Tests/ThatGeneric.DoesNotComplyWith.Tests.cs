@@ -83,7 +83,7 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             is not equivalent to { HasWaitedEnough = False } within 0:30,
-					             but it was considered equivalent to ThatGeneric.DoesNotComplyWith.WithinTests.MyChangingClass {
+					             but it was considered equivalent for ThatGeneric.DoesNotComplyWith.WithinTests.MyChangingClass {
 					                 HasWaitedEnough = False
 					               }
 					             
@@ -158,7 +158,7 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             is not equivalent to { HasWaitedEnough = False } within 0:00.050,
-					             but it was considered equivalent to ThatGeneric.DoesNotComplyWith.WithinTests.MyChangingClass {
+					             but it was considered equivalent for ThatGeneric.DoesNotComplyWith.WithinTests.MyChangingClass {
 					                 HasWaitedEnough = False
 					               }
 					             

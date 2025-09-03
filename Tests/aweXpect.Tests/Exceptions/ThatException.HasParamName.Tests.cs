@@ -75,5 +75,91 @@ public sealed partial class ThatException
 					             """);
 			}
 		}
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[AutoData]
+			public async Task WhenExpectedIsNull_AndParamNameIsEmpty_ShouldFail(string message)
+			{
+				ArgumentException subject = new(message);
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.HasParamName(null));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have a ParamName,
+					             but it had
+					             """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenExpectedIsNull_ShouldFail(string message)
+			{
+				ArgumentException subject = new(message, nameof(message));
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.HasParamName(null));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have a ParamName,
+					             but it had
+					             """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenParamNameIsDifferent_ShouldSucceed(string message)
+			{
+				ArgumentException subject = new(message, nameof(message));
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.HasParamName("somethingElse"));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenParamNameMatchesExpected_ShouldFail(string message)
+			{
+				ArgumentException subject = new(message, nameof(message));
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.HasParamName("message"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have ParamName "message",
+					             but it had
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				ArgumentException? subject = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.HasParamName("message"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have ParamName "message",
+					             but it was <null>
+					             """);
+			}
+		}
 	}
 }

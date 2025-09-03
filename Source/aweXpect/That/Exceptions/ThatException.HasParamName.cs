@@ -42,20 +42,38 @@ public static partial class ThatException
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Grammars.HasFlag(ExpectationGrammars.Active))
+			if (expected is null)
 			{
-				stringBuilder.Append("with ParamName ");
-			}
-			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
-			{
-				stringBuilder.Append("ParamName is ");
+				if (Grammars.HasFlag(ExpectationGrammars.Active))
+				{
+					stringBuilder.Append("with a ParamName");
+				}
+				else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+				{
+					stringBuilder.Append("ParamName exists");
+				}
+				else
+				{
+					stringBuilder.Append("has a ParamName");
+				}
 			}
 			else
 			{
-				stringBuilder.Append("has ParamName ");
-			}
+				if (Grammars.HasFlag(ExpectationGrammars.Active))
+				{
+					stringBuilder.Append("with ParamName ");
+				}
+				else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+				{
+					stringBuilder.Append("ParamName is ");
+				}
+				else
+				{
+					stringBuilder.Append("has ParamName ");
+				}
 
-			Formatter.Format(stringBuilder, expected);
+				Formatter.Format(stringBuilder, expected);
+			}
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -65,29 +83,42 @@ public static partial class ThatException
 				stringBuilder.Append(It).Append(" had ParamName ");
 				Formatter.Format(stringBuilder, argumentException.ParamName);
 			}
-			else
-			{
-				stringBuilder.Append(It).Append(" was ");
-				Formatter.Format(stringBuilder, Actual);
-			}
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Grammars.HasFlag(ExpectationGrammars.Active))
+			if (expected is null)
 			{
-				stringBuilder.Append("without ParamName ");
-			}
-			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
-			{
-				stringBuilder.Append("ParamName is not ");
+				if (Grammars.HasFlag(ExpectationGrammars.Active))
+				{
+					stringBuilder.Append("without a ParamName");
+				}
+				else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+				{
+					stringBuilder.Append("ParamName does not exist");
+				}
+				else
+				{
+					stringBuilder.Append("does not have a ParamName");
+				}
 			}
 			else
 			{
-				stringBuilder.Append("does not have ParamName ");
-			}
+				if (Grammars.HasFlag(ExpectationGrammars.Active))
+				{
+					stringBuilder.Append("without ParamName ");
+				}
+				else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+				{
+					stringBuilder.Append("ParamName is not ");
+				}
+				else
+				{
+					stringBuilder.Append("does not have ParamName ");
+				}
 
-			Formatter.Format(stringBuilder, expected);
+				Formatter.Format(stringBuilder, expected);
+			}
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)

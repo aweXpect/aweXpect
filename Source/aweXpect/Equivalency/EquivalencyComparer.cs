@@ -36,7 +36,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	{
 		if (grammars.HasFlag(ExpectationGrammars.Negated))
 		{
-			return $"{it} was considered equivalent to {Formatter.Format(actual, FormattingOptions.Indented())}";
+			return $"{it} was considered equivalent for {Formatter.Format(actual, FormattingOptions.Indented())}";
 		}
 
 		if (actual is null != expected is null)
@@ -50,14 +50,9 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			return _failureBuilder.ToString();
 		}
 
-		if (_failureBuilder.Length > 0)
-		{
-			_failureBuilder.Insert(0, " was not:");
-			_failureBuilder.Insert(0, it);
-			return _failureBuilder.ToString();
-		}
-
-		return $"{it} was considered equivalent";
+		_failureBuilder.Insert(0, " was not:");
+		_failureBuilder.Insert(0, it);
+		return _failureBuilder.ToString();
 	}
 
 	private static bool HandleSpecialCases<TActual, TExpected>(TActual actual, TExpected expected,
@@ -69,6 +64,13 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			isConsideredEqual = actualEqualityComparer.Equals(actual, expected);
 			if (isConsideredEqual == false)
 			{
+				failureBuilder.AppendLine();
+				if (failureBuilder.Length > 2)
+				{
+					failureBuilder.AppendLine("and");
+				}
+
+				failureBuilder.Append("  ");
 				Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
 				failureBuilder.Append(" did not equal ");
 				Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
@@ -82,6 +84,13 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			isConsideredEqual = expectedEqualityComparer.Equals(actual, expected);
 			if (isConsideredEqual == false)
 			{
+				failureBuilder.AppendLine();
+				if (failureBuilder.Length > 2)
+				{
+					failureBuilder.AppendLine("and");
+				}
+
+				failureBuilder.Append("  ");
 				Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
 				failureBuilder.Append(" did not equal ");
 				Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);

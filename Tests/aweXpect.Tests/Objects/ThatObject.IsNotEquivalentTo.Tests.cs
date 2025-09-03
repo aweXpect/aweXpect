@@ -31,7 +31,7 @@ public sealed partial class ThatObject
 					                 Inner = <null>,
 					                 Value = "Foo"
 					               },
-					             but it was considered equivalent to ThatObject.OuterClass {
+					             but it was considered equivalent for ThatObject.OuterClass {
 					                 Inner = <null>,
 					                 Value = "Foo"
 					               }
@@ -112,7 +112,7 @@ public sealed partial class ThatObject
 					                 },
 					                 Value = "Foo"
 					               },
-					             but it was considered equivalent to ThatObject.OuterClass {
+					             but it was considered equivalent for ThatObject.OuterClass {
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
 					                   Inner = ThatObject.InnerClass {
@@ -220,7 +220,7 @@ public sealed partial class ThatObject
 					                 },
 					                 Value = "Foo"
 					               },
-					             but it was considered equivalent to ThatObject.OuterClass {
+					             but it was considered equivalent for ThatObject.OuterClass {
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
 					                   Inner = ThatObject.InnerClass {
@@ -290,7 +290,7 @@ public sealed partial class ThatObject
 					                 },
 					                 Value = "Foo"
 					               },
-					             but it was considered equivalent to ThatObject.OuterClass {
+					             but it was considered equivalent for ThatObject.OuterClass {
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
 					                   Inner = ThatObject.InnerClass {
@@ -424,7 +424,7 @@ public sealed partial class ThatObject
 					               3,
 					               2
 					             ],
-					             but it was considered equivalent to [
+					             but it was considered equivalent for [
 					               1,
 					               2,
 					               3
@@ -453,7 +453,7 @@ public sealed partial class ThatObject
 					               2,
 					               3
 					             ],
-					             but it was considered equivalent to [
+					             but it was considered equivalent for [
 					               1,
 					               2,
 					               3
@@ -568,7 +568,7 @@ public sealed partial class ThatObject
 					               [2] = 3,
 					               [1] = 4
 					             },
-					             but it was considered equivalent to {
+					             but it was considered equivalent for {
 					               [2] = 3,
 					               [1] = 4
 					             }
@@ -611,7 +611,7 @@ public sealed partial class ThatObject
 					               ["B"] = "B",
 					               ["A"] = "A"
 					             },
-					             but it was considered equivalent to {
+					             but it was considered equivalent for {
 					               ["A"] = "A",
 					               ["B"] = "B"
 					             }

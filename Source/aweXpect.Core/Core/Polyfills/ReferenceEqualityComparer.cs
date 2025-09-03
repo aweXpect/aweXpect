@@ -2,6 +2,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
@@ -17,6 +18,7 @@ namespace System.Collections.Generic
 	///     property
 	///     to access the singleton instance of this type.
 	/// </remarks>
+	[ExcludeFromCodeCoverage]
 	internal sealed class ReferenceEqualityComparer : IEqualityComparer<object?>, IEqualityComparer
 	{
 		private ReferenceEqualityComparer() { }
