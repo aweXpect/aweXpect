@@ -9,6 +9,40 @@ public sealed partial class ThatDictionary
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenNullValueDoesNotExist_ShouldFail()
+			{
+				IDictionary<int, int?> subject = ToDictionary<int, int?>([1, 2, 3,], [41, 42, 43,]);
+
+				async Task Act()
+					=> await That(subject).ContainsValue(null);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains value <null>,
+					             but it contained only [
+					               41,
+					               42,
+					               43
+					             ]
+
+					             Dictionary:
+					             {[1] = 41, [2] = 42, [3] = 43}
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenNullValueExists_ShouldSucceed()
+			{
+				IDictionary<int, int?> subject = ToDictionary<int, int?>([1, 2, 3,], [41, null, 43,]);
+
+				async Task Act()
+					=> await That(subject).ContainsValue(null);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				Dictionary<int, string>? subject = null;
