@@ -51,7 +51,11 @@ public abstract partial class EnumerableQuantifier
 			string? verb = null)
 		{
 			verb ??= "were";
-			if (totalCount.HasValue)
+			if (grammars.IsNegated())
+			{
+				stringBuilder.Append("all ").Append(matchingCount).Append(' ').Append(verb);
+			}
+			else if (totalCount.HasValue)
 			{
 				if (matchingCount == 0)
 				{

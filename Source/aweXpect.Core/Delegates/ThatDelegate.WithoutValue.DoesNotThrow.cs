@@ -40,7 +40,6 @@ public abstract partial class ThatDelegate
 				IValueConstraint<DelegateValue>
 		{
 			private DelegateValue? _actual;
-			private bool _isNegated;
 
 			/// <inheritdoc />
 			public ConstraintResult IsMetBy(DelegateValue value)
@@ -52,38 +51,23 @@ public abstract partial class ThatDelegate
 					return this;
 				}
 
-				Outcome = _isNegated == (value.Exception is null ||
-				                         !exceptionType.IsAssignableFrom(value.Exception.GetType()))
-					? Outcome.Failure
-					: Outcome.Success;
+				Outcome = value.Exception is null ||
+				          !exceptionType.IsAssignableFrom(value.Exception.GetType())
+					? Outcome.Success
+					: Outcome.Failure;
 				return this;
 			}
 
 			public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
-				if (!_isNegated)
+				if (exceptionType == typeof(Exception))
 				{
-					if (exceptionType == typeof(Exception))
-					{
-						stringBuilder.Append("does not throw any exception");
-					}
-					else
-					{
-						stringBuilder.Append("does not throw ")
-							.Append(ValueFormatters.Format(Formatter, exceptionType).PrependAOrAn());
-					}
+					stringBuilder.Append("does not throw any exception");
 				}
 				else
 				{
-					if (exceptionType == typeof(Exception))
-					{
-						stringBuilder.Append("throws an exception");
-					}
-					else
-					{
-						stringBuilder.Append("throws ")
-							.Append(ValueFormatters.Format(Formatter, exceptionType).PrependAOrAn());
-					}
+					stringBuilder.Append("does not throw ")
+						.Append(Formatter.Format(exceptionType).PrependAOrAn());
 				}
 			}
 
@@ -95,16 +79,8 @@ public abstract partial class ThatDelegate
 				}
 				else
 				{
-					switch (_isNegated)
-					{
-						case true when _actual.Exception is null:
-							stringBuilder.Append(it).Append(" did not throw any exception");
-							break;
-						case false when _actual.Exception is not null:
-							stringBuilder.Append(it).Append(" did throw ");
-							stringBuilder.Append(FormatForMessage(_actual.Exception));
-							break;
-					}
+					stringBuilder.Append(it).Append(" did throw ");
+					stringBuilder.Append(FormatForMessage(_actual.Exception));
 				}
 			}
 
@@ -114,11 +90,7 @@ public abstract partial class ThatDelegate
 				return false;
 			}
 
-			public override ConstraintResult Negate()
-			{
-				_isNegated = !_isNegated;
-				return this;
-			}
+			public override ConstraintResult Negate() => this;
 		}
 	}
 }

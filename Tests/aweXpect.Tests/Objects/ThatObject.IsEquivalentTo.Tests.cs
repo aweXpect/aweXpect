@@ -1174,7 +1174,7 @@ public sealed partial class ThatObject
 
 		private sealed class WithEqualityComparerToOuterClass(bool shouldBeEqual) : IEqualityComparer
 		{
-			bool IEqualityComparer.Equals(object x, object y)
+			bool IEqualityComparer.Equals(object? x, object? y)
 				=> shouldBeEqual;
 
 			int IEqualityComparer.GetHashCode(object obj)

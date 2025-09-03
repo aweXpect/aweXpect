@@ -445,6 +445,31 @@ public sealed partial class ThatEnumerable
 		public sealed class StringItemTests
 		{
 			[Theory]
+			[InlineData("fo", true)]
+			[InlineData("oo", false)]
+			public async Task AsPrefix_ShouldUsePrefix(string prefix, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz",];
+
+				async Task Act()
+					=> await That(subject).Contains(prefix).AsPrefix();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "{prefix}" as prefix at least once,
+					              but it did not contain it
+
+					              Collection:
+					              [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
 			[InlineData("[a-f]{1}[o]*", true)]
 			[InlineData("[g-h]{1}[o]*", false)]
 			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
@@ -458,6 +483,31 @@ public sealed partial class ThatEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              contains "{regex}" as regex at least once,
+					              but it did not contain it
+
+					              Collection:
+					              [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("oo", true)]
+			[InlineData("fo", false)]
+			public async Task AsSuffix_ShouldUsePrefix(string suffix, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz",];
+
+				async Task Act()
+					=> await That(subject).Contains(suffix).AsSuffix();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "{suffix}" as suffix at least once,
 					              but it did not contain it
 
 					              Collection:
@@ -807,7 +857,7 @@ public sealed partial class ThatEnumerable
 					              Expected that subject
 					              contains {Formatter.Format(match)} ignoring newline style at least once,
 					              but it did not contain it
-					              
+
 					              Collection:
 					              [
 					                "fo{nl.DisplayWhitespace()}o",

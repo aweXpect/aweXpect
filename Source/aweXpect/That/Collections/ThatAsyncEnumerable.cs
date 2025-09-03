@@ -22,13 +22,11 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	private sealed class CollectionConstraint<TItem>
-		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
+		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly Func<ExpectationGrammars, string> _expectationText;
-		private readonly ExpectationGrammars _grammars;
-		private readonly string _it;
 		private readonly Func<TItem, bool> _predicate;
 		private readonly EnumerableQuantifier _quantifier;
 		private readonly string _verb;
@@ -45,11 +43,9 @@ public static partial class ThatAsyncEnumerable
 			EnumerableQuantifier quantifier,
 			Func<ExpectationGrammars, string> expectationText,
 			Func<TItem, bool> predicate,
-			string verb) : base(grammars)
+			string verb) : base(it, grammars)
 		{
 			_expectationBuilder = expectationBuilder;
-			_it = it;
-			_grammars = grammars;
 			_quantifier = quantifier;
 			_expectationText = expectationText;
 			_predicate = predicate;
@@ -118,15 +114,15 @@ public static partial class ThatAsyncEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_grammars.HasFlag(ExpectationGrammars.Nested))
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
-				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(_expectationText(Grammars));
 			}
 			else
 			{
-				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(_expectationText(Grammars));
 				stringBuilder.Append(" for ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
@@ -135,30 +131,20 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (Actual is null)
-			{
-				stringBuilder.ItWasNull(_it);
-			}
-			else
-			{
-				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount,
-					_verb);
-			}
-		}
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_grammars.HasFlag(ExpectationGrammars.Nested))
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
 				stringBuilder.Append("not ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
-				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(_expectationText(Grammars));
 			}
 			else
 			{
-				stringBuilder.Append(_expectationText(_grammars.Negate()));
+				stringBuilder.Append(_expectationText(Grammars));
 				stringBuilder.Append(" for ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
@@ -167,17 +153,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (Actual is null)
-			{
-				stringBuilder.ItWasNull(_it);
-			}
-			else
-			{
-				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount,
-					_totalCount, _verb);
-			}
-		}
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
 
 		private void AppendContexts(bool isIncomplete)
 		{
@@ -651,7 +627,8 @@ public static partial class ThatAsyncEnumerable
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			_expectations = expected.Select(expectation
-					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation, Grammars & ~ExpectationGrammars.Negated,
+					=> new CollectionMatchOptions.ExpectationItem<TItem>(expectation,
+						Grammars & ~ExpectationGrammars.Negated,
 						context,
 						CancellationToken.None))
 				.ToArray();
@@ -711,9 +688,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
-		}
+			=> stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -841,9 +816,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
-		}
+			=> stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
