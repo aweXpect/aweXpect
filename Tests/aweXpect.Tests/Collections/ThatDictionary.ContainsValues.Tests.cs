@@ -80,7 +80,6 @@ public sealed partial class ThatDictionary
 					             """);
 			}
 
-
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
