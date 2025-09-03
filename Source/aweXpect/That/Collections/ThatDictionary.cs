@@ -9,5 +9,7 @@ namespace aweXpect;
 public static partial class ThatDictionary
 {
 	internal static bool ContainsValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TValue value)
-		=> dictionary.Any(x => value?.Equals(x.Value) == true);
+		=> value is null
+			? dictionary.Any(x => x.Value is null)
+			: dictionary.Any(x => value.Equals(x.Value));
 }
