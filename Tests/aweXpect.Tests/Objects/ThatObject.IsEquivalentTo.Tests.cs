@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using aweXpect.Equivalency;
 
 // ReSharper disable UnusedMember.Local
@@ -27,6 +28,143 @@ public sealed partial class ThatObject
 
 				async Task Act()
 					=> await That(subject).IsEquivalentTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IgnoringMismatchingProperties_ShouldBeEquivalent()
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 1,
+					},
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 2,
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o
+						.For<InnerClass>(x => x.IgnoringMember("IntValue")));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IgnoringMismatchingPropertiesByPathAndTypePredicate_ShouldBeEquivalent()
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 1,
+					},
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 2,
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o
+						.Ignoring((memberPath, memberType)
+							=> memberPath.EndsWith("IntValue") && memberType == typeof(int)));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IgnoringMismatchingPropertiesByPathPredicate_ShouldBeEquivalent()
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 1,
+					},
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 2,
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o
+						.Ignoring(memberPath => memberPath == "Inner.IntValue"));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IgnoringMismatchingPropertiesByPathTypeAndMemberInfoPredicate_ShouldBeEquivalent()
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 1,
+					},
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 2,
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o
+						.Ignoring((memberPath, _, memberInfo)
+							=> memberPath.EndsWith("IntValue") && memberInfo is PropertyInfo));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IgnoringMismatchingPropertiesByTypePredicate_ShouldBeEquivalent()
+			{
+				OuterClass subject = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 1,
+					},
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo",
+					Inner = new InnerClass
+					{
+						IntValue = 2,
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o
+						.Ignoring(memberType => memberType == typeof(int)));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -142,8 +280,10 @@ public sealed partial class ThatObject
 					                     "4"
 					                   ],
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
@@ -244,8 +384,10 @@ public sealed partial class ThatObject
 					                     "4"
 					                   ],
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Bart"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
@@ -334,8 +476,10 @@ public sealed partial class ThatObject
 					                   Inner = ThatObject.InnerClass {
 					                     Collection = <null>,
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
@@ -1144,11 +1288,12 @@ public sealed partial class ThatObject
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
 					                   Inner = <null>,
+					                   IntValue = 0,
 					                   Value = <null>
 					                 },
 					                 Value = "Foo"
 					               }
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore members: ["Inner"]

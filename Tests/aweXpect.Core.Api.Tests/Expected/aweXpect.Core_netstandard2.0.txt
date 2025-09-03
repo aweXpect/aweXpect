@@ -554,7 +554,7 @@ namespace aweXpect.Equivalency
         public aweXpect.Equivalency.EquivalencyComparisonType? ComparisonType { get; init; }
         public aweXpect.Equivalency.IncludeMembers Fields { get; init; }
         public bool IgnoreCollectionOrder { get; init; }
-        public string[] MembersToIgnore { get; init; }
+        public aweXpect.Equivalency.MemberToIgnore[] MembersToIgnore { get; init; }
         public aweXpect.Equivalency.IncludeMembers Properties { get; init; }
     }
     [System.Flags]
@@ -574,6 +574,23 @@ namespace aweXpect.Equivalency
             public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
             public aweXpect.Core.IThat<T> That { get; }
             public override string? ToString() { }
+        }
+    }
+    public abstract class MemberToIgnore
+    {
+        protected MemberToIgnore() { }
+        public abstract bool IgnoreMember(string memberPath, System.Type memberType, System.Reflection.MemberInfo? memberInfo);
+        public class ByName : aweXpect.Equivalency.MemberToIgnore
+        {
+            public ByName(string memberName) { }
+            public override bool IgnoreMember(string memberPath, System.Type memberType, System.Reflection.MemberInfo? memberInfo) { }
+            public override string ToString() { }
+        }
+        public class ByPredicate : aweXpect.Equivalency.MemberToIgnore
+        {
+            public ByPredicate(System.Func<string, System.Type, System.Reflection.MemberInfo?, bool> predicate, string description) { }
+            public override bool IgnoreMember(string memberPath, System.Type memberType, System.Reflection.MemberInfo? memberInfo) { }
+            public override string ToString() { }
         }
     }
 }

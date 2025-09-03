@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using aweXpect.Customization;
 
 namespace aweXpect.Equivalency;
@@ -17,7 +19,82 @@ public static class EquivalencyOptionsExtensions
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
-			MembersToIgnore = [..@this.MembersToIgnore, memberToIgnore,],
+			MembersToIgnore = [..@this.MembersToIgnore, new MemberToIgnore.ByName(memberToIgnore),],
+		};
+
+	/// <summary>
+	///     Ignores members matching the <paramref name="predicate" /> when checking for equivalency.
+	/// </summary>
+	public static TEquivalencyOptions Ignoring<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		Func<string, Type, bool> predicate,
+		[CallerArgumentExpression("predicate")]
+		string doNotPopulateThisValue = "")
+		where TEquivalencyOptions : EquivalencyTypeOptions
+		=> @this with
+		{
+			MembersToIgnore =
+			[
+				..@this.MembersToIgnore,
+				new MemberToIgnore.ByPredicate((memberName, memberType, _) => predicate(memberName, memberType),
+					doNotPopulateThisValue),
+			],
+		};
+
+	/// <summary>
+	///     Ignores members matching the <paramref name="predicate" /> when checking for equivalency.
+	/// </summary>
+	public static TEquivalencyOptions Ignoring<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		Func<string, bool> predicate,
+		[CallerArgumentExpression("predicate")]
+		string doNotPopulateThisValue = "")
+		where TEquivalencyOptions : EquivalencyTypeOptions
+		=> @this with
+		{
+			MembersToIgnore =
+			[
+				..@this.MembersToIgnore,
+				new MemberToIgnore.ByPredicate((memberName, _, _) => predicate(memberName),
+					doNotPopulateThisValue),
+			],
+		};
+
+	/// <summary>
+	///     Ignores members matching the <paramref name="predicate" /> when checking for equivalency.
+	/// </summary>
+	public static TEquivalencyOptions Ignoring<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		Func<Type, bool> predicate,
+		[CallerArgumentExpression("predicate")]
+		string doNotPopulateThisValue = "")
+		where TEquivalencyOptions : EquivalencyTypeOptions
+		=> @this with
+		{
+			MembersToIgnore =
+			[
+				..@this.MembersToIgnore,
+				new MemberToIgnore.ByPredicate((_, memberType, _) => predicate(memberType),
+					doNotPopulateThisValue),
+			],
+		};
+
+	/// <summary>
+	///     Ignores members matching the <paramref name="predicate" /> when checking for equivalency.
+	/// </summary>
+	public static TEquivalencyOptions Ignoring<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		Func<string, Type, MemberInfo?, bool> predicate,
+		[CallerArgumentExpression("predicate")]
+		string doNotPopulateThisValue = "")
+		where TEquivalencyOptions : EquivalencyTypeOptions
+		=> @this with
+		{
+			MembersToIgnore =
+			[
+				..@this.MembersToIgnore,
+				new MemberToIgnore.ByPredicate(predicate, doNotPopulateThisValue),
+			],
 		};
 
 	/// <summary>

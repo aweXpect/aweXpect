@@ -106,8 +106,10 @@ public sealed partial class ThatObject
 					                     "4"
 					                   ],
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
@@ -122,13 +124,15 @@ public sealed partial class ThatObject
 					                     "3"
 					                   ],
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
 					               }
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore members: ["Inner.Inner.Collection[3]"]
@@ -214,8 +218,10 @@ public sealed partial class ThatObject
 					                   Inner = ThatObject.InnerClass {
 					                     Collection = <null>,
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
@@ -226,13 +232,15 @@ public sealed partial class ThatObject
 					                   Inner = ThatObject.InnerClass {
 					                     Collection = <null>,
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
 					               }
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -284,8 +292,10 @@ public sealed partial class ThatObject
 					                     "3"
 					                   ],
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
@@ -300,13 +310,15 @@ public sealed partial class ThatObject
 					                     "3"
 					                   ],
 					                     Inner = <null>,
+					                     IntValue = 0,
 					                     Value = "Baz"
 					                   },
+					                   IntValue = 0,
 					                   Value = "Bar"
 					                 },
 					                 Value = "Foo"
 					               }
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
