@@ -2172,6 +2172,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -2536,7 +2542,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -2904,7 +2911,8 @@ window.BENCHMARK_DATA = {
           210.57292780509363,
           211.34261349042256,
           225.25386447906493,
-          222.58025734241193
+          222.58025734241193,
+          223.86926261583963
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3263,6 +3271,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3653,7 +3662,8 @@ window.BENCHMARK_DATA = {
           244.41491259847368,
           248.46970733006796,
           250.79723726000105,
-          243.39693263598852
+          243.39693263598852,
+          257.5262602170308
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3846,6 +3856,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4402,7 +4413,8 @@ window.BENCHMARK_DATA = {
           902.7290152867635,
           879.9793191274007,
           897.319916343689,
-          886.805609512329
+          886.805609512329,
+          930.0887649536132
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4737,6 +4749,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6499,6 +6512,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -6786,7 +6805,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -7077,7 +7097,8 @@ window.BENCHMARK_DATA = {
           309420.7012044271,
           296416.6577336238,
           312699.3044759115,
-          307351.73701171874
+          307351.73701171874,
+          308629.3859700521
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7369,6 +7390,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -7672,7 +7694,8 @@ window.BENCHMARK_DATA = {
           2169883.22109375,
           2224526.213020833,
           2284971.5364583335,
-          2318540.0078125
+          2318540.0078125,
+          2227939.5265625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7788,6 +7811,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8267,7 +8291,8 @@ window.BENCHMARK_DATA = {
           691667.6279947917,
           705533.7061848958,
           675144.0438058035,
-          706152.8080078125
+          706152.8080078125,
+          698956.21953125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8525,6 +8550,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10749,6 +10775,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -11113,7 +11145,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -11481,7 +11514,8 @@ window.BENCHMARK_DATA = {
           496.7115912119547,
           485.10845203399657,
           478.37004784175326,
-          543.7446072896322
+          543.7446072896322,
+          523.0391578038533
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11840,6 +11874,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12230,7 +12265,8 @@ window.BENCHMARK_DATA = {
           489.0017724990845,
           472.8931694030762,
           492.04140656789144,
-          525.0689894358317
+          525.0689894358317,
+          508.1092654546102
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12423,6 +12459,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -12979,7 +13016,8 @@ window.BENCHMARK_DATA = {
           14617.971444266183,
           17400.919514973957,
           15579.990469125602,
-          22918.59092203776
+          22918.59092203776,
+          15400.609187534877
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13314,6 +13352,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15538,6 +15577,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -15902,7 +15947,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -16270,7 +16316,8 @@ window.BENCHMARK_DATA = {
           246.1547106107076,
           252.74259932835898,
           255.86834859848022,
-          253.93304602305093
+          253.93304602305093,
+          253.0040427525838
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16629,6 +16676,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17019,7 +17067,8 @@ window.BENCHMARK_DATA = {
           249.48000266001776,
           251.1082205136617,
           258.63626721700035,
-          261.18444366455077
+          261.18444366455077,
+          246.302117284139
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17212,6 +17261,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -17768,7 +17818,8 @@ window.BENCHMARK_DATA = {
           1238.563076019287,
           1174.742031097412,
           1198.184732055664,
-          1220.3894343058269
+          1220.3894343058269,
+          1218.4750186920166
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18103,6 +18154,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -20327,6 +20379,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -20691,7 +20749,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -21059,7 +21118,8 @@ window.BENCHMARK_DATA = {
           420.5760557310922,
           418.1136304415189,
           416.72663402557373,
-          452.2651821454366
+          452.2651821454366,
+          433.02853911717733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21422,6 +21482,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -21808,7 +21869,8 @@ window.BENCHMARK_DATA = {
           493.15801734924315,
           478.1383398691813,
           478.2495183577904,
-          464.8676253098708
+          464.8676253098708,
+          493.5037216186523
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22001,6 +22063,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -22557,7 +22620,8 @@ window.BENCHMARK_DATA = {
           1263.448664601644,
           1186.4986549104963,
           1243.2611625671386,
-          1243.0428563435873
+          1243.0428563435873,
+          1266.6304677816538
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22892,6 +22956,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -25116,6 +25181,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -25480,7 +25551,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -25848,7 +25920,8 @@ window.BENCHMARK_DATA = {
           1775.6778882833628,
           1692.6491400400798,
           1725.214999516805,
-          1705.4649738584246
+          1705.4649738584246,
+          1798.8281017303466
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26211,6 +26284,7 @@ window.BENCHMARK_DATA = {
           2776,
           2776,
           2776,
+          2856,
           2856,
           2856,
           2856,
@@ -26597,7 +26671,8 @@ window.BENCHMARK_DATA = {
           1308.3069737752278,
           1320.9490539550782,
           1405.3151053110757,
-          1235.711539586385
+          1235.711539586385,
+          1343.606426532452
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26790,6 +26865,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -27346,7 +27422,8 @@ window.BENCHMARK_DATA = {
           3263.0204467773438,
           3314.2462697347005,
           3227.257761274065,
-          3310.49712600708
+          3310.49712600708,
+          3315.1519116719564
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -27681,6 +27758,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -29905,6 +29983,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
         "message": "Fix JSON error"
+      },
+      {
+        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
+        "message": "chore: use latest Stryker.net version (#755)"
       }
     ],
     "labels": [
@@ -30269,7 +30353,8 @@ window.BENCHMARK_DATA = {
       "9c101b74",
       "0a226a33",
       "c2a9dc57",
-      "95828efe"
+      "95828efe",
+      "67917e64"
     ],
     "datasets": [
       {
@@ -30637,7 +30722,8 @@ window.BENCHMARK_DATA = {
           2237.159618631999,
           2190.5432411193847,
           2190.825925680307,
-          2148.036256245204
+          2148.036256245204,
+          2167.415320587158
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31000,6 +31086,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          3048,
           3048,
           3048,
           3048,
@@ -31386,7 +31473,8 @@ window.BENCHMARK_DATA = {
           148789.6677734375,
           150527.1689453125,
           147619.38837890624,
-          152595.39303385417
+          152595.39303385417,
+          149834.27078683037
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31759,7 +31847,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
-          63788
+          63788,
+          63352
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32135,7 +32224,8 @@ window.BENCHMARK_DATA = {
           3920.3119242350263,
           3919.8054122924805,
           3897.820132119315,
-          3901.8772415161134
+          3901.8772415161134,
+          3828.053297860282
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -32470,6 +32560,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
