@@ -43,19 +43,19 @@ internal class WhichNode<TSource, TMember> : Node
 		=> _inner?.AddConstraint(constraint);
 
 	/// <inheritdoc />
-	public override Node? AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
+	public override Node AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
-		=> _inner?.AddMapping(memberAccessor, expectationTextGenerator);
+		=> _inner?.AddMapping(memberAccessor, expectationTextGenerator) ?? this;
 
 	/// <inheritdoc />
-	public override Node? AddAsyncMapping<TValue, TTarget>(
+	public override Node AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
-		=> _inner?.AddAsyncMapping(memberAccessor, expectationTextGenerator);
+		=> _inner?.AddAsyncMapping(memberAccessor, expectationTextGenerator) ?? this;
 
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)

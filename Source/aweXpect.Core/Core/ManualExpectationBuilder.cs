@@ -17,7 +17,8 @@ namespace aweXpect.Core;
 public class ManualExpectationBuilder<TValue>(
 	ExpectationBuilder? inner,
 	ExpectationGrammars grammars = ExpectationGrammars.None)
-	: ExpectationBuilder("", grammars), IEqualityComparer<ManualExpectationBuilder<TValue>>
+	: ExpectationBuilder("", grammars),
+		IEqualityComparer<ManualExpectationBuilder<TValue>>
 {
 	/// <inheritdoc cref="IEqualityComparer{T}.Equals(T, T)" />
 	public bool Equals(ManualExpectationBuilder<TValue>? x, ManualExpectationBuilder<TValue>? y)
