@@ -28,6 +28,27 @@ public sealed class TestFrameworkAdapterTests : IDisposable
 	}
 
 	[Fact]
+	public async Task Inconclusive_ValidAssemblyName_ShouldThrowNotSupportedException()
+	{
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly);
+		_ = adapter.IsAvailable;
+
+		await That(() => adapter.Inconclusive("foo")).Throws<NotSupportedException>()
+			.WithMessage("Failed to create the inconclusive assertion type");
+	}
+
+	[Fact]
+	public async Task Inconclusive_ValidAssemblyName_WithException_ShouldThrowProvidedException()
+	{
+		MyException exception = new("my-message");
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly, inconclusiveException: exception);
+		_ = adapter.IsAvailable;
+
+		await That(() => adapter.Inconclusive("foo")).Throws<MyException>()
+			.WithMessage("my-message");
+	}
+
+	[Fact]
 	public async Task MissingAssemblyName_ShouldNotBeAvailable()
 	{
 		MyTestFrameworkAdapter adapter = new(MissingAssembly);

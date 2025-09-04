@@ -17,6 +17,21 @@ public partial class ConstraintResultTests
 			await That(sut.Outcome).IsEqualTo(Outcome.Success);
 		}
 
+
+		[Theory]
+		[InlineData(Outcome.Success)]
+		[InlineData(Outcome.Failure)]
+		[InlineData(Outcome.Undecided)]
+		public async Task SetOutcome_ShouldBeForwardedToInner(Outcome outcome)
+		{
+			MyExpectationOnlyConstraintResult<int> sut = new(
+				ExpectationGrammars.None, null, "negated-foo");
+
+			sut.SetOutcome(outcome);
+
+			await That(sut.Outcome).IsEqualTo(outcome);
+		}
+
 		[Fact]
 		public async Task TryGetValue_ShouldReturnFalse()
 		{
@@ -90,6 +105,15 @@ public partial class ConstraintResultTests
 
 			await That(expectationText).IsEmpty();
 			await That(resultText).IsEmpty();
+		}
+
+		private class MyExpectationOnlyConstraintResult<T>(
+			ExpectationGrammars grammars,
+			string? expectation = null,
+			string? negatedExpectation = null)
+			: ConstraintResult.ExpectationOnly<T>(grammars, expectation, negatedExpectation)
+		{
+			public void SetOutcome(Outcome outcome) => Outcome = outcome;
 		}
 	}
 }

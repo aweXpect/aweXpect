@@ -90,7 +90,12 @@ public static class ConstraintResultExtensions
 			return typeof(TValue).IsAssignableFrom(typeof(T));
 		}
 
-		public override ConstraintResult Negate() => _inner.Negate();
+		public override ConstraintResult Negate()
+		{
+			_inner.Negate();
+			Outcome = _inner.Outcome;
+			return this;
+		}
 	}
 
 	private sealed class ConstraintResultFailure<T> : ConstraintResult
@@ -151,7 +156,12 @@ public static class ConstraintResultExtensions
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 			=> _inner.TryGetValue(out value);
 
-		public override ConstraintResult Negate() => _inner.Negate();
+		public override ConstraintResult Negate()
+		{
+			_inner.Negate();
+			Outcome = _inner.Outcome;
+			return this;
+		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
