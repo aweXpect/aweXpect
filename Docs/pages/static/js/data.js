@@ -2184,6 +2184,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -2550,7 +2556,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -2920,7 +2927,8 @@ window.BENCHMARK_DATA = {
           225.25386447906493,
           222.58025734241193,
           223.86926261583963,
-          231.044256512324
+          231.044256512324,
+          221.774701663426
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3279,6 +3287,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3673,7 +3682,8 @@ window.BENCHMARK_DATA = {
           250.79723726000105,
           243.39693263598852,
           257.5262602170308,
-          272.4241043971135
+          272.4241043971135,
+          246.10164543787639
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3866,6 +3876,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4426,7 +4437,8 @@ window.BENCHMARK_DATA = {
           897.319916343689,
           886.805609512329,
           930.0887649536132,
-          927.241033299764
+          927.241033299764,
+          862.4502694447835
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4761,6 +4773,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6537,6 +6550,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -6826,7 +6845,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -7119,7 +7139,8 @@ window.BENCHMARK_DATA = {
           312699.3044759115,
           307351.73701171874,
           308629.3859700521,
-          322263.2201660156
+          322263.2201660156,
+          299271.2471028646
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7411,6 +7432,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -7718,7 +7740,8 @@ window.BENCHMARK_DATA = {
           2284971.5364583335,
           2318540.0078125,
           2227939.5265625,
-          2255916.359114583
+          2255916.359114583,
+          2200448.0143229165
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7834,6 +7857,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8317,7 +8341,8 @@ window.BENCHMARK_DATA = {
           675144.0438058035,
           706152.8080078125,
           698956.21953125,
-          681370.1586914062
+          681370.1586914062,
+          670493.166155134
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8575,6 +8600,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10813,6 +10839,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -11179,7 +11211,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -11549,7 +11582,8 @@ window.BENCHMARK_DATA = {
           478.37004784175326,
           543.7446072896322,
           523.0391578038533,
-          502.271133295695
+          502.271133295695,
+          489.4889409201486
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11908,6 +11942,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12302,7 +12337,8 @@ window.BENCHMARK_DATA = {
           492.04140656789144,
           525.0689894358317,
           508.1092654546102,
-          529.0278572082519
+          529.0278572082519,
+          496.4816382271903
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12495,6 +12531,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13055,7 +13092,8 @@ window.BENCHMARK_DATA = {
           15579.990469125602,
           22918.59092203776,
           15400.609187534877,
-          18183.868772379556
+          18183.868772379556,
+          20680.707423909505
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13390,6 +13428,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15628,6 +15667,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -15994,7 +16039,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -16364,7 +16410,8 @@ window.BENCHMARK_DATA = {
           255.86834859848022,
           253.93304602305093,
           253.0040427525838,
-          251.52391235645
+          251.52391235645,
+          244.2458694458008
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16723,6 +16770,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17117,7 +17165,8 @@ window.BENCHMARK_DATA = {
           258.63626721700035,
           261.18444366455077,
           246.302117284139,
-          268.0469714164734
+          268.0469714164734,
+          249.18391682306927
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17310,6 +17359,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -17870,7 +17920,8 @@ window.BENCHMARK_DATA = {
           1198.184732055664,
           1220.3894343058269,
           1218.4750186920166,
-          1208.8968637906587
+          1208.8968637906587,
+          1187.420773824056
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18205,6 +18256,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -20443,6 +20495,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -20809,7 +20867,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -21179,7 +21238,8 @@ window.BENCHMARK_DATA = {
           416.72663402557373,
           452.2651821454366,
           433.02853911717733,
-          475.7194676081339
+          475.7194676081339,
+          447.6604925473531
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21542,6 +21602,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -21932,7 +21993,8 @@ window.BENCHMARK_DATA = {
           478.2495183577904,
           464.8676253098708,
           493.5037216186523,
-          530.8186480840047
+          530.8186480840047,
+          462.2912927309672
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22125,6 +22187,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -22685,7 +22748,8 @@ window.BENCHMARK_DATA = {
           1243.2611625671386,
           1243.0428563435873,
           1266.6304677816538,
-          1258.173487218221
+          1258.173487218221,
+          1237.488268661499
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23020,6 +23084,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -25258,6 +25323,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -25624,7 +25695,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -25994,7 +26066,8 @@ window.BENCHMARK_DATA = {
           1725.214999516805,
           1705.4649738584246,
           1798.8281017303466,
-          1787.2566527048746
+          1787.2566527048746,
+          1711.0052505220685
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26369,6 +26442,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888
         ],
         "borderColor": "#63A2AC",
@@ -26747,7 +26821,8 @@ window.BENCHMARK_DATA = {
           1405.3151053110757,
           1235.711539586385,
           1343.606426532452,
-          1416.480962371826
+          1416.480962371826,
+          1397.2751046589442
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26940,6 +27015,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -27500,7 +27576,8 @@ window.BENCHMARK_DATA = {
           3227.257761274065,
           3310.49712600708,
           3315.1519116719564,
-          3425.8064882914227
+          3425.8064882914227,
+          3245.943258013044
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -27835,6 +27912,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -30073,6 +30151,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
         "message": "coverage: improve test coverage of helpers (#757)"
+      },
+      {
+        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
+        "message": "fix: nullability of MemberAccessor (#758)"
       }
     ],
     "labels": [
@@ -30439,7 +30523,8 @@ window.BENCHMARK_DATA = {
       "c2a9dc57",
       "95828efe",
       "67917e64",
-      "d9f4c5ad"
+      "d9f4c5ad",
+      "f000f6a6"
     ],
     "datasets": [
       {
@@ -30809,7 +30894,8 @@ window.BENCHMARK_DATA = {
           2190.825925680307,
           2148.036256245204,
           2167.415320587158,
-          2249.709725443522
+          2249.709725443522,
+          2178.9087109883626
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31184,6 +31270,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080
         ],
         "borderColor": "#63A2AC",
@@ -31562,7 +31649,8 @@ window.BENCHMARK_DATA = {
           147619.38837890624,
           152595.39303385417,
           149834.27078683037,
-          157030.31358924278
+          157030.31358924278,
+          148099.1638671875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31937,7 +32025,8 @@ window.BENCHMARK_DATA = {
           63787,
           63788,
           63352,
-          63788
+          63788,
+          63352
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32315,7 +32404,8 @@ window.BENCHMARK_DATA = {
           3897.820132119315,
           3901.8772415161134,
           3828.053297860282,
-          4041.0572438557942
+          4041.0572438557942,
+          3811.9311327253067
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -32650,6 +32740,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
