@@ -235,7 +235,7 @@ public static partial class ThatDictionary
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
 			{
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
 					_duplicates.Add(item);
@@ -298,7 +298,7 @@ public static partial class ThatDictionary
 			{
 				TMember itemMember = memberAccessor(item);
 
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);

@@ -257,7 +257,7 @@ public static partial class ThatEnumerable
 			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
 			{
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
 					_duplicates.Add(item);
@@ -321,7 +321,7 @@ public static partial class ThatEnumerable
 			foreach (TItem item in materialized)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);
@@ -382,7 +382,7 @@ public static partial class ThatEnumerable
 			foreach (object? item in materialized)
 			{
 				if (item is TMatch matchedItem &&
-				    await checkedItems.AnyButNotAllAsync(_duplicates,
+				    await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(matchedItem, compareWith)))
 				{
 					_duplicates.Add(item);
@@ -446,7 +446,7 @@ public static partial class ThatEnumerable
 			foreach (object? item in materialized)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);

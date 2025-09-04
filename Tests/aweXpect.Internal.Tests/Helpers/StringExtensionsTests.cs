@@ -7,16 +7,6 @@ public sealed class StringExtensionsTests
 	public sealed class IndentTests
 	{
 		[Fact]
-		public async Task WhenIndentationIsEmpty_ShouldReturnInput()
-		{
-			string input = "foo\nbar";
-
-			string result = input.Indent("");
-
-			await That(result).IsEqualTo(input);
-		}
-
-		[Fact]
 		public async Task WhenIndentationIsNotEmpty_ShouldReturnIndentedInput()
 		{
 			string input = "foo\nbar";
@@ -25,6 +15,18 @@ public sealed class StringExtensionsTests
 			string result = input.Indent("   ");
 
 			await That(result).IsEqualTo(expected);
+		}
+
+		[Theory]
+		[InlineData("")]
+		[InlineData(null)]
+		public async Task WhenIndentationIsNullOrEmpty_ShouldReturnInput(string? indentation)
+		{
+			string input = "foo\nbar";
+
+			string result = input.Indent(indentation);
+
+			await That(result).IsEqualTo(input);
 		}
 
 		[Fact]
@@ -39,7 +41,7 @@ public sealed class StringExtensionsTests
 		}
 
 		[Fact]
-		public async Task WhenNull_ShouldReturnNull()
+		public async Task WhenInputIsNull_ShouldReturnNull()
 		{
 			string? input = null;
 
@@ -111,11 +113,11 @@ public sealed class StringExtensionsTests
 		}
 
 		[Fact]
-		public async Task WhenLinesHaveSomeCommonWhiteSpace_ShouldTrim()
+		public async Task WhenLinesHaveSomeCommonWhiteSpace1_ShouldTrim()
 		{
 			string input = """
 			               foo
-			                   bar
+			                    bar
 			                 baz
 			                  bay
 			               """;
@@ -124,9 +126,31 @@ public sealed class StringExtensionsTests
 
 			await That(result).IsEqualTo("""
 			                             foo
-			                               bar
+			                                bar
 			                             baz
 			                              bay
+			                             """);
+		}
+
+		[Fact]
+		public async Task WhenLinesHaveSomeCommonWhiteSpace2_ShouldTrim()
+		{
+			string input = """
+			               foo
+			                     bar
+			                    
+			                   baz
+			                 bay
+			               """;
+
+			string result = input.TrimCommonWhiteSpace();
+
+			await That(result).IsEqualTo("""
+			                             foo
+			                                 bar
+			                                
+			                               baz
+			                             bay
 			                             """);
 		}
 
