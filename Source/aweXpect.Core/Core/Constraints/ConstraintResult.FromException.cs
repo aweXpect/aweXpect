@@ -13,7 +13,7 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     A failed <see cref="ConstraintResult" /> due to an <see cref="Exception" />.
 	/// </summary>
-	internal class ExceptionConstraintResult : ConstraintResult
+	internal class FromException : ConstraintResult
 	{
 		private readonly Exception _exception;
 		private readonly ConstraintResult _inner;
@@ -21,7 +21,7 @@ public abstract partial class ConstraintResult
 		/// <summary>
 		///     A failed <see cref="ConstraintResult" /> due to a thrown <paramref name="exception" />.
 		/// </summary>
-		public ExceptionConstraintResult(
+		public FromException(
 			ConstraintResult inner,
 			Exception exception,
 			ExpectationBuilder expectationBuilder)
