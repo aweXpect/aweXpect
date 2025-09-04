@@ -43,16 +43,16 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			return result.Fail("it was <null>", value);
 		}
 
-		if (value is not TSource typedValue)
+		if (value is TSource typedValue)
 		{
-			throw new InvalidOperationException(
-					$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}")
-				.LogTrace();
+			TTarget matchingValue = _memberAccessor.AccessMember(typedValue);
+			ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
+			return memberResult.UseValue(value);
 		}
 
-		TTarget matchingValue = _memberAccessor.AccessMember(typedValue);
-		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
-		return memberResult.UseValue(value);
+		throw new InvalidOperationException(
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}")
+			.LogTrace();
 	}
 
 	/// <inheritdoc cref="object.Equals(object?)" />
