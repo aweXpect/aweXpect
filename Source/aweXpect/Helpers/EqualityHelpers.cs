@@ -26,14 +26,9 @@ internal static class EqualityHelpers
 
 	public static bool IsConsideredEqualTo(this double? actual, double? expected, double tolerance)
 	{
-		if (actual is null && expected is null)
-		{
-			return true;
-		}
-
 		if (actual is null || expected is null)
 		{
-			return false;
+			return actual is null && expected is null;
 		}
 
 		if (double.IsNaN(actual.Value) || double.IsNaN(expected.Value))

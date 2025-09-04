@@ -244,7 +244,7 @@ public static partial class ThatReadOnlyDictionary
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
 			{
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
 					_duplicates.Add(item);
@@ -306,7 +306,7 @@ public static partial class ThatReadOnlyDictionary
 			foreach (TValue item in actual.Values)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (await checkedItems.AnyButNotAllAsync(_duplicates,
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
 					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
 					_duplicates.Add(itemMember);
