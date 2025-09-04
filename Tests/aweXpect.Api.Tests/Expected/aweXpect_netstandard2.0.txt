@@ -18,7 +18,7 @@ namespace aweXpect
         protected EnumerableQuantifier() { }
         public abstract void AppendResult(System.Text.StringBuilder stringBuilder, aweXpect.Core.ExpectationGrammars grammars, int matchingCount, int notMatchingCount, int? totalCount, string? verb = null);
         public abstract aweXpect.Core.Constraints.Outcome GetOutcome(int matchingCount, int notMatchingCount, int? totalCount);
-        public virtual aweXpect.EnumerableQuantifier.QuantifierContext GetQuantifierContext() { }
+        public virtual aweXpect.EnumerableQuantifier.QuantifierContexts GetQuantifierContext() { }
         public abstract bool IsDeterminable(int matchingCount, int notMatchingCount);
         public abstract bool IsSingle();
         public static aweXpect.EnumerableQuantifier All(aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
@@ -30,7 +30,7 @@ namespace aweXpect
         public static aweXpect.EnumerableQuantifier MoreThan(int minimum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
         public static aweXpect.EnumerableQuantifier None(aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
         [System.Flags]
-        public enum QuantifierContext
+        public enum QuantifierContexts
         {
             MatchingItems = 2,
             NotMatchingItems = 4,

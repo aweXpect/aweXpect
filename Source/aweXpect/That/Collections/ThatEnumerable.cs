@@ -586,8 +586,8 @@ public static partial class ThatEnumerable
 
 		private void AppendContexts(bool isIncomplete)
 		{
-			EnumerableQuantifier.QuantifierContext quantifierContext = _quantifier.GetQuantifierContext();
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.MatchingItems))
+			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
@@ -596,7 +596,7 @@ public static partial class ThatEnumerable
 						int.MaxValue)));
 			}
 
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.NotMatchingItems))
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
@@ -749,8 +749,8 @@ public static partial class ThatEnumerable
 
 		private void AppendContexts(bool isIncomplete)
 		{
-			EnumerableQuantifier.QuantifierContext quantifierContext = _quantifier.GetQuantifierContext();
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.MatchingItems))
+			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
@@ -759,7 +759,7 @@ public static partial class ThatEnumerable
 						int.MaxValue)));
 			}
 
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.NotMatchingItems))
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
@@ -910,8 +910,8 @@ public static partial class ThatEnumerable
 
 		private void AppendContexts(bool isIncomplete)
 		{
-			EnumerableQuantifier.QuantifierContext quantifierContext = _quantifier.GetQuantifierContext();
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.MatchingItems))
+			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
@@ -921,7 +921,7 @@ public static partial class ThatEnumerable
 						int.MaxValue)));
 			}
 
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.NotMatchingItems))
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
@@ -1081,8 +1081,8 @@ public static partial class ThatEnumerable
 
 		private void AppendContexts(bool isIncomplete)
 		{
-			EnumerableQuantifier.QuantifierContext quantifierContext = _quantifier.GetQuantifierContext();
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.MatchingItems))
+			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
@@ -1092,7 +1092,7 @@ public static partial class ThatEnumerable
 						int.MaxValue)));
 			}
 
-			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.NotMatchingItems))
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",

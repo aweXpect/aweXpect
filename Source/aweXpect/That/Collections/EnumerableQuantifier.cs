@@ -13,7 +13,7 @@ public abstract partial class EnumerableQuantifier
 	///     Specifies which context is helpful for the <see cref="EnumerableQuantifier" />.
 	/// </summary>
 	[Flags]
-	public enum QuantifierContext
+	public enum QuantifierContexts
 	{
 		/// <summary>
 		///     Include the matching items in the context.
@@ -54,10 +54,10 @@ public abstract partial class EnumerableQuantifier
 		int? totalCount);
 
 	/// <summary>
-	///     Returns the <see cref="QuantifierContext" /> which specifies which context values are helpful.
+	///     Returns the <see cref="QuantifierContexts" /> which specifies which context values are helpful.
 	/// </summary>
-	public virtual QuantifierContext GetQuantifierContext()
-		=> QuantifierContext.None;
+	public virtual QuantifierContexts GetQuantifierContext()
+		=> QuantifierContexts.None;
 
 	/// <summary>
 	///     Appends the result text to the <paramref name="stringBuilder" />.
