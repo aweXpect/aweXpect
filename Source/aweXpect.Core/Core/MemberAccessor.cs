@@ -40,11 +40,11 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 	/// <summary>
 	///     Creates a member accessor from the given <paramref name="expression" />.
 	/// </summary>
-	public static MemberAccessor<TSource, TTarget?> FromExpression(
-		Expression<Func<TSource, TTarget?>> expression)
+	public static MemberAccessor<TSource, TTarget> FromExpression(
+		Expression<Func<TSource, TTarget>> expression)
 	{
-		Func<TSource, TTarget?> compiled = expression.Compile();
-		return new MemberAccessor<TSource, TTarget?>(
+		Func<TSource, TTarget> compiled = expression.Compile();
+		return new MemberAccessor<TSource, TTarget>(
 			v => compiled(v),
 			$"{ExpressionHelpers.GetMemberPath(expression)} ");
 	}
