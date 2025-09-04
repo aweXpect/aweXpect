@@ -2196,6 +2196,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -2564,7 +2570,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -2936,7 +2943,8 @@ window.BENCHMARK_DATA = {
           223.86926261583963,
           231.044256512324,
           221.774701663426,
-          245.91803005763464
+          245.91803005763464,
+          238.78139570781164
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3295,6 +3303,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3693,7 +3702,8 @@ window.BENCHMARK_DATA = {
           257.5262602170308,
           272.4241043971135,
           246.10164543787639,
-          262.09784599450916
+          262.09784599450916,
+          267.2407141465407
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3886,6 +3896,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4450,7 +4461,8 @@ window.BENCHMARK_DATA = {
           930.0887649536132,
           927.241033299764,
           862.4502694447835,
-          922.8735101699829
+          922.8735101699829,
+          947.3584882736207
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4785,6 +4797,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6575,6 +6588,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -6866,7 +6885,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -7161,7 +7181,8 @@ window.BENCHMARK_DATA = {
           308629.3859700521,
           322263.2201660156,
           299271.2471028646,
-          315188.4236979167
+          315188.4236979167,
+          314810.6352050781
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7453,6 +7474,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -7764,7 +7786,8 @@ window.BENCHMARK_DATA = {
           2227939.5265625,
           2255916.359114583,
           2200448.0143229165,
-          2227507.638113839
+          2227507.638113839,
+          2432955.294363839
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7880,6 +7903,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8367,7 +8391,8 @@ window.BENCHMARK_DATA = {
           698956.21953125,
           681370.1586914062,
           670493.166155134,
-          680508.8923828125
+          680508.8923828125,
+          725256.5524739583
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8625,6 +8650,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10877,6 +10903,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -11245,7 +11277,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -11617,7 +11650,8 @@ window.BENCHMARK_DATA = {
           523.0391578038533,
           502.271133295695,
           489.4889409201486,
-          504.83726890270526
+          504.83726890270526,
+          542.19067846934
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11976,6 +12010,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12374,7 +12409,8 @@ window.BENCHMARK_DATA = {
           508.1092654546102,
           529.0278572082519,
           496.4816382271903,
-          509.092633996691
+          509.092633996691,
+          578.8854188919067
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12567,6 +12603,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13131,7 +13168,8 @@ window.BENCHMARK_DATA = {
           15400.609187534877,
           18183.868772379556,
           20680.707423909505,
-          14800.591005597797
+          14800.591005597797,
+          15720.905084228516
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13466,6 +13504,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15718,6 +15757,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -16086,7 +16131,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -16458,7 +16504,8 @@ window.BENCHMARK_DATA = {
           253.0040427525838,
           251.52391235645,
           244.2458694458008,
-          252.2878304719925
+          252.2878304719925,
+          263.9238931020101
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16817,6 +16864,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17215,7 +17263,8 @@ window.BENCHMARK_DATA = {
           246.302117284139,
           268.0469714164734,
           249.18391682306927,
-          253.6632882118225
+          253.6632882118225,
+          275.681583404541
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17408,6 +17457,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -17972,7 +18022,8 @@ window.BENCHMARK_DATA = {
           1218.4750186920166,
           1208.8968637906587,
           1187.420773824056,
-          1221.5292689005535
+          1221.5292689005535,
+          1293.11888478597
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18307,6 +18358,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -20559,6 +20611,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -20927,7 +20985,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -21299,7 +21358,8 @@ window.BENCHMARK_DATA = {
           433.02853911717733,
           475.7194676081339,
           447.6604925473531,
-          435.70586105493396
+          435.70586105493396,
+          438.261678536733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21662,6 +21722,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -22056,7 +22117,8 @@ window.BENCHMARK_DATA = {
           493.5037216186523,
           530.8186480840047,
           462.2912927309672,
-          493.6350006421407
+          493.6350006421407,
+          513.2092495600383
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22249,6 +22311,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -22813,7 +22876,8 @@ window.BENCHMARK_DATA = {
           1266.6304677816538,
           1258.173487218221,
           1237.488268661499,
-          1306.6694118499756
+          1306.6694118499756,
+          1250.8466990152995
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23148,6 +23212,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -25400,6 +25465,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -25768,7 +25839,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -26140,7 +26212,8 @@ window.BENCHMARK_DATA = {
           1798.8281017303466,
           1787.2566527048746,
           1711.0052505220685,
-          1805.974021021525
+          1805.974021021525,
+          1884.8077570597331
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26515,6 +26588,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888
@@ -26897,7 +26971,8 @@ window.BENCHMARK_DATA = {
           1343.606426532452,
           1416.480962371826,
           1397.2751046589442,
-          1386.1319029490153
+          1386.1319029490153,
+          1376.590788269043
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27090,6 +27165,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -27654,7 +27730,8 @@ window.BENCHMARK_DATA = {
           3315.1519116719564,
           3425.8064882914227,
           3245.943258013044,
-          3225.833335876465
+          3225.833335876465,
+          3348.516471862793
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -27989,6 +28066,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -30241,6 +30319,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
         "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
+      },
+      {
+        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
+        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
       }
     ],
     "labels": [
@@ -30609,7 +30693,8 @@ window.BENCHMARK_DATA = {
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
-      "9d105c85"
+      "9d105c85",
+      "a7629c80"
     ],
     "datasets": [
       {
@@ -30981,7 +31066,8 @@ window.BENCHMARK_DATA = {
           2167.415320587158,
           2249.709725443522,
           2178.9087109883626,
-          2294.214562225342
+          2294.214562225342,
+          2303.6184623718264
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31356,6 +31442,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080
@@ -31738,7 +31825,8 @@ window.BENCHMARK_DATA = {
           149834.27078683037,
           157030.31358924278,
           148099.1638671875,
-          151624.069859096
+          151624.069859096,
+          153872.11197916666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32115,6 +32203,7 @@ window.BENCHMARK_DATA = {
           63352,
           63788,
           63352,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -32495,7 +32584,8 @@ window.BENCHMARK_DATA = {
           3828.053297860282,
           4041.0572438557942,
           3811.9311327253067,
-          3984.583178593562
+          3984.583178593562,
+          4050.276381937663
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -32830,6 +32920,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
