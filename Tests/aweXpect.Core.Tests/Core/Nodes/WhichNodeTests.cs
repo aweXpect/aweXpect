@@ -10,6 +10,34 @@ namespace aweXpect.Core.Tests.Core.Nodes;
 public sealed class WhichNodeTests
 {
 	[Fact]
+	public async Task AddAsyncMapping_WithInnerNode_ShouldAddMappingToInnerNode()
+	{
+		MemberAccessor<string, Task<int>> memberAccessor =
+			MemberAccessor<string, Task<int>>.FromExpression(s => Task.FromResult(s.Length));
+		DummyNode innerNode = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "inner", ""));
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(innerNode);
+
+		whichNode.AddAsyncMapping(memberAccessor);
+
+		await That(innerNode.MappingMemberAccessor).IsSameAs(memberAccessor);
+	}
+
+	[Fact]
+	public async Task AddAsyncMapping_WithoutInnerNode_ShouldNotThrow()
+	{
+		MemberAccessor<string, Task<int>> memberAccessor =
+			MemberAccessor<string, Task<int>>.FromExpression(s => Task.FromResult(s.Length));
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+
+		void Act() => whichNode.AddMapping(memberAccessor);
+
+		await That(Act).DoesNotThrow();
+	}
+
+	[Fact]
 	public async Task AddConstraint_WithoutInnerNode_ShouldNotThrow()
 	{
 		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
@@ -22,14 +50,168 @@ public sealed class WhichNodeTests
 	}
 
 	[Fact]
+	public async Task AddMapping_WithInnerNode_ShouldAddMappingToInnerNode()
+	{
+		MemberAccessor<string, int> memberAccessor = MemberAccessor<string, int>.FromExpression(s => s.Length);
+		DummyNode innerNode = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "inner", ""));
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(innerNode);
+
+		whichNode.AddMapping(memberAccessor);
+
+		await That(innerNode.MappingMemberAccessor).IsSameAs(memberAccessor);
+	}
+
+	[Fact]
 	public async Task AddMapping_WithoutInnerNode_ShouldNotThrow()
 	{
+		MemberAccessor<string, int> memberAccessor = MemberAccessor<string, int>.FromExpression(s => s.Length);
 		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 
-		void Act() => whichNode.AddMapping(MemberAccessor<string, int>.FromExpression(s => s.Length));
+		void Act() => whichNode.AddMapping(memberAccessor);
 
 		await That(Act).DoesNotThrow();
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithInnerNode_ShouldAppendSeparatorAndInnerExpectation()
+	{
+		DummyNode innerNode = new("inner-node", () => new DummyConstraintResult<string?>(Outcome.Success, "inner", ""));
+		WhichNode<string, int> whichNode = new(null, s => s.Length, "foo-separator ");
+		whichNode.AddNode(innerNode);
+		StringBuilder sb = new();
+
+		whichNode.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo-separator inner-node");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithoutInnerNode_ShouldAppendSeparator()
+	{
+		WhichNode<string, int> whichNode = new(null, s => s.Length, "foo-separator");
+		StringBuilder sb = new();
+
+		whichNode.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo-separator");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithoutSeparator_WithInnerNode_ShouldOnlyAppendInnerExpectation()
+	{
+		DummyNode innerNode = new("inner-node", () => new DummyConstraintResult<string?>(Outcome.Success, "inner", ""));
+		WhichNode<string, int> whichNode = new(null, s => s.Length);
+		whichNode.AddNode(innerNode);
+		StringBuilder sb = new();
+
+		whichNode.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("inner-node");
+	}
+
+	[Theory]
+	[InlineData(Outcome.Success, Outcome.Success, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Success)]
+	[InlineData(Outcome.Success, Outcome.Failure, Outcome.Success)]
+	[InlineData(Outcome.Failure, Outcome.Failure, Outcome.Success)]
+	[InlineData(Outcome.Failure, Outcome.Undecided, Outcome.Success)]
+	[InlineData(Outcome.Undecided, Outcome.Failure, Outcome.Success)]
+	[InlineData(Outcome.Undecided, Outcome.Undecided, Outcome.Undecided)]
+	public async Task CombinedResult_ShouldBeNegatable(Outcome node1, Outcome node2, Outcome expectedOutcome)
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("", () => new DummyConstraintResult(node1)),
+			s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddConstraint(new DummyConstraint("", () => new DummyConstraintResult(node2)));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+		result.Negate();
+
+		await That(result.Outcome).IsEqualTo(expectedOutcome);
+	}
+
+	[Fact]
+	public async Task Equals_IfInnerAreDifferent_ShouldBeFalse()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node2 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
+		WhichNode<string, int> whichNode1 = new(null, s => s.Length);
+		whichNode1.AddNode(node1);
+		WhichNode<string, int> whichNode2 = new(null, s => s.Length);
+		whichNode2.AddNode(node2);
+
+		bool result = whichNode1.Equals(whichNode2);
+
+		await That(result).IsFalse();
+	}
+
+	[Fact]
+	public async Task Equals_IfInnerAreSame_ShouldBeTrue()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		WhichNode<string, int> whichNode1 = new(null, s => s.Length);
+		whichNode1.AddNode(node1);
+		WhichNode<string, int> whichNode2 = new(null, s => s.Length);
+		whichNode2.AddNode(node1);
+
+		bool result = whichNode1.Equals(whichNode2);
+
+		await That(result).IsTrue();
+		await That(whichNode1.GetHashCode()).IsEqualTo(whichNode2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task Equals_IfParentsAreBothNull_ShouldBeTrue()
+	{
+		WhichNode<string, int> whichNode1 = new(null, s => s.Length);
+		WhichNode<string, int> whichNode2 = new(null, s => s.Length);
+
+		bool result = whichNode1.Equals(whichNode2);
+
+		await That(result).IsTrue();
+	}
+
+	[Fact]
+	public async Task Equals_IfParentsAreDifferent_ShouldBeFalse()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node2 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
+		WhichNode<string, int> whichNode1 = new(node1, s => s.Length);
+		WhichNode<string, int> whichNode2 = new(node2, s => s.Length);
+
+		bool result = whichNode1.Equals(whichNode2);
+
+		await That(result).IsFalse();
+		await That(whichNode1.GetHashCode()).IsNotEqualTo(whichNode2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task Equals_IfParentsAreSame_ShouldBeTrue()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		WhichNode<string, int> whichNode1 = new(node1, s => s.Length);
+		WhichNode<string, int> whichNode2 = new(node1, s => s.Length);
+
+		bool result = whichNode1.Equals(whichNode2);
+
+		await That(result).IsTrue();
+		await That(whichNode1.GetHashCode()).IsEqualTo(whichNode2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task Equals_IfTypesAreDifferent_ShouldBeFalse()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node2 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
+		WhichNode<string, int> whichNode1 = new(node1, s => s.Length);
+		object whichNode2 = new WhichNode<string, string>(node2, s => s.Substring(0, 1));
+
+		bool result = whichNode1.Equals(whichNode2);
+
+		await That(result).IsFalse();
 	}
 
 	[Fact]
@@ -106,7 +288,6 @@ public sealed class WhichNodeTests
 		whichNode.AddNode(new ExpectationNode());
 		whichNode.AddConstraint(new DummyConstraint("c2",
 			() => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
-		StringBuilder sb = new();
 
 		async Task Act()
 			=> await whichNode.IsMetBy(DateTime.Now, null!, CancellationToken.None);
@@ -164,6 +345,17 @@ public sealed class WhichNodeTests
 		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
 
 		await That(result.Outcome).IsEqualTo(expectedOutcome);
+	}
+
+	[Fact]
+	public async Task SetReason_InnerIsNull_ShouldNotThrow()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", "e1"));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+
+		void Act() => whichNode.SetReason(new BecauseReason("bc"));
+
+		await That(Act).DoesNotThrow();
 	}
 
 	[Fact]

@@ -9,22 +9,30 @@ namespace aweXpect.Core.Tests.TestHelpers;
 
 internal class DummyNode(string name, Func<ConstraintResult>? result = null) : Node
 {
+	public MemberAccessor? MappingMemberAccessor { get; private set; }
+
 	public override void AddConstraint(IConstraint constraint)
 		=> throw new NotSupportedException();
 
-	public override Node? AddMapping<TValue, TTarget>(
+	public override Node AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
-		=> throw new NotSupportedException();
+	{
+		MappingMemberAccessor = memberAccessor;
+		return this;
+	}
 
-	public override Node? AddAsyncMapping<TValue, TTarget>(
+	public override Node AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
-		=> throw new NotSupportedException();
+	{
+		MappingMemberAccessor = memberAccessor;
+		return this;
+	}
 
 	public override void AddNode(Node node, string? separator = null)
 		=> throw new NotSupportedException();
