@@ -103,7 +103,7 @@ public class ManualExpectationBuilderTests
 		await That(result).IsFalse();
 	}
 
-	[Fact(Skip = "TODO Re-enable after next core update")]
+	[Fact]
 	public async Task Equals_WithSelf_ShouldBeTrue()
 	{
 		ManualExpectationBuilder<int> sut = new(null);
