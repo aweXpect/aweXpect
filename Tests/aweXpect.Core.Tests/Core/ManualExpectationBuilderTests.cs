@@ -113,6 +113,28 @@ public class ManualExpectationBuilderTests
 		await That(result).IsTrue();
 	}
 
+	[Fact]
+	public async Task GetHashCode_DifferentConstraint_ShouldNotBeEqual()
+	{
+		ManualExpectationBuilder<int> sut1 = new(null);
+		sut1.AddConstraint((_, _, _) => new DummyConstraint("foo"));
+		ManualExpectationBuilder<int> sut2 = new(null);
+		sut2.ForWhich<int, int>(x => x)
+			.AddConstraint((_, _, _) => new DummyConstraint("foo"));
+
+		await That(sut1.GetHashCode()).IsNotEqualTo(sut2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task GetHashCode_SameConstraint_ShouldBeEqual()
+	{
+		ManualExpectationBuilder<int> sut1 = new(null);
+		sut1.AddConstraint((_, _, _) => new DummyConstraint("foo"));
+		ManualExpectationBuilder<int> sut2 = new(null);
+		sut2.AddConstraint((_, _, _) => new DummyConstraint("foo"));
+
+		await That(sut1.GetHashCode()).IsEqualTo(sut2.GetHashCode());
+	}
 
 	[Fact]
 	public async Task IsMet_ShouldThrowNotSupportedException()

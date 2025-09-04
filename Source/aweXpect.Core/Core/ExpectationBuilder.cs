@@ -203,7 +203,7 @@ public abstract class ExpectationBuilder
 			}
 
 			Node root = _node;
-			_node = _node.AddMapping(memberAccessor, expectationTextGenerator) ?? _node;
+			_node = _node.AddMapping(memberAccessor, expectationTextGenerator);
 			if (replaceIt)
 			{
 				_it = memberAccessor.ToString().Trim();
@@ -247,7 +247,7 @@ public abstract class ExpectationBuilder
 			}
 
 			Node root = _node;
-			_node = _node.AddAsyncMapping(memberAccessor, expectationTextGenerator) ?? _node;
+			_node = _node.AddAsyncMapping(memberAccessor, expectationTextGenerator);
 			if (replaceIt)
 			{
 				_it = memberAccessor.ToString().Trim();
