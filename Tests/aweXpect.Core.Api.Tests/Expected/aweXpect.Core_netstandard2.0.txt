@@ -256,7 +256,7 @@ namespace aweXpect.Core
     {
         public override bool Equals(object? obj) { }
         public override int GetHashCode() { }
-        public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
+        public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget>> expression) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFunc(System.Func<TSource, TTarget> func, string name) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(System.Func<TSource, TTarget> func, string name) { }
     }
