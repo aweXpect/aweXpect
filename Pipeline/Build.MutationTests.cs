@@ -177,7 +177,7 @@ partial class Build
 		                      		"target-framework": "net8.0",
 		                      		"since": {
 		                      			"target": "main",
-		                      			"enabled": false,
+		                      			"enabled": {{(BranchName != "main").ToString().ToLowerInvariant()}},
 		                      			"ignore-changes-in": [
 		                      				"**/.github/**/*.*"
 		                      			]
