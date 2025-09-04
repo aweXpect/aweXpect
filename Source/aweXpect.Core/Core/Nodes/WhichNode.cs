@@ -90,26 +90,26 @@ internal class WhichNode<TSource, TMember> : Node
 				FurtherProcessingStrategy.IgnoreResult, default);
 		}
 
-		if (value is not TSource typedValue)
+		if (value is TSource typedValue)
 		{
-			throw new InvalidOperationException(
-					$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
-				.LogTrace();
+			TMember? matchingValue;
+			if (_memberAccessor != null)
+			{
+				matchingValue = _memberAccessor(typedValue);
+			}
+			else
+			{
+				matchingValue = await _asyncMemberAccessor!.Invoke(typedValue);
+			}
+
+			ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
+			return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
+				matchingValue);
 		}
 
-		TMember? matchingValue;
-		if (_memberAccessor != null)
-		{
-			matchingValue = _memberAccessor(typedValue);
-		}
-		else
-		{
-			matchingValue = await _asyncMemberAccessor!.Invoke(typedValue);
-		}
-
-		ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
-		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
-			matchingValue);
+		throw new InvalidOperationException(
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
+			.LogTrace();
 	}
 
 	/// <inheritdoc cref="object.Equals(object?)" />

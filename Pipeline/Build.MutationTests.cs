@@ -150,7 +150,6 @@ partial class Build
 
 		DotNetToolInstall(_ => _
 			.SetPackageName("dotnet-stryker")
-			.SetVersion("4.7.0")
 			.SetToolInstallationPath(toolPath));
 
 		string branchName = BranchName;
