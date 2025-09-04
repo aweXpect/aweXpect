@@ -32,7 +32,7 @@ public sealed class WhichNodeTests
 		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 
-		void Act() => whichNode.AddMapping(memberAccessor);
+		void Act() => whichNode.AddAsyncMapping(memberAccessor);
 
 		await That(Act).DoesNotThrow();
 	}
