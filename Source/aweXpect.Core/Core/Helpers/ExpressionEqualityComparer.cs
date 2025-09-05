@@ -96,7 +96,7 @@ internal class ExpressionEqualityComparer<TSource, TTarget> : IEqualityComparer<
 				return base.VisitLabelTarget(node);
 			}
 
-			return null;
+			return node;
 		}
 
 		protected override Expression VisitLambda<T>(Expression<T> node)
