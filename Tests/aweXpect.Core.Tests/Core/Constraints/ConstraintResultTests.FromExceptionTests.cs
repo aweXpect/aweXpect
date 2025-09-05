@@ -50,6 +50,23 @@ public partial class ConstraintResultTests
 			await That(sb.ToString()).IsEqualTo("it did throw an ArgumentException");
 		}
 
+		[Theory]
+		[InlineData(Outcome.Failure, Outcome.Success)]
+		[InlineData(Outcome.Success, Outcome.Failure)]
+		[InlineData(Outcome.Undecided, Outcome.Undecided)]
+		public async Task Negate_ShouldNegateInnerOutcome(Outcome innerOutcome, Outcome expectedAfterNegation)
+		{
+			DummyConstraintResult inner = new(innerOutcome, "foo");
+			Exception exception = new("bar");
+			DummyExpectationBuilder expectationBuilder = new();
+			MyFromExceptionConstraintResult sut = new(inner, exception, expectationBuilder);
+
+			sut.Negate();
+
+			await That(sut.Outcome).IsEqualTo(Outcome.Failure);
+			await That(inner.Outcome).IsEqualTo(expectedAfterNegation);
+		}
+
 		[Fact]
 		public async Task Outcome_ShouldBeFailure()
 		{
@@ -60,7 +77,6 @@ public partial class ConstraintResultTests
 
 			await That(sut.Outcome).IsEqualTo(Outcome.Failure);
 		}
-
 
 		[Fact]
 		public async Task SetOutcome_ShouldBeForwardedToInner()
