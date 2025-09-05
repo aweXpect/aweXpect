@@ -136,8 +136,8 @@ public sealed class WhichNodeTests
 	[Fact]
 	public async Task Equals_IfInnerAreDifferent_ShouldBeFalse()
 	{
-		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
-		DummyNode node2 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
+		DummyNode node1 = new("1", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node2 = new("2", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
 		WhichNode<string, int> whichNode1 = new(null, s => s.Length);
 		whichNode1.AddNode(node1);
 		WhichNode<string, int> whichNode2 = new(null, s => s.Length);
@@ -151,7 +151,7 @@ public sealed class WhichNodeTests
 	[Fact]
 	public async Task Equals_IfInnerAreSame_ShouldBeTrue()
 	{
-		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node1 = new("1", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
 		WhichNode<string, int> whichNode1 = new(null, s => s.Length);
 		whichNode1.AddNode(node1);
 		WhichNode<string, int> whichNode2 = new(null, s => s.Length);
@@ -177,8 +177,8 @@ public sealed class WhichNodeTests
 	[Fact]
 	public async Task Equals_IfParentsAreDifferent_ShouldBeFalse()
 	{
-		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
-		DummyNode node2 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
+		DummyNode node1 = new("1", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node2 = new("2", () => new DummyConstraintResult<string?>(Outcome.Success, "2", ""));
 		WhichNode<string, int> whichNode1 = new(node1, s => s.Length);
 		WhichNode<string, int> whichNode2 = new(node2, s => s.Length);
 
