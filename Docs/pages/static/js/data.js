@@ -2214,6 +2214,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -2585,7 +2591,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -2960,7 +2967,8 @@ window.BENCHMARK_DATA = {
           245.91803005763464,
           238.78139570781164,
           227.2964572429657,
-          215.1799734555758
+          215.1799734555758,
+          212.07683657010395
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3319,6 +3327,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3723,7 +3732,8 @@ window.BENCHMARK_DATA = {
           262.09784599450916,
           267.2407141465407,
           263.02050898869834,
-          241.7521196047465
+          241.7521196047465,
+          242.05561491648356
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3916,6 +3926,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4486,7 +4497,8 @@ window.BENCHMARK_DATA = {
           922.8735101699829,
           947.3584882736207,
           958.4141516685486,
-          874.0058259963989
+          874.0058259963989,
+          875.6002072016398
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4821,6 +4833,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6632,6 +6645,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -6926,7 +6945,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -7224,7 +7244,8 @@ window.BENCHMARK_DATA = {
           315188.4236979167,
           314810.6352050781,
           320644.7736816406,
-          307841.2405761719
+          307841.2405761719,
+          319958.157421875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7516,6 +7537,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -7833,7 +7855,8 @@ window.BENCHMARK_DATA = {
           2227507.638113839,
           2432955.294363839,
           2289283.2338541667,
-          2104858.768973214
+          2104858.768973214,
+          2208691.5247395835
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7949,6 +7972,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8442,7 +8466,8 @@ window.BENCHMARK_DATA = {
           680508.8923828125,
           725256.5524739583,
           723754.9673828125,
-          697716.7912946428
+          697716.7912946428,
+          693846.1307896206
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8700,6 +8725,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10973,6 +10999,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -11344,7 +11376,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -11719,7 +11752,8 @@ window.BENCHMARK_DATA = {
           504.83726890270526,
           542.19067846934,
           511.07644880734955,
-          484.3203857421875
+          484.3203857421875,
+          496.95010503133136
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12078,6 +12112,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12482,7 +12517,8 @@ window.BENCHMARK_DATA = {
           509.092633996691,
           578.8854188919067,
           535.5808210372925,
-          477.2508153548607
+          477.2508153548607,
+          495.9535005569458
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12675,6 +12711,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13245,7 +13282,8 @@ window.BENCHMARK_DATA = {
           14800.591005597797,
           15720.905084228516,
           24136.781892903648,
-          15675.549900309245
+          15675.549900309245,
+          15319.325950622559
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13580,6 +13618,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15853,6 +15892,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -16224,7 +16269,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -16599,7 +16645,8 @@ window.BENCHMARK_DATA = {
           252.2878304719925,
           263.9238931020101,
           258.907824073519,
-          240.65070530573527
+          240.65070530573527,
+          249.83313779830934
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16958,6 +17005,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17362,7 +17410,8 @@ window.BENCHMARK_DATA = {
           253.6632882118225,
           275.681583404541,
           260.8211002667745,
-          248.42559083302817
+          248.42559083302817,
+          243.63641166687012
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17555,6 +17604,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -18125,7 +18175,8 @@ window.BENCHMARK_DATA = {
           1221.5292689005535,
           1293.11888478597,
           1237.7596857706706,
-          1209.9344678243
+          1209.9344678243,
+          1191.4283117930095
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18460,6 +18511,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -20733,6 +20785,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -21104,7 +21162,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -21479,7 +21538,8 @@ window.BENCHMARK_DATA = {
           435.70586105493396,
           438.261678536733,
           460.0618996620178,
-          414.25801073710124
+          414.25801073710124,
+          455.679947750909
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21842,6 +21902,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -22242,7 +22303,8 @@ window.BENCHMARK_DATA = {
           493.6350006421407,
           513.2092495600383,
           488.6699652353922,
-          456.0181517918905
+          456.0181517918905,
+          471.13205769856773
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22435,6 +22497,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -23005,7 +23068,8 @@ window.BENCHMARK_DATA = {
           1306.6694118499756,
           1250.8466990152995,
           1304.9654899597167,
-          1215.4771332059588
+          1215.4771332059588,
+          1250.7195252009801
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23340,6 +23404,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -25613,6 +25678,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -25984,7 +26055,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -26359,7 +26431,8 @@ window.BENCHMARK_DATA = {
           1805.974021021525,
           1884.8077570597331,
           1768.9861426720252,
-          1770.3791221618653
+          1770.3791221618653,
+          1731.6198300679525
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26734,6 +26807,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -27122,7 +27196,8 @@ window.BENCHMARK_DATA = {
           1386.1319029490153,
           1376.590788269043,
           1465.0321689333234,
-          1305.0713628133137
+          1305.0713628133137,
+          1381.9386660257976
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27315,6 +27390,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -27885,7 +27961,8 @@ window.BENCHMARK_DATA = {
           3225.833335876465,
           3348.516471862793,
           3462.244728088379,
-          3302.6471751286435
+          3302.6471751286435,
+          3196.695361328125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -28220,6 +28297,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -30493,6 +30571,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
         "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
+      },
+      {
+        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
+        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
       }
     ],
     "labels": [
@@ -30864,7 +30948,8 @@ window.BENCHMARK_DATA = {
       "9d105c85",
       "a7629c80",
       "7baba980",
-      "c3ab0ef8"
+      "c3ab0ef8",
+      "d94595c5"
     ],
     "datasets": [
       {
@@ -31239,7 +31324,8 @@ window.BENCHMARK_DATA = {
           2294.214562225342,
           2303.6184623718264,
           2223.188729422433,
-          2238.8356323242188
+          2238.8356323242188,
+          2180.8752095540362
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31614,6 +31700,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -32002,7 +32089,8 @@ window.BENCHMARK_DATA = {
           151624.069859096,
           153872.11197916666,
           153520.98470052084,
-          149174.73503766741
+          149174.73503766741,
+          153341.4591796875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32382,7 +32470,8 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63787,
-          63787
+          63787,
+          64323
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32765,7 +32854,8 @@ window.BENCHMARK_DATA = {
           3984.583178593562,
           4050.276381937663,
           4046.507608141218,
-          3883.522905077253
+          3883.522905077253,
+          3885.582192993164
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -33100,6 +33190,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
