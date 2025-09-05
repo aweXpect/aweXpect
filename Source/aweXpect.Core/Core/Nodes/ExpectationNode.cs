@@ -154,10 +154,12 @@ internal class ExpectationNode : Node
 		return sb1.ToString() == sb2.ToString() && _inner?.Equals(other._inner) != false;
 	}
 
-	/// <inheritdoc cref="object.GetHashCode()" />
+#pragma warning disable S2328
 	// ReSharper disable NonReadonlyMemberInGetHashCode
+	/// <inheritdoc cref="object.GetHashCode()" />
 	public override int GetHashCode()
 		=> _constraint?.GetType().GetHashCode() ?? 17
 			+ _inner?.GetHashCode() ?? 0;
 	// ReSharper restore NonReadonlyMemberInGetHashCode
+#pragma warning restore S2328
 }
