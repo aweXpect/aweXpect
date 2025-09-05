@@ -2208,6 +2208,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -2578,7 +2584,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -2952,7 +2959,8 @@ window.BENCHMARK_DATA = {
           221.774701663426,
           245.91803005763464,
           238.78139570781164,
-          227.2964572429657
+          227.2964572429657,
+          215.1799734555758
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3311,6 +3319,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3713,7 +3722,8 @@ window.BENCHMARK_DATA = {
           246.10164543787639,
           262.09784599450916,
           267.2407141465407,
-          263.02050898869834
+          263.02050898869834,
+          241.7521196047465
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3906,6 +3916,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4474,7 +4485,8 @@ window.BENCHMARK_DATA = {
           862.4502694447835,
           922.8735101699829,
           947.3584882736207,
-          958.4141516685486
+          958.4141516685486,
+          874.0058259963989
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4809,6 +4821,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6613,6 +6626,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -6906,7 +6925,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -7203,7 +7223,8 @@ window.BENCHMARK_DATA = {
           299271.2471028646,
           315188.4236979167,
           314810.6352050781,
-          320644.7736816406
+          320644.7736816406,
+          307841.2405761719
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7495,6 +7516,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -7810,7 +7832,8 @@ window.BENCHMARK_DATA = {
           2200448.0143229165,
           2227507.638113839,
           2432955.294363839,
-          2289283.2338541667
+          2289283.2338541667,
+          2104858.768973214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7926,6 +7949,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8417,7 +8441,8 @@ window.BENCHMARK_DATA = {
           670493.166155134,
           680508.8923828125,
           725256.5524739583,
-          723754.9673828125
+          723754.9673828125,
+          697716.7912946428
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8675,6 +8700,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -10941,6 +10967,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -11311,7 +11343,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -11685,7 +11718,8 @@ window.BENCHMARK_DATA = {
           489.4889409201486,
           504.83726890270526,
           542.19067846934,
-          511.07644880734955
+          511.07644880734955,
+          484.3203857421875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12044,6 +12078,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12446,7 +12481,8 @@ window.BENCHMARK_DATA = {
           496.4816382271903,
           509.092633996691,
           578.8854188919067,
-          535.5808210372925
+          535.5808210372925,
+          477.2508153548607
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12639,6 +12675,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13207,7 +13244,8 @@ window.BENCHMARK_DATA = {
           20680.707423909505,
           14800.591005597797,
           15720.905084228516,
-          24136.781892903648
+          24136.781892903648,
+          15675.549900309245
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13542,6 +13580,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15808,6 +15847,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -16178,7 +16223,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -16552,7 +16598,8 @@ window.BENCHMARK_DATA = {
           244.2458694458008,
           252.2878304719925,
           263.9238931020101,
-          258.907824073519
+          258.907824073519,
+          240.65070530573527
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16911,6 +16958,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17313,7 +17361,8 @@ window.BENCHMARK_DATA = {
           249.18391682306927,
           253.6632882118225,
           275.681583404541,
-          260.8211002667745
+          260.8211002667745,
+          248.42559083302817
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17506,6 +17555,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -18074,7 +18124,8 @@ window.BENCHMARK_DATA = {
           1187.420773824056,
           1221.5292689005535,
           1293.11888478597,
-          1237.7596857706706
+          1237.7596857706706,
+          1209.9344678243
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18409,6 +18460,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -20675,6 +20727,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -21045,7 +21103,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -21419,7 +21478,8 @@ window.BENCHMARK_DATA = {
           447.6604925473531,
           435.70586105493396,
           438.261678536733,
-          460.0618996620178
+          460.0618996620178,
+          414.25801073710124
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21782,6 +21842,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -22180,7 +22241,8 @@ window.BENCHMARK_DATA = {
           462.2912927309672,
           493.6350006421407,
           513.2092495600383,
-          488.6699652353922
+          488.6699652353922,
+          456.0181517918905
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22373,6 +22435,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -22941,7 +23004,8 @@ window.BENCHMARK_DATA = {
           1237.488268661499,
           1306.6694118499756,
           1250.8466990152995,
-          1304.9654899597167
+          1304.9654899597167,
+          1215.4771332059588
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23276,6 +23340,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -25542,6 +25607,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -25912,7 +25983,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -26286,7 +26358,8 @@ window.BENCHMARK_DATA = {
           1711.0052505220685,
           1805.974021021525,
           1884.8077570597331,
-          1768.9861426720252
+          1768.9861426720252,
+          1770.3791221618653
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26661,6 +26734,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -27047,7 +27121,8 @@ window.BENCHMARK_DATA = {
           1397.2751046589442,
           1386.1319029490153,
           1376.590788269043,
-          1465.0321689333234
+          1465.0321689333234,
+          1305.0713628133137
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27240,6 +27315,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -27808,7 +27884,8 @@ window.BENCHMARK_DATA = {
           3245.943258013044,
           3225.833335876465,
           3348.516471862793,
-          3462.244728088379
+          3462.244728088379,
+          3302.6471751286435
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -28143,6 +28220,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -30409,6 +30487,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
         "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
+      },
+      {
+        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
+        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
       }
     ],
     "labels": [
@@ -30779,7 +30863,8 @@ window.BENCHMARK_DATA = {
       "f000f6a6",
       "9d105c85",
       "a7629c80",
-      "7baba980"
+      "7baba980",
+      "c3ab0ef8"
     ],
     "datasets": [
       {
@@ -31153,7 +31238,8 @@ window.BENCHMARK_DATA = {
           2178.9087109883626,
           2294.214562225342,
           2303.6184623718264,
-          2223.188729422433
+          2223.188729422433,
+          2238.8356323242188
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31528,6 +31614,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -31914,7 +32001,8 @@ window.BENCHMARK_DATA = {
           148099.1638671875,
           151624.069859096,
           153872.11197916666,
-          153520.98470052084
+          153520.98470052084,
+          149174.73503766741
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32293,6 +32381,7 @@ window.BENCHMARK_DATA = {
           63352,
           63788,
           63788,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -32675,7 +32764,8 @@ window.BENCHMARK_DATA = {
           3811.9311327253067,
           3984.583178593562,
           4050.276381937663,
-          4046.507608141218
+          4046.507608141218,
+          3883.522905077253
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -33010,6 +33100,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
