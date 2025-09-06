@@ -155,5 +155,9 @@ internal class ExpectationNode : Node
 	}
 
 	/// <inheritdoc cref="object.GetHashCode()" />
-	public override int GetHashCode() => GetType().GetHashCode();
+	// ReSharper disable NonReadonlyMemberInGetHashCode
+	public override int GetHashCode()
+		=> _constraint?.GetType().GetHashCode() ?? 17
+			+ _inner?.GetHashCode() ?? 0;
+	// ReSharper restore NonReadonlyMemberInGetHashCode
 }

@@ -11,6 +11,58 @@ namespace aweXpect.Core.Tests.Core.Nodes;
 public class AsyncMappingNodeTests
 {
 	[Fact]
+	public async Task Equals_IfMemberAccessorsAreDifferent_ShouldBeFalse()
+	{
+		AsyncMappingNode<string, int> node1 = new(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length1 "));
+		AsyncMappingNode<string, int> node2 = new(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length2 "));
+
+		bool result = node1.Equals(node2);
+
+		await That(result).IsFalse();
+		await That(node1.GetHashCode()).IsNotEqualTo(node2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task Equals_IfMemberAccessorsAreSame_ShouldBeTrue()
+	{
+		AsyncMappingNode<string, int> node1 = new(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "));
+		AsyncMappingNode<string, int> node2 = new(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "));
+
+		bool result = node1.Equals(node2);
+
+		await That(result).IsTrue();
+		await That(node1.GetHashCode()).IsEqualTo(node2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task Equals_WhenOtherIsDifferentNode_ShouldBeFalse()
+	{
+		AsyncMappingNode<string, int> node = new(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "));
+		object other = new AsyncMappingNode<int, int>(
+			MemberAccessor<int, Task<int>>.FromFunc(s => Task.FromResult(s * 2), " duplicate "));
+
+		bool result = node.Equals(other);
+
+		await That(result).IsFalse();
+	}
+
+	[Fact]
+	public async Task Equals_WhenOtherIsNull_ShouldBeFalse()
+	{
+		AsyncMappingNode<string, int> node = new(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "));
+
+		bool result = node.Equals(null);
+
+		await That(result).IsFalse();
+	}
+
+	[Fact]
 	public async Task IsMetBy_ShouldUseInnerConstraintWithOuterValue()
 	{
 		AsyncMappingNode<string, int> node =

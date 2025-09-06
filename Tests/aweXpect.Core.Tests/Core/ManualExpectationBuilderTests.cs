@@ -94,6 +94,16 @@ public class ManualExpectationBuilderTests
 	}
 
 	[Fact]
+	public async Task Equals_ObjectNull_ShouldBeFalse()
+	{
+		ManualExpectationBuilder<int> sut = new(null);
+
+		bool result = sut.Equals(null);
+
+		await That(result).IsFalse();
+	}
+
+	[Fact]
 	public async Task Equals_SecondNull_ShouldBeFalse()
 	{
 		ManualExpectationBuilder<int> sut = new(null);
@@ -134,6 +144,18 @@ public class ManualExpectationBuilderTests
 		sut2.AddConstraint((_, _, _) => new DummyConstraint("foo"));
 
 		await That(sut1.GetHashCode()).IsEqualTo(sut2.GetHashCode());
+	}
+
+	[Fact]
+	public async Task GetHashCode_WithParameter_ShouldUseHashCodeFromParameter()
+	{
+		ManualExpectationBuilder<int> sut1 = new(null);
+		sut1.AddConstraint((_, _, _) => new DummyConstraint("foo"));
+		ManualExpectationBuilder<int> sut2 = new(null);
+		sut2.ForWhich<int, int>(x => x)
+			.AddConstraint((_, _, _) => new DummyConstraint("foo"));
+
+		await That(sut1.GetHashCode()).IsEqualTo(sut2.GetHashCode(sut1));
 	}
 
 	[Fact]

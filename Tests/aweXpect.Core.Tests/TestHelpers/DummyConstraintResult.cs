@@ -8,6 +8,7 @@ public sealed class DummyConstraintResult : ConstraintResult
 {
 	private readonly string? _expectationText;
 	private readonly string? _failureText;
+	private readonly object? _value;
 
 	public DummyConstraintResult(Outcome outcome,
 		string? expectationText = null,
@@ -18,6 +19,16 @@ public sealed class DummyConstraintResult : ConstraintResult
 		Outcome = outcome;
 		_expectationText = expectationText;
 		_failureText = failureText;
+	}
+
+	public DummyConstraintResult(object value,
+		Outcome outcome,
+		string? expectationText = null,
+		string? failureText = null,
+		FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
+		: this(outcome, expectationText, failureText, furtherProcessingStrategy)
+	{
+		_value = value;
 	}
 
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
@@ -38,6 +49,12 @@ public sealed class DummyConstraintResult : ConstraintResult
 
 	public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 	{
+		if (_value is TValue typedValue)
+		{
+			value = typedValue;
+			return true;
+		}
+
 		value = default;
 		return false;
 	}

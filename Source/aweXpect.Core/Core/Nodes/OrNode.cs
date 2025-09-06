@@ -102,7 +102,20 @@ internal class OrNode : Node
 	private bool Equals(OrNode other) => Current.Equals(other.Current) && _nodes.SequenceEqual(other._nodes);
 
 	/// <inheritdoc cref="object.GetHashCode()" />
-	public override int GetHashCode() => Current.GetHashCode() ^ _nodes.GetHashCode();
+	public override int GetHashCode()
+	{
+		unchecked
+		{
+			// ReSharper disable once NonReadonlyMemberInGetHashCode
+			int hash = 19 * Current.GetHashCode();
+			foreach (Node node in _nodes.Select(x => x.Item2))
+			{
+				hash = (hash * 31) + node.GetHashCode();
+			}
+
+			return hash;
+		}
+	}
 
 	private static ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
@@ -143,9 +156,9 @@ internal class OrNode : Node
 			=> (left, right) switch
 			{
 				(Outcome.Failure, Outcome.Failure) => Outcome.Failure,
-				(_, Outcome.Undecided) => Outcome.Undecided,
-				(Outcome.Undecided, _) => Outcome.Undecided,
-				(_, _) => Outcome.Success,
+				(_, Outcome.Success) => Outcome.Success,
+				(Outcome.Success, _) => Outcome.Success,
+				(_, _) => Outcome.Undecided,
 			};
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
