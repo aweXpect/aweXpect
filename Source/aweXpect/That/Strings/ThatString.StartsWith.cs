@@ -13,14 +13,14 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject starts with the <paramref name="expected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> StartsWith(
+	public static StringEqualityResult<string?, IThat<string?>> StartsWith(
 		this IThat<string?> source,
 		string expected)
 	{
-		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new StartsWithConstraint(it, grammars, expected, options)),
+		StringEqualityOptions options = new StringEqualityOptions().AsPrefix();
+		return new StringEqualityResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new IsEqualToConstraint(expectationBuilder, it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -28,14 +28,14 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject does not start with the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> DoesNotStartWith(
+	public static StringEqualityResult<string?, IThat<string?>> DoesNotStartWith(
 		this IThat<string?> source,
 		string unexpected)
 	{
-		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new StartsWithConstraint(it, grammars, unexpected, options).Invert()),
+		StringEqualityOptions options = new StringEqualityOptions().AsPrefix();
+		return new StringEqualityResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new IsEqualToConstraint(expectationBuilder, it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}

@@ -13,7 +13,7 @@ public sealed partial class ThatString
 				IgnoringCase_WhenSubjectStartsWithDifferentCase_ShouldFailUnlessCaseIsIgnored(
 					bool ignoreCase)
 			{
-				string subject = "some arbitrary text";
+				string subject = "Some arbitrary text";
 				string expected = "SOME";
 
 				async Task Act()
@@ -25,7 +25,14 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with "SOME",
-					             but it was "some arbitrary text"
+					             but it was "Some arbitrary text" which differs at index 1:
+					                 ↓ (actual)
+					               "Some arbitrary text"
+					               "SOME"
+					                 ↑ (expected)
+					             
+					             Actual:
+					             Some arbitrary text
 					             """);
 			}
 
@@ -43,7 +50,14 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with "TEXT" ignoring case,
-					             but it was "some arbitrary text"
+					             but it was "some arbitrary text" which differs at index 0:
+					                ↓ (actual)
+					               "some arbitrary text"
+					               "TEXT"
+					                ↑ (expected)
+					             
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -62,7 +76,14 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with "SOME" using IgnoreCaseForVocalsComparer,
-					             but it was "some arbitrary text"
+					             but it was "some arbitrary text" which differs at index 0:
+					                ↓ (actual)
+					               "some arbitrary text"
+					               "SOME"
+					                ↑ (expected)
+					             
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -93,7 +114,10 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with <null>,
-					             but "text" cannot be validated against <null>
+					             but it was "text"
+					             
+					             Actual:
+					             text
 					             """);
 			}
 
@@ -110,7 +134,14 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with "text",
-					             but it was "some arbitrary text"
+					             but it was "some arbitrary text" which differs at index 0:
+					                ↓ (actual)
+					               "some arbitrary text"
+					               "text"
+					                ↑ (expected)
+					             
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -156,7 +187,11 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with "text and more",
-					             but it was "text" and with length 4 is shorter than the expected length of 13
+					             but it was "text" with a length of 4 which is shorter than the expected length of 13 and misses:
+					               " and more"
+					             
+					             Actual:
+					             text
 					             """);
 			}
 
