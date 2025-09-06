@@ -2220,6 +2220,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -2592,7 +2598,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -2968,7 +2975,8 @@ window.BENCHMARK_DATA = {
           238.78139570781164,
           227.2964572429657,
           215.1799734555758,
-          212.07683657010395
+          212.07683657010395,
+          242.10372683207194
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3327,6 +3335,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3733,7 +3742,8 @@ window.BENCHMARK_DATA = {
           267.2407141465407,
           263.02050898869834,
           241.7521196047465,
-          242.05561491648356
+          242.05561491648356,
+          262.36912775039673
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3926,6 +3936,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4498,7 +4509,8 @@ window.BENCHMARK_DATA = {
           947.3584882736207,
           958.4141516685486,
           874.0058259963989,
-          875.6002072016398
+          875.6002072016398,
+          925.9966183344524
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4833,6 +4845,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6651,6 +6664,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -6946,7 +6965,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -7245,7 +7265,8 @@ window.BENCHMARK_DATA = {
           314810.6352050781,
           320644.7736816406,
           307841.2405761719,
-          319958.157421875
+          319958.157421875,
+          302158.425764974
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7537,6 +7558,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -7856,7 +7878,8 @@ window.BENCHMARK_DATA = {
           2432955.294363839,
           2289283.2338541667,
           2104858.768973214,
-          2208691.5247395835
+          2208691.5247395835,
+          2232473.9018229167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7972,6 +7995,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8467,7 +8491,8 @@ window.BENCHMARK_DATA = {
           725256.5524739583,
           723754.9673828125,
           697716.7912946428,
-          693846.1307896206
+          693846.1307896206,
+          687138.1064453125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8725,6 +8750,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -11005,6 +11031,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -11377,7 +11409,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -11753,7 +11786,8 @@ window.BENCHMARK_DATA = {
           542.19067846934,
           511.07644880734955,
           484.3203857421875,
-          496.95010503133136
+          496.95010503133136,
+          502.37464739481607
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12112,6 +12146,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12518,7 +12553,8 @@ window.BENCHMARK_DATA = {
           578.8854188919067,
           535.5808210372925,
           477.2508153548607,
-          495.9535005569458
+          495.9535005569458,
+          506.8223076502482
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12711,6 +12747,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13283,7 +13320,8 @@ window.BENCHMARK_DATA = {
           15720.905084228516,
           24136.781892903648,
           15675.549900309245,
-          15319.325950622559
+          15319.325950622559,
+          20526.06885986328
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13618,6 +13656,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -15898,6 +15937,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -16270,7 +16315,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -16646,7 +16692,8 @@ window.BENCHMARK_DATA = {
           263.9238931020101,
           258.907824073519,
           240.65070530573527,
-          249.83313779830934
+          249.83313779830934,
+          250.53394985198975
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17005,6 +17052,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17411,7 +17459,8 @@ window.BENCHMARK_DATA = {
           275.681583404541,
           260.8211002667745,
           248.42559083302817,
-          243.63641166687012
+          243.63641166687012,
+          267.67520532608035
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17604,6 +17653,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -18176,7 +18226,8 @@ window.BENCHMARK_DATA = {
           1293.11888478597,
           1237.7596857706706,
           1209.9344678243,
-          1191.4283117930095
+          1191.4283117930095,
+          1208.7885503133139
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18511,6 +18562,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -20791,6 +20843,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -21163,7 +21221,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -21539,7 +21598,8 @@ window.BENCHMARK_DATA = {
           438.261678536733,
           460.0618996620178,
           414.25801073710124,
-          455.679947750909
+          455.679947750909,
+          436.6501162528992
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21902,6 +21962,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -22304,7 +22365,8 @@ window.BENCHMARK_DATA = {
           513.2092495600383,
           488.6699652353922,
           456.0181517918905,
-          471.13205769856773
+          471.13205769856773,
+          486.00647996266684
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22497,6 +22559,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -23069,7 +23132,8 @@ window.BENCHMARK_DATA = {
           1250.8466990152995,
           1304.9654899597167,
           1215.4771332059588,
-          1250.7195252009801
+          1250.7195252009801,
+          1311.3228379567465
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23404,6 +23468,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -25684,6 +25749,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -26056,7 +26127,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -26432,7 +26504,8 @@ window.BENCHMARK_DATA = {
           1884.8077570597331,
           1768.9861426720252,
           1770.3791221618653,
-          1731.6198300679525
+          1731.6198300679525,
+          1789.1137566884358
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26807,6 +26880,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -27197,7 +27271,8 @@ window.BENCHMARK_DATA = {
           1376.590788269043,
           1465.0321689333234,
           1305.0713628133137,
-          1381.9386660257976
+          1381.9386660257976,
+          1360.7157407124837
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27390,6 +27465,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -27962,7 +28038,8 @@ window.BENCHMARK_DATA = {
           3348.516471862793,
           3462.244728088379,
           3302.6471751286435,
-          3196.695361328125
+          3196.695361328125,
+          3266.7185907999674
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -28297,6 +28374,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -30577,6 +30655,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
         "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
+      },
+      {
+        "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
+        "message": "refactor!: Consolidate \u0060StartsWith\u0060/\u0060EndsWith\u0060 and \u0060AsPrefix\u0060/\u0060AsSuffix\u0060 for strings (#763)"
       }
     ],
     "labels": [
@@ -30949,7 +31033,8 @@ window.BENCHMARK_DATA = {
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
-      "d94595c5"
+      "d94595c5",
+      "4dc12c15"
     ],
     "datasets": [
       {
@@ -31325,7 +31410,8 @@ window.BENCHMARK_DATA = {
           2303.6184623718264,
           2223.188729422433,
           2238.8356323242188,
-          2180.8752095540362
+          2180.8752095540362,
+          2305.2198501586913
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31700,6 +31786,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -32090,7 +32177,8 @@ window.BENCHMARK_DATA = {
           153872.11197916666,
           153520.98470052084,
           149174.73503766741,
-          153341.4591796875
+          153341.4591796875,
+          150664.32568359375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32471,7 +32559,8 @@ window.BENCHMARK_DATA = {
           63788,
           63787,
           63787,
-          64323
+          64323,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32855,7 +32944,8 @@ window.BENCHMARK_DATA = {
           4050.276381937663,
           4046.507608141218,
           3883.522905077253,
-          3885.582192993164
+          3885.582192993164,
+          3851.7372035980225
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -33190,6 +33280,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
