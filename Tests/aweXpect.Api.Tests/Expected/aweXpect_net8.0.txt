@@ -1146,9 +1146,9 @@ namespace aweXpect
     {
         public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> Contains(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> DoesNotContain(this aweXpect.Core.IThat<string?> source, string unexpected) { }
-        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotEndWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
-        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotStartWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
-        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> EndsWith(this aweXpect.Core.IThat<string?> source, string expected) { }
+        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> DoesNotEndWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
+        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> DoesNotStartWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
+        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> EndsWith(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.PropertyResult.Int<string?> HasLength(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsEqualTo(this aweXpect.Core.IThat<string?> source, string? expected) { }
@@ -1172,7 +1172,7 @@ namespace aweXpect
         public static aweXpect.Results.IsParsableResult<TType> IsParsableInto<TType>(this aweXpect.Core.IThat<string?> source, System.IFormatProvider? formatProvider = null)
             where TType : System.IParsable<TType> { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsUpperCased(this aweXpect.Core.IThat<string?> source) { }
-        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> StartsWith(this aweXpect.Core.IThat<string?> source, string expected) { }
+        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> StartsWith(this aweXpect.Core.IThat<string?> source, string expected) { }
     }
     public static class ThatTimeOnly
     {

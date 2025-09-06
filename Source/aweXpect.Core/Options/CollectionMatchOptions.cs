@@ -364,7 +364,7 @@ public partial class CollectionMatchOptions(
 	{
 		private readonly CancellationToken _cancellationToken;
 		private readonly IEvaluationContext _context;
-		internal readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+		internal readonly ManualExpectationBuilder<TItem> ItemExpectationBuilder;
 
 		/// <inheritdoc cref="ExpectationItem{TItem}" />
 		public ExpectationItem(Action<IThat<TItem>> expectation,
@@ -374,8 +374,8 @@ public partial class CollectionMatchOptions(
 		{
 			_context = context;
 			_cancellationToken = cancellationToken;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
-			expectation.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
+			ItemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
+			expectation.Invoke(new ThatSubject<TItem>(ItemExpectationBuilder));
 		}
 
 		/// <summary>
@@ -387,7 +387,7 @@ public partial class CollectionMatchOptions(
 		public async Task<bool> IsMetBy(TItem value)
 #endif
 		{
-			ConstraintResult result = await _itemExpectationBuilder.IsMetBy(value, _context, _cancellationToken);
+			ConstraintResult result = await ItemExpectationBuilder.IsMetBy(value, _context, _cancellationToken);
 			return result.Outcome == Outcome.Success;
 		}
 
@@ -395,13 +395,13 @@ public partial class CollectionMatchOptions(
 		public override bool Equals(object? obj) => obj is ExpectationItem<TItem> other && Equals(other);
 
 		private bool Equals(ExpectationItem<TItem> other)
-			=> _itemExpectationBuilder.Equals(other._itemExpectationBuilder);
+			=> ItemExpectationBuilder.Equals(other.ItemExpectationBuilder);
 
 		/// <inheritdoc cref="object.GetHashCode()" />
-		public override int GetHashCode() => _itemExpectationBuilder.GetHashCode();
+		public override int GetHashCode() => ItemExpectationBuilder.GetHashCode();
 
 		/// <inheritdoc cref="object.ToString()" />
-		public override string ToString() => _itemExpectationBuilder.ToString();
+		public override string ToString() => ItemExpectationBuilder.ToString();
 	}
 
 	internal sealed class ExpectationItemEqualityComparer<TItem> : IEqualityComparer<ExpectationItem<TItem>>
@@ -423,9 +423,9 @@ public partial class CollectionMatchOptions(
 				return false;
 			}
 
-			return x._itemExpectationBuilder.Equals(y._itemExpectationBuilder);
+			return x.ItemExpectationBuilder.Equals(y.ItemExpectationBuilder);
 		}
 
-		public int GetHashCode(ExpectationItem<TItem> obj) => obj._itemExpectationBuilder.GetHashCode();
+		public int GetHashCode(ExpectationItem<TItem> obj) => obj.ItemExpectationBuilder.GetHashCode();
 	}
 }

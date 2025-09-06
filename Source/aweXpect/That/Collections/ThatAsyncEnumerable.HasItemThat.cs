@@ -51,7 +51,7 @@ public static partial class ThatAsyncEnumerable
 			_it = it;
 			_options = options;
 
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(_expectationBuilder, Grammars);
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, Grammars);
 			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
