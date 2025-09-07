@@ -28,9 +28,11 @@ partial class Build
 	Target MutationTestsCore => _ => _
 		.DependsOn(Compile)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
+		.OnlyWhenDynamic(() => BranchName != "main")
 		.Executes(() =>
 		{
-			ExecuteMutationTest(Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]);
+			ExecuteMutationTest(Solution.aweXpect_Core,
+				[..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]);
 		});
 
 	Target MutationTestsMain => _ => _
@@ -38,8 +40,10 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
-			ExecuteMutationTest(Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]);
+			ExecuteMutationTest(Solution.aweXpect,
+				[Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]);
 		});
+
 	Target MutationTestsComment => _ => _
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
@@ -51,13 +55,13 @@ partial class Build
 			{
 				Log.Debug("Missing PR.txt file in artifacts");
 			}
-			
+
 			string prNumber = File.ReadAllText(ArtifactsDirectory / "aweXpect" / "PR.txt");
 			Log.Debug("Pull request number: {PullRequestId}", prNumber);
-			var mutationCommentBodies = new List<string>();
-			foreach (var file in ArtifactsDirectory.GetFiles("MutationTest_*.md", 2))
+			List<string> mutationCommentBodies = [];
+			foreach (AbsolutePath file in ArtifactsDirectory.GetFiles("MutationTest_*.md", 2))
 			{
-				var body = await File.ReadAllTextAsync(file);
+				string body = await File.ReadAllTextAsync(file);
 				mutationCommentBodies.Add(body);
 			}
 
@@ -116,21 +120,36 @@ partial class Build
 			await "MutationTestsCore".DownloadArtifactTo(ArtifactsDirectory / "aweXpect.Core", GithubToken);
 			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory / "aweXpect", GithubToken);
 
-			Dictionary<Project, Project[]> projects = new()
+			Dictionary<Project, Project[]> projects;
+			if (BranchName != "main")
 			{
+				projects = new Dictionary<Project, Project[]>
 				{
-					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]
-				},
+					{
+						Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]
+					},
+					{
+						Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]
+					},
+				};
+			}
+			else
+			{
+				projects = new Dictionary<Project, Project[]>
 				{
-					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]
-				},
-			};
+					{
+						Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]
+					},
+				};
+			}
+
 			string apiKey = Environment.GetEnvironmentVariable("STRYKER_DASHBOARD_API_KEY");
 			foreach (KeyValuePair<Project, Project[]> project in projects)
 			{
 				string branchName = File.ReadAllText(ArtifactsDirectory / project.Key.Name / "BranchName.txt");
 				string reportComment =
-					File.ReadAllText(ArtifactsDirectory / project.Key.Name / "Stryker" / "reports" / "mutation-report.json");
+					File.ReadAllText(ArtifactsDirectory / project.Key.Name / "Stryker" / "reports" /
+					                 "mutation-report.json");
 				using HttpClient client = new();
 				client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 				// https://stryker-mutator.io/docs/General/dashboard/#send-a-report-via-curl
@@ -204,7 +223,8 @@ partial class Build
 				$"Stryker did not execute successfully for {project.Name}: (exit code {process.ExitCode}).");
 		}
 
-		File.WriteAllText(ArtifactsDirectory / $"MutationTest_{project.Name}.md", CreateMutationCommentBody(project.Name));
+		File.WriteAllText(ArtifactsDirectory / $"MutationTest_{project.Name}.md",
+			CreateMutationCommentBody(project.Name));
 
 		if (GitHubActions?.IsPullRequest == true)
 		{
