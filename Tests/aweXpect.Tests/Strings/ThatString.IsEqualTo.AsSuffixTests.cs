@@ -92,8 +92,9 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with " \t some text",
-					             but it was "some text" which misses some whitespace (" \t " at the beginning)
-
+					             but it was "some text" which is shorter than the expected length of 12 and misses the prefix:
+					               " \t "
+					             
 					             Actual:
 					             some text
 					             """);
@@ -112,8 +113,12 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some text \t ",
-					             but it was "some text" which misses some whitespace (" \t " at the end)
-
+					             but it was "some text" which differs before index 8:
+					                            ↓ (actual)
+					                   "some text"
+					               "some text \t "
+					                            ↑ (expected suffix)
+					             
 					             Actual:
 					             some text
 					             """);
@@ -132,8 +137,12 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some text",
-					             but it was "and some text \t " which has unexpected whitespace (" \t " at the end)
-
+					             but it was "and some text \t " which differs before index 15:
+					                                ↓ (actual)
+					               "and some text \t "
+					                       "some text"
+					                                ↑ (expected suffix)
+					             
 					             Actual:
 					             and some text 	 
 					             """);
@@ -142,7 +151,7 @@ public sealed partial class ThatString
 			[Fact]
 			public async Task WhenStringIsShorter_ShouldFail()
 			{
-				string subject = "some text with";
+				string subject = "text without out";
 				string expected = "some text without out";
 
 				async Task Act()
@@ -152,11 +161,11 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some text without out",
-					             but it was "some text with" with a length of 14 which is shorter than the expected length of 21 and misses:
-					               "out out"
-
+					             but it was "text without out" which is shorter than the expected length of 21 and misses the prefix:
+					               "some "
+					             
 					             Actual:
-					             some text with
+					             text without out
 					             """);
 			}
 
@@ -176,7 +185,7 @@ public sealed partial class ThatString
 			public async Task WhenStringsDiffer_ShouldFail()
 			{
 				string subject = "actual text";
-				string expected = "expected other text";
+				string expected = "other text";
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected).AsSuffix();
@@ -184,13 +193,13 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with "expected other text",
-					             but it was "actual text" which differs before index 6:
+					             ends with "other text",
+					             but it was "actual text" which differs before index 5:
 					                     ↓ (actual)
 					               "actual text"
-					               "…other text"
+					                "other text"
 					                     ↑ (expected suffix)
-
+					             
 					             Actual:
 					             actual text
 					             """);

@@ -126,7 +126,7 @@ public sealed class StringDifference(
 		{
 			MatchType.Wildcard => ToPatternString(MatchType.Wildcard, prefix, actual, expected),
 			MatchType.Regex => ToPatternString(MatchType.Regex, prefix, actual, expected),
-			_ => ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings),
+			_ => ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(settings?.MatchType ?? MatchType.Equality), settings),
 		};
 	}
 
@@ -140,6 +140,14 @@ public sealed class StringDifference(
 
 		if (indexOfFirstMismatch < 0)
 		{
+			if (actual.Length < expected.Length)
+			{
+				return $"""
+				        is shorter than the expected length of {expected.Length} and misses the prefix:
+				          "{expected[..^actual.Length].DisplayWhitespace()}"
+				        """;
+			}
+
 			return prefix;
 		}
 
@@ -157,13 +165,8 @@ public sealed class StringDifference(
 			whiteSpaceCountBeforeArrow++;
 		}
 
-		if (settings?.MatchType == MatchType.Suffix)
-		{
-			whiteSpaceCountBeforeArrow--;
-		}
-
 		string visibleText = actual[trimStart..indexOfFirstMismatch];
-		whiteSpaceCountBeforeArrow += visibleText.Count(c => c is '\r' or '\n');
+		whiteSpaceCountBeforeArrow += visibleText.Count(c => c is '\r' or '\n' or '\t');
 
 		string matchingString = actual[..indexOfFirstMismatch];
 		int lineNumber = matchingString.Count(c => c == '\n');
@@ -192,16 +195,19 @@ public sealed class StringDifference(
 		{
 			int trimStartExpected =
 				GetStartIndexOfPhraseToShowBeforeTheMismatchingIndexFromEnd(expected, indexFromEnd);
-			sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(ActualIndicator);
 			string actualText = CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(linePrefix, actual,
-				trimStart, suffix);
+				trimStart, indexFromEnd, suffix);
 			string expectedText = CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(linePrefix, expected,
-				trimStartExpected, suffix);
-			sb.Append(' ', Math.Max(0, expectedText.Length - actualText.Length));
+				trimStartExpected, indexFromEnd, suffix);
+			int actualIndentation = Math.Max(0, expectedText.Length - actualText.Length);
+			sb.Append(' ', whiteSpaceCountBeforeArrow + actualIndentation).Append(arrowDown)
+				.AppendLine(ActualIndicator);
+			sb.Append(' ', actualIndentation);
 			sb.Append(actualText);
 			sb.Append(' ', Math.Max(0, actualText.Length - expectedText.Length));
 			sb.Append(expectedText);
-			sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(GetExpected(settings?.MatchType));
+			sb.Append(' ', whiteSpaceCountBeforeArrow + actualIndentation).Append(arrowUp)
+				.Append(GetExpected(settings?.MatchType));
 		}
 		else
 		{
@@ -276,11 +282,13 @@ public sealed class StringDifference(
 	///     When text phrase starts at <paramref name="indexOfStartingPhrase" /> and with a calculated length omits text
 	///     on start or end, an ellipsis is added.
 	/// </remarks>
-	private static string CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(
-		string prefix, string text, int indexOfStartingPhrase, string suffix)
+	private static string CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(string prefix, string text,
+		int indexOfStartingPhrase, int indexFromEnd, string suffix)
 	{
 		StringBuilder? stringBuilder = new();
-		int subjectLength = GetLengthOfPhraseToShowOrDefaultLength(text[indexOfStartingPhrase..]);
+		int indexOfFirstMismatch = text.Length - indexFromEnd;
+		int minLength = indexOfFirstMismatch + 10 - indexOfStartingPhrase;
+		int subjectLength = GetLengthOfPhraseToShowOrDefaultLength(text[indexOfStartingPhrase..], minLength);
 		const char ellipsis = '\u2026';
 
 		stringBuilder.Append(prefix);
@@ -373,7 +381,7 @@ public sealed class StringDifference(
 			}
 		}
 
-		return actualValue.Length - min;
+		return actualValue.Length - min - 1;
 	}
 
 	/// <summary>
@@ -382,11 +390,11 @@ public sealed class StringDifference(
 	/// <remarks>
 	///     If a word end is found between 45 and 60 characters, use this word end, otherwise keep 50 characters.
 	/// </remarks>
-	private static int GetLengthOfPhraseToShowOrDefaultLength(string value)
+	private static int GetLengthOfPhraseToShowOrDefaultLength(string value, int? minLength = null)
 	{
-		int minLength = Customize.aweXpect.Formatting().MinimumNumberOfCharactersAfterStringDifference.Get();
-		int defaultLength = minLength + 5;
-		int maxLength = minLength + 15;
+		minLength ??= Customize.aweXpect.Formatting().MinimumNumberOfCharactersAfterStringDifference.Get();
+		int defaultLength = minLength.Value + 5;
+		int maxLength = minLength.Value + 15;
 		const int lengthOfWhitespace = 1;
 
 		int indexOfWordBoundary = value
@@ -451,21 +459,21 @@ public sealed class StringDifference(
 	private static int GetStartIndexOfPhraseToShowBeforeTheMismatchingIndexFromEnd(string value,
 		int indexFromEnd)
 	{
-		const int defaultCharactersToKeep = 10;
-		const int minCharactersToKeep = 5;
-		const int maxCharactersToKeep = 15;
+		int minLength = Customize.aweXpect.Formatting().MinimumNumberOfCharactersAfterStringDifference.Get();
+		int defaultLength = minLength + 5;
+		int maxLength = minLength + 15;
 		const int lengthOfWhitespace = 1;
-		const int phraseLengthToCheckForWordBoundary =
-			maxCharactersToKeep - minCharactersToKeep + lengthOfWhitespace;
+		int phraseLengthToCheckForWordBoundary =
+			maxLength - minLength + lengthOfWhitespace;
 
 		int indexOfFirstMismatch = value.Length - indexFromEnd;
-		if (indexOfFirstMismatch <= defaultCharactersToKeep)
+		if (indexOfFirstMismatch <= defaultLength)
 		{
 			return 0;
 		}
 
 		int indexToStartSearchingForWordBoundary =
-			Math.Max(indexOfFirstMismatch - (maxCharactersToKeep + lengthOfWhitespace), 0);
+			Math.Max(indexOfFirstMismatch - (maxLength + lengthOfWhitespace), 0);
 
 		int indexOfWordBoundary = value
 			                          .IndexOf(' ', indexToStartSearchingForWordBoundary,
@@ -477,7 +485,7 @@ public sealed class StringDifference(
 			return indexToStartSearchingForWordBoundary + indexOfWordBoundary + lengthOfWhitespace;
 		}
 
-		return indexOfFirstMismatch - defaultCharactersToKeep;
+		return indexOfFirstMismatch - defaultLength;
 	}
 
 	private static string GetExpected(MatchType? matchType)
