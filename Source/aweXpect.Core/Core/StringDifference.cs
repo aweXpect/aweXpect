@@ -72,15 +72,7 @@ public sealed class StringDifference(
 			return 0;
 		}
 
-		if (matchType is MatchType.Suffix)
-		{
-			_indexOfFirstMismatch ??= GetIndexOfFirstMismatchFromEnd(actual, expected, _comparer);
-		}
-		else
-		{
-			_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer);
-		}
-
+		_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer, fromEnd: matchType is MatchType.Suffix);
 		return _indexOfFirstMismatch.Value;
 	}
 
@@ -126,7 +118,8 @@ public sealed class StringDifference(
 		{
 			MatchType.Wildcard => ToPatternString(MatchType.Wildcard, prefix, actual, expected),
 			MatchType.Regex => ToPatternString(MatchType.Regex, prefix, actual, expected),
-			_ => ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(settings?.MatchType ?? MatchType.Equality), settings),
+			_ => ToEqualityString(prefix, actual, expected,
+				IndexOfFirstMismatch(settings?.MatchType ?? MatchType.Equality), settings),
 		};
 	}
 
@@ -140,7 +133,8 @@ public sealed class StringDifference(
 
 		if (indexOfFirstMismatch < 0)
 		{
-			if (actual.Length < expected.Length)
+			if (settings?.MatchType == MatchType.Suffix &&
+			    actual.Length < expected.Length)
 			{
 				return $"""
 				        is shorter than the expected length of {expected.Length} and misses the prefix:
@@ -207,7 +201,7 @@ public sealed class StringDifference(
 			sb.Append(' ', Math.Max(0, actualText.Length - expectedText.Length));
 			sb.Append(expectedText);
 			sb.Append(' ', whiteSpaceCountBeforeArrow + actualIndentation).Append(arrowUp)
-				.Append(GetExpected(settings?.MatchType));
+				.Append(GetExpected(settings.MatchType));
 		}
 		else
 		{
@@ -311,7 +305,7 @@ public sealed class StringDifference(
 	}
 
 	private static int GetIndexOfFirstMismatch(string? actualValue, string? expectedValue,
-		IEqualityComparer<string> comparer)
+		IEqualityComparer<string> comparer, bool fromEnd = false)
 	{
 		if (comparer.Equals(actualValue, expectedValue))
 		{
@@ -334,7 +328,9 @@ public sealed class StringDifference(
 				break;
 			}
 
-			if (comparer.Equals(actualValue[..mid], expectedValue[..mid]))
+			if (fromEnd
+				    ? comparer.Equals(actualValue[^mid..], expectedValue[^mid..])
+				    : comparer.Equals(actualValue[..mid], expectedValue[..mid]))
 			{
 				min = mid;
 			}
@@ -344,44 +340,7 @@ public sealed class StringDifference(
 			}
 		}
 
-		return min;
-	}
-
-	private static int GetIndexOfFirstMismatchFromEnd(string? actualValue, string? expectedValue,
-		IEqualityComparer<string> comparer)
-	{
-		if (comparer.Equals(actualValue, expectedValue))
-		{
-			return -1;
-		}
-
-		if (actualValue is null || expectedValue is null)
-		{
-			return 0;
-		}
-
-		int maxCommonLength = Math.Min(actualValue.Length, expectedValue.Length);
-		int min = 0;
-		int max = maxCommonLength + 1;
-		while (min < max)
-		{
-			int mid = (min + max) / 2;
-			if (mid == min)
-			{
-				break;
-			}
-
-			if (comparer.Equals(actualValue[^mid..], expectedValue[^mid..]))
-			{
-				min = mid;
-			}
-			else
-			{
-				max = mid;
-			}
-		}
-
-		return actualValue.Length - min - 1;
+		return fromEnd ? actualValue.Length - min - 1 : min;
 	}
 
 	/// <summary>
