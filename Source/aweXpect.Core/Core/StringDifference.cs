@@ -72,7 +72,7 @@ public sealed class StringDifference(
 			return 0;
 		}
 
-		_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer, fromEnd: matchType is MatchType.Suffix);
+		_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer, matchType is MatchType.Suffix);
 		return _indexOfFirstMismatch.Value;
 	}
 
@@ -136,10 +136,9 @@ public sealed class StringDifference(
 			if (settings?.MatchType == MatchType.Suffix &&
 			    actual.Length < expected.Length)
 			{
-				return $"""
-				        is shorter than the expected length of {expected.Length} and misses the prefix:
-				          "{expected[..^actual.Length].DisplayWhitespace()}"
-				        """;
+				return
+					$"is shorter than the expected length of {expected.Length} and misses the prefix:{Environment.NewLine}" +
+					$"  \"{expected[..^actual.Length].DisplayWhitespace()}\"";
 			}
 
 			return prefix;
