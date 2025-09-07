@@ -24,12 +24,12 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "Text",
-					             but it was "some arbitrary text" which differs at index 0:
-					                ↓ (actual)
-					               "some arbitrary text"
-					               "Text"
-					                ↑ (expected)
-					             
+					             but it was "some arbitrary text" which differs before index 16:
+					                           ↓ (actual)
+					               "…arbitrary text"
+					                          "Text"
+					                           ↑ (expected suffix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -49,12 +49,12 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "SOME" ignoring case,
-					             but it was "some arbitrary text" which differs at index 4:
-					                    ↓ (actual)
-					               "some arbitrary text"
-					               "SOME"
-					                    ↑ (expected)
-					             
+					             but it was "some arbitrary text" which differs before index 19:
+					                              ↓ (actual)
+					               "…arbitrary text"
+					                          "SOME"
+					                              ↑ (expected suffix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -65,7 +65,7 @@ public sealed partial class ThatString
 				Using_WhenSubjectEndsWithIncorrectMatchAccordingToComparer_ShouldIncludeComparerInMessage()
 			{
 				string subject = "some arbitrary text";
-				string expected = "TEXT";
+				string expected = "Text";
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected)
@@ -74,13 +74,13 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with "TEXT" using IgnoreCaseForVocalsComparer,
-					             but it was "some arbitrary text" which differs at index 0:
-					                ↓ (actual)
-					               "some arbitrary text"
-					               "TEXT"
-					                ↑ (expected)
-					             
+					             ends with "Text" using IgnoreCaseForVocalsComparer,
+					             but it was "some arbitrary text" which differs before index 16:
+					                           ↓ (actual)
+					               "…arbitrary text"
+					                          "Text"
+					                           ↑ (expected suffix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -114,7 +114,7 @@ public sealed partial class ThatString
 					             Expected that subject
 					             ends with <null>,
 					             but it was "text"
-					             
+
 					             Actual:
 					             text
 					             """);
@@ -133,12 +133,12 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some",
-					             but it was "some arbitrary text" which differs at index 4:
-					                    ↓ (actual)
-					               "some arbitrary text"
-					               "some"
-					                    ↑ (expected)
-					             
+					             but it was "some arbitrary text" which differs before index 19:
+					                              ↓ (actual)
+					               "…arbitrary text"
+					                          "some"
+					                              ↑ (expected suffix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -200,7 +200,7 @@ public sealed partial class ThatString
 					             ends with "text and more",
 					             but it was "text" with a length of 4 which is shorter than the expected length of 13 and misses:
 					               " and more"
-					             
+
 					             Actual:
 					             text
 					             """);

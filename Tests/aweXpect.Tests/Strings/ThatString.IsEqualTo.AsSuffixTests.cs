@@ -122,7 +122,7 @@ public sealed partial class ThatString
 			[Fact]
 			public async Task WhenStringHasUnexpectedTrailingWhitespace_ShouldFail()
 			{
-				string subject = "some text \t ";
+				string subject = "and some text \t ";
 				string expected = "some text";
 
 				async Task Act()
@@ -132,10 +132,10 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some text",
-					             but it was "some text \t " which has unexpected whitespace (" \t " at the end)
+					             but it was "and some text \t " which has unexpected whitespace (" \t " at the end)
 
 					             Actual:
-					             some text 	 
+					             and some text 	 
 					             """);
 			}
 
@@ -185,11 +185,11 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "expected other text",
-					             but it was "actual text" which differs at index 0:
-					                ↓ (actual)
+					             but it was "actual text" which differs before index 6:
+					                     ↓ (actual)
 					               "actual text"
-					               "expected other text"
-					                ↑ (expected)
+					               "…other text"
+					                     ↑ (expected suffix)
 
 					             Actual:
 					             actual text

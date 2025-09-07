@@ -39,6 +39,22 @@ public sealed class StringDifference(
 		///     The expected string is treated as a regex pattern.
 		/// </summary>
 		Regex,
+
+		/// <summary>
+		///     The expected string is treated as a prefix.
+		/// </summary>
+		/// <remarks>
+		///     The actual string has to start with expected string.
+		/// </remarks>
+		Prefix,
+
+		/// <summary>
+		///     The expected string is treated as a suffix.
+		/// </summary>
+		/// <remarks>
+		///     The actual string has to end with expected string.
+		/// </remarks>
+		Suffix,
 	}
 
 	private const string ActualIndicator = " (actual)";
@@ -56,7 +72,15 @@ public sealed class StringDifference(
 			return 0;
 		}
 
-		_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer);
+		if (matchType is MatchType.Suffix)
+		{
+			_indexOfFirstMismatch ??= GetIndexOfFirstMismatchFromEnd(actual, expected, _comparer);
+		}
+		else
+		{
+			_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer);
+		}
+
 		return _indexOfFirstMismatch.Value;
 	}
 
@@ -120,15 +144,22 @@ public sealed class StringDifference(
 		}
 
 		int column = settings?.IgnoredTrailingColumns ?? 0;
+		int indexFromEnd = actual.Length - indexOfFirstMismatch;
 		StringBuilder sb = new();
-		int trimStart =
-			GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actual, indexOfFirstMismatch);
+		int trimStart = settings?.MatchType == MatchType.Suffix
+			? GetStartIndexOfPhraseToShowBeforeTheMismatchingIndexFromEnd(actual, indexFromEnd)
+			: GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actual, indexOfFirstMismatch);
 
 		int whiteSpaceCountBeforeArrow = indexOfFirstMismatch - trimStart + linePrefix.Length;
 
 		if (trimStart > 0)
 		{
 			whiteSpaceCountBeforeArrow++;
+		}
+
+		if (settings?.MatchType == MatchType.Suffix)
+		{
+			whiteSpaceCountBeforeArrow--;
 		}
 
 		string visibleText = actual[trimStart..indexOfFirstMismatch];
@@ -148,17 +179,39 @@ public sealed class StringDifference(
 			sb.Append(prefix).Append(" on line ").Append(lineNumber + 1).Append(" and column ")
 				.Append(column).AppendLine(":");
 		}
+		else if (settings?.MatchType == MatchType.Suffix)
+		{
+			sb.Append(prefix).Append(" before index ").Append(indexOfFirstMismatch + column).AppendLine(":");
+		}
 		else
 		{
 			sb.Append(prefix).Append(" at index ").Append(indexOfFirstMismatch + column).AppendLine(":");
 		}
 
-		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(ActualIndicator);
-		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual,
-			trimStart, suffix);
-		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected,
-			trimStart, suffix);
-		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(GetExpected(settings?.MatchType));
+		if (settings?.MatchType == MatchType.Suffix)
+		{
+			int trimStartExpected =
+				GetStartIndexOfPhraseToShowBeforeTheMismatchingIndexFromEnd(expected, indexFromEnd);
+			sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(ActualIndicator);
+			string actualText = CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(linePrefix, actual,
+				trimStart, suffix);
+			string expectedText = CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(linePrefix, expected,
+				trimStartExpected, suffix);
+			sb.Append(' ', Math.Max(0, expectedText.Length - actualText.Length));
+			sb.Append(actualText);
+			sb.Append(' ', Math.Max(0, actualText.Length - expectedText.Length));
+			sb.Append(expectedText);
+			sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(GetExpected(settings?.MatchType));
+		}
+		else
+		{
+			sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(ActualIndicator);
+			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual,
+				trimStart, suffix);
+			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected,
+				trimStart, suffix);
+			sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(GetExpected(settings?.MatchType));
+		}
 
 		return sb.ToString();
 	}
@@ -215,6 +268,40 @@ public sealed class StringDifference(
 		stringBuilder.AppendLine(suffix);
 	}
 
+	/// <summary>
+	///     Creates the escaped visible <paramref name="text" /> phrase decorated with ellipsis, with
+	///     the <paramref name="prefix" /> and the <paramref name="suffix" />.
+	/// </summary>
+	/// <remarks>
+	///     When text phrase starts at <paramref name="indexOfStartingPhrase" /> and with a calculated length omits text
+	///     on start or end, an ellipsis is added.
+	/// </remarks>
+	private static string CreatePrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(
+		string prefix, string text, int indexOfStartingPhrase, string suffix)
+	{
+		StringBuilder? stringBuilder = new();
+		int subjectLength = GetLengthOfPhraseToShowOrDefaultLength(text[indexOfStartingPhrase..]);
+		const char ellipsis = '\u2026';
+
+		stringBuilder.Append(prefix);
+
+		if (indexOfStartingPhrase > 0)
+		{
+			stringBuilder.Append(ellipsis);
+		}
+
+		stringBuilder.Append(text
+			.Substring(indexOfStartingPhrase, subjectLength).DisplayWhitespace().ToSingleLine());
+
+		if (text.Length > indexOfStartingPhrase + subjectLength)
+		{
+			stringBuilder.Append(ellipsis);
+		}
+
+		stringBuilder.AppendLine(suffix);
+		return stringBuilder.ToString();
+	}
+
 	private static int GetIndexOfFirstMismatch(string? actualValue, string? expectedValue,
 		IEqualityComparer<string> comparer)
 	{
@@ -250,6 +337,43 @@ public sealed class StringDifference(
 		}
 
 		return min;
+	}
+
+	private static int GetIndexOfFirstMismatchFromEnd(string? actualValue, string? expectedValue,
+		IEqualityComparer<string> comparer)
+	{
+		if (comparer.Equals(actualValue, expectedValue))
+		{
+			return -1;
+		}
+
+		if (actualValue is null || expectedValue is null)
+		{
+			return 0;
+		}
+
+		int maxCommonLength = Math.Min(actualValue.Length, expectedValue.Length);
+		int min = 0;
+		int max = maxCommonLength + 1;
+		while (min < max)
+		{
+			int mid = (min + max) / 2;
+			if (mid == min)
+			{
+				break;
+			}
+
+			if (comparer.Equals(actualValue[^mid..], expectedValue[^mid..]))
+			{
+				min = mid;
+			}
+			else
+			{
+				max = mid;
+			}
+		}
+
+		return actualValue.Length - min;
 	}
 
 	/// <summary>
@@ -315,11 +439,54 @@ public sealed class StringDifference(
 		return indexOfFirstMismatch - defaultCharactersToKeep;
 	}
 
+	/// <summary>
+	///     Calculates the start index of the visible segment from <paramref name="value" /> when highlighting the difference
+	///     at <paramref name="indexFromEnd" /> from the end.
+	/// </summary>
+	/// <remarks>
+	///     Either keep the last 10 characters before <paramref name="indexFromEnd" /> from the end or a word begin (separated
+	///     by
+	///     whitespace) between 15 and 5 characters before <paramref name="indexFromEnd" /> from the end.
+	/// </remarks>
+	private static int GetStartIndexOfPhraseToShowBeforeTheMismatchingIndexFromEnd(string value,
+		int indexFromEnd)
+	{
+		const int defaultCharactersToKeep = 10;
+		const int minCharactersToKeep = 5;
+		const int maxCharactersToKeep = 15;
+		const int lengthOfWhitespace = 1;
+		const int phraseLengthToCheckForWordBoundary =
+			maxCharactersToKeep - minCharactersToKeep + lengthOfWhitespace;
+
+		int indexOfFirstMismatch = value.Length - indexFromEnd;
+		if (indexOfFirstMismatch <= defaultCharactersToKeep)
+		{
+			return 0;
+		}
+
+		int indexToStartSearchingForWordBoundary =
+			Math.Max(indexOfFirstMismatch - (maxCharactersToKeep + lengthOfWhitespace), 0);
+
+		int indexOfWordBoundary = value
+			                          .IndexOf(' ', indexToStartSearchingForWordBoundary,
+				                          phraseLengthToCheckForWordBoundary) -
+		                          indexToStartSearchingForWordBoundary;
+
+		if (indexOfWordBoundary >= 0)
+		{
+			return indexToStartSearchingForWordBoundary + indexOfWordBoundary + lengthOfWhitespace;
+		}
+
+		return indexOfFirstMismatch - defaultCharactersToKeep;
+	}
+
 	private static string GetExpected(MatchType? matchType)
 		=> matchType switch
 		{
 			MatchType.Wildcard => " (wildcard pattern)",
 			MatchType.Regex => " (regex pattern)",
+			MatchType.Prefix => " (expected prefix)",
+			MatchType.Suffix => " (expected suffix)",
 			_ => " (expected)",
 		};
 }

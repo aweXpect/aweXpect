@@ -53,12 +53,18 @@ public partial class StringEqualityOptions
 
 			string prefix =
 				$"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}";
-			StringDifference stringDifference = new(actual, expected, comparer, settings);
-			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Equality);
-			if (indexOfFirstMismatch == 0 && comparer.Equals(actual.TrimStart(), expected))
+			StringDifference stringDifference = new(actual, expected, comparer,
+				settings.WithMatchType(StringDifference.MatchType.Prefix));
+			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Prefix);
+			if (indexOfFirstMismatch == 0)
 			{
-				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
+				string? trimmedActual = actual.TrimStart();
+				int commonLength = Math.Min(trimmedActual.Length, expected.Length);
+				if (comparer.Equals(trimmedActual[..commonLength], expected[..commonLength]))
+				{
+					return
+						$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
+				}
 			}
 
 			if (indexOfFirstMismatch == 0 && comparer.Equals(actual, expected.TrimStart()))
