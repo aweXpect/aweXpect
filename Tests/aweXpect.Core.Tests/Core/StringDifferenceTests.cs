@@ -544,6 +544,7 @@ public class StringDifferenceTests
 		{
 			int expectedIndex = 106 + (3 * Environment.NewLine.Length);
 			string nl = Environment.NewLine.DisplayWhitespace();
+			string nb = new(' ', nl.Length); // newline blanks
 
 			string actual = """
 			                @startuml
@@ -569,10 +570,10 @@ public class StringDifferenceTests
 			await That(sut.ToString()).IsEqualTo(
 				$"""
 				 differs on line 4 and column 22:
-				                                                                 ↓ (actual)
+				                                        {nb}                     ↓ (actual)
 				   "…--> Alice : Authentication Response{nl}Alice -> Bob : Another authentication…"
 				   "…--> Alice : Authentication Response{nl}Alice -> Bob : Invalid authentication…"
-				                                                                 ↑ (expected suffix)
+				                                        {nb}                     ↑ (expected suffix)
 				 """);
 		}
 
