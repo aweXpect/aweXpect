@@ -24,11 +24,11 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "Text",
-					             but it was "some arbitrary text" which differs at index 0:
-					                ↓ (actual)
+					             but it was "some arbitrary text" which differs before index 15:
+					                               ↓ (actual)
 					               "some arbitrary text"
-					               "Text"
-					                ↑ (expected)
+					                              "Text"
+					                               ↑ (expected suffix)
 					             
 					             Actual:
 					             some arbitrary text
@@ -49,11 +49,11 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "SOME" ignoring case,
-					             but it was "some arbitrary text" which differs at index 4:
-					                    ↓ (actual)
+					             but it was "some arbitrary text" which differs before index 18:
+					                                  ↓ (actual)
 					               "some arbitrary text"
-					               "SOME"
-					                    ↑ (expected)
+					                              "SOME"
+					                                  ↑ (expected suffix)
 					             
 					             Actual:
 					             some arbitrary text
@@ -65,7 +65,7 @@ public sealed partial class ThatString
 				Using_WhenSubjectEndsWithIncorrectMatchAccordingToComparer_ShouldIncludeComparerInMessage()
 			{
 				string subject = "some arbitrary text";
-				string expected = "TEXT";
+				string expected = "Text";
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected)
@@ -74,13 +74,13 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with "TEXT" using IgnoreCaseForVocalsComparer,
-					             but it was "some arbitrary text" which differs at index 0:
-					                ↓ (actual)
+					             ends with "Text" using IgnoreCaseForVocalsComparer,
+					             but it was "some arbitrary text" which differs before index 15:
+					                               ↓ (actual)
 					               "some arbitrary text"
-					               "TEXT"
-					                ↑ (expected)
-					             
+					                              "Text"
+					                               ↑ (expected suffix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -114,7 +114,7 @@ public sealed partial class ThatString
 					             Expected that subject
 					             ends with <null>,
 					             but it was "text"
-					             
+
 					             Actual:
 					             text
 					             """);
@@ -133,11 +133,11 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some",
-					             but it was "some arbitrary text" which differs at index 4:
-					                    ↓ (actual)
+					             but it was "some arbitrary text" which differs before index 18:
+					                                  ↓ (actual)
 					               "some arbitrary text"
-					               "some"
-					                    ↑ (expected)
+					                              "some"
+					                                  ↑ (expected suffix)
 					             
 					             Actual:
 					             some arbitrary text
@@ -189,7 +189,7 @@ public sealed partial class ThatString
 			public async Task WhenSubjectIsShorterThanExpected_ShouldFail()
 			{
 				string subject = "text";
-				string expected = "text and more";
+				string expected = "more than text";
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected);
@@ -197,9 +197,9 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with "text and more",
-					             but it was "text" with a length of 4 which is shorter than the expected length of 13 and misses:
-					               " and more"
+					             ends with "more than text",
+					             but it was "text" which is shorter than the expected length of 14 and misses the prefix:
+					               "more than "
 					             
 					             Actual:
 					             text

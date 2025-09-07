@@ -54,18 +54,24 @@ public partial class StringEqualityOptions
 			string prefix =
 				$"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}";
 			int minCommonLength = Math.Min(actual.Length, expected.Length);
-			StringDifference stringDifference = new(actual, expected, comparer, settings);
-			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Equality);
+			StringDifference stringDifference = new(actual, expected, comparer,
+				settings.WithMatchType(StringDifference.MatchType.Suffix));
+			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Suffix);
 			if (indexOfFirstMismatch == 0 && comparer.Equals(actual, expected.TrimStart()))
 			{
 				return
 					$"{prefix} which misses some whitespace (\"{expected.Substring(0, GetIndexOfFirstMatch(expected, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
 			}
 
-			if (indexOfFirstMismatch == minCommonLength && comparer.Equals(actual.TrimEnd(), expected))
+			if (indexOfFirstMismatch == actual.Length)
 			{
-				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+				string? trimmedActual = actual.TrimEnd();
+				int commonLength = Math.Min(trimmedActual.Length, expected.Length);
+				if (comparer.Equals(trimmedActual[^commonLength..], expected[^commonLength..]))
+				{
+					return
+						$"{prefix} which has unexpected whitespace (\"{actual.Substring(trimmedActual.Length).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+				}
 			}
 
 			if (indexOfFirstMismatch == minCommonLength && comparer.Equals(actual, expected.TrimEnd()))

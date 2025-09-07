@@ -111,7 +111,7 @@ public sealed partial class ThatString
 			[Fact]
 			public async Task WhenStringHasUnexpectedLeadingWhitespace_ShouldFail()
 			{
-				string subject = " \t some text";
+				string subject = " \t some text and more";
 				string expected = "some text";
 
 				async Task Act()
@@ -121,10 +121,10 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             starts with "some text",
-					             but it was " \t some text" which has unexpected whitespace (" \t " at the beginning)
+					             but it was " \t some text and more" which has unexpected whitespace (" \t " at the beginning)
 
 					             Actual:
-					              	 some text
+					              	 some text and more
 					             """);
 			}
 
@@ -178,7 +178,7 @@ public sealed partial class ThatString
 					                ↓ (actual)
 					               "actual text"
 					               "expected other text"
-					                ↑ (expected)
+					                ↑ (expected prefix)
 
 					             Actual:
 					             actual text

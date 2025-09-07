@@ -29,8 +29,8 @@ public sealed partial class ThatString
 					                 ↓ (actual)
 					               "Some arbitrary text"
 					               "SOME"
-					                 ↑ (expected)
-					             
+					                 ↑ (expected prefix)
+
 					             Actual:
 					             Some arbitrary text
 					             """);
@@ -54,8 +54,8 @@ public sealed partial class ThatString
 					                ↓ (actual)
 					               "some arbitrary text"
 					               "TEXT"
-					                ↑ (expected)
-					             
+					                ↑ (expected prefix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -80,8 +80,8 @@ public sealed partial class ThatString
 					                ↓ (actual)
 					               "some arbitrary text"
 					               "SOME"
-					                ↑ (expected)
-					             
+					                ↑ (expected prefix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -115,7 +115,7 @@ public sealed partial class ThatString
 					             Expected that subject
 					             starts with <null>,
 					             but it was "text"
-					             
+
 					             Actual:
 					             text
 					             """);
@@ -138,8 +138,8 @@ public sealed partial class ThatString
 					                ↓ (actual)
 					               "some arbitrary text"
 					               "text"
-					                ↑ (expected)
-					             
+					                ↑ (expected prefix)
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -189,7 +189,7 @@ public sealed partial class ThatString
 					             starts with "text and more",
 					             but it was "text" with a length of 4 which is shorter than the expected length of 13 and misses:
 					               " and more"
-					             
+
 					             Actual:
 					             text
 					             """);
