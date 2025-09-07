@@ -1,5 +1,6 @@
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
+using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 
@@ -22,6 +23,7 @@ partial class Build : NukeBuild
 	readonly BuildScope BuildScope = BuildScope.Default;
 
 	[Parameter("Github Token")] readonly string GithubToken;
+	[GitRepository] readonly GitRepository Repository;
 
 	[Solution(GenerateProjects = true)] readonly Solution Solution;
 
