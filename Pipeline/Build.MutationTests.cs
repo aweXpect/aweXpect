@@ -28,7 +28,7 @@ partial class Build
 	Target MutationTestsCore => _ => _
 		.DependsOn(Compile)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
-		.OnlyWhenDynamic(() => Repository.Branch != "main")
+		.OnlyWhenDynamic(() => Repository.Branch != "main" && Repository.Tags.Count == 0)
 		.Executes(() =>
 		{
 			ExecuteMutationTest(Solution.aweXpect_Core,
@@ -121,7 +121,7 @@ partial class Build
 			await "MutationTestsMain".DownloadArtifactTo(ArtifactsDirectory / "aweXpect", GithubToken);
 
 			Dictionary<Project, Project[]> projects;
-			if (Repository.Branch != "main")
+			if (Repository.Branch != "main" && Repository.Tags.Count == 0)
 			{
 				projects = new Dictionary<Project, Project[]>
 				{
