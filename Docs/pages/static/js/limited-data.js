@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          201.67068230311077,
           183.16259825229645,
           193.51406540870667,
           212.2416773693902,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           242.10372683207194,
           212.292234758536,
           216.79970698697227,
-          212.5159651239713
+          212.5159651239713,
+          244.71037801106772
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -442,7 +442,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
-          472,
+          504,
           504,
           504,
           504,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          253.4114258105938,
           258.0066506703695,
           284.2495718955994,
           248.35815003712972,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           262.36912775039673,
           246.66978308132715,
           247.27936498935406,
-          240.82442121505738
+          240.82442121505738,
+          277.4926059246063
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          928.3339724222819,
           926.0294194588295,
           948.3558192934308,
           899.5456271489461,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           925.9966183344524,
           904.0068068822225,
           913.8484092712403,
-          872.9408235549927
+          872.9408235549927,
+          954.9619518007551
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          282592.817594401,
           285779.6776041667,
           317209.502734375,
           326899.0633463542,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           302158.425764974,
           302476.5147879464,
           329485.657421875,
-          304118.4240234375
+          304118.4240234375,
+          312866.83642578125
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1175,7 +1175,6 @@ window.BENCHMARK_DATA = {
           284940,
           284940,
           284940,
-          284940,
           284972,
           284972,
           284972,
@@ -1186,6 +1185,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2200528.5558035714,
           2312143.6533854166,
           2377250.5354352677,
           2231771.1684895833,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2232473.9018229167,
           2281983.8903459823,
           2341431.4955729167,
-          2229663.6358816964
+          2229663.6358816964,
+          2461221.7703125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          660658.7146935096,
           705901.6427083333,
           746233.8064453125,
           683418.992578125,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           687138.1064453125,
           699023.9544921875,
           716561.1331380209,
-          674609.4145507812
+          674609.4145507812,
+          697069.738141741
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          445.8051390647888,
           496.9212555567423,
           484.10148525238037,
           471.7225412050883,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           502.37464739481607,
           482.2821911743709,
           501.78691749572755,
-          473.23738064084733
+          473.23738064084733,
+          512.0118351618449
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1908,7 +1908,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
-          1432,
+          1464,
           1464,
           1464,
           1464,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          463.3342012405395,
           517.9528502055576,
           532.8483978271485,
           512.5270672525678,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           506.8223076502482,
           496.88989340464275,
           503.74784259796144,
-          492.8174043655396
+          492.8174043655396,
+          543.4633234024047
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          17085.50487811749,
           15631.03139444987,
           17836.73065999349,
           15533.807183837891,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           20526.06885986328,
           16137.773747762045,
           21057.250703938804,
-          15202.630818684896
+          15202.630818684896,
+          23515.45326538086
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          223.3938834031423,
           219.33342045148214,
           247.75661617914835,
           218.0721269130707,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           250.53394985198975,
           250.84642774718148,
           262.6453261693319,
-          239.1589420636495
+          239.1589420636495,
+          263.1792084058126
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2641,7 +2641,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
-          784,
+          816,
           816,
           816,
           816,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          239.2147964477539,
           260.8703421592712,
           263.8302961417607,
           251.1948874473572,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           267.67520532608035,
           253.93141377766926,
           269.3093709627787,
-          246.53141527175904
+          246.53141527175904,
+          280.71322504679364
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1194.854056767055,
           1273.2518525441487,
           1267.596497263227,
           1241.5252298990886,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1208.7885503133139,
           1214.2292587280274,
           1233.518958791097,
-          1221.3383829752604
+          1221.3383829752604,
+          1301.2265839894612
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          328.71765829722085,
           370.3406238555908,
           361.7065555027553,
           359.9394147946284,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           436.6501162528992,
           434.5228415897914,
           429.6565693787166,
-          431.329376856486
+          431.329376856486,
+          466.5073441187541
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3374,11 +3374,11 @@ window.BENCHMARK_DATA = {
           1128,
           1128,
           1128,
-          1128,
           1160,
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          464.93153654734294,
           502.4130224863688,
           554.466837946574,
           540.6979899406433,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           486.00647996266684,
           461.29454360689436,
           484.4121147155762,
-          457.65990911211287
+          457.65990911211287,
+          529.0961756706238
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1212.4941590627034,
           1320.0628235680717,
           1327.820097732544,
           1238.5422481536866,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1311.3228379567465,
           1202.723606745402,
           1250.8603541056316,
-          1252.4366996765136
+          1252.4366996765136,
+          1236.505823135376
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1360.3424818856377,
           1471.434380395072,
           1498.089180246989,
           1361.954124323527,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1789.1137566884358,
           1746.0731966018677,
           1754.320014136178,
-          1741.0077984673637
+          1741.0077984673637,
+          1861.223882293701
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4107,7 +4107,6 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
-          2744,
           2776,
           2776,
           2776,
@@ -4124,6 +4123,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1286.9698220661708,
           1425.3927232106528,
           1418.5389539082846,
           1406.6185943896953,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1360.7157407124837,
           1310.3537946065267,
           1322.2879586537679,
-          1357.894983427865
+          1357.894983427865,
+          1435.0140235900878
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3345.048651286534,
           3488.583327429635,
           3338.2258743286134,
           3296.890184020996,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3266.7185907999674,
           3338.828919819423,
           3419.0114936828613,
-          3403.677944455828
+          3403.677944455828,
+          3394.980758158366
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "805ad539edb35a3eb3f2c95441e9b631bac11b1b",
-        "author": "dependabot[bot]",
-        "date": "Mon Aug 4 15:54:33 2025 \u002B0200",
-        "message": "chore: Bump the tunit group with 2 updates (#704)"
-      },
-      {
         "sha": "7e3179265c562f8a000eb7c94d574b6b4b8df134",
         "author": "Copilot",
         "date": "Fri Aug 8 20:16:11 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
         "message": "fix: branch detection in Nuke pipeline (#769)"
+      },
+      {
+        "sha": "18eaf32b1cc4d829c4ff55638ee74048ba4f2af0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
+        "message": "refactor: also remove core mutation tests on tags (#774)"
       }
     ],
     "labels": [
-      "805ad539",
       "7e317926",
       "c5477b05",
       "c5f67910",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
-      "d8833fcc"
+      "d8833fcc",
+      "18eaf32b"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1509.960815838405,
           1740.1572650909425,
           1695.6364364624023,
           1654.3628726959228,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2305.2198501586913,
           2256.9544631958006,
           2210.833076477051,
-          2176.868275778634
+          2176.868275778634,
+          2313.2691228049143
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4840,7 +4840,6 @@ window.BENCHMARK_DATA = {
           2920,
           2920,
           2920,
-          2920,
           2952,
           2952,
           2952,
@@ -4857,6 +4856,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149139.7333608774,
           155132.974609375,
           152727.65504807694,
           154250.29873046876,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           150664.32568359375,
           147888.94861778847,
           152462.7226186899,
-          147667.5658830915
+          147667.5658830915,
+          152865.48033854167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          64323,
           63787,
           63787,
           63787,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           64323,
-          63787
+          63787,
+          63788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3932.8456780569895,
           4083.8722935994465,
           3990.693612162272,
           3943.2060650416784,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3851.7372035980225,
           3944.4097849527993,
           4035.048098427909,
-          3965.9847717285156
+          3965.9847717285156,
+          4011.214778645833
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
