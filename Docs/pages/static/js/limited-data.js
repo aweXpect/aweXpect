@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          193.51406540870667,
           212.2416773693902,
           198.17753066335405,
           190.1297850926717,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           216.79970698697227,
           212.5159651239713,
           244.71037801106772,
-          212.85053985913595
+          212.85053985913595,
+          214.7792559782664
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -440,7 +440,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
-          472,
+          504,
           504,
           504,
           504,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          284.2495718955994,
           248.35815003712972,
           258.432616964976,
           245.98242822060217,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           247.27936498935406,
           240.82442121505738,
           277.4926059246063,
-          253.2593138217926
+          253.2593138217926,
+          256.77423119544983
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          948.3558192934308,
           899.5456271489461,
           930.0936544418335,
           883.940659014384,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           913.8484092712403,
           872.9408235549927,
           954.9619518007551,
-          913.747789144516
+          913.747789144516,
+          927.0747175852458
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          317209.502734375,
           326899.0633463542,
           305111.10367838544,
           292140.8224158654,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           329485.657421875,
           304118.4240234375,
           312866.83642578125,
-          307882.7823311942
+          307882.7823311942,
+          309469.58382161456
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1173,7 +1173,6 @@ window.BENCHMARK_DATA = {
           284940,
           284940,
           284940,
-          284940,
           284972,
           284972,
           284972,
@@ -1184,6 +1183,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2377250.5354352677,
           2231771.1684895833,
           2220154.4231770835,
           2191079.2848772323,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2341431.4955729167,
           2229663.6358816964,
           2461221.7703125,
-          2244069.847395833
+          2244069.847395833,
+          2355592.3025841345
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          746233.8064453125,
           683418.992578125,
           701510.5596354167,
           686821.1316266741,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           716561.1331380209,
           674609.4145507812,
           697069.738141741,
-          699647.0986328125
+          699647.0986328125,
+          691901.0441545759
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          484.10148525238037,
           471.7225412050883,
           475.08565584818524,
           504.9109592437744,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           501.78691749572755,
           473.23738064084733,
           512.0118351618449,
-          510.1876879374186
+          510.1876879374186,
+          488.01429898398266
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1906,7 +1906,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
-          1432,
+          1464,
           1464,
           1464,
           1464,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          532.8483978271485,
           512.5270672525678,
           523.9816182000296,
           543.4679034550985,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           503.74784259796144,
           492.8174043655396,
           543.4633234024047,
-          499.3595628004808
+          499.3595628004808,
+          496.93479574643646
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          17836.73065999349,
           15533.807183837891,
           23085.48228963216,
           16267.27124633789,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           21057.250703938804,
           15202.630818684896,
           23515.45326538086,
-          16491.46247276893
+          16491.46247276893,
+          18815.521006266277
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          247.75661617914835,
           218.0721269130707,
           218.3774802003588,
           224.6800581296285,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           262.6453261693319,
           239.1589420636495,
           263.1792084058126,
-          262.7459104855855
+          262.7459104855855,
+          241.94087635676067
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2639,7 +2639,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
-          784,
+          816,
           816,
           816,
           816,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          263.8302961417607,
           251.1948874473572,
           255.63850485483806,
           281.35247004826863,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           269.3093709627787,
           246.53141527175904,
           280.71322504679364,
-          248.89423175652823
+          248.89423175652823,
+          239.32847128595625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1267.596497263227,
           1241.5252298990886,
           1273.364831161499,
           1342.2946872711182,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1233.518958791097,
           1221.3383829752604,
           1301.2265839894612,
-          1213.1871643066406
+          1213.1871643066406,
+          1162.2597320263203
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          361.7065555027553,
           359.9394147946284,
           332.38635169542755,
           403.75442225138346,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           429.6565693787166,
           431.329376856486,
           466.5073441187541,
-          432.7024888674418
+          432.7024888674418,
+          417.36274047692615
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3372,11 +3372,11 @@ window.BENCHMARK_DATA = {
           1128,
           1128,
           1128,
-          1128,
           1160,
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          554.466837946574,
           540.6979899406433,
           469.28064911706105,
           475.27943270547047,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           484.4121147155762,
           457.65990911211287,
           529.0961756706238,
-          466.54764740807667
+          466.54764740807667,
+          468.23926849365233
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1327.820097732544,
           1238.5422481536866,
           1278.82953859965,
           1355.6293227855977,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1250.8603541056316,
           1252.4366996765136,
           1236.505823135376,
-          1296.7752490410437
+          1296.7752490410437,
+          1250.1893657684327
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1498.089180246989,
           1361.954124323527,
           1383.401475906372,
           1459.6668649400983,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1754.320014136178,
           1741.0077984673637,
           1861.223882293701,
-          1764.5257284800211
+          1764.5257284800211,
+          1725.2217935834612
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4105,7 +4105,6 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
-          2744,
           2776,
           2776,
           2776,
@@ -4122,6 +4121,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1418.5389539082846,
           1406.6185943896953,
           1433.4731702168783,
           1313.9129651387532,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1322.2879586537679,
           1357.894983427865,
           1435.0140235900878,
-          1323.5876591546196
+          1323.5876591546196,
+          1310.9797569274901
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3338.2258743286134,
           3296.890184020996,
           3484.4482836405437,
           3244.4809435330903,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3419.0114936828613,
           3403.677944455828,
           3394.980758158366,
-          3381.869792351356
+          3381.869792351356,
+          3212.460276285807
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "c5477b05bb5ae75b265fdb6e51a4f5edc2980b30",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Aug 11 19:04:31 2025 \u002B0200",
-        "message": "fix: \u0060InvalidOperationException\u0060 with \u0060Throws\u003CT\u003E().Which.Satisfies\u0060 (#711)"
-      },
-      {
         "sha": "c5f67910659edb8a08bc62a4ea051cfb753aedaa",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:09:14 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
         "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
-      "c5477b05",
       "c5f67910",
       "13b82945",
       "4e412112",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "4a2b227a",
       "d8833fcc",
       "18eaf32b",
-      "f51db771"
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1695.6364364624023,
           1654.3628726959228,
           1569.1162965138753,
           1711.3150469916206,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2210.833076477051,
           2176.868275778634,
           2313.2691228049143,
-          2218.955516560872
+          2218.955516560872,
+          2211.0581016540527
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4838,7 +4838,6 @@ window.BENCHMARK_DATA = {
           2920,
           2920,
           2920,
-          2920,
           2952,
           2952,
           2952,
@@ -4855,6 +4854,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          152727.65504807694,
           154250.29873046876,
           152821.7036783854,
           157078.56497395833,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           152462.7226186899,
           147667.5658830915,
           152865.48033854167,
-          155030.77982271634
+          155030.77982271634,
+          150443.84315708705
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63787,
           63787,
           63788,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           64323,
           63787,
           63788,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3990.693612162272,
           3943.2060650416784,
           3955.43299974714,
           3917.860544644869,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4035.048098427909,
           3965.9847717285156,
           4011.214778645833,
-          3880.284315999349
+          3880.284315999349,
+          3775.6561299641926
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
