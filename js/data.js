@@ -2250,6 +2250,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -2627,7 +2639,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -3008,7 +3022,9 @@ window.BENCHMARK_DATA = {
           212.292234758536,
           216.79970698697227,
           212.5159651239713,
-          244.71037801106772
+          244.71037801106772,
+          212.85053985913595,
+          214.7792559782664
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3367,6 +3383,8 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
+          504,
           504,
           504,
           504,
@@ -3783,7 +3801,9 @@ window.BENCHMARK_DATA = {
           246.66978308132715,
           247.27936498935406,
           240.82442121505738,
-          277.4926059246063
+          277.4926059246063,
+          253.2593138217926,
+          256.77423119544983
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3976,6 +3996,8 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
+          952,
           952,
           952,
           952,
@@ -4558,7 +4580,9 @@ window.BENCHMARK_DATA = {
           904.0068068822225,
           913.8484092712403,
           872.9408235549927,
-          954.9619518007551
+          954.9619518007551,
+          913.747789144516,
+          927.0747175852458
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4893,6 +4917,8 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
+          2408,
           2408,
           2408,
           2408,
@@ -6746,6 +6772,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -7046,7 +7084,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -7350,7 +7390,9 @@ window.BENCHMARK_DATA = {
           302476.5147879464,
           329485.657421875,
           304118.4240234375,
-          312866.83642578125
+          312866.83642578125,
+          307882.7823311942,
+          309469.58382161456
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7642,6 +7684,8 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
+          335556,
           335556,
           335556,
           335556,
@@ -7971,7 +8015,9 @@ window.BENCHMARK_DATA = {
           2281983.8903459823,
           2341431.4955729167,
           2229663.6358816964,
-          2461221.7703125
+          2461221.7703125,
+          2244069.847395833,
+          2355592.3025841345
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8087,6 +8133,8 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8592,7 +8640,9 @@ window.BENCHMARK_DATA = {
           699023.9544921875,
           716561.1331380209,
           674609.4145507812,
-          697069.738141741
+          697069.738141741,
+          699647.0986328125,
+          691901.0441545759
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8850,6 +8900,8 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
+          880545,
           880545,
           880545,
           880545,
@@ -11165,6 +11217,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -11542,7 +11606,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -11923,7 +11989,9 @@ window.BENCHMARK_DATA = {
           482.2821911743709,
           501.78691749572755,
           473.23738064084733,
-          512.0118351618449
+          512.0118351618449,
+          510.1876879374186,
+          488.01429898398266
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12282,6 +12350,8 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
+          1464,
           1464,
           1464,
           1464,
@@ -12698,7 +12768,9 @@ window.BENCHMARK_DATA = {
           496.88989340464275,
           503.74784259796144,
           492.8174043655396,
-          543.4633234024047
+          543.4633234024047,
+          499.3595628004808,
+          496.93479574643646
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12891,6 +12963,8 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
+          2008,
           2008,
           2008,
           2008,
@@ -13473,7 +13547,9 @@ window.BENCHMARK_DATA = {
           16137.773747762045,
           21057.250703938804,
           15202.630818684896,
-          23515.45326538086
+          23515.45326538086,
+          16491.46247276893,
+          18815.521006266277
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13808,6 +13884,8 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
+          27480,
           27480,
           27480,
           27480,
@@ -16123,6 +16201,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -16500,7 +16590,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -16881,7 +16973,9 @@ window.BENCHMARK_DATA = {
           250.84642774718148,
           262.6453261693319,
           239.1589420636495,
-          263.1792084058126
+          263.1792084058126,
+          262.7459104855855,
+          241.94087635676067
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17240,6 +17334,8 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
+          816,
           816,
           816,
           816,
@@ -17656,7 +17752,9 @@ window.BENCHMARK_DATA = {
           253.93141377766926,
           269.3093709627787,
           246.53141527175904,
-          280.71322504679364
+          280.71322504679364,
+          248.89423175652823,
+          239.32847128595625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17849,6 +17947,8 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
+          1224,
           1224,
           1224,
           1224,
@@ -18431,7 +18531,9 @@ window.BENCHMARK_DATA = {
           1214.2292587280274,
           1233.518958791097,
           1221.3383829752604,
-          1301.2265839894612
+          1301.2265839894612,
+          1213.1871643066406,
+          1162.2597320263203
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18766,6 +18868,8 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
+          2984,
           2984,
           2984,
           2984,
@@ -21081,6 +21185,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -21458,7 +21574,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -21839,7 +21957,9 @@ window.BENCHMARK_DATA = {
           434.5228415897914,
           429.6565693787166,
           431.329376856486,
-          466.5073441187541
+          466.5073441187541,
+          432.7024888674418,
+          417.36274047692615
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22202,6 +22322,8 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
+          1232,
           1232,
           1232,
           1232,
@@ -22614,7 +22736,9 @@ window.BENCHMARK_DATA = {
           461.29454360689436,
           484.4121147155762,
           457.65990911211287,
-          529.0961756706238
+          529.0961756706238,
+          466.54764740807667,
+          468.23926849365233
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22807,6 +22931,8 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
+          2168,
           2168,
           2168,
           2168,
@@ -23389,7 +23515,9 @@ window.BENCHMARK_DATA = {
           1202.723606745402,
           1250.8603541056316,
           1252.4366996765136,
-          1236.505823135376
+          1236.505823135376,
+          1296.7752490410437,
+          1250.1893657684327
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23724,6 +23852,8 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
+          3072,
           3072,
           3072,
           3072,
@@ -26039,6 +26169,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -26416,7 +26558,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -26797,7 +26941,9 @@ window.BENCHMARK_DATA = {
           1746.0731966018677,
           1754.320014136178,
           1741.0077984673637,
-          1861.223882293701
+          1861.223882293701,
+          1764.5257284800211,
+          1725.2217935834612
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27172,6 +27318,8 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
+          2888,
           2888,
           2888,
           2888,
@@ -27572,7 +27720,9 @@ window.BENCHMARK_DATA = {
           1310.3537946065267,
           1322.2879586537679,
           1357.894983427865,
-          1435.0140235900878
+          1435.0140235900878,
+          1323.5876591546196,
+          1310.9797569274901
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27765,6 +27915,8 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
+          4152,
           4152,
           4152,
           4152,
@@ -28347,7 +28499,9 @@ window.BENCHMARK_DATA = {
           3338.828919819423,
           3419.0114936828613,
           3403.677944455828,
-          3394.980758158366
+          3394.980758158366,
+          3381.869792351356,
+          3212.460276285807
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -28682,6 +28836,8 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
+          5296,
           5296,
           5296,
           5296,
@@ -30997,6 +31153,18 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Sep 9 08:55:22 2025 \u002B0200",
         "message": "refactor: also remove core mutation tests on tags (#774)"
+      },
+      {
+        "sha": "f51db77110ec54b83668739142adb97229ebb5b5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 11 13:48:44 2025 \u002B0200",
+        "message": "docs: Add GitHub sponsor username to FUNDING.yml (#775)"
+      },
+      {
+        "sha": "9a1c4b68a8c15c788d728f2384cfbdaeac683233",
+        "author": "dependabot[bot]",
+        "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
+        "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
       }
     ],
     "labels": [
@@ -31374,7 +31542,9 @@ window.BENCHMARK_DATA = {
       "d1490b5b",
       "4a2b227a",
       "d8833fcc",
-      "18eaf32b"
+      "18eaf32b",
+      "f51db771",
+      "9a1c4b68"
     ],
     "datasets": [
       {
@@ -31755,7 +31925,9 @@ window.BENCHMARK_DATA = {
           2256.9544631958006,
           2210.833076477051,
           2176.868275778634,
-          2313.2691228049143
+          2313.2691228049143,
+          2218.955516560872,
+          2211.0581016540527
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32130,6 +32302,8 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
+          3080,
           3080,
           3080,
           3080,
@@ -32530,7 +32704,9 @@ window.BENCHMARK_DATA = {
           147888.94861778847,
           152462.7226186899,
           147667.5658830915,
-          152865.48033854167
+          152865.48033854167,
+          155030.77982271634,
+          150443.84315708705
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32916,7 +33092,9 @@ window.BENCHMARK_DATA = {
           63787,
           64323,
           63787,
-          63788
+          63788,
+          63787,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33305,7 +33483,9 @@ window.BENCHMARK_DATA = {
           3944.4097849527993,
           4035.048098427909,
           3965.9847717285156,
-          4011.214778645833
+          4011.214778645833,
+          3880.284315999349,
+          3775.6561299641926
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -33640,6 +33820,8 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
+          6488,
           6488,
           6488,
           6488,
