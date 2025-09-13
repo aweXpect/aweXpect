@@ -2262,6 +2262,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -2641,7 +2647,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -3024,7 +3031,8 @@ window.BENCHMARK_DATA = {
           212.5159651239713,
           244.71037801106772,
           212.85053985913595,
-          214.7792559782664
+          214.7792559782664,
+          217.45401923997062
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3383,6 +3391,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3803,7 +3812,8 @@ window.BENCHMARK_DATA = {
           240.82442121505738,
           277.4926059246063,
           253.2593138217926,
-          256.77423119544983
+          256.77423119544983,
+          252.11459239323935
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3996,6 +4006,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4582,7 +4593,8 @@ window.BENCHMARK_DATA = {
           872.9408235549927,
           954.9619518007551,
           913.747789144516,
-          927.0747175852458
+          927.0747175852458,
+          902.0381549199423
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4917,6 +4929,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6784,6 +6797,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -7086,7 +7105,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -7392,7 +7412,8 @@ window.BENCHMARK_DATA = {
           304118.4240234375,
           312866.83642578125,
           307882.7823311942,
-          309469.58382161456
+          309469.58382161456,
+          312802.36959635414
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7684,6 +7705,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8017,7 +8039,8 @@ window.BENCHMARK_DATA = {
           2229663.6358816964,
           2461221.7703125,
           2244069.847395833,
-          2355592.3025841345
+          2355592.3025841345,
+          2313619.2996651786
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8133,6 +8156,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8642,7 +8666,8 @@ window.BENCHMARK_DATA = {
           674609.4145507812,
           697069.738141741,
           699647.0986328125,
-          691901.0441545759
+          691901.0441545759,
+          689375.3415690104
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8900,6 +8925,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -11229,6 +11255,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -11608,7 +11640,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -11991,7 +12024,8 @@ window.BENCHMARK_DATA = {
           473.23738064084733,
           512.0118351618449,
           510.1876879374186,
-          488.01429898398266
+          488.01429898398266,
+          503.64058888753254
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12350,6 +12384,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12770,7 +12805,8 @@ window.BENCHMARK_DATA = {
           492.8174043655396,
           543.4633234024047,
           499.3595628004808,
-          496.93479574643646
+          496.93479574643646,
+          507.99682935078937
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12963,6 +12999,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13549,7 +13586,8 @@ window.BENCHMARK_DATA = {
           15202.630818684896,
           23515.45326538086,
           16491.46247276893,
-          18815.521006266277
+          18815.521006266277,
+          15411.662520345051
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13884,6 +13922,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -16213,6 +16252,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -16592,7 +16637,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -16975,7 +17021,8 @@ window.BENCHMARK_DATA = {
           239.1589420636495,
           263.1792084058126,
           262.7459104855855,
-          241.94087635676067
+          241.94087635676067,
+          247.88557612101238
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17334,6 +17381,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17754,7 +17802,8 @@ window.BENCHMARK_DATA = {
           246.53141527175904,
           280.71322504679364,
           248.89423175652823,
-          239.32847128595625
+          239.32847128595625,
+          256.3723353068034
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17947,6 +17996,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -18533,7 +18583,8 @@ window.BENCHMARK_DATA = {
           1221.3383829752604,
           1301.2265839894612,
           1213.1871643066406,
-          1162.2597320263203
+          1162.2597320263203,
+          1214.4374229431153
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18868,6 +18919,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -21197,6 +21249,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -21576,7 +21634,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -21959,7 +22018,8 @@ window.BENCHMARK_DATA = {
           431.329376856486,
           466.5073441187541,
           432.7024888674418,
-          417.36274047692615
+          417.36274047692615,
+          443.0111813178429
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22322,6 +22382,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -22738,7 +22799,8 @@ window.BENCHMARK_DATA = {
           457.65990911211287,
           529.0961756706238,
           466.54764740807667,
-          468.23926849365233
+          468.23926849365233,
+          476.74132183619906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22931,6 +22993,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -23517,7 +23580,8 @@ window.BENCHMARK_DATA = {
           1252.4366996765136,
           1236.505823135376,
           1296.7752490410437,
-          1250.1893657684327
+          1250.1893657684327,
+          1229.0143366495768
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23852,6 +23916,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -26181,6 +26246,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -26560,7 +26631,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -26943,7 +27015,8 @@ window.BENCHMARK_DATA = {
           1741.0077984673637,
           1861.223882293701,
           1764.5257284800211,
-          1725.2217935834612
+          1725.2217935834612,
+          1805.1198635101318
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27318,6 +27391,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -27722,7 +27796,8 @@ window.BENCHMARK_DATA = {
           1357.894983427865,
           1435.0140235900878,
           1323.5876591546196,
-          1310.9797569274901
+          1310.9797569274901,
+          1361.1923206329345
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27915,6 +27990,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -28501,7 +28577,8 @@ window.BENCHMARK_DATA = {
           3403.677944455828,
           3394.980758158366,
           3381.869792351356,
-          3212.460276285807
+          3212.460276285807,
+          3463.2435722351074
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -28836,6 +28913,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -31165,6 +31243,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Sep 11 13:49:20 2025 \u002B0200",
         "message": "chore: Bump actions/setup-dotnet from 4 to 5 (#770)"
+      },
+      {
+        "sha": "861e39d554510a4ef2fd6acd6144d17c1ee0bf46",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Sep 13 21:27:56 2025 \u002B0200",
+        "message": "fix: download large benchmarks file (#779)"
       }
     ],
     "labels": [
@@ -31544,7 +31628,8 @@ window.BENCHMARK_DATA = {
       "d8833fcc",
       "18eaf32b",
       "f51db771",
-      "9a1c4b68"
+      "9a1c4b68",
+      "861e39d5"
     ],
     "datasets": [
       {
@@ -31927,7 +32012,8 @@ window.BENCHMARK_DATA = {
           2176.868275778634,
           2313.2691228049143,
           2218.955516560872,
-          2211.0581016540527
+          2211.0581016540527,
+          2224.435215504964
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32302,6 +32388,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -32706,7 +32793,8 @@ window.BENCHMARK_DATA = {
           147667.5658830915,
           152865.48033854167,
           155030.77982271634,
-          150443.84315708705
+          150443.84315708705,
+          152592.82550920759
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33093,6 +33181,7 @@ window.BENCHMARK_DATA = {
           64323,
           63787,
           63788,
+          63787,
           63787,
           63787
         ],
@@ -33485,7 +33574,8 @@ window.BENCHMARK_DATA = {
           3965.9847717285156,
           4011.214778645833,
           3880.284315999349,
-          3775.6561299641926
+          3775.6561299641926,
+          3902.0047927856444
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -33820,6 +33910,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
