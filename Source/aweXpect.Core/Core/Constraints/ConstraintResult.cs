@@ -29,7 +29,7 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     The <see cref="ExpectationGrammars" /> of the constraint result.
 	/// </summary>
-	public ExpectationGrammars Grammars { get; internal set; }
+	public ExpectationGrammars Grammars { get; protected set; }
 
 	/// <summary>
 	///     The outcome of the <see cref="ConstraintResult" />.
