@@ -49,7 +49,8 @@ public class ExpectationGenerator : IIncrementalGenerator
 		foreach (AttributeData? attributeData in classSymbol.GetAttributes())
 		{
 			INamedTypeSymbol? attributeClass = attributeData.AttributeClass;
-			if (attributeClass == null || !attributeClass.IsGenericType || attributeClass.Name != "CreateExpectationOnAttribute")
+			if (attributeClass == null || !attributeClass.IsGenericType ||
+			    attributeClass.Name != "CreateExpectationOnAttribute")
 			{
 				continue;
 			}
@@ -61,9 +62,7 @@ public class ExpectationGenerator : IIncrementalGenerator
 				continue;
 			}
 
-			ExpectationToGenerate? expectationToGenerate = GetExpectationToGenerate(
-				context.SemanticModel,
-				classSymbol,
+			ExpectationToGenerate? expectationToGenerate = GetExpectationToGenerate(classSymbol,
 				attributeData);
 			if (expectationToGenerate != null &&
 			    files.Add(expectationToGenerate.Value.FileName))
@@ -80,8 +79,8 @@ public class ExpectationGenerator : IIncrementalGenerator
 		context.AddSource(expectationToGenerate.FileName, SourceText.From(result, Encoding.UTF8));
 	}
 
-	private static ExpectationToGenerate? GetExpectationToGenerate(SemanticModel semanticModel,
-		INamedTypeSymbol classSymbol, AttributeData attributeData)
+	private static ExpectationToGenerate? GetExpectationToGenerate(INamedTypeSymbol classSymbol,
+		AttributeData attributeData)
 	{
 		string containingNamespace = classSymbol.ContainingNamespace.ToString();
 		if (containingNamespace is null)
@@ -127,7 +126,8 @@ public class ExpectationGenerator : IIncrementalGenerator
 					remarks = namedArgument.Value.Value?.ToString();
 					break;
 				case "Using":
-					usings = namedArgument.Value.Values.Select(x => x.Value?.ToString()).Where(x => x != null).ToArray()!;
+					usings =
+						namedArgument.Value.Values.Select(x => x.Value?.ToString()).Where(x => x != null).ToArray()!;
 					break;
 			}
 		}

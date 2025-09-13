@@ -5,9 +5,9 @@ internal static class SourceGenerationHelper
 	public const string CreateExpectationOnAttribute =
 		"""
 		using System;
-		
+
 		namespace aweXpect.SourceGenerators;
-		
+
 		#nullable enable
 		/// <summary>
 		/// Create an assertion on the <typeparamref name="TTarget"/> attribute.
@@ -43,7 +43,7 @@ internal static class SourceGenerationHelper
 		                  using aweXpect.Results;
 
 		                  namespace {{expectationToGenerate.Namespace}};
-		                  
+
 		                  #nullable enable
 		                  public static partial class {{expectationToGenerate.ClassName}}
 		                  {
@@ -54,8 +54,8 @@ internal static class SourceGenerationHelper
 		                      	=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 		                      			new {{expectationToGenerate.Name}}Constraint(it, grammars)),
 		                      		source);
-		                  
-		                  
+
+
 		                  """;
 		if (expectationToGenerate.IncludeNegated)
 		{
@@ -67,8 +67,8 @@ internal static class SourceGenerationHelper
 			                	=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 			                			new {{expectationToGenerate.Name}}Constraint(it, grammars).Invert()),
 			                		source);
-			            
-			            
+
+
 			            """;
 		}
 

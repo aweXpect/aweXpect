@@ -48,7 +48,7 @@ internal readonly record struct ExpectationToGenerate
 		}
 
 		return $$"""
-		         
+
 		         /// <remarks>
 		         ///     {{Remarks!.Replace("\n", "\n///     ")}}
 		         /// </remarks>
