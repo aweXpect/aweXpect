@@ -18,7 +18,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -48,7 +48,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -74,7 +74,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -98,7 +98,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -122,7 +122,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -151,7 +151,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -188,7 +188,7 @@ jobs:
                 with:
                     fetch-depth: 0
             -   name: Setup .NET SDKs
-                uses: actions/setup-dotnet@v4
+                uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: |
                         8.0.x
@@ -203,7 +203,7 @@ jobs:
                 run: ./build.sh Pages
                 env:
                     GithubToken: ${{ secrets.GITHUB_TOKEN }}
-            -   uses: actions/setup-node@v4
+            -   uses: actions/setup-node@v5
                 with:
                     node-version: 18
                     cache: npm
