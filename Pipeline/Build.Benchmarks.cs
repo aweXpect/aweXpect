@@ -210,7 +210,7 @@ partial class Build
 		var contentStream = await client.GetStreamAsync(
 			$"https://raw.githubusercontent.com/aweXpect/aweXpect/refs/heads/{BenchmarkBranch}/Docs/pages/static/js/{filename}");
 		using StreamReader reader = new(contentStream, Encoding.UTF8);
-		string content = reader.ReadToEnd();
+		string content = await reader.ReadToEndAsync();
 		string sha = document.RootElement.GetProperty("sha").GetString();
 		return new BenchmarkFile(content, sha);
 	}
