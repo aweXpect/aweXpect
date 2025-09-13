@@ -207,7 +207,10 @@ partial class Build
 		}
 
 		using JsonDocument document = JsonDocument.Parse(responseContent);
-		string content = Base64Decode(document.RootElement.GetProperty("content").GetString());
+		var contentStream = await client.GetStreamAsync(
+			$"https://raw.githubusercontent.com/aweXpect/aweXpect/refs/heads/{BenchmarkBranch}/Docs/pages/static/js/{filename}");
+		using StreamReader reader = new(contentStream, Encoding.UTF8);
+		string content = await reader.ReadToEndAsync();
 		string sha = document.RootElement.GetProperty("sha").GetString();
 		return new BenchmarkFile(content, sha);
 	}
