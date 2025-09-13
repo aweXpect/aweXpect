@@ -1,48 +1,12 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
-using aweXpect.Results;
+﻿using aweXpect.SourceGenerators;
 
 namespace aweXpect;
 
-public static partial class ThatChar
-{
-	/// <summary>
-	///     Verifies that the subject is a letter.
-	/// </summary>
-	/// <remarks>
-	///     This means, that the specified Unicode character is categorized as a Unicode letter.<br />
-	///     <seealso cref="char.IsLetter(char)" />
-	/// </remarks>
-	public static AndOrResult<char, IThat<char>> IsALetter(this IThat<char> source)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsALetterConstraint(it, grammars)),
-			source);
-
-	private sealed class IsALetterConstraint(string it, ExpectationGrammars grammars)
-		: ConstraintResult.WithValue<char>(grammars),
-			IValueConstraint<char>
-	{
-		public ConstraintResult IsMetBy(char actual)
-		{
-			Actual = actual;
-			Outcome = char.IsLetter(actual) ? Outcome.Success : Outcome.Failure;
-			return this;
-		}
-
-		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append("is a letter");
-
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append("is not a letter");
-
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> AppendNormalResult(stringBuilder, indentation);
-	}
-}
+[CreateExpectationOn<char>("Is{Not}ALetter", "char.IsLetter({value})",
+	ExpectationText = "is {not} a letter",
+	Remarks = """
+	          This means, that the specified Unicode character is categorized as a Unicode letter.<br />
+	          <seealso cref="char.IsLetter(char)" />
+	          """
+)]
+public static partial class ThatChar;

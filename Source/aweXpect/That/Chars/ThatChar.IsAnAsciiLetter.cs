@@ -1,57 +1,18 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
-using aweXpect.Results;
+﻿using aweXpect.SourceGenerators;
 
 namespace aweXpect;
 
-public static partial class ThatChar
-{
 #if NET8_0_OR_GREATER
-	/// <summary>
-	///     Verifies that the subject is an ASCII letter.
-	/// </summary>
-	/// <remarks>
-	///     <seealso cref="char.IsAsciiLetter(char)" />
-	/// </remarks>
+[CreateExpectationOn<char>("Is{Not}AnAsciiLetter", "char.IsAsciiLetter({value})",
+	ExpectationText = "is {not} an ASCII letter",
+	Remarks = """
+	          This means, that the specified Unicode character is categorized as an ASCII letter.<br />
+	          <seealso cref="char.IsAsciiLetter(char)" />
+	          """
+)]
 #else
-	/// <summary>
-	///     Verifies that the subject is an ASCII letter.
-	/// </summary>
+[CreateExpectationOn<char>("Is{Not}AnAsciiLetter", "{value} is >= 'a' and <= 'z' or >= 'A' and <= 'Z'",
+	ExpectationText = "is {not} an ASCII letter"
+)]
 #endif
-	public static AndOrResult<char, IThat<char>> IsAnAsciiLetter(this IThat<char> source)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsAnAsciiLetterConstraint(it, grammars)),
-			source);
-
-	private sealed class IsAnAsciiLetterConstraint(string it, ExpectationGrammars grammars)
-		: ConstraintResult.WithValue<char>(grammars),
-			IValueConstraint<char>
-	{
-		public ConstraintResult IsMetBy(char actual)
-		{
-			Actual = actual;
-#if NET8_0_OR_GREATER
-			Outcome = char.IsAsciiLetter(actual) ? Outcome.Success : Outcome.Failure;
-#else
-			Outcome = actual is >= 'a' and <= 'z' or >= 'A' and <= 'Z' ? Outcome.Success : Outcome.Failure;
-#endif
-			return this;
-		}
-
-		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append("is an ASCII letter");
-
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append("is not an ASCII letter");
-
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> AppendNormalResult(stringBuilder, indentation);
-	}
-}
+public static partial class ThatChar;

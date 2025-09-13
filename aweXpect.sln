@@ -93,6 +93,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Analyzers.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Analyzers.CodeFixers", "Source\aweXpect.Analyzers.CodeFixers\aweXpect.Analyzers.CodeFixers.csproj", "{117FF28C-3628-47F1-8567-008265AE211F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.SourceGenerators", "Source\aweXpect.SourceGenerators\aweXpect.SourceGenerators.csproj", "{C4F90F26-54CD-447E-870D-6F1C05729155}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{117FF28C-3628-47F1-8567-008265AE211F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{117FF28C-3628-47F1-8567-008265AE211F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{117FF28C-3628-47F1-8567-008265AE211F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F90F26-54CD-447E-870D-6F1C05729155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F90F26-54CD-447E-870D-6F1C05729155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F90F26-54CD-447E-870D-6F1C05729155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F90F26-54CD-447E-870D-6F1C05729155}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{97D64B45-D97E-4A94-9EF0-37BF25310EBA} = {9CC57AD0-4984-4618-96EA-01FFFCCD84FA}
