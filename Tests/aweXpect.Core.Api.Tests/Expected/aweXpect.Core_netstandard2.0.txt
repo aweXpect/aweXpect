@@ -21,7 +21,7 @@ namespace aweXpect.Core.Constraints
         protected ConstraintResult(aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy) { }
         protected ConstraintResult(aweXpect.Core.ExpectationGrammars grammars) { }
         public aweXpect.Core.Constraints.FurtherProcessingStrategy FurtherProcessingStrategy { get; protected set; }
-        public aweXpect.Core.ExpectationGrammars Grammars { get; }
+        public aweXpect.Core.ExpectationGrammars Grammars { get; protected set; }
         public virtual aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
         public abstract void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
