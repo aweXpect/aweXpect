@@ -11,7 +11,7 @@ public sealed partial class ThatGuid
 				[Fact]
 				public async Task WhenSubjectIsEmpty_ShouldFail()
 				{
-					Guid subject = Guid.Empty;
+					Guid? subject = Guid.Empty;
 
 					async Task Act()
 						=> await That(subject).IsNotEmpty();

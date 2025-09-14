@@ -630,6 +630,8 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsEqualTo(this aweXpect.Core.IThat<System.Guid?> source, System.Guid? expected) { }
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNotEmpty(this aweXpect.Core.IThat<System.Guid?> source) { }
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNotEqualTo(this aweXpect.Core.IThat<System.Guid?> source, System.Guid? unexpected) { }
+        public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNotNullOrEmpty(this aweXpect.Core.IThat<System.Guid?> source) { }
+        public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNullOrEmpty(this aweXpect.Core.IThat<System.Guid?> source) { }
     }
     public static class ThatNullableTimeSpan
     {
