@@ -81,6 +81,7 @@ internal static class SourceGenerationHelper
 				OutcomeMethod = outcomeMethod;
 			}
 			
+			public bool FailOnNull { get; set; } = true;
 			public Type TargetType { get; }
 			public string PositiveName { get; }
 			public string? NegativeName { get; }
@@ -133,7 +134,7 @@ internal static class SourceGenerationHelper
 			            """;
 		}
 
-		if (expectationToGenerate.IsNullable)
+		if (expectationToGenerate.IsNullable && expectationToGenerate.FailOnNull)
 		{
 			result += $$"""
 			            	private sealed class {{expectationToGenerate.Name}}Constraint(string it, ExpectationGrammars grammars)

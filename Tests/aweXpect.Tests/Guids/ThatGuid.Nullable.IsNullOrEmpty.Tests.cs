@@ -4,7 +4,7 @@ public sealed partial class ThatGuid
 {
 	public sealed partial class Nullable
 	{
-		public sealed class IsEmpty
+		public sealed class IsNullOrEmpty
 		{
 			public sealed class Tests
 			{
@@ -14,7 +14,7 @@ public sealed partial class ThatGuid
 					Guid? subject = Guid.Empty;
 
 					async Task Act()
-						=> await That(subject).IsEmpty();
+						=> await That(subject).IsNullOrEmpty();
 
 					await That(Act).DoesNotThrow();
 				}
@@ -25,30 +25,25 @@ public sealed partial class ThatGuid
 					Guid? subject = OtherGuid();
 
 					async Task Act()
-						=> await That(subject).IsEmpty();
+						=> await That(subject).IsNullOrEmpty();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
 						              Expected that subject
-						              is empty,
+						              is null or empty,
 						              but it was {Formatter.Format(subject)}
 						              """);
 				}
 
 				[Fact]
-				public async Task WhenSubjectIsNull_ShouldFail()
+				public async Task WhenSubjectIsNull_ShouldSucceed()
 				{
 					Guid? subject = null;
 
 					async Task Act()
-						=> await That(subject).IsEmpty();
+						=> await That(subject).IsNullOrEmpty();
 
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected that subject
-						             is empty,
-						             but it was <null>
-						             """);
+					await That(Act).DoesNotThrow();
 				}
 			}
 		}

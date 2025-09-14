@@ -40,6 +40,9 @@ internal readonly record struct ExpectationToGenerate
 				case "Remarks":
 					Remarks = namedArgument.Value.Value?.ToString();
 					break;
+				case "FailOnNull":
+					FailOnNull = namedArgument.Value.Value as bool? ?? true;
+					break;
 				case "Using":
 					Usings =
 						namedArgument.Value.Values.Select(x => x.Value?.ToString()).Where(x => x != null).ToArray()!;
@@ -59,6 +62,7 @@ internal readonly record struct ExpectationToGenerate
 		FileName = $"{ClassName}.{Name}.g.cs";
 	}
 
+	public bool FailOnNull { get; } = true;
 	public string[] Usings { get; } = [];
 	public string FileName { get; }
 	public bool IncludeNegated { get; }
