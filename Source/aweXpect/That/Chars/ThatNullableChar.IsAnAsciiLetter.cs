@@ -7,7 +7,7 @@ using aweXpect.SourceGenerators;
 namespace aweXpect;
 
 #if NET8_0_OR_GREATER
-[CreateExpectationOnNullable<char>("Is{Not}AnAsciiLetter", "char.IsAsciiLetter({value})",
+[CreateExpectationOnNullable<char>("Is{Not}AnAsciiLetter", "char.IsAsciiLetter({value}.Value)",
 	ExpectationText = "is {not} an ASCII letter",
 	Remarks = """
 	          This means, that the specified Unicode character is categorized as an ASCII letter.<br />
@@ -15,7 +15,7 @@ namespace aweXpect;
 	          """
 )]
 #else
-[CreateExpectationOnNullable<char>("Is{Not}AnAsciiLetter", "{value} is >= 'a' and <= 'z' or >= 'A' and <= 'Z'",
+[CreateExpectationOnNullable<char>("Is{Not}AnAsciiLetter", "{value}.Value is >= 'a' and <= 'z' or >= 'A' and <= 'Z'",
 	ExpectationText = "is {not} an ASCII letter"
 )]
 #endif
