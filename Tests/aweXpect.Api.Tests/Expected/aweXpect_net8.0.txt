@@ -759,10 +759,14 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsANumber(this aweXpect.Core.IThat<char?> source) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsAnAsciiLetter(this aweXpect.Core.IThat<char?> source) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsEqualTo(this aweXpect.Core.IThat<char?> source, char? expected) { }
+        public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotALetter(this aweXpect.Core.IThat<char?> source) { }
+        public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotANumber(this aweXpect.Core.IThat<char?> source) { }
+        public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotAnAsciiLetter(this aweXpect.Core.IThat<char?> source) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotEqualTo(this aweXpect.Core.IThat<char?> source, char? unexpected) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotOneOf(this aweXpect.Core.IThat<char?> source, System.Collections.Generic.IEnumerable<char> unexpected) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotOneOf(this aweXpect.Core.IThat<char?> source, System.Collections.Generic.IEnumerable<char?> unexpected) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotOneOf(this aweXpect.Core.IThat<char?> source, params char?[] unexpected) { }
+        public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsNotWhiteSpace(this aweXpect.Core.IThat<char?> source) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsOneOf(this aweXpect.Core.IThat<char?> source, System.Collections.Generic.IEnumerable<char> expected) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsOneOf(this aweXpect.Core.IThat<char?> source, System.Collections.Generic.IEnumerable<char?> expected) { }
         public static aweXpect.Results.AndOrResult<char?, aweXpect.Core.IThat<char?>> IsOneOf(this aweXpect.Core.IThat<char?> source, params char?[] expected) { }
