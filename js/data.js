@@ -2292,6 +2292,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -2676,7 +2682,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -3064,7 +3071,8 @@ window.BENCHMARK_DATA = {
           227.88563789640153,
           237.02992520332336,
           228.35234853426616,
-          221.67533109738275
+          221.67533109738275,
+          210.96696621576945
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3423,6 +3431,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3853,7 +3862,8 @@ window.BENCHMARK_DATA = {
           257.4726174990336,
           278.9226175088149,
           260.6707429885864,
-          249.35365098317465
+          249.35365098317465,
+          245.29265890802657
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4046,6 +4056,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4642,7 +4653,8 @@ window.BENCHMARK_DATA = {
           939.2970257486616,
           956.7476055962699,
           944.3225673266819,
-          991.8448512213571
+          991.8448512213571,
+          882.4663176854451
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4977,6 +4989,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6879,6 +6892,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -7186,7 +7205,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -7497,7 +7517,8 @@ window.BENCHMARK_DATA = {
           316795.64350585936,
           320782.40401785716,
           326642.5024789664,
-          311990.03629557294
+          311990.03629557294,
+          306516.7656598772
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7789,6 +7810,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8132,7 +8154,8 @@ window.BENCHMARK_DATA = {
           2317197.7880208334,
           2387057.1319754464,
           2246155.509765625,
-          2244084.417708333
+          2244084.417708333,
+          2210116.6463341345
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8248,6 +8271,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8767,7 +8791,8 @@ window.BENCHMARK_DATA = {
           727584.2485026042,
           699265.16015625,
           701042.5607561384,
-          716024.9615885416
+          716024.9615885416,
+          676252.6714564732
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9025,6 +9050,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -11389,6 +11415,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -11773,7 +11805,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -12161,7 +12194,8 @@ window.BENCHMARK_DATA = {
           500.7190069834391,
           535.9216064306406,
           523.5016982396444,
-          504.6580323537191
+          504.6580323537191,
+          497.591183535258
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12520,6 +12554,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -12950,7 +12985,8 @@ window.BENCHMARK_DATA = {
           527.7434204101562,
           570.4154210771833,
           518.7926048551287,
-          499.90902112325034
+          499.90902112325034,
+          493.5938486735026
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13143,6 +13179,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13739,7 +13776,8 @@ window.BENCHMARK_DATA = {
           15968.898663330077,
           16422.798177083332,
           15765.819462076823,
-          15417.235603841145
+          15417.235603841145,
+          14703.00932820638
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14074,6 +14112,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -16438,6 +16477,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -16822,7 +16867,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -17210,7 +17256,8 @@ window.BENCHMARK_DATA = {
           257.5337066014608,
           281.8925037384033,
           257.41368395487467,
-          256.8662165914263
+          256.8662165914263,
+          247.1733341557639
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17569,6 +17616,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17999,7 +18047,8 @@ window.BENCHMARK_DATA = {
           268.798576259613,
           292.0975764274597,
           263.9341005938394,
-          262.5004315376282
+          262.5004315376282,
+          246.4766256014506
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18192,6 +18241,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -18788,7 +18838,8 @@ window.BENCHMARK_DATA = {
           1270.2383140563966,
           1308.353942489624,
           1249.6748152414957,
-          1238.0946071624755
+          1238.0946071624755,
+          1190.740549214681
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19123,6 +19174,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -21487,6 +21539,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -21871,7 +21929,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -22259,7 +22318,8 @@ window.BENCHMARK_DATA = {
           438.89003324508667,
           482.0093069757734,
           450.38661425908407,
-          435.8279695828756
+          435.8279695828756,
+          425.59944508870444
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22622,6 +22682,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -23048,7 +23109,8 @@ window.BENCHMARK_DATA = {
           505.2962252934774,
           548.6755205790201,
           505.41757990519204,
-          485.9532375971476
+          485.9532375971476,
+          472.77169370651245
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23241,6 +23303,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -23837,7 +23900,8 @@ window.BENCHMARK_DATA = {
           1331.3731455485026,
           1415.1809309550695,
           1289.6910037994385,
-          1275.0713869730632
+          1275.0713869730632,
+          1235.6814453125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24172,6 +24236,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -26536,6 +26601,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -26920,7 +26991,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -27308,7 +27380,8 @@ window.BENCHMARK_DATA = {
           1799.5521504538399,
           1938.7070114135743,
           1777.8413832346598,
-          1768.8057811443623
+          1768.8057811443623,
+          1748.8558232625326
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27683,6 +27756,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -28097,7 +28171,8 @@ window.BENCHMARK_DATA = {
           1365.5272491455078,
           1481.8735827128091,
           1415.1540985107422,
-          1339.4392157236734
+          1339.4392157236734,
+          1260.4743906167837
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28290,6 +28365,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -28886,7 +28962,8 @@ window.BENCHMARK_DATA = {
           3331.9257714407786,
           3507.7014475504557,
           3386.2801060994466,
-          3478.393848164876
+          3478.393848164876,
+          3200.708782468523
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29221,6 +29298,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -31585,6 +31663,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
         "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
+      },
+      {
+        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
+        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
       }
     ],
     "labels": [
@@ -31969,7 +32053,8 @@ window.BENCHMARK_DATA = {
       "d8464943",
       "f68f8a1e",
       "70e516b2",
-      "a3283c9b"
+      "a3283c9b",
+      "904d8ac2"
     ],
     "datasets": [
       {
@@ -32357,7 +32442,8 @@ window.BENCHMARK_DATA = {
           2296.920896402995,
           2356.7611770629883,
           2226.0806151798793,
-          2216.9763575236
+          2216.9763575236,
+          2153.8405438936675
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32732,6 +32818,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -33146,7 +33233,8 @@ window.BENCHMARK_DATA = {
           154741.05001395088,
           154799.93007114955,
           156546.865687779,
-          153577.33370535713
+          153577.33370535713,
+          151098.80350748697
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33539,6 +33627,7 @@ window.BENCHMARK_DATA = {
           63353,
           63788,
           64324,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -33935,7 +34024,8 @@ window.BENCHMARK_DATA = {
           3992.9065170288086,
           4071.8699279785155,
           4080.680602264404,
-          3984.4968526204425
+          3984.4968526204425,
+          3925.1507982526505
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -34270,6 +34360,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
