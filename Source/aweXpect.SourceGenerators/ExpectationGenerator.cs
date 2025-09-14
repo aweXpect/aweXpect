@@ -12,12 +12,20 @@ namespace aweXpect.SourceGenerators;
 [Generator]
 public class ExpectationGenerator : IIncrementalGenerator
 {
+	private static string[] _supportedAttributes =
+	[
+		nameof(SourceGenerationHelper.CreateExpectationOnAttribute),
+		nameof(SourceGenerationHelper.CreateExpectationOnNullableAttribute),
+	];
 	void IIncrementalGenerator.Initialize(IncrementalGeneratorInitializationContext context)
 	{
-		// Add the marker attribute to the compilation
+		// Add the marker attributes to the compilation
 		context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
 			"CreateExpectationOnAttribute.g.cs",
 			SourceText.From(SourceGenerationHelper.CreateExpectationOnAttribute, Encoding.UTF8)));
+		context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
+			"CreateExpectationOnNullableAttribute.g.cs",
+			SourceText.From(SourceGenerationHelper.CreateExpectationOnNullableAttribute, Encoding.UTF8)));
 
 		HashSet<string> files = new();
 		IncrementalValuesProvider<ExpectationToGenerate> expectationsToGenerate = context.SyntaxProvider
@@ -50,7 +58,7 @@ public class ExpectationGenerator : IIncrementalGenerator
 		{
 			INamedTypeSymbol? attributeClass = attributeData.AttributeClass;
 			if (attributeClass == null || !attributeClass.IsGenericType ||
-			    attributeClass.Name != "CreateExpectationOnAttribute")
+			    !_supportedAttributes.Contains(attributeClass.Name))
 			{
 				continue;
 			}
@@ -112,27 +120,8 @@ public class ExpectationGenerator : IIncrementalGenerator
 			return null;
 		}
 
-		string expectationText = outcomeMethod;
-		string? remarks = null;
-		string[] usings = [];
-		foreach (KeyValuePair<string, TypedConstant> namedArgument in attributeData.NamedArguments)
-		{
-			switch (namedArgument.Key)
-			{
-				case "ExpectationText":
-					expectationText = namedArgument.Value.Value?.ToString() ?? expectationText;
-					break;
-				case "Remarks":
-					remarks = namedArgument.Value.Value?.ToString();
-					break;
-				case "Using":
-					usings =
-						namedArgument.Value.Values.Select(x => x.Value?.ToString()).Where(x => x != null).ToArray()!;
-					break;
-			}
-		}
 
 		return new ExpectationToGenerate(containingNamespace, classSymbol.Name, targetType, name, outcomeMethod,
-			expectationText, usings, remarks);
+			attributeData);
 	}
 }

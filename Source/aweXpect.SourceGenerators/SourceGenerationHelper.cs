@@ -33,6 +33,37 @@ internal static class SourceGenerationHelper
 		#nullable disable
 		""";
 
+	public const string CreateExpectationOnNullableAttribute =
+		"""
+		using System;
+
+		namespace aweXpect.SourceGenerators;
+
+		#nullable enable
+		/// <summary>
+		/// Create an assertion on the <typeparamref name="TTarget"/> attribute.
+		/// </summary>
+		/// <typeparam name="TTarget">The target type for the assertion</typeparam>
+		[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = true)]
+		internal class CreateExpectationOnNullableAttribute<TTarget> : System.Attribute
+		{
+		    public CreateExpectationOnNullableAttribute(string methodName, string name)
+		    {
+		        TargetType = typeof(TTarget);
+		        MethodName = methodName;
+		        Name = name;
+		    }
+
+		    public Type TargetType { get; }
+		    public string MethodName { get; }
+		    public string Name { get; set; }
+		    public string? ExpectationText { get; set; }
+		    public string? Remarks { get; set; }
+		    public string[] Using { get; set; } = [];
+		}
+		#nullable disable
+		""";
+
 	public static string GenerateExtensionClass(ExpectationToGenerate expectationToGenerate)
 	{
 		string result = $$"""
@@ -50,7 +81,7 @@ internal static class SourceGenerationHelper
 		                      /// <summary>
 		                      ///     Verifies that the subject {{expectationToGenerate.ExpectationText}}.
 		                      /// </summary>{{expectationToGenerate.AppendRemarks()}}
-		                      public static AndOrResult<{{expectationToGenerate.TargetType.ToDisplayString()}}, IThat<{{expectationToGenerate.TargetType.ToDisplayString()}}>> {{expectationToGenerate.Name}}(this IThat<{{expectationToGenerate.TargetType.ToDisplayString()}}> source)
+		                      public static AndOrResult<{{expectationToGenerate.TargetType}}, IThat<{{expectationToGenerate.TargetType}}>> {{expectationToGenerate.Name}}(this IThat<{{expectationToGenerate.TargetType}}> source)
 		                      	=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 		                      			new {{expectationToGenerate.Name}}Constraint(it, grammars)),
 		                      		source);
@@ -63,7 +94,7 @@ internal static class SourceGenerationHelper
 			                /// <summary>
 			                ///     Verifies that the subject {{expectationToGenerate.NegatedExpectationText}}.
 			                /// </summary>{{expectationToGenerate.AppendRemarks()}}
-			                public static AndOrResult<{{expectationToGenerate.TargetType.ToDisplayString()}}, IThat<{{expectationToGenerate.TargetType.ToDisplayString()}}>> {{expectationToGenerate.NegatedName}}(this IThat<{{expectationToGenerate.TargetType.ToDisplayString()}}> source)
+			                public static AndOrResult<{{expectationToGenerate.TargetType}}, IThat<{{expectationToGenerate.TargetType}}>> {{expectationToGenerate.NegatedName}}(this IThat<{{expectationToGenerate.TargetType}}> source)
 			                	=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 			                			new {{expectationToGenerate.Name}}Constraint(it, grammars).Invert()),
 			                		source);
@@ -72,36 +103,73 @@ internal static class SourceGenerationHelper
 			            """;
 		}
 
-		result += $$"""
-		            	private sealed class {{expectationToGenerate.Name}}Constraint(string it, ExpectationGrammars grammars)
-		            		: ConstraintResult.WithValue<{{expectationToGenerate.TargetType.ToDisplayString()}}>(grammars),
-		            			IValueConstraint<{{expectationToGenerate.TargetType.ToDisplayString()}}>
-		            	{
-		            		public ConstraintResult IsMetBy({{expectationToGenerate.TargetType.ToDisplayString()}} actual)
-		            		{
-		            			Actual = actual;
-		            			Outcome = {{expectationToGenerate.OutcomeMethod.Replace("{value}", "actual")}} ? Outcome.Success : Outcome.Failure;
-		            			return this;
-		            		}
-		            	
-		            		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		            			=> stringBuilder.Append("{{expectationToGenerate.ExpectationText}}");
-		            	
-		            		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		            		{
-		            			stringBuilder.Append(it).Append(" was ");
-		            			Formatter.Format(stringBuilder, Actual);
-		            		}
-		            	
-		            		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		            			=> stringBuilder.Append("{{expectationToGenerate.NegatedExpectationText}}");
-		            	
-		            		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		            			=> AppendNormalResult(stringBuilder, indentation);
-		            	}
-		            }
-		            #nullable disable
-		            """;
+		if (expectationToGenerate.IsNullable)
+		{
+			result += $$"""
+			            	private sealed class {{expectationToGenerate.Name}}Constraint(string it, ExpectationGrammars grammars)
+			            		: ConstraintResult.WithNotNullValue<{{expectationToGenerate.TargetType}}>(it, grammars),
+			            			IValueConstraint<{{expectationToGenerate.TargetType}}>
+			            	{
+			            		public ConstraintResult IsMetBy({{expectationToGenerate.TargetType}} actual)
+			            		{
+			            			Actual = actual;
+			            			Outcome = actual is not null && {{expectationToGenerate.OutcomeMethod.Replace("{value}", "actual.Value")}} ? Outcome.Success : Outcome.Failure;
+			            			return this;
+			            		}
+			            	
+			            		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			            			=> stringBuilder.Append("{{expectationToGenerate.ExpectationText}}");
+			            	
+			            		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			            		{
+			            			stringBuilder.Append(It).Append(" was ");
+			            			Formatter.Format(stringBuilder, Actual);
+			            		}
+			            	
+			            		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			            			=> stringBuilder.Append("{{expectationToGenerate.NegatedExpectationText}}");
+			            	
+			            		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			            			=> AppendNormalResult(stringBuilder, indentation);
+			            	}
+			            """;
+		}
+		else
+		{
+			result += $$"""
+			            	private sealed class {{expectationToGenerate.Name}}Constraint(string it, ExpectationGrammars grammars)
+			            		: ConstraintResult.WithValue<{{expectationToGenerate.TargetType}}>(grammars),
+			            			IValueConstraint<{{expectationToGenerate.TargetType}}>
+			            	{
+			            		public ConstraintResult IsMetBy({{expectationToGenerate.TargetType}} actual)
+			            		{
+			            			Actual = actual;
+			            			Outcome = {{expectationToGenerate.OutcomeMethod.Replace("{value}", "actual")}} ? Outcome.Success : Outcome.Failure;
+			            			return this;
+			            		}
+			            	
+			            		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			            			=> stringBuilder.Append("{{expectationToGenerate.ExpectationText}}");
+			            	
+			            		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			            		{
+			            			stringBuilder.Append(it).Append(" was ");
+			            			Formatter.Format(stringBuilder, Actual);
+			            		}
+			            	
+			            		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			            			=> stringBuilder.Append("{{expectationToGenerate.NegatedExpectationText}}");
+			            	
+			            		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			            			=> AppendNormalResult(stringBuilder, indentation);
+			            	}
+			            """;
+		}
+
+		result += """
+		          }
+		          #nullable disable
+		          """;
 		return result.TrimStart();
 	}
 }

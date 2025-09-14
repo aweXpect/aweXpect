@@ -9,31 +9,54 @@ internal readonly record struct ExpectationToGenerate
 		INamedTypeSymbol targetType,
 		string name,
 		string outcomeMethod,
-		string expectationText,
-		string[] usings,
-		string? remarks)
+		AttributeData attributeData)
 	{
 		Namespace = @namespace;
 		ClassName = className;
-		TargetType = targetType;
+		TargetType = targetType.ToDisplayString();
 		Name = name.Replace("{Not}", "");
 		NegatedName = name.Replace("{Not}", "Not");
 		IncludeNegated = name.Contains("{Not}");
 		OutcomeMethod = outcomeMethod;
+
+		string expectationText = outcomeMethod;
+		foreach (KeyValuePair<string, TypedConstant> namedArgument in attributeData.NamedArguments)
+		{
+			switch (namedArgument.Key)
+			{
+				case "ExpectationText":
+					expectationText = namedArgument.Value.Value?.ToString() ?? expectationText;
+					break;
+				case "Remarks":
+					Remarks = namedArgument.Value.Value?.ToString();
+					break;
+				case "Using":
+					Usings =
+						namedArgument.Value.Values.Select(x => x.Value?.ToString()).Where(x => x != null).ToArray()!;
+					break;
+			}
+		}
+
+		IsNullable = attributeData.AttributeClass!.Name ==
+		             nameof(SourceGenerationHelper.CreateExpectationOnNullableAttribute);
+		if (IsNullable)
+		{
+			TargetType += "?";
+		}
+
 		ExpectationText = expectationText.Replace("{not}", "").Replace("  ", " ");
 		NegatedExpectationText = expectationText.Replace("{not}", " not ").Replace("  ", " ");
-		Remarks = remarks;
-		Usings = usings;
 		FileName = $"{ClassName}.{Name}.g.cs";
 	}
 
-	public string[] Usings { get; }
+	public string[] Usings { get; } = [];
 	public string FileName { get; }
 	public bool IncludeNegated { get; }
+	public bool IsNullable { get; }
 	public string NegatedName { get; }
 	public string Namespace { get; }
 	public string ClassName { get; }
-	public INamedTypeSymbol TargetType { get; }
+	public string TargetType { get; }
 	public string Name { get; }
 	public string OutcomeMethod { get; }
 	public string ExpectationText { get; }
