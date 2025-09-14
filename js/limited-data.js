@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          190.1297850926717,
           234.02060882250467,
           185.16794306891305,
           200.1135129928589,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           212.85053985913595,
           214.7792559782664,
           217.45401923997062,
-          227.88563789640153
+          227.88563789640153,
+          237.02992520332336
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -437,7 +437,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
-          472,
+          504,
           504,
           504,
           504,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          245.98242822060217,
           249.71872707513663,
           257.1052480061849,
           288.7689599672953,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           253.2593138217926,
           256.77423119544983,
           252.11459239323935,
-          257.4726174990336
+          257.4726174990336,
+          278.9226175088149
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          883.940659014384,
           896.0688382466634,
           888.4331371600812,
           950.8576468785603,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           913.747789144516,
           927.0747175852458,
           902.0381549199423,
-          939.2970257486616
+          939.2970257486616,
+          956.7476055962699
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          292140.8224158654,
           292236.50840541295,
           284261.90164620534,
           291641.52945963544,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           307882.7823311942,
           309469.58382161456,
           312802.36959635414,
-          316795.64350585936
+          316795.64350585936,
+          320782.40401785716
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1170,7 +1170,6 @@ window.BENCHMARK_DATA = {
           284940,
           284940,
           284940,
-          284940,
           284972,
           284972,
           284972,
@@ -1181,6 +1180,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2191079.2848772323,
           2360559.8858173075,
           2185807.382552083,
           2446740.6380208335,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2244069.847395833,
           2355592.3025841345,
           2313619.2996651786,
-          2317197.7880208334
+          2317197.7880208334,
+          2387057.1319754464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          686821.1316266741,
           698028.2536458333,
           708570.1418108259,
           724211.8733258928,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           699647.0986328125,
           691901.0441545759,
           689375.3415690104,
-          727584.2485026042
+          727584.2485026042,
+          699265.16015625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          504.9109592437744,
           480.5751190185547,
           471.58090145247326,
           513.2954837799073,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           510.1876879374186,
           488.01429898398266,
           503.64058888753254,
-          500.7190069834391
+          500.7190069834391,
+          535.9216064306406
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1903,7 +1903,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
-          1432,
+          1464,
           1464,
           1464,
           1464,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          543.4679034550985,
           538.7194717407226,
           473.38043030103046,
           579.4196901321411,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           499.3595628004808,
           496.93479574643646,
           507.99682935078937,
-          527.7434204101562
+          527.7434204101562,
+          570.4154210771833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          16267.27124633789,
           15407.828228759765,
           14607.753365071614,
           17891.715669904435,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           16491.46247276893,
           18815.521006266277,
           15411.662520345051,
-          15968.898663330077
+          15968.898663330077,
+          16422.798177083332
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          224.6800581296285,
           237.9080223719279,
           212.9125053201403,
           246.97699890136718,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           262.7459104855855,
           241.94087635676067,
           247.88557612101238,
-          257.5337066014608
+          257.5337066014608,
+          281.8925037384033
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2636,7 +2636,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
-          784,
+          816,
           816,
           816,
           816,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          281.35247004826863,
           283.3998212814331,
           284.691321849823,
           290.2568111101786,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           248.89423175652823,
           239.32847128595625,
           256.3723353068034,
-          268.798576259613
+          268.798576259613,
+          292.0975764274597
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1342.2946872711182,
           1257.7739298502604,
           1206.465983581543,
           1289.8312764485677,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1213.1871643066406,
           1162.2597320263203,
           1214.4374229431153,
-          1270.2383140563966
+          1270.2383140563966,
+          1308.353942489624
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          403.75442225138346,
           363.8827963511149,
           340.064981396993,
           392.8086578845978,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           432.7024888674418,
           417.36274047692615,
           443.0111813178429,
-          438.89003324508667
+          438.89003324508667,
+          482.0093069757734
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3369,11 +3369,11 @@ window.BENCHMARK_DATA = {
           1128,
           1128,
           1128,
-          1128,
           1160,
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          475.27943270547047,
           576.4057349522908,
           484.9827379862467,
           564.8904190063477,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           466.54764740807667,
           468.23926849365233,
           476.74132183619906,
-          505.2962252934774
+          505.2962252934774,
+          548.6755205790201
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1355.6293227855977,
           1293.9423133850098,
           1245.648823038737,
           1347.8842615400042,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1296.7752490410437,
           1250.1893657684327,
           1229.0143366495768,
-          1331.3731455485026
+          1331.3731455485026,
+          1415.1809309550695
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1459.6668649400983,
           1416.8200059618268,
           1422.5139600208827,
           1437.587763595581,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1764.5257284800211,
           1725.2217935834612,
           1805.1198635101318,
-          1799.5521504538399
+          1799.5521504538399,
+          1938.7070114135743
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4102,7 +4102,6 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
-          2744,
           2776,
           2776,
           2776,
@@ -4119,6 +4118,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1313.9129651387532,
           1455.476150004069,
           1307.4820973322942,
           1477.973246383667,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1323.5876591546196,
           1310.9797569274901,
           1361.1923206329345,
-          1365.5272491455078
+          1365.5272491455078,
+          1481.8735827128091
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3244.4809435330903,
           3433.105632019043,
           3258.705184664045,
           3480.661188252767,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3381.869792351356,
           3212.460276285807,
           3463.2435722351074,
-          3331.9257714407786
+          3331.9257714407786,
+          3507.7014475504557
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "4e412112fb1d7618b07736e550924a47e7555ed2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:42:28 2025 \u002B0200",
-        "message": "chore: explicitely set version of \u0060dotnet-stryker\u0060 to v4.7.0 (#715)"
-      },
-      {
         "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:32:04 2025 \u002B0200",
         "message": "chore: bump aweXpect (#780)"
+      },
+      {
+        "sha": "f68f8a1efa548e2d07323c3cd6f65770feaee474",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
+        "message": "feat: add negated nullable char expectations (#781)"
       }
     ],
     "labels": [
-      "4e412112",
       "d08341b5",
       "df0c03be",
       "02df3871",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "f51db771",
       "9a1c4b68",
       "861e39d5",
-      "d8464943"
+      "d8464943",
+      "f68f8a1e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1711.3150469916206,
           1649.2603721618652,
           1631.4195346832275,
           1731.8070226033528,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2218.955516560872,
           2211.0581016540527,
           2224.435215504964,
-          2296.920896402995
+          2296.920896402995,
+          2356.7611770629883
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4835,7 +4835,6 @@ window.BENCHMARK_DATA = {
           2920,
           2920,
           2920,
-          2920,
           2952,
           2952,
           2952,
@@ -4852,6 +4851,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          157078.56497395833,
           155141.36845703126,
           150156.30393629806,
           156166.65538611778,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           155030.77982271634,
           150443.84315708705,
           152592.82550920759,
-          154741.05001395088
+          154741.05001395088,
+          154799.93007114955
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63788,
           63788,
           63351,
           63788,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
-          63353
+          63353,
+          63788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3917.860544644869,
           3978.8337814331053,
           3930.4506861368814,
           4092.1461588541665,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3880.284315999349,
           3775.6561299641926,
           3902.0047927856444,
-          3992.9065170288086
+          3992.9065170288086,
+          4071.8699279785155
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
