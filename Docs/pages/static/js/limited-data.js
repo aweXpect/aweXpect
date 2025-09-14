@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          234.02060882250467,
           185.16794306891305,
           200.1135129928589,
           199.90198740959167,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           214.7792559782664,
           217.45401923997062,
           227.88563789640153,
-          237.02992520332336
+          237.02992520332336,
+          228.35234853426616
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -436,7 +436,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
-          472,
+          504,
           504,
           504,
           504,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          249.71872707513663,
           257.1052480061849,
           288.7689599672953,
           271.3134614626567,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           256.77423119544983,
           252.11459239323935,
           257.4726174990336,
-          278.9226175088149
+          278.9226175088149,
+          260.6707429885864
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          896.0688382466634,
           888.4331371600812,
           950.8576468785603,
           961.274909845988,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           927.0747175852458,
           902.0381549199423,
           939.2970257486616,
-          956.7476055962699
+          956.7476055962699,
+          944.3225673266819
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          292236.50840541295,
           284261.90164620534,
           291641.52945963544,
           314921.4136393229,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           309469.58382161456,
           312802.36959635414,
           316795.64350585936,
-          320782.40401785716
+          320782.40401785716,
+          326642.5024789664
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1169,7 +1169,6 @@ window.BENCHMARK_DATA = {
           284940,
           284940,
           284940,
-          284940,
           284972,
           284972,
           284972,
@@ -1180,6 +1179,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2360559.8858173075,
           2185807.382552083,
           2446740.6380208335,
           2399744.9088541665,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2355592.3025841345,
           2313619.2996651786,
           2317197.7880208334,
-          2387057.1319754464
+          2387057.1319754464,
+          2246155.509765625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          698028.2536458333,
           708570.1418108259,
           724211.8733258928,
           727263.4899088541,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           691901.0441545759,
           689375.3415690104,
           727584.2485026042,
-          699265.16015625
+          699265.16015625,
+          701042.5607561384
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          480.5751190185547,
           471.58090145247326,
           513.2954837799073,
           507.9237178166707,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           488.01429898398266,
           503.64058888753254,
           500.7190069834391,
-          535.9216064306406
+          535.9216064306406,
+          523.5016982396444
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1902,7 +1902,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
-          1432,
+          1464,
           1464,
           1464,
           1464,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          538.7194717407226,
           473.38043030103046,
           579.4196901321411,
           625.1886011123657,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           496.93479574643646,
           507.99682935078937,
           527.7434204101562,
-          570.4154210771833
+          570.4154210771833,
+          518.7926048551287
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          15407.828228759765,
           14607.753365071614,
           17891.715669904435,
           19982.52837524414,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           18815.521006266277,
           15411.662520345051,
           15968.898663330077,
-          16422.798177083332
+          16422.798177083332,
+          15765.819462076823
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          237.9080223719279,
           212.9125053201403,
           246.97699890136718,
           249.13954078356426,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           241.94087635676067,
           247.88557612101238,
           257.5337066014608,
-          281.8925037384033
+          281.8925037384033,
+          257.41368395487467
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2635,7 +2635,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
-          784,
+          816,
           816,
           816,
           816,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          283.3998212814331,
           284.691321849823,
           290.2568111101786,
           270.8660439491272,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           239.32847128595625,
           256.3723353068034,
           268.798576259613,
-          292.0975764274597
+          292.0975764274597,
+          263.9341005938394
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1257.7739298502604,
           1206.465983581543,
           1289.8312764485677,
           1238.3823009490966,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1162.2597320263203,
           1214.4374229431153,
           1270.2383140563966,
-          1308.353942489624
+          1308.353942489624,
+          1249.6748152414957
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          363.8827963511149,
           340.064981396993,
           392.8086578845978,
           377.83654537200925,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           417.36274047692615,
           443.0111813178429,
           438.89003324508667,
-          482.0093069757734
+          482.0093069757734,
+          450.38661425908407
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3368,11 +3368,11 @@ window.BENCHMARK_DATA = {
           1128,
           1128,
           1128,
-          1128,
           1160,
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          576.4057349522908,
           484.9827379862467,
           564.8904190063477,
           529.1992258071899,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           468.23926849365233,
           476.74132183619906,
           505.2962252934774,
-          548.6755205790201
+          548.6755205790201,
+          505.41757990519204
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1293.9423133850098,
           1245.648823038737,
           1347.8842615400042,
           1265.9992123921713,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1250.1893657684327,
           1229.0143366495768,
           1331.3731455485026,
-          1415.1809309550695
+          1415.1809309550695,
+          1289.6910037994385
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1416.8200059618268,
           1422.5139600208827,
           1437.587763595581,
           1559.861279296875,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1725.2217935834612,
           1805.1198635101318,
           1799.5521504538399,
-          1938.7070114135743
+          1938.7070114135743,
+          1777.8413832346598
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4101,7 +4101,6 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
-          2744,
           2776,
           2776,
           2776,
@@ -4118,6 +4117,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1455.476150004069,
           1307.4820973322942,
           1477.973246383667,
           1480.9022111256918,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1310.9797569274901,
           1361.1923206329345,
           1365.5272491455078,
-          1481.8735827128091
+          1481.8735827128091,
+          1415.1540985107422
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3433.105632019043,
           3258.705184664045,
           3480.661188252767,
           3493.469972229004,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3212.460276285807,
           3463.2435722351074,
           3331.9257714407786,
-          3507.7014475504557
+          3507.7014475504557,
+          3386.2801060994466
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "d08341b502eec5d14709a39ba37c8af2b9bb5cac",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Aug 12 00:57:23 2025 \u002B0200",
-        "message": "fix: use dotnet nuget to push packages (#716)"
-      },
-      {
         "sha": "df0c03be8c1f6b51a9d2b99c0c5dc9c6c52e4781",
         "author": "Valentin Breu\u00DF",
         "date": "Tue Aug 12 01:17:13 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 06:54:49 2025 \u002B0200",
         "message": "feat: add negated nullable char expectations (#781)"
+      },
+      {
+        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
+        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
       }
     ],
     "labels": [
-      "d08341b5",
       "df0c03be",
       "02df3871",
       "6c33916e",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "9a1c4b68",
       "861e39d5",
       "d8464943",
-      "f68f8a1e"
+      "f68f8a1e",
+      "70e516b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1649.2603721618652,
           1631.4195346832275,
           1731.8070226033528,
           1747.4298141479492,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2211.0581016540527,
           2224.435215504964,
           2296.920896402995,
-          2356.7611770629883
+          2356.7611770629883,
+          2226.0806151798793
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4834,7 +4834,6 @@ window.BENCHMARK_DATA = {
           2920,
           2920,
           2920,
-          2920,
           2952,
           2952,
           2952,
@@ -4851,6 +4850,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          155141.36845703126,
           150156.30393629806,
           156166.65538611778,
           155727.4384765625,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           150443.84315708705,
           152592.82550920759,
           154741.05001395088,
-          154799.93007114955
+          154799.93007114955,
+          156546.865687779
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63788,
           63351,
           63788,
           63788,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63353,
-          63788
+          63788,
+          64324
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3978.8337814331053,
           3930.4506861368814,
           4092.1461588541665,
           4155.465719604492,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3775.6561299641926,
           3902.0047927856444,
           3992.9065170288086,
-          4071.8699279785155
+          4071.8699279785155,
+          4080.680602264404
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
