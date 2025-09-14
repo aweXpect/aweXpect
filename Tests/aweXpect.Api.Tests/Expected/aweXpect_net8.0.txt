@@ -1234,19 +1234,6 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, params System.TimeSpan?[] expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsPositive(this aweXpect.Core.IThat<System.TimeSpan> source) { }
     }
-    public static class ThatUri
-    {
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> DoesNotHaveDefaultPort(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> HasDefaultPort(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsAbsolute(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsFile(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsLoopback(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsNotAbsolute(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsNotFile(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsNotLoopback(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsNotUnc(this aweXpect.Core.IThat<System.Uri> source) { }
-        public static aweXpect.Results.AndOrResult<System.Uri, aweXpect.Core.IThat<System.Uri>> IsUnc(this aweXpect.Core.IThat<System.Uri> source) { }
-    }
 }
 namespace aweXpect.Equivalency
 {
