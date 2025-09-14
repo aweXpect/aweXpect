@@ -104,14 +104,23 @@ public class ExpectationGenerator : IIncrementalGenerator
 		}
 
 		string? outcomeMethod = null;
-		string? name = null;
+		string? positiveName = null;
+		string? negativeName = null;
 		if (attributeData.ConstructorArguments.Length == 2)
 		{
-			name = attributeData.ConstructorArguments[0].Value?.ToString();
+			var name = attributeData.ConstructorArguments[0].Value?.ToString();
+			positiveName = name?.Replace("{Not}", "");
+			negativeName = name?.Replace("{Not}", "Not");
 			outcomeMethod = attributeData.ConstructorArguments[1].Value?.ToString();
 		}
+		else if (attributeData.ConstructorArguments.Length == 3)
+		{
+			positiveName = attributeData.ConstructorArguments[0].Value?.ToString();
+			negativeName = attributeData.ConstructorArguments[1].Value?.ToString();
+			outcomeMethod = attributeData.ConstructorArguments[2].Value?.ToString();
+		}
 
-		if (outcomeMethod == null || name == null)
+		if (outcomeMethod == null || positiveName == null)
 		{
 			return null;
 		}
@@ -125,7 +134,8 @@ public class ExpectationGenerator : IIncrementalGenerator
 			containingNamespace,
 			classSymbol.Name,
 			targetType,
-			name,
+			positiveName,
+			negativeName,
 			outcomeMethod,
 			attributeData);
 	}

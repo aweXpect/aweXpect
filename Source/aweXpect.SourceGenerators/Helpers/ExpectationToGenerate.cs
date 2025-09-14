@@ -7,25 +7,35 @@ internal readonly record struct ExpectationToGenerate
 	public ExpectationToGenerate(string @namespace,
 		string className,
 		INamedTypeSymbol targetType,
-		string name,
+		string positiveName,
+		string? negativeName,
 		string outcomeMethod,
 		AttributeData attributeData)
 	{
 		Namespace = @namespace;
 		ClassName = className;
 		TargetType = targetType.ToDisplayString();
-		Name = name.Replace("{Not}", "");
-		NegatedName = name.Replace("{Not}", "Not");
-		IncludeNegated = name.Contains("{Not}");
+		Name = positiveName;
+		NegatedName = negativeName;
+		IncludeNegated = negativeName is not null;
 		OutcomeMethod = outcomeMethod;
 
-		string expectationText = outcomeMethod;
+		string? positiveExpectationText = null;
+		string? negativeExpectationText = null;
 		foreach (KeyValuePair<string, TypedConstant> namedArgument in attributeData.NamedArguments)
 		{
 			switch (namedArgument.Key)
 			{
 				case "ExpectationText":
-					expectationText = namedArgument.Value.Value?.ToString() ?? expectationText;
+					string? expectationText = namedArgument.Value.Value?.ToString();
+					positiveExpectationText = expectationText?.Replace("{not}", "").Replace("  ", " ");
+					negativeExpectationText = expectationText?.Replace("{not}", " not ").Replace("  ", " ");
+					break;
+				case "PositiveExpectationText":
+					positiveExpectationText = namedArgument.Value.Value?.ToString();
+					break;
+				case "NegativeExpectationText":
+					negativeExpectationText = namedArgument.Value.Value?.ToString();
 					break;
 				case "Remarks":
 					Remarks = namedArgument.Value.Value?.ToString();
@@ -44,8 +54,8 @@ internal readonly record struct ExpectationToGenerate
 			TargetType += "?";
 		}
 
-		ExpectationText = expectationText.Replace("{not}", "").Replace("  ", " ");
-		NegatedExpectationText = expectationText.Replace("{not}", " not ").Replace("  ", " ");
+		ExpectationText = positiveExpectationText ?? positiveName;
+		NegatedExpectationText = negativeExpectationText ?? $"not {positiveName}";
 		FileName = $"{ClassName}.{Name}.g.cs";
 	}
 
@@ -53,7 +63,7 @@ internal readonly record struct ExpectationToGenerate
 	public string FileName { get; }
 	public bool IncludeNegated { get; }
 	public bool IsNullable { get; }
-	public string NegatedName { get; }
+	public string? NegatedName { get; }
 	public string Namespace { get; }
 	public string ClassName { get; }
 	public string TargetType { get; }

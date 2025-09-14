@@ -16,17 +16,32 @@ internal static class SourceGenerationHelper
 		[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = true)]
 		internal class CreateExpectationOnAttribute<TTarget> : System.Attribute
 		{
-		    public CreateExpectationOnAttribute(string methodName, string name)
+		    public CreateExpectationOnAttribute(string name, string outcomeMethod)
 		    {
 		        TargetType = typeof(TTarget);
-		        MethodName = methodName;
-		        Name = name;
+		        PositiveName = name.Replace("{Not}", "");
+		        if (name.Contains("{Not}"))
+		        {
+		            NegativeName = name.Replace("{Not}", "Not");
+		        }
+		        OutcomeMethod = outcomeMethod;
+		    }
+		    
+		    public CreateExpectationOnAttribute(string positiveName, string negativeName, string outcomeMethod)
+		    {
+		        TargetType = typeof(TTarget);
+		        PositiveName = positiveName;
+		        NegativeName = negativeName;
+		        OutcomeMethod = outcomeMethod;
 		    }
 
 		    public Type TargetType { get; }
-		    public string MethodName { get; }
-		    public string Name { get; set; }
+		    public string PositiveName { get; }
+		    public string? NegativeName { get; }
+		    public string OutcomeMethod { get; set; }
 		    public string? ExpectationText { get; set; }
+		    public string? PositiveExpectationText { get; set; }
+		    public string? NegativeExpectationText { get; set; }
 		    public string? Remarks { get; set; }
 		    public string[] Using { get; set; } = [];
 		}
@@ -113,7 +128,7 @@ internal static class SourceGenerationHelper
 			            		public ConstraintResult IsMetBy({{expectationToGenerate.TargetType}} actual)
 			            		{
 			            			Actual = actual;
-			            			Outcome = actual is not null && {{expectationToGenerate.OutcomeMethod.Replace("{value}", "actual.Value")}} ? Outcome.Success : Outcome.Failure;
+			            			Outcome = actual is not null && {{expectationToGenerate.OutcomeMethod.Replace("{value}", "actual")}} ? Outcome.Success : Outcome.Failure;
 			            			return this;
 			            		}
 			            	
