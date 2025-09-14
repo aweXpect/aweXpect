@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Text;
+using aweXpect.SourceGenerators.Helpers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
@@ -12,11 +13,12 @@ namespace aweXpect.SourceGenerators;
 [Generator]
 public class ExpectationGenerator : IIncrementalGenerator
 {
-	private static string[] _supportedAttributes =
+	private static readonly string[] _supportedAttributes =
 	[
 		nameof(SourceGenerationHelper.CreateExpectationOnAttribute),
 		nameof(SourceGenerationHelper.CreateExpectationOnNullableAttribute),
 	];
+
 	void IIncrementalGenerator.Initialize(IncrementalGeneratorInitializationContext context)
 	{
 		// Add the marker attributes to the compilation
@@ -70,8 +72,7 @@ public class ExpectationGenerator : IIncrementalGenerator
 				continue;
 			}
 
-			ExpectationToGenerate? expectationToGenerate = GetExpectationToGenerate(classSymbol,
-				attributeData);
+			ExpectationToGenerate? expectationToGenerate = GetExpectationToGenerate(classSymbol, attributeData);
 			if (expectationToGenerate != null &&
 			    files.Add(expectationToGenerate.Value.FileName))
 			{
@@ -120,8 +121,12 @@ public class ExpectationGenerator : IIncrementalGenerator
 			return null;
 		}
 
-
-		return new ExpectationToGenerate(containingNamespace, classSymbol.Name, targetType, name, outcomeMethod,
+		return new ExpectationToGenerate(
+			containingNamespace,
+			classSymbol.Name,
+			targetType,
+			name,
+			outcomeMethod,
 			attributeData);
 	}
 }

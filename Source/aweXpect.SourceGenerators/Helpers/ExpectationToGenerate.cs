@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace aweXpect.SourceGenerators;
+namespace aweXpect.SourceGenerators.Helpers;
 
 internal readonly record struct ExpectationToGenerate
 {

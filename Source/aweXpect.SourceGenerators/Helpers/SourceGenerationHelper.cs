@@ -1,4 +1,4 @@
-﻿namespace aweXpect.SourceGenerators;
+﻿namespace aweXpect.SourceGenerators.Helpers;
 
 internal static class SourceGenerationHelper
 {
