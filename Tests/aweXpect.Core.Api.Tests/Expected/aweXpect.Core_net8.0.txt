@@ -550,6 +550,13 @@ namespace aweXpect.Equivalency
     {
         public static aweXpect.Equivalency.EquivalencyComparisonType DefaultComparisonType(System.Type type) { }
     }
+    public abstract class EquivalencyExpectationBuilder : aweXpect.Core.ExpectationBuilder
+    {
+        protected EquivalencyExpectationBuilder() { }
+        public void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        public abstract System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy<TValue>(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken);
+        public override aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
+    }
     public class EquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
     {
         public EquivalencyOptions() { }
