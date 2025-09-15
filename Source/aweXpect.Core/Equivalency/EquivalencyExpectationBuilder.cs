@@ -34,8 +34,8 @@ internal class EquivalencyExpectationBuilder<T> : EquivalencyExpectationBuilder
 		return sb.ToString();
 	}
 
-	public override async Task<ConstraintResult> IsMetBy(
-		object? value,
+	public override async Task<ConstraintResult> IsMetBy<TValue>(
+		TValue value,
 		IEvaluationContext context,
 		CancellationToken cancellationToken)
 	{
@@ -94,7 +94,10 @@ internal class EquivalencyExpectationBuilder<T> : EquivalencyExpectationBuilder
 	}
 }
 
-internal abstract class EquivalencyExpectationBuilder : ExpectationBuilder
+/// <summary>
+///     An <see cref="ExpectationBuilder" /> used in equivalency comparison checks.
+/// </summary>
+public abstract class EquivalencyExpectationBuilder : ExpectationBuilder
 {
 	/// <summary>
 	///     Appends the expectation of the root node to the <paramref name="stringBuilder" />.
@@ -105,12 +108,12 @@ internal abstract class EquivalencyExpectationBuilder : ExpectationBuilder
 	/// <summary>
 	///     Evaluate if the expectations are met by the <paramref name="value" />.
 	/// </summary>
-	public abstract Task<ConstraintResult> IsMetBy(
-		object? value,
+	public abstract Task<ConstraintResult> IsMetBy<TValue>(
+		TValue value,
 		IEvaluationContext context,
 		CancellationToken cancellationToken);
 
-	/// <inheritdoc />
+	/// <inheritdoc cref="ExpectationBuilder.IsMet(Node, EvaluationContext, ITimeSystem, TimeSpan?, CancellationToken)" />
 	internal override Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext context,
 		ITimeSystem timeSystem,
