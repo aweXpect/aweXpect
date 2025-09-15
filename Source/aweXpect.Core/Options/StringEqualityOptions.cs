@@ -24,21 +24,17 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 	/// <inheritdoc />
 #if NET8_0_OR_GREATER
-	public ValueTask<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+	public async ValueTask<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
 #else
-	public Task<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+	public async Task<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
 #endif
 	{
 		bool result;
 		if (expected is not string expectedString)
 		{
-			result = _matchType.AreConsideredEqual(actual, null, _ignoreCase,
+			result = await _matchType.AreConsideredEqual(actual, null, _ignoreCase,
 				_comparer ?? UseDefaultComparer(_ignoreCase));
-#if NET8_0_OR_GREATER
-			return ValueTask.FromResult(result);
-#else
-			return Task.FromResult(result);
-#endif
+			return result;
 		}
 
 		if (_ignoreNewlineStyle)
@@ -59,13 +55,9 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expectedString = expectedString.TrimEnd();
 		}
 
-		result = _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
+		result = await _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
 			_comparer ?? UseDefaultComparer(_ignoreCase));
-#if NET8_0_OR_GREATER
-		return ValueTask.FromResult(result);
-#else
-		return Task.FromResult(result);
-#endif
+		return result;
 	}
 
 	/// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -96,20 +97,37 @@ public partial class StringEqualityOptions
 		}
 
 		/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
-		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
+#if NET8_0_OR_GREATER
+		public ValueTask<bool>
+#else
+		public Task<bool>
+#endif
+		AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
 			if (actual is null && expected is null)
 			{
-				return true;
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult(true);
+#else
+				return Task.FromResult(true);
+#endif
 			}
 
 			if (actual is null || expected is null)
 			{
-				return false;
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult(false);
+#else
+				return Task.FromResult(false);
+#endif
 			}
 
-			return comparer.Equals(actual, expected);
+#if NET8_0_OR_GREATER
+			return ValueTask.FromResult(comparer.Equals(actual, expected));
+#else
+			return Task.FromResult(comparer.Equals(actual, expected));
+#endif
 		}
 
 		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, ExpectationGrammars)" />

@@ -220,7 +220,7 @@ namespace aweXpect.Core
     }
     public interface IStringMatchType
     {
-        bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
+        System.Threading.Tasks.ValueTask<bool> AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
         string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammars);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer, aweXpect.Core.StringDifferenceSettings? settings);
         string GetOptionString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
