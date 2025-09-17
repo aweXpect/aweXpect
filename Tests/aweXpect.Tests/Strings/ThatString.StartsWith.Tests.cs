@@ -102,6 +102,23 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
+			public async Task WhenActualIsEmpty_ShouldFail()
+			{
+				string subject = "";
+				string expected = "SOME";
+
+				async Task Act()
+					=> await That(subject).StartsWith(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             starts with "SOME",
+					             but it was ""
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				string subject = "text";
