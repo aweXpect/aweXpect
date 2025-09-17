@@ -46,8 +46,18 @@ internal class EquivalencyExpectationBuilder<T> : EquivalencyExpectationBuilder
 		else if (value is null)
 		{
 			T? typedDefault = default;
-			_result = new NotMatchingTypesResult(typedDefault,
-				await GetRootNode().IsMetBy(typedDefault, context, cancellationToken));
+			if (typedDefault is not null)
+			{
+				_result = new NotMatchingTypesResult(typedDefault, null);
+			}
+			else
+			{
+				// ReSharper disable ExpressionIsAlwaysNull
+				// typedDefault is used to have the correct generic overload in `IsMetBy`.
+				_result = new NotMatchingTypesResult(typedDefault,
+					await GetRootNode().IsMetBy(typedDefault, context, cancellationToken));
+				// ReSharper restore ExpressionIsAlwaysNull
+			}
 		}
 		else
 		{
@@ -66,7 +76,7 @@ internal class EquivalencyExpectationBuilder<T> : EquivalencyExpectationBuilder
 		{
 			_value = value;
 			_inner = inner;
-			Outcome = Outcome.Failure;
+			Outcome = inner?.Outcome ?? Outcome.Failure;
 		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
