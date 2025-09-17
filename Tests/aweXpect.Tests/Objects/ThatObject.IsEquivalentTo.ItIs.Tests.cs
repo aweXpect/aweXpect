@@ -101,6 +101,42 @@ public sealed partial class ThatObject
 						             """);
 				}
 
+				/// <summary>
+				///     It is not possible to determine the type of <see langword="null" />!
+				/// </summary>
+				[Fact]
+				public async Task WhenAnyNotNullCheckAndItIsNull_ShouldFail()
+				{
+					DummyClass subject = new()
+					{
+						StringValue = null,
+						NullableIntValue = null,
+						IntValue = 42,
+					};
+					var expected = new
+					{
+						StringValue = It.Is<string>().That.IsEmpty(),
+						NullableIntValue = It.Is<int?>().That.IsEqualTo(0),
+						IntValue = It.Is<int>().That.IsGreaterThan(2),
+					};
+
+					async Task Act()
+						=> await That(subject).IsEquivalentTo(expected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             is equivalent to { StringValue = is string that is empty, NullableIntValue = is int? that is equal to 0, IntValue = is int that is greater than 2 },
+						             but it was not:
+						               Property StringValue was <null>
+						             and
+						               Property NullableIntValue was <null>
+
+						             Equivalency options:
+						              - include public fields and properties
+						             """);
+				}
+
 				[Fact]
 				public async Task WhenAnyTypeDoesNotMatch_ShouldFail()
 				{
@@ -165,7 +201,7 @@ public sealed partial class ThatObject
 				///     It is not possible to determine the type of <see langword="null" />!
 				/// </summary>
 				[Fact]
-				public async Task WhenCheckForNullAndItIsNull_ShouldStillFail()
+				public async Task WhenCheckForNullAndItIsNull_ShouldSucceed()
 				{
 					DummyClass subject = new()
 					{
@@ -181,27 +217,19 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).IsEquivalentTo(expected);
 
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected that subject
-						             is equivalent to { StringValue = is string that is null, IntValue = is int that is greater than 2 },
-						             but it was not:
-						               Property StringValue was <null>
-
-						             Equivalency options:
-						              - include public fields and properties
-						             """);
+					await That(Act).DoesNotThrow();
 				}
-			}
 
-			// ReSharper disable UnusedAutoPropertyAccessor.Local
-			private sealed class DummyClass
-			{
-				public string? StringValue { get; set; }
-				public int IntValue { get; set; }
-				public bool BoolValue { get; set; }
+				// ReSharper disable UnusedAutoPropertyAccessor.Local
+				private sealed class DummyClass
+				{
+					public string? StringValue { get; set; }
+					public int? NullableIntValue { get; set; }
+					public int IntValue { get; set; }
+					public bool BoolValue { get; set; }
+				}
+				// ReSharper restore UnusedAutoPropertyAccessor.Local
 			}
-			// ReSharper restore UnusedAutoPropertyAccessor.Local
 		}
 	}
 }
