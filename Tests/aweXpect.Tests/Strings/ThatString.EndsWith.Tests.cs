@@ -29,7 +29,7 @@ public sealed partial class ThatString
 					               "some arbitrary text"
 					                              "Text"
 					                               ↑ (expected suffix)
-					             
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -54,7 +54,7 @@ public sealed partial class ThatString
 					               "some arbitrary text"
 					                              "SOME"
 					                                  ↑ (expected suffix)
-					             
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -100,6 +100,23 @@ public sealed partial class ThatString
 				await That(Act).DoesNotThrow();
 			}
 
+			[Fact(Skip = "TODO: Re-Enable after next core update")]
+			public async Task WhenActualIsEmpty_ShouldFail()
+			{
+				string subject = "";
+				string expected = "SOME";
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with "SOME",
+					             but it was ""
+					             """);
+			}
+
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
@@ -138,7 +155,7 @@ public sealed partial class ThatString
 					               "some arbitrary text"
 					                              "some"
 					                                  ↑ (expected suffix)
-					             
+
 					             Actual:
 					             some arbitrary text
 					             """);
@@ -200,7 +217,7 @@ public sealed partial class ThatString
 					             ends with "more than text",
 					             but it was "text" which is shorter than the expected length of 14 and misses the prefix:
 					               "more than "
-					             
+
 					             Actual:
 					             text
 					             """);
