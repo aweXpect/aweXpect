@@ -53,7 +53,7 @@ public static partial class ThatString
 		{
 			Actual = actual;
 			Outcome = await options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
-			if (!string.IsNullOrWhiteSpace(actual))
+			if (!string.IsNullOrEmpty(actual))
 			{
 				expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Actual", actual)));
