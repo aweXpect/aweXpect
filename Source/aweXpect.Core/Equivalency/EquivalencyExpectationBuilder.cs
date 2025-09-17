@@ -53,6 +53,7 @@ internal class EquivalencyExpectationBuilder<T> : EquivalencyExpectationBuilder
 			else
 			{
 				// ReSharper disable ExpressionIsAlwaysNull
+				// typedDefault is used to have the correct generic overload in `IsMetBy`.
 				_result = new NotMatchingTypesResult(typedDefault,
 					await GetRootNode().IsMetBy(typedDefault, context, cancellationToken));
 				// ReSharper restore ExpressionIsAlwaysNull
