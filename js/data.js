@@ -2328,6 +2328,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -2718,7 +2724,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -3112,7 +3119,8 @@ window.BENCHMARK_DATA = {
           225.40423487027485,
           220.02118115765708,
           211.59765858650206,
-          214.40062243143717
+          214.40062243143717,
+          211.13208314350672
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3471,6 +3479,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3913,7 +3922,8 @@ window.BENCHMARK_DATA = {
           257.21087856292723,
           241.75672996961154,
           258.64126415252684,
-          248.7946160389827
+          248.7946160389827,
+          240.84753802844457
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4106,6 +4116,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4714,7 +4725,8 @@ window.BENCHMARK_DATA = {
           958.2415871938069,
           895.3627802775457,
           922.4506982803344,
-          877.2121419225421
+          877.2121419225421,
+          859.9117161887033
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5049,6 +5061,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -6993,6 +7006,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -7306,7 +7325,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -7623,7 +7643,8 @@ window.BENCHMARK_DATA = {
           315164.1796499399,
           307990.27106584824,
           324211.44599609374,
-          298676.5465494792
+          298676.5465494792,
+          316257.0925292969
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7915,6 +7936,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8270,7 +8292,8 @@ window.BENCHMARK_DATA = {
           2286586.1763020833,
           2277326.562760417,
           2379367.63671875,
-          2194289.82421875
+          2194289.82421875,
+          2234732.353515625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8386,6 +8409,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8917,7 +8941,8 @@ window.BENCHMARK_DATA = {
           711872.1667131697,
           679468.8438251202,
           709967.0181640625,
-          687987.7336077009
+          687987.7336077009,
+          668979.166015625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9175,6 +9200,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -11581,6 +11607,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -11971,7 +12003,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -12365,7 +12398,8 @@ window.BENCHMARK_DATA = {
           525.6780950839703,
           499.99773250307356,
           505.519931939932,
-          491.63686650594076
+          491.63686650594076,
+          478.0444595019023
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12724,6 +12758,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -13166,7 +13201,8 @@ window.BENCHMARK_DATA = {
           526.4000341551645,
           495.33144072123935,
           510.4575353769156,
-          484.3120264325823
+          484.3120264325823,
+          468.2287917137146
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13359,6 +13395,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -13967,7 +14004,8 @@ window.BENCHMARK_DATA = {
           15785.673767089844,
           23756.092083740234,
           16459.12139892578,
-          15938.968050130208
+          15938.968050130208,
+          14877.556986882137
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14302,6 +14340,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -16708,6 +16747,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -17098,7 +17143,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -17492,7 +17538,8 @@ window.BENCHMARK_DATA = {
           260.16957734425864,
           239.7945738519941,
           249.82627278107864,
-          253.85909172466822
+          253.85909172466822,
+          242.3988242830549
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17851,6 +17898,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18293,7 +18341,8 @@ window.BENCHMARK_DATA = {
           274.2320398330688,
           261.5186161994934,
           265.6490585009257,
-          246.05376093728202
+          246.05376093728202,
+          240.23527424676078
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18486,6 +18535,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -19094,7 +19144,8 @@ window.BENCHMARK_DATA = {
           1271.4445507342998,
           1200.5462566375732,
           1274.3738578796388,
-          1248.5235965435322
+          1248.5235965435322,
+          1171.758513041905
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19429,6 +19480,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -21835,6 +21887,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -22225,7 +22283,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -22619,7 +22678,8 @@ window.BENCHMARK_DATA = {
           449.55778255462644,
           483.25185521443683,
           489.10580348968506,
-          496.1378790310451
+          496.1378790310451,
+          461.6624502454485
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22982,6 +23042,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -23420,7 +23481,8 @@ window.BENCHMARK_DATA = {
           456.9725922175816,
           467.848566309611,
           483.3057573182242,
-          461.2750885327657
+          461.2750885327657,
+          456.0559544881185
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23613,6 +23675,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -24221,7 +24284,8 @@ window.BENCHMARK_DATA = {
           1204.3936402638753,
           1328.8861550649008,
           1246.620030769935,
-          1249.410934829712
+          1249.410934829712,
+          1203.8534029551915
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24556,6 +24620,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -26962,6 +27027,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -27352,7 +27423,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -27746,7 +27818,8 @@ window.BENCHMARK_DATA = {
           1675.2504884084067,
           1932.1340344746907,
           1956.5660400390625,
-          1941.8967473347982
+          1941.8967473347982,
+          1921.1778926849365
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28121,6 +28194,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -28547,7 +28621,8 @@ window.BENCHMARK_DATA = {
           1311.0709548950194,
           1326.581183751424,
           1357.5313623973302,
-          1260.040162785848
+          1260.040162785848,
+          1279.5674416859945
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28740,6 +28815,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -29348,7 +29424,8 @@ window.BENCHMARK_DATA = {
           3290.326538848877,
           3350.324390956334,
           3327.666467121669,
-          3304.169933319092
+          3304.169933319092,
+          3213.234384264265
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29683,6 +29760,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -32089,6 +32167,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
         "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
+      },
+      {
+        "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
+        "message": "chore: bump the aweXpect group (#792)"
       }
     ],
     "labels": [
@@ -32479,7 +32563,8 @@ window.BENCHMARK_DATA = {
       "d7e7a07f",
       "a1f5370c",
       "07fdc9d4",
-      "05fb28b3"
+      "05fb28b3",
+      "935f53e0"
     ],
     "datasets": [
       {
@@ -32873,7 +32958,8 @@ window.BENCHMARK_DATA = {
           2154.1762952168783,
           2467.7597985948837,
           2576.4018625895183,
-          2505.615651448568
+          2505.615651448568,
+          2556.1810656229654
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33248,6 +33334,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -33674,7 +33761,8 @@ window.BENCHMARK_DATA = {
           152394.18334960938,
           155568.91028645833,
           152630.83030598957,
-          147404.5851236979
+          147404.5851236979,
+          152428.44996744793
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34073,6 +34161,7 @@ window.BENCHMARK_DATA = {
           63351,
           63788,
           63351,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -34475,7 +34564,8 @@ window.BENCHMARK_DATA = {
           4007.675800069173,
           3970.7322596232098,
           3921.249365234375,
-          3939.700542195638
+          3939.700542195638,
+          3937.0675377478965
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -34810,6 +34900,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
