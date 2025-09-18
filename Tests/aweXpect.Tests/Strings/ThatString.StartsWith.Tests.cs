@@ -101,7 +101,7 @@ public sealed partial class ThatString
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact(Skip = "TODO: Re-Enable after next core update")]
+			[Fact]
 			public async Task WhenActualIsEmpty_ShouldFail()
 			{
 				string subject = "";
