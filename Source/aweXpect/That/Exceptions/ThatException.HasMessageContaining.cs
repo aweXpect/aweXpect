@@ -84,7 +84,7 @@ public static partial class ThatException
 			{
 				stringBuilder.Append("contains Message matching ");
 			}
-			
+
 			options.Exactly();
 			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars)["equal to ".Length..]);
 			options.AsWildcard();
