@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          176.3403208439167,
           185.93711884816489,
           182.09768929481507,
           191.10121061007183,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           220.02118115765708,
           211.59765858650206,
           214.40062243143717,
-          211.13208314350672
+          211.13208314350672,
+          215.4259432724544
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -427,7 +427,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
-          472,
+          504,
           504,
           504,
           504,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          242.52819787538968,
           251.90117820103964,
           249.53619050979614,
           259.9230720837911,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           241.75672996961154,
           258.64126415252684,
           248.7946160389827,
-          240.84753802844457
+          240.84753802844457,
+          256.8775446256002
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          891.5001493862698,
           902.6020253499349,
           901.4108022689819,
           925.7103965759277,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           895.3627802775457,
           922.4506982803344,
           877.2121419225421,
-          859.9117161887033
+          859.9117161887033,
+          940.1572181065877
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          279407.5891113281,
           296753.1725423177,
           293476.9721028646,
           284111.1892089844,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           307990.27106584824,
           324211.44599609374,
           298676.5465494792,
-          316257.0925292969
+          316257.0925292969,
+          326733.5488978795
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1160,7 +1160,6 @@ window.BENCHMARK_DATA = {
           284940,
           284940,
           284940,
-          284940,
           284972,
           284972,
           284972,
@@ -1171,6 +1170,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2141177.5106770834,
           2297927.9247395834,
           2176443.6557291667,
           2328384.793526786,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2277326.562760417,
           2379367.63671875,
           2194289.82421875,
-          2234732.353515625
+          2234732.353515625,
+          2407578.591238839
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          677646.1714242789,
           697100.4791917067,
           684684.3638392857,
           723242.202336238,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           679468.8438251202,
           709967.0181640625,
           687987.7336077009,
-          668979.166015625
+          668979.166015625,
+          720711.4989536831
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          465.90790071487424,
           487.12528800964355,
           464.90774004799977,
           477.769841893514,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           499.99773250307356,
           505.519931939932,
           491.63686650594076,
-          478.0444595019023
+          478.0444595019023,
+          523.3902828216553
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1893,7 +1893,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
-          1432,
+          1464,
           1464,
           1464,
           1464,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          469.4444543031546,
           509.41163902282716,
           498.93968178675726,
           502.26061630249023,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           495.33144072123935,
           510.4575353769156,
           484.3120264325823,
-          468.2287917137146
+          468.2287917137146,
+          526.493068768428
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          17330.356608799524,
           14822.239274088543,
           14850.530670166016,
           15713.671733601888,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           23756.092083740234,
           16459.12139892578,
           15938.968050130208,
-          14877.556986882137
+          14877.556986882137,
+          17668.9313986642
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          213.34604659080506,
           223.11799012819927,
           218.1816238085429,
           223.0851922829946,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           239.7945738519941,
           249.82627278107864,
           253.85909172466822,
-          242.3988242830549
+          242.3988242830549,
+          264.3699197133382
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2626,7 +2626,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
-          784,
+          816,
           816,
           816,
           816,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          255.3247394879659,
           249.45024153164454,
           246.41353340943655,
           261.0407924334208,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           261.5186161994934,
           265.6490585009257,
           246.05376093728202,
-          240.23527424676078
+          240.23527424676078,
+          274.0578015191214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1213.7299304962157,
           1258.9036290486654,
           1191.7524555751256,
           1232.8461297353108,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1200.5462566375732,
           1274.3738578796388,
           1248.5235965435322,
-          1171.758513041905
+          1171.758513041905,
+          1304.1440467834473
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          330.7347277959188,
           360.0867914472307,
           355.0507823739733,
           379.25353883107505,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           483.25185521443683,
           489.10580348968506,
           496.1378790310451,
-          461.6624502454485
+          461.6624502454485,
+          506.2351643698556
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3359,11 +3359,11 @@ window.BENCHMARK_DATA = {
           1128,
           1128,
           1128,
-          1128,
           1160,
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          463.1377405166626,
           488.0906815210978,
           473.3497388839722,
           516.9261315027873,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           467.848566309611,
           483.3057573182242,
           461.2750885327657,
-          456.0559544881185
+          456.0559544881185,
+          479.63954594930016
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1235.7507792252761,
           1276.9797097524008,
           1293.8233561197917,
           1335.1064558664957,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1328.8861550649008,
           1246.620030769935,
           1249.410934829712,
-          1203.8534029551915
+          1203.8534029551915,
+          1234.9800919850668
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1395.3268552144368,
           1403.7060078938803,
           1396.8999580383302,
           1403.898435719808,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1932.1340344746907,
           1956.5660400390625,
           1941.8967473347982,
-          1921.1778926849365
+          1921.1778926849365,
+          1932.8731807708741
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4092,7 +4092,6 @@ window.BENCHMARK_DATA = {
           2744,
           2744,
           2744,
-          2744,
           2776,
           2776,
           2776,
@@ -4109,6 +4108,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1322.9255753835043,
           1344.0232087453207,
           1328.3051708221435,
           1358.08385403951,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1326.581183751424,
           1357.5313623973302,
           1260.040162785848,
-          1279.5674416859945
+          1279.5674416859945,
+          1340.723444529942
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3286.5660087585447,
           3367.9244791666665,
           3303.1815958658854,
           3431.588545481364,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           3350.324390956334,
           3327.666467121669,
           3304.169933319092,
-          3213.234384264265
+          3213.234384264265,
+          3330.521934000651
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "fe5c680d05c6d3941ea8fd3e432bdb1ef32260b7",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Aug 15 07:31:19 2025 \u002B0200",
-        "message": "refactor: add missing files in \u0022.github\u0022 to solution (#725)"
-      },
-      {
         "sha": "0a3cfb943df6b5605ec93c7dc87e1a12cb629057",
         "author": "dependabot[bot]",
         "date": "Mon Aug 18 17:28:53 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
         "message": "chore: bump the aweXpect group (#792)"
+      },
+      {
+        "sha": "dd79b966e3aea1a3d75f813a04a07a56e2f884df",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
+        "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
       }
     ],
     "labels": [
-      "fe5c680d",
       "0a3cfb94",
       "1593161d",
       "4cbb9ea0",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "a1f5370c",
       "07fdc9d4",
       "05fb28b3",
-      "935f53e0"
+      "935f53e0",
+      "dd79b966"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1665.8869389851889,
           1568.0014144352504,
           1624.935859553019,
           1616.3939440800593,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2467.7597985948837,
           2576.4018625895183,
           2505.615651448568,
-          2556.1810656229654
+          2556.1810656229654,
+          2515.7020017183745
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4825,7 +4825,6 @@ window.BENCHMARK_DATA = {
           2920,
           2920,
           2920,
-          2920,
           2952,
           2952,
           2952,
@@ -4842,6 +4841,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          145882.68819754463,
           154207.91858723958,
           152187.11686197916,
           150520.9672200521,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           155568.91028645833,
           152630.83030598957,
           147404.5851236979,
-          152428.44996744793
+          152428.44996744793,
+          151204.05447823662
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63787,
           63352,
           63788,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63788,
           63351,
           63787,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3880.4755516052246,
           3952.6358395894367,
           3945.9345413208007,
           4081.4264330182755,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3970.7322596232098,
           3921.249365234375,
           3939.700542195638,
-          3937.0675377478965
+          3937.0675377478965,
+          3924.4628331502277
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
