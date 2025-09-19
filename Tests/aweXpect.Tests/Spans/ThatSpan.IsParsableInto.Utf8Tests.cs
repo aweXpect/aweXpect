@@ -18,12 +18,21 @@ public sealed partial class ThatSpan
 				async Task Act()
 					=> await That(subject.AsSpan()).IsParsableInto<int>();
 
+#if NET10_0_OR_GREATER
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject.AsSpan()
+					             is parsable into int,
+					             but it was not because the input string 'abc' was not in a correct format
+					             """);
+#else
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject.AsSpan()
 					             is parsable into int,
 					             but it was not because the input string 'System.ReadOnlySpan<Byte>[3]' was not in a correct format
 					             """);
+#endif
 			}
 
 			[Fact]
@@ -49,12 +58,21 @@ public sealed partial class ThatSpan
 				async Task Act()
 					=> await That(subject.AsSpan()).IsParsableInto<uint>(formatProvider);
 
+#if NET10_0_OR_GREATER
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject.AsSpan()
+					              is parsable into uint using {cultureName},
+					              but it was not because the input string '{subjectString}' was not in a correct format
+					              """);
+#else
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject.AsSpan()
 					              is parsable into uint using {cultureName},
 					              but it was not because the input string 'System.ReadOnlySpan<Byte>[6]' was not in a correct format
 					              """);
+#endif
 			}
 
 			[Theory]
@@ -83,12 +101,21 @@ public sealed partial class ThatSpan
 				async Task Act()
 					=> await That(subject.AsSpan()).IsParsableInto<double>().Which.IsLessThan(10.0);
 
+#if NET10_0_OR_GREATER
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject.AsSpan()
+					             is parsable into double which is less than 10.0,
+					             but it was not because the input string 'abc' was not in a correct format
+					             """);
+#else
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject.AsSpan()
 					             is parsable into double which is less than 10.0,
 					             but it was not because the input string 'System.ReadOnlySpan<Byte>[3]' was not in a correct format
 					             """);
+#endif
 			}
 
 			[Fact]
