@@ -27,23 +27,39 @@ public static partial class ThatException
 			options);
 	}
 
+	/// <summary>
+	///     Verifies that the actual exception does not have a message equal to <paramref name="unexpected" />.
+	/// </summary>
+	public static StringEqualityTypeResult<Exception?, IThat<Exception?>> DoesNotHaveMessage(
+		this IThat<Exception?> source,
+		string unexpected)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityTypeResult<Exception?, IThat<Exception?>>(
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
+				=> new HasMessageValueConstraint(
+					expectationBuilder, it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
 	internal class HasMessageValueConstraint(
 		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		string expected,
 		StringEqualityOptions options)
-		: ConstraintResult.WithValue<Exception?>(grammars),
+		: ConstraintResult.WithNotNullValue<Exception?>(it, grammars),
 			IAsyncConstraint<Exception?>
 	{
 		public async Task<ConstraintResult> IsMetBy(Exception? actual, CancellationToken cancellationToken)
 		{
 			Actual = actual;
 			Outcome = await options.AreConsideredEqual(actual?.Message, expected) ? Outcome.Success : Outcome.Failure;
-			if (Outcome == Outcome.Failure)
+			if (!string.IsNullOrEmpty(actual?.Message))
 			{
 				expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Message", actual?.Message)));
+					.Add(new ResultContext("Message", actual.Message)));
 			}
 
 			return this;
@@ -70,7 +86,7 @@ public static partial class ThatException
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual?.Message, expected));
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual?.Message, expected));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalExpectation(stringBuilder, indentation);

@@ -22,6 +22,9 @@ public sealed partial class ThatException
 						             has an inner ThatException.CustomException whose Message is equal to "inner",
 						             but it was an Exception:
 						               inner
+						             
+						             Message:
+						             inner
 						             """);
 				}
 
@@ -142,6 +145,9 @@ public sealed partial class ThatException
 						             Expected that subject
 						             does not have an inner ThatException.CustomException whose Message is equal to "inner",
 						             but it had
+						             
+						             Message:
+						             inner
 						             """);
 				}
 

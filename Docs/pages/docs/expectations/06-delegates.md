@@ -83,9 +83,12 @@ This is especially useful with parametrized tests where it depends on a paramete
 You can verify the message of the thrown exception:
 
 ```csharp
-void Act() => throw new CustomException("my exception");
+void Act() => throw new CustomException("This is my exception text");
 
-await Expect.That(Act).ThrowsException().WithMessage("my exception");
+await Expect.That(Act).ThrowsException().WithMessage("This is my exception text");
+await Expect.That(Act).ThrowsException().WithoutMessage("some other text");
+await Expect.That(Act).ThrowsException().WithMessageContaining("my exception");
+await Expect.That(Act).ThrowsException().WithoutMessageContaining("something else");
 ```
 
 You can use the same configuration options as when [comparing strings](/docs/expectations/string#equality).
