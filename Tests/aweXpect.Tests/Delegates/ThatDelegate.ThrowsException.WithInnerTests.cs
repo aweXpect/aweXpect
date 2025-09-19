@@ -222,6 +222,9 @@ public sealed partial class ThatDelegate
 						             throws an exception with an inner MyException whose Message is equal to "foo",
 						             but it was a ThatDelegate.CustomException:
 						               foo
+						             
+						             Message:
+						             foo
 						             """);
 				}
 
@@ -480,6 +483,9 @@ public sealed partial class ThatDelegate
 						             throws an exception with an inner MyException whose Message is equal to "foo",
 						             but it was a ThatDelegate.CustomException:
 						               foo
+						             
+						             Message:
+						             foo
 						             """);
 				}
 

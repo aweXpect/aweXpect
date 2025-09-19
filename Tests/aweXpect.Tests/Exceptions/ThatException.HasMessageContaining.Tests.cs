@@ -156,6 +156,9 @@ public sealed partial class ThatException
 					             Expected that subject
 					             does not contain Message matching "my text",
 					             but it was "my text"
+					             
+					             Message:
+					             my text
 					             """);
 			}
 
