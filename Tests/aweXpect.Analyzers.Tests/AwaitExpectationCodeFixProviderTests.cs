@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Xunit;
 using Verifier = aweXpect.Analyzers.Tests.Verifiers.CSharpCodeFixVerifier<aweXpect.Analyzers.AwaitExpectationAnalyzer,
 	aweXpect.Analyzers.CodeFixers.AwaitExpectationCodeFixProvider>;
 
