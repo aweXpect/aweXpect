@@ -2340,6 +2340,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -2732,7 +2738,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -3128,7 +3135,8 @@ window.BENCHMARK_DATA = {
           211.59765858650206,
           214.40062243143717,
           211.13208314350672,
-          215.4259432724544
+          215.4259432724544,
+          248.7013270344053
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3487,6 +3495,7 @@ window.BENCHMARK_DATA = {
           472,
           472,
           472,
+          504,
           504,
           504,
           504,
@@ -3933,7 +3942,8 @@ window.BENCHMARK_DATA = {
           258.64126415252684,
           248.7946160389827,
           240.84753802844457,
-          256.8775446256002
+          256.8775446256002,
+          251.86770606040955
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4126,6 +4136,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4738,7 +4749,8 @@ window.BENCHMARK_DATA = {
           922.4506982803344,
           877.2121419225421,
           859.9117161887033,
-          940.1572181065877
+          940.1572181065877,
+          901.114990234375
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5073,6 +5085,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -7031,6 +7044,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -7346,7 +7365,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -7665,7 +7685,8 @@ window.BENCHMARK_DATA = {
           324211.44599609374,
           298676.5465494792,
           316257.0925292969,
-          326733.5488978795
+          326733.5488978795,
+          297787.7237304688
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7957,6 +7978,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8316,7 +8338,8 @@ window.BENCHMARK_DATA = {
           2379367.63671875,
           2194289.82421875,
           2234732.353515625,
-          2407578.591238839
+          2407578.591238839,
+          2263092.3582589286
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8432,6 +8455,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -8967,7 +8991,8 @@ window.BENCHMARK_DATA = {
           709967.0181640625,
           687987.7336077009,
           668979.166015625,
-          720711.4989536831
+          720711.4989536831,
+          665287.4840959822
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9225,6 +9250,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
+          880545,
           880545,
           880545,
           880545,
@@ -11645,6 +11671,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -12037,7 +12069,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -12433,7 +12466,8 @@ window.BENCHMARK_DATA = {
           505.519931939932,
           491.63686650594076,
           478.0444595019023,
-          523.3902828216553
+          523.3902828216553,
+          496.2946443557739
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12792,6 +12826,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -13238,7 +13273,8 @@ window.BENCHMARK_DATA = {
           510.4575353769156,
           484.3120264325823,
           468.2287917137146,
-          526.493068768428
+          526.493068768428,
+          505.9104931513468
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13431,6 +13467,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -14043,7 +14080,8 @@ window.BENCHMARK_DATA = {
           16459.12139892578,
           15938.968050130208,
           14877.556986882137,
-          17668.9313986642
+          17668.9313986642,
+          14691.946834019252
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14378,6 +14416,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -16798,6 +16837,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -17190,7 +17235,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -17586,7 +17632,8 @@ window.BENCHMARK_DATA = {
           249.82627278107864,
           253.85909172466822,
           242.3988242830549,
-          264.3699197133382
+          264.3699197133382,
+          251.37558581034344
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17945,6 +17992,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18391,7 +18439,8 @@ window.BENCHMARK_DATA = {
           265.6490585009257,
           246.05376093728202,
           240.23527424676078,
-          274.0578015191214
+          274.0578015191214,
+          259.05390787124634
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18584,6 +18633,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -19196,7 +19246,8 @@ window.BENCHMARK_DATA = {
           1274.3738578796388,
           1248.5235965435322,
           1171.758513041905,
-          1304.1440467834473
+          1304.1440467834473,
+          1211.627546564738
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19531,6 +19582,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -21951,6 +22003,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -22343,7 +22401,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -22739,7 +22798,8 @@ window.BENCHMARK_DATA = {
           489.10580348968506,
           496.1378790310451,
           461.6624502454485,
-          506.2351643698556
+          506.2351643698556,
+          472.7600017229716
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23102,6 +23162,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -23544,7 +23605,8 @@ window.BENCHMARK_DATA = {
           483.3057573182242,
           461.2750885327657,
           456.0559544881185,
-          479.63954594930016
+          479.63954594930016,
+          473.97689507557794
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23737,6 +23799,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -24349,7 +24412,8 @@ window.BENCHMARK_DATA = {
           1246.620030769935,
           1249.410934829712,
           1203.8534029551915,
-          1234.9800919850668
+          1234.9800919850668,
+          1251.8973637898764
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24684,6 +24748,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -27104,6 +27169,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -27496,7 +27567,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -27892,7 +27964,8 @@ window.BENCHMARK_DATA = {
           1956.5660400390625,
           1941.8967473347982,
           1921.1778926849365,
-          1932.8731807708741
+          1932.8731807708741,
+          1937.5697926112584
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28267,6 +28340,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -28697,7 +28771,8 @@ window.BENCHMARK_DATA = {
           1357.5313623973302,
           1260.040162785848,
           1279.5674416859945,
-          1340.723444529942
+          1340.723444529942,
+          1378.096979268392
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28890,6 +28965,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -29502,7 +29578,8 @@ window.BENCHMARK_DATA = {
           3327.666467121669,
           3304.169933319092,
           3213.234384264265,
-          3330.521934000651
+          3330.521934000651,
+          3224.866934967041
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -29837,6 +29914,7 @@ window.BENCHMARK_DATA = {
           4576,
           4576,
           4576,
+          5296,
           5296,
           5296,
           5296,
@@ -32257,6 +32335,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 19 16:17:31 2025 \u002B0200",
         "message": "feat: add \u0060WithoutMessage\u0060 for delegate assertions (#793)"
+      },
+      {
+        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
+        "message": "feat: add support for .NET 10"
       }
     ],
     "labels": [
@@ -32649,7 +32733,8 @@ window.BENCHMARK_DATA = {
       "07fdc9d4",
       "05fb28b3",
       "935f53e0",
-      "dd79b966"
+      "dd79b966",
+      "704d02de"
     ],
     "datasets": [
       {
@@ -33045,7 +33130,8 @@ window.BENCHMARK_DATA = {
           2576.4018625895183,
           2505.615651448568,
           2556.1810656229654,
-          2515.7020017183745
+          2515.7020017183745,
+          2536.592486826579
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33420,6 +33506,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -33850,7 +33937,8 @@ window.BENCHMARK_DATA = {
           152630.83030598957,
           147404.5851236979,
           152428.44996744793,
-          151204.05447823662
+          151204.05447823662,
+          157370.6958705357
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34249,6 +34337,7 @@ window.BENCHMARK_DATA = {
           63351,
           63788,
           63351,
+          63787,
           63787,
           63787,
           63787
@@ -34655,7 +34744,8 @@ window.BENCHMARK_DATA = {
           3921.249365234375,
           3939.700542195638,
           3937.0675377478965,
-          3924.4628331502277
+          3924.4628331502277,
+          3936.201047261556
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -34990,6 +35080,7 @@ window.BENCHMARK_DATA = {
           6744,
           6744,
           6744,
+          6488,
           6488,
           6488,
           6488,
