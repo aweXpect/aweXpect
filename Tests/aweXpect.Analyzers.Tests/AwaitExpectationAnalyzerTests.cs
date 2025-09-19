@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Xunit;
 using Verifier = aweXpect.Analyzers.Tests.Verifiers.CSharpAnalyzerVerifier<aweXpect.Analyzers.AwaitExpectationAnalyzer>;
 
 namespace aweXpect.Analyzers.Tests;
