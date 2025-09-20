@@ -7,18 +7,18 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
-	private static readonly IStringMatchType ContainsMatch = new ContainsMatchType();
+	private static readonly IStringMatchType ContainingMatch = new ContainingMatchType();
 
 	/// <summary>
-	///     Interprets the expected <see langword="string" /> to be a contains for the actual string.
+	///     Interprets the expected <see langword="string" /> to be a contained in the actual string.
 	/// </summary>
-	public StringEqualityOptions Contains()
+	public StringEqualityOptions Containing()
 	{
-		_matchType = ContainsMatch;
+		_matchType = ContainingMatch;
 		return this;
 	}
 
-	private sealed class ContainsMatchType : IStringMatchType
+	private sealed class ContainingMatchType : IStringMatchType
 	{
 		private static bool Contains(string actual, string expected, IEqualityComparer<string> comparer)
 		{

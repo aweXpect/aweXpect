@@ -11,12 +11,12 @@ public sealed partial class PropertyResultTests
 		[InlineData("foo", "foobar")]
 		[InlineData("foo", "bar")]
 		[InlineData("foo", "FOO")]
-		public async Task Contains_ShouldFailWhenActualDoesNotContainExpected(string actual, string expected)
+		public async Task Containing_ShouldFailWhenActualDoesNotContainExpected(string actual, string expected)
 		{
 			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue(actual);
 
 			async Task Act()
-				=> await sut.Contains(expected);
+				=> await sut.Containing(expected);
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage($"""
@@ -29,12 +29,12 @@ public sealed partial class PropertyResultTests
 		[Theory]
 		[InlineData(true)]
 		[InlineData(false)]
-		public async Task Contains_ShouldSupportIgnoringCase(bool ignoringCase)
+		public async Task Containing_ShouldSupportIgnoringCase(bool ignoringCase)
 		{
 			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue("something with foo in it");
 
 			async Task Act()
-				=> await sut.Contains("FOO").IgnoringCase(ignoringCase);
+				=> await sut.Containing("FOO").IgnoringCase(ignoringCase);
 
 			await That(Act).Throws<XunitException>()
 				.OnlyIf(!ignoringCase)
@@ -46,7 +46,7 @@ public sealed partial class PropertyResultTests
 		}
 
 		[Fact]
-		public async Task Contains_ShouldTriggerValidation()
+		public async Task Containing_ShouldTriggerValidation()
 		{
 			Signaler<string?> signal = new();
 			PropertyResult.String<string> sut = new(new Dummy(), _ => "x", "y", (e, _) =>
@@ -54,7 +54,7 @@ public sealed partial class PropertyResultTests
 				signal.Signal(e);
 			});
 
-			_ = sut.Contains("foo");
+			_ = sut.Containing("foo");
 
 			await That(signal).Signaled().With(e => e == "foo");
 		}
@@ -62,75 +62,11 @@ public sealed partial class PropertyResultTests
 		[Theory]
 		[InlineData("foo", "foo")]
 		[InlineData("foobar", "oob")]
-		public async Task Contains_ShouldVerifyThatActualContainsExpected(string actual, string expected)
+		public async Task Containing_ShouldVerifyThatActualContainsExpected(string actual, string expected)
 		{
 			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue(actual);
 
-			MyClass? result = await sut.Contains(expected);
-
-			await That(result?.StringValue).IsEqualTo(actual);
-		}
-
-		[Theory]
-		[InlineData("foo", "foo")]
-		[InlineData("foobar", "oob")]
-		public async Task DoesNotContain_ShouldFailWhenActualContainsExpected(string actual, string expected)
-		{
-			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue(actual);
-
-			async Task Act()
-				=> await sut.DoesNotContain(expected);
-
-			await That(Act).Throws<XunitException>()
-				.WithMessage($"""
-				              Expected that subject
-				              has string value not containing "{expected}",
-				              but it had string value "{actual}"
-				              """);
-		}
-
-		[Theory]
-		[InlineData(true)]
-		[InlineData(false)]
-		public async Task DoesNotContain_ShouldSupportIgnoringCase(bool ignoringCase)
-		{
-			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue("something with foo in it");
-
-			async Task Act()
-				=> await sut.DoesNotContain("FOO").IgnoringCase(ignoringCase);
-
-			await That(Act).Throws<XunitException>()
-				.OnlyIf(ignoringCase)
-				.WithMessage("""
-				             Expected that subject
-				             has string value not containing "FOO" ignoring case,
-				             but it had string value "something with foo in it"
-				             """);
-		}
-
-		[Fact]
-		public async Task DoesNotContain_ShouldTriggerValidation()
-		{
-			Signaler<string?> signal = new();
-			PropertyResult.String<string> sut = new(new Dummy(), _ => "x", "y", (e, _) =>
-			{
-				signal.Signal(e);
-			});
-
-			_ = sut.DoesNotContain("foo");
-
-			await That(signal).Signaled().With(e => e == "foo");
-		}
-
-		[Theory]
-		[InlineData("foo", "foobar")]
-		[InlineData("foo", "bar")]
-		[InlineData("foo", "FOO")]
-		public async Task DoesNotContain_ShouldVerifyThatActualDoesNotContainExpected(string actual, string expected)
-		{
-			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue(actual);
-
-			MyClass? result = await sut.DoesNotContain(expected);
+			MyClass? result = await sut.Containing(expected);
 
 			await That(result?.StringValue).IsEqualTo(actual);
 		}
@@ -198,6 +134,70 @@ public sealed partial class PropertyResultTests
 			MyClass? result = await sut.EqualTo("foo");
 
 			await That(result?.StringValue).IsEqualTo("foo");
+		}
+
+		[Theory]
+		[InlineData("foo", "foo")]
+		[InlineData("foobar", "oob")]
+		public async Task NotContaining_ShouldFailWhenActualContainsExpected(string actual, string expected)
+		{
+			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue(actual);
+
+			async Task Act()
+				=> await sut.NotContaining(expected);
+
+			await That(Act).Throws<XunitException>()
+				.WithMessage($"""
+				              Expected that subject
+				              has string value not containing "{expected}",
+				              but it had string value "{actual}"
+				              """);
+		}
+
+		[Theory]
+		[InlineData(true)]
+		[InlineData(false)]
+		public async Task NotContaining_ShouldSupportIgnoringCase(bool ignoringCase)
+		{
+			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue("something with foo in it");
+
+			async Task Act()
+				=> await sut.NotContaining("FOO").IgnoringCase(ignoringCase);
+
+			await That(Act).Throws<XunitException>()
+				.OnlyIf(ignoringCase)
+				.WithMessage("""
+				             Expected that subject
+				             has string value not containing "FOO" ignoring case,
+				             but it had string value "something with foo in it"
+				             """);
+		}
+
+		[Fact]
+		public async Task NotContaining_ShouldTriggerValidation()
+		{
+			Signaler<string?> signal = new();
+			PropertyResult.String<string> sut = new(new Dummy(), _ => "x", "y", (e, _) =>
+			{
+				signal.Signal(e);
+			});
+
+			_ = sut.NotContaining("foo");
+
+			await That(signal).Signaled().With(e => e == "foo");
+		}
+
+		[Theory]
+		[InlineData("foo", "foobar")]
+		[InlineData("foo", "bar")]
+		[InlineData("foo", "FOO")]
+		public async Task NotContaining_ShouldVerifyThatActualDoesNotContainExpected(string actual, string expected)
+		{
+			PropertyResult.String<MyClass?> sut = MyClass.HasStringValue(actual);
+
+			MyClass? result = await sut.NotContaining(expected);
+
+			await That(result?.StringValue).IsEqualTo(actual);
 		}
 
 		[Fact]

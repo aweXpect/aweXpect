@@ -431,12 +431,12 @@ public static class PropertyResult
 		/// <summary>
 		///     …does not contain to the <paramref name="unexpected" /> value.
 		/// </summary>
-		public StringEqualityResult<TItem, IThat<TItem>> DoesNotContain(
+		public StringEqualityResult<TItem, IThat<TItem>> NotContaining(
 			string? unexpected)
 		{
 			validation?.Invoke(unexpected, nameof(unexpected));
 			StringEqualityOptions options = new();
-			options.Contains();
+			options.Containing();
 			return new StringEqualityResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new StringConstraint<TItem>(
@@ -452,12 +452,12 @@ public static class PropertyResult
 		/// <summary>
 		///     …contains to the <paramref name="expected" /> value.
 		/// </summary>
-		public StringEqualityResult<TItem, IThat<TItem>> Contains(
+		public StringEqualityResult<TItem, IThat<TItem>> Containing(
 			string? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
 			StringEqualityOptions options = new();
-			options.Contains();
+			options.Containing();
 			return new StringEqualityResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new StringConstraint<TItem>(

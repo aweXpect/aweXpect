@@ -4,14 +4,14 @@ namespace aweXpect.Core.Tests.Options;
 
 public sealed partial class StringEqualityOptionsTests
 {
-	public sealed class ContainsMatchTypeTests
+	public sealed class ContainingMatchTypeTests
 	{
 		[Fact]
 		public async Task Contains_ShouldReturnSameInstance()
 		{
 			StringEqualityOptions sut = new();
 
-			StringEqualityOptions result = sut.Contains();
+			StringEqualityOptions result = sut.Containing();
 
 			await That(result).IsSameAs(sut);
 		}
