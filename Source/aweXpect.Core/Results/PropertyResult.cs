@@ -545,10 +545,7 @@ public static class PropertyResult
 			=> stringBuilder.Append("not ").Append(expectation);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" had ").Append(propertyExpression).Append(' ');
-			Formatter.Format(stringBuilder, _value);
-		}
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class StringConstraint<TItem>(
@@ -586,9 +583,6 @@ public static class PropertyResult
 			=> AppendNormalExpectation(stringBuilder, indentation);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" had ").Append(propertyExpression).Append(' ');
-			Formatter.Format(stringBuilder, _value);
-		}
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }
