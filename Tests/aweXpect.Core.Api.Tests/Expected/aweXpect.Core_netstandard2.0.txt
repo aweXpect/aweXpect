@@ -900,6 +900,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsSuffix() { }
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
+        public aweXpect.Options.StringEqualityOptions Containing() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
         public string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammars) { }
         public string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, string? actual, string? expected) { }
@@ -1223,9 +1224,17 @@ namespace aweXpect.Results
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(long? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(long? unexpected) { }
         }
+        public class String<TItem>
+        {
+            public String(aweXpect.Core.IThat<TItem> source, System.Func<TItem, string?> mapper, string propertyExpression, System.Action<string?, string>? validation = null) { }
+            public aweXpect.Results.StringEqualityResult<TItem, aweXpect.Core.IThat<TItem>> Containing(string? expected) { }
+            public aweXpect.Results.StringEqualityResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(string? expected) { }
+            public aweXpect.Results.StringEqualityResult<TItem, aweXpect.Core.IThat<TItem>> NotContaining(string? unexpected) { }
+            public aweXpect.Results.StringEqualityResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(string? unexpected) { }
+        }
         public class TimeSpan<TItem>
         {
-            public TimeSpan(aweXpect.Core.IThat<TItem> source, System.Func<TItem, System.TimeSpan?> mapper, string propertyExpression) { }
+            public TimeSpan(aweXpect.Core.IThat<TItem> source, System.Func<TItem, System.TimeSpan?> mapper, string propertyExpression, System.Action<System.TimeSpan?, string>? validation = null) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(System.TimeSpan? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(System.TimeSpan? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(System.TimeSpan? expected) { }
