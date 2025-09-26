@@ -30,7 +30,7 @@ public class ThatBool : ExpectationResult<bool>, IExpectThat<bool>
 	/// <inheritdoc cref="IExpectThat{T}.ExpectationBuilder" />
 	public ExpectationBuilder ExpectationBuilder { get; }
 
-	private class WithDefaultExpectationBuilderProxy(ExpectationBuilder inner)
+	private sealed class WithDefaultExpectationBuilderProxy(ExpectationBuilder inner)
 		: ExpectationBuilder(inner.Subject, inner.ExpectationGrammars)
 	{
 		public override ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
