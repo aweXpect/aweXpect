@@ -46,12 +46,12 @@ public class ExpectationTests
 	public async Task ToString_ShouldForwardToExpectationBuilder()
 	{
 #pragma warning disable aweXpect0001
-		Expectation sut = That(true).IsTrue();
+		Expectation sut = That(1).IsGreaterThan(0);
 #pragma warning restore aweXpect0001
 
 		string? result = sut.ToString();
 
 		await That(result)
-			.IsEqualTo("aweXpect.Core.ExpectationBuilder`1[System.Boolean]");
+			.IsEqualTo("aweXpect.Core.ExpectationBuilder`1[System.Int32]");
 	}
 }
