@@ -193,6 +193,14 @@ public static class Expect
 #endif
 
 	/// <summary>
+	///     Specify expectations for the current boolean <paramref name="subject" />.
+	/// </summary>
+	public static ThatBool That(bool subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new(new ExpectationBuilder<bool>(
+			new ValueSource<bool>(subject), doNotPopulateThisValue));
+
+	/// <summary>
 	///     Verifies that all provided <paramref name="expectations" /> are met.
 	/// </summary>
 	public static Expectation.Combination.All ThatAll(params Expectation[] expectations)
