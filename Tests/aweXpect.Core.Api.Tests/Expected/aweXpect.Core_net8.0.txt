@@ -320,7 +320,7 @@ namespace aweXpect.Core
     {
         public static aweXpect.Core.StringDifferenceSettings WithMatchType(this aweXpect.Core.StringDifferenceSettings? settings, aweXpect.Core.StringDifference.MatchType matchType) { }
     }
-    [System.Diagnostics.DebuggerDisplay("ThatBool>: {ExpectationBuilder}")]
+    [System.Diagnostics.DebuggerDisplay("ThatBool: {ExpectationBuilder}")]
     public class ThatBool : aweXpect.Results.ExpectationResult<bool>, aweXpect.Core.IExpectThat<bool>, aweXpect.Core.IThat<bool>
     {
         public ThatBool(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
