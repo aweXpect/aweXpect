@@ -13,7 +13,7 @@ namespace aweXpect.Core;
 /// <summary>
 ///     Wraps the <see cref="ExpectationBuilder" /> for a bool.
 /// </summary>
-[DebuggerDisplay("ThatBool>: {ExpectationBuilder}")]
+[DebuggerDisplay("ThatBool: {ExpectationBuilder}")]
 public class ThatBool : ExpectationResult<bool>, IExpectThat<bool>
 {
 	/// <inheritdoc cref="ThatBool" />
