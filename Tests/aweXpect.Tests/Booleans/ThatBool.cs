@@ -3,7 +3,6 @@
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed partial class ThatBool
 {
-/* TODO: Enable after next Core update
 	public sealed class Tests
 	{
 		[Fact]
@@ -49,5 +48,4 @@ public sealed partial class ThatBool
 			await That(Act).DoesNotThrow();
 		}
 	}
-*/
 }
