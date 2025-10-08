@@ -38,10 +38,19 @@ public partial class AwexpectCustomization
 				{
 					MinimumNumberOfCharactersAfterStringDifference = v,
 				}));
+			MaximumStringLength = new CustomizationValue<int>(
+				() => Get().MaximumStringLength,
+				v => Update(p => p with
+				{
+					MaximumStringLength = v,
+				}));
 		}
 
 		/// <inheritdoc cref="FormattingCustomizationValue.MaximumNumberOfCollectionItems" />
 		public ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
+
+		/// <inheritdoc cref="FormattingCustomizationValue.MaximumStringLength" />
+		public ICustomizationValueSetter<int> MaximumStringLength { get; }
 
 		/// <inheritdoc cref="FormattingCustomizationValue.MinimumNumberOfCharactersAfterStringDifference" />
 		public ICustomizationValueSetter<int> MinimumNumberOfCharactersAfterStringDifference { get; }
@@ -65,6 +74,11 @@ public partial class AwexpectCustomization
 		///     The maximum number of displayed items in a collection.
 		/// </summary>
 		public int MaximumNumberOfCollectionItems { get; init; } = 10;
+		
+		/// <summary>
+		///     The maximum length of a <see langword="string" /> before it gets truncated.
+		/// </summary>
+		public int MaximumStringLength { get; init; } = 100;
 
 		/// <summary>
 		///     The minimum number of characters included after the first mismatch in the string difference.

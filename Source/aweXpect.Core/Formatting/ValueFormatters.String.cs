@@ -1,5 +1,6 @@
 using System.Text;
 using aweXpect.Core.Helpers;
+using aweXpect.Customization;
 
 namespace aweXpect.Formatting;
 
@@ -22,9 +23,9 @@ public static partial class ValueFormatters
 		return (options.UseLineBreaks, options.IncludeType) switch
 		{
 			(true, true) => $"string \"{value}\"",
-			(false, true) => $"string \"{value.DisplayWhitespace().TruncateWithEllipsis(100)}\"",
+			(false, true) => $"string \"{value.DisplayWhitespace().TruncateWithEllipsis(Customize.aweXpect.Formatting().MaximumStringLength.Get())}\"",
 			(true, false) => $"\"{value}\"",
-			(false, false) => $"\"{value.DisplayWhitespace().TruncateWithEllipsis(100)}\"",
+			(false, false) => $"\"{value.DisplayWhitespace().TruncateWithEllipsis(Customize.aweXpect.Formatting().MaximumStringLength.Get())}\"",
 		};
 	}
 
@@ -53,7 +54,7 @@ public static partial class ValueFormatters
 		stringBuilder.Append('\"');
 		if (!options.UseLineBreaks)
 		{
-			stringBuilder.Append(value.DisplayWhitespace().TruncateWithEllipsis(100));
+			stringBuilder.Append(value.DisplayWhitespace().TruncateWithEllipsis(Customize.aweXpect.Formatting().MaximumStringLength.Get()));
 		}
 		else
 		{
