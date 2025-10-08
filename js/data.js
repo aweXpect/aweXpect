@@ -2382,6 +2382,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -2781,7 +2787,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -3184,7 +3191,8 @@ window.BENCHMARK_DATA = {
           293.5846767425537,
           285.36054642995197,
           251.54214681897844,
-          269.35961030079767
+          269.35961030079767,
+          266.9320656776428
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3589,6 +3597,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4003,7 +4012,8 @@ window.BENCHMARK_DATA = {
           265.47640994616916,
           257.5898955663045,
           249.4172920158931,
-          245.48226475715637
+          245.48226475715637,
+          259.1422365052359
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4196,6 +4206,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4822,7 +4833,8 @@ window.BENCHMARK_DATA = {
           947.836195060185,
           924.070827293396,
           898.2306477473333,
-          891.2175689061482
+          891.2175689061482,
+          930.1300825754802
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5157,6 +5169,7 @@ window.BENCHMARK_DATA = {
           2416,
           2416,
           2416,
+          2408,
           2408,
           2408,
           2408,
@@ -7164,6 +7177,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -7486,7 +7505,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -7812,7 +7832,8 @@ window.BENCHMARK_DATA = {
           319470.7986886161,
           318235.4892578125,
           319923.10867513024,
-          310006.18899739586
+          310006.18899739586,
+          306540.39103816106
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8104,6 +8125,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8477,7 +8499,8 @@ window.BENCHMARK_DATA = {
           2350161.5484375,
           2396841.797135417,
           2251739.5733816964,
-          2252879.4778645835
+          2252879.4778645835,
+          2236315.8192708334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8593,6 +8616,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -9142,7 +9166,8 @@ window.BENCHMARK_DATA = {
           714505.4614583333,
           744496.0477818081,
           716738.3766526442,
-          771213.5940104167
+          771213.5940104167,
+          673788.6215820312
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9473,7 +9498,8 @@ window.BENCHMARK_DATA = {
           880545,
           935697,
           935697,
-          935697
+          935697,
+          880545
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11869,6 +11895,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -12268,7 +12300,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -12671,7 +12704,8 @@ window.BENCHMARK_DATA = {
           543.4163740158081,
           536.1366227467855,
           502.4512078211858,
-          510.04182313283286
+          510.04182313283286,
+          484.45854663848877
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13030,6 +13064,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -13490,7 +13525,8 @@ window.BENCHMARK_DATA = {
           530.1407087766207,
           502.3508940378825,
           504.40869534810383,
-          494.71239927836825
+          494.71239927836825,
+          501.4160306930542
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13683,6 +13719,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -14309,7 +14346,8 @@ window.BENCHMARK_DATA = {
           22779.244131234977,
           18853.858854166665,
           14388.690642220634,
-          17253.788513183594
+          17253.788513183594,
+          15166.43752833775
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14644,6 +14682,7 @@ window.BENCHMARK_DATA = {
           27488,
           27488,
           27488,
+          27480,
           27480,
           27480,
           27480,
@@ -17113,6 +17152,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -17512,7 +17557,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -17915,7 +17961,8 @@ window.BENCHMARK_DATA = {
           263.2963466962179,
           262.6911264737447,
           241.3037872681251,
-          260.63022832870485
+          260.63022832870485,
+          264.0326773961385
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18274,6 +18321,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18734,7 +18782,8 @@ window.BENCHMARK_DATA = {
           330.51131664911907,
           255.7410696665446,
           244.47551705042522,
-          252.34349285761516
+          252.34349285761516,
+          259.07821341923307
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18927,6 +18976,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -19553,7 +19603,8 @@ window.BENCHMARK_DATA = {
           1255.8487038930257,
           1256.2655085245767,
           1165.5375551859538,
-          1240.837508392334
+          1240.837508392334,
+          1222.2194825490317
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19888,6 +19939,7 @@ window.BENCHMARK_DATA = {
           2992,
           2992,
           2992,
+          2984,
           2984,
           2984,
           2984,
@@ -22357,6 +22409,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -22756,7 +22814,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -23159,7 +23218,8 @@ window.BENCHMARK_DATA = {
           512.112722269694,
           494.0269825617472,
           467.2325421969096,
-          493.94981346130373
+          493.94981346130373,
+          478.46248556772866
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23522,6 +23582,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -23978,7 +24039,8 @@ window.BENCHMARK_DATA = {
           645.7190235773722,
           499.6340201059977,
           464.5885016123454,
-          464.2724816640218
+          464.2724816640218,
+          489.9969794409616
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24171,6 +24233,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -24797,7 +24860,8 @@ window.BENCHMARK_DATA = {
           1264.3092338562012,
           1306.0782887776693,
           1242.7836768810566,
-          1342.311382039388
+          1342.311382039388,
+          1250.2038729349772
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25132,6 +25196,7 @@ window.BENCHMARK_DATA = {
           3096,
           3096,
           3096,
+          3072,
           3072,
           3072,
           3072,
@@ -27601,6 +27666,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -28000,7 +28071,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -28403,7 +28475,8 @@ window.BENCHMARK_DATA = {
           2021.5065406799317,
           1974.424671936035,
           1940.6831729595478,
-          1982.46843846639
+          1982.46843846639,
+          2008.2560424804688
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28778,6 +28851,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -29222,7 +29296,8 @@ window.BENCHMARK_DATA = {
           1369.018996511187,
           1385.855007425944,
           1336.7990465799967,
-          1355.7677356175013
+          1355.7677356175013,
+          1432.3283816746302
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29415,6 +29490,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30041,7 +30117,8 @@ window.BENCHMARK_DATA = {
           3373.5311734517413,
           3497.7985328674317,
           3298.8029993693035,
-          3479.889088948568
+          3479.889088948568,
+          3415.2396273295085
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -30449,7 +30526,8 @@ window.BENCHMARK_DATA = {
           5296,
           5344,
           5344,
-          5344
+          5344,
+          5296
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -32845,6 +32923,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
         "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
+      },
+      {
+        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
+        "message": "chore: update docusaurus to v3.9.1 (#803)"
       }
     ],
     "labels": [
@@ -33244,7 +33328,8 @@ window.BENCHMARK_DATA = {
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
-      "36587259"
+      "36587259",
+      "0a4f21e4"
     ],
     "datasets": [
       {
@@ -33647,7 +33732,8 @@ window.BENCHMARK_DATA = {
           2639.119336641752,
           2557.122881825765,
           2540.0516452789307,
-          2548.856093597412
+          2548.856093597412,
+          2533.363140106201
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -34022,6 +34108,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -34466,7 +34553,8 @@ window.BENCHMARK_DATA = {
           154778.86576021634,
           157487.23203125,
           149671.16329520088,
-          155031.1821637835
+          155031.1821637835,
+          155127.50170898438
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34874,7 +34962,8 @@ window.BENCHMARK_DATA = {
           64324,
           63788,
           63788,
-          63788
+          63788,
+          63352
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -35285,7 +35374,8 @@ window.BENCHMARK_DATA = {
           3971.293180338542,
           4000.647240702311,
           4006.027415348933,
-          4022.8261016845704
+          4022.8261016845704,
+          4063.3350947062177
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -35693,7 +35783,8 @@ window.BENCHMARK_DATA = {
           6488,
           6496,
           6496,
-          6496
+          6496,
+          6488
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
