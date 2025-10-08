@@ -402,6 +402,7 @@ namespace aweXpect.Customization
         public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<int> MaximumStringLength { get; }
             public aweXpect.Customization.ICustomizationValueSetter<int> MinimumNumberOfCharactersAfterStringDifference { get; }
             public aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue Get() { }
             public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue, aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue> update) { }
@@ -410,6 +411,7 @@ namespace aweXpect.Customization
         {
             public FormattingCustomizationValue() { }
             public int MaximumNumberOfCollectionItems { get; init; }
+            public int MaximumStringLength { get; init; }
             public int MinimumNumberOfCharactersAfterStringDifference { get; init; }
         }
         public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue>
