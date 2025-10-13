@@ -2436,6 +2436,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -2844,7 +2850,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -3256,7 +3263,8 @@ window.BENCHMARK_DATA = {
           271.8760177930196,
           274.6898914405278,
           271.30367453893024,
-          260.1698861440023
+          260.1698861440023,
+          277.77640272776284
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3661,6 +3669,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4093,7 +4102,8 @@ window.BENCHMARK_DATA = {
           261.5353520257132,
           259.6588776906331,
           267.76786918640136,
-          252.16463305155438
+          252.16463305155438,
+          267.41545670373097
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4286,6 +4296,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4930,7 +4941,8 @@ window.BENCHMARK_DATA = {
           943.7811126708984,
           203.71431146349227,
           212.18125456174215,
-          210.75751141401437
+          210.75751141401437,
+          215.06892342226845
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5345,6 +5357,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          664,
           664,
           664,
           664
@@ -7335,6 +7348,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -7666,7 +7685,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -8001,7 +8021,8 @@ window.BENCHMARK_DATA = {
           328157.19876302086,
           289638.26826171874,
           318315.230078125,
-          324960.38785807294
+          324960.38785807294,
+          317724.0423828125
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8293,6 +8314,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8684,7 +8706,8 @@ window.BENCHMARK_DATA = {
           2376494.7257254464,
           2085050.3700520834,
           2207981.0685096155,
-          2271242.85546875
+          2271242.85546875,
+          2297290.643973214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8800,6 +8823,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -9367,7 +9391,8 @@ window.BENCHMARK_DATA = {
           693422.4308733259,
           272961.503125,
           307265.7316894531,
-          309181.1261858259
+          309181.1261858259,
+          297801.49375
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9705,6 +9730,7 @@ window.BENCHMARK_DATA = {
           880545,
           880545,
           880545,
+          224760,
           224760,
           224760,
           224760
@@ -12157,6 +12183,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -12565,7 +12597,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -12977,7 +13010,8 @@ window.BENCHMARK_DATA = {
           520.7586452484131,
           499.06778888702394,
           488.2612344301664,
-          494.9696691376822
+          494.9696691376822,
+          547.5791072209676
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13336,6 +13370,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -13814,7 +13849,8 @@ window.BENCHMARK_DATA = {
           530.8546799932208,
           514.6282585144043,
           488.3999955495199,
-          481.17108567555744
+          481.17108567555744,
+          529.427103805542
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14007,6 +14043,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -14651,7 +14688,8 @@ window.BENCHMARK_DATA = {
           21118.641342163086,
           15721.513203938803,
           14711.403868611653,
-          15667.560520426432
+          15667.560520426432,
+          15708.818766276041
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15066,6 +15104,7 @@ window.BENCHMARK_DATA = {
           27480,
           27480,
           27480,
+          25432,
           25432,
           25432,
           25432
@@ -17518,6 +17557,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -17926,7 +17971,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -18338,7 +18384,8 @@ window.BENCHMARK_DATA = {
           257.72817233403526,
           247.46528295370248,
           259.4508486134665,
-          252.74417667388917
+          252.74417667388917,
+          276.1546947956085
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18697,6 +18744,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -19175,7 +19223,8 @@ window.BENCHMARK_DATA = {
           264.49719544819425,
           260.0346993718828,
           242.59689636230468,
-          251.53252363204956
+          251.53252363204956,
+          273.34412317276
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19368,6 +19417,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20012,7 +20062,8 @@ window.BENCHMARK_DATA = {
           1224.0512451171876,
           217.7535467318126,
           217.47294410069784,
-          220.27140347162882
+          220.27140347162882,
+          243.02021719614666
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20427,6 +20478,7 @@ window.BENCHMARK_DATA = {
           2984,
           2984,
           2984,
+          816,
           816,
           816,
           816
@@ -22879,6 +22931,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -23287,7 +23345,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -23699,7 +23758,8 @@ window.BENCHMARK_DATA = {
           508.9947265897478,
           489.0047341755458,
           470.5525126775106,
-          459.33850064644446
+          459.33850064644446,
+          497.53650697072345
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24062,6 +24122,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -24536,7 +24597,8 @@ window.BENCHMARK_DATA = {
           494.6512009938558,
           487.08661162058513,
           469.4168283022367,
-          486.88782761891684
+          486.88782761891684,
+          515.5210558573405
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24729,6 +24791,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -25373,7 +25436,8 @@ window.BENCHMARK_DATA = {
           1314.3841424306233,
           256.1411478996277,
           255.77367893854776,
-          263.02532320022584
+          263.02532320022584,
+          280.5450296719869
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25788,6 +25852,7 @@ window.BENCHMARK_DATA = {
           3072,
           3072,
           3072,
+          832,
           832,
           832,
           832
@@ -28240,6 +28305,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -28648,7 +28719,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -29060,7 +29132,8 @@ window.BENCHMARK_DATA = {
           2014.6843386332193,
           1931.8058667864118,
           1969.7125183105468,
-          1844.5016375223795
+          1844.5016375223795,
+          1980.4201372782388
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29435,6 +29508,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -29897,7 +29971,8 @@ window.BENCHMARK_DATA = {
           1443.1974104563394,
           1355.1511698404947,
           1334.59151499612,
-          1479.4523022515434
+          1479.4523022515434,
+          1471.6537434895833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30090,6 +30165,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30734,7 +30810,8 @@ window.BENCHMARK_DATA = {
           3354.3242797851562,
           666.3130022457668,
           697.5261898040771,
-          670.2391461054484
+          670.2391461054484,
+          723.0249658993313
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -31149,6 +31226,7 @@ window.BENCHMARK_DATA = {
           5296,
           5296,
           5296,
+          1376,
           1376,
           1376,
           1376
@@ -33601,6 +33679,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 21:12:59 2025 \u002B0200",
         "message": "Revert MSTest to 3.x"
+      },
+      {
+        "sha": "258d43fed77e3a9ff12e5d0e62c989c5d6a31f73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Oct 13 21:25:15 2025 \u002B0200",
+        "message": "chore: update TUnit to v0.70.0 (#809)"
       }
     ],
     "labels": [
@@ -34009,7 +34093,8 @@ window.BENCHMARK_DATA = {
       "36732fb7",
       "1766c989",
       "d7c86fb9",
-      "ed766f1d"
+      "ed766f1d",
+      "258d43fe"
     ],
     "datasets": [
       {
@@ -34421,7 +34506,8 @@ window.BENCHMARK_DATA = {
           2663.1645612080893,
           2528.8717498779297,
           2618.2795438130697,
-          2463.8464982169016
+          2463.8464982169016,
+          2617.540929158529
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -34796,6 +34882,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -35258,7 +35345,8 @@ window.BENCHMARK_DATA = {
           157725.4927408854,
           97269.90286020133,
           128058.15891810825,
-          126717.68743024554
+          126717.68743024554,
+          135244.53688151043
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -35675,7 +35763,8 @@ window.BENCHMARK_DATA = {
           64324,
           61718,
           61719,
-          60732
+          60732,
+          61723
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36095,7 +36184,8 @@ window.BENCHMARK_DATA = {
           4061.6429478963214,
           698.9352402005877,
           759.4457485834757,
-          708.7250944137573
+          708.7250944137573,
+          785.7004907608032
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -36510,6 +36600,7 @@ window.BENCHMARK_DATA = {
           6488,
           6488,
           6488,
+          1440,
           1440,
           1440,
           1440
