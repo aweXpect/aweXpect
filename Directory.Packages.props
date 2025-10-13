@@ -47,7 +47,7 @@
 		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.6.3" />
 		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
 		<PackageVersion Include="PublicApiGenerator" Version="11.4.6" />
-		<PackageVersion Include="MSTest.TestAdapter" Version="3.11.0" />
-		<PackageVersion Include="MSTest.TestFramework" Version="3.11.0" />
+		<PackageVersion Include="MSTest.TestAdapter" Version="4.0.0" />
+		<PackageVersion Include="MSTest.TestFramework" Version="4.0.0" />
 	</ItemGroup>
 </Project>
