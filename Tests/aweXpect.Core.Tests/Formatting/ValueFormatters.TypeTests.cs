@@ -209,6 +209,22 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task WhenNullable_ShouldUseQuestionMarkSyntax()
+		{
+			string expectedResult = "DateTime?";
+			Type value = typeof(DateTime?);
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task WhenNull_ShouldUseDefaultNullString()
 		{
 			Type? value = null;
