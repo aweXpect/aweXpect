@@ -2388,6 +2388,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -2788,7 +2794,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -3192,7 +3199,8 @@ window.BENCHMARK_DATA = {
           285.36054642995197,
           251.54214681897844,
           269.35961030079767,
-          266.9320656776428
+          266.9320656776428,
+          260.9475195248922
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3597,6 +3605,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4013,7 +4022,8 @@ window.BENCHMARK_DATA = {
           257.5898955663045,
           249.4172920158931,
           245.48226475715637,
-          259.1422365052359
+          259.1422365052359,
+          258.52626819610595
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4206,6 +4216,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4834,7 +4845,8 @@ window.BENCHMARK_DATA = {
           924.070827293396,
           898.2306477473333,
           891.2175689061482,
-          930.1300825754802
+          930.1300825754802,
+          932.7895152909415
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5243,7 +5255,8 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
-          2408
+          2408,
+          2312
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7183,6 +7196,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -7506,7 +7525,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -7833,7 +7853,8 @@ window.BENCHMARK_DATA = {
           318235.4892578125,
           319923.10867513024,
           310006.18899739586,
-          306540.39103816106
+          306540.39103816106,
+          308796.3005859375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8125,6 +8146,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8500,7 +8522,8 @@ window.BENCHMARK_DATA = {
           2396841.797135417,
           2251739.5733816964,
           2252879.4778645835,
-          2236315.8192708334
+          2236315.8192708334,
+          2277476.037239583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8616,6 +8639,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -9167,7 +9191,8 @@ window.BENCHMARK_DATA = {
           744496.0477818081,
           716738.3766526442,
           771213.5940104167,
-          673788.6215820312
+          673788.6215820312,
+          742649.5958158053
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9499,7 +9524,8 @@ window.BENCHMARK_DATA = {
           935697,
           935697,
           935697,
-          880545
+          880545,
+          949329
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11901,6 +11927,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -12301,7 +12333,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -12705,7 +12738,8 @@ window.BENCHMARK_DATA = {
           536.1366227467855,
           502.4512078211858,
           510.04182313283286,
-          484.45854663848877
+          484.45854663848877,
+          496.76884324210033
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13064,6 +13098,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -13526,7 +13561,8 @@ window.BENCHMARK_DATA = {
           502.3508940378825,
           504.40869534810383,
           494.71239927836825,
-          501.4160306930542
+          501.4160306930542,
+          493.6545466014317
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13719,6 +13755,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -14347,7 +14384,8 @@ window.BENCHMARK_DATA = {
           18853.858854166665,
           14388.690642220634,
           17253.788513183594,
-          15166.43752833775
+          15166.43752833775,
+          14734.758620042066
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14756,7 +14794,8 @@ window.BENCHMARK_DATA = {
           27480,
           27480,
           27480,
-          27480
+          27480,
+          27384
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17158,6 +17197,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -17558,7 +17603,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -17962,7 +18008,8 @@ window.BENCHMARK_DATA = {
           262.6911264737447,
           241.3037872681251,
           260.63022832870485,
-          264.0326773961385
+          264.0326773961385,
+          244.1380992276328
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18321,6 +18368,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18783,7 +18831,8 @@ window.BENCHMARK_DATA = {
           255.7410696665446,
           244.47551705042522,
           252.34349285761516,
-          259.07821341923307
+          259.07821341923307,
+          256.7869305610657
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18976,6 +19025,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -19604,7 +19654,8 @@ window.BENCHMARK_DATA = {
           1256.2655085245767,
           1165.5375551859538,
           1240.837508392334,
-          1222.2194825490317
+          1222.2194825490317,
+          1222.0339449564615
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20013,7 +20064,8 @@ window.BENCHMARK_DATA = {
           2984,
           2984,
           2984,
-          2984
+          2984,
+          2888
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -22415,6 +22467,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -22815,7 +22873,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -23219,7 +23278,8 @@ window.BENCHMARK_DATA = {
           494.0269825617472,
           467.2325421969096,
           493.94981346130373,
-          478.46248556772866
+          478.46248556772866,
+          458.3356009165446
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23582,6 +23642,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -24040,7 +24101,8 @@ window.BENCHMARK_DATA = {
           499.6340201059977,
           464.5885016123454,
           464.2724816640218,
-          489.9969794409616
+          489.9969794409616,
+          526.9969946543375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24233,6 +24295,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -24861,7 +24924,8 @@ window.BENCHMARK_DATA = {
           1306.0782887776693,
           1242.7836768810566,
           1342.311382039388,
-          1250.2038729349772
+          1250.2038729349772,
+          1320.996911562406
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -25270,7 +25334,8 @@ window.BENCHMARK_DATA = {
           3072,
           3072,
           3072,
-          3072
+          3072,
+          2912
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -27672,6 +27737,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -28072,7 +28143,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -28476,7 +28548,8 @@ window.BENCHMARK_DATA = {
           1974.424671936035,
           1940.6831729595478,
           1982.46843846639,
-          2008.2560424804688
+          2008.2560424804688,
+          1970.7028912862143
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28851,6 +28924,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -29297,7 +29371,8 @@ window.BENCHMARK_DATA = {
           1385.855007425944,
           1336.7990465799967,
           1355.7677356175013,
-          1432.3283816746302
+          1432.3283816746302,
+          1323.483294214521
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29490,6 +29565,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30118,7 +30194,8 @@ window.BENCHMARK_DATA = {
           3497.7985328674317,
           3298.8029993693035,
           3479.889088948568,
-          3415.2396273295085
+          3415.2396273295085,
+          3369.848169871739
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -30527,7 +30604,8 @@ window.BENCHMARK_DATA = {
           5344,
           5344,
           5344,
-          5296
+          5296,
+          5248
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -32929,6 +33007,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
         "message": "chore: update docusaurus to v3.9.1 (#803)"
+      },
+      {
+        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
+        "author": "dependabot[bot]",
+        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
+        "message": "chore: Bump the tunit group with 2 updates"
       }
     ],
     "labels": [
@@ -33329,7 +33413,8 @@ window.BENCHMARK_DATA = {
       "93c3b02c",
       "91c60ba8",
       "36587259",
-      "0a4f21e4"
+      "0a4f21e4",
+      "7ce73592"
     ],
     "datasets": [
       {
@@ -33733,7 +33818,8 @@ window.BENCHMARK_DATA = {
           2557.122881825765,
           2540.0516452789307,
           2548.856093597412,
-          2533.363140106201
+          2533.363140106201,
+          2448.338173421224
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -34108,6 +34194,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -34554,7 +34641,8 @@ window.BENCHMARK_DATA = {
           157487.23203125,
           149671.16329520088,
           155031.1821637835,
-          155127.50170898438
+          155127.50170898438,
+          152000.00732421875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34963,7 +35051,8 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63788,
-          63352
+          63352,
+          63788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -35375,7 +35464,8 @@ window.BENCHMARK_DATA = {
           4000.647240702311,
           4006.027415348933,
           4022.8261016845704,
-          4063.3350947062177
+          4063.3350947062177,
+          4111.290924072266
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -35784,7 +35874,8 @@ window.BENCHMARK_DATA = {
           6496,
           6496,
           6496,
-          6488
+          6488,
+          6448
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
