@@ -96,6 +96,7 @@ partial class Build
 							"--",
 							"--coverage",
 							"--disable-logo",
+							"--coverage-output-format \"cobertura\"",
 							"--report-trx",
 							$"--report-trx-filename {v.project.Name}_{v.framework}.trx",
 							$"--results-directory {TestResultsDirectory}"
