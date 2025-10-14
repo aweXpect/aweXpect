@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Numeric;
+using Shouldly;
 
 namespace aweXpect.Benchmarks;
 
@@ -19,6 +20,10 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<NumericAssertions<int>> Int_GreaterThan_FluentAssertions()
 		=> _intSubject.Should().BeGreaterThan(_intMinimum);
+
+	[Benchmark]
+	public void Int_GreaterThan_Shouldly()
+		=> _intSubject.ShouldBeGreaterThan(_intMinimum);
 
 	[Benchmark]
 	public async Task<int> Int_GreaterThan_TUnit()

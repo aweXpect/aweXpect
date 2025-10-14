@@ -3,6 +3,7 @@ using BenchmarkDotNet.Engines;
 using FluentAssertions;
 using FluentAssertions.Collections;
 using TUnit.Assertions.Enums;
+using Shouldly;
 
 namespace aweXpect.Benchmarks;
 
@@ -23,6 +24,10 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<StringCollectionAssertions<IEnumerable<string>>> StringArrayInAnyOrder_FluentAssertions()
 		=> _stringArrayAnyOrderSubject.Should().BeEquivalentTo(_stringArrayAnyOrderExpectation);
+
+	[Benchmark]
+	public void StringArrayInAnyOrder_Shouldly()
+		=> _stringArrayAnyOrderSubject.ShouldBe(_stringArrayAnyOrderExpectation, true);
 
 	[Benchmark]
 	public async Task StringArrayInAnyOrder_TUnit()

@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
+using Shouldly;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -21,6 +22,10 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<ObjectAssertions> Equivalency_FluentAssertions()
 		=> _nestedSubject.Should().BeEquivalentTo(_nestedExpectation);
+
+	[Benchmark]
+	public void Equivalency_Shouldly()
+		=> _nestedSubject.ShouldBeEquivalentTo(_nestedExpectation);
 
 	[Benchmark]
 	public async Task<Nested?> Equivalency_TUnit()

@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
+using Shouldly;
 
 namespace aweXpect.Benchmarks;
 
@@ -19,6 +20,10 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<StringAssertions> String_FluentAssertions()
 		=> _stringSubject.Should().Be(_stringExpectation);
+
+	[Benchmark]
+	public void String_Shouldly()
+		=> _stringSubject.ShouldBe(_stringExpectation);
 
 	[Benchmark]
 	public async Task<string?> String_TUnit()

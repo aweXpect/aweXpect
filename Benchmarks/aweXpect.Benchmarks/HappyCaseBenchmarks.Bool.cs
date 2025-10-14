@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
+using Shouldly;
 
 namespace aweXpect.Benchmarks;
 
@@ -18,6 +19,10 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<BooleanAssertions> Bool_FluentAssertions()
 		=> _boolSubject.Should().BeTrue();
+
+	[Benchmark]
+	public void Bool_Shouldly()
+		=> _boolSubject.ShouldBeTrue();
 
 	[Benchmark]
 	public async Task<bool> Bool_TUnit()
