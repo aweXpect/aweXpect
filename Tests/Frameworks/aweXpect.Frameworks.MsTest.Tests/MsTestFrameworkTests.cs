@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace aweXpect.Frameworks.MsTestAdapter.Tests;
+namespace aweXpect.Frameworks.MsTest.Tests;
 
 [TestClass]
 public sealed class MsTestFrameworkTests

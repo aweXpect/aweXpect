@@ -2,9 +2,9 @@
 using TUnit.Assertions.Exceptions;
 using TUnit.Core.Exceptions;
 
-namespace aweXpect.Frameworks.TUnitAdapter.Tests;
+namespace aweXpect.Frameworks.Tunit.Tests;
 
-public sealed class TUnitTestFrameworkTests
+public sealed class TunitTestFrameworkTests
 {
 	[Test]
 	public async Task OnFail_WhenUsingXunit2AsTestFramework_ShouldThrowXunitException()

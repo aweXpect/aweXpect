@@ -2,9 +2,9 @@
 using Xunit;
 using Xunit.Sdk;
 
-namespace aweXpect.Frameworks.XUnit2Adapter.Tests;
+namespace aweXpect.Frameworks.Xunit2.Tests;
 
-public sealed class XUnit2TestFrameworkTests
+public sealed class Xunit2TestFrameworkTests
 {
 	[Fact]
 	public async Task OnFail_WhenUsingXunit2AsTestFramework_ShouldThrowXunitException()

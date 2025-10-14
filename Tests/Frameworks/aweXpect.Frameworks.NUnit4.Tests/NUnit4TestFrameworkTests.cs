@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace aweXpect.Frameworks.NUnit3Adapter.Tests;
+namespace aweXpect.Frameworks.NUnit4.Tests;
 
-public sealed class NUnit3TestFrameworkTests
+public sealed class NUnit4TestFrameworkTests
 {
 	[Test]
-	public async Task OnFail_WhenUsingNUnit3AsTestFramework_ShouldThrowAssertionException()
+	public async Task OnFail_WhenUsingNUnit4AsTestFramework_ShouldThrowAssertionException()
 	{
 		void Act()
 			=> Fail.Test("my message");
@@ -26,7 +26,7 @@ public sealed class NUnit3TestFrameworkTests
 	}
 
 	[Test]
-	public async Task OnSkip_WhenUsingNUnit3AsTestFramework_ShouldThrowIgnoreException()
+	public async Task OnSkip_WhenUsingNUnit4AsTestFramework_ShouldThrowIgnoreException()
 	{
 		void Act()
 			=> Skip.Test("my message");

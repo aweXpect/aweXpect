@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace aweXpect.Frameworks.XUnit3Adapter.Core.Tests;
+namespace aweXpect.Frameworks.Xunit3.Core.Tests;
 
-public class XUnit3TestFrameworkTests
+public class Xunit3TestFrameworkTests
 {
 	[Fact]
 	public async Task OnFail_WhenUsingXunit3AsTestFramework_ShouldThrowXunitException()

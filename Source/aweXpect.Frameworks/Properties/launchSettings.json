@@ -3,7 +3,7 @@
 	"profiles": {
 		"Generators": {
 			"commandName": "DebugRoslynComponent",
-			"targetProject": "../../Tests/Frameworks/aweXpect.Frameworks.XUnit3.Core.Tests/aweXpect.Frameworks.XUnit3.Core.Tests.csproj"
+			"targetProject": "../../Tests/Frameworks/aweXpect.Frameworks.TUnit.Tests/aweXpect.Frameworks.TUnit.Tests.csproj"
 		}
 	}
 }

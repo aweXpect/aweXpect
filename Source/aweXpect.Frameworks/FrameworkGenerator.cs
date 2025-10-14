@@ -65,7 +65,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class MsTest() : ITestFrameworkAdapter
+		internal class MsTestAdapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -98,7 +98,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class Nunit2() : ITestFrameworkAdapter
+		internal class NunitAdapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -131,7 +131,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class TUnit() : ITestFrameworkAdapter
+		internal class TUnitAdapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -152,7 +152,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 			[DoesNotReturn]
 			[StackTraceHidden]
 			public void Inconclusive(string message)
-				=> throw new TUnit.Core.Exceptions.InconclusiveTestException(message);
+				=> throw new TUnit.Core.Exceptions.InconclusiveTestException(message, null);
 		}
 		""";
 
@@ -164,7 +164,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class Xunit2() : ITestFrameworkAdapter
+		internal class Xunit2Adapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -199,7 +199,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class Xunit3() : ITestFrameworkAdapter
+		internal class Xunit3Adapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -250,7 +250,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class Xunit3() : ITestFrameworkAdapter
+		internal class Xunit3Adapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
