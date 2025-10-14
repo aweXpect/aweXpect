@@ -1,8 +1,4 @@
-using System.Collections.Immutable;
-using System.Text;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Text;
 
 namespace aweXpect.Frameworks;
 
@@ -12,51 +8,6 @@ namespace aweXpect.Frameworks;
 [Generator]
 public class FrameworkGenerator : IIncrementalGenerator
 {
-	void IIncrementalGenerator.Initialize(IncrementalGeneratorInitializationContext context)
-	{
-		var settings = context.CompilationProvider
-			.Select((c, _)  =>
-			{
-				var hasMsTest = c.ReferencedAssemblyNames.Any(x => x.Name == "Microsoft.VisualStudio.TestPlatform.TestFramework");
-				var hasNunit = c.ReferencedAssemblyNames.Any(x => x.Name == "nunit.framework");
-				var hasTUnit = c.ReferencedAssemblyNames.Any(x => x.Name == "TUnit.Core") &&
-				               c.ReferencedAssemblyNames.Any(x => x.Name == "TUnit.Assertions");
-				var hasXunit2 = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.assert");
-				var hasXunit3Core = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.v3.core");
-				var hasXunit3Assert = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.v3.assert");
-				return (hasMsTest, hasNunit, hasTUnit, hasXunit2, hasXunit3Core, hasXunit3Assert);
-			});
-		
-		// Generate the source from the captured values
-		context.RegisterSourceOutput(settings, static (spc, opts) =>
-		{
-			if (opts.hasMsTest)
-			{
-				spc.AddSource("MsTest.g.cs", MsTestAdapter);
-			}
-			if (opts.hasNunit)
-			{
-				spc.AddSource("Nunit.g.cs", NunitAdapter);
-			}
-			if (opts.hasTUnit)
-			{
-				spc.AddSource("TUnit.g.cs", TUnitAdapter);
-			}
-			if (opts.hasXunit2)
-			{
-				spc.AddSource("Xunit2.g.cs", Xunit2Adapter);
-			}
-			if (opts.hasXunit3Assert)
-			{
-				spc.AddSource("Xunit3.g.cs", Xunit3AssertAdapter);
-			}
-			else if (opts.hasXunit3Core)
-			{
-				spc.AddSource("Xunit3.g.cs", Xunit3CoreAdapter);
-			}
-		});
-	}
-
 	private static string MsTestAdapter =>
 		"""
 		using System.Diagnostics;
@@ -280,4 +231,55 @@ public class FrameworkGenerator : IIncrementalGenerator
 			private interface ITestTimeoutException;
 		}
 		""";
+
+	void IIncrementalGenerator.Initialize(IncrementalGeneratorInitializationContext context)
+	{
+		IncrementalValueProvider<(bool hasMsTest, bool hasNunit, bool hasTUnit, bool hasXunit2, bool hasXunit3Core, bool
+			hasXunit3Assert)> settings = context.CompilationProvider
+			.Select((c, _) =>
+			{
+				bool hasMsTest =
+					c.ReferencedAssemblyNames.Any(x => x.Name == "Microsoft.VisualStudio.TestPlatform.TestFramework");
+				bool hasNunit = c.ReferencedAssemblyNames.Any(x => x.Name == "nunit.framework");
+				bool hasTUnit = c.ReferencedAssemblyNames.Any(x => x.Name == "TUnit.Core") &&
+				                c.ReferencedAssemblyNames.Any(x => x.Name == "TUnit.Assertions");
+				bool hasXunit2 = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.assert");
+				bool hasXunit3Core = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.v3.core");
+				bool hasXunit3Assert = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.v3.assert");
+				return (hasMsTest, hasNunit, hasTUnit, hasXunit2, hasXunit3Core, hasXunit3Assert);
+			});
+
+		// Generate the source from the captured values
+		context.RegisterSourceOutput(settings, static (spc, opts) =>
+		{
+			if (opts.hasMsTest)
+			{
+				spc.AddSource("MsTest.g.cs", MsTestAdapter);
+			}
+
+			if (opts.hasNunit)
+			{
+				spc.AddSource("Nunit.g.cs", NunitAdapter);
+			}
+
+			if (opts.hasTUnit)
+			{
+				spc.AddSource("TUnit.g.cs", TUnitAdapter);
+			}
+
+			if (opts.hasXunit2)
+			{
+				spc.AddSource("Xunit2.g.cs", Xunit2Adapter);
+			}
+
+			if (opts.hasXunit3Assert)
+			{
+				spc.AddSource("Xunit3.g.cs", Xunit3AssertAdapter);
+			}
+			else if (opts.hasXunit3Core)
+			{
+				spc.AddSource("Xunit3.g.cs", Xunit3CoreAdapter);
+			}
+		});
+	}
 }
