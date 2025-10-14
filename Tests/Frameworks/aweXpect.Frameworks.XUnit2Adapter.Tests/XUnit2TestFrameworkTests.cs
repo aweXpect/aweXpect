@@ -2,7 +2,7 @@
 using Xunit;
 using Xunit.Sdk;
 
-namespace aweXpect.Frameworks.XUnit2.Tests;
+namespace aweXpect.Frameworks.XUnit2Adapter.Tests;
 
 public sealed class XUnit2TestFrameworkTests
 {

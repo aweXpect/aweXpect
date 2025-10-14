@@ -1,9 +1,9 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Sdk;
 
-namespace aweXpect.Frameworks.XUnit3.Core.Tests;
+namespace aweXpect.Frameworks.XUnit3Adapter.Tests;
 
 public class XUnit3TestFrameworkTests
 {
@@ -13,10 +13,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Fail.Test("my message");
 
-		Exception exception = await Expect.That(Act).ThrowsException()
-			.WithMessage("my message");
-		await Expect.That(exception.GetType().GetInterfaces().Select(e => e.Name))
-			.Contains("IAssertionException");
+		await Expect.That(Act).Throws<XunitException>();
 	}
 
 	[Fact]
@@ -25,7 +22,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Fail.Inconclusive("my message");
 
-		Exception exception = await Expect.That(Act).ThrowsException()
+		InconclusiveException exception = await Expect.That(Act).Throws<InconclusiveException>()
 			.WithMessage("my message");
 		await Expect.That(exception.GetType().GetInterfaces().Select(e => e.Name))
 			.Contains("ITestTimeoutException");
@@ -37,7 +34,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Skip.Test("my message");
 
-		await Expect.That(Act).ThrowsException()
+		await Expect.That(Act).Throws<SkipException>()
 			.WithMessage("$XunitDynamicSkip$my message");
 	}
 }

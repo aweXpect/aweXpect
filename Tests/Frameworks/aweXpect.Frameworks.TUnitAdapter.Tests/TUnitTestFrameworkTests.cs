@@ -2,7 +2,7 @@
 using TUnit.Assertions.Exceptions;
 using TUnit.Core.Exceptions;
 
-namespace aweXpect.Frameworks.TUnit.Tests;
+namespace aweXpect.Frameworks.TUnitAdapter.Tests;
 
 public sealed class TUnitTestFrameworkTests
 {
