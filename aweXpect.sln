@@ -67,9 +67,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.NUnit3.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.NUnit4.Tests", "Tests\Frameworks\aweXpect.Frameworks.NUnit4.Tests\aweXpect.Frameworks.NUnit4.Tests.csproj", "{9ABF8E11-7975-43F2-8418-1F6D9E5E4D37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.TUnit.Tests", "Tests\Frameworks\aweXpect.Frameworks.TUnit.Tests\aweXpect.Frameworks.TUnit.Tests.csproj", "{532FAE88-3327-4B1B-B3B7-43D439A7CEE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.Tunit.Tests", "Tests\Frameworks\aweXpect.Frameworks.Tunit.Tests\aweXpect.Frameworks.Tunit.Tests.csproj", "{532FAE88-3327-4B1B-B3B7-43D439A7CEE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.XUnit2.Tests", "Tests\Frameworks\aweXpect.Frameworks.XUnit2.Tests\aweXpect.Frameworks.XUnit2.Tests.csproj", "{3E369992-EC14-4874-B793-7FCF5D9DB660}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.Xunit2.Tests", "Tests\Frameworks\aweXpect.Frameworks.Xunit2.Tests\aweXpect.Frameworks.Xunit2.Tests.csproj", "{3E369992-EC14-4874-B793-7FCF5D9DB660}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{FA002813-92DA-46AC-8F34-DA739B4380C8}"
 EndProject
@@ -79,9 +79,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.Fallbac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.MsTest.Tests", "Tests\Frameworks\aweXpect.Frameworks.MsTest.Tests\aweXpect.Frameworks.MsTest.Tests.csproj", "{1EC393AD-DE25-4C0E-A8B5-B19A2843A4E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.XUnit3.Tests", "Tests\Frameworks\aweXpect.Frameworks.XUnit3.Tests\aweXpect.Frameworks.XUnit3.Tests.csproj", "{5D0060AC-986B-4C28-A871-BA0EC9223DA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.Xunit3.Tests", "Tests\Frameworks\aweXpect.Frameworks.Xunit3.Tests\aweXpect.Frameworks.Xunit3.Tests.csproj", "{5D0060AC-986B-4C28-A871-BA0EC9223DA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.XUnit3.Core.Tests", "Tests\Frameworks\aweXpect.Frameworks.XUnit3.Core.Tests\aweXpect.Frameworks.XUnit3.Core.Tests.csproj", "{A815B631-402C-44B0-80B3-50B6EAFD8078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.Xunit3.Core.Tests", "Tests\Frameworks\aweXpect.Frameworks.Xunit3.Core.Tests\aweXpect.Frameworks.Xunit3.Core.Tests.csproj", "{A815B631-402C-44B0-80B3-50B6EAFD8078}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Internal.Tests", "Tests\aweXpect.Internal.Tests\aweXpect.Internal.Tests.csproj", "{4A940BE9-D9E0-4004-89D4-5D6E8CB37208}"
 EndProject
@@ -94,6 +94,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Analyzers.CodeFixers", "Source\aweXpect.Analyzers.CodeFixers\aweXpect.Analyzers.CodeFixers.csproj", "{117FF28C-3628-47F1-8567-008265AE211F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.SourceGenerators", "Source\aweXpect.SourceGenerators\aweXpect.SourceGenerators.csproj", "{C4F90F26-54CD-447E-870D-6F1C05729155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks", "Source\aweXpect.Frameworks\aweXpect.Frameworks.csproj", "{75E57A42-1C09-4923-B1E1-A27937189E9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +185,10 @@ Global
 		{C4F90F26-54CD-447E-870D-6F1C05729155}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4F90F26-54CD-447E-870D-6F1C05729155}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4F90F26-54CD-447E-870D-6F1C05729155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E57A42-1C09-4923-B1E1-A27937189E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E57A42-1C09-4923-B1E1-A27937189E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E57A42-1C09-4923-B1E1-A27937189E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E57A42-1C09-4923-B1E1-A27937189E9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{97D64B45-D97E-4A94-9EF0-37BF25310EBA} = {9CC57AD0-4984-4618-96EA-01FFFCCD84FA}
