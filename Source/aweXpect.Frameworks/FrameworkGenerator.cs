@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis.Text;
 namespace aweXpect.Frameworks;
 
 /// <summary>
-///     The <see cref="IIncrementalGenerator" /> for the registration of mocks.
+///     The <see cref="IIncrementalGenerator" /> for generating test framework adapters.
 /// </summary>
 [Generator]
 public class FrameworkGenerator : IIncrementalGenerator
