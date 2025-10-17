@@ -113,6 +113,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForDouble_WhenSubjectAndExpectedAreNaN_ShouldSucceed()
+			{
+				double subject = double.NaN;
+				double expected = double.NaN;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).Within(0.1);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task
@@ -154,6 +166,18 @@ public sealed partial class ThatNumber
 					              is equal to {Formatter.Format(expected)} ± 0.1,
 					              but it was 12.5 which differs by {expectedDifference}
 					              """);
+			}
+
+			[Fact]
+			public async Task ForFloat_WhenSubjectAndExpectedAreNaN_ShouldSucceed()
+			{
+				float subject = float.NaN;
+				float expected = float.NaN;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).Within(0.1F);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -363,6 +387,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForNullableDouble_WhenSubjectAndExpectedAreNaN_ShouldSucceed()
+			{
+				double? subject = double.NaN;
+				double expected = double.NaN;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).Within(0.1);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task
@@ -404,6 +440,18 @@ public sealed partial class ThatNumber
 					              is equal to {Formatter.Format(expected)} ± 0.1,
 					              but it was 12.5 which differs by {expectedDifference}
 					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableFloat_WhenSubjectAndExpectedAreNaN_ShouldSucceed()
+			{
+				float? subject = float.NaN;
+				float expected = float.NaN;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).Within(0.1F);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
