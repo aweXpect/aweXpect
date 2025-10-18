@@ -2460,6 +2460,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -2872,7 +2878,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -3288,7 +3295,8 @@ window.BENCHMARK_DATA = {
           277.77640272776284,
           308.1208300590515,
           273.26170335497176,
-          272.2555152575175
+          272.2555152575175,
+          269.78249740600586
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3693,6 +3701,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4133,7 +4142,8 @@ window.BENCHMARK_DATA = {
           267.41545670373097,
           243.8138378461202,
           243.90225802935086,
-          242.83908478418985
+          242.83908478418985,
+          234.73464778753427
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4326,6 +4336,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -4978,7 +4989,8 @@ window.BENCHMARK_DATA = {
           215.06892342226845,
           206.39952637354534,
           207.70468675295513,
-          209.6532849414008
+          209.6532849414008,
+          207.41526198387146
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5393,6 +5405,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          664,
           664,
           664,
           664,
@@ -7411,6 +7424,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -7746,7 +7765,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -8085,7 +8105,8 @@ window.BENCHMARK_DATA = {
           317724.0423828125,
           307485.8721749442,
           312976.320703125,
-          309286.0847516741
+          309286.0847516741,
+          314708.1344075521
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8377,6 +8398,7 @@ window.BENCHMARK_DATA = {
           285044,
           285044,
           285044,
+          335556,
           335556,
           335556,
           335556,
@@ -8776,7 +8798,8 @@ window.BENCHMARK_DATA = {
           2297290.643973214,
           2221341.81953125,
           2253866.540457589,
-          2156462.2806490385
+          2156462.2806490385,
+          2367809.3622395834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8892,6 +8915,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -9467,7 +9491,8 @@ window.BENCHMARK_DATA = {
           297801.49375,
           317740.89231770835,
           307267.130859375,
-          305181.2384928385
+          305181.2384928385,
+          298798.92054966517
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9805,6 +9830,7 @@ window.BENCHMARK_DATA = {
           880545,
           880545,
           880545,
+          224760,
           224760,
           224760,
           224760,
@@ -12285,6 +12311,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -12697,7 +12729,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -13113,7 +13146,8 @@ window.BENCHMARK_DATA = {
           547.5791072209676,
           509.99970518747966,
           495.8614857991536,
-          511.0399477141244
+          511.0399477141244,
+          494.62177320627063
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13472,6 +13506,7 @@ window.BENCHMARK_DATA = {
           1432,
           1432,
           1432,
+          1464,
           1464,
           1464,
           1464,
@@ -13958,7 +13993,8 @@ window.BENCHMARK_DATA = {
           529.427103805542,
           479.83818403879803,
           474.6981451034546,
-          483.3453311284383
+          483.3453311284383,
+          468.3129890759786
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14151,6 +14187,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -14803,7 +14840,8 @@ window.BENCHMARK_DATA = {
           15708.818766276041,
           13730.254915364583,
           14464.671318641076,
-          14467.594735281808
+          14467.594735281808,
+          14144.75838317871
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15218,6 +15256,7 @@ window.BENCHMARK_DATA = {
           27480,
           27480,
           27480,
+          25432,
           25432,
           25432,
           25432,
@@ -17698,6 +17737,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -18110,7 +18155,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -18526,7 +18572,8 @@ window.BENCHMARK_DATA = {
           276.1546947956085,
           251.23375456149762,
           252.78627014160156,
-          254.27797209421794
+          254.27797209421794,
+          249.4630912712642
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18885,6 +18932,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -19371,7 +19419,8 @@ window.BENCHMARK_DATA = {
           273.34412317276,
           247.374156443278,
           248.44107941218786,
-          256.62459290822346
+          256.62459290822346,
+          238.40484780531662
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19564,6 +19613,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20216,7 +20266,8 @@ window.BENCHMARK_DATA = {
           243.02021719614666,
           227.5648873647054,
           222.80705200831096,
-          220.57191414833068
+          220.57191414833068,
+          223.0934552828471
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20631,6 +20682,7 @@ window.BENCHMARK_DATA = {
           2984,
           2984,
           2984,
+          816,
           816,
           816,
           816,
@@ -23111,6 +23163,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -23523,7 +23581,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -23939,7 +23998,8 @@ window.BENCHMARK_DATA = {
           497.53650697072345,
           484.43059997558595,
           509.34662373860675,
-          476.7005522410075
+          476.7005522410075,
+          493.14027620951333
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24302,6 +24362,7 @@ window.BENCHMARK_DATA = {
           1160,
           1160,
           1160,
+          1232,
           1232,
           1232,
           1232,
@@ -24784,7 +24845,8 @@ window.BENCHMARK_DATA = {
           515.5210558573405,
           481.6572167078654,
           477.04914719717846,
-          478.9951577504476
+          478.9951577504476,
+          548.7480166980198
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24977,6 +25039,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -25629,7 +25692,8 @@ window.BENCHMARK_DATA = {
           280.5450296719869,
           267.91580222447715,
           261.2539490063985,
-          263.2004996935527
+          263.2004996935527,
+          282.5474505742391
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -26044,6 +26108,7 @@ window.BENCHMARK_DATA = {
           3072,
           3072,
           3072,
+          832,
           832,
           832,
           832,
@@ -28524,6 +28589,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -28936,7 +29007,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -29352,7 +29424,8 @@ window.BENCHMARK_DATA = {
           1980.4201372782388,
           2003.6187076568604,
           1964.5726053873698,
-          1875.9855552400861
+          1875.9855552400861,
+          1882.722839864095
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29727,6 +29800,7 @@ window.BENCHMARK_DATA = {
           2856,
           2856,
           2856,
+          2888,
           2888,
           2888,
           2888,
@@ -30197,7 +30271,8 @@ window.BENCHMARK_DATA = {
           1471.6537434895833,
           1331.1062872568766,
           1309.9062379201252,
-          1324.6389726911273
+          1324.6389726911273,
+          1346.7257797241211
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30390,6 +30465,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -31042,7 +31118,8 @@ window.BENCHMARK_DATA = {
           723.0249658993313,
           681.3945817947388,
           704.2117628097534,
-          686.6071758270264
+          686.6071758270264,
+          739.0760217030843
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -31457,6 +31534,7 @@ window.BENCHMARK_DATA = {
           5296,
           5296,
           5296,
+          1376,
           1376,
           1376,
           1376,
@@ -33937,6 +34015,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 16:01:29 2025 \u002B0200",
         "message": "feat: support MSTest v4 (#814)"
+      },
+      {
+        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
+        "message": "fix: formatting of nested types within generic types (#815)"
       }
     ],
     "labels": [
@@ -34349,7 +34433,8 @@ window.BENCHMARK_DATA = {
       "258d43fe",
       "dc5f3600",
       "8d0e2bcb",
-      "f62cf1d5"
+      "f62cf1d5",
+      "bafccdb2"
     ],
     "datasets": [
       {
@@ -34765,7 +34850,8 @@ window.BENCHMARK_DATA = {
           2617.540929158529,
           2595.6772834232875,
           2524.7666524251304,
-          2500.167182413737
+          2500.167182413737,
+          2624.294271850586
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35140,6 +35226,7 @@ window.BENCHMARK_DATA = {
           3048,
           3048,
           3048,
+          3080,
           3080,
           3080,
           3080,
@@ -35610,7 +35697,8 @@ window.BENCHMARK_DATA = {
           135244.53688151043,
           126304.04930013021,
           128928.144921875,
-          123922.04725864956
+          123922.04725864956,
+          124601.16599818638
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36031,7 +36119,8 @@ window.BENCHMARK_DATA = {
           61723,
           61719,
           61719,
-          61723
+          61723,
+          61719
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36455,7 +36544,8 @@ window.BENCHMARK_DATA = {
           785.7004907608032,
           714.7373033932278,
           729.2449838198148,
-          721.6777408599853
+          721.6777408599853,
+          723.0902763513418
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -36870,6 +36960,7 @@ window.BENCHMARK_DATA = {
           6488,
           6488,
           6488,
+          1440,
           1440,
           1440,
           1440,
