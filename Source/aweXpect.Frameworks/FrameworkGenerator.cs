@@ -8,7 +8,7 @@ namespace aweXpect.Frameworks;
 [Generator]
 public class FrameworkGenerator : IIncrementalGenerator
 {
-	private static string MsTestAdapter =>
+	private static string MsTest3Adapter =>
 		"""
 		using System.Diagnostics;
 		using System.Diagnostics.CodeAnalysis;
@@ -16,7 +16,40 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class MsTestAdapter() : ITestFrameworkAdapter
+		internal class MsTest3Adapter() : ITestFrameworkAdapter
+		{
+			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
+			public bool IsAvailable { get; } = true;
+
+			/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
+			[DoesNotReturn]
+			[StackTraceHidden]
+			public void Skip(string message)
+				=> throw new Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException(message);
+
+			/// <inheritdoc cref="ITestFrameworkAdapter.Fail(string)" />
+			[DoesNotReturn]
+			[StackTraceHidden]
+			public void Fail(string message)
+				=> throw new Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException(message);
+
+			/// <inheritdoc cref="ITestFrameworkAdapter.Inconclusive(string)" />
+			[DoesNotReturn]
+			[StackTraceHidden]
+			public void Inconclusive(string message)
+				=> throw new Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException(message);
+		}
+		""";
+
+	private static string MsTest4Adapter =>
+		"""
+		using System.Diagnostics;
+		using System.Diagnostics.CodeAnalysis;
+		using aweXpect.Core.Adapters;
+
+		namespace aweXpect.Frameworks;
+
+		internal class MsTest4Adapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -234,27 +267,34 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 	void IIncrementalGenerator.Initialize(IncrementalGeneratorInitializationContext context)
 	{
-		IncrementalValueProvider<(bool hasMsTest, bool hasNunit, bool hasTUnit, bool hasXunit2, bool hasXunit3Core, bool
+		IncrementalValueProvider<(bool hasMsTest3, bool hasMsTest4, bool hasNunit, bool hasTUnit, bool hasXunit2, bool hasXunit3Core, bool
 			hasXunit3Assert)> settings = context.CompilationProvider
 			.Select((c, _) =>
 			{
-				bool hasMsTest =
+				bool hasMsTest3 =
 					c.ReferencedAssemblyNames.Any(x => x.Name == "Microsoft.VisualStudio.TestPlatform.TestFramework");
+				bool hasMsTest4 =
+					c.ReferencedAssemblyNames.Any(x => x.Name == "MSTest.TestFramework");
 				bool hasNunit = c.ReferencedAssemblyNames.Any(x => x.Name == "nunit.framework");
 				bool hasTUnit = c.ReferencedAssemblyNames.Any(x => x.Name == "TUnit.Core") &&
 				                c.ReferencedAssemblyNames.Any(x => x.Name == "TUnit.Assertions");
 				bool hasXunit2 = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.assert");
 				bool hasXunit3Core = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.v3.core");
 				bool hasXunit3Assert = c.ReferencedAssemblyNames.Any(x => x.Name == "xunit.v3.assert");
-				return (hasMsTest, hasNunit, hasTUnit, hasXunit2, hasXunit3Core, hasXunit3Assert);
+				return (hasMsTest3, hasMsTest4, hasNunit, hasTUnit, hasXunit2, hasXunit3Core, hasXunit3Assert);
 			});
 
 		// Generate the source from the captured values
 		context.RegisterSourceOutput(settings, static (spc, opts) =>
 		{
-			if (opts.hasMsTest)
+			if (opts.hasMsTest3)
 			{
-				spc.AddSource("MsTest.g.cs", MsTestAdapter);
+				spc.AddSource("MsTest3.g.cs", MsTest3Adapter);
+			}
+
+			if (opts.hasMsTest4)
+			{
+				spc.AddSource("MsTest4.g.cs", MsTest4Adapter);
 			}
 
 			if (opts.hasNunit)
