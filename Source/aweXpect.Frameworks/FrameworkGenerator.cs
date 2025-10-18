@@ -8,7 +8,7 @@ namespace aweXpect.Frameworks;
 [Generator]
 public class FrameworkGenerator : IIncrementalGenerator
 {
-	private static string MsTest3Adapter =>
+	private static string MsTestAdapter =>
 		"""
 		using System.Diagnostics;
 		using System.Diagnostics.CodeAnalysis;
@@ -16,40 +16,7 @@ public class FrameworkGenerator : IIncrementalGenerator
 
 		namespace aweXpect.Frameworks;
 
-		internal class MsTest3Adapter() : ITestFrameworkAdapter
-		{
-			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
-			public bool IsAvailable { get; } = true;
-
-			/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
-			[DoesNotReturn]
-			[StackTraceHidden]
-			public void Skip(string message)
-				=> throw new Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException(message);
-
-			/// <inheritdoc cref="ITestFrameworkAdapter.Fail(string)" />
-			[DoesNotReturn]
-			[StackTraceHidden]
-			public void Fail(string message)
-				=> throw new Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException(message);
-
-			/// <inheritdoc cref="ITestFrameworkAdapter.Inconclusive(string)" />
-			[DoesNotReturn]
-			[StackTraceHidden]
-			public void Inconclusive(string message)
-				=> throw new Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException(message);
-		}
-		""";
-
-	private static string MsTest4Adapter =>
-		"""
-		using System.Diagnostics;
-		using System.Diagnostics.CodeAnalysis;
-		using aweXpect.Core.Adapters;
-
-		namespace aweXpect.Frameworks;
-
-		internal class MsTest4Adapter() : ITestFrameworkAdapter
+		internal class MsTestAdapter() : ITestFrameworkAdapter
 		{
 			/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 			public bool IsAvailable { get; } = true;
@@ -287,14 +254,9 @@ public class FrameworkGenerator : IIncrementalGenerator
 		// Generate the source from the captured values
 		context.RegisterSourceOutput(settings, static (spc, opts) =>
 		{
-			if (opts.hasMsTest3)
+			if (opts.hasMsTest3 || opts.hasMsTest4)
 			{
-				spc.AddSource("MsTest3.g.cs", MsTest3Adapter);
-			}
-
-			if (opts.hasMsTest4)
-			{
-				spc.AddSource("MsTest4.g.cs", MsTest4Adapter);
+				spc.AddSource("MsTest.g.cs", MsTestAdapter);
 			}
 
 			if (opts.hasNunit)
