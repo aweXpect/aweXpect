@@ -15,7 +15,8 @@ partial class Build
 	Project[] FrameworkUnitTestProjects =>
 	[
 		Solution.Tests.Frameworks.aweXpect_Frameworks_Fallback_Tests,
-		Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest3_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest4_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_Xunit2_Tests,
