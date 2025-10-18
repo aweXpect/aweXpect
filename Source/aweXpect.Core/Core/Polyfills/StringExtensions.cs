@@ -23,7 +23,7 @@ internal static class StringExtensionMethods
 		this string @this,
 		char value,
 		StringComparison comparisonType)
-		=> @this.Contains(value);
+		=> @this.IndexOf(value, comparisonType) >= 0;
 
 	/// <summary>
 	///     Returns a value indicating whether a specified character occurs within this string, using the specified comparison
@@ -37,7 +37,7 @@ internal static class StringExtensionMethods
 		this string @this,
 		string value,
 		StringComparison comparisonType)
-		=> @this.Contains(value);
+		=> @this.IndexOf(value, comparisonType) >= 0;
 
 	/// <summary>
 	///     Determines whether the end of this string instance matches the specified character.

@@ -30,7 +30,7 @@ public abstract partial class ConstraintResult
 			_inner = inner;
 			_exception = exception;
 			FurtherProcessingStrategy = inner.FurtherProcessingStrategy;
-			expectationBuilder.UpdateContexts(c => c.Add(new ResultContext("Exception", exception.ToString())));
+			expectationBuilder.AddContext(new ResultContext.Fixed("Exception", exception.ToString()));
 		}
 
 		public override Outcome Outcome

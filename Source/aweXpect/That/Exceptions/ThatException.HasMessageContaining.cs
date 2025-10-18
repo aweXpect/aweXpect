@@ -61,8 +61,7 @@ public static partial class ThatException
 				: Outcome.Failure;
 			if (!string.IsNullOrEmpty(actual?.Message))
 			{
-				expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Message", actual.Message)));
+				expectationBuilder.AddContext(new ResultContext.Fixed("Message", actual.Message));
 			}
 
 			return this;

@@ -33,7 +33,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 		if (expected is not string expectedString)
 		{
 			result = await _matchType.AreConsideredEqual(actual, null, _ignoreCase,
-				_comparer ?? UseDefaultComparer(_ignoreCase));
+				_comparer);
 			return result;
 		}
 
@@ -55,8 +55,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expectedString = expectedString.TrimEnd();
 		}
 
-		result = await _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
-			_comparer ?? UseDefaultComparer(_ignoreCase));
+		result = await _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase, _comparer);
 		return result;
 	}
 

@@ -54,7 +54,7 @@ internal static class CollectionHelpers
 			if (contexts.All(c => c.Title != "Collection"))
 			{
 				contexts
-					.Add(new ResultContext("Collection",
+					.Add(new ResultContext.SyncCallback("Collection",
 						() => Formatter.Format(value, typeof(TItem).GetFormattingOption(value switch
 						{
 							ICollection<TItem> coll => coll.Count,
@@ -90,7 +90,7 @@ internal static class CollectionHelpers
 			if (contexts.All(c => c.Title != "Collection"))
 			{
 				contexts
-					.Add(new ResultContext("Collection",
+					.Add(new ResultContext.SyncCallback("Collection",
 						() => Formatter.Format(value, type.GetFormattingOption(value switch
 						{
 							ICollection coll => coll.Count,
@@ -120,7 +120,7 @@ internal static class CollectionHelpers
 			if (contexts.All(c => c.Title != "Collection"))
 			{
 				contexts
-					.Add(new ResultContext("Collection",
+					.Add(new ResultContext.SyncCallback("Collection",
 						() => Formatter.Format(value.MaterializedItems,
 								typeof(TItem).GetFormattingOption(value.Count))
 							.AppendIsIncomplete(isIncomplete),
@@ -144,7 +144,7 @@ internal static class CollectionHelpers
 			if (contexts.All(c => c.Title != "Dictionary"))
 			{
 				contexts
-					.Add(new ResultContext("Dictionary",
+					.Add(new ResultContext.SyncCallback("Dictionary",
 						() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
 							.AppendIsIncomplete(isIncomplete),
 						-2));
@@ -166,7 +166,7 @@ internal static class CollectionHelpers
 			if (contexts.All(c => c.Title != "Dictionary"))
 			{
 				contexts
-					.Add(new ResultContext("Dictionary",
+					.Add(new ResultContext.SyncCallback("Dictionary",
 						() => Formatter.Format(value, typeof(TValue).GetFormattingOption(value.Count))
 							.AppendIsIncomplete(isIncomplete),
 						-2));

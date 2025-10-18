@@ -7,42 +7,17 @@ namespace aweXpect.Core;
 /// <summary>
 ///     A result context that is appended to a result error.
 /// </summary>
-public class ResultContext
+public abstract class ResultContext
 {
-	private readonly Func<CancellationToken, Task<string?>>? _contentFunc;
-
-	private readonly string? _fixedContent;
+	internal ResultContext? _next;
 
 	/// <summary>
 	///     A result context that is appended to a result error.
 	/// </summary>
 	/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
-	public ResultContext(string title, string? content, int priority = 0)
+	protected ResultContext(string title, int priority = 0)
 	{
 		Title = title;
-		_fixedContent = content;
-		Priority = priority;
-	}
-
-	/// <summary>
-	///     A result context that is appended to a result error.
-	/// </summary>
-	/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
-	public ResultContext(string title, Func<CancellationToken, Task<string?>> asyncContent, int priority = 0)
-	{
-		Title = title;
-		_contentFunc = asyncContent;
-		Priority = priority;
-	}
-
-	/// <summary>
-	///     A result context that is appended to a result error.
-	/// </summary>
-	/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
-	public ResultContext(string title, Func<string?> syncContent, int priority = 0)
-	{
-		Title = title;
-		_contentFunc = _ => Task.FromResult(syncContent());
 		Priority = priority;
 	}
 
@@ -60,18 +35,69 @@ public class ResultContext
 	/// <summary>
 	///     The content of the context.
 	/// </summary>
-	public async Task<string?> GetContent(CancellationToken cancellationToken = default)
+	public abstract Task<string?> GetContent(CancellationToken cancellationToken = default);
+
+	/// <summary>
+	///     A <see cref="ResultContext" /> from a fixed <see langword="string" /> content.
+	/// </summary>
+	public class Fixed : ResultContext
 	{
-		if (_fixedContent is not null)
+		private readonly string? _content;
+
+		/// <summary>
+		///     A <see cref="ResultContext" /> from a fixed <see langword="string" /> <paramref name="content" />.
+		/// </summary>
+		/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
+		public Fixed(string title, string? content, int priority = 0) : base(title, priority)
 		{
-			return _fixedContent;
+			_content = content;
 		}
 
-		if (_contentFunc is not null)
+		/// <inheritdoc cref="ResultContext.GetContent(CancellationToken)" />
+		public override Task<string?> GetContent(CancellationToken cancellationToken = default)
+			=> Task.FromResult(_content);
+	}
+
+	/// <summary>
+	///     A <see cref="ResultContext" /> from an async callback.
+	/// </summary>
+	public class AsyncCallback : ResultContext
+	{
+		private readonly Func<CancellationToken, Task<string?>> _callback;
+
+		/// <summary>
+		///     A <see cref="ResultContext" /> from an async <paramref name="callback" />.
+		/// </summary>
+		/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
+		public AsyncCallback(string title, Func<CancellationToken, Task<string?>> callback, int priority = 0) : base(
+			title, priority)
 		{
-			return await _contentFunc(cancellationToken);
+			_callback = callback;
 		}
 
-		return null;
+		/// <inheritdoc cref="ResultContext.GetContent(CancellationToken)" />
+		public override Task<string?> GetContent(CancellationToken cancellationToken = default)
+			=> _callback(cancellationToken);
+	}
+
+	/// <summary>
+	///     A <see cref="ResultContext" /> from a sync callback.
+	/// </summary>
+	public class SyncCallback : ResultContext
+	{
+		private readonly Func<string?> _callback;
+
+		/// <summary>
+		///     A <see cref="ResultContext" /> from a sync <paramref name="callback" />.
+		/// </summary>
+		/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
+		public SyncCallback(string title, Func<string?> callback, int priority = 0) : base(title, priority)
+		{
+			_callback = callback;
+		}
+
+		/// <inheritdoc cref="ResultContext.GetContent(CancellationToken)" />
+		public override Task<string?> GetContent(CancellationToken cancellationToken = default)
+			=> Task.FromResult(_callback());
 	}
 }

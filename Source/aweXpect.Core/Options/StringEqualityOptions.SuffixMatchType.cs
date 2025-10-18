@@ -102,7 +102,7 @@ public partial class StringEqualityOptions
 		public Task<bool>
 #endif
 			AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
-				IEqualityComparer<string> comparer)
+				IEqualityComparer<string>? comparer)
 		{
 			if (actual is null && expected is null)
 			{
@@ -122,11 +122,20 @@ public partial class StringEqualityOptions
 #endif
 			}
 
+			if (comparer is not null)
+			{
 #if NET8_0_OR_GREATER
 			return ValueTask.FromResult(actual.Length >= expected.Length && comparer.Equals(actual[^expected.Length..], expected));
 #else
-			return Task.FromResult(actual.Length >= expected.Length &&
-			                       comparer.Equals(actual[^expected.Length..], expected));
+				return Task.FromResult(actual.Length >= expected.Length &&
+				                       comparer.Equals(actual[^expected.Length..], expected));
+#endif
+			}
+
+#if NET8_0_OR_GREATER
+			return ValueTask.FromResult(actual.EndsWith(expected, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
+#else
+			return Task.FromResult(actual.EndsWith(expected, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
 #endif
 		}
 

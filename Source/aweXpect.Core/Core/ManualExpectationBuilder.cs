@@ -83,6 +83,14 @@ public class ManualExpectationBuilder<TValue>(
 		return this;
 	}
 
+	/// <inheritdoc cref="ExpectationBuilder.AddContext(ResultContext)" />
+	public override ExpectationBuilder AddContext(ResultContext resultContext)
+	{
+		inner?.AddContext(resultContext);
+		base.AddContext(resultContext);
+		return this;
+	}
+
 	/// <inheritdoc cref="object.ToString()" />
 	public override string ToString()
 	{

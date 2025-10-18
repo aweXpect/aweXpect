@@ -16,8 +16,8 @@ public class ExpectTests
 
 		async Task Act()
 			=> await ThatAll(
-				new MyExpectation(result1, new ResultContext("context-title1", "contest-content1")),
-				new MyExpectation(result2, new ResultContext("context-title2", "contest-content2")));
+				new MyExpectation(result1, new ResultContext.Fixed("context-title1", "contest-content1")),
+				new MyExpectation(result2, new ResultContext.Fixed("context-title2", "contest-content2")));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -38,8 +38,8 @@ public class ExpectTests
 		Expectation.Result result = new(1, "foo", new DummyConstraintResult(Outcome.Failure, "expectation", "result"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result, new ResultContext("t1", "c1"), new ResultContext("t2", "c2"),
-				new ResultContext("t3", "c3")));
+			=> await ThatAll(new MyExpectation(result, new ResultContext.Fixed("t1", "c1"), new ResultContext.Fixed("t2", "c2"),
+				new ResultContext.Fixed("t3", "c3")));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -65,7 +65,7 @@ public class ExpectTests
 		Expectation.Result result = new(1, "foo", new DummyConstraintResult(Outcome.Failure, "expectation", "result"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result, new ResultContext("context-title", "contest-content")));
+			=> await ThatAll(new MyExpectation(result, new ResultContext.Fixed("context-title", "contest-content")));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
