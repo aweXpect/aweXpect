@@ -1,8 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 [assembly: Parallelize]
 
 namespace aweXpect.Frameworks.MsTest4.Tests;
+
 [TestClass]
 public sealed class MsTestFrameworkTests
 {
