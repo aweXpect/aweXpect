@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
-      {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          222.58025734241193,
           223.86926261583963,
           231.044256512324,
           221.774701663426,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           308.1208300590515,
           273.26170335497176,
           272.2555152575175,
-          269.78249740600586
+          269.78249740600586,
+          249.39345846857344
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -451,7 +451,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.39693263598852,
           257.5262602170308,
           272.4241043971135,
           246.10164543787639,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           243.8138378461202,
           243.90225802935086,
           242.83908478418985,
-          234.73464778753427
+          234.73464778753427,
+          239.51507058510413
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          886.805609512329,
           930.0887649536132,
           927.241033299764,
           862.4502694447835,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           206.39952637354534,
           207.70468675295513,
           209.6532849414008,
-          207.41526198387146
+          207.41526198387146,
+          201.9173569202423
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -670,7 +670,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          2408,
           2408,
           2408,
           2408,
@@ -719,6 +718,7 @@ window.BENCHMARK_DATA = {
           664,
           664,
           664,
+          664,
           664
         ],
         "borderColor": "#1A6029",
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
       {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          307351.73701171874,
           308629.3859700521,
           322263.2201660156,
           299271.2471028646,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           307485.8721749442,
           312976.320703125,
           309286.0847516741,
-          314708.1344075521
+          314708.1344075521,
+          325841.9932942708
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1202,7 +1202,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556
+          335372
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2318540.0078125,
           2227939.5265625,
           2255916.359114583,
           2200448.0143229165,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2221341.81953125,
           2253866.540457589,
           2156462.2806490385,
-          2367809.3622395834
+          2367809.3622395834,
+          2177388.4837239585
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          706152.8080078125,
           698956.21953125,
           681370.1586914062,
           670493.166155134,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           317740.89231770835,
           307267.130859375,
           305181.2384928385,
-          298798.92054966517
+          298798.92054966517,
+          299383.46543666295
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1403,7 +1403,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          880545,
           880545,
           880545,
           880545,
@@ -1452,6 +1451,7 @@ window.BENCHMARK_DATA = {
           224760,
           224760,
           224760,
+          224760,
           224760
         ],
         "borderColor": "#1A6029",
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
       {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          543.7446072896322,
           523.0391578038533,
           502.271133295695,
           489.4889409201486,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           509.99970518747966,
           495.8614857991536,
           511.0399477141244,
-          494.62177320627063
+          494.62177320627063,
+          435.2064858118693
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1935,7 +1935,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464
+          1296
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          525.0689894358317,
           508.1092654546102,
           529.0278572082519,
           496.4816382271903,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           479.83818403879803,
           474.6981451034546,
           483.3453311284383,
-          468.3129890759786
+          468.3129890759786,
+          469.38727865900313
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          22918.59092203776,
           15400.609187534877,
           18183.868772379556,
           20680.707423909505,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           13730.254915364583,
           14464.671318641076,
           14467.594735281808,
-          14144.75838317871
+          14144.75838317871,
+          16555.16914485051
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2136,7 +2136,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          27480,
           27480,
           27480,
           27480,
@@ -2185,6 +2184,7 @@ window.BENCHMARK_DATA = {
           25432,
           25432,
           25432,
+          25432,
           25432
         ],
         "borderColor": "#1A6029",
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
       {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          253.93304602305093,
           253.0040427525838,
           251.52391235645,
           244.2458694458008,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           251.23375456149762,
           252.78627014160156,
           254.27797209421794,
-          249.4630912712642
+          249.4630912712642,
+          254.36252975463867
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          261.18444366455077,
           246.302117284139,
           268.0469714164734,
           249.18391682306927,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           247.374156443278,
           248.44107941218786,
           256.62459290822346,
-          238.40484780531662
+          238.40484780531662,
+          237.68475545247395
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1220.3894343058269,
           1218.4750186920166,
           1208.8968637906587,
           1187.420773824056,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           227.5648873647054,
           222.80705200831096,
           220.57191414833068,
-          223.0934552828471
+          223.0934552828471,
+          229.91291143099468
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2869,7 +2869,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          2984,
           2984,
           2984,
           2984,
@@ -2918,6 +2917,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          816,
           816
         ],
         "borderColor": "#1A6029",
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
       {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          452.2651821454366,
           433.02853911717733,
           475.7194676081339,
           447.6604925473531,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           484.43059997558595,
           509.34662373860675,
           476.7005522410075,
-          493.14027620951333
+          493.14027620951333,
+          417.1361598650614
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3401,7 +3401,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232
+          1056
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          464.8676253098708,
           493.5037216186523,
           530.8186480840047,
           462.2912927309672,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           481.6572167078654,
           477.04914719717846,
           478.9951577504476,
-          548.7480166980198
+          548.7480166980198,
+          1222.8185269673666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3526,7 +3526,7 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168
+          3896
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1243.0428563435873,
           1266.6304677816538,
           1258.173487218221,
           1237.488268661499,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           267.91580222447715,
           261.2539490063985,
           263.2004996935527,
-          282.5474505742391
+          282.5474505742391,
+          293.46151847839354
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3602,7 +3602,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          3072,
           3072,
           3072,
           3072,
@@ -3651,7 +3650,8 @@ window.BENCHMARK_DATA = {
           832,
           832,
           832,
-          832
+          832,
+          1032
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
       {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1705.4649738584246,
           1798.8281017303466,
           1787.2566527048746,
           1711.0052505220685,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           2003.6187076568604,
           1964.5726053873698,
           1875.9855552400861,
-          1882.722839864095
+          1882.722839864095,
+          1818.5281080881755
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4086,7 +4086,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           2856,
-          2856,
           2888,
           2888,
           2888,
@@ -4134,7 +4133,8 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888
+          2888,
+          2568
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1235.711539586385,
           1343.606426532452,
           1416.480962371826,
           1397.2751046589442,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1331.1062872568766,
           1309.9062379201252,
           1324.6389726911273,
-          1346.7257797241211
+          1346.7257797241211,
+          1336.5098396301269
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3310.49712600708,
           3315.1519116719564,
           3425.8064882914227,
           3245.943258013044,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           681.3945817947388,
           704.2117628097534,
           686.6071758270264,
-          739.0760217030843
+          739.0760217030843,
+          678.8375296225914
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4335,7 +4335,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          5296,
           5296,
           5296,
           5296,
@@ -4384,6 +4383,7 @@ window.BENCHMARK_DATA = {
           1376,
           1376,
           1376,
+          1376,
           1376
         ],
         "borderColor": "#1A6029",
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "95828efed44e29017a4e08c3f7db6df4eed14a12",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 08:04:36 2025 \u002B0200",
-        "message": "Fix JSON error"
-      },
       {
         "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
         "message": "fix: formatting of nested types within generic types (#815)"
+      },
+      {
+        "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
+        "message": "chore: update aweXpect to v2.27.1 (#818)"
       }
     ],
     "labels": [
-      "95828efe",
       "67917e64",
       "d9f4c5ad",
       "f000f6a6",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "dc5f3600",
       "8d0e2bcb",
       "f62cf1d5",
-      "bafccdb2"
+      "bafccdb2",
+      "a8bcc4b2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2148.036256245204,
           2167.415320587158,
           2249.709725443522,
           2178.9087109883626,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2595.6772834232875,
           2524.7666524251304,
           2500.167182413737,
-          2624.294271850586
+          2624.294271850586,
+          2485.525977543422
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4819,7 +4819,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           3048,
-          3048,
           3080,
           3080,
           3080,
@@ -4867,7 +4866,8 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080
+          3080,
+          2760
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          152595.39303385417,
           149834.27078683037,
           157030.31358924278,
           148099.1638671875,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           126304.04930013021,
           128928.144921875,
           123922.04725864956,
-          124601.16599818638
+          124601.16599818638,
+          129012.82985026042
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63788,
           63352,
           63788,
           63352,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           61719,
           61719,
           61723,
-          61719
+          61719,
+          61723
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3901.8772415161134,
           3828.053297860282,
           4041.0572438557942,
           3811.9311327253067,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           714.7373033932278,
           729.2449838198148,
           721.6777408599853,
-          723.0902763513418
+          723.0902763513418,
+          728.1398166656494
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5100,7 +5100,6 @@ window.BENCHMARK_DATA = {
           6488,
           6488,
           6488,
-          6488,
           6496,
           6496,
           6496,
@@ -5110,6 +5109,7 @@ window.BENCHMARK_DATA = {
           6488,
           6488,
           6488,
+          1440,
           1440,
           1440,
           1440,
