@@ -27,6 +27,38 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task NestedGenericTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>.InnerClass<int, string>);
+			string expectedResult = "ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerClass<int, string>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task NestedTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>.InnerRegularClass);
+			string expectedResult = "ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerRegularClass";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task NestedTypes_ShouldIncludeTheDeclaringTypeAndName()
 		{
 			Type value = typeof(TypeTests);
@@ -259,7 +291,12 @@ public partial class ValueFormatters
 		}
 
 		// ReSharper disable once UnusedTypeParameter
-		private class NestedGenericType<T>;
+		private class NestedGenericType<T>
+		{
+			public sealed class InnerClass<T1, T2>;
+
+			public sealed class InnerRegularClass;
+		}
 
 		// ReSharper disable once UnusedParameter.Local
 		private static void DummyMethodToGetSpecialTypes<TParameter>(TParameter value)

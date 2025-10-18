@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -103,10 +104,16 @@ public static partial class ValueFormatters
 		FormatType(value, stringBuilder);
 	}
 
-#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 	private static void FormatType(
 		Type value,
 		StringBuilder stringBuilder)
+		=> FormatType(value, stringBuilder, null);
+
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
+	private static void FormatType(
+		Type value,
+		StringBuilder stringBuilder,
+		Type[]? genericArguments)
 	{
 		if (value == typeof(void))
 		{
@@ -125,7 +132,15 @@ public static partial class ValueFormatters
 		{
 			if (value.IsNested && value.DeclaringType is not null)
 			{
-				FormatType(value.DeclaringType, stringBuilder);
+				Type[]? declaringTypeGenericArguments = null;
+				if (value.IsGenericType)
+				{
+					int arity = GetArityOfGenericParameters(value.DeclaringType);
+					declaringTypeGenericArguments = [..value.GenericTypeArguments.Take(arity)];
+					genericArguments = [..(genericArguments ?? value.GenericTypeArguments).Skip(arity)];
+				}
+				
+				FormatType(value.DeclaringType, stringBuilder, declaringTypeGenericArguments);
 				stringBuilder.Append('.');
 			}
 
@@ -133,9 +148,15 @@ public static partial class ValueFormatters
 			{
 				Type genericTypeDefinition = value.GetGenericTypeDefinition();
 				stringBuilder.Append(genericTypeDefinition.Name.SubstringUntilFirst('`'));
+				if (genericArguments?.Length == 0)
+				{
+					return;
+				}
+				
 				stringBuilder.Append('<');
 				bool isFirstArgument = true;
-				foreach (Type argument in value.GetGenericArguments())
+				genericArguments ??= value.GetGenericArguments();
+				foreach (var argument in genericArguments)
 				{
 					if (!isFirstArgument)
 					{
@@ -158,6 +179,11 @@ public static partial class ValueFormatters
 		}
 	}
 #pragma warning restore S3776
+	
+	private static int GetArityOfGenericParameters(Type type)
+		=> type.Name.LastIndexOf('`') != -1
+			? int.Parse(type.Name[(type.Name.LastIndexOf('`') + 1)..], CultureInfo.InvariantCulture)
+			: 0;
 
 	private static bool AppendedPrimitiveAlias(Type value, StringBuilder stringBuilder)
 	{
