@@ -56,7 +56,7 @@ public partial class StringEqualityOptions
 		public Task<bool>
 #endif
 		AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
-			IEqualityComparer<string> comparer)
+			IEqualityComparer<string>? comparer)
 		{
 			if (actual is null || expected is null)
 			{
