@@ -55,8 +55,7 @@ public static partial class ThatString
 			Outcome = await options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
 			if (!string.IsNullOrEmpty(actual))
 			{
-				expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Actual", actual)));
+				expectationBuilder.AddContext(new ResultContext.Fixed("Actual", actual));
 			}
 			return this;
 		}

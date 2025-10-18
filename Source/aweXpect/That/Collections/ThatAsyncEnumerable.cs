@@ -160,22 +160,20 @@ public static partial class ThatAsyncEnumerable
 			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
 			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
 			{
-				_expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Matching items",
-						Formatter.Format(_matchingItems,
+				_expectationBuilder.AddContext(new ResultContext.SyncCallback("Matching items",
+						() => Formatter.Format(_matchingItems,
 								typeof(TItem).GetFormattingOption(_matchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
-						int.MaxValue)));
+						int.MaxValue));
 			}
 
 			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
 			{
-				_expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Not matching items",
-						Formatter.Format(_notMatchingItems,
+				_expectationBuilder.AddContext(new ResultContext.SyncCallback("Not matching items",
+						() => Formatter.Format(_notMatchingItems,
 								typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
-						int.MaxValue)));
+						int.MaxValue));
 			}
 		}
 	}
@@ -351,22 +349,20 @@ public static partial class ThatAsyncEnumerable
 			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
 			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
 			{
-				_expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Matching items",
-						Formatter.Format(_matchingItems,
+				_expectationBuilder.AddContext(new ResultContext.SyncCallback("Matching items",
+						() => Formatter.Format(_matchingItems,
 								typeof(TItem).GetFormattingOption(_matchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
-						int.MaxValue)));
+						int.MaxValue));
 			}
 
 			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
 			{
-				_expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Not matching items",
-						Formatter.Format(_notMatchingItems,
+				_expectationBuilder.AddContext(new ResultContext.SyncCallback("Not matching items",
+						() => Formatter.Format(_notMatchingItems,
 								typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
 							.AppendIsIncomplete(isIncomplete),
-						int.MaxValue)));
+						int.MaxValue));
 			}
 		}
 	}
@@ -512,15 +508,14 @@ public static partial class ThatAsyncEnumerable
 				_items = [];
 			}
 
-			expectationBuilder.UpdateContexts(contexts => contexts
-				.Add(new ResultContext("Expected",
+			expectationBuilder.AddContext(new ResultContext.SyncCallback("Expected",
 					() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
 					{
 						ICollection<TItem> coll => coll.Count,
 						ICountable countable => countable.Count,
 						_ => null,
 					})),
-					-2)));
+					-2));
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				if (_items?.Count < maximumNumber + 1)
@@ -639,10 +634,9 @@ public static partial class ThatAsyncEnumerable
 				_items = [];
 			}
 
-			expectationBuilder.UpdateContexts(contexts => contexts
-				.Add(new ResultContext("Expected",
+			expectationBuilder.AddContext(new ResultContext.SyncCallback("Expected",
 					() => Formatter.Format(_expectations, typeof(TItem).GetFormattingOption(_expectations.Length)),
-					-2)));
+					-2));
 			NoOptions noOptions = new();
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
@@ -762,15 +756,14 @@ public static partial class ThatAsyncEnumerable
 				_items = [];
 			}
 
-			expectationBuilder.UpdateContexts(contexts => contexts
-				.Add(new ResultContext("Expected",
+			expectationBuilder.AddContext(new ResultContext.SyncCallback("Expected",
 					() => Formatter.Format(expected, typeof(TItem).GetFormattingOption(expected switch
 					{
 						ICollection<TItem> coll => coll.Count,
 						ICountable countable => countable.Count,
 						_ => null,
 					})),
-					-2)));
+					-2));
 			NoOptions noOptions = new();
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{

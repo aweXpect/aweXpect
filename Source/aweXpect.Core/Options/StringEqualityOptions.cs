@@ -55,8 +55,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expectedString = expectedString.TrimEnd();
 		}
 
-		result = await _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
-			_comparer);
+		result = await _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase, _comparer);
 		return result;
 	}
 

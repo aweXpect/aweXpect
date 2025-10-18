@@ -36,6 +36,9 @@ public class ThatBool : ExpectationResult<bool>, IExpectThat<bool>
 		public override ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
 			=> inner.UpdateContexts(callback);
 
+		public override ExpectationBuilder AddContext(ResultContext resultContext)
+			=> inner.AddContext(resultContext);
+
 		internal override Task<ConstraintResult> IsMet(Node rootNode, EvaluationContext.EvaluationContext context,
 			ITimeSystem timeSystem, TimeSpan? timeout,
 			CancellationToken cancellationToken)

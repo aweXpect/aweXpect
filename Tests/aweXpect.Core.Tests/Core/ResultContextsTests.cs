@@ -7,7 +7,7 @@ public sealed class ResultContextsTests
 	{
 		ResultContexts sut = new();
 
-		sut.Add(new ResultContext("foo", "bar"));
+		sut.Add(new ResultContext.Fixed("foo", "bar"));
 
 		await That(sut).HasSingle().Which.IsEquivalentTo(new
 		{
@@ -20,11 +20,11 @@ public sealed class ResultContextsTests
 	{
 		ResultContexts sut = new();
 
-		sut.Add(new ResultContext("foo", "1"));
-		sut.Add(new ResultContext("foo", "2"));
-		sut.Add(new ResultContext("foo", "2"));
-		sut.Add(new ResultContext("bar", "3"));
-		sut.Add(new ResultContext("foo", "4"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "2"));
+		sut.Add(new ResultContext.Fixed("foo", "2"));
+		sut.Add(new ResultContext.Fixed("bar", "3"));
+		sut.Add(new ResultContext.Fixed("foo", "4"));
 
 		await That(sut).HasCount().EqualTo(5);
 	}
@@ -34,8 +34,8 @@ public sealed class ResultContextsTests
 	{
 		ResultContexts sut =
 		[
-			new ResultContext("foo", "bar"),
-			new ResultContext("foo", "bar"),
+			new ResultContext.Fixed("foo", "bar"),
+			new ResultContext.Fixed("foo", "bar"),
 		];
 
 		sut.Clear();
@@ -47,11 +47,11 @@ public sealed class ResultContextsTests
 	public async Task Close_ShouldRestrictAdd()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 
 		sut.Close();
 
-		sut.Add(new ResultContext("bar", "2"));
+		sut.Add(new ResultContext.Fixed("bar", "2"));
 		await That(sut).HasSingle().Which.IsEquivalentTo(new
 		{
 			Title = "foo",
@@ -62,7 +62,7 @@ public sealed class ResultContextsTests
 	public async Task Close_ShouldRestrictClear()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 
 		sut.Close();
 
@@ -77,7 +77,7 @@ public sealed class ResultContextsTests
 	public async Task Close_ShouldRestrictRemoveWithPredicate()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 
 		sut.Close();
 
@@ -92,7 +92,7 @@ public sealed class ResultContextsTests
 	public async Task Close_ShouldRestrictRemoveWithTitle()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 
 		sut.Close();
 
@@ -107,12 +107,12 @@ public sealed class ResultContextsTests
 	public async Task Open_ShouldRestrictAdd()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 		sut.Close();
 
 		sut.Open();
 
-		sut.Add(new ResultContext("bar", "2"));
+		sut.Add(new ResultContext.Fixed("bar", "2"));
 		await That(sut).HasCount().EqualTo(2);
 	}
 
@@ -120,7 +120,7 @@ public sealed class ResultContextsTests
 	public async Task Open_ShouldRestrictClear()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 		sut.Close();
 
 		sut.Open();
@@ -133,7 +133,7 @@ public sealed class ResultContextsTests
 	public async Task Open_ShouldRestrictRemoveWithPredicate()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 		sut.Close();
 
 		sut.Open();
@@ -146,7 +146,7 @@ public sealed class ResultContextsTests
 	public async Task Open_ShouldRestrictRemoveWithTitle()
 	{
 		ResultContexts sut = new();
-		sut.Add(new ResultContext("foo", "1"));
+		sut.Add(new ResultContext.Fixed("foo", "1"));
 		sut.Close();
 
 		sut.Open();
@@ -160,9 +160,9 @@ public sealed class ResultContextsTests
 	{
 		ResultContexts sut =
 		[
-			new ResultContext("foo", "bar"),
-			new ResultContext("bar", "baz"),
-			new ResultContext("foo", "bar"),
+			new ResultContext.Fixed("foo", "bar"),
+			new ResultContext.Fixed("bar", "baz"),
+			new ResultContext.Fixed("foo", "bar"),
 		];
 
 		sut.Remove(c => c.Title == "foo");
@@ -178,9 +178,9 @@ public sealed class ResultContextsTests
 	{
 		ResultContexts sut =
 		[
-			new ResultContext("foo", "bar"),
-			new ResultContext("bar", "baz"),
-			new ResultContext("foo", "bar"),
+			new ResultContext.Fixed("foo", "bar"),
+			new ResultContext.Fixed("bar", "baz"),
+			new ResultContext.Fixed("foo", "bar"),
 		];
 
 		sut.Remove("foo");

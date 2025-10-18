@@ -155,6 +155,7 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<aweXpect.Core.ExpectationBuilder, string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<aweXpect.Core.ExpectationBuilder, string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<aweXpect.Core.ExpectationBuilder, string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
+        public virtual aweXpect.Core.ExpectationBuilder AddContext(aweXpect.Core.ResultContext resultContext) { }
         public aweXpect.Core.ExpectationBuilder And(string textSeparator = " and ") { }
         public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForAsyncMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, System.Threading.Tasks.Task<TTarget>> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
@@ -237,6 +238,7 @@ namespace aweXpect.Core
     public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder, System.Collections.Generic.IEqualityComparer<aweXpect.Core.ManualExpectationBuilder<TValue>>
     {
         public ManualExpectationBuilder(aweXpect.Core.ExpectationBuilder? inner, aweXpect.Core.ExpectationGrammars grammars = 0) { }
+        public override aweXpect.Core.ExpectationBuilder AddContext(aweXpect.Core.ResultContext resultContext) { }
         public void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
         protected virtual bool Equals(aweXpect.Core.ManualExpectationBuilder<TValue> other) { }
         public override bool Equals(object? obj) { }
@@ -260,14 +262,27 @@ namespace aweXpect.Core
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFunc(System.Func<TSource, TTarget> func, string name) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFuncAsMemberAccessor(System.Func<TSource, TTarget> func, string name) { }
     }
-    public class ResultContext
+    public abstract class ResultContext
     {
-        public ResultContext(string title, System.Func<string?> syncContent, int priority = 0) { }
-        public ResultContext(string title, System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<string?>> asyncContent, int priority = 0) { }
-        public ResultContext(string title, string? content, int priority = 0) { }
+        protected ResultContext(string title, int priority = 0) { }
         public int Priority { get; }
         public string Title { get; set; }
-        public System.Threading.Tasks.Task<string?> GetContent(System.Threading.CancellationToken cancellationToken = default) { }
+        public abstract System.Threading.Tasks.Task<string?> GetContent(System.Threading.CancellationToken cancellationToken = default);
+        public class AsyncCallback : aweXpect.Core.ResultContext
+        {
+            public AsyncCallback(string title, System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<string?>> callback, int priority = 0) { }
+            public override System.Threading.Tasks.Task<string?> GetContent(System.Threading.CancellationToken cancellationToken = default) { }
+        }
+        public class Fixed : aweXpect.Core.ResultContext
+        {
+            public Fixed(string title, string? content, int priority = 0) { }
+            public override System.Threading.Tasks.Task<string?> GetContent(System.Threading.CancellationToken cancellationToken = default) { }
+        }
+        public class SyncCallback : aweXpect.Core.ResultContext
+        {
+            public SyncCallback(string title, System.Func<string?> callback, int priority = 0) { }
+            public override System.Threading.Tasks.Task<string?> GetContent(System.Threading.CancellationToken cancellationToken = default) { }
+        }
     }
     public class ResultContexts : System.Collections.Generic.IEnumerable<aweXpect.Core.ResultContext>, System.Collections.IEnumerable
     {
@@ -547,6 +562,7 @@ namespace aweXpect.Equivalency
     public abstract class EquivalencyExpectationBuilder : aweXpect.Core.ExpectationBuilder
     {
         protected EquivalencyExpectationBuilder() { }
+        public override aweXpect.Core.ExpectationBuilder AddContext(aweXpect.Core.ResultContext resultContext) { }
         public void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
         public abstract System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy<TValue>(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken);
         public override aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }

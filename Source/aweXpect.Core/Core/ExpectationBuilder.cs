@@ -379,6 +379,16 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Adds the <paramref name="resultContext"/> to the context that is included in the failure message.
+	/// </summary>
+	public virtual ExpectationBuilder AddContext(ResultContext resultContext)
+	{
+		_contexts ??= new ResultContexts();
+		_contexts.Add(resultContext);
+		return this;
+	}
+
+	/// <summary>
 	///     Gets the list of <see cref="ResultContext" />.
 	/// </summary>
 	internal IEnumerable<ResultContext> GetContexts() => _contexts ?? [];

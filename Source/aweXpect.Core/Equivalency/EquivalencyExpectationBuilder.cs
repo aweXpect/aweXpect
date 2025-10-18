@@ -134,4 +134,7 @@ public abstract class EquivalencyExpectationBuilder : ExpectationBuilder
 
 	/// <inheritdoc cref="ExpectationBuilder.UpdateContexts(Action{ResultContexts})" />
 	public override ExpectationBuilder UpdateContexts(Action<ResultContexts> callback) => this;
+
+	/// <inheritdoc cref="ExpectationBuilder.AddContext(ResultContext)" />
+	public override ExpectationBuilder AddContext(ResultContext resultContext) => this;
 }

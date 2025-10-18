@@ -9,11 +9,19 @@ namespace aweXpect.Core;
 /// </summary>
 public class ResultContexts : IEnumerable<ResultContext>
 {
-	private readonly List<ResultContext> _results = new();
+	private ResultContext? _first;
 	private bool _isOpen = true;
 
 	/// <inheritdoc cref="IEnumerable{ResultContext}.GetEnumerator()" />
-	public IEnumerator<ResultContext> GetEnumerator() => _results.GetEnumerator();
+	public IEnumerator<ResultContext> GetEnumerator()
+	{
+		ResultContext? current = _first;
+		while (current != null)
+		{
+			yield return current;
+			current = current._next;
+		}
+	}
 
 	/// <inheritdoc cref="IEnumerable.GetEnumerator()" />
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -43,7 +51,15 @@ public class ResultContexts : IEnumerable<ResultContext>
 	{
 		if (_isOpen)
 		{
-			_results.Add(context);
+			if (_first is null)
+			{
+				_first = context;
+			}
+			else
+			{
+				context._next = _first._next;
+				_first._next = context;
+			}
 		}
 
 		return this;
@@ -56,7 +72,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	{
 		if (_isOpen)
 		{
-			_results.Clear();
+			_first = null;
 		}
 
 		return this;
@@ -66,14 +82,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	///     Removes all contexts with the given <paramref name="title" />.
 	/// </summary>
 	public ResultContexts Remove(string title, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)
-	{
-		if (_isOpen)
-		{
-			_results.RemoveAll(x => x.Title.Equals(title, stringComparison));
-		}
-
-		return this;
-	}
+		=> Remove(c => string.Equals(c.Title, title, stringComparison));
 
 	/// <summary>
 	///     Removes all contexts that match the <paramref name="predicate" />.
@@ -82,7 +91,28 @@ public class ResultContexts : IEnumerable<ResultContext>
 	{
 		if (_isOpen)
 		{
-			_results.RemoveAll(predicate);
+			ResultContext? previous = null;
+			ResultContext? current = _first;
+			while (current != null)
+			{
+				if (predicate(current))
+				{
+					if (previous == null)
+					{
+						_first = current._next;
+					}
+					else
+					{
+						previous._next = current._next;
+					}
+				}
+				else
+				{
+					previous = current;
+				}
+
+				current = current._next;
+			}
 		}
 
 		return this;
