@@ -9,8 +9,6 @@ public sealed class TunitTestFrameworkTests
 	[Test]
 	public async Task OnFail_WhenUsingXunit2AsTestFramework_ShouldThrowXunitException()
 	{
-		await Assert.That(true).IsTrue();
-		
 		void Act()
 			=> Fail.Test("my message");
 
