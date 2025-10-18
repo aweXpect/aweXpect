@@ -230,19 +230,19 @@ public class StringDifferenceTests
 		[Fact]
 		public async Task WhenStringContainsWhitespace_ShouldPositionArrowsCorrectly()
 		{
-			const string actual = "foo\rbar\nBAZ";
-			const string expected = "foo\rbar\nbaz";
+			const string actual = "foo\r\tbar\nBAZ";
+			const string expected = "foo\r\tbar\nbaz";
 
 			StringDifference sut = new(actual, expected);
 
-			await That(sut.IndexOfFirstMismatch(StringDifference.MatchType.Equality)).IsEqualTo(8);
+			await That(sut.IndexOfFirstMismatch(StringDifference.MatchType.Equality)).IsEqualTo(9);
 			await That(sut.ToString()).IsEqualTo(
 				"""
 				differs on line 2 and column 1:
-				             ↓ (actual)
-				  "foo\rbar\nBAZ"
-				  "foo\rbar\nbaz"
-				             ↑ (expected)
+				               ↓ (actual)
+				  "foo\r\tbar\nBAZ"
+				  "foo\r\tbar\nbaz"
+				               ↑ (expected)
 				""");
 		}
 

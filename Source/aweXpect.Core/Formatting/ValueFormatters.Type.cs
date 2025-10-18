@@ -136,10 +136,10 @@ public static partial class ValueFormatters
 				if (value.IsGenericType)
 				{
 					int arity = GetArityOfGenericParameters(value.DeclaringType);
-					declaringTypeGenericArguments = [..value.GenericTypeArguments.Take(arity)];
-					genericArguments = [..(genericArguments ?? value.GenericTypeArguments).Skip(arity)];
+					declaringTypeGenericArguments = [..value.GenericTypeArguments.Take(arity),];
+					genericArguments = [..(genericArguments ?? value.GenericTypeArguments).Skip(arity),];
 				}
-				
+
 				FormatType(value.DeclaringType, stringBuilder, declaringTypeGenericArguments);
 				stringBuilder.Append('.');
 			}
@@ -152,11 +152,11 @@ public static partial class ValueFormatters
 				{
 					return;
 				}
-				
+
 				stringBuilder.Append('<');
 				bool isFirstArgument = true;
 				genericArguments ??= value.GetGenericArguments();
-				foreach (var argument in genericArguments)
+				foreach (Type? argument in genericArguments)
 				{
 					if (!isFirstArgument)
 					{
@@ -179,18 +179,19 @@ public static partial class ValueFormatters
 		}
 	}
 #pragma warning restore S3776
-	
+
 	private static int GetArityOfGenericParameters(Type type)
 	{
 		int tickIndex = type.Name.LastIndexOf('`');
 		if (tickIndex != -1)
 		{
-			var arityStr = type.Name[(tickIndex + 1)..];
+			string? arityStr = type.Name[(tickIndex + 1)..];
 			if (int.TryParse(arityStr, NumberStyles.None, CultureInfo.InvariantCulture, out int arity))
 			{
 				return arity;
 			}
 		}
+
 		return 0;
 	}
 
@@ -211,6 +212,7 @@ public static partial class ValueFormatters
 				stringBuilder.Append(underlyingAlias).Append('?');
 				return true;
 			}
+
 			FormatType(underlyingType, stringBuilder);
 			stringBuilder.Append('?');
 			return true;

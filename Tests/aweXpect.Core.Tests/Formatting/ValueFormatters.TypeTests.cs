@@ -11,6 +11,23 @@ public partial class ValueFormatters
 	public sealed class TypeTests
 	{
 		[Fact]
+		public async Task NestedGenericTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>.InnerClass<int, string>);
+			string expectedResult =
+				"ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerClass<int, string>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task NestedGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
 		{
 			Type value = typeof(NestedGenericType<TypeTests>);
@@ -27,26 +44,11 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
-		public async Task NestedGenericTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
-		{
-			Type value = typeof(NestedGenericType<TypeTests>.InnerClass<int, string>);
-			string expectedResult = "ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerClass<int, string>";
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			string objectResult = Formatter.Format((object?)value);
-			Formatter.Format(sb, value);
-
-			await That(result).IsEqualTo(expectedResult);
-			await That(objectResult).IsEqualTo(expectedResult);
-			await That(sb.ToString()).IsEqualTo(expectedResult);
-		}
-
-		[Fact]
 		public async Task NestedTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
 		{
 			Type value = typeof(NestedGenericType<TypeTests>.InnerRegularClass);
-			string expectedResult = "ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerRegularClass";
+			string expectedResult =
+				"ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerRegularClass";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
@@ -241,6 +243,21 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task WhenNull_ShouldUseDefaultNullString()
+		{
+			Type? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(ValueFormatter.NullString);
+			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
+			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
+		}
+
+		[Fact]
 		public async Task WhenNullable_ShouldUseQuestionMarkSyntax()
 		{
 			string expectedResult = "DateTime?";
@@ -254,21 +271,6 @@ public partial class ValueFormatters
 			await That(result).IsEqualTo(expectedResult);
 			await That(objectResult).IsEqualTo(expectedResult);
 			await That(sb.ToString()).IsEqualTo(expectedResult);
-		}
-
-		[Fact]
-		public async Task WhenNull_ShouldUseDefaultNullString()
-		{
-			Type? value = null;
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			string objectResult = Formatter.Format((object?)value);
-			Formatter.Format(sb, value);
-
-			await That(result).IsEqualTo(ValueFormatter.NullString);
-			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
-			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
 
 		[Fact]
@@ -405,7 +407,7 @@ public partial class ValueFormatters
 				},
 				{
 					typeof(void), "void"
-				}
+				},
 			};
 	}
 }
