@@ -181,9 +181,18 @@ public static partial class ValueFormatters
 #pragma warning restore S3776
 	
 	private static int GetArityOfGenericParameters(Type type)
-		=> type.Name.LastIndexOf('`') != -1
-			? int.Parse(type.Name[(type.Name.LastIndexOf('`') + 1)..], CultureInfo.InvariantCulture)
-			: 0;
+	{
+		int tickIndex = type.Name.LastIndexOf('`');
+		if (tickIndex != -1)
+		{
+			var arityStr = type.Name[(tickIndex + 1)..];
+			if (int.TryParse(arityStr, NumberStyles.None, CultureInfo.InvariantCulture, out int arity))
+			{
+				return arity;
+			}
+		}
+		return 0;
+	}
 
 	private static bool AppendedPrimitiveAlias(Type value, StringBuilder stringBuilder)
 	{
