@@ -88,9 +88,10 @@ const config: Config = {
           label: 'Extensions',
         },
         {
-          to: '/benchmarks',
-          label: 'Benchmarks',
-          position: 'left'
+          type: 'docSidebar',
+          sidebarId: 'mockolateSidebar',
+          position: 'left',
+          label: 'Mockolate',
         },
         // Add blog link here if blog functionality is re-enabled in the future (https://github.com/aweXpect/aweXpect/pull/722)
       ],

@@ -18,6 +18,8 @@ partial class Build
 	Target Pages => _ => _
 		.Executes(async () =>
 		{
+			await DownloadDocsPagesDirectory("Mockolate", RootDirectory / "Docs" / "pages" / "docs" / "mockolate");
+			
 			Dictionary<string, string> projects = new()
 			{
 				{
@@ -32,18 +34,19 @@ partial class Build
 				{
 					"aweXpect.Testably", "Testably"
 				},
+				{
+					"aweXpect.Mockolate", "Mockolate"
+				},
 			};
 			foreach (var (project, directoryName) in projects)
 			{
-				await DownloadDocsPagesDirectory(project, directoryName);
+				await DownloadDocsPagesDirectory(project, RootDirectory / "Docs" / "pages" / "docs" / "extensions" / "project" / directoryName);
 			}
 		});
 
-
-	async Task DownloadDocsPagesDirectory(string projectName, string directoryName)
+	async Task DownloadDocsPagesDirectory(string projectName, AbsolutePath baseDirectory)
 	{
-		AbsolutePath baseDirectory =
-			RootDirectory / "Docs" / "pages" / "docs" / "extensions" / "project" / directoryName;
+		baseDirectory.CreateDirectory();
 		Log.Information($"Store documentation from {projectName} under {baseDirectory}:");
 
 		using HttpClient client = new();
