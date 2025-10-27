@@ -31,7 +31,7 @@ jobs:
                 run: ./build.sh CodeCoverage
             -   name: Upload artifacts
                 if: always()
-                uses: actions/upload-artifact@v4
+                uses: actions/upload-artifact@v5
                 with:
                     name: ${{ runner.os }}-artifacts
                     path: |
@@ -57,7 +57,7 @@ jobs:
                 run: ./build.sh ApiChecks
             -   name: Upload artifacts
                 if: always()
-                uses: actions/upload-artifact@v4
+                uses: actions/upload-artifact@v5
                 with:
                     name: API-tests
                     path: |
@@ -83,7 +83,7 @@ jobs:
                 run: ./build.sh MutationTestsCore
             -   name: Upload artifacts
                 if: always()
-                uses: actions/upload-artifact@v4
+                uses: actions/upload-artifact@v5
                 with:
                     name: MutationTestsCore
                     path: |
@@ -108,7 +108,7 @@ jobs:
                 run: ./build.sh MutationTestsMain
             -   name: Upload artifacts
                 if: always()
-                uses: actions/upload-artifact@v4
+                uses: actions/upload-artifact@v5
                 with:
                     name: MutationTestsMain
                     path: |
@@ -217,7 +217,7 @@ jobs:
                 run: ./build.sh Pack
             -   name: Upload packages
                 if: always()
-                uses: actions/upload-artifact@v4
+                uses: actions/upload-artifact@v5
                 with:
                     path: Artifacts/Packages
                     name: Packages
