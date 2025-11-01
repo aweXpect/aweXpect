@@ -2484,6 +2484,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -2900,7 +2906,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -3320,7 +3327,8 @@ window.BENCHMARK_DATA = {
           269.78249740600586,
           249.39345846857344,
           270.5471285820007,
-          260.13838618596395
+          260.13838618596395,
+          289.9769916216532
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3725,6 +3733,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4173,7 +4182,8 @@ window.BENCHMARK_DATA = {
           234.73464778753427,
           239.51507058510413,
           273.83617608887806,
-          243.82066363554733
+          243.82066363554733,
+          290.63008696692333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4366,6 +4376,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7483,6 +7494,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -7822,7 +7839,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -8165,7 +8183,8 @@ window.BENCHMARK_DATA = {
           314708.1344075521,
           325841.9932942708,
           300686.4139322917,
-          309425.7072591146
+          309425.7072591146,
+          323039.63567708334
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8511,6 +8530,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
           335372,
           335372,
           335372
@@ -8864,7 +8884,8 @@ window.BENCHMARK_DATA = {
           2367809.3622395834,
           2177388.4837239585,
           2267730.275,
-          2295989.4557291665
+          2295989.4557291665,
+          2095357.879296875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9212,7 +9233,8 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
-          4584416
+          4584416,
+          4584401
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12405,6 +12427,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -12821,7 +12849,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -13241,7 +13270,8 @@ window.BENCHMARK_DATA = {
           494.62177320627063,
           435.2064858118693,
           476.9213854585375,
-          495.99205646514895
+          495.99205646514895,
+          507.27856674194334
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13664,6 +13694,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
           1296,
           1296,
           1296
@@ -14094,7 +14125,8 @@ window.BENCHMARK_DATA = {
           468.3129890759786,
           469.38727865900313,
           505.331383228302,
-          549.2067583084106
+          549.2067583084106,
+          556.6596462249756
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14287,6 +14319,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17866,6 +17899,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -18282,7 +18321,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -18702,7 +18742,8 @@ window.BENCHMARK_DATA = {
           249.4630912712642,
           254.36252975463867,
           260.20521446636747,
-          257.0191357294718
+          257.0191357294718,
+          275.17086191177367
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19061,6 +19102,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -19555,7 +19597,8 @@ window.BENCHMARK_DATA = {
           238.40484780531662,
           237.68475545247395,
           247.6996557553609,
-          256.2303510812613
+          256.2303510812613,
+          312.1749471596309
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19748,6 +19791,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23327,6 +23371,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -23743,7 +23793,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -24163,7 +24214,8 @@ window.BENCHMARK_DATA = {
           493.14027620951333,
           417.1361598650614,
           421.72915906906127,
-          428.8254949251811
+          428.8254949251811,
+          452.9621279920851
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24586,6 +24638,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
           1056,
           1056,
           1056
@@ -25016,7 +25069,8 @@ window.BENCHMARK_DATA = {
           548.7480166980198,
           1222.8185269673666,
           1158.414110438029,
-          1213.3131118187537
+          1213.3131118187537,
+          1403.9719693320137
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25439,6 +25493,7 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
+          3896,
           3896,
           3896,
           3896
@@ -28788,6 +28843,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -29204,7 +29265,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -29624,7 +29686,8 @@ window.BENCHMARK_DATA = {
           1882.722839864095,
           1818.5281080881755,
           1842.647770336696,
-          1818.443026815142
+          1818.443026815142,
+          1652.3186402638753
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30047,6 +30110,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
           2568,
           2568,
           2568
@@ -30477,7 +30541,8 @@ window.BENCHMARK_DATA = {
           1346.7257797241211,
           1336.5098396301269,
           1312.4805297851562,
-          1332.2870490210396
+          1332.2870490210396,
+          1466.7270138604301
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30670,6 +30735,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34249,6 +34315,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
         "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
       }
     ],
     "labels": [
@@ -34665,7 +34737,8 @@ window.BENCHMARK_DATA = {
       "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
-      "d6cec126"
+      "d6cec126",
+      "cef93a9d"
     ],
     "datasets": [
       {
@@ -35085,7 +35158,8 @@ window.BENCHMARK_DATA = {
           2624.294271850586,
           2485.525977543422,
           2420.2496203104656,
-          2414.7831937154133
+          2414.7831937154133,
+          2163.2367927551268
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35508,6 +35582,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
           2760,
           2760,
           2760
@@ -35938,7 +36013,8 @@ window.BENCHMARK_DATA = {
           124601.16599818638,
           129012.82985026042,
           127116.38138020833,
-          124119.09748186384
+          124119.09748186384,
+          95099.59767252604
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36363,7 +36439,8 @@ window.BENCHMARK_DATA = {
           61719,
           61723,
           61269,
-          61270
+          61270,
+          61710
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
