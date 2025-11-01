@@ -94,7 +94,7 @@ const config: Config = {
         {
           type: 'docSidebar',
           sidebarId: 'mockolateSidebar',
-          position: 'left',
+          position: 'right',
           label: 'Mockolate',
         },
         // Add blog link here if blog functionality is re-enabled in the future (https://github.com/aweXpect/aweXpect/pull/722)
