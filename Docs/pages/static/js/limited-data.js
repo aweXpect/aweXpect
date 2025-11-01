@@ -2,42 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
-      {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
@@ -300,15 +264,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -352,19 +346,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          223.86926261583963,
-          231.044256512324,
-          221.774701663426,
-          245.91803005763464,
-          238.78139570781164,
-          227.2964572429657,
           215.1799734555758,
           212.07683657010395,
           242.10372683207194,
@@ -408,7 +402,13 @@ window.BENCHMARK_DATA = {
           273.26170335497176,
           272.2555152575175,
           269.78249740600586,
-          249.39345846857344
+          249.39345846857344,
+          270.5471285820007,
+          260.13838618596395,
+          289.9769916216532,
+          267.30346611567904,
+          292.0768356323242,
+          252.16484223093306
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -445,12 +445,12 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
-          504,
-          504,
-          504,
-          504,
-          504,
+          712,
+          712,
+          712,
+          712,
+          712,
+          712,
           712,
           712,
           712,
@@ -484,12 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          257.5262602170308,
-          272.4241043971135,
-          246.10164543787639,
-          262.09784599450916,
-          267.2407141465407,
-          263.02050898869834,
           241.7521196047465,
           242.05561491648356,
           262.36912775039673,
@@ -533,7 +527,13 @@ window.BENCHMARK_DATA = {
           243.90225802935086,
           242.83908478418985,
           234.73464778753427,
-          239.51507058510413
+          239.51507058510413,
+          273.83617608887806,
+          243.82066363554733,
+          290.63008696692333,
+          233.86803712163652,
+          278.48004828180586,
+          242.09413031169348
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,42 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
-      {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
@@ -908,15 +872,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -960,19 +954,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          308629.3859700521,
-          322263.2201660156,
-          299271.2471028646,
-          315188.4236979167,
-          314810.6352050781,
-          320644.7736816406,
           307841.2405761719,
           319958.157421875,
           302158.425764974,
@@ -1016,7 +1010,13 @@ window.BENCHMARK_DATA = {
           312976.320703125,
           309286.0847516741,
           314708.1344075521,
-          325841.9932942708
+          325841.9932942708,
+          300686.4139322917,
+          309425.7072591146,
+          323039.63567708334,
+          309435.77783203125,
+          317126.2947716346,
+          309508.67239583336
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1071,12 +1071,12 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
-          335556,
-          335556,
-          335556,
-          335556,
-          335556,
+          335372,
+          335372,
+          335372,
+          335372,
+          335372,
+          335372,
           335372
         ],
         "borderColor": "#63A2AC",
@@ -1092,12 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2227939.5265625,
-          2255916.359114583,
-          2200448.0143229165,
-          2227507.638113839,
-          2432955.294363839,
-          2289283.2338541667,
           2104858.768973214,
           2208691.5247395835,
           2232473.9018229167,
@@ -1141,7 +1135,13 @@ window.BENCHMARK_DATA = {
           2253866.540457589,
           2156462.2806490385,
           2367809.3622395834,
-          2177388.4837239585
+          2177388.4837239585,
+          2267730.275,
+          2295989.4557291665,
+          2095357.879296875,
+          2128684.866629464,
+          2476967.408333333,
+          2666413.7333333334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1199,10 +1199,10 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
+          4584401,
           4584416,
           4584416,
-          4584416,
-          4584416
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,42 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
       {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
@@ -1516,15 +1480,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -1568,19 +1562,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          523.0391578038533,
-          502.271133295695,
-          489.4889409201486,
-          504.83726890270526,
-          542.19067846934,
-          511.07644880734955,
           484.3203857421875,
           496.95010503133136,
           502.37464739481607,
@@ -1624,7 +1618,13 @@ window.BENCHMARK_DATA = {
           495.8614857991536,
           511.0399477141244,
           494.62177320627063,
-          435.2064858118693
+          435.2064858118693,
+          476.9213854585375,
+          495.99205646514895,
+          507.27856674194334,
+          447.83819783528645,
+          490.74452246152435,
+          469.52425651550294
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1679,12 +1679,12 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
-          1464,
-          1464,
-          1464,
-          1464,
-          1464,
+          1296,
+          1296,
+          1296,
+          1296,
+          1296,
+          1296,
           1296
         ],
         "borderColor": "#63A2AC",
@@ -1700,12 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          508.1092654546102,
-          529.0278572082519,
-          496.4816382271903,
-          509.092633996691,
-          578.8854188919067,
-          535.5808210372925,
           477.2508153548607,
           495.9535005569458,
           506.8223076502482,
@@ -1749,7 +1743,13 @@ window.BENCHMARK_DATA = {
           474.6981451034546,
           483.3453311284383,
           468.3129890759786,
-          469.38727865900313
+          469.38727865900313,
+          505.331383228302,
+          549.2067583084106,
+          556.6596462249756,
+          469.99402444703236,
+          556.769964490618,
+          494.34254251207625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,42 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
-      {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
@@ -2124,15 +2088,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -2176,19 +2170,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          253.0040427525838,
-          251.52391235645,
-          244.2458694458008,
-          252.2878304719925,
-          263.9238931020101,
-          258.907824073519,
           240.65070530573527,
           249.83313779830934,
           250.53394985198975,
@@ -2232,7 +2226,13 @@ window.BENCHMARK_DATA = {
           252.78627014160156,
           254.27797209421794,
           249.4630912712642,
-          254.36252975463867
+          254.36252975463867,
+          260.20521446636747,
+          257.0191357294718,
+          275.17086191177367,
+          279.0099122365316,
+          280.469403107961,
+          264.41209752219066
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,12 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          246.302117284139,
-          268.0469714164734,
-          249.18391682306927,
-          253.6632882118225,
-          275.681583404541,
-          260.8211002667745,
           248.42559083302817,
           243.63641166687012,
           267.67520532608035,
@@ -2357,7 +2351,13 @@ window.BENCHMARK_DATA = {
           248.44107941218786,
           256.62459290822346,
           238.40484780531662,
-          237.68475545247395
+          237.68475545247395,
+          247.6996557553609,
+          256.2303510812613,
+          312.1749471596309,
+          241.8310648713793,
+          288.36552929878235,
+          244.36224834124246
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,42 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
-      {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
@@ -2732,15 +2696,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -2784,19 +2778,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          433.02853911717733,
-          475.7194676081339,
-          447.6604925473531,
-          435.70586105493396,
-          438.261678536733,
-          460.0618996620178,
           414.25801073710124,
           455.679947750909,
           436.6501162528992,
@@ -2840,7 +2834,13 @@ window.BENCHMARK_DATA = {
           509.34662373860675,
           476.7005522410075,
           493.14027620951333,
-          417.1361598650614
+          417.1361598650614,
+          421.72915906906127,
+          428.8254949251811,
+          452.9621279920851,
+          417.92175947825115,
+          464.6669739314488,
+          417.1481029510498
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2895,12 +2895,12 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
-          1232,
-          1232,
-          1232,
-          1232,
-          1232,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
           1056
         ],
         "borderColor": "#63A2AC",
@@ -2916,12 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          493.5037216186523,
-          530.8186480840047,
-          462.2912927309672,
-          493.6350006421407,
-          513.2092495600383,
-          488.6699652353922,
           456.0181517918905,
           471.13205769856773,
           486.00647996266684,
@@ -2965,7 +2959,13 @@ window.BENCHMARK_DATA = {
           477.04914719717846,
           478.9951577504476,
           548.7480166980198,
-          1222.8185269673666
+          1222.8185269673666,
+          1158.414110438029,
+          1213.3131118187537,
+          1403.9719693320137,
+          1184.2187130791801,
+          1354.2897472381592,
+          1194.9270001820155
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3020,13 +3020,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
-          2168,
-          2168,
-          2168,
-          2168,
-          2168,
-          3896
+          3896,
+          3896,
+          3896,
+          3896,
+          3896,
+          3896,
+          3944
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3041,42 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
       {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
@@ -3340,15 +3304,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -3392,19 +3386,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1798.8281017303466,
-          1787.2566527048746,
-          1711.0052505220685,
-          1805.974021021525,
-          1884.8077570597331,
-          1768.9861426720252,
           1770.3791221618653,
           1731.6198300679525,
           1789.1137566884358,
@@ -3448,7 +3442,13 @@ window.BENCHMARK_DATA = {
           1964.5726053873698,
           1875.9855552400861,
           1882.722839864095,
-          1818.5281080881755
+          1818.5281080881755,
+          1842.647770336696,
+          1818.443026815142,
+          1652.3186402638753,
+          1797.72993850708,
+          2016.3298437935966,
+          1814.2599040985108
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3460,7 +3460,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2856,
           2888,
           2888,
           2888,
@@ -3504,11 +3503,12 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
-          2888,
-          2888,
-          2888,
-          2888,
+          2568,
+          2568,
+          2568,
+          2568,
+          2568,
+          2568,
           2568
         ],
         "borderColor": "#63A2AC",
@@ -3524,12 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1343.606426532452,
-          1416.480962371826,
-          1397.2751046589442,
-          1386.1319029490153,
-          1376.590788269043,
-          1465.0321689333234,
           1305.0713628133137,
           1381.9386660257976,
           1360.7157407124837,
@@ -3573,7 +3567,13 @@ window.BENCHMARK_DATA = {
           1309.9062379201252,
           1324.6389726911273,
           1346.7257797241211,
-          1336.5098396301269
+          1336.5098396301269,
+          1312.4805297851562,
+          1332.2870490210396,
+          1466.7270138604301,
+          1291.689398901803,
+          1486.4345049176898,
+          1356.7886479241508
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,42 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
-        "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
-        "message": "fix: negation of wrapper \u0060ConstraintResult\u0060 in extensions (#760)"
-      },
-      {
-        "sha": "7baba9806029d5bf90ddf8e379b3520966f5d62c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 17:22:06 2025 \u002B0200",
-        "message": "refactor: fix nullability of nodes \u0060Add{Async}Mapping\u0060 (#761)"
-      },
-      {
         "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
@@ -3948,15 +3912,45 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
-      "67917e64",
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
-      "a7629c80",
-      "7baba980",
       "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
@@ -4000,19 +3994,19 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2167.415320587158,
-          2249.709725443522,
-          2178.9087109883626,
-          2294.214562225342,
-          2303.6184623718264,
-          2223.188729422433,
           2238.8356323242188,
           2180.8752095540362,
           2305.2198501586913,
@@ -4056,7 +4050,13 @@ window.BENCHMARK_DATA = {
           2524.7666524251304,
           2500.167182413737,
           2624.294271850586,
-          2485.525977543422
+          2485.525977543422,
+          2420.2496203104656,
+          2414.7831937154133,
+          2163.2367927551268,
+          2377.5007321493968,
+          2800.5423728397914,
+          2478.7013999938963
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4068,7 +4068,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          3048,
           3080,
           3080,
           3080,
@@ -4112,11 +4111,12 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
-          3080,
-          3080,
-          3080,
-          3080,
+          2760,
+          2760,
+          2760,
+          2760,
+          2760,
+          2760,
           2760
         ],
         "borderColor": "#63A2AC",
@@ -4132,12 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149834.27078683037,
-          157030.31358924278,
-          148099.1638671875,
-          151624.069859096,
-          153872.11197916666,
-          153520.98470052084,
           149174.73503766741,
           153341.4591796875,
           150664.32568359375,
@@ -4181,7 +4175,13 @@ window.BENCHMARK_DATA = {
           128928.144921875,
           123922.04725864956,
           124601.16599818638,
-          129012.82985026042
+          129012.82985026042,
+          127116.38138020833,
+          124119.09748186384,
+          95099.59767252604,
+          125009.71847098214,
+          127004.2629045759,
+          88348.58248197116
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,12 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63352,
-          63788,
-          63352,
-          63788,
-          63788,
-          63787,
           63787,
           64323,
           63787,
@@ -4242,7 +4236,13 @@ window.BENCHMARK_DATA = {
           61719,
           61723,
           61719,
-          61723
+          61723,
+          61269,
+          61270,
+          61710,
+          61270,
+          62239,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",

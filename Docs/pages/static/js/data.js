@@ -2472,6 +2472,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -2886,7 +2922,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -3304,7 +3346,13 @@ window.BENCHMARK_DATA = {
           273.26170335497176,
           272.2555152575175,
           269.78249740600586,
-          249.39345846857344
+          249.39345846857344,
+          270.5471285820007,
+          260.13838618596395,
+          289.9769916216532,
+          267.30346611567904,
+          292.0768356323242,
+          252.16484223093306
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3709,6 +3757,12 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
+          712,
+          712,
+          712,
+          712,
+          712,
           712,
           712,
           712,
@@ -4153,7 +4207,13 @@ window.BENCHMARK_DATA = {
           243.90225802935086,
           242.83908478418985,
           234.73464778753427,
-          239.51507058510413
+          239.51507058510413,
+          273.83617608887806,
+          243.82066363554733,
+          290.63008696692333,
+          233.86803712163652,
+          278.48004828180586,
+          242.09413031169348
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4346,6 +4406,12 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
+          952,
+          952,
+          952,
+          952,
+          952,
           952,
           952,
           952,
@@ -6600,6 +6666,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -6937,7 +7039,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -7278,7 +7386,13 @@ window.BENCHMARK_DATA = {
           312976.320703125,
           309286.0847516741,
           314708.1344075521,
-          325841.9932942708
+          325841.9932942708,
+          300686.4139322917,
+          309425.7072591146,
+          323039.63567708334,
+          309435.77783203125,
+          317126.2947716346,
+          309508.67239583336
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7624,6 +7738,12 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
+          335372,
+          335372,
+          335372,
+          335372,
+          335372,
           335372
         ],
         "borderColor": "#63A2AC",
@@ -7973,7 +8093,13 @@ window.BENCHMARK_DATA = {
           2253866.540457589,
           2156462.2806490385,
           2367809.3622395834,
-          2177388.4837239585
+          2177388.4837239585,
+          2267730.275,
+          2295989.4557291665,
+          2095357.879296875,
+          2128684.866629464,
+          2476967.408333333,
+          2666413.7333333334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8319,7 +8445,13 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
-          4584416
+          4584416,
+          4584416,
+          4584416,
+          4584401,
+          4584416,
+          4584416,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10805,6 +10937,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -11219,7 +11387,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -11637,7 +11811,13 @@ window.BENCHMARK_DATA = {
           495.8614857991536,
           511.0399477141244,
           494.62177320627063,
-          435.2064858118693
+          435.2064858118693,
+          476.9213854585375,
+          495.99205646514895,
+          507.27856674194334,
+          447.83819783528645,
+          490.74452246152435,
+          469.52425651550294
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12060,6 +12240,12 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
+          1296,
+          1296,
+          1296,
+          1296,
+          1296,
           1296
         ],
         "borderColor": "#63A2AC",
@@ -12486,7 +12672,13 @@ window.BENCHMARK_DATA = {
           474.6981451034546,
           483.3453311284383,
           468.3129890759786,
-          469.38727865900313
+          469.38727865900313,
+          505.331383228302,
+          549.2067583084106,
+          556.6596462249756,
+          469.99402444703236,
+          556.769964490618,
+          494.34254251207625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12679,6 +12871,12 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
+          2008,
+          2008,
+          2008,
+          2008,
+          2008,
           2008,
           2008,
           2008,
@@ -15395,6 +15593,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -15809,7 +16043,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -16227,7 +16467,13 @@ window.BENCHMARK_DATA = {
           252.78627014160156,
           254.27797209421794,
           249.4630912712642,
-          254.36252975463867
+          254.36252975463867,
+          260.20521446636747,
+          257.0191357294718,
+          275.17086191177367,
+          279.0099122365316,
+          280.469403107961,
+          264.41209752219066
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16586,6 +16832,12 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
+          816,
+          816,
+          816,
+          816,
+          816,
           816,
           816,
           816,
@@ -17076,7 +17328,13 @@ window.BENCHMARK_DATA = {
           248.44107941218786,
           256.62459290822346,
           238.40484780531662,
-          237.68475545247395
+          237.68475545247395,
+          247.6996557553609,
+          256.2303510812613,
+          312.1749471596309,
+          241.8310648713793,
+          288.36552929878235,
+          244.36224834124246
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17269,6 +17527,12 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
+          1224,
+          1224,
+          1224,
+          1224,
+          1224,
           1224,
           1224,
           1224,
@@ -19985,6 +20249,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -20399,7 +20699,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -20817,7 +21123,13 @@ window.BENCHMARK_DATA = {
           509.34662373860675,
           476.7005522410075,
           493.14027620951333,
-          417.1361598650614
+          417.1361598650614,
+          421.72915906906127,
+          428.8254949251811,
+          452.9621279920851,
+          417.92175947825115,
+          464.6669739314488,
+          417.1481029510498
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21240,6 +21552,12 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
           1056
         ],
         "borderColor": "#63A2AC",
@@ -21666,7 +21984,13 @@ window.BENCHMARK_DATA = {
           477.04914719717846,
           478.9951577504476,
           548.7480166980198,
-          1222.8185269673666
+          1222.8185269673666,
+          1158.414110438029,
+          1213.3131118187537,
+          1403.9719693320137,
+          1184.2187130791801,
+          1354.2897472381592,
+          1194.9270001820155
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22089,7 +22413,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          3896
+          3896,
+          3896,
+          3896,
+          3896,
+          3896,
+          3896,
+          3944
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24575,6 +24905,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -24989,7 +25355,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -25407,7 +25779,13 @@ window.BENCHMARK_DATA = {
           1964.5726053873698,
           1875.9855552400861,
           1882.722839864095,
-          1818.5281080881755
+          1818.5281080881755,
+          1842.647770336696,
+          1818.443026815142,
+          1652.3186402638753,
+          1797.72993850708,
+          2016.3298437935966,
+          1814.2599040985108
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25830,6 +26208,12 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
+          2568,
+          2568,
+          2568,
+          2568,
+          2568,
           2568
         ],
         "borderColor": "#63A2AC",
@@ -26256,7 +26640,13 @@ window.BENCHMARK_DATA = {
           1309.9062379201252,
           1324.6389726911273,
           1346.7257797241211,
-          1336.5098396301269
+          1336.5098396301269,
+          1312.4805297851562,
+          1332.2870490210396,
+          1466.7270138604301,
+          1291.689398901803,
+          1486.4345049176898,
+          1356.7886479241508
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26449,6 +26839,12 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
+          4152,
+          4152,
+          4152,
+          4152,
+          4152,
           4152,
           4152,
           4152,
@@ -29165,6 +29561,42 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
+      },
+      {
+        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
+      },
+      {
+        "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
+        "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
       }
     ],
     "labels": [
@@ -29579,7 +30011,13 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375",
+      "a50dd36a",
+      "31a1b24e"
     ],
     "datasets": [
       {
@@ -29997,7 +30435,13 @@ window.BENCHMARK_DATA = {
           2524.7666524251304,
           2500.167182413737,
           2624.294271850586,
-          2485.525977543422
+          2485.525977543422,
+          2420.2496203104656,
+          2414.7831937154133,
+          2163.2367927551268,
+          2377.5007321493968,
+          2800.5423728397914,
+          2478.7013999938963
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30420,6 +30864,12 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
+          2760,
+          2760,
+          2760,
+          2760,
+          2760,
           2760
         ],
         "borderColor": "#63A2AC",
@@ -30846,7 +31296,13 @@ window.BENCHMARK_DATA = {
           128928.144921875,
           123922.04725864956,
           124601.16599818638,
-          129012.82985026042
+          129012.82985026042,
+          127116.38138020833,
+          124119.09748186384,
+          95099.59767252604,
+          125009.71847098214,
+          127004.2629045759,
+          88348.58248197116
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31269,7 +31725,13 @@ window.BENCHMARK_DATA = {
           61719,
           61723,
           61719,
-          61723
+          61723,
+          61269,
+          61270,
+          61710,
+          61270,
+          62239,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
