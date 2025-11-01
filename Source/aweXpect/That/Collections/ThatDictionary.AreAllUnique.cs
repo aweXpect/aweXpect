@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -24,9 +26,10 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source)
 	{
 		ObjectEqualityOptions<TValue> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AllIsUniqueConstraint<TKey, TValue, TValue>(it, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueConstraint<TKey, TValue, TValue>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -41,9 +44,10 @@ public static partial class ThatDictionary
 		AreAllUnique<TKey>(this IThat<IDictionary<TKey, string?>?> source)
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AllIsUniqueConstraint<TKey, string?, string?>(it, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueConstraint<TKey, string?, string?>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -64,10 +68,14 @@ public static partial class ThatDictionary
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(it, memberAccessor,
-					doNotPopulateThisValue,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(
+					expectationBuilder,
+					it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
@@ -89,97 +97,237 @@ public static partial class ThatDictionary
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(it, memberAccessor,
-					doNotPopulateThisValue,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(
+					expectationBuilder,
+					it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct AllIsUniqueConstraint<TKey, TValue, TMatch>(string it, IOptionsEquality<TMatch> options)
-		: IContextConstraint<IDictionary<TKey, TValue>?>
+	/// <summary>
+	///     Verifies that the dictionary only contains unique values.
+	/// </summary>
+	/// <remarks>
+	///     This expectation completely ignores the dictionary keys, as they are unique by design.
+	/// </remarks>
+	public static ObjectEqualityResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>, TValue>
+		AreAllUnique<TKey, TValue>(
+			this IThat<Dictionary<TKey, TValue>?> source)
+		where TKey : notnull
+	{
+		ObjectEqualityOptions<TValue> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>, TValue>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueConstraint<TKey, TValue, TValue>(expectationBuilder, it, grammars, options)),
+			source, options
+		);
+	}
+
+	/// <summary>
+	///     Verifies that the dictionary only contains unique values.
+	/// </summary>
+	/// <remarks>
+	///     This expectation completely ignores the dictionary keys, as they are unique by design.
+	/// </remarks>
+	public static StringEqualityResult<Dictionary<TKey, string?>, IThat<Dictionary<TKey, string?>?>>
+		AreAllUnique<TKey>(this IThat<Dictionary<TKey, string?>?> source)
+		where TKey : notnull
+	{
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringEqualityResult<Dictionary<TKey, string?>, IThat<Dictionary<TKey, string?>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueConstraint<TKey, string?, string?>(expectationBuilder, it, grammars, options)),
+			source, options
+		);
+	}
+
+	/// <summary>
+	///     Verifies that the dictionary only contains values with unique members specified by the
+	///     <paramref name="memberAccessor" />.
+	/// </summary>
+	/// <remarks>
+	///     This expectation completely ignores the dictionary keys, as they are unique by design.
+	/// </remarks>
+	public static ObjectEqualityResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>, TMember>
+		AreAllUnique<TKey,
+			TValue, TMember>(
+			this IThat<Dictionary<TKey, TValue>?> source,
+			Func<TValue, TMember> memberAccessor,
+			[CallerArgumentExpression("memberAccessor")]
+			string doNotPopulateThisValue = "")
+		where TKey : notnull
+	{
+		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new ObjectEqualityResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>, TMember>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(
+					expectationBuilder,
+					it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					options)),
+			source, options
+		);
+	}
+
+	/// <summary>
+	///     Verifies that the dictionary only contains values with unique members specified by the
+	///     <paramref name="memberAccessor" />.
+	/// </summary>
+	/// <remarks>
+	///     This expectation completely ignores the dictionary keys, as they are unique by design.
+	/// </remarks>
+	public static StringEqualityResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>
+		AreAllUnique<TKey,
+			TValue>(
+			this IThat<Dictionary<TKey, TValue>?> source,
+			Func<TValue, string> memberAccessor,
+			[CallerArgumentExpression("memberAccessor")]
+			string doNotPopulateThisValue = "")
+		where TKey : notnull
+	{
+		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new StringEqualityResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(
+					expectationBuilder,
+					it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					options)),
+			source, options
+		);
+	}
+
+	private sealed class AllIsUniqueConstraint<TKey, TValue, TMatch>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		IOptionsEquality<TMatch> options)
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+			IAsyncContextConstraint<IDictionary<TKey, TValue>?>
 		where TValue : TMatch
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
+		private readonly List<TValue> _duplicates = [];
+
+		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			List<TValue> checkedItems = new();
-			List<TValue> duplicates = new();
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
 			{
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(item, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(item, x))))
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
-					duplicates.Add(item);
+					_duplicates.Add(item);
 				}
 
 				checkedItems.Add(item);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(actual);
+			return this;
 		}
 
-		public override string ToString() => $"only has unique values{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique values");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate values");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 
-	private readonly struct AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
+	private sealed class AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
+		ExpectationGrammars grammars,
 		Func<TValue, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		: IContextConstraint<IDictionary<TKey, TValue>?>
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+			IAsyncContextConstraint<IDictionary<TKey, TValue>?>
 		where TMember : TMatch
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
+		private readonly List<TMember> _duplicates = [];
+
+		public async Task<ConstraintResult> IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			List<TMember> checkedItems = new();
-			List<TMember> duplicates = new();
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
 			{
 				TMember itemMember = memberAccessor(item);
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
-					duplicates.Add(itemMember);
+					_duplicates.Add(itemMember);
 				}
 
 				checkedItems.Add(itemMember);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(actual);
+			return this;
 		}
 
-		public override string ToString() => $"only has unique values for {memberAccessorExpression}{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique values for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate values for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 }

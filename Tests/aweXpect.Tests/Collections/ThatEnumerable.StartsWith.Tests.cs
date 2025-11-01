@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -6,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class StartsWith
+	public sealed partial class StartsWith
 	{
 		public sealed class Tests
 		{
@@ -47,7 +48,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).StartsWith(1, 2, 3);
@@ -58,8 +59,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentStartingElements_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
-				IEnumerable<int> expected = [1, 3];
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				IEnumerable<int> expected = [1, 3,];
 
 				async Task Act()
 					=> await That(subject).StartsWith(expected);
@@ -69,14 +70,22 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             starts with expected,
 					             but it contained 2 at index 1 instead of 3
+
+					             Collection:
+					             [
+					               1,
+					               2,
+					               3,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenExpectedContainsAdditionalElements_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
-				IEnumerable<int> expected = [1, 2, 3, 4];
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				IEnumerable<int> expected = [1, 2, 3, 4,];
 
 				async Task Act()
 					=> await That(subject).StartsWith(expected);
@@ -88,6 +97,9 @@ public sealed partial class ThatEnumerable
 					             but it contained only 3 items and misses 1 items: [
 					               4
 					             ]
+
+					             Collection:
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -105,7 +117,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1]);
+				IEnumerable<int> subject = ToEnumerable([1,]);
 
 				async Task Act()
 					=> await That(subject).StartsWith(null!);
@@ -136,7 +148,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldIncludeOptionsInFailureMessage()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).StartsWith("FOO", "BAZ").IgnoringCase();
@@ -146,13 +158,21 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             starts with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "BAZ"
+
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).StartsWith("FOO", "BAR").IgnoringCase();
@@ -163,8 +183,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenSubjectStartsWithExpectedValues_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> expected = ToEnumerable(["foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
+				IEnumerable<string> expected = ToEnumerable(["foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).StartsWith(expected);

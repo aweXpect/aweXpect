@@ -1,5 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -12,11 +13,8 @@ public static partial class ThatGuid
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsEqualTo(this IThat<Guid> source,
 		Guid? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ValueConstraint(
-					it,
-					$"is {Formatter.Format(expected)}",
-					actual => actual.Equals(expected))),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -24,10 +22,40 @@ public static partial class ThatGuid
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsNotEqualTo(this IThat<Guid> source,
 		Guid? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ValueConstraint(
-					it,
-					$"is not {Formatter.Format(unexpected)}",
-					actual => !actual.Equals(unexpected))),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint(it, grammars, unexpected).Invert()),
 			source);
+
+	private sealed class IsEqualToConstraint(string it, ExpectationGrammars grammars, Guid? expected)
+		: ConstraintResult.WithEqualToValue<Guid>(it, grammars, expected is null),
+			IValueConstraint<Guid>
+	{
+		public ConstraintResult IsMetBy(Guid actual)
+		{
+			Actual = actual;
+			Outcome = actual.Equals(expected) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
 }

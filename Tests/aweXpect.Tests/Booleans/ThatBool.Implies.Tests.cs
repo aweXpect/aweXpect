@@ -37,5 +37,26 @@ public sealed partial class ThatBool
 				await That(Act).DoesNotThrow();
 			}
 		}
+
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task ShouldUseCorrectExpectation()
+			{
+				bool antecedent = false;
+				bool consequent = true;
+
+				async Task Act()
+					=> await That(antecedent).DoesNotComplyWith(b => b.Implies(consequent))
+						.Because("we want to test the failure");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that antecedent
+					             does not imply True, because we want to test the failure,
+					             but it did
+					             """);
+			}
+		}
 	}
 }

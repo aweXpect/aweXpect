@@ -21,10 +21,10 @@ public class AndOrWhichResultTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that subject
-			              which .Value1 is True and which .Value2 is True and refers to subject MyClass {
-			               Value1 = False,
-			               Value2 = False
-			             },
+			              which .Value1 is True and which .Value2 is True and refers to AndOrWhichResultTests.MyClass {
+			                 Value1 = False,
+			                 Value2 = False
+			               },
 			             but .Value1 was False and .Value2 was False
 			             """);
 	}
@@ -67,7 +67,7 @@ public class AndOrWhichResultTests
 #pragma warning disable aweXpect0001
 		IThat<T> source = That(subject);
 #pragma warning restore aweXpect0001
-		return new AndOrWhichResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, _)
+		return new AndOrWhichResult<T, IThat<T>>(source.Get().ExpectationBuilder.AddConstraint((it, _)
 				=> new DummyConstraint(it)),
 			source);
 	}

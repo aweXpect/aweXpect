@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Recording;
 
@@ -14,10 +15,12 @@ public class EventTriggerResult<TSubject>(
 	ExpectationBuilder expectationBuilder,
 	IThat<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
-	Quantifier quantifier)
+	Quantifier quantifier,
+	RepeatedCheckOptions options)
 	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(
 			expectationBuilder, returnValue, quantifier),
-		EventTriggerResult<TSubject>.IExtensions
+		EventTriggerResult<TSubject>.IExtensions,
+		IOptionsProvider<RepeatedCheckOptions>
 	where TSubject : notnull
 {
 	/// <inheritdoc cref="IExtensions.WithParameter{TParameter}(string, int?, Func{TParameter, bool})" />
@@ -26,6 +29,7 @@ public class EventTriggerResult<TSubject>(
 		int? position,
 		Func<TParameter, bool> predicate)
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => position == null
 				? o.Any(x => x is TParameter p && predicate(p))
@@ -33,6 +37,9 @@ public class EventTriggerResult<TSubject>(
 			expression);
 		return this;
 	}
+
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	RepeatedCheckOptions IOptionsProvider<RepeatedCheckOptions>.Options => options;
 
 	/// <summary>
 	///     Adds a predicate for the sender of the event.
@@ -45,9 +52,10 @@ public class EventTriggerResult<TSubject>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Length > 0 && predicate(o[0]),
-			$" with sender {doNotPopulateThisValue}");
+			$" with sender {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 
@@ -63,9 +71,10 @@ public class EventTriggerResult<TSubject>(
 		string doNotPopulateThisValue = "")
 		where TEventArgs : EventArgs
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Length > 1 && o[1] is TEventArgs m && predicate(m),
-			$" with {Formatter.Format(typeof(TEventArgs))} {doNotPopulateThisValue}");
+			$" with {Formatter.Format(typeof(TEventArgs))} {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 
@@ -79,9 +88,10 @@ public class EventTriggerResult<TSubject>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Any(x => x is TParameter m && predicate(m)),
-			$" with {Formatter.Format(typeof(TParameter))} parameter {doNotPopulateThisValue}");
+			$" with {Formatter.Format(typeof(TParameter))} parameter {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 
@@ -96,9 +106,19 @@ public class EventTriggerResult<TSubject>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Length > position && o[position] is TParameter m && predicate(m),
-			$" with {Formatter.Format(typeof(TParameter))} parameter [{position}] {doNotPopulateThisValue}");
+			$" with {Formatter.Format(typeof(TParameter))} parameter [{position}] {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
+		return this;
+	}
+
+	/// <summary>
+	///     Allows a <paramref name="timeout" /> until the condition must be met.
+	/// </summary>
+	public EventTriggerResult<TSubject> Within(TimeSpan timeout)
+	{
+		options.Within(timeout);
 		return this;
 	}
 

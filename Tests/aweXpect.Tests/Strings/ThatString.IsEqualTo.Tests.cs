@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Tests;
+﻿using System.Globalization;
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatString
 {
@@ -49,7 +51,29 @@ public sealed partial class ThatString
 					             Expected that subject
 					             is equal to <null>,
 					             but it was "some text"
+
+					             Actual:
+					             some text
 					             """);
+			}
+
+			[Theory]
+			[InlineData("i", "I")]
+			public async Task WhenIgnoringCase_UseInvariantCulture(string subject, string expected)
+			{
+				// .NET converts uppercase Turkish 'I' to lowercase 'ı'
+				// https://stackoverflow.com/q/78724630
+				using CultureOverride _ = new("tr-TR");
+				bool isEqualInvariant = subject.Equals(expected.ToLower(CultureInfo.InvariantCulture),
+					StringComparison.CurrentCulture);
+				bool isEqualTurkish = subject.Equals(expected.ToLower(),
+					StringComparison.CurrentCulture);
+				await That(isEqualInvariant).IsNotEqualTo(isEqualTurkish);
+
+				async Task Action()
+					=> await That(subject).IsEqualTo(expected).IgnoringCase();
+
+				await That(Action).DoesNotThrow();
 			}
 
 			[Fact]
@@ -66,6 +90,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             is equal to " \t some text",
 					             but it was "some text" which misses some whitespace (" \t " at the beginning)
+
+					             Actual:
+					             some text
 					             """);
 			}
 
@@ -83,6 +110,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             is equal to "some text \t ",
 					             but it was "some text" which misses some whitespace (" \t " at the end)
+
+					             Actual:
+					             some text
 					             """);
 			}
 
@@ -100,6 +130,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             is equal to "some text",
 					             but it was " \t some text" which has unexpected whitespace (" \t " at the beginning)
+
+					             Actual:
+					              	 some text
 					             """);
 			}
 
@@ -117,6 +150,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             is equal to "some text",
 					             but it was "some text \t " which has unexpected whitespace (" \t " at the end)
+
+					             Actual:
+					             some text 	 
 					             """);
 			}
 
@@ -135,6 +171,9 @@ public sealed partial class ThatString
 					             is equal to "some text with",
 					             but it was "some text without out" with a length of 21 which is longer than the expected length of 14 and has superfluous:
 					               "out out"
+
+					             Actual:
+					             some text without out
 					             """);
 			}
 
@@ -153,6 +192,9 @@ public sealed partial class ThatString
 					             is equal to "some text without out",
 					             but it was "some text with" with a length of 14 which is shorter than the expected length of 21 and misses:
 					               "out out"
+
+					             Actual:
+					             some text with
 					             """);
 			}
 
@@ -165,7 +207,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
 
-				await Act();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -186,6 +228,9 @@ public sealed partial class ThatString
 					               "actual text"
 					               "expected other text"
 					                ↑ (expected)
+
+					             Actual:
+					             actual text
 					             """);
 			}
 		}
@@ -211,6 +256,9 @@ public sealed partial class ThatString
 					                "foo"
 					                "bar"
 					                 ↑ (expected)
+
+					              Actual:
+					              {subject}
 					              """);
 			}
 
@@ -233,6 +281,9 @@ public sealed partial class ThatString
 					                {Formatter.Format(subject.TrimStart())}
 					                {Formatter.Format(expected.TrimStart())}
 					                 ↑ (expected)
+
+					              Actual:
+					              {subject}
 					              """);
 			}
 
@@ -264,15 +315,18 @@ public sealed partial class ThatString
 					=> await That(subject).IsEqualTo(expected).IgnoringNewlineStyle();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             is equal to "foo\r\nbaz" ignoring newline style,
-					             but it was "foo\nbar" which differs on line 2 and column 3:
-					                       ↓ (actual)
-					               "foo\nbar"
-					               "foo\nbaz"
-					                       ↑ (expected)
-					             """);
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to "foo\r\nbaz" ignoring newline style,
+					              but it was "foo\nbar" which differs on line 2 and column 3:
+					                        ↓ (actual)
+					                "foo\nbar"
+					                "foo\nbaz"
+					                        ↑ (expected)
+
+					              Actual:
+					              {subject}
+					              """);
 			}
 
 			[Theory]
@@ -304,15 +358,18 @@ public sealed partial class ThatString
 					=> await That(subject).IsEqualTo(expected).IgnoringTrailingWhiteSpace();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             is equal to "foo-bar" ignoring trailing white-space,
-					             but it was "foo-boo\nbaz" which differs on line 1 and column 6:
-					                     ↓ (actual)
-					               "foo-boo\nbaz"
-					               "foo-bar"
-					                     ↑ (expected)
-					             """);
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to "foo-bar" ignoring trailing white-space,
+					              but it was "foo-boo\nbaz" which differs on line 1 and column 6:
+					                      ↓ (actual)
+					                "foo-boo\nbaz"
+					                "foo-bar"
+					                      ↑ (expected)
+
+					              Actual:
+					              {subject}
+					              """);
 			}
 
 			[Fact]
@@ -333,6 +390,9 @@ public sealed partial class ThatString
 					               "foo-boo"
 					               "foo-bar"
 					                     ↑ (expected)
+
+					             Actual:
+					             foo-boo	
 					             """);
 			}
 

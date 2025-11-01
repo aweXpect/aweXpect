@@ -86,7 +86,22 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
-			public async Task Within_NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
+			public async Task WhenUnexpectedIsNull_ShouldSucceed()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class WithinTests
+		{
+			[Fact]
+			public async Task NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? unexpected = LaterTime(4);
@@ -100,7 +115,7 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
-			public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldSucceed()
+			public async Task WhenValuesAreOutsideTheTolerance_ShouldSucceed()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? unexpected = LaterTime(4);
@@ -113,7 +128,7 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
-			public async Task Within_WhenValuesAreWithinTheTolerance_ShouldFail()
+			public async Task WhenValuesAreWithinTheTolerance_ShouldFail()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? unexpected = LaterTime(3);

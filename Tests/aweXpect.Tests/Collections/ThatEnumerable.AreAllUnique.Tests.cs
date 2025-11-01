@@ -7,14 +7,14 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class AreAllUnique
+	public sealed partial class AreAllUnique
 	{
 		public sealed class Tests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1,]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
@@ -25,7 +25,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -36,7 +36,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1,]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -47,13 +47,16 @@ public sealed partial class ThatEnumerable
 					             only has unique items,
 					             but it contained 1 duplicate:
 					               1
+
+					             Collection:
+					             [1, 2, 3, 1]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1, 2, -1]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1, 2, -1,]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -65,6 +68,9 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
+
+					             Collection:
+					             [1, 2, 3, 1, 2, -1]
 					             """);
 			}
 
@@ -85,12 +91,45 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task WhenAllItemsAreUnique_ShouldFail()
+			{
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it.AreAllUnique());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has duplicate items,
+					             but all were unique
+
+					             Collection:
+					             [1, 2, 3]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenItContainsDuplicates_ShouldSucceed()
+			{
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1,]);
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it.AreAllUnique());
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
 		public sealed class StringTests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "a"]);
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "a",]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
@@ -101,7 +140,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -112,7 +151,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenDiffersInCasing_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "A"]);
+				IEnumerable<string> subject = ToEnumerable(["a", "A",]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -123,7 +162,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenDiffersInCasingAndCasingIsIgnored_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "A"]);
+				IEnumerable<string> subject = ToEnumerable(["a", "A",]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().IgnoringCase();
@@ -134,13 +173,19 @@ public sealed partial class ThatEnumerable
 					             only has unique items ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
+
+					             Collection:
+					             [
+					               "a",
+					               "A"
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a"]);
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a",]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -151,13 +196,21 @@ public sealed partial class ThatEnumerable
 					             only has unique items,
 					             but it contained 1 duplicate:
 					               "a"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "a"
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a", "b", "x"]);
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a", "b", "x",]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -169,6 +222,16 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+
+					             Collection:
+					             [
+					               "a",
+					               "b",
+					               "c",
+					               "a",
+					               "b",
+					               "x"
+					             ]
 					             """);
 			}
 
@@ -194,7 +257,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable([1, 1, 1]).Select(x => new MyClass(x));
+				IEnumerable<MyClass> subject = ToEnumerable([1, 1, 1,]).Select(x => new MyClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value).Using(new AllDifferentComparer());
@@ -205,7 +268,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldSucceed()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3]).Select(x => new MyClass(x));
+				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3,]).Select(x => new MyClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -216,7 +279,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
-				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3, 1]).Select(x => new MyClass(x));
+				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3, 1,]).Select(x => new MyClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -227,6 +290,26 @@ public sealed partial class ThatEnumerable
 					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
+
+					             Collection:
+					             [
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 2
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 3
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               }
+					             ]
 					             """);
 			}
 
@@ -234,7 +317,7 @@ public sealed partial class ThatEnumerable
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
 				IEnumerable<MyClass> subject =
-					ToEnumerable([1, 2, 3, 1, 2, -1]).Select(x => new MyClass(x));
+					ToEnumerable([1, 2, 3, 1, 2, -1,]).Select(x => new MyClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -246,6 +329,34 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
+
+					             Collection:
+					             [
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 2
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 3
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 2
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = -1
+					               }
+					             ]
 					             """);
 			}
 
@@ -266,12 +377,58 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
+		public sealed class NegatedMemberTests
+		{
+			[Fact]
+			public async Task WhenAllItemsAreUnique_ShouldFail()
+			{
+				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3,], x => new MyClass(x));
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it.AreAllUnique(x => x.Value));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has duplicate items for x => x.Value,
+					             but all were unique
+
+					             Collection:
+					             [
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 1
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 2
+					               },
+					               MyClass {
+					                 StringValue = "",
+					                 Value = 3
+					               }
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenItContainsDuplicates_ShouldSucceed()
+			{
+				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3, 1,], x => new MyClass(x));
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it.AreAllUnique(x => x.Value));
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
 		public sealed class StringMemberTests
 		{
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "a", "a"]).Select(x => new MyStringClass(x));
+				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "a", "a",]).Select(x => new MyStringClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value).Using(new AllDifferentComparer());
@@ -282,7 +439,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenAllItemsAreUnique_ShouldSucceed()
 			{
-				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "b", "c"]).Select(x => new MyStringClass(x));
+				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "b", "c",]).Select(x => new MyStringClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -293,7 +450,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenDiffersInCasing_ShouldSucceed()
 			{
-				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "A"]).Select(x => new MyStringClass(x));
+				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "A",]).Select(x => new MyStringClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -304,7 +461,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenDiffersInCasingAndCasingIsIgnored_ShouldFail()
 			{
-				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "A"]).Select(x => new MyStringClass(x));
+				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "A",]).Select(x => new MyStringClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value).IgnoringCase();
@@ -315,6 +472,16 @@ public sealed partial class ThatEnumerable
 					             only has unique items for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
+
+					             Collection:
+					             [
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "A"
+					               }
+					             ]
 					             """);
 			}
 
@@ -322,7 +489,7 @@ public sealed partial class ThatEnumerable
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
 				IEnumerable<MyStringClass> subject =
-					ToEnumerable(["a", "b", "c", "a"]).Select(x => new MyStringClass(x));
+					ToEnumerable(["a", "b", "c", "a",]).Select(x => new MyStringClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -333,6 +500,22 @@ public sealed partial class ThatEnumerable
 					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
+
+					             Collection:
+					             [
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "b"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "c"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               }
+					             ]
 					             """);
 			}
 
@@ -340,7 +523,7 @@ public sealed partial class ThatEnumerable
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
 				IEnumerable<MyStringClass> subject =
-					ToEnumerable(["a", "b", "c", "a", "b", "x"]).Select(x => new MyStringClass(x));
+					ToEnumerable(["a", "b", "c", "a", "b", "x",]).Select(x => new MyStringClass(x));
 
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
@@ -352,6 +535,28 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+
+					             Collection:
+					             [
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "b"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "c"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "a"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "b"
+					               },
+					               ThatEnumerable.AreAllUnique.StringMemberTests.MyStringClass {
+					                 Value = "x"
+					               }
+					             ]
 					             """);
 			}
 

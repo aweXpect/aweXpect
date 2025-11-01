@@ -35,18 +35,20 @@ public class ObjectCountResult<TType, TThat, TElement, TSelf>(
 	TThat returnValue,
 	Quantifier quantifier,
 	ObjectEqualityOptions<TElement> options)
-	: CountResult<TType, TThat, TSelf>(expectationBuilder, returnValue, quantifier)
+	: CountResult<TType, TThat, TSelf>(expectationBuilder, returnValue, quantifier),
+		IOptionsProvider<ObjectEqualityOptions<TElement>>
 	where TSelf : ObjectCountResult<TType, TThat, TElement, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	ObjectEqualityOptions<TElement> IOptionsProvider<ObjectEqualityOptions<TElement>>.Options => options;
+
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
 	public TSelf Equivalent(
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
 	{
-		EquivalencyOptions equivalencyOptions =
-			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		options.Equivalent(equivalencyOptions);
+		options.Equivalent(EquivalencyOptionsExtensions.FromCallback(optionsCallback));
 		return (TSelf)this;
 	}
 

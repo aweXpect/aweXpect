@@ -108,9 +108,12 @@ public sealed partial class ThatDateTime
 					              but it differed in the Kind property
 					              """);
 			}
+		}
 
+		public sealed class WithinTests
+		{
 			[Fact]
-			public async Task Within_NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
+			public async Task NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? expected = LaterTime(4);
@@ -124,7 +127,7 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
-			public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldFail()
+			public async Task WhenValuesAreOutsideTheTolerance_ShouldFail()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? expected = LaterTime(4);
@@ -142,7 +145,7 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
-			public async Task Within_WhenValuesAreWithinTheTolerance_ShouldSucceed()
+			public async Task WhenValuesAreWithinTheTolerance_ShouldSucceed()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? expected = LaterTime(3);

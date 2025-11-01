@@ -32,9 +32,13 @@ public class ObjectCollectionMatchResult<TType, TThat, TElement, TSelf>(
 	TThat returnValue,
 	ObjectEqualityOptions<TElement> options,
 	CollectionMatchOptions collectionMatchOptions)
-	: ObjectEqualityResult<TType, TThat, TElement, TSelf>(expectationBuilder, returnValue, options)
+	: ObjectEqualityResult<TType, TThat, TElement, TSelf>(expectationBuilder, returnValue, options),
+		IOptionsProvider<CollectionMatchOptions>
 	where TSelf : ObjectCollectionMatchResult<TType, TThat, TElement, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	CollectionMatchOptions IOptionsProvider<CollectionMatchOptions>.Options => collectionMatchOptions;
+
 	/// <summary>
 	///     Ignores the order in the subject and expected values.
 	/// </summary>
@@ -50,6 +54,18 @@ public class ObjectCollectionMatchResult<TType, TThat, TElement, TSelf>(
 	public TSelf IgnoringDuplicates()
 	{
 		collectionMatchOptions.IgnoringDuplicates();
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Ignores interspersed items in the actual collection.
+	/// </summary>
+	/// <remarks>
+	///     This option has no effect when <see cref="InAnyOrder()" /> is used.
+	/// </remarks>
+	public TSelf IgnoringInterspersedItems()
+	{
+		collectionMatchOptions.IgnoringInterspersedItems();
 		return (TSelf)this;
 	}
 }

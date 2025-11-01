@@ -1,6 +1,8 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -18,14 +20,8 @@ public static partial class ThatNullableDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ConditionConstraintWithTolerance(
-					it,
-					expected,
-					(e, t) => $"is on or after {Formatter.Format(e)}{t.ToDayString()}",
-					(a, e, t) => a?.AddDays((int)t.TotalDays) >= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOnOrAfterConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -39,16 +35,70 @@ public static partial class ThatNullableDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ConditionConstraintWithTolerance(
-					it,
-					unexpected,
-					(u, t) => $"is not on or after {Formatter.Format(u)}{t.ToDayString()}",
-					(a, e, t) => a?.AddDays(-1 * (int)t.TotalDays) < e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOnOrAfterConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
+	}
+
+	private sealed class IsOnOrAfterConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		DateOnly? expected,
+		TimeTolerance tolerance)
+		: ConstraintResult.WithNotNullValue<DateOnly?>(it, grammars),
+			IValueConstraint<DateOnly?>
+	{
+		public ConstraintResult IsMetBy(DateOnly? actual)
+		{
+			Actual = actual;
+			if (actual is null && expected is null)
+			{
+				Outcome = Outcome.Success;
+			}
+			else if (actual is null || expected is null)
+			{
+				Outcome = IsNegated ? Outcome.Success : Outcome.Failure;
+			}
+			else
+			{
+				TimeSpan timeTolerance = tolerance.Tolerance
+				                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				if (IsNegated)
+				{
+					timeTolerance = timeTolerance.Negate();
+				}
+
+				Outcome = actual.Value.AddDays((int)timeTolerance.TotalDays) >= expected
+					? Outcome.Success
+					: Outcome.Failure;
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is on or after ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance.ToDayString());
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not on or after ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance.ToDayString());
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }
 #endif

@@ -1,4 +1,8 @@
-﻿namespace aweXpect.Tests;
+﻿using System.Collections.Generic;
+
+// ReSharper disable PossibleMultipleEnumeration
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatString
 {
@@ -7,12 +11,39 @@ public sealed partial class ThatString
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				string subject = "foo";
+				string[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
+			public async Task WhenNullableExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				string subject = "foo";
+				string?[] expected = [];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("You have to provide at least one expected value!");
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				string? subject = null;
+				IEnumerable<string> expected = ["foo", "bar",];
 
 				async Task Act()
-					=> await That(subject).IsOneOf("foo", "bar");
+					=> await That(subject).IsOneOf(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -20,6 +51,18 @@ public sealed partial class ThatString
 					             is one of ["foo", "bar"],
 					             but it was <null>
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+			{
+				string? subject = null;
+				IEnumerable<string?> expected = ["foo", null,];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]

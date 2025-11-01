@@ -22,7 +22,11 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    }
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -88,15 +92,12 @@ const config: Config = {
           label: 'Extensions',
         },
         {
-          to: '/benchmarks',
-          label: 'Benchmarks',
-          position: 'left'
+          type: 'docSidebar',
+          sidebarId: 'mockolateSidebar',
+          position: 'right',
+          label: 'Mockolate',
         },
-        {
-          to: '/blog',
-          label: 'Blog',
-          position: 'right'
-        },
+        // Add blog link here if blog functionality is re-enabled in the future (https://github.com/aweXpect/aweXpect/pull/722)
       ],
     },
     footer: {
@@ -110,12 +111,12 @@ const config: Config = {
               to: '/docs/expectations/getting-started',
             },
             {
-              label: 'Benchmarks',
-              to: '/benchmarks',
+              label: 'Extensions',
+              to: '/docs/category/extension-projects',
             },
             {
-              label: "Blog",
-              to: "/blog"
+              label: 'Mockolate',
+              to: '/docs/mockolate/index',
             },
           ],
         },
@@ -129,6 +130,10 @@ const config: Config = {
             {
               label: 'Stryker Mutator',
               href: 'https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main#mutant',
+            },
+            {
+              label: 'Benchmarks',
+              to: '/benchmarks',
             },
           ],
         },
@@ -154,6 +159,39 @@ const config: Config = {
       additionalLanguages: ['csharp']
     },
   } satisfies Preset.ThemeConfig,
+  plugins:[
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/docs/extensions/project/Json/index',
+            from: '/aweXpect.Json',
+          },
+          {
+            to: '/docs/extensions/project/Web/index',
+            from: '/aweXpect.Web',
+          },
+          {
+            to: '/docs/extensions/project/Testably/index',
+            from: '/aweXpect.Testably',
+          },
+          {
+            to: '/docs/extensions/project/Reflection/index',
+            from: '/aweXpect.Reflection',
+          },
+          {
+            to: '/docs/extensions/project/Mockolate/index',
+            from: '/aweXpect.Mockolate',
+          },
+          {
+            to: '/docs/mockolate/index',
+            from: '/Mockolate',
+          },
+        ],
+      },
+    ],
+  ],
 };
 
 export default config;

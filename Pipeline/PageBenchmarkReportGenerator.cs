@@ -57,7 +57,7 @@ public class PageBenchmarkReportGenerator
 		return (newFileContent, limitedFileContent);
 	}
 
-	private class PageReportData : Dictionary<string, PageReport>
+	private sealed class PageReportData : Dictionary<string, PageReport>
 	{
 		public bool Append(CommitInfo commitInfo, BenchmarkReport benchmarkReport)
 		{
@@ -79,6 +79,11 @@ public class PageBenchmarkReportGenerator
 				return false;
 			}
 
+			if (!IsIncluded(type))
+			{
+				return true;
+			}
+			
 			if (!TryGetValue(name, out PageReport pageReport))
 			{
 				pageReport = new PageReport();
@@ -108,7 +113,7 @@ public class PageBenchmarkReportGenerator
 					Label = $"{type} memory",
 					Unit = "b",
 					PointStyle = "triangle",
-					BorderDash = [5, 5],
+					BorderDash = [5, 5,],
 					YAxisId = "y1",
 					BackgroundColor = GetColor(type),
 					BorderColor = GetColor(type),
@@ -145,12 +150,14 @@ public class PageBenchmarkReportGenerator
 			timeDataset.Data.Add(benchmark.Statistics.Mean);
 		}
 
+		bool IsIncluded(string type)
+			=> type is "aweXpect" or "FluentAssertions";
+
 		string GetColor(string type)
 			=> type switch
 			{
 				"aweXpect" => "#63A2AC",
 				"FluentAssertions" => "#FF671B",
-				"TUnit" => "#1A6029",
 				_ => "#e84393",
 			};
 
@@ -189,7 +196,7 @@ public class PageBenchmarkReportGenerator
 		[JsonPropertyName("message")] public string Message { get; } = message;
 	}
 
-	private class PageReport
+	private sealed class PageReport
 	{
 		[JsonPropertyName("commits")] public List<CommitInfo> Commits { get; init; } = new();
 		[JsonPropertyName("labels")] public List<string> Labels { get; init; } = new();
@@ -236,7 +243,7 @@ public class PageBenchmarkReportGenerator
 		}
 	}
 
-	private class BenchmarkReport
+	private sealed class BenchmarkReport
 	{
 		public Benchmark[] Benchmarks { get; init; }
 

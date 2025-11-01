@@ -24,7 +24,15 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).AtLeast(6).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<InconclusiveException>()
+					.WithMessage("""
+					             Expected that subject
+					             satisfies y => y < 6 for at least 6 items,
+					             but could not verify, because it was already cancelled
+
+					             Collection:
+					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
+					             """);
 			}
 
 			[Fact]
@@ -53,7 +61,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsEnoughItems_EqualShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).AtLeast(3).AreEqualTo(1);
@@ -64,7 +72,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_EqualShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).AtLeast(5).AreEqualTo(1);
@@ -74,13 +82,16 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for at least 5 items,
 					             but only 4 of 7 were
+
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_EquivalentShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).AtLeast(5).AreEqualTo(1);
@@ -90,6 +101,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for at least 5 items,
 					             but only 4 of 7 were
+
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -115,7 +129,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtLeast(3).AreEqualTo("foo").IgnoringCase();
@@ -125,13 +139,20 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for at least 3 items,
 					             but only 2 of 3 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "bar"
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtLeast(2).AreEqualTo("foo");
@@ -142,7 +163,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtLeast(3).AreEqualTo("foo");
@@ -152,6 +173,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for at least 3 items,
 					             but only 2 of 4 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 

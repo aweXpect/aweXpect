@@ -19,18 +19,26 @@ public static partial class ThatEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		{
+			predicate.ThrowIfNull();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
-						it,
+						expectationBuilder,
+						it, grammars,
 						_quantifier,
-						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
+						g => (g.IsNested(), g.IsNegated()) switch
 						{
-							true => $"satisfy {doNotPopulateThisValue}",
-							_ => $"satisfies {doNotPopulateThisValue}",
+							(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						},
 						predicate,
 						"did")),
 				_subject);
+		}
 	}
 
 	public partial class Elements<TItem>
@@ -43,17 +51,125 @@ public static partial class ThatEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		{
+			predicate.ThrowIfNull();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						expectationBuilder,
+						it, grammars,
 						_quantifier,
-						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
-						{
-							true => $"satisfy {doNotPopulateThisValue}",
-							_ => $"satisfies {doNotPopulateThisValue}",
-						},
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
 						predicate,
 						"did")),
 				_subject);
+		}
+	}
+
+	public partial class ElementsForEnumerable<TEnumerable>
+	{
+		/// <summary>
+		///     …satisfy the <paramref name="predicate" />.
+		/// </summary>
+		public AndOrResult<TEnumerable, IThat<TEnumerable>>
+			Satisfy(
+				Func<object?, bool> predicate,
+				[CallerArgumentExpression("predicate")]
+				string doNotPopulateThisValue = "")
+		{
+			predicate.ThrowIfNull();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<TEnumerable, IThat<TEnumerable>>(
+				expectationBuilder.AddConstraint((it, grammars)
+					=> new CollectionForEnumerableConstraint<TEnumerable>(
+						expectationBuilder,
+						it, grammars,
+						_quantifier,
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
+						predicate,
+						"did")),
+				_subject);
+		}
+	}
+
+	public partial class ElementsForStructEnumerable<TEnumerable, TItem>
+	{
+		/// <summary>
+		///     …satisfy the <paramref name="predicate" />.
+		/// </summary>
+		public AndOrResult<TEnumerable, IThat<TEnumerable>>
+			Satisfy(
+				Func<TItem?, bool> predicate,
+				[CallerArgumentExpression("predicate")]
+				string doNotPopulateThisValue = "")
+		{
+			predicate.ThrowIfNull();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<TEnumerable, IThat<TEnumerable>>(
+				expectationBuilder.AddConstraint((it, grammars)
+					=> new CollectionForEnumerableConstraint<TEnumerable>(
+						expectationBuilder,
+						it, grammars,
+						_quantifier,
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
+						v => predicate((TItem)v!),
+						"did")),
+				_subject);
+		}
+	}
+
+	public partial class ElementsForStructEnumerable<TEnumerable>
+	{
+		/// <summary>
+		///     …satisfy the <paramref name="predicate" />.
+		/// </summary>
+		public AndOrResult<TEnumerable, IThat<TEnumerable>>
+			Satisfy(
+				Func<string?, bool> predicate,
+				[CallerArgumentExpression("predicate")]
+				string doNotPopulateThisValue = "")
+		{
+			predicate.ThrowIfNull();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<TEnumerable, IThat<TEnumerable>>(
+				expectationBuilder.AddConstraint((it, grammars)
+					=> new CollectionForEnumerableConstraint<TEnumerable>(
+						expectationBuilder,
+						it, grammars,
+						_quantifier,
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
+						v => predicate((string?)v),
+						"did")),
+				_subject);
+		}
 	}
 }

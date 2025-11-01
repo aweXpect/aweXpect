@@ -28,6 +28,9 @@ public sealed partial class ThatString
 					                {Formatter.Format(subject)}
 					                {Formatter.Format(pattern)}
 					                ↑ (wildcard pattern)
+
+					              Actual:
+					              some message
 					              """);
 			}
 
@@ -53,6 +56,9 @@ public sealed partial class ThatString
 					               "some message"
 					               "*ME ME*"
 					               ↑ (wildcard pattern)
+
+					             Actual:
+					             some message
 					             """);
 			}
 		}

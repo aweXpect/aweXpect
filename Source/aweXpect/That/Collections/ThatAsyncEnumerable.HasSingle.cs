@@ -1,71 +1,142 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
+using aweXpect.Options;
 using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-#if NET8_0_OR_GREATER
 namespace aweXpect;
 
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Verifies that the collection contains exactly one element.
+	///     Verifies that the collection contains exactly one item.
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new HasSingleConstraint<TItem>(it)),
+	{
+		PredicateOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new HasSingleConstraint<TItem>(expectationBuilder, it, grammars, options)),
+			options,
 			async f =>
 			{
-				await using IAsyncEnumerator<TItem> enumerator = f.GetAsyncEnumerator();
-				return await enumerator.MoveNextAsync() ? enumerator.Current : default;
-			});
+				await foreach (TItem item in f)
+				{
+					if (options.Matches(item))
+					{
+						return item;
+					}
+				}
 
-	private readonly struct HasSingleConstraint<TItem>(string it) : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+				return default;
+			});
+	}
+
+	private sealed class HasSingleConstraint<TItem>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		PredicateOptions<TItem> options)
+		: ConstraintResult.WithValue<TItem?>(grammars),
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
+		private IAsyncEnumerable<TItem>? _actual;
+		private int _count;
+		private bool _isEmpty;
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			_actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IAsyncEnumerable<TItem> materialized =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			TItem? singleItem = default;
-			int count = 0;
+			_count = 0;
+			_isEmpty = true;
 
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
-				singleItem = item;
-				if (++count > 1)
+				_isEmpty = false;
+				if (!options.Matches(item))
+				{
+					continue;
+				}
+
+				Actual = item;
+				if (++_count > 1)
 				{
 					break;
 				}
 			}
 
-			switch (count)
+			Outcome = _count == 1 ? Outcome.Success : Outcome.Failure;
+			if (_count > 1)
 			{
-				case 1:
-					return new ConstraintResult.Success<TItem>(singleItem!, ToString());
-				case 0:
-					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(materialized, ToString(),
-						$"{it} was empty");
-				default:
-					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(materialized, ToString(),
-						$"{it} contained more than one item");
+				await expectationBuilder.AddCollectionContext(materialized as IMaterializedEnumerable<TItem>);
+			}
+
+			return this;
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			return base.TryGetValue(out value);
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("has a single item").Append(options.GetDescription());
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual is null)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else if (_count == 0)
+			{
+				stringBuilder.Append(it).Append(_isEmpty ? " was empty" : " did not contain any matching item");
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" contained more than one item");
 			}
 		}
 
-		public override string ToString() => "has a single item";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("does not have a single item").Append(options.GetDescription());
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual is null)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" did");
+			}
+		}
 	}
 }
 #endif

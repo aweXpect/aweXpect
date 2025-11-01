@@ -20,6 +20,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not end with "TEXT" ignoring case,
 					             but it was "some text"
+					             
+					             Actual:
+					             some text
 					             """);
 			}
 
@@ -51,6 +54,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not end with "tExt" using IgnoreCaseForVocalsComparer,
 					             but it was "some arbitrary text"
+					             
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -69,7 +75,7 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
-			public async Task WhenExpectedIsNull_ShouldFail()
+			public async Task WhenExpectedIsNull_ShouldSucceed()
 			{
 				string subject = "text";
 				string? expected = null;
@@ -77,12 +83,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(expected!);
 
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             does not end with <null>,
-					             but "text" cannot be validated against <null>
-					             """);
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -99,6 +100,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not end with "text",
 					             but it was "some text"
+					             
+					             Actual:
+					             some text
 					             """);
 			}
 
@@ -128,11 +132,14 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not end with "some text",
 					             but it was "some text"
+					             
+					             Actual:
+					             some text
 					             """);
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				string? subject = null;
 				string expected = "text";
@@ -140,12 +147,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(expected);
 
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             does not end with "text",
-					             but it was <null>
-					             """);
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

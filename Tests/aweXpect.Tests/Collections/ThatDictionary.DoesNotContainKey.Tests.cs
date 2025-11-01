@@ -11,7 +11,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKey(2);
@@ -21,13 +21,16 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             does not contain key 2,
 					             but it did
+
+					             Dictionary:
+					             {[1] = 0, [2] = 0, [3] = 0}
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKey(42);
@@ -38,7 +41,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IDictionary<string, int>? subject = null;
+				Dictionary<string, int>? subject = null;
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKey("foo");

@@ -30,15 +30,17 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected, because we want to test the failure,
-					             but it was MyClass {
-					               Value = 0
-					             }
+					             is equal to ThatObject.MyClass {
+					                 Value = 0
+					               }, because we want to test the failure,
+					             but it was ThatObject.MyClass {
+					                 Value = 0
+					               }
 					             """);
 			}
 
 			[Fact]
-			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
+			public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
 			{
 				MyClass? subject = null;
 				MyClass? expected = null;
@@ -60,7 +62,9 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to new MyClass(),
+					             is equal to ThatObject.MyClass {
+					                 Value = 0
+					               },
 					             but it was <null>
 					             """);
 			}
@@ -71,7 +75,10 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task SubjectToItself_ShouldSucceed()
 			{
-				char subject = 'c';
+				MyStruct subject = new()
+				{
+					Value = 1,
+				};
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(subject);
@@ -82,8 +89,14 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task SubjectToSomeOtherValue_ShouldFail()
 			{
-				char subject = 'x';
-				char expected = 'y';
+				MyStruct subject = new()
+				{
+					Value = 1,
+				};
+				MyStruct expected = new()
+				{
+					Value = 2,
+				};
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected)
@@ -92,10 +105,64 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected, because we want to test the failure,
-					             but it was 'x'
+					             is equal to ThatObject.MyStruct {
+					                 Value = 2
+					               }, because we want to test the failure,
+					             but it was ThatObject.MyStruct {
+					                 Value = 1
+					               }
 					             """);
 			}
+		}
+
+		public sealed class NumericTests
+		{
+			[Theory]
+			[MemberData(nameof(GetValues))]
+			public async Task WhenSubjectAndExpectedAreDifferentNumericsWithSameValues_ShouldSucceed(object subject,
+				object expected)
+			{
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			public static TheoryData<object, object> GetValues() => new()
+			{
+				{
+					1.0, 1
+				},
+				{
+					2, 2.0
+				},
+				{
+					3, (long)3
+				},
+				{
+					(sbyte)4, (ulong)4
+				},
+				{
+					(float)5.0, 5.0
+				},
+				{
+					(decimal)6.1, (float)6.1
+				},
+				{
+					(byte)7, (short)7
+				},
+				{
+					(ushort)8, (uint)8
+				},
+#if NET8_0_OR_GREATER
+				{
+					(Int128)9, (UInt128)9
+				},
+				{
+					(Half)10, (float)10
+				},
+#endif
+			};
 		}
 
 		public sealed class NullableStructTests
@@ -103,7 +170,10 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task SubjectToItself_ShouldSucceed()
 			{
-				char? subject = 'c';
+				MyStruct? subject = new()
+				{
+					Value = 1,
+				};
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(subject);
@@ -114,8 +184,14 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task SubjectToSomeOtherValue_ShouldFail()
 			{
-				char? subject = 'x';
-				char? expected = 'y';
+				MyStruct? subject = new()
+				{
+					Value = 1,
+				};
+				MyStruct? expected = new()
+				{
+					Value = 2,
+				};
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected)
@@ -124,16 +200,20 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected, because we want to test the failure,
-					             but it was 'x'
+					             is equal to ThatObject.MyStruct {
+					                 Value = 2
+					               }, because we want to test the failure,
+					             but it was ThatObject.MyStruct {
+					                 Value = 1
+					               }
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
 			{
-				char? subject = null;
-				char? expected = null;
+				MyStruct? subject = null;
+				MyStruct? expected = null;
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -144,15 +224,17 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				char? subject = null;
+				MyStruct? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsEqualTo('c');
+					=> await That(subject).IsEqualTo(new MyStruct());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to 'c',
+					             is equal to ThatObject.MyStruct {
+					                 Value = 0
+					               },
 					             but it was <null>
 					             """);
 			}
@@ -171,7 +253,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that sut
-					             is equal to expected,
+					             is equal to int,
 					             but it was long
 					             """);
 			}

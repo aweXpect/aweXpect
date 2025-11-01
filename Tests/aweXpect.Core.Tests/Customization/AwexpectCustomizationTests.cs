@@ -85,7 +85,10 @@ public static class DummyExtensions
 	public static ICustomizationValueSetter<string> MyConfiguration(this AwexpectCustomization awexpectCustomization)
 		=> new CustomizationValue<string>(awexpectCustomization, MyKey, "foo");
 
-	private class CustomizationValue<TValue>(IAwexpectCustomization customization, string key, TValue defaultValue)
+	private sealed class CustomizationValue<TValue>(
+		IAwexpectCustomization customization,
+		string key,
+		TValue defaultValue)
 		: ICustomizationValueSetter<TValue>
 	{
 		public TValue Get()

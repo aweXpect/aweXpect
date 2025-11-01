@@ -14,7 +14,7 @@ public sealed partial class StringEqualityOptionsTests
 			sut.IgnoringTrailingWhiteSpace();
 			sut.IgnoringNewlineStyle();
 
-			bool result = sut.AreConsideredEqual(null, "foo");
+			bool result = await sut.AreConsideredEqual(null, "foo");
 
 			await That(result).IsFalse();
 		}
@@ -27,7 +27,7 @@ public sealed partial class StringEqualityOptionsTests
 			sut.IgnoringTrailingWhiteSpace();
 			sut.IgnoringNewlineStyle();
 
-			string result = sut.GetExtendedFailure("it", null, "foo");
+			string result = sut.GetExtendedFailure("it", ExpectationGrammars.None, null, "foo");
 
 			await That(result).IsEqualTo("it was <null>");
 		}

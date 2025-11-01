@@ -1,5 +1,7 @@
-﻿using System;
-using aweXpect.Core.Constraints;
+﻿using System.Diagnostics.CodeAnalysis;
+#if NET8_0_OR_GREATER
+using System;
+#endif
 
 namespace aweXpect;
 
@@ -8,147 +10,44 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNumber
 {
-	private readonly struct GenericConstraint<T>(
-		string it,
-		T? expected,
-		Func<T?, string> expectation,
-		Func<T, T?, bool> condition,
-		Func<T, T?, string, string> failureMessageFactory)
-		: IValueConstraint<T>
-		where T : struct
+	private static bool IsFinite<T>([NotNullWhen(true)] T? value) => value switch
 	{
-		public ConstraintResult IsMetBy(T actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
+		null => false,
+		double d => !double.IsNaN(d) && !double.IsInfinity(d),
+		float f => !float.IsNaN(f) && !float.IsInfinity(f),
+#if NET8_0_OR_GREATER
+		Half h => !Half.IsNaN(h) && !Half.IsInfinity(h),
+#endif
+		_ => true,
+	};
 
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+#if NET8_0_OR_GREATER
+	private static TNumber? CalculateDifference<TNumber>(TNumber actual, TNumber expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		if (actual == expected)
+		{
+			return default(TNumber);
 		}
 
-		public override string ToString()
-			=> expectation(expected);
-	}
-
-	private readonly struct NullableGenericConstraint<T>(
-		string it,
-		T? expected,
-		Func<T?, string> expectation,
-		Func<T?, T?, bool> condition,
-		Func<T?, T?, string, string> failureMessageFactory)
-		: IValueConstraint<T?>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T? actual)
+		if (!IsFinite(actual))
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			return !IsFinite(expected) ? default(TNumber) : null;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
-	}
-
-	private readonly struct GenericArrayConstraint<T>(
-		string it,
-		T[] expected,
-		Func<T[], string> expectation,
-		Func<T, T[], bool> condition,
-		Func<T, T[], string, string> failureMessageFactory)
-		: IValueConstraint<T>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T actual)
+		try
 		{
-			if (condition(actual, expected))
+			checked
 			{
-				return new ConstraintResult.Success<T>(actual, ToString());
+				return actual < expected
+					? expected - actual
+					: actual - expected;
 			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
 		}
-
-		public override string ToString()
-			=> expectation(expected);
-	}
-
-	private readonly struct GenericArrayConstraintWithNullableValues<T>(
-		string it,
-		T?[] expected,
-		Func<T?[], string> expectation,
-		Func<T, T?[], bool> condition,
-		Func<T, T?[], string, string> failureMessageFactory)
-		: IValueConstraint<T>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T actual)
+		catch (OverflowException)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			return null;
 		}
-
-		public override string ToString()
-			=> expectation(expected);
 	}
-
-	private readonly struct NullableGenericArrayConstraint<T>(
-		string it,
-		T[] expected,
-		Func<T[], string> expectation,
-		Func<T?, T[], bool> condition,
-		Func<T?, T[], string, string> failureMessageFactory)
-		: IValueConstraint<T?>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T? actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
-		}
-
-		public override string ToString()
-			=> expectation(expected);
-	}
-
-	private readonly struct NullableGenericArrayConstraintWithNullableValues<T>(
-		string it,
-		T?[] expected,
-		Func<T?[], string> expectation,
-		Func<T?, T?[], bool> condition,
-		Func<T?, T?[], string, string> failureMessageFactory)
-		: IValueConstraint<T?>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T? actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
-		}
-
-		public override string ToString()
-			=> expectation(expected);
-	}
+#endif
 }

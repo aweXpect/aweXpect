@@ -57,7 +57,7 @@ partial class Build
 						(settings, project) => settings
 							.SetProjectFile(project)
 							.CombineWith(
-								project.GetTargetFrameworks()?.Except([net48]),
+								project.GetTargetFrameworks()?.Except([net48,]),
 								(frameworkSettings, framework) => frameworkSettings
 									.SetFramework(framework)
 									.AddLoggers($"trx;LogFileName={project.Name}_{framework}.trx")
@@ -69,7 +69,7 @@ partial class Build
 	Project[] UnitTestProjects(BuildScope buildScope)
 		=> buildScope switch
 		{
-			BuildScope.CoreOnly => [Solution.Tests.aweXpect_Core_Tests],
+			BuildScope.CoreOnly => [Solution.Tests.aweXpect_Core_Tests,],
 			BuildScope.MainOnly =>
 			[
 				Solution.Tests.aweXpect_Analyzers_Tests,
@@ -84,4 +84,56 @@ partial class Build
 				Solution.Tests.aweXpect_Internal_Tests,
 			],
 		};
+
+	Target DebugUnitTests => _ => _
+		.Unlisted()
+		.DependsOn(UnitTests)
+		.OnlyWhenDynamic(() => BuildScope != BuildScope.Default)
+		.Executes(() =>
+		{
+			DotNetBuild(s => s
+				.SetProjectFile(Solution)
+				.SetConfiguration(Configuration.Debug)
+				.EnableNoLogo());
+			
+			string net48 = "net48";
+			DotNetTest(s => s
+					.SetConfiguration(Configuration.Debug)
+					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
+					.EnableNoBuild()
+					.SetResultsDirectory(TestResultsDirectory / Configuration.Debug)
+					.CombineWith(
+						UnitTestProjects(BuildScope.Default),
+						(settings, project) => settings
+							.SetProjectFile(project)
+							.CombineWith(
+								project.GetTargetFrameworks()?.Except([net48,]),
+								(frameworkSettings, framework) => frameworkSettings
+									.SetFramework(framework)
+							)
+					), completeOnFailure: true
+			);
+
+			if (EnvironmentInfo.IsWin)
+			{
+				string[] testAssemblies = UnitTestProjects(BuildScope)
+					.SelectMany(project =>
+						project.Directory.GlobFiles(
+							$"bin/Debug/net48/*.Tests.dll"))
+					.Select(p => p.ToString())
+					.ToArray();
+
+				Assert.NotEmpty(testAssemblies.ToList());
+
+				Xunit2(s => s
+					.SetFramework("net48")
+					.AddTargetAssemblies(testAssemblies)
+				);
+			}
+		});
+	
+	Target UnitTestsWithCoverage => _ => _
+		.DependsOn(UnitTests)
+		.DependsOn(DebugUnitTests);
+
 }

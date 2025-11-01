@@ -30,9 +30,13 @@ public class TimeToleranceResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	TimeTolerance options)
-	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
+	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
+		IOptionsProvider<TimeTolerance>
 	where TSelf : TimeToleranceResult<TType, TThat, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	TimeTolerance IOptionsProvider<TimeTolerance>.Options => options;
+
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply on the time comparison.
 	/// </summary>

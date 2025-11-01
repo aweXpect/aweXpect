@@ -24,26 +24,33 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-					=> new ComplyWithConstraint<TItem>(it, _quantifier, expectations)),
+				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
+					=> new ComplyWithConstraint<TItem>(expectationBuilder, it, grammars, _quantifier, expectations)),
 				_subject,
 				options);
 		}
 	}
 
-	private readonly struct ComplyWithConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	private sealed class ComplyWithConstraint<TItem>
+		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
+		private readonly ExpectationGrammars _grammars;
 		private readonly string _it;
-		private readonly EnumerableQuantifier _quantifier;
 		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+		private readonly EnumerableQuantifier _quantifier;
+		private int _matchingCount;
+		private int _notMatchingCount;
+		private int? _totalCount;
 
-		public ComplyWithConstraint(string it,
+		public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
+			Action<IThat<TItem>> expectations) : base(grammars)
 		{
 			_it = it;
+			_grammars = grammars;
 			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder, grammars);
 			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
@@ -52,51 +59,86 @@ public static partial class ThatAsyncEnumerable
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
-					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {_quantifier.GetItemString()}",
-					$"{_it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IAsyncEnumerable<TItem> materialized =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			int matchingCount = 0;
-			int notMatchingCount = 0;
-			int? totalCount = null;
+			_matchingCount = 0;
+			_notMatchingCount = 0;
 
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
 				if (isMatch.Outcome == Outcome.Success)
 				{
-					matchingCount++;
+					_matchingCount++;
 				}
 				else
 				{
-					notMatchingCount++;
+					_notMatchingCount++;
 				}
 
-				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-						notMatchingCount,
-						totalCount, null);
+					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					return this;
 				}
 			}
 
 			if (cancellationToken.IsCancellationRequested)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {_quantifier.GetItemString()}",
-					"could not verify, because it was cancelled early");
+				Outcome = Outcome.Undecided;
+				return this;
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-				notMatchingCount,
-				matchingCount + notMatchingCount, null);
+			_totalCount = _matchingCount + _notMatchingCount;
+			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
+			stringBuilder.Append(" for ");
+			stringBuilder.Append(_quantifier);
+			stringBuilder.Append(" items");
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.ItWasNull(_it);
+			}
+			else
+			{
+				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(_quantifier);
+			stringBuilder.Append(" for ");
+			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
+			stringBuilder.Append(" items");
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.ItWasNull(_it);
+			}
+			else
+			{
+				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
+			}
 		}
 	}
 }

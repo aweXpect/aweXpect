@@ -35,7 +35,11 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo\nbar"
 				               "FOO\nBAR"
 				               ↑ (regex pattern)
-				             """);
+
+				             Actual:
+				             foo
+				             bar
+				             """).IgnoringNewlineStyle();
 		}
 
 		[Fact]
@@ -55,6 +59,9 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo"
 				               "bar"
 				               ↑ (regex pattern)
+
+				             Actual:
+				             foo
 				             """);
 		}
 
@@ -75,11 +82,15 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo\nbar"
 				               "\tsomething\r\nelse"
 				               ↑ (regex pattern)
-				             """);
+
+				             Actual:
+				             foo
+				             bar
+				             """).IgnoringNewlineStyle();
 		}
 
 		[Fact]
-		public async Task ShouldSupportPassiveGrammaticVoice()
+		public async Task ShouldSupportPassiveGrammaticalVoice()
 		{
 			Exception exception = new("foo");
 
@@ -96,6 +107,9 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo"
 				               "bar"
 				               ↑ (regex pattern)
+
+				             Message:
+				             foo
 				             """);
 		}
 
@@ -123,6 +137,9 @@ public sealed partial class StringEqualityOptionsTests
 				             Expected that sut
 				             matches regex <null>,
 				             but could not compare the <null> regex with "foo"
+
+				             Actual:
+				             foo
 				             """);
 		}
 
@@ -138,7 +155,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected that sut
 				             matches regex <null>,
-				             but could not compare the <null> regex with <null>
+				             but it was <null>
 				             """);
 		}
 
@@ -154,11 +171,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected that sut
 				             matches regex ".*",
-				             but it did not match:
-				               ↓ (actual)
-				               <null>
-				               ".*"
-				               ↑ (regex pattern)
+				             but it was <null>
 				             """);
 		}
 	}

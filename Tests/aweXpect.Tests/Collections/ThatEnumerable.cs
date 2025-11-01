@@ -38,6 +38,14 @@ public partial class ThatEnumerable
 		}
 	}
 
+	public static IEnumerable<T> ToEnumerable<T>(params T[] items)
+	{
+		foreach (T item in items)
+		{
+			yield return item;
+		}
+	}
+
 	/// <summary>
 	///     Returns an <see cref="IEnumerable{T}" /> with incrementing numbers, starting with 0, which cancels the
 	///     <paramref name="cancellationTokenSource" /> after <paramref name="cancelAfter" /> iteration.
@@ -94,7 +102,7 @@ public partial class ThatEnumerable
 		{
 			if (_isEnumerated)
 			{
-				Fail.Test("The enumerable was enumerated twice!");
+				throw new NotSupportedException("The enumerable was enumerated twice!");
 			}
 
 			_isEnumerated = true;
@@ -102,12 +110,6 @@ public partial class ThatEnumerable
 		}
 
 		#endregion
-	}
-
-	public class MyClass(int value = 0)
-	{
-		public InnerClass? Inner { get; set; }
-		public int Value { get; set; } = value;
 	}
 
 	public class InnerClass

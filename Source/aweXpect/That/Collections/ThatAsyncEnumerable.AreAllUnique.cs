@@ -26,9 +26,10 @@ public static partial class ThatAsyncEnumerable
 			this IThat<IAsyncEnumerable<TItem>?> source)
 	{
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AreAllUniqueConstraint<TItem, TItem>(it, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueConstraint<TItem, TItem>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -40,9 +41,10 @@ public static partial class ThatAsyncEnumerable
 		this IThat<IAsyncEnumerable<string?>?> source)
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AreAllUniqueConstraint<string, string>(it, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueConstraint<string, string>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -59,10 +61,12 @@ public static partial class ThatAsyncEnumerable
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
-					doNotPopulateThisValue,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(expectationBuilder, it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
@@ -80,104 +84,144 @@ public static partial class ThatAsyncEnumerable
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
-					doNotPopulateThisValue,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(expectationBuilder, it, grammars,
+					memberAccessor,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct AreAllUniqueConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	private sealed class AreAllUniqueConstraint<TItem, TMatch>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		IOptionsEquality<TMatch> options)
+		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>(it, grammars),
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private readonly List<TItem> _duplicates = [];
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
-			List<TItem> duplicates = new();
+			LimitedCollection<TItem> items = new();
 
 			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(item, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(item, x))))
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(item, compareWith)))
 				{
-					duplicates.Add(item);
+					_duplicates.Add(item);
 				}
 
 				checkedItems.Add(item);
+				items.Add(item);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(items);
+			return this;
 		}
 
-		public override string ToString() => $"only has unique items{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique items");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate items");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 
-	private readonly struct AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
+	private sealed class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
+		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>(it, grammars),
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TMember : TMatch
 	{
+		private readonly List<TMember> _duplicates = [];
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TMember> checkedItems = new();
-			List<TMember> duplicates = new();
+			LimitedCollection<TItem> items = new();
 
 			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				TMember itemMember = memberAccessor(item);
-				if (checkedItems.Any(compareWith =>
-					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+				if (await checkedItems.AnyButNotInDuplicatesAsync(_duplicates,
+					    compareWith => o.AreConsideredEqual(itemMember, compareWith)))
 				{
-					duplicates.Add(itemMember);
+					_duplicates.Add(itemMember);
 				}
 
 				checkedItems.Add(itemMember);
+				items.Add(item);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(items);
+			return this;
 		}
 
-		public override string ToString() => $"only has unique items for {memberAccessorExpression}{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique items for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate items for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 }
 #endif

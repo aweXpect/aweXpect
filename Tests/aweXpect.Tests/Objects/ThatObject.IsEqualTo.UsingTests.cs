@@ -23,11 +23,14 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected using MyComparer,
-					             but it was OuterClass {
-					               Inner = <null>,
-					               Value = "Foo"
-					             }
+					             is equal to ThatObject.OuterClass {
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               } using ThatObject.IsEqualTo.UsingTests.MyComparer,
+					             but it was ThatObject.OuterClass {
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               }
 					             """);
 			}
 

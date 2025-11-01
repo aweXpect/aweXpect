@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
+using aweXpect.Customization;
 
 namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
+	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
+
 	/// <summary>
 	///     Interprets the expected <see langword="string" /> to be exactly equal.
 	/// </summary>
@@ -56,68 +60,104 @@ public partial class StringEqualityOptions
 			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Equality);
 			if (indexOfFirstMismatch == 0 && comparer.Equals(actual.TrimStart(), expected))
 			{
+				int maxStringLength = Customize.aweXpect.Formatting().MaximumStringLength.Get();
 				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
+					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(maxStringLength)}\" at the beginning)";
 			}
 
 			if (indexOfFirstMismatch == 0 && comparer.Equals(actual, expected.TrimStart()))
 			{
+				int maxStringLength = Customize.aweXpect.Formatting().MaximumStringLength.Get();
 				return
-					$"{prefix} which misses some whitespace (\"{expected.Substring(0, GetIndexOfFirstMatch(expected, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
+					$"{prefix} which misses some whitespace (\"{expected.Substring(0, GetIndexOfFirstMatch(expected, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(maxStringLength)}\" at the beginning)";
 			}
 
 			if (indexOfFirstMismatch == minCommonLength && comparer.Equals(actual.TrimEnd(), expected))
 			{
+				int maxStringLength = Customize.aweXpect.Formatting().MaximumStringLength.Get();
 				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+					$"{prefix} which has unexpected whitespace (\"{actual.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(maxStringLength)}\" at the end)";
 			}
 
 			if (indexOfFirstMismatch == minCommonLength && comparer.Equals(actual, expected.TrimEnd()))
 			{
+				int maxStringLength = Customize.aweXpect.Formatting().MaximumStringLength.Get();
 				return
-					$"{prefix} which misses some whitespace (\"{expected.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+					$"{prefix} which misses some whitespace (\"{expected.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(maxStringLength)}\" at the end)";
 			}
 
 			if (actual.Length < expected.Length && indexOfFirstMismatch == actual.Length)
 			{
+				int maxStringLength = Customize.aweXpect.Formatting().MaximumStringLength.Get();
 				return
-					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {expected.Length} and misses:{Environment.NewLine}  \"{expected.Substring(actual.Length).TruncateWithEllipsis(100)}\"";
+					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {expected.Length} and misses:{Environment.NewLine}  \"{expected.Substring(actual.Length).TruncateWithEllipsis(maxStringLength)}\"";
 			}
 
 			if (actual.Length > expected.Length && indexOfFirstMismatch == expected.Length)
 			{
+				int maxStringLength = Customize.aweXpect.Formatting().MaximumStringLength.Get();
 				return
-					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {expected.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(expected.Length).TruncateWithEllipsis(100)}\"";
+					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {expected.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(expected.Length).TruncateWithEllipsis(maxStringLength)}\"";
 			}
 
 			return $"{prefix} which {stringDifference}";
 		}
 
 		/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
-		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
-			IEqualityComparer<string> comparer)
+#if NET8_0_OR_GREATER
+		public ValueTask<bool>
+#else
+		public Task<bool>
+#endif
+		AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
+			IEqualityComparer<string>? comparer)
 		{
 			if (actual is null && expected is null)
 			{
-				return true;
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult(true);
+#else
+				return Task.FromResult(true);
+#endif
 			}
 
 			if (actual is null || expected is null)
 			{
-				return false;
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult(false);
+#else
+				return Task.FromResult(false);
+#endif
 			}
 
-			return comparer.Equals(actual, expected);
+			if (comparer is not null)
+			{
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult(comparer.Equals(actual, expected));
+#else
+				return Task.FromResult(comparer.Equals(actual, expected));
+#endif
+			}
+			
+#if NET8_0_OR_GREATER
+			return ValueTask.FromResult(string.Equals(actual, expected, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
+#else
+			return Task.FromResult(string.Equals(actual, expected, ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
+#endif
 		}
 
 		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, ExpectationGrammars)" />
-		public string GetExpectation(string? expected, ExpectationGrammars grammar)
-			=> grammar.HasFlag(ExpectationGrammars.Active) switch
+		public string GetExpectation(string? expected, ExpectationGrammars grammars)
+			=> (grammars.HasFlag(ExpectationGrammars.Active), grammars.HasFlag(ExpectationGrammars.Negated)) switch
 			{
-				true =>
+				(true, false) =>
 					$"is equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
-				false =>
+				(false, false) =>
 					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+				(true, true) =>
+					$"is not equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+				(false, true) =>
+					$"not equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 			};
 
 		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />

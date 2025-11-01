@@ -58,10 +58,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyBaseClass, because we want to test the failure,
-					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					               is not type ThatObject.MyBaseClass, because we want to test the failure,
+					               but it was ThatObject.MyClass {
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -92,10 +92,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyClass, because {{reason}},
-					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					               is not type ThatObject.MyClass, because {{reason}},
+					               but it was ThatObject.MyClass {
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 		}
@@ -138,6 +138,19 @@ public sealed partial class ThatObject
 				await That(Act).DoesNotThrow();
 			}
 
+			[Fact]
+			public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).IsNot(null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("type").And
+					.WithMessage("The type cannot be null.").AsPrefix();
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenTypeIsSubtype_ShouldFail(int value)
@@ -154,10 +167,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyBaseClass, because we want to test the failure,
-					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					               is not type ThatObject.MyBaseClass, because we want to test the failure,
+					               but it was ThatObject.MyClass {
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -188,10 +201,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyClass, because {{reason}},
-					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					               is not type ThatObject.MyClass, because {{reason}},
+					               but it was ThatObject.MyClass {
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 		}

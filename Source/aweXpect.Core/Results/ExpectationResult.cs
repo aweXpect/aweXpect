@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 using aweXpect.Core.TimeSystem;
+using aweXpect.Customization;
 
 namespace aweXpect.Results;
 
@@ -13,8 +17,16 @@ namespace aweXpect.Results;
 ///     The result of an expectation without an underlying value.
 /// </summary>
 [StackTraceHidden]
-public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectation
+public class ExpectationResult(ExpectationBuilder expectationBuilder)
+	: Expectation, IOptionsProvider<ExpectationBuilder>
 {
+	/// <inheritdoc cref="IOptionsProvider{ExpectationBuilder}.Options" />
+	ExpectationBuilder IOptionsProvider<ExpectationBuilder>.Options => expectationBuilder;
+
+	/// <inheritdoc cref="object.ToString()" />
+	public override string? ToString()
+		=> expectationBuilder.ToString();
+
 	/// <summary>
 	///     Provide a <paramref name="reason" /> explaining why the constraint is needed.<br />
 	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.
@@ -71,9 +83,13 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 	}
 
 	/// <inheritdoc />
-	internal override async Task<Result> GetResult(int index)
+	internal override async Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes)
 		=> new(++index, $" [{index:00}] Expected that {expectationBuilder.Subject}",
 			await expectationBuilder.IsMet());
+
+	/// <inheritdoc />
+	internal override IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes)
+		=> expectationBuilder.GetContexts();
 
 	/// <summary>
 	///     Specifies a <see cref="ITimeSystem" /> to use for the expectation.
@@ -90,11 +106,28 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 
 		if (result.Outcome == Outcome.Success)
 		{
+			ITraceWriter? traceWriter = Customize.aweXpect.TraceWriter.Value;
+			if (traceWriter != null)
+			{
+				StringBuilder sb = new();
+				sb.Append("  Successfully verified that ");
+				sb.Append(result.TryGetValue(out IDescribableSubject? describableSubject)
+					? describableSubject.GetDescription()
+					: expectationBuilder.Subject);
+				sb.Append(' ');
+				result.AppendExpectation(sb);
+				traceWriter.WriteMessage(sb.ToString());
+			}
+
 			return;
 		}
 
-		Fail.Test(ExpectationBuilder.FromFailure(
-			expectationBuilder.Subject, result));
+		if (result.Outcome == Outcome.Undecided)
+		{
+			Fail.Inconclusive(await expectationBuilder.FromFailure(result));
+		}
+
+		Fail.Test(await expectationBuilder.FromFailure(result));
 	}
 }
 
@@ -108,9 +141,18 @@ public class ExpectationResult<TType>(ExpectationBuilder expectationBuilder)
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
 /// </summary>
 [StackTraceHidden]
-public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuilder) : Expectation
+public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuilder)
+	: Expectation,
+		IOptionsProvider<ExpectationBuilder>
 	where TSelf : ExpectationResult<TType, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{ExpectationBuilder}.Options" />
+	ExpectationBuilder IOptionsProvider<ExpectationBuilder>.Options => expectationBuilder;
+
+	/// <inheritdoc cref="object.ToString()" />
+	public override string? ToString()
+		=> expectationBuilder.ToString();
+
 	/// <summary>
 	///     Provide a <paramref name="reason" /> explaining why the constraint is needed.<br />
 	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.
@@ -169,9 +211,13 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	}
 
 	/// <inheritdoc />
-	internal override async Task<Result> GetResult(int index)
+	internal override async Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes)
 		=> new(++index, $" [{index:00}] Expected that {expectationBuilder.Subject}",
 			await expectationBuilder.IsMet());
+
+	/// <inheritdoc />
+	internal override IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes)
+		=> expectationBuilder.GetContexts();
 
 	/// <summary>
 	///     Specifies a <see cref="ITimeSystem" /> to use for the expectation.
@@ -187,18 +233,34 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result.Outcome == Outcome.Success &&
-		    result.TryGetValue(out TType? value))
+		switch (result.Outcome)
 		{
-			return value;
-		}
+			case Outcome.Success
+				when result.TryGetValue(out TType? value):
+				ITraceWriter? traceWriter = Customize.aweXpect.TraceWriter.Value;
+				if (traceWriter != null)
+				{
+					StringBuilder sb = new();
+					sb.Append("  Successfully verified that ");
+					sb.Append(result.TryGetValue(out IDescribableSubject? describableSubject)
+						? describableSubject.GetDescription()
+						: expectationBuilder.Subject);
+					sb.Append(' ');
+					result.AppendExpectation(sb);
+					traceWriter.WriteMessage(sb.ToString());
+				}
 
-		if (result.Outcome == Outcome.Failure)
-		{
-			Fail.Test(ExpectationBuilder.FromFailure(expectationBuilder.Subject, result));
+				return value;
+			case Outcome.Undecided:
+				Fail.Inconclusive(await expectationBuilder.FromFailure(result));
+				break;
+			case Outcome.Failure:
+				Fail.Test(await expectationBuilder.FromFailure(result));
+				break;
 		}
 
 		throw new FailException(
-			$"The value in {Formatter.Format(result.GetType())} did not match expected type {Formatter.Format(typeof(TType))}.");
+				$"The value in {Formatter.Format(result.GetType())} did not match expected type {Formatter.Format(typeof(TType))}.")
+			.LogTrace();
 	}
 }

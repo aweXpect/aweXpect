@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -24,9 +22,9 @@ partial class Build
 
 			Project[] projects = BuildScope switch
 			{
-				BuildScope.CoreOnly => [Solution.aweXpect_Core],
-				BuildScope.MainOnly => [Solution.aweXpect],
-				_ => [Solution.aweXpect_Core, Solution.aweXpect],
+				BuildScope.CoreOnly => [Solution.aweXpect_Core,],
+				BuildScope.MainOnly => [Solution.aweXpect,],
+				_ => [Solution.aweXpect_Core, Solution.aweXpect,],
 			};
 
 			List<string> packages = new();

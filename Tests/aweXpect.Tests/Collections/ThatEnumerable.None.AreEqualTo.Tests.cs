@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class None
 	{
-		public sealed class AreEqualTo
+		public sealed partial class AreEqualTo
 		{
 			public sealed class Tests
 			{
@@ -24,11 +24,26 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).None().AreEqualTo(8)
 							.WithCancellation(token);
 
-					await That(Act).Throws<XunitException>()
+					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
 						             is equal to 8 for no items,
-						             but could not verify, because it was cancelled early
+						             but could not verify, because it was already cancelled
+
+						             Collection:
+						             [
+						               0,
+						               1,
+						               2,
+						               3,
+						               4,
+						               5,
+						               6,
+						               7,
+						               8,
+						               9,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -57,13 +72,31 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 5 for no items,
 						             but at least one was
+
+						             Matching items:
+						             [5, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(1);
@@ -73,6 +106,21 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for no items,
 						             but at least one was
+
+						             Matching items:
+						             [1, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               1,
+						               1,
+						               2,
+						               2,
+						               3,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -90,7 +138,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(42);
@@ -120,7 +168,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldSupportIgnoringCase()
 				{
-					IEnumerable<string> subject = ToEnumerable(["FOO", "BAR", "BAZ"]);
+					IEnumerable<string> subject = ToEnumerable(["FOO", "BAR", "BAZ",]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("bar").IgnoringCase();
@@ -130,13 +178,27 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "bar" ignoring case for no items,
 						             but at least one was
+
+						             Matching items:
+						             [
+						               "BAR",
+						               (… and maybe others)
+						             ]
+
+						             Collection:
+						             [
+						               "FOO",
+						               "BAR",
+						               "BAZ",
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+					IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("bar");
@@ -146,6 +208,20 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "bar" for no items,
 						             but at least one was
+
+						             Matching items:
+						             [
+						               "bar",
+						               (… and maybe others)
+						             ]
+
+						             Collection:
+						             [
+						               "foo",
+						               "bar",
+						               "baz",
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -163,7 +239,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IEnumerable<string> subject = ToEnumerable(["FOO", "BAR", "BAZ"]);
+					IEnumerable<string> subject = ToEnumerable(["FOO", "BAR", "BAZ",]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("bar");

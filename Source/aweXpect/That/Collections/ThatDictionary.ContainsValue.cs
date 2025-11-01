@@ -15,11 +15,31 @@ public static partial class ThatDictionary
 		TValue>(
 		this IThat<IDictionary<TKey, TValue>?> source,
 		TValue expected)
-		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ContainValueConstraint<TKey, TValue>(it, expected)),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
 			source
 		);
+	}
+
+	/// <summary>
+	///     Verifies that the dictionary contains the <paramref name="expected" /> value.
+	/// </summary>
+	public static AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>> ContainsValue<TKey,
+		TValue>(
+		this IThat<Dictionary<TKey, TValue>?> source,
+		TValue expected)
+		where TKey : notnull
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, expected)),
+			source
+		);
+	}
 
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
@@ -28,55 +48,67 @@ public static partial class ThatDictionary
 		DoesNotContainValue<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TValue unexpected)
-		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new NotContainValueConstraint<TKey, TValue>(it, unexpected)),
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
 			source
 		);
-
-	private readonly struct ContainValueConstraint<TKey, TValue>(string it, TValue expected)
-		: IValueConstraint<IDictionary<TKey, TValue>?>
-	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
-		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
-			}
-
-			if (actual.ContainsValue(expected))
-			{
-				return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-				$"{it} contained only {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
-		}
-
-		public override string ToString() => $"contains value {Formatter.Format(expected)}";
 	}
 
-	private readonly struct NotContainValueConstraint<TKey, TValue>(string it, TValue unexpected)
-		: IValueConstraint<IDictionary<TKey, TValue>?>
+	/// <summary>
+	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>
+		DoesNotContainValue<TKey, TValue>(
+			this IThat<Dictionary<TKey, TValue>?> source,
+			TValue unexpected)
+		where TKey : notnull
+	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
+		return new AndOrResult<Dictionary<TKey, TValue>, IThat<Dictionary<TKey, TValue>?>>(
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new ContainValueConstraint<TKey, TValue>(expectationBuilder, it, grammars, unexpected).Invert()),
+			source
+		);
+	}
+
+	private sealed class ContainValueConstraint<TKey, TValue>(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		TValue expected)
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
-			}
-
-			if (actual.ContainsValue(unexpected))
-			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did");
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
+			Actual = actual;
+			Outcome = actual?.ContainsValue(expected) == true ? Outcome.Success : Outcome.Failure;
+			expectationBuilder.AddCollectionContext(actual);
+			return this;
 		}
 
-		public override string ToString() => $"does not contain value {Formatter.Format(unexpected)}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("contains value ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" contained only ");
+			Formatter.Format(stringBuilder, Actual?.Values, FormattingOptions.MultipleLines);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not contain value ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" did");
 	}
 }

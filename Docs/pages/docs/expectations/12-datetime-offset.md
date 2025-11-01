@@ -4,7 +4,7 @@ Describes the possible expectations for `DateTime` and `DateTimeOffset`.
 
 ## Equality
 
-You can verify, that the `DateTime` or `DateTimeOffset` is equal to another one or not:
+You can verify that the `DateTime` or `DateTimeOffset` is equal to another one or not:
 
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
@@ -30,9 +30,39 @@ await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 5, 0,
   .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
 ```
 
+## One of
+
+You can verify that the `DateTime` or `DateTimeOffset` is one of many alternatives:
+
+```csharp
+DateTime subjectA = new DateTime(2024, 12, 24);
+
+await Expect.That(subjectA).IsOneOf([new DateTime(2024, 12, 23), new DateTime(2024, 12, 24)]);
+await Expect.That(subjectA).IsNotOneOf([new DateTime(2022, 12, 24), new DateTime(2023, 12, 24)]);
+
+DateTimeOffset subject2 = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
+
+await Expect.That(subjectB).IsOneOf([new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2)), new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2))]);
+await Expect.That(subjectB).IsNotOneOf([new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2)), new DateTimeOffset(2025, 12, 24, 13, 15, 0, TimeSpan.FromHours(3))]);
+```
+
+You can also specify a tolerance:
+
+```csharp
+DateTime subjectA = new DateTime(2024, 12, 24);
+
+await Expect.That(subjectA).IsOneOf([new DateTime(2024, 12, 23)]).Within(TimeSpan.FromDays(1))
+  .Because("we accept values between 2024-12-22 and 2024-12-24");
+
+DateTimeOffset subjectB = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
+
+await Expect.That(subjectB).IsOneOf([new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2))]).Within(TimeSpan.FromMinutes(10))
+  .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
+```
+
 ## After
 
-You can verify, that the `DateTime` or `DateTimeOffset` is (on or) after another value:
+You can verify that the `DateTime` or `DateTimeOffset` is (on or) after another value:
 
 ```csharp
 DateTime subject1 = DateTime.Now;
@@ -57,7 +87,7 @@ await Expect.That(subject).IsAfter(DateTime.Now).Within(TimeSpan.FromSeconds(1))
 
 ## Before
 
-You can verify, that the `DateTime` or `DateTimeOffset` is (on or) before another value:
+You can verify that the `DateTime` or `DateTimeOffset` is (on or) before another value:
 
 ```csharp
 DateTime subject1 = DateTime.Now;
@@ -77,6 +107,31 @@ You can also specify a tolerance:
 DateTime subject = DateTime.Now;
 
 await Expect.That(subject).IsOnOrBefore(DateTime.Now).Within(TimeSpan.FromSeconds(1))
+  .Because("it should have taken less than one second");
+```
+
+## Between
+
+You can verify that the `DateTime` or `DateTimeOffset` is between two values:
+
+```csharp
+DateTime subject1 = DateTime.Now;
+
+await Expect.That(subject1).IsBetween(new DateTime(2024, 1, 1)).And(new DateTime(2123, 12, 31));
+
+DateTimeOffset subject2 = DateTimeOffset.Now;
+
+await Expect.That(subject2)
+    .IsBetween(new DateTimeOffset(2024, 1, 1, 0, 0, 0, TimeSpan.FromHours(2)))
+    .And(new DateTimeOffset(2124, 12, 31, 23, 59, 59, TimeSpan.FromHours(2)));
+```
+
+You can also specify a tolerance:
+
+```csharp
+DateTime subject = DateTime.Now;
+
+await Expect.That(subject).IsBetween(DateTime.Today).And(DateTime.Now).Within(TimeSpan.FromSeconds(1))
   .Because("it should have taken less than one second");
 ```
 

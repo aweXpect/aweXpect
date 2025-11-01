@@ -20,8 +20,20 @@ public sealed partial class QuantifiedCollectionResult
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected that subject
-				             is of type MyClass for all items,
+				             is of type QuantifiedCollectionResult.MyClass for all items,
 				             but only 2 of 3 were
+				             
+				             Not matching items:
+				             [
+				               OtherClass { Value = 1 }
+				             ]
+				             
+				             Collection:
+				             [
+				               MyClass { Value = 1 },
+				               SubClass { Value = 1 },
+				               OtherClass { Value = 1 }
+				             ]
 				             """);
 		}
 

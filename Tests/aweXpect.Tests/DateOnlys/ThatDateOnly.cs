@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 namespace aweXpect.Tests;
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed partial class ThatDateOnly
 {
 	/// <summary>

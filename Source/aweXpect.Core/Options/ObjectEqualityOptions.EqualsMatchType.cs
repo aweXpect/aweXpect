@@ -7,7 +7,7 @@ public partial class ObjectEqualityOptions<TSubject>
 	/// </summary>
 	public ObjectEqualityOptions<TSubject> Equals()
 	{
-		_matchType = ObjectEqualityOptions.EqualsMatch;
+		MatchType = ObjectEqualityOptions.EqualsMatch;
 		return this;
 	}
 }

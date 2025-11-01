@@ -5,28 +5,57 @@
 /// </summary>
 public record FormattingOptions
 {
-	private FormattingOptions(bool useLineBreaks, string indentation = "")
-	{
-		UseLineBreaks = useLineBreaks;
-		Indentation = indentation;
-	}
-
 	/// <summary>
 	///     Format the objects on multiple lines.
 	/// </summary>
-	public static FormattingOptions MultipleLines { get; } = new(true);
-
-	/// <summary>
-	///     Format the objects on multiple lines with an indentation of 2 blanks.
-	/// </summary>
-	public static FormattingOptions Indented { get; } = new(true, "  ");
+	public static FormattingOptions MultipleLines { get; } = new()
+	{
+		UseLineBreaks = true,
+	};
 
 	/// <summary>
 	///     Format the objects on a single line.
 	/// </summary>
-	public static FormattingOptions SingleLine { get; } = new(false);
+	public static FormattingOptions SingleLine { get; } = new()
+	{
+		UseLineBreaks = false,
+	};
 
-	internal bool UseLineBreaks { get; }
+	/// <summary>
+	///     Format the objects on a single line with prefixed type information.
+	/// </summary>
+	public static FormattingOptions WithType { get; } = new()
+	{
+		UseLineBreaks = false,
+		IncludeType = true,
+	};
 
-	internal string Indentation { get; }
+	/// <summary>
+	///     Flag indicating, if line-breaks should be used during formatting.
+	/// </summary>
+	public bool UseLineBreaks { get; init; }
+
+	/// <summary>
+	///     Flag indicating, if the type should be included during formatting.
+	/// </summary>
+	public bool IncludeType { get; init; }
+
+	/// <summary>
+	///     The indentation prefix for subsequent lines when <see cref="UseLineBreaks" /> is <see langword="true" />
+	/// </summary>
+	public string Indentation { get; init; } = "";
+
+	/// <summary>
+	///     Format the objects on multiple lines with the given <paramref name="indentation" />.
+	/// </summary>
+	/// <remarks>
+	///     Use an indentation of 2 blanks, if the <paramref name="indentation" /> is <see langword="null" />.
+	/// </remarks>
+	public static FormattingOptions Indented(string? indentation = null, bool includeType = false)
+		=> new()
+		{
+			UseLineBreaks = true,
+			Indentation = indentation ?? "  ",
+			IncludeType = includeType,
+		};
 }

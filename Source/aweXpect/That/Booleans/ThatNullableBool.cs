@@ -1,4 +1,5 @@
-﻿using aweXpect.Core.Constraints;
+﻿using aweXpect.Core;
+using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -7,36 +8,40 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNullableBool
 {
-	private readonly struct IsEqualToConstraint(string it, bool? expected) : IValueConstraint<bool?>
+	private sealed class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool? expected)
+		: ConstraintResult.WithEqualToValue<bool?>(it, grammars, expected is null),
+			IValueConstraint<bool?>
 	{
 		public ConstraintResult IsMetBy(bool? actual)
 		{
-			if (expected.Equals(actual))
-			{
-				return new ConstraintResult.Success<bool?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
+			Actual = actual;
+			Outcome = expected.Equals(actual) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"is {Formatter.Format(expected)}";
-	}
-
-	private readonly struct IsNotEqualToConstraint(string it, bool? unexpected)
-		: IValueConstraint<bool?>
-	{
-		public ConstraintResult IsMetBy(bool? actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (!unexpected.Equals(actual))
-			{
-				return new ConstraintResult.Success<bool?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
+			stringBuilder.Append("is ");
+			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
 		}
 
-		public override string ToString()
-			=> $"is not {Formatter.Format(unexpected)}";
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It);
+			stringBuilder.Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not ");
+			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It);
+			stringBuilder.Append(" was");
+		}
 	}
 }

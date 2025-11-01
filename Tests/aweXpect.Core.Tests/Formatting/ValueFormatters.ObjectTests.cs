@@ -4,7 +4,7 @@ namespace aweXpect.Core.Tests.Formatting;
 
 public partial class ValueFormatters
 {
-	public sealed class FormatObjectTests
+	public sealed class ObjectTests
 	{
 		[Fact]
 		public async Task ShouldDisplayNestedObjects()
@@ -18,7 +18,7 @@ public partial class ValueFormatters
 				Value = 2,
 			};
 			string expectedResult = """
-			                        Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
+			                        ValueFormatters.ObjectTests.Dummy { Inner = ValueFormatters.ObjectTests.InnerDummy { InnerValue = "foo" }, Value = 2 }
 			                        """;
 			StringBuilder sb = new();
 
@@ -38,7 +38,7 @@ public partial class ValueFormatters
 			};
 			value.Inner = value;
 			string expectedResult = """
-			                        RecursiveDummy { Inner = RecursiveDummy { *recursive* }, Value = 1 }
+			                        ValueFormatters.ObjectTests.RecursiveDummy { Inner = ValueFormatters.ObjectTests.RecursiveDummy { *recursive* }, Value = 1 }
 			                        """;
 			StringBuilder sb = new();
 
@@ -61,8 +61,8 @@ public partial class ValueFormatters
 				Value = 2,
 			};
 			string expectedResult = """
-			                        Dummy {
-			                            Inner = InnerDummy {
+			                        ValueFormatters.ObjectTests.Dummy {
+			                            Inner = ValueFormatters.ObjectTests.InnerDummy {
 			                              InnerValue = "foo"
 			                            },
 			                            Value = 2
@@ -70,8 +70,8 @@ public partial class ValueFormatters
 			                        """;
 			StringBuilder sb = new();
 
-			string result = Formatter.Format(value, FormattingOptions.Indented);
-			Formatter.Format(sb, value, FormattingOptions.Indented);
+			string result = Formatter.Format(value, FormattingOptions.Indented());
+			Formatter.Format(sb, value, FormattingOptions.Indented());
 
 			await That(result).IsEqualTo(expectedResult);
 			await That(sb.ToString()).IsEqualTo(expectedResult);
@@ -89,8 +89,8 @@ public partial class ValueFormatters
 				Value = 2,
 			};
 			string expectedResult = """
-			                        Dummy {
-			                          Inner = InnerDummy {
+			                        ValueFormatters.ObjectTests.Dummy {
+			                          Inner = ValueFormatters.ObjectTests.InnerDummy {
 			                            InnerValue = "foo"
 			                          },
 			                          Value = 2
@@ -143,7 +143,7 @@ public partial class ValueFormatters
 			{
 				Value = 42,
 			};
-			string expectedResult = "ClassWithField { Value = 42 }";
+			string expectedResult = "ValueFormatters.ObjectTests.ClassWithField { Value = 42 }";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
@@ -157,7 +157,7 @@ public partial class ValueFormatters
 		public async Task WhenClassIsEmpty_ShouldDisplayClassName()
 		{
 			object value = new EmptyClass();
-			string expectedResult = "EmptyClass { }";
+			string expectedResult = "ValueFormatters.ObjectTests.EmptyClass { }";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
@@ -172,7 +172,8 @@ public partial class ValueFormatters
 		{
 			Exception exception = new("foo");
 			object value = new ClassWithExceptionProperty(exception);
-			string expectedResult = "ClassWithExceptionProperty { Value = [Member 'Value' threw an exception: 'foo'] }";
+			string expectedResult =
+				"ValueFormatters.ObjectTests.ClassWithExceptionProperty { Value = [Member 'Value' threw an exception: 'foo'] }";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
@@ -209,6 +210,20 @@ public partial class ValueFormatters
 
 			await That(result).IsEqualTo(expectedResult).AsWildcard();
 			await That(sb.ToString()).IsEqualTo(expectedResult).AsWildcard();
+		}
+
+		[Fact]
+		public async Task WithType_ShouldDisplayClassNameOnlyOnce()
+		{
+			object value = new EmptyClass();
+			string expectedResult = "ValueFormatters.ObjectTests.EmptyClass { }";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		private sealed class ClassWithExceptionProperty(Exception exception)

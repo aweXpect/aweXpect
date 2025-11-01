@@ -62,7 +62,7 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throws exactly a CustomException,
+					             throws exactly a ThatDelegate.CustomException,
 					             but it did not throw any exception
 					             """);
 			}
@@ -80,8 +80,8 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage($"""
 					              Expected that action
-					              throws exactly a CustomException,
-					              but it did throw an OtherException:
+					              throws exactly a ThatDelegate.CustomException,
+					              but it did throw a ThatDelegate.OtherException:
 					                {message}
 					              """);
 			}
@@ -99,8 +99,8 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage($"""
 					              Expected that action
-					              throws exactly a CustomException,
-					              but it did throw a SubCustomException:
+					              throws exactly a ThatDelegate.CustomException,
+					              but it did throw a ThatDelegate.SubCustomException:
 					                {message}
 					              """);
 			}
@@ -116,7 +116,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             throws exactly a CustomException,
+					             throws exactly a ThatDelegate.CustomException,
 					             but it was <null>
 					             """);
 			}
@@ -179,7 +179,7 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throws exactly a CustomException,
+					             throws exactly a ThatDelegate.CustomException,
 					             but it did not throw any exception
 					             """);
 			}
@@ -197,8 +197,8 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage($"""
 					              Expected that action
-					              throws exactly a CustomException,
-					              but it did throw an OtherException:
+					              throws exactly a ThatDelegate.CustomException,
+					              but it did throw a ThatDelegate.OtherException:
 					                {message}
 					              """);
 			}
@@ -216,8 +216,8 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage($"""
 					              Expected that action
-					              throws exactly a CustomException,
-					              but it did throw a SubCustomException:
+					              throws exactly a ThatDelegate.CustomException,
+					              but it did throw a ThatDelegate.SubCustomException:
 					                {message}
 					              """);
 			}
@@ -233,7 +233,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             throws exactly a CustomException,
+					             throws exactly a ThatDelegate.CustomException,
 					             but it was <null>
 					             """);
 			}

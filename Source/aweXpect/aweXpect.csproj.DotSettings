@@ -1,46 +1,24 @@
-﻿<wpf:ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-						xmlns:s="clr-namespace:System;assembly=mscorlib"
-						xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-						xml:space="preserve">
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cbooleans/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Ccollections/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdateonlys/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdatetimeoffsets/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdatetimes/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdelegates/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cenums/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cevents/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cexceptions/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cguids/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Chttp/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cjson/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cnumbers/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cobjects/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Crecording/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Csignaling/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cstreams/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cstrings/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Ctimeonlys/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean
-		x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Ctimespans/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+﻿<wpf:ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xml:space="preserve">
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cbooleans/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cchars/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Ccollections/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdateonlys/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdatetimeoffsets/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdatetimes/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cdelegates/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cenums/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cevents/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cexceptions/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cguids/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Chttp/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cjson/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cnumbers/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cobjects/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Crecording/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Csignaling/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cspans/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cstreams/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Cstrings/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Ctimeonlys/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=that_005Ctimespans/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

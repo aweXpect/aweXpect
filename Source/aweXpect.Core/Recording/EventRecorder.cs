@@ -1,8 +1,14 @@
-﻿using System;
+﻿#if NET8_0_OR_GREATER
+using System.Threading.Channels;
+#else
+using System.Threading;
+#endif
+using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Recording;
 
@@ -10,8 +16,21 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 {
 	private readonly ConcurrentQueue<RecordedEvent> _eventQueue = new();
 	private Action? _onDispose;
+#if NET8_0_OR_GREATER
+	private ChannelWriter<bool>? _channelWriter;
+#else
+	private ManualResetEventSlim? _ms;
+#endif
 
-	public void Dispose() => _onDispose?.Invoke();
+	public void Dispose()
+	{
+#if NET8_0_OR_GREATER
+		_channelWriter = null;
+#else
+		_ms = null;
+#endif
+		_onDispose?.Invoke();
+	}
 
 	public void Attach(WeakReference subject, EventInfo eventInfo)
 	{
@@ -37,7 +56,8 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 		if (handler == null)
 		{
 			throw new NotSupportedException(
-				$"The {eventName} event contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
+					$"The {eventName} event contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}")
+				.LogTrace();
 		}
 
 		eventInfo.AddEventHandler(subject.Target, handler);
@@ -52,19 +72,46 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 	}
 
 	public void RecordEvent()
-		=> _eventQueue.Enqueue(new RecordedEvent(eventName));
+	{
+		_eventQueue.Enqueue(new RecordedEvent(eventName));
+		NotifyRecordedEvent();
+	}
 
 	public void RecordEvent<T1>(T1 parameter1)
-		=> _eventQueue.Enqueue(new RecordedEvent(eventName, parameter1));
+	{
+		_eventQueue.Enqueue(new RecordedEvent(eventName, parameter1));
+		NotifyRecordedEvent();
+	}
 
 	public void RecordEvent<T1, T2>(T1 parameter1, T2 parameter2)
-		=> _eventQueue.Enqueue(new RecordedEvent(eventName, parameter1, parameter2));
+	{
+		_eventQueue.Enqueue(new RecordedEvent(eventName, parameter1, parameter2));
+		NotifyRecordedEvent();
+	}
 
 	public void RecordEvent<T1, T2, T3>(T1 parameter1, T2 parameter2, T3 parameter3)
-		=> _eventQueue.Enqueue(new RecordedEvent(eventName, parameter1, parameter2, parameter3));
+	{
+		_eventQueue.Enqueue(new RecordedEvent(eventName, parameter1, parameter2, parameter3));
+		NotifyRecordedEvent();
+	}
 
 	public void RecordEvent<T1, T2, T3, T4>(T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4)
-		=> _eventQueue.Enqueue(new RecordedEvent(eventName, parameter1, parameter2, parameter3, parameter4));
+	{
+		_eventQueue.Enqueue(new RecordedEvent(eventName, parameter1, parameter2, parameter3, parameter4));
+		NotifyRecordedEvent();
+	}
+
+#if NET8_0_OR_GREATER
+	public void Register(ChannelWriter<bool> channel)
+		=> _channelWriter = channel;
+
+	private void NotifyRecordedEvent() => _channelWriter?.TryWrite(true);
+#else
+	public void Register(ManualResetEventSlim ms)
+		=> _ms = ms;
+
+	private void NotifyRecordedEvent() => _ms?.Set();
+#endif
 
 	/// <summary>
 	///     Returns a formatted string for all recorded events.

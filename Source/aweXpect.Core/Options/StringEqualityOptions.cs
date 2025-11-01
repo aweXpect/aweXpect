@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -12,11 +13,8 @@ namespace aweXpect.Options;
 public partial class StringEqualityOptions : IOptionsEquality<string?>
 {
 	private const int DefaultMaxLength = 30;
-	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
-	private static readonly IStringMatchType RegexMatch = new RegexMatchType();
 
 	private static readonly TimeSpan RegexTimeout = TimeSpan.FromMilliseconds(1000);
-	private static readonly IStringMatchType WildcardMatch = new WildcardMatchType();
 	private IEqualityComparer<string>? _comparer;
 	private bool _ignoreCase;
 	private bool _ignoreLeadingWhiteSpace;
@@ -25,12 +23,18 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	private IStringMatchType _matchType = ExactMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+#if NET8_0_OR_GREATER
+	public async ValueTask<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+#else
+	public async Task<bool> AreConsideredEqual<TExpected>(string? actual, TExpected expected)
+#endif
 	{
+		bool result;
 		if (expected is not string expectedString)
 		{
-			return _matchType.AreConsideredEqual(actual, null, _ignoreCase,
-				_comparer ?? UseDefaultComparer(_ignoreCase));
+			result = await _matchType.AreConsideredEqual(actual, null, _ignoreCase,
+				_comparer);
+			return result;
 		}
 
 		if (_ignoreNewlineStyle)
@@ -51,8 +55,8 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expectedString = expectedString.TrimEnd();
 		}
 
-		return _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
-			_comparer ?? UseDefaultComparer(_ignoreCase));
+		result = await _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase, _comparer);
+		return result;
 	}
 
 	/// <summary>
@@ -63,14 +67,19 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	public string GetExpectation(string? expected, ExpectationGrammars grammar)
-		=> _matchType.GetExpectation(expected, grammar) + GetOptionString();
+	public string GetExpectation(string? expected, ExpectationGrammars grammars)
+		=> _matchType.GetExpectation(expected, grammars) + GetOptionString();
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
-	public string GetExtendedFailure(string it, string? actual, string? expected)
+	public string GetExtendedFailure(string it, ExpectationGrammars grammars, string? actual, string? expected)
 	{
+		if (grammars.HasFlag(ExpectationGrammars.Negated))
+		{
+			return $"{it} was {Formatter.Format(actual)}";
+		}
+
 		StringDifferenceSettings? settings = null;
 		if (_ignoreLeadingWhiteSpace && actual is not null)
 		{

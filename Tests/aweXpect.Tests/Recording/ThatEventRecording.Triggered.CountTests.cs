@@ -1,4 +1,5 @@
-﻿using aweXpect.Recording;
+﻿using aweXpect.Core;
+using aweXpect.Recording;
 
 namespace aweXpect.Tests;
 
@@ -29,8 +30,8 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that recording
-					              has recorded the CustomEvent event on sut at least {(minimum == 1 ? "once" : $"{minimum} times")},
-					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
+					              has recorded the CustomEvent event on sut at least {minimum.ToTimesString()},
+					              but it was recorded {count.ToTimesString()} in *
 					              """).AsWildcard();
 			}
 
@@ -55,8 +56,8 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that recording
-					              has recorded the CustomEvent event on sut at most {(maximum == 1 ? "once" : $"{maximum} times")},
-					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
+					              has recorded the CustomEvent event on sut at most {maximum.ToTimesString()},
+					              but it was recorded {count.ToTimesString()} in *
 					              """).AsWildcard();
 			}
 
@@ -109,8 +110,8 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that recording
-					              has recorded the CustomEvent event on sut exactly {(expected == 1 ? "once" : $"{expected} times")},
-					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
+					              has recorded the CustomEvent event on sut exactly {expected.ToTimesString()},
+					              but it was recorded {count.ToTimesString()} in *
 					              """).AsWildcard();
 			}
 
@@ -155,7 +156,7 @@ public sealed partial class ThatEventRecording
 					.WithMessage($"""
 					              Expected that recording
 					              has recorded the CustomEvent event on sut exactly once,
-					              but it was {(count == 0 ? "never recorded" : $"recorded {count} times")} in *
+					              but it was {(count == 0 ? "never recorded" : $"recorded {count.ToTimesString()}")} in *
 					              """).AsWildcard();
 			}
 		}

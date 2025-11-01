@@ -15,35 +15,64 @@ public static partial class ThatException
 		this IThat<TException> source,
 		int expected)
 		where TException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new HasHResultValueConstraint(it, "has", expected)),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new HasHResultValueConstraint(it, grammars, expected)),
 			source);
 
-	internal readonly struct HasHResultValueConstraint(
+	internal class HasHResultValueConstraint(
 		string it,
-		string verb,
+		ExpectationGrammars grammars,
 		int expected)
-		: IValueConstraint<Exception?>
+		: ConstraintResult.WithNotNullValue<Exception>(it, grammars),
+			IValueConstraint<Exception?>
 	{
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
-			if (actual == null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
-			}
-
-			if (actual.HResult == expected)
-			{
-				return new ConstraintResult.Success<Exception?>(actual,
-					ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} had HResult {Formatter.Format(actual.HResult)}");
+			Actual = actual;
+			Outcome = actual?.HResult == expected ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"{verb} HResult {Formatter.Format(expected)}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Active))
+			{
+				stringBuilder.Append("with HResult ");
+			}
+			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("HResult is ");
+			}
+			else
+			{
+				stringBuilder.Append("has HResult ");
+			}
+
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" had HResult ");
+			Formatter.Format(stringBuilder, Actual?.HResult);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("without");
+			}
+			else
+			{
+				stringBuilder.Append("does not have");
+			}
+
+			stringBuilder.Append(" HResult ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" had");
 	}
 }

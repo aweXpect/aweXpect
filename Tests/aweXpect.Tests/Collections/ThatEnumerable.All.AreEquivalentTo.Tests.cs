@@ -10,7 +10,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class AreEquivalentTo
+		public sealed partial class AreEquivalentTo
 		{
 			public sealed class Tests
 			{
@@ -39,6 +39,27 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 1 for all items,
 						             but not all were
+
+						             Not matching items:
+						             [2, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
+
+						             Equivalency options:
+						              - include public fields and properties
 						             """);
 				}
 
@@ -66,6 +87,39 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 5 for all items,
 						             but only 1 of 20 were
+
+						             Not matching items:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               89,
+						               …
+						             ]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               …
+						             ]
+
+						             Equivalency options:
+						              - include public fields and properties
 						             """);
 				}
 
@@ -93,8 +147,11 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is equivalent to 42 for all items,
+						             is equivalent to constantValue for all items,
 						             but it was <null>
+
+						             Equivalency options:
+						              - include public fields and properties
 						             """);
 				}
 			}

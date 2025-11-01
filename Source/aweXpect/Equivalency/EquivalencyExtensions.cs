@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using aweXpect.Core;
-using aweXpect.Equivalency;
 using aweXpect.Options;
 using aweXpect.Results;
 
-// ReSharper disable once CheckNamespace
-namespace aweXpect;
+namespace aweXpect.Equivalency;
 
 /// <summary>
 ///     Extension methods for equivalency.
@@ -17,21 +16,41 @@ public static class EquivalencyExtensions
 	/// </summary>
 	public static TSelf Equivalent<TType, TThat, TElement, TSelf>(
 		this ObjectEqualityResult<TType, TThat, TElement, TSelf> result,
-		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
+		Func<EquivalencyOptions, EquivalencyOptions>? options = null)
 		where TSelf : ObjectEqualityResult<TType, TThat, TElement, TSelf>
 	{
 		((IOptionsProvider<ObjectEqualityOptions<TElement>>)result).Options.SetMatchType(
-			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(equivalencyOptions)));
+			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(options)));
 		return (TSelf)result;
 	}
 
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public static ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this ObjectEqualityOptions<TSubject> options,
+	public static TSelf Equivalent<TCollection, TItem, TSelf>(
+		this ObjectHasItemResult<TCollection, TItem, TSelf> result,
+		Func<EquivalencyOptions, EquivalencyOptions>? options = null)
+		where TSelf : ObjectHasItemResult<TCollection, TItem, TSelf>
+	{
+		((IOptionsProvider<ObjectEqualityOptions<TItem>>)result).Options.SetMatchType(
+			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(options)));
+		return (TSelf)result;
+	}
+
+	/// <summary>
+	///     Use equivalency to compare objects.
+	/// </summary>
+	internal static ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this ObjectEqualityOptions<TSubject> options,
 		EquivalencyOptions equivalencyOptions)
 	{
 		options.SetMatchType(new EquivalencyComparer(equivalencyOptions));
 		return options;
 	}
+
+	internal static void AddEquivalencyContext(this ExpectationBuilder expectationBuilder,
+		EquivalencyOptions equivalencyOptions)
+		=> expectationBuilder.AddContext(
+			new ResultContext.SyncCallback("Equivalency options",
+				equivalencyOptions.ToString,
+				int.MinValue));
 }

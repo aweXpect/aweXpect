@@ -16,12 +16,12 @@ public sealed partial class ThatObject
 
 				async Task Act()
 					=> await That(subject).Is<MyClass>()
-						.Whose(x => x.Value, x => x.IsLessThan(42));
+						.Whose(it => it.Value, value => value.IsLessThan(42));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is type MyClass whose .Value is less than 42,
+					             is type ThatObject.MyClass whose .Value is less than 42,
 					             but .Value was 42
 					             """);
 			}
@@ -35,7 +35,7 @@ public sealed partial class ThatObject
 				};
 
 				async Task Act()
-					=> await That(subject).Is<MyClass>().Whose(x => x.Value, x => x.IsEqualTo(42));
+					=> await That(subject).Is<MyClass>().Whose(it => it.Value, value => value.IsEqualTo(42));
 
 				await That(Act).DoesNotThrow();
 			}

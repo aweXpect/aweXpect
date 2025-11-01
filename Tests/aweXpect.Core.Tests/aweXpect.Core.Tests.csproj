@@ -8,10 +8,12 @@
 		<PackageReference Include="aweXpect"/>
 	</ItemGroup>
 	<ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<ProjectReference Include="..\..\Source\aweXpect.Frameworks\aweXpect.Frameworks.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Remove="Nullable"/>
 		<PackageReference Include="aweXpect.Chronology"/>
 		<ProjectReference Include="..\..\Source\aweXpect.Analyzers\aweXpect.Analyzers.csproj"
 						  PrivateAssets="all"

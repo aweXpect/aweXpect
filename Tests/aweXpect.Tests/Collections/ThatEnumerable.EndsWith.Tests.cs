@@ -1,5 +1,5 @@
-﻿#if NET8_0_OR_GREATER
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class EndsWith
+	public sealed partial class EndsWith
 	{
 		public sealed class Tests
 		{
@@ -41,7 +41,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).EndsWith(1, 2, 3);
@@ -52,8 +52,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentEndingElements_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([0, 0, 1, 2, 3]);
-				IEnumerable<int> expected = [1, 3];
+				IEnumerable<int> subject = ToEnumerable([0, 0, 1, 2, 3,]);
+				IEnumerable<int> expected = [1, 3,];
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected);
@@ -63,13 +63,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             ends with expected,
 					             but it contained 2 at index 3 instead of 1
+
+					             Collection:
+					             [0, 0, 1, 2, 3, (… and maybe others)]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenExpectedContainsAdditionalElements_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).EndsWith(0, 0, 1, 2, 3);
@@ -82,6 +85,9 @@ public sealed partial class ThatEnumerable
 					               0,
 					               0
 					             ]
+
+					             Collection:
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -99,7 +105,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1]);
+				IEnumerable<int> subject = ToEnumerable([1,]);
 
 				async Task Act()
 					=> await That(subject).EndsWith(null!);
@@ -130,7 +136,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldIncludeOptionsInFailureMessage()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).EndsWith("FOO", "BAZ").IgnoringCase();
@@ -140,13 +146,21 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             ends with ["FOO", "BAZ"] ignoring case,
 					             but it contained "bar" at index 1 instead of "FOO"
+
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               "baz",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).EndsWith("BAR", "BAZ").IgnoringCase();
@@ -157,8 +171,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenSubjectEndsWithExpectedValues_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> expected = ["bar", "baz"];
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
+				IEnumerable<string> expected = ["bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected);
@@ -168,4 +182,3 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
-#endif

@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
@@ -19,8 +20,8 @@ public class TimeTolerance
 	{
 		if (tolerance < TimeSpan.Zero)
 		{
-			throw new ArgumentOutOfRangeException(nameof(tolerance),
-				"Tolerance must be non-negative");
+			throw new ArgumentOutOfRangeException(nameof(tolerance), "Tolerance must be non-negative")
+				.LogTrace();
 		}
 
 		Tolerance = tolerance;

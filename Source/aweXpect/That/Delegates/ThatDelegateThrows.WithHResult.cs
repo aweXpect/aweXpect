@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Delegates;
 using aweXpect.Results;
 
@@ -13,7 +14,10 @@ public static partial class ThatDelegateThrows
 		this ThatDelegateThrows<TException> source,
 		int expected)
 		where TException : Exception?
-		=> new(source.ExpectationBuilder.AddConstraint((it, grammar)
-				=> new ThatException.HasHResultValueConstraint(it, "with", expected)),
+		=> new(source.ExpectationBuilder.AddConstraint((it, grammars)
+				=> new ThatException.HasHResultValueConstraint(
+					it,
+					grammars | ExpectationGrammars.Active | ExpectationGrammars.Nested,
+					expected)),
 			source);
 }

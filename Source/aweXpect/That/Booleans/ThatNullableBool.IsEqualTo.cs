@@ -1,4 +1,5 @@
 ﻿using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -11,8 +12,8 @@ public static partial class ThatNullableBool
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsEqualTo(this IThat<bool?> source,
 		bool? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsEqualToConstraint(it, expected)),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -20,7 +21,7 @@ public static partial class ThatNullableBool
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsNotEqualTo(this IThat<bool?> source,
 		bool? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNotEqualToConstraint(it, unexpected)),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint(it, grammars, unexpected).Invert()),
 			source);
 }

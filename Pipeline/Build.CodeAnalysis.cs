@@ -17,7 +17,7 @@ partial class Build
 		.Executes(() =>
 		{
 			Configuration = Configuration.Debug;
-			
+
 			SonarScannerTasks.SonarScannerBegin(s => s
 				.SetOrganization("awexpect")
 				.SetProjectKey("aweXpect_aweXpect")
@@ -32,7 +32,7 @@ partial class Build
 		.Unlisted()
 		.DependsOn(Compile)
 		.DependsOn(CodeCoverage)
-		.OnlyWhenDynamic(() => IsServerBuild)
+		.OnlyWhenDynamic(() => IsServerBuild && (BuildScope == BuildScope.Default || GitHubActions.IsPullRequest))
 		.Executes(() =>
 		{
 			SonarScannerTasks.SonarScannerEnd(s => s

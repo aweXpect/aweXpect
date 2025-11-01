@@ -196,6 +196,42 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1)]
+			public async Task ForInt128_WhenValueIsGreaterThanZero_ShouldSucceed(
+				int subjectValue)
+			{
+				Int128 subject = subjectValue;
+
+				async Task Act()
+					=> await That(subject).IsPositive();
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(-1)]
+			[InlineData(0)]
+			public async Task ForInt128_WhenValueIsLessThanOrEqualZero_ShouldFail(
+				int subjectValue)
+			{
+				Int128 subject = subjectValue;
+
+				async Task Act()
+					=> await That(subject).IsPositive();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is positive,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
+
 			[Theory]
 			[InlineData(1)]
 			public async Task ForLong_WhenValueIsGreaterThanZero_ShouldSucceed(long subject)
@@ -484,6 +520,41 @@ public sealed partial class ThatNumber
 					             but it was <null>
 					             """);
 			}
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1)]
+			public async Task ForNullableInt128_WhenValueIsGreaterThanZero_ShouldSucceed(
+				int subjectValue)
+			{
+				Int128 subject = subjectValue;
+
+				async Task Act()
+					=> await That(subject).IsPositive();
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(-1)]
+			[InlineData(0)]
+			public async Task ForNullableInt128_WhenValueIsLessThanOrEqualToZero_ShouldFail(
+				int subjectValue)
+			{
+				Int128 subject = subjectValue;
+
+				async Task Act()
+					=> await That(subject).IsPositive();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is positive,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
 
 			[Theory]
 			[InlineData(1L)]
@@ -663,6 +734,78 @@ public sealed partial class ThatNumber
 					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+		}
+		
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[InlineData(-1)]
+			[InlineData(0)]
+			public async Task ForInt_WhenValueIsLessThanOrEqualToZero_ShouldSucceed(int subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsPositive());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(1)]
+			public async Task ForInt_WhenValueIsGreaterThanZero_ShouldFail(int subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsPositive());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not positive,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+			
+			[Theory]
+			[InlineData(-1)]
+			[InlineData(0)]
+			public async Task ForNullableInt_WhenValueIsLessThanOrEqualToZero_ShouldSucceed(
+				int? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsPositive());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(1)]
+			public async Task ForNullableInt_WhenValueIsGreaterThanZero_ShouldFail(int? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsPositive());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not positive,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenValueIsNull_ShouldSucceed()
+			{
+				int? subject = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsPositive());
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -5,16 +5,22 @@ namespace aweXpect.Formatting;
 public static partial class ValueFormatters
 {
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
 		this ValueFormatter _,
 		bool value,
 		FormattingOptions? options = null)
-		=> value ? "True" : "False";
+		=> (value, options?.IncludeType) switch
+		{
+			(true, true) => "bool True",
+			(false, true) => "bool False",
+			(true, _) => "True",
+			(false, _) => "False",
+		};
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(
@@ -22,10 +28,10 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		bool value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value ? "True" : "False");
+		=> stringBuilder.Append(Format(formatter, value, options));
 
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
 		this ValueFormatter formatter,
@@ -41,7 +47,7 @@ public static partial class ValueFormatters
 	}
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(

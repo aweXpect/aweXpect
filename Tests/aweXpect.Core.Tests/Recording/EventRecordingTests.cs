@@ -13,7 +13,7 @@ public sealed class EventRecordingTests
 			=> sut.Record().Events("someMissingEventName");
 
 		await That(Act).Throws<NotSupportedException>()
-			.WithMessage("Event someMissingEventName is not supported on CustomEventClass { }");
+			.WithMessage("Event someMissingEventName is not supported on EventRecordingTests.CustomEventClass { }");
 	}
 
 	[Fact]
@@ -24,7 +24,7 @@ public sealed class EventRecordingTests
 		IEventRecording<CustomEventClass> recording = subject.Record().Events();
 		subject.NotifyCustomEvent(1);
 		subject.NotifyCustomEvent(2);
-		IEventRecordingResult result = recording.Stop();
+		IEventRecordingResult result = await recording.StopWhen(_ => false, TimeSpan.Zero);
 		subject.NotifyCustomEvent(3);
 
 		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent))).IsEqualTo(2);
@@ -39,7 +39,7 @@ public sealed class EventRecordingTests
 		subject.NotifyCustomEvent(1);
 		subject.NotifyCustomEvent(2);
 
-		IEventRecordingResult result = recording.Stop();
+		IEventRecordingResult result = await recording.StopWhen(_ => false, TimeSpan.Zero);
 
 		subject.NotifyCustomEvent(3);
 
@@ -52,9 +52,9 @@ public sealed class EventRecordingTests
 		CustomEventClass subject = new();
 
 		IEventRecording<CustomEventClass> recording = subject.Record().Events();
-		recording.Stop();
+		await recording.StopWhen(_ => false, TimeSpan.Zero);
 
-		await That(() => recording.Stop()).DoesNotThrow();
+		await That(() => recording.StopWhen(_ => false, TimeSpan.Zero)).DoesNotThrow();
 	}
 
 	private sealed class CustomEventClass

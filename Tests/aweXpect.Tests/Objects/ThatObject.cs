@@ -21,11 +21,18 @@ public sealed partial class ThatObject
 
 		public InnerClass? Inner { get; set; }
 		public string? Value { get; set; }
+		
+		public int IntValue { get; set; }
 	}
 
 	private sealed class OuterClass
 	{
 		public InnerClass? Inner { get; set; }
 		public string? Value { get; set; }
+	}
+
+	private struct MyStruct
+	{
+		public int Value { get; set; }
 	}
 }

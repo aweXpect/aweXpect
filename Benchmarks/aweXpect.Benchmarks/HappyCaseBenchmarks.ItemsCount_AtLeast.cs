@@ -19,8 +19,4 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<GenericCollectionAssertions<int>> ItemsCount_AtLeast_FluentAssertions()
 		=> _enumerableSubject.Should().HaveCountGreaterThanOrEqualTo(_enumerableCount);
-
-	[Benchmark]
-	public async Task ItemsCount_AtLeast_TUnit()
-		=> await Assert.That(_enumerableSubject).HasCount().GreaterThanOrEqualTo(_enumerableCount);
 }

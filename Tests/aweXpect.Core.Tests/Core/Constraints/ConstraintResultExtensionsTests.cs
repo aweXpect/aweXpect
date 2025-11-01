@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Constraints;
@@ -12,7 +10,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeDoesNotMatch_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Success<string>("value", "foo");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Success, "value", "foo");
 			sut = sut.Fail("bar", 1);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -25,7 +23,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeMatches_ShouldReturnTrue()
 		{
-			ConstraintResult sut = new ConstraintResult.Success<string>("value", "foo");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Success, "value", "foo");
 			sut = sut.Fail("bar", 1);
 
 			bool result = sut.TryGetValue(out int value);
@@ -38,7 +36,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WithNullValue_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Success<string>("value", "foo");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Success, "value", "foo");
 			sut = sut.Fail<string?>("bar", null);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -47,6 +45,21 @@ public sealed class ConstraintResultExtensionsTests
 			await That(result).IsTrue();
 			await That(value).IsNull();
 		}
+
+		[Theory]
+		[InlineData(Outcome.Failure, Outcome.Success)]
+		[InlineData(Outcome.Success, Outcome.Failure)]
+		[InlineData(Outcome.Undecided, Outcome.Undecided)]
+		public async Task Negate_ShouldForwardToInnerResult(Outcome innerOutcome, Outcome expectedAfterNegation)
+		{
+			ConstraintResult inner = new DummyConstraintResult<string>(innerOutcome, "value", "foo");
+			ConstraintResult sut = inner.Fail("bar", 1);
+
+			sut.Negate();
+
+			await That(inner.Outcome).IsEqualTo(expectedAfterNegation);
+			await That(sut.Outcome).IsEqualTo(Outcome.Failure);
+		}
 	}
 
 	public sealed class UseValueTests
@@ -54,7 +67,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeDoesNotMatch_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Failure, "value", "foo", "bar");
 			sut = sut.UseValue(1);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -66,7 +79,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeMatches_ShouldReturnTrue()
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Failure, "value", "foo", "bar");
 			sut = sut.UseValue(1);
 
 			bool result = sut.TryGetValue(out int value);
@@ -78,7 +91,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WithNullValue_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Failure, "value", "foo", "bar");
 			sut = sut.UseValue<string?>(null);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -86,41 +99,44 @@ public sealed class ConstraintResultExtensionsTests
 			await That(result).IsTrue();
 			await That(value).IsNull();
 		}
-	}
 
-	public sealed class WithContextTests
-	{
-		[Fact]
-		public async Task NestedContexts_ShouldIncludeBoth()
+		[Theory]
+		[InlineData(Outcome.Failure, Outcome.Success)]
+		[InlineData(Outcome.Success, Outcome.Failure)]
+		[InlineData(Outcome.Undecided, Outcome.Undecided)]
+		public async Task Negate_ShouldForwardToInnerResult(Outcome innerOutcome, Outcome expectedAfterNegation)
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
-			sut = sut.WithContext("t1", "c1");
-			sut = sut.WithContext("t2", "c2");
+			ConstraintResult inner = new DummyConstraintResult<string>(innerOutcome, "value", "foo");
+			ConstraintResult sut = inner.UseValue("bar");
 
-			List<ConstraintResult.Context> result = sut.GetContexts().ToList();
+			sut.Negate();
 
-			await That(result).HasCount().EqualTo(2);
-		}
-
-		[Fact]
-		public async Task TryGetValue_ShouldForwardToWrappedConstraintResult()
-		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value1", "foo", "bar");
-			sut = sut.WithContext("t1", "c1");
-
-			bool result = sut.TryGetValue(out string? value);
-
-			await That(result).IsTrue();
-			await That(value).IsEqualTo("value1");
+			await That(inner.Outcome).IsEqualTo(expectedAfterNegation);
+			await That(sut.Outcome).IsEqualTo(expectedAfterNegation);
 		}
 	}
 
 	public sealed class AppendExpectationTextTests
 	{
+		[Theory]
+		[InlineData(Outcome.Failure, Outcome.Success)]
+		[InlineData(Outcome.Success, Outcome.Failure)]
+		[InlineData(Outcome.Undecided, Outcome.Undecided)]
+		public async Task Negate_ShouldForwardToInnerResult(Outcome innerOutcome, Outcome expectedAfterNegation)
+		{
+			ConstraintResult inner = new DummyConstraintResult<string>(innerOutcome, "value", "foo");
+			ConstraintResult sut = inner.AppendExpectationText(s => s.Append("bar"));
+
+			sut.Negate();
+
+			await That(inner.Outcome).IsEqualTo(expectedAfterNegation);
+			await That(sut.Outcome).IsEqualTo(expectedAfterNegation);
+		}
+
 		[Fact]
 		public async Task ShouldAppendAfterExpectationText()
 		{
-			ConstraintResult.Success sut = new("foo");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Success, "foo");
 
 			ConstraintResult result = sut.AppendExpectationText(s => s.Append("\nsuffix-foo"));
 
@@ -131,7 +147,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task ShouldKeepResultTextUnchanged()
 		{
-			ConstraintResult.Failure sut = new("foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Failure, "foo", "bar");
 
 			ConstraintResult result = sut.AppendExpectationText(s => s.Append("\nsuffix-foo"));
 
@@ -143,10 +159,25 @@ public sealed class ConstraintResultExtensionsTests
 
 	public sealed class PrependExpectationTextTests
 	{
+		[Theory]
+		[InlineData(Outcome.Failure, Outcome.Success)]
+		[InlineData(Outcome.Success, Outcome.Failure)]
+		[InlineData(Outcome.Undecided, Outcome.Undecided)]
+		public async Task Negate_ShouldForwardToInnerResult(Outcome innerOutcome, Outcome expectedAfterNegation)
+		{
+			ConstraintResult inner = new DummyConstraintResult<string>(innerOutcome, "value", "foo");
+			ConstraintResult sut = inner.PrependExpectationText(s => s.Append("bar"));
+
+			sut.Negate();
+
+			await That(inner.Outcome).IsEqualTo(expectedAfterNegation);
+			await That(sut.Outcome).IsEqualTo(expectedAfterNegation);
+		}
+
 		[Fact]
 		public async Task ShouldAppendAfterExpectationText()
 		{
-			ConstraintResult.Success sut = new("foo");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Success, "foo");
 
 			ConstraintResult result = sut.PrependExpectationText(s => s.Append("prefix-foo\n"));
 
@@ -157,7 +188,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task ShouldKeepResultTextUnchanged()
 		{
-			ConstraintResult.Failure sut = new("foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Failure, "foo", "bar");
 
 			ConstraintResult result = sut.PrependExpectationText(s => s.Append("prefix-foo\n"));
 

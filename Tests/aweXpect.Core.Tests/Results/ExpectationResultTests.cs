@@ -1,6 +1,8 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Nodes;
+using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Core.TimeSystem;
 using aweXpect.Results;
 
@@ -13,7 +15,7 @@ public class ExpectationResultTests
 	{
 		ExpectationResult sut = new(new MyExpectationBuilder("my-subject"));
 
-		Expectation.Result result = await sut.GetResult(3);
+		Expectation.Result result = await sut.GetResult(3, new Dictionary<int, Outcome>());
 
 		await That(result.Index).IsEqualTo(4);
 		await That(result.SubjectLine).IsEqualTo(" [04] Expected that my-subject");
@@ -23,14 +25,14 @@ public class ExpectationResultTests
 	public async Task IsMet_InvalidType_ShouldThrowFailException()
 	{
 		MyExpectationBuilder myBuilder =
-			new("my-subject", () => new ConstraintResult.Success<string>("foo", "SUCCESS"));
+			new("my-subject", () => new DummyConstraintResult<string>(Outcome.Success, "foo", "SUCCESS"));
 		ExpectationResult<int> sut = new(myBuilder);
 
 		async Task Act() => await sut;
 
 		await That(Act).Throws<FailException>()
 			.WithMessage("""
-			             The value in Success<string> did not match expected type int.
+			             The value in DummyConstraintResult<string> did not match expected type int.
 			             """);
 	}
 
@@ -48,14 +50,14 @@ public class ExpectationResultTests
 		await That(receivedToken).IsEqualTo(token);
 	}
 
-	private class MyExpectationBuilder(string subject, Func<ConstraintResult>? resultBuilder = null)
+	private sealed class MyExpectationBuilder(string subject, Func<ConstraintResult>? resultBuilder = null)
 		: ExpectationBuilder(subject)
 	{
 		private readonly Func<ConstraintResult> _resultBuilder = resultBuilder ?? DefaultResultBuilder;
 
 		private CancellationToken? _cancellationToken;
 
-		private static ConstraintResult DefaultResultBuilder() => new ConstraintResult.Success("SUCCESS");
+		private static ConstraintResult DefaultResultBuilder() => new DummyConstraintResult(Outcome.Success, "SUCCESS");
 
 		public async Task<CancellationToken?> GetRegisteredCancellationToken()
 		{

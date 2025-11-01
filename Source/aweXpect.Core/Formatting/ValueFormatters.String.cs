@@ -1,12 +1,13 @@
 using System.Text;
 using aweXpect.Core.Helpers;
+using aweXpect.Customization;
 
 namespace aweXpect.Formatting;
 
 public static partial class ValueFormatters
 {
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
 		this ValueFormatter _,
@@ -19,16 +20,17 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
-		if (!options.UseLineBreaks)
+		return (options.UseLineBreaks, options.IncludeType) switch
 		{
-			return $"\"{value.DisplayWhitespace().TruncateWithEllipsis(100)}\"";
-		}
-
-		return $"\"{value}\"";
+			(true, true) => $"string \"{value}\"",
+			(false, true) => $"string \"{value.DisplayWhitespace().TruncateWithEllipsis(Customize.aweXpect.Formatting().MaximumStringLength.Get())}\"",
+			(true, false) => $"\"{value}\"",
+			(false, false) => $"\"{value.DisplayWhitespace().TruncateWithEllipsis(Customize.aweXpect.Formatting().MaximumStringLength.Get())}\"",
+		};
 	}
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(
@@ -44,10 +46,15 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
+		if (options.IncludeType)
+		{
+			stringBuilder.Append("string ");
+		}
+
 		stringBuilder.Append('\"');
 		if (!options.UseLineBreaks)
 		{
-			stringBuilder.Append(value.DisplayWhitespace().TruncateWithEllipsis(100));
+			stringBuilder.Append(value.DisplayWhitespace().TruncateWithEllipsis(Customize.aweXpect.Formatting().MaximumStringLength.Get()));
 		}
 		else
 		{

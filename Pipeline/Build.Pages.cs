@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Serilog;
+
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;
@@ -17,28 +18,37 @@ partial class Build
 	Target Pages => _ => _
 		.Executes(async () =>
 		{
+			AbsolutePath mockolateDirectory = RootDirectory / "Docs" / "pages" / "docs" / "mockolate";
+			mockolateDirectory.CreateOrCleanDirectory();
+			await DownloadDocsPagesDirectory("Mockolate", mockolateDirectory);
+
 			Dictionary<string, string> projects = new()
 			{
 				{
 					"aweXpect.Json", "Json"
 				},
 				{
+					"aweXpect.Web", "Web"
+				},
+				{
+					"aweXpect.Reflection", "Reflection"
+				},
+				{
 					"aweXpect.Testably", "Testably"
 				},
 				{
-					"aweXpect.Web", "Web"
+					"aweXpect.Mockolate", "Mockolate"
 				},
 			};
 			foreach (var (project, directoryName) in projects)
 			{
-				await DownloadDocsPagesDirectory(project, directoryName);
+				await DownloadDocsPagesDirectory(project,
+					RootDirectory / "Docs" / "pages" / "docs" / "extensions" / "project" / directoryName);
 			}
 		});
 
-
-	async Task DownloadDocsPagesDirectory(string projectName, string directoryName)
+	async Task DownloadDocsPagesDirectory(string projectName, AbsolutePath baseDirectory)
 	{
-		AbsolutePath baseDirectory = RootDirectory / "Docs" / "pages" / "docs" / "extensions" / directoryName;
 		Log.Information($"Store documentation from {projectName} under {baseDirectory}:");
 
 		using HttpClient client = new();
@@ -56,6 +66,23 @@ partial class Build
 
 		try
 		{
+			HttpResponseMessage readmeResponse =
+				await client.GetAsync(
+					$"https://api.github.com/repos/aweXpect/{projectName}/contents/README.md");
+			string readmeResponseContent = await readmeResponse.Content.ReadAsStringAsync();
+			using JsonDocument readmeDocument = JsonDocument.Parse(readmeResponseContent);
+			string readmeContent = Base64Decode(readmeDocument.RootElement.GetProperty("content").GetString());
+			int indexOfFirstH2Header = readmeContent.IndexOf("\n##", StringComparison.Ordinal);
+			if (indexOfFirstH2Header > 0)
+			{
+				readmeContent = readmeContent.Substring(indexOfFirstH2Header);
+				Log.Information($"  Skip {indexOfFirstH2Header} characters in README.md");
+			}
+			else
+			{
+				readmeContent = string.Empty;
+			}
+
 			JsonDocument jsonDocument = JsonDocument.Parse(responseContent);
 			foreach (JsonElement file in jsonDocument.RootElement.EnumerateArray())
 			{
@@ -67,6 +94,13 @@ partial class Build
 				string fileResponseContent = await fileResponse.Content.ReadAsStringAsync();
 				using JsonDocument document = JsonDocument.Parse(fileResponseContent);
 				string content = Base64Decode(document.RootElement.GetProperty("content").GetString());
+				if (name.StartsWith("00-") && content.Contains("{README}", StringComparison.OrdinalIgnoreCase))
+				{
+					content = content.Replace("{README}", readmeContent.Replace("Docs/pages/", "./"));
+					readmeContent = string.Empty;
+					Log.Information($"  Replace \"{{README}}\" with content from README.md for {name}");
+				}
+
 				await File.WriteAllTextAsync(filePath, content);
 				Log.Information($"  {name} under {filePath}");
 			}

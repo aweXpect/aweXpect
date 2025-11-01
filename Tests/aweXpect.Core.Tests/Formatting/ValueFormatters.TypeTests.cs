@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace aweXpect.Core.Tests.Formatting;
@@ -8,6 +10,72 @@ public partial class ValueFormatters
 {
 	public sealed class TypeTests
 	{
+		[Fact]
+		public async Task NestedGenericTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>.InnerClass<int, string>);
+			string expectedResult =
+				"ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerClass<int, string>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task NestedGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>);
+			string expectedResult = "ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task NestedTypeInGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>.InnerRegularClass);
+			string expectedResult =
+				"ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>.InnerRegularClass";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task NestedTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(TypeTests);
+			string expectedResult = $"{nameof(ValueFormatters)}.{nameof(TypeTests)}";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
 		[Fact]
 		public async Task ShouldSupportArraySyntax()
 		{
@@ -28,7 +96,7 @@ public partial class ValueFormatters
 		public async Task ShouldSupportArraySyntaxWithComplexObjects()
 		{
 			Type value = typeof(TypeTests[]);
-			string expectedResult = $"{nameof(TypeTests)}[]";
+			string expectedResult = $"{nameof(ValueFormatters)}.{nameof(TypeTests)}[]";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
@@ -60,7 +128,58 @@ public partial class ValueFormatters
 		public async Task ShouldSupportNestedGenericTypeDefinitions()
 		{
 			Type value = typeof(Expression<Func<TypeTests[], bool>>);
-			string expectedResult = $"Expression<Func<{nameof(TypeTests)}[], bool>>";
+			string expectedResult = $"Expression<Func<{nameof(ValueFormatters)}.{nameof(TypeTests)}[], bool>>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
+		[InlineData(typeof(IDictionary<,>), 0, "TKey")]
+		[InlineData(typeof(IDictionary<,>), 1, "TValue")]
+		[InlineData(typeof(IEnumerable<>), 0, "T")]
+		public async Task ShouldSupportOpenGenericParametersOfIDictionary(
+			Type genericType, int argumentIndex, string expectedResult)
+		{
+			Type value = genericType.GetGenericArguments()[argumentIndex];
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportOpenGenericTypeDefinitions()
+		{
+			Type value = typeof(IEnumerable<>);
+			string expectedResult = "IEnumerable<>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportOpenGenericTypeWithMultipleParametersDefinitions()
+		{
+			Type value = typeof(IDictionary<,>);
+			string expectedResult = "IDictionary<, >";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
@@ -91,8 +210,27 @@ public partial class ValueFormatters
 		[Fact]
 		public async Task Types_ShouldOnlyIncludeTheName()
 		{
-			Type value = typeof(TypeTests);
-			string expectedResult = nameof(TypeTests);
+			Type value = typeof(ValueFormatter);
+			string expectedResult = nameof(ValueFormatter);
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task WhenGenericParameter_ShouldUseOnlyName()
+		{
+			MethodInfo method = GetType()
+				.GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
+				.Single(x => x.Name.StartsWith(nameof(DummyMethodToGetSpecialTypes)));
+			string expectedResult = "TParameter";
+			Type value = method.GetGenericArguments()[0];
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
@@ -117,6 +255,55 @@ public partial class ValueFormatters
 			await That(result).IsEqualTo(ValueFormatter.NullString);
 			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
+		}
+
+		[Fact]
+		public async Task WhenNullable_ShouldUseQuestionMarkSyntax()
+		{
+			string expectedResult = "DateTime?";
+			Type value = typeof(DateTime?);
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task WhenVoid_ShouldUseSimpleName()
+		{
+			MethodInfo method = GetType()
+				.GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
+				.Single(x => x.Name.StartsWith(nameof(DummyMethodToGetSpecialTypes)));
+			string expectedResult = "void";
+			Type value = method.ReturnType;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		// ReSharper disable once UnusedTypeParameter
+		private class NestedGenericType<T>
+		{
+			public sealed class InnerClass<T1, T2>;
+
+			public sealed class InnerRegularClass;
+		}
+
+		// ReSharper disable once UnusedParameter.Local
+		private static void DummyMethodToGetSpecialTypes<TParameter>(TParameter value)
+		{
+			// This method is only used to get a void return type and generic parameter types.
 		}
 
 		public static TheoryData<Type, string> SimpleTypes

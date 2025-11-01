@@ -51,23 +51,32 @@ partial class Build
 			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
 			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
 			Log.Information("Report:\n {FileContent}", fileContent);
+			if (GitHubActions?.IsPullRequest == true)
+			{
+				File.WriteAllText(ArtifactsDirectory / "PR.txt", GitHubActions.PullRequestNumber.ToString());
+			}
 		});
 
 	Target BenchmarkComment => _ => _
-		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default && GitHubActions?.IsPullRequest == true)
 		.Executes(async () =>
 		{
+			await "Benchmarks".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+			if (!File.Exists(ArtifactsDirectory / "PR.txt"))
+			{
+				Log.Information("Skip writing a comment, as no PR number was specified.");
+				return;
+			}
+
+			string prNumber = File.ReadAllText(ArtifactsDirectory / "PR.txt");
 			string body = CreateBenchmarkCommentBody();
-			int? prId = GitHubActions.PullRequestNumber;
-			Log.Debug("Pull request number: {PullRequestId}", prId);
-			if (prId != null)
+			Log.Debug("Pull request number: {PullRequestId}", prNumber);
+			if (int.TryParse(prNumber, out int prId))
 			{
 				GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
 				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
-					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId.Value);
+					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId);
 				long? commentId = null;
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
@@ -82,7 +91,7 @@ partial class Build
 				if (commentId == null)
 				{
 					Log.Information($"Create comment:\n{body}");
-					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId.Value, body);
+					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId, body);
 				}
 				else
 				{
@@ -146,18 +155,20 @@ partial class Build
 				.Append(commitInfo, currentFile.Content, benchmarkReports, 50);
 			if (!string.IsNullOrWhiteSpace(updatedFileContent))
 			{
-				await UploadBenchmarkFile(commitInfo, currentFile, updatedFileContent);
-				await UploadBenchmarkFile(commitInfo, limitedFile, limitedFileContent);
+				await UploadBenchmarkFile("data.js", commitInfo, currentFile, updatedFileContent);
+				await UploadBenchmarkFile("limited-data.js", commitInfo, limitedFile, limitedFileContent);
 			}
 		});
 
 	Target Benchmarks => _ => _
 		.DependsOn(BenchmarkDotNet)
 		.DependsOn(BenchmarkResult)
-		.DependsOn(BenchmarkComment)
 		.DependsOn(BenchmarkReport);
 
-	async Task UploadBenchmarkFile(PageBenchmarkReportGenerator.CommitInfo commitInfo, BenchmarkFile currentFile,
+	async Task UploadBenchmarkFile(
+		string filename,
+		PageBenchmarkReportGenerator.CommitInfo commitInfo,
+		BenchmarkFile currentFile,
 		string updatedFileContent)
 	{
 		using HttpClient client = new();
@@ -169,7 +180,7 @@ partial class Build
 			currentFile?.Sha,
 			BenchmarkBranch);
 		HttpResponseMessage response = await client.PutAsync(
-			"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js",
+			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/{filename}",
 			new StringContent(JsonSerializer.Serialize(content), Encoding.UTF8, "application/json"));
 		if (response.IsSuccessStatusCode)
 		{
@@ -196,7 +207,10 @@ partial class Build
 		}
 
 		using JsonDocument document = JsonDocument.Parse(responseContent);
-		string content = Base64Decode(document.RootElement.GetProperty("content").GetString());
+		var contentStream = await client.GetStreamAsync(
+			$"https://raw.githubusercontent.com/aweXpect/aweXpect/refs/heads/{BenchmarkBranch}/Docs/pages/static/js/{filename}");
+		using StreamReader reader = new(contentStream, Encoding.UTF8);
+		string content = await reader.ReadToEndAsync();
 		string sha = document.RootElement.GetProperty("sha").GetString();
 		return new BenchmarkFile(content, sha);
 	}

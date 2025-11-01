@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Core.Helpers;
 using aweXpect.Core.Sources;
 
 namespace aweXpect.Core.Nodes;
 
 internal class MappingNode<TSource, TTarget> : ExpectationNode
 {
-	private readonly Action<MemberAccessor<TSource, TTarget?>, StringBuilder>
+	private readonly Action<MemberAccessor<TSource, TTarget>, StringBuilder>
 		_expectationTextGenerator;
 
-	private readonly MemberAccessor<TSource, TTarget?> _memberAccessor;
+	private readonly MemberAccessor<TSource, TTarget> _memberAccessor;
 
-	public MappingNode(
-		MemberAccessor<TSource, TTarget?> memberAccessor,
+	public MappingNode(MemberAccessor<TSource, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 	{
 		_memberAccessor = memberAccessor;
@@ -38,22 +37,32 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		IEvaluationContext context,
 		CancellationToken cancellationToken) where TValue : default
 	{
-		if (value is null || value is DelegateValue { IsNull: true })
+		if (value is null || value is DelegateValue { IsNull: true, })
 		{
 			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
 			return result.Fail("it was <null>", value);
 		}
 
-		if (value is not TSource typedValue)
+		if (value is TSource typedValue)
 		{
-			throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}");
+			TTarget matchingValue = _memberAccessor.AccessMember(typedValue);
+			ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
+			return memberResult.UseValue(value);
 		}
 
-		TTarget? matchingValue = _memberAccessor.AccessMember(typedValue);
-		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
-		return memberResult.UseValue(value);
+		throw new InvalidOperationException(
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}")
+			.LogTrace();
 	}
+
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is MappingNode<TSource, TTarget> other && Equals(other);
+
+	private bool Equals(MappingNode<TSource, TTarget> other) => _memberAccessor.Equals(other._memberAccessor);
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode() => _memberAccessor.GetHashCode();
+
 
 	internal ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
@@ -68,17 +77,29 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 	}
 
 	private static void DefaultExpectationTextGenerator(
-		MemberAccessor<TSource, TTarget?> memberAccessor,
+		MemberAccessor<TSource, TTarget> memberAccessor,
 		StringBuilder expectation)
 		=> expectation.Append(memberAccessor);
 
-	private sealed class MappingConstraintResult(
-		ConstraintResult left,
-		ConstraintResult right,
-		Action<MemberAccessor<TSource, TTarget?>, StringBuilder>? expectationTextGenerator,
-		MemberAccessor<TSource, TTarget?> memberAccessor)
-		: ConstraintResult(And(left.Outcome, right.Outcome), FurtherProcessingStrategy.Continue)
+	private sealed class MappingConstraintResult : ConstraintResult
 	{
+		private readonly Action<MemberAccessor<TSource, TTarget>, StringBuilder>? _expectationTextGenerator;
+		private readonly ConstraintResult _left;
+		private readonly MemberAccessor<TSource, TTarget> _memberAccessor;
+		private readonly ConstraintResult _right;
+
+		public MappingConstraintResult(ConstraintResult left,
+			ConstraintResult right,
+			Action<MemberAccessor<TSource, TTarget>, StringBuilder>? expectationTextGenerator,
+			MemberAccessor<TSource, TTarget> memberAccessor) : base(FurtherProcessingStrategy.Continue)
+		{
+			_left = left;
+			_right = right;
+			_expectationTextGenerator = expectationTextGenerator;
+			_memberAccessor = memberAccessor;
+			Outcome = And(left.Outcome, right.Outcome);
+		}
+
 		private static Outcome And(Outcome left, Outcome right)
 			=> (left, right) switch
 			{
@@ -90,56 +111,44 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			left.AppendExpectation(stringBuilder);
-			if (expectationTextGenerator is not null)
+			_left.AppendExpectation(stringBuilder);
+			if (_expectationTextGenerator is not null)
 			{
-				expectationTextGenerator(memberAccessor, stringBuilder);
+				_expectationTextGenerator(_memberAccessor, stringBuilder);
 			}
 
-			right.AppendExpectation(stringBuilder);
+			_right.AppendExpectation(stringBuilder);
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (left.Outcome == Outcome.Failure)
+			if (_left.Outcome == Outcome.Failure)
 			{
-				left.AppendResult(stringBuilder, indentation);
-				if (right.Outcome == Outcome.Failure &&
-				    !left.HasSameResultTextAs(right))
+				_left.AppendResult(stringBuilder, indentation);
+				if (_right.Outcome == Outcome.Failure &&
+				    _left.FurtherProcessingStrategy == FurtherProcessingStrategy.Continue &&
+				    !_left.HasSameResultTextAs(_right))
 				{
 					stringBuilder.Append(" and ");
-					right.AppendResult(stringBuilder, indentation);
+					_right.AppendResult(stringBuilder, indentation);
 				}
 			}
-			else if (right.Outcome == Outcome.Failure)
+			else if (_right.Outcome == Outcome.Failure)
 			{
-				right.AppendResult(stringBuilder, indentation);
-			}
-		}
-
-		public override IEnumerable<Context> GetContexts()
-		{
-			foreach (Context context in left.GetContexts())
-			{
-				yield return context;
-			}
-
-			foreach (Context context in right.GetContexts())
-			{
-				yield return context;
+				_right.AppendResult(stringBuilder, indentation);
 			}
 		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue(out TValue? leftValue))
+			if (_left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue(out TValue? rightValue))
+			if (_right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
@@ -147,6 +156,18 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 
 			value = default;
 			return false;
+		}
+
+		public override ConstraintResult Negate()
+		{
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			_left.Negate();
+			return this;
 		}
 	}
 }

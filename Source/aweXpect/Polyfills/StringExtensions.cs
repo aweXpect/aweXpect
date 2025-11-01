@@ -61,6 +61,18 @@ internal static class StringExtensionMethods
 		=> @this.IndexOf($"{value}", comparisonType);
 
 	/// <summary>
+	///     Splits a string into substrings that are based on the provided string separator.
+	/// </summary>
+	/// <returns>
+	///     An array whose elements contain the substrings from this instance that are delimited by separator.
+	/// </returns>
+	internal static string[] Split(
+		this string @this,
+		string separator,
+		StringSplitOptions options = StringSplitOptions.None)
+		=> @this.Split([separator,], options);
+
+	/// <summary>
 	///     Determines whether this string instance starts with the specified character.
 	/// </summary>
 	internal static bool StartsWith(

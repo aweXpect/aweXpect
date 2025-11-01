@@ -50,6 +50,9 @@ public sealed partial class ThatDelegate
 					               "bar"
 					               "foo"
 					                ↑ (expected)
+
+					             Message:
+					             bar
 					             """);
 			}
 

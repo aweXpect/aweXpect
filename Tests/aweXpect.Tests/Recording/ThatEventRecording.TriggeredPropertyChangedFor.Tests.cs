@@ -4,7 +4,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEventRecording
 {
-	public sealed class TriggeredPropertyChangedFor
+	public sealed partial class TriggeredPropertyChangedFor
 	{
 		public sealed class Tests
 		{
@@ -27,7 +27,7 @@ public sealed partial class ThatEventRecording
 					             Expected that recording
 					             has recorded the PropertyChanged event on sut for property MyValue at least once,
 					             but it was never recorded in [
-					               PropertyChanged(PropertyChangedClass {
+					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 2
 					                 }, PropertyChangedEventArgs {
 					                   PropertyName = "foo"
@@ -66,6 +66,49 @@ public sealed partial class ThatEventRecording
 					             Expected that subject
 					             has recorded the PropertyChanged event for property MyValue at least once,
 					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task WhenEventIsNotTriggered_ShouldSucceed()
+			{
+				PropertyChangedClass sut = new();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(n => n.TriggeredPropertyChanged());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEventIsTriggered_ShouldFail()
+			{
+				PropertyChangedClass sut = new()
+				{
+					MyValue = 422,
+				};
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+
+				sut.NotifyPropertyChanged("SomeArbitraryProperty");
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(n => n.TriggeredPropertyChanged());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that recording
+					             has never recorded the PropertyChanged event on sut,
+					             but it was recorded once in [
+					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
+					                   MyValue = 422
+					                 }, PropertyChangedEventArgs {
+					                   PropertyName = "SomeArbitraryProperty"
+					                 })
+					             ]
 					             """);
 			}
 		}

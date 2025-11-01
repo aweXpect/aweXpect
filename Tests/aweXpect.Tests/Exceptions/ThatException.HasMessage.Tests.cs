@@ -37,6 +37,9 @@ public sealed partial class ThatException
 					               "actual text"
 					               "expected other text"
 					                ↑ (expected)
+
+					             Message:
+					             actual text
 					             """);
 			}
 
@@ -54,6 +57,42 @@ public sealed partial class ThatException
 					             has Message equal to "expected text",
 					             but it was <null>
 					             """);
+			}
+		}
+
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task WhenStringsAreEqual_ShouldFail()
+			{
+				string actual = "my text";
+				Exception subject = new(actual);
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(e => e.HasMessage(actual));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has Message not equal to "my text",
+					             but it was "my text"
+					             
+					             Message:
+					             my text
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringsDiffer_ShouldSucceed()
+			{
+				string actual = "actual text";
+				string expected = "expected other text";
+				Exception subject = new(actual);
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(e => e.HasMessage(expected));
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

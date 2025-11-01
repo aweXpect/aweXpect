@@ -27,11 +27,13 @@ public sealed partial class ThatObject
 						.Because("we want to test the failure");
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is null, because we want to test the failure,
-					              but it was {Formatter.Format(subject)}
-					              """);
+					.WithMessage("""
+					             Expected that subject
+					             is null, because we want to test the failure,
+					             but it was ThatObject.MyClass {
+					                 Value = 0
+					               }
+					             """);
 			}
 		}
 
@@ -58,11 +60,11 @@ public sealed partial class ThatObject
 						.Because("we want to test the failure");
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is null, because we want to test the failure,
-					              but it was {Formatter.Format(subject)}
-					              """);
+					.WithMessage("""
+					             Expected that subject
+					             is null, because we want to test the failure,
+					             but it was 1
+					             """);
 			}
 		}
 	}

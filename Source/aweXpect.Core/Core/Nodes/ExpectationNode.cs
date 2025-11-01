@@ -31,19 +31,33 @@ internal class ExpectationNode : Node
 		else
 		{
 			throw new InvalidOperationException(
-				"You have to specify how to combine the expectations! Use `And()` or `Or()` in between adding expectations.");
+					"You have to specify how to combine the expectations! Use `And()` or `Or()` in between adding expectations.")
+				.LogTrace();
 		}
 	}
 
 	/// <inheritdoc />
-	public override Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+	public override Node AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TValue : default
 		where TTarget : default
 	{
 		MappingNode<TValue, TTarget> mappingNode =
-			new(memberAccessor,
-				expectationTextGenerator);
+			new(memberAccessor, expectationTextGenerator);
+		_inner = mappingNode;
+		_combineResults = mappingNode.CombineResults;
+		return mappingNode;
+	}
+
+	/// <inheritdoc />
+	public override Node AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TValue : default
+		where TTarget : default
+	{
+		AsyncMappingNode<TValue, TTarget> mappingNode =
+			new(memberAccessor, expectationTextGenerator);
 		_inner = mappingNode;
 		_combineResults = mappingNode.CombineResults;
 		return mappingNode;
@@ -52,7 +66,8 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)
 		=> throw new NotSupportedException(
-			$"Don't specify the inner node for Expectation nodes directly. Use {nameof(AddMapping)}() instead!");
+				$"Don't specify the inner node for Expectation nodes directly. Use {nameof(AddMapping)}() instead!")
+			.LogTrace();
 
 	/// <summary>
 	///     Indicates, if the node is empty.
@@ -88,11 +103,12 @@ internal class ExpectationNode : Node
 				result = _reason?.ApplyTo(result) ?? result;
 			}
 		}
-		catch (Exception e) when (_constraint is not null)
+		catch (Exception e) when (e is not ArgumentException && _constraint is not null)
 		{
 			throw new InvalidOperationException(
-				$"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}: {e.Message}",
-				e);
+					$"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}: {e.Message}",
+					e)
+				.LogTrace();
 		}
 
 		if (_inner != null)
@@ -103,30 +119,45 @@ internal class ExpectationNode : Node
 		}
 
 		return result ?? throw new InvalidOperationException(
-			$"The expectation node does not support {Formatter.Format(typeof(TValue))} with value {Formatter.Format(value)}");
+				$"The expectation node does not support {Formatter.Format(typeof(TValue))} with value {Formatter.Format(value)}")
+			.LogTrace();
 	}
 
 	/// <inheritdoc />
 	public override void SetReason(BecauseReason becauseReason) => _reason = becauseReason;
 
-	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_constraint != null && _inner != null)
-		{
-			return _constraint + _inner.ToString();
-		}
-
-		if (_constraint != null)
-		{
-			return _constraint.ToString();
-		}
-
-		if (_inner != null)
-		{
-			return _inner.ToString();
-		}
-
-		return "<empty>";
+		_constraint?.AppendExpectation(stringBuilder, indentation);
+		_inner?.AppendExpectation(stringBuilder, indentation);
 	}
+
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is ExpectationNode other && Equals(other);
+
+	private bool Equals(ExpectationNode other)
+	{
+		if (_constraint is null && other._constraint is null)
+		{
+			return _inner?.Equals(other._inner) != false;
+		}
+
+		if (_constraint is null || other._constraint is null)
+		{
+			return false;
+		}
+
+		StringBuilder sb1 = new();
+		StringBuilder sb2 = new();
+		_constraint.AppendExpectation(sb1);
+		other._constraint.AppendExpectation(sb2);
+		return sb1.ToString() == sb2.ToString() && _inner?.Equals(other._inner) != false;
+	}
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	// ReSharper disable NonReadonlyMemberInGetHashCode
+	public override int GetHashCode()
+		=> _constraint?.GetType().GetHashCode() ?? 17
+			+ _inner?.GetHashCode() ?? 0;
+	// ReSharper restore NonReadonlyMemberInGetHashCode
 }

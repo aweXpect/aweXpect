@@ -5,7 +5,7 @@
 
 	<PropertyGroup>
 		<Authors>aweXpect</Authors>
-		<Copyright>Copyright (c) 2024 Valentin Breuß</Copyright>
+		<Copyright>Copyright (c) 2024 - $([System.DateTime]::Now.ToString('yyyy')) Valentin Breuß</Copyright>
 		<RepositoryUrl>https://github.com/aweXpect/aweXpect.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://aweXpect.com</PackageProjectUrl>
@@ -64,5 +64,11 @@
 			  PackagePath="/Docs/"
 			  Link="Docs\README.md"/>
 	</ItemGroup>
+
+	<PropertyGroup>
+		<!-- The version is only set to support local builds.
+		In the build pipeline it is overwritten with the actual version in the `nuke Compile` step -->
+		<Version>255.255.255.255</Version>
+	</PropertyGroup>
 
 </Project>

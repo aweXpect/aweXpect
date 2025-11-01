@@ -6,16 +6,20 @@ namespace aweXpect.Formatting;
 public static partial class ValueFormatters
 {
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
 		this ValueFormatter _,
 		Guid value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"Guid {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(
@@ -23,10 +27,17 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		Guid value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("Guid ");
+		}
+
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
 		this ValueFormatter formatter,
@@ -42,7 +53,7 @@ public static partial class ValueFormatters
 	}
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(

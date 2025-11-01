@@ -6,7 +6,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class IsEmpty
+	public sealed partial class IsEmpty
 	{
 		public sealed class Tests
 		{
@@ -39,9 +39,20 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task ShouldCallEnumeratorOnlyOnce()
+			{
+				IEnumerable<int> subject = new ThrowWhenIteratingTwiceEnumerable();
+
+				async Task Act()
+					=> await That(subject).IsEmpty();
+
+				await That(Act).Throws<XunitException>();
+			}
+
+			[Fact]
 			public async Task WhenArrayContainsValues_ShouldFail()
 			{
-				string[] subject = ["foo"];
+				string[] subject = ["foo",];
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -70,7 +81,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsValues_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 2]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 2,]);
 
 				async Task Act()
 					=> await That(subject).IsEmpty();

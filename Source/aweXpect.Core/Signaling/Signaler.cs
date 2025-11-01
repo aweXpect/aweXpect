@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using aweXpect.Core;
+using aweXpect.Core.Helpers;
 using aweXpect.Customization;
 
 namespace aweXpect.Signaling;
@@ -98,7 +100,8 @@ public class Signaler
 	{
 		if (amount.Value <= 0)
 		{
-			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.");
+			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.")
+				.LogTrace();
 		}
 
 		lock (_lock)
@@ -245,7 +248,8 @@ public class Signaler<TParameter>
 		_predicate = predicate;
 		if (amount.Value <= 0)
 		{
-			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.");
+			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.")
+				.LogTrace();
 		}
 
 		lock (_lock)

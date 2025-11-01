@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="TUnit"/>
+		<PackageReference Include="Microsoft.Testing.Extensions.TrxReport"/>
+		<PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Source\aweXpect.Frameworks\aweXpect.Frameworks.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\..\..\Source\aweXpect\aweXpect.csproj"/>
+	</ItemGroup>
+
+</Project>

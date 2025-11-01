@@ -1,55 +1,123 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using aweXpect.Core;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2> : ICollectionMatcher<T, T2>
+	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<T> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T>(
+			equivalenceRelation,
+			expected.Distinct().ToList())
+		where T : T2
+	{
+#if NET8_0_OR_GREATER
+		protected override ValueTask<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+#else
+		protected override Task<bool> AreConsideredEqual(T value, T expected, IOptionsEquality<T2> options)
+#endif
+			=> options.AreConsideredEqual(value, expected);
+	}
+
+	private sealed class AnyOrderIgnoreDuplicatesFromExpectationCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<ExpectationItem<T>> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, ExpectationItem<T>>(
+			equivalenceRelation,
+			expected.Distinct(new ExpectationItemEqualityComparer<T>()).ToList())
+		where T : T2
+	{
+#if NET8_0_OR_GREATER
+		protected override ValueTask<bool>
+#else
+		protected override Task<bool>
+#endif
+			AreConsideredEqual(T value, ExpectationItem<T> expected, IOptionsEquality<T2> options)
+			=> expected.IsMetBy(value);
+	}
+
+	private sealed class AnyOrderIgnoreDuplicatesFromPredicateCollectionMatcher<T, T2>(
+		EquivalenceRelations equivalenceRelation,
+		IEnumerable<Expression<Func<T, bool>>> expected)
+		: AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, Expression<Func<T, bool>>>(
+			equivalenceRelation,
+			expected.Distinct(new ExpressionEqualityComparer<T, bool>()).ToList())
+		where T : T2
+	{
+#if NET8_0_OR_GREATER
+		protected override ValueTask<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
+			IOptionsEquality<T2> options)
+			=> ValueTask.FromResult(expected.Compile().Invoke(value));
+#else
+		protected override Task<bool> AreConsideredEqual(T value, Expression<Func<T, bool>> expected,
+			IOptionsEquality<T2> options)
+			=> Task.FromResult(expected.Compile().Invoke(value));
+#endif
+	}
+
+	private abstract class AnyOrderIgnoreDuplicatesCollectionMatcherBase<T, T2, T3> : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelations _equivalenceRelations;
-		private readonly List<T> _missingItems;
+		private readonly List<T3> _missingItems;
 		private readonly int _totalExpectedCount;
 		private readonly HashSet<T> _uniqueItems = new();
 		private int _index;
 
-		public AnyOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelations equivalenceRelation,
-			IEnumerable<T> expected)
+		protected AnyOrderIgnoreDuplicatesCollectionMatcherBase(EquivalenceRelations equivalenceRelation,
+			List<T3> expected)
 		{
 			_equivalenceRelations = equivalenceRelation;
-			_missingItems = expected.Distinct().ToList();
+			_missingItems = expected;
 			_totalExpectedCount = _missingItems.Count;
 		}
 
-		public bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error)
+#if NET8_0_OR_GREATER
+		public async ValueTask<(bool, string?)>
+#else
+		public async Task<(bool, string?)>
+#endif
+			Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber)
 		{
-			error = null;
 			if (_uniqueItems.Contains(value))
 			{
-				return false;
+				return (false, null);
 			}
 
-			if (_missingItems.All(e => !options.AreConsideredEqual(value, e)))
+			if (await All(_missingItems, e => AreConsideredEqual(value, e, options), true))
 			{
 				_additionalItems.Add(_index, value);
 			}
 
-			_missingItems.Remove(value);
+			await RemoveFirst(_missingItems, e => AreConsideredEqual(value, e, options));
 			_uniqueItems.Add(value);
 			_index++;
 
-			return _additionalItems.Count > 2 * maximumNumber;
+			return (_additionalItems.Count > 2 * maximumNumber, null);
 		}
 
-		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
+#if NET8_0_OR_GREATER
+		public ValueTask<(bool, string?)>
+#else
+		public Task<(bool, string?)>
+#endif
+			VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber)
 		{
 			if (_missingItems.Count + _additionalItems.Count > 2 * maximumNumber)
 			{
-				error = null;
-				return true;
+#if NET8_0_OR_GREATER
+				return ValueTask.FromResult<(bool, string?)>((true, null));
+#else
+				return Task.FromResult<(bool, string?)>((true, null));
+#endif
 			}
 
 			List<string> errors = new();
@@ -64,15 +132,26 @@ public partial class CollectionMatchOptions
 
 			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
 			{
-				errors.AddRange(MissingItemsError(_totalExpectedCount, _missingItems, _equivalenceRelations));
+				errors.AddRange(MissingItemsError(_totalExpectedCount, _missingItems, _equivalenceRelations, true));
 			}
 			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedInProperly) && !_missingItems.Any())
 			{
 				errors.Add("contained all expected items");
 			}
 
-			error = ReturnErrorString(it, errors);
-			return error != null;
+			string? error = ReturnErrorString(it, errors);
+#if NET8_0_OR_GREATER
+			return ValueTask.FromResult<(bool, string?)>((error != null, error));
+#else
+			return Task.FromResult<(bool, string?)>((error != null, error));
+#endif
 		}
+
+#if NET8_0_OR_GREATER
+		protected abstract ValueTask<bool>
+#else
+		protected abstract Task<bool>
+#endif
+			AreConsideredEqual(T value, T3 expected, IOptionsEquality<T2> options);
 	}
 }

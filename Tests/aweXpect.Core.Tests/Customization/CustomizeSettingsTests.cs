@@ -9,6 +9,28 @@ namespace aweXpect.Core.Tests.Customization;
 public sealed class CustomizeSettingsTests
 {
 	[Fact]
+	public async Task DefaultCheckInterval_ShouldBeUsedInTimeComparisons()
+	{
+#if DEBUG
+		TimeSpan timeout = 2.Seconds();
+#else
+		TimeSpan timeout = 4.Seconds();
+#endif
+
+		ChangingClass sut1 = new();
+		ChangingClass sut2 = new();
+
+		await That(sut1).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
+		await That(sut1.Interval).IsGreaterThanOrEqualTo(50.Milliseconds()).And.IsLessThan(timeout);
+		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(timeout))
+		{
+			await That(sut2).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
+			await That(sut2.Interval).IsGreaterThanOrEqualTo(timeout).Within(50.Milliseconds()).And
+				.IsLessThan(20.Seconds());
+		}
+	}
+
+	[Fact]
 	public async Task DefaultSignalerTimeout_ShouldBeUsedInSignaler()
 	{
 		Signaler signaler = new();
@@ -156,6 +178,28 @@ public sealed class CustomizeSettingsTests
 		}
 
 		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
+	}
+
+	private sealed class ChangingClass
+	{
+		private readonly Stopwatch _stopwatch = new();
+
+		public bool HasMeasuredInterval
+		{
+			get
+			{
+				if (!_stopwatch.IsRunning)
+				{
+					_stopwatch.Start();
+					return false;
+				}
+
+				_stopwatch.Stop();
+				return true;
+			}
+		}
+
+		public TimeSpan Interval => _stopwatch.Elapsed;
 	}
 
 	/// <summary>

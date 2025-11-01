@@ -1,6 +1,7 @@
 ﻿using System;
+using aweXpect.Results;
 
-namespace aweXpect.Results;
+namespace aweXpect;
 
 /// <summary>
 ///     The result for counting items in a collection.
@@ -12,19 +13,31 @@ public class CollectionCountResult<TReturn>(Func<EnumerableQuantifier, TReturn> 
 	/// </summary>
 	public TReturn EqualTo(int expected)
 		=> factory(EnumerableQuantifier.Exactly(expected));
-	
+
 	/// <summary>
 	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
 	public TReturn AtLeast(int minimum)
 		=> factory(EnumerableQuantifier.AtLeast(minimum));
-	
+
+	/// <summary>
+	///     Verifies that the collection has less than <paramref name="maximum" /> items.
+	/// </summary>
+	public TReturn LessThan(int maximum)
+		=> factory(EnumerableQuantifier.LessThan(maximum));
+
+	/// <summary>
+	///     Verifies that the collection has more than <paramref name="minimum" /> items.
+	/// </summary>
+	public TReturn MoreThan(int minimum)
+		=> factory(EnumerableQuantifier.MoreThan(minimum));
+
 	/// <summary>
 	///     Verifies that the collection has at most <paramref name="maximum" /> items.
 	/// </summary>
 	public TReturn AtMost(int maximum)
 		=> factory(EnumerableQuantifier.AtMost(maximum));
-	
+
 	/// <summary>
 	///     Verifies that the collection has between <paramref name="minimum" />…
 	/// </summary>

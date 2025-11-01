@@ -29,11 +29,19 @@ internal class OrNode : Node
 		=> Current.AddConstraint(constraint);
 
 	/// <inheritdoc />
-	public override Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+	public override Node AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TValue : default
 		where TTarget : default
 		=> Current.AddMapping(memberAccessor, expectationTextGenerator);
+
+	/// <inheritdoc />
+	public override Node AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TValue : default
+		where TTarget : default
+		=> Current.AddAsyncMapping(memberAccessor, expectationTextGenerator);
 
 	public override void AddNode(Node node, string? separator = null)
 	{
@@ -65,18 +73,48 @@ internal class OrNode : Node
 
 	/// <inheritdoc />
 	public override void SetReason(BecauseReason becauseReason)
-		=> Current.SetReason(becauseReason);
+	{
+		if (_nodes.Any() && Current is ExpectationNode expectationNode && expectationNode.IsEmpty())
+		{
+			_nodes.Last().Item2.SetReason(becauseReason);
+		}
+		else
+		{
+			Current.SetReason(becauseReason);
+		}
+	}
 
 	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_nodes.Any())
+		foreach (Node node in _nodes.Select(n => n.Item2).Where(n => n != Current))
 		{
-			return string.Join(DefaultSeparator, _nodes.Select(x => x.Item2))
-			       + DefaultSeparator + Current;
+			node.AppendExpectation(stringBuilder, indentation);
+			stringBuilder.Append(DefaultSeparator);
 		}
 
-		return Current.ToString();
+		Current.AppendExpectation(stringBuilder, indentation);
+	}
+
+	/// <inheritdoc cref="object.Equals(object?)" />
+	public override bool Equals(object? obj) => obj is OrNode other && Equals(other);
+
+	private bool Equals(OrNode other) => Current.Equals(other.Current) && _nodes.SequenceEqual(other._nodes);
+
+	/// <inheritdoc cref="object.GetHashCode()" />
+	public override int GetHashCode()
+	{
+		unchecked
+		{
+			// ReSharper disable once NonReadonlyMemberInGetHashCode
+			int hash = 19 * Current.GetHashCode();
+			foreach (Node node in _nodes.Select(x => x.Item2))
+			{
+				hash = (hash * 31) + node.GetHashCode();
+			}
+
+			return hash;
+		}
 	}
 
 	private static ConstraintResult CombineResults(
@@ -94,74 +132,80 @@ internal class OrNode : Node
 			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
-	private sealed class OrConstraintResult(
-		ConstraintResult left,
-		ConstraintResult right,
-		string separator,
-		FurtherProcessingStrategy furtherProcessingStrategy)
-		: ConstraintResult(Or(left.Outcome, right.Outcome), furtherProcessingStrategy)
+	private sealed class OrConstraintResult : ConstraintResult
 	{
-		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
+		private readonly FurtherProcessingStrategy _furtherProcessingStrategy;
+		private readonly ConstraintResult _left;
+		private readonly ConstraintResult _right;
+		private readonly string _separator;
+		private bool _isNegated;
+
+		public OrConstraintResult(ConstraintResult left,
+			ConstraintResult right,
+			string separator,
+			FurtherProcessingStrategy furtherProcessingStrategy) : base(furtherProcessingStrategy)
+		{
+			_left = left;
+			_right = right;
+			_separator = separator;
+			_furtherProcessingStrategy = furtherProcessingStrategy;
+			Outcome = Or(left.Outcome, right.Outcome);
+		}
 
 		private static Outcome Or(Outcome left, Outcome right)
 			=> (left, right) switch
 			{
 				(Outcome.Failure, Outcome.Failure) => Outcome.Failure,
-				(_, Outcome.Undecided) => Outcome.Undecided,
-				(Outcome.Undecided, _) => Outcome.Undecided,
-				(_, _) => Outcome.Success,
+				(_, Outcome.Success) => Outcome.Success,
+				(Outcome.Success, _) => Outcome.Success,
+				(_, _) => Outcome.Undecided,
 			};
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			left.AppendExpectation(stringBuilder);
-			stringBuilder.Append(separator);
-			right.AppendExpectation(stringBuilder);
+			_left.AppendExpectation(stringBuilder);
+			if (_separator == DefaultSeparator && _isNegated)
+			{
+				stringBuilder.Append(" and ");
+			}
+			else
+			{
+				stringBuilder.Append(_separator);
+			}
+
+			_right.AppendExpectation(stringBuilder);
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (left.Outcome == Outcome.Failure)
+			if (_left.Outcome == Outcome.Failure)
 			{
-				left.AppendResult(stringBuilder, indentation);
-				if (right.Outcome == Outcome.Failure &&
+				_left.AppendResult(stringBuilder, indentation);
+				if (_right.Outcome == Outcome.Failure &&
 				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
-				    !left.HasSameResultTextAs(right))
+				    !_left.HasSameResultTextAs(_right))
 				{
 					stringBuilder.Append(" and ");
-					right.AppendResult(stringBuilder, indentation);
+					_right.AppendResult(stringBuilder, indentation);
 				}
 			}
-			else if (right.Outcome == Outcome.Failure &&
+			else if (_right.Outcome == Outcome.Failure &&
 			         _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult)
 			{
-				right.AppendResult(stringBuilder, indentation);
-			}
-		}
-
-		public override IEnumerable<Context> GetContexts()
-		{
-			foreach (Context context in left.GetContexts())
-			{
-				yield return context;
-			}
-
-			foreach (Context context in right.GetContexts())
-			{
-				yield return context;
+				_right.AppendResult(stringBuilder, indentation);
 			}
 		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue<TValue>(out TValue? leftValue))
+			if (_left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue<TValue>(out TValue? rightValue))
+			if (_right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
@@ -169,6 +213,20 @@ internal class OrNode : Node
 
 			value = default;
 			return false;
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			_left.Negate();
+			_right.Negate();
+			return this;
 		}
 	}
 }

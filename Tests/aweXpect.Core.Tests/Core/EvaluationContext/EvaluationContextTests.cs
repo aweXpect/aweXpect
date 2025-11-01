@@ -1,5 +1,7 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System.Text;
+using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Results;
 
 namespace aweXpect.Core.Tests.Core.EvaluationContext;
@@ -57,10 +59,10 @@ public class EvaluationContextTests
 	private static async Task<IEvaluationContext> GetSut()
 	{
 #pragma warning disable aweXpect0001
-		IThatVerb<bool> that = (IThatVerb<bool>)That(true);
+		IExpectThat<bool> that = (IExpectThat<bool>)That(true);
 #pragma warning restore aweXpect0001
 		MyContextConstraint constraint = new();
-		await new AndOrResult<bool, IThatVerb<bool>>(
+		await new AndOrResult<bool, IExpectThat<bool>>(
 			that.ExpectationBuilder
 				.AddConstraint((_, _) => constraint),
 			that);
@@ -72,15 +74,14 @@ public class EvaluationContextTests
 	{
 		public IEvaluationContext? Context { get; private set; }
 
-		#region IContextConstraint<bool> Members
-
 		/// <inheritdoc />
 		public ConstraintResult IsMetBy(bool actual, IEvaluationContext context)
 		{
 			Context = context;
-			return new ConstraintResult.Success<bool>(actual, "");
+			return new DummyConstraintResult<bool>(Outcome.Success, actual, "");
 		}
 
-		#endregion
+		/// <inheritdoc />
+		public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null) { }
 	}
 }

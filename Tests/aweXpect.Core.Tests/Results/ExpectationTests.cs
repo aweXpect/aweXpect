@@ -43,15 +43,15 @@ public class ExpectationTests
 	}
 
 	[Fact]
-	public async Task ToString_ShouldForwardToBase()
+	public async Task ToString_ShouldForwardToExpectationBuilder()
 	{
 #pragma warning disable aweXpect0001
-		Expectation sut = That(true).IsTrue();
+		Expectation sut = That(1).IsGreaterThan(0);
 #pragma warning restore aweXpect0001
 
 		string? result = sut.ToString();
 
 		await That(result)
-			.IsEqualTo("aweXpect.Results.AndOrResult`2[System.Boolean,aweXpect.Core.IThat`1[System.Boolean]]");
+			.IsEqualTo("aweXpect.Core.ExpectationBuilder`1[System.Int32]");
 	}
 }

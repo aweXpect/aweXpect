@@ -11,7 +11,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2);
@@ -22,7 +22,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(0);
@@ -36,13 +36,16 @@ public sealed partial class ThatDictionary
 					               2,
 					               3
 					             ]
+
+					             Dictionary:
+					             {[1] = 0, [2] = 0, [3] = 0}
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IDictionary<string, int>? subject = null;
+				Dictionary<string, int>? subject = null;
 
 				async Task Act()
 					=> await That(subject).ContainsKey("foo");
@@ -61,7 +64,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ButValueDoesNotMatch_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("foo");
@@ -75,13 +78,23 @@ public sealed partial class ThatDictionary
 					               "bar"
 					               "foo"
 					                ↑ (expected)
+
+					             Actual:
+					             bar
+
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("bar");
@@ -92,7 +105,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(0).WhoseValue.IsEqualTo("bar");
@@ -106,13 +119,20 @@ public sealed partial class ThatDictionary
 					               2,
 					               3
 					             ]
+
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IDictionary<string, string>? subject = null;
+				Dictionary<string, string>? subject = null;
 
 				async Task Act()
 					=> await That(subject).ContainsKey("foo").WhoseValue.IsEmpty();
@@ -122,6 +142,33 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             contains key "foo" whose value is empty,
 					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WithMultipleFailures_ShouldIncludeCollectionOnlyOnce()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
+
+				async Task Act()
+					=> await That(subject).ContainsKey(4).And.ContainsKey(5);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains key 4 and contains key 5,
+					             but it contained only [
+					               1,
+					               2,
+					               3
+					             ]
+					             
+					             Dictionary:
+					             {
+					               [1] = "foo",
+					               [2] = "bar",
+					               [3] = "baz"
+					             }
 					             """);
 			}
 		}

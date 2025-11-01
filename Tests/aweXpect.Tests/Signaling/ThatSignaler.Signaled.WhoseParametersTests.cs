@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using aweXpect.Core;
 using aweXpect.Signaling;
 
 namespace aweXpect.Tests;
@@ -23,8 +24,11 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             has recorded the callback at least 2 times with x => x > 0 and whose parameters only has unique items,
+					             has recorded the callback at least twice with x => x > 0 and whose parameters only has unique items,
 					             but it was never recorded
+					             
+					             Collection:
+					             []
 					             """);
 			}
 
@@ -59,7 +63,13 @@ public sealed partial class ThatSignaler
 					.WithMessage("""
 					             Expected that signaler
 					             has recorded the callback at least once and whose parameters all satisfy x => x < 1,
-					             but only 0 of 1 did
+					             but none of 1 did
+					             
+					             Not matching items:
+					             [1]
+					             
+					             Collection:
+					             [1]
 					             """);
 			}
 

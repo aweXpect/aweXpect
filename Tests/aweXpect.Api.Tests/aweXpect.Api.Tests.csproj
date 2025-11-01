@@ -5,19 +5,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Remove="xunit"/>
-		<PackageReference Remove="xunit.runner.visualstudio"/>
-		<PackageReference Include="NUnit"/>
-		<PackageReference Include="NUnit.Analyzers"/>
-		<PackageReference Include="NUnit3TestAdapter"/>
-		<PackageReference Include="PublicApiGenerator"/>
+		<PackageReference Remove="xunit" />
+		<PackageReference Remove="xunit.runner.visualstudio" />
+		<PackageReference Include="NUnit" />
+		<PackageReference Include="NUnit.Analyzers" />
+		<PackageReference Include="NUnit3TestAdapter" />
+		<PackageReference Include="PublicApiGenerator" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Expected\"/>
+		<Folder Include="Expected\" />
 	</ItemGroup>
 </Project>

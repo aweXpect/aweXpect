@@ -9,8 +9,59 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class AreEqualTo
+		public sealed partial class AreEqualTo
 		{
+			public sealed class Tests
+			{
+				[Theory]
+				[InlineData(double.NaN, false)]
+				[InlineData(1.0, true)]
+				public async Task DoubleNaNValues_ShouldBeConsideredEqual(double additionalValue, bool expectFailure)
+				{
+					IEnumerable<double> subject = [double.NaN, double.NaN, additionalValue,];
+
+					async Task Act()
+						=> await That(subject).All().AreEqualTo(double.NaN);
+
+					await That(Act).Throws<XunitException>().OnlyIf(expectFailure)
+						.WithMessage("""
+						             Expected that subject
+						             is equal to NaN for all items,
+						             but only 2 of 3 were
+
+						             Not matching items:
+						             [1.0]
+
+						             Collection:
+						             [NaN, NaN, 1.0]
+						             """);
+				}
+
+				[Theory]
+				[InlineData(float.NaN, false)]
+				[InlineData(1.0F, true)]
+				public async Task FloatNaNValues_ShouldBeConsideredEqual(float additionalValue, bool expectFailure)
+				{
+					IEnumerable<float> subject = [float.NaN, float.NaN, additionalValue,];
+
+					async Task Act()
+						=> await That(subject).All().AreEqualTo(float.NaN);
+
+					await That(Act).Throws<XunitException>().OnlyIf(expectFailure)
+						.WithMessage("""
+						             Expected that subject
+						             is equal to NaN for all items,
+						             but only 2 of 3 were
+
+						             Not matching items:
+						             [1.0]
+
+						             Collection:
+						             [NaN, NaN, 1.0]
+						             """);
+				}
+			}
+
 			public sealed class ItemTests
 			{
 				[Fact]
@@ -38,6 +89,24 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but not all were
+
+						             Not matching items:
+						             [2, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -76,6 +145,36 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 5 for all items,
 						             but only 1 of 20 were
+
+						             Not matching items:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               89,
+						               …
+						             ]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               …
+						             ]
 						             """);
 				}
 
@@ -124,6 +223,27 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "item-1" for all items,
 						             but not all were
+
+						             Not matching items:
+						             [
+						               "item-2",
+						               (… and maybe others)
+						             ]
+
+						             Collection:
+						             [
+						               "item-1",
+						               "item-1",
+						               "item-2",
+						               "item-3",
+						               "item-5",
+						               "item-8",
+						               "item-13",
+						               "item-21",
+						               "item-34",
+						               "item-55",
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -162,13 +282,40 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "item-5" for all items,
 						             but only 1 of 10 were
+
+						             Not matching items:
+						             [
+						               "item-1",
+						               "item-1",
+						               "item-2",
+						               "item-3",
+						               "item-8",
+						               "item-13",
+						               "item-21",
+						               "item-34",
+						               "item-55"
+						             ]
+
+						             Collection:
+						             [
+						               "item-1",
+						               "item-1",
+						               "item-2",
+						               "item-3",
+						               "item-5",
+						               "item-8",
+						               "item-13",
+						               "item-21",
+						               "item-34",
+						               "item-55"
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowAllConfigurationsInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo")
@@ -181,14 +328,24 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "foo" ignoring case, white-space and newline style for all items,
-						             but only 0 of 1 were
+						             but none of 1 were
+
+						             Not matching items:
+						             [
+						               "bar"
+						             ]
+
+						             Collection:
+						             [
+						               "bar"
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringCaseInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringCase();
@@ -197,14 +354,24 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "foo" ignoring case for all items,
-						             but only 0 of 1 were
+						             but none of 1 were
+
+						             Not matching items:
+						             [
+						               "bar"
+						             ]
+
+						             Collection:
+						             [
+						               "bar"
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringLeadingWhiteSpaceInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringLeadingWhiteSpace();
@@ -213,14 +380,24 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "foo" ignoring leading white-space for all items,
-						             but only 0 of 1 were
+						             but none of 1 were
+
+						             Not matching items:
+						             [
+						               "bar"
+						             ]
+
+						             Collection:
+						             [
+						               "bar"
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringNewlineStyleInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringNewlineStyle();
@@ -229,14 +406,24 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "foo" ignoring newline style for all items,
-						             but only 0 of 1 were
+						             but none of 1 were
+
+						             Not matching items:
+						             [
+						               "bar"
+						             ]
+
+						             Collection:
+						             [
+						               "bar"
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringTrailingWhiteSpaceInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringTrailingWhiteSpace();
@@ -245,7 +432,17 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "foo" ignoring trailing white-space for all items,
-						             but only 0 of 1 were
+						             but none of 1 were
+
+						             Not matching items:
+						             [
+						               "bar"
+						             ]
+
+						             Collection:
+						             [
+						               "bar"
+						             ]
 						             """);
 				}
 
@@ -254,7 +451,7 @@ public sealed partial class ThatEnumerable
 				[InlineData(false)]
 				public async Task WhenItemsDifferInCase_ShouldSucceedWhenIgnoringCase(bool ignoreCase)
 				{
-					string[] subject = ["foo", "FOO"];
+					string[] subject = ["foo", "FOO",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringCase(ignoreCase);
@@ -264,6 +461,17 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 2 were
+
+						             Not matching items:
+						             [
+						               "FOO"
+						             ]
+
+						             Collection:
+						             [
+						               "foo",
+						               "FOO"
+						             ]
 						             """);
 				}
 
@@ -273,7 +481,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenItemsDifferInLeadingWhiteSpace_ShouldSucceedWhenIgnoringLeadingWhiteSpace(
 					bool ignoreLeadingWhiteSpace)
 				{
-					string[] subject = [" foo", "foo", "\tfoo"];
+					string[] subject = [" foo", "foo", "\tfoo",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo")
@@ -284,6 +492,19 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 3 were
+						             
+						             Not matching items:
+						             [
+						               " foo",
+						               "\tfoo"
+						             ]
+						             
+						             Collection:
+						             [
+						               " foo",
+						               "foo",
+						               "\tfoo"
+						             ]
 						             """);
 				}
 
@@ -293,7 +514,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenItemsDifferInNewlineStyle_ShouldSucceedWhenIgnoringNewlineStyle(
 					bool ignoreNewlineStyle)
 				{
-					string[] subject = ["foo\r\nbar", "foo\nbar", "foo\rbar"];
+					string[] subject = ["foo\r\nbar", "foo\nbar", "foo\rbar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo\nbar").IgnoringNewlineStyle(ignoreNewlineStyle);
@@ -303,7 +524,17 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo\nbar" for all items,
 						             but only 1 of 3 were
-						             """);
+
+						             Not matching items:
+						             [
+						               *
+						             ]
+
+						             Collection:
+						             [
+						               *
+						             ]
+						             """).AsWildcard();
 				}
 
 				[Theory]
@@ -312,7 +543,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenItemsDifferInTrailingWhiteSpace_ShouldSucceedWhenIgnoringTrailingWhiteSpace(
 					bool ignoreTrailingWhiteSpace)
 				{
-					string[] subject = ["foo ", "foo", "foo\t"];
+					string[] subject = ["foo ", "foo", "foo\t",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo")
@@ -323,6 +554,19 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to "foo" for all items,
 						             but only 1 of 3 were
+						             
+						             Not matching items:
+						             [
+						               "foo ",
+						               "foo\t"
+						             ]
+						             
+						             Collection:
+						             [
+						               "foo ",
+						               "foo",
+						               "foo\t"
+						             ]
 						             """);
 				}
 

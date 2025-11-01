@@ -15,6 +15,16 @@ public sealed class FallbackTests
 	}
 
 	[Test]
+	public void OnInconclusive_WhenNotSpecifyingAnyTestFramework_ShouldFallbackToThrowingAnInconclusiveException()
+	{
+		void Act()
+			=> Fail.Inconclusive("my message");
+
+		InconclusiveException? exception = Assert.Throws<InconclusiveException>(Act);
+		Assert.That(exception!.Message, Is.EqualTo("my message"));
+	}
+
+	[Test]
 	public void OnSkip_WhenNotSpecifyingAnyTestFramework_ShouldFallbackToThrowingASkipException()
 	{
 		void Act()

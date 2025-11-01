@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using aweXpect.Core;
 using aweXpect.Signaling;
 
 namespace aweXpect.Tests;
@@ -53,15 +54,16 @@ public sealed partial class ThatSignaler
 						signaler.Signal();
 						signaler.Signal();
 						signaler.Signal();
+						signaler.Signal();
 					});
 
 				async Task Act() =>
-					await That(signaler).DidNotSignal(2.Times());
+					await That(signaler).DidNotSignal(3.Times());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             does not have recorded the callback at least 2 times,
+					             does not have recorded the callback at least 3 times,
 					             but it was recorded ? times
 					             """).AsWildcard();
 			}
@@ -84,8 +86,8 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             does not have recorded the callback at least 2 times,
-					             but it was recorded 2 times
+					             does not have recorded the callback at least twice,
+					             but it was recorded twice
 					             """);
 			}
 

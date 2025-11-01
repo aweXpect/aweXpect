@@ -15,8 +15,8 @@ public static partial class ThatString
 	/// </remarks>
 	public static AndOrResult<string?, IThat<string?>> IsLowerCased(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsLowerCasedConstraint(it)),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsLowerCasedConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -27,41 +27,34 @@ public static partial class ThatString
 	/// </remarks>
 	public static AndOrResult<string, IThat<string?>> IsNotLowerCased(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsNotLowerCasedConstraint(it)),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsLowerCasedConstraint(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsLowerCasedConstraint(string it) : IValueConstraint<string?>
+	private sealed class IsLowerCasedConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<string?>(it, grammars),
+			IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (actual != null && actual == actual.ToLowerInvariant())
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			Actual = actual;
+			Outcome = actual != null && actual == actual.ToLowerInvariant() ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> "is lower-cased";
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is lower-cased");
 
-	private readonly struct IsNotLowerCasedConstraint(string it) : IValueConstraint<string?>
-	{
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual == null || actual != actual.ToLowerInvariant())
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.SingleLine);
 		}
 
-		public override string ToString()
-			=> "is not lower-cased";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not lower-cased");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }

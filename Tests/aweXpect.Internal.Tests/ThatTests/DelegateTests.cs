@@ -5,6 +5,64 @@ namespace aweXpect.Internal.Tests.ThatTests;
 
 public sealed class DelegateTests
 {
+	[Fact]
+	public async Task ForAsyncVoidAction_WhenVerifyingDoesNotThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action @delegate = async () => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).DoesNotThrow();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<Task> instead.");
+	}
+
+	[Fact]
+	public async Task
+		ForAsyncVoidAction_WithCancellationToken_WhenVerifyingDoesNotThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action<CancellationToken> @delegate = async _ => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).DoesNotThrow();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<CancellationToken, Task> instead.");
+	}
+
+	[Fact]
+	public async Task ForAsyncVoidAction_WhenVerifyingDoesThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action @delegate = async () => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).ThrowsException();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<Task> instead.");
+	}
+
+	[Fact]
+	public async Task
+		ForAsyncVoidAction_WithCancellationToken_WhenVerifyingDoesThrow_ShouldThrowInvalidOperationException()
+	{
+		Task incompleteTask = new TaskCompletionSource<bool>().Task;
+		// ReSharper disable once AsyncVoidLambda
+		Action<CancellationToken> @delegate = async _ => await incompleteTask;
+
+		async Task Act()
+			=> await That(@delegate).ThrowsException();
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("Cannot use aweXpect on an async void method: Use Func<CancellationToken, Task> instead.");
+	}
+
 	[Theory]
 	[AutoData]
 	public async Task ShouldReturnValue_FuncTaskValue(int value)
@@ -81,7 +139,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_Action_WhenThrown)}
 			              """);
 	}
@@ -129,7 +187,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_Action_WithCancellationToken_WhenThrown)}
 			              """);
 	}
@@ -162,7 +220,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_FuncTask_WhenThrown)}
 			              """);
 	}
@@ -210,7 +268,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_FuncTask_WithCancellationToken_WhenThrown)}
 			              """);
 	}
@@ -243,7 +301,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_FuncTaskValue_WhenThrown)}
 			              """);
 	}
@@ -292,7 +350,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_FuncTaskValue_WithCancellationToken_WhenThrown)}
 			              """);
 	}
@@ -325,7 +383,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_FuncValue_WhenThrown)}
 			              """);
 	}
@@ -376,7 +434,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that @delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_FuncValue_WithCancellationToken_WhenThrown)}
 			              """);
 	}
@@ -431,7 +489,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that Delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_ValueTask_WhenThrown)}
 			              """);
 	}
@@ -450,7 +508,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that Delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_ValueTask_WithCancellationToken_WhenThrown)}
 			              """);
 	}
@@ -487,7 +545,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that Delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_ValueTaskValue_WhenThrown)}
 			              """);
 	}
@@ -524,7 +582,7 @@ public sealed class DelegateTests
 			.WithMessage($"""
 			              Expected that Delegate
 			              does not throw any exception,
-			              but it did throw a MyException:
+			              but it did throw a DelegateTests.MyException:
 			                {nameof(ShouldSupportDelegate_ValueTaskValue_WithCancellationToken_WhenThrown)}
 			              """);
 	}

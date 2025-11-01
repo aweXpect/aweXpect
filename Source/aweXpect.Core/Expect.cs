@@ -40,6 +40,26 @@ public static class Expect
 
 #if NET8_0_OR_GREATER
 	/// <summary>
+	///     Specify expectations for the current <paramref name="subject" />.
+	/// </summary>
+	public static IThat<SpanWrapper<T>> That<T>(ReadOnlySpan<T> subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new ThatSubject<SpanWrapper<T>>(new ExpectationBuilder<SpanWrapper<T>>(
+			new ValueSource<SpanWrapper<T>>(new SpanWrapper<T>(subject)), doNotPopulateThisValue));
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Specify expectations for the current <paramref name="subject" />.
+	/// </summary>
+	public static IThat<SpanWrapper<T>> That<T>(Span<T> subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new ThatSubject<SpanWrapper<T>>(new ExpectationBuilder<SpanWrapper<T>>(
+			new ValueSource<SpanWrapper<T>>(new SpanWrapper<T>(subject)), doNotPopulateThisValue));
+#endif
+
+#if NET8_0_OR_GREATER
+	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
 	public static IThat<T> That<T>(ValueTask<T> subject,
@@ -55,7 +75,7 @@ public static class Expect
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new(new ExpectationBuilder<DelegateValue>(
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			new DelegateSource(@delegate is null ? null : _ => @delegate()), doNotPopulateThisValue));
+			new DelegateSource(@delegate), doNotPopulateThisValue));
 
 	/// <summary>
 	///     Specify expectations for the current <see cref="Action{CancellationToken}" /> <paramref name="delegate" />.
@@ -171,6 +191,14 @@ public static class Expect
 			new DelegateAsyncValueSource<TValue>(@delegate is null ? null : token => @delegate(token).AsTask()),
 			doNotPopulateThisValue));
 #endif
+
+	/// <summary>
+	///     Specify expectations for the current boolean <paramref name="subject" />.
+	/// </summary>
+	public static ThatBool That(bool subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new(new ExpectationBuilder<bool>(
+			new ValueSource<bool>(subject), doNotPopulateThisValue));
 
 	/// <summary>
 	///     Verifies that all provided <paramref name="expectations" /> are met.

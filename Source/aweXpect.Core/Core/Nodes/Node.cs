@@ -8,6 +8,7 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Nodes;
 
+#pragma warning disable S1694 // https://rules.sonarsource.com/csharp/RSPEC-1694
 internal abstract class Node
 {
 	/// <summary>
@@ -19,8 +20,15 @@ internal abstract class Node
 	///     Add a mapping constraint which maps the value according to the <paramref name="memberAccessor" /> to a member
 	///     and applies this value to the inner expectations.
 	/// </summary>
-	public abstract Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+	public abstract Node AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null);
+
+	/// <summary>
+	///     Add a mapping constraint which maps the value according to the <paramref name="memberAccessor" /> asynchronously
+	///     to a member and applies this value to the inner expectations.
+	/// </summary>
+	public abstract Node AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null);
 
 	/// <summary>
@@ -40,4 +48,10 @@ internal abstract class Node
 	///     Set the <paramref name="becauseReason" /> on the current node.
 	/// </summary>
 	public abstract void SetReason(BecauseReason becauseReason);
+
+	/// <summary>
+	///     Appends the expectation to the <paramref name="stringBuilder" />.
+	/// </summary>
+	public abstract void AppendExpectation(StringBuilder stringBuilder, string? indentation = null);
 }
+#pragma warning restore S1694

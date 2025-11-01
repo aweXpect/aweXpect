@@ -2,6 +2,9 @@
 /Artifacts
 /TestResults
 
+# Build tool cache and temp directories  
+./.nuke/temp/
+
 ## Common IntelliJ Platform excludes
 ##
 ## Get latest from https://github.com/JetBrains/resharper-rider-samples/blob/master/.gitignore

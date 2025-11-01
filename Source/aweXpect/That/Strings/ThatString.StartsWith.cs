@@ -1,4 +1,6 @@
-﻿using aweXpect.Core;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -11,14 +13,14 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject starts with the <paramref name="expected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> StartsWith(
+	public static StringEqualityResult<string?, IThat<string?>> StartsWith(
 		this IThat<string?> source,
 		string expected)
 	{
-		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new StartsWithConstraint(it, expected, options)),
+		StringEqualityOptions options = new StringEqualityOptions().AsPrefix();
+		return new StringEqualityResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new IsEqualToConstraint(expectationBuilder, it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -26,92 +28,15 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject does not start with the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> DoesNotStartWith(
+	public static StringEqualityResult<string?, IThat<string?>> DoesNotStartWith(
 		this IThat<string?> source,
 		string unexpected)
 	{
-		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new DoesNotStartWithConstraint(it, unexpected, options)),
+		StringEqualityOptions options = new StringEqualityOptions().AsPrefix();
+		return new StringEqualityResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new IsEqualToConstraint(expectationBuilder, it, grammars, unexpected, options).Invert()),
 			source,
 			options);
-	}
-
-	private readonly struct StartsWithConstraint(
-		string it,
-		string? expected,
-		StringEqualityOptions options)
-		: IValueConstraint<string?>
-	{
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
-		{
-			if (expected is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{Formatter.Format(actual)} cannot be validated against <null>");
-			}
-
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
-			}
-
-			if (expected.Length > actual.Length)
-			{
-				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} was {Formatter.Format(actual)} and with length {actual.Length} is shorter than the expected length of {expected.Length}");
-			}
-
-			if (options.AreConsideredEqual(actual[..expected.Length], expected))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				$"{it} was {Formatter.Format(actual)}");
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"starts with {Formatter.Format(expected)}{options}";
-	}
-
-	private readonly struct DoesNotStartWithConstraint(
-		string it,
-		string? unexpected,
-		StringEqualityOptions options)
-		: IValueConstraint<string?>
-	{
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
-		{
-			if (unexpected is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{Formatter.Format(actual)} cannot be validated against <null>");
-			}
-
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
-			}
-
-			if (unexpected.Length <= actual.Length &&
-			    options.AreConsideredEqual(actual[..unexpected.Length], unexpected))
-			{
-				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} was {Formatter.Format(actual)}");
-			}
-
-			return new ConstraintResult.Success<string?>(actual, ToString());
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"does not start with {Formatter.Format(unexpected)}{options}";
 	}
 }

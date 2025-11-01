@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using aweXpect.Core;
 using aweXpect.Signaling;
 
 namespace aweXpect.Tests;
@@ -49,6 +50,19 @@ public sealed partial class ThatSignaler
 			}
 
 			[Fact]
+			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+			{
+				Signaler<int> signaler = new();
+
+				async Task Act()
+					=> await That(signaler).DidNotSignal().With(null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("predicate").And
+					.WithMessage("The predicate cannot be null.").AsPrefix();
+			}
+
+			[Fact]
 			public async Task WhenTriggeredMoreOftenMatchingPredicate_ShouldFail()
 			{
 				Signaler<int> signaler = new();
@@ -69,8 +83,8 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             does not have recorded the callback at least 2 times with p => p > 1,
-					             but it was recorded ? times in [
+					             does not have recorded the callback at least twice with p => p > 1,
+					             but it was recorded * in [
 					               1,
 					               2,
 					               *
@@ -99,8 +113,8 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             does not have recorded the callback at least 2 times with p => p > 2,
-					             but it was recorded 2 times in [
+					             does not have recorded the callback at least twice with p => p > 2,
+					             but it was recorded twice in [
 					               1,
 					               2,
 					               3,

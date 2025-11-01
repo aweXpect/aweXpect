@@ -10,17 +10,13 @@ namespace aweXpect.Benchmarks;
 public partial class HappyCaseBenchmarks
 {
 	private readonly string _stringExpectation = "foo";
-	private readonly string _stringSubject = "foo";
+	private readonly string _stringSubject = "FOO";
 
 	[Benchmark]
 	public async Task<string?> String_aweXpect()
-		=> await Expect.That(_stringSubject).IsEqualTo(_stringExpectation);
+		=> await Expect.That(_stringSubject).IsEqualTo(_stringExpectation).IgnoringCase();
 
 	[Benchmark]
 	public AndConstraint<StringAssertions> String_FluentAssertions()
-		=> _stringSubject.Should().Be(_stringExpectation);
-
-	[Benchmark]
-	public async Task<string?> String_TUnit()
-		=> await Assert.That(_stringSubject).IsEqualTo(_stringExpectation);
+		=> _stringSubject.Should().BeEquivalentTo(_stringExpectation, o => o.IgnoringCase());
 }

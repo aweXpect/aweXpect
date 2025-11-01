@@ -16,10 +16,10 @@ public class AndOrWhoseResultTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that sut
-			             is type MyClass whose .Value1 is True and whose .Value2 is True and refers to sut MyClass {
-			               Value1 = False,
-			               Value2 = False
-			             },
+			             is type AndOrWhoseResultTests.MyClass whose .Value1 is True and whose .Value2 is True and refers to AndOrWhoseResultTests.MyClass {
+			                 Value1 = False,
+			                 Value2 = False
+			               },
 			             but .Value1 was False and .Value2 was False
 			             """);
 	}
@@ -45,7 +45,7 @@ public class AndOrWhoseResultTests
 		await That(Act).ThrowsException().OnlyIf(!expectSuccess)
 			.WithMessage($"""
 			              Expected that sut
-			              is type MyClass whose .Value1 is True and whose .Value2 is True,
+			              is type AndOrWhoseResultTests.MyClass whose .Value1 is True and whose .Value2 is True,
 			              but {(value1 ? "" : ".Value1 was False")}{(!value1 && !value2 ? " and " : "")}{(value2 ? "" : ".Value2 was False")}
 			              """);
 	}

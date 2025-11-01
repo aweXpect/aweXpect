@@ -1,4 +1,5 @@
-﻿using aweXpect.Recording;
+﻿using aweXpect.Core;
+using aweXpect.Recording;
 
 namespace aweXpect.Tests;
 
@@ -31,7 +32,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that recording
-					              has recorded the CustomEvent event on sut with string parameter [{position}] s => s == "p1" at least 2 times,
+					              has recorded the CustomEvent event on sut with string parameter [{position}] s => s == "p1" at least twice,
 					              but it was never recorded in [
 					                CustomEvent("p0", "p1", "p2"),
 					                CustomEvent("p0", "p1", "p2")
@@ -56,7 +57,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that recording
-					             has recorded the CustomEvent event on sut with string parameter s => s == "foo" at least 2 times,
+					             has recorded the CustomEvent event on sut with string parameter s => s == "foo" at least twice,
 					             but it was recorded once in [
 					               CustomEvent("foo"),
 					               CustomEvent("bar")

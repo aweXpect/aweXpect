@@ -18,10 +18,12 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equal to subject, because we want to test the failure,
-					             but it was MyClass {
-					               Value = 0
-					             }
+					             is not equal to ThatObject.MyClass {
+					                 Value = 0
+					               }, because we want to test the failure,
+					             but it was ThatObject.MyClass {
+					                 Value = 0
+					               }
 					             """);
 			}
 
@@ -49,7 +51,24 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equal to expected,
+					             is not equal to <null>,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
+			{
+				MyClass? subject = null;
+				MyClass? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -71,8 +90,14 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task SubjectToItself_ShouldFail()
 			{
-				char subject = 'c';
-				char unexpected = 'c';
+				MyStruct? subject = new()
+				{
+					Value = 1,
+				};
+				MyStruct? unexpected = new()
+				{
+					Value = 1,
+				};
 
 				async Task Act()
 					=> await That(subject).IsNotEqualTo(unexpected)
@@ -81,19 +106,29 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equal to unexpected, because we want to test the failure,
-					             but it was 'c'
+					             is not equal to ThatObject.MyStruct {
+					                 Value = 1
+					               }, because we want to test the failure,
+					             but it was ThatObject.MyStruct {
+					                 Value = 1
+					               }
 					             """);
 			}
 
 			[Fact]
 			public async Task SubjectToSomeOtherValue_ShouldSucceed()
 			{
-				char subject = 'x';
-				char expected = 'y';
+				MyStruct? subject = new()
+				{
+					Value = 1,
+				};
+				MyStruct? unexpected = new()
+				{
+					Value = 2,
+				};
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo(expected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -104,8 +139,14 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task SubjectToItself_ShouldFail()
 			{
-				char? subject = 'c';
-				char? unexpected = 'c';
+				MyStruct? subject = new()
+				{
+					Value = 1,
+				};
+				MyStruct? unexpected = new()
+				{
+					Value = 1,
+				};
 
 				async Task Act()
 					=> await That(subject).IsNotEqualTo(unexpected)
@@ -114,19 +155,29 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equal to unexpected, because we want to test the failure,
-					             but it was 'c'
+					             is not equal to ThatObject.MyStruct {
+					                 Value = 1
+					               }, because we want to test the failure,
+					             but it was ThatObject.MyStruct {
+					                 Value = 1
+					               }
 					             """);
 			}
 
 			[Fact]
 			public async Task SubjectToSomeOtherValue_ShouldSucceed()
 			{
-				char? subject = 'x';
-				char? expected = 'y';
+				MyStruct? subject = new()
+				{
+					Value = 1,
+				};
+				MyStruct? unexpected = new()
+				{
+					Value = 2,
+				};
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo(expected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -134,16 +185,16 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task WhenSubjectAndExpectedIsNull_ShouldFail()
 			{
-				char? subject = null;
-				char? expected = null;
+				MyStruct? subject = null;
+				MyStruct? unexpected = null;
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo(expected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equal to expected,
+					             is not equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -151,10 +202,10 @@ public sealed partial class ThatObject
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				char? subject = null;
+				MyStruct? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo('c');
+					=> await That(subject).IsNotEqualTo(new MyStruct());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -184,7 +235,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that sut
-					             is not equal to unexpected,
+					             is not equal to float,
 					             but it was float
 					             """);
 			}

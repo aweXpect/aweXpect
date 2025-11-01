@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -67,7 +68,7 @@ public static partial class ValueFormatters
 	};
 
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
 		this ValueFormatter formatter,
@@ -85,7 +86,7 @@ public static partial class ValueFormatters
 	}
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(
@@ -106,59 +107,117 @@ public static partial class ValueFormatters
 	private static void FormatType(
 		Type value,
 		StringBuilder stringBuilder)
+		=> FormatType(value, stringBuilder, null);
+
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
+	private static void FormatType(
+		Type value,
+		StringBuilder stringBuilder,
+		Type[]? genericArguments)
 	{
-		if (value.IsArray)
+		if (value == typeof(void))
+		{
+			stringBuilder.Append("void");
+		}
+		else if (value.IsGenericParameter)
+		{
+			stringBuilder.Append(value.Name);
+		}
+		else if (value.IsArray)
 		{
 			FormatType(value.GetElementType()!, stringBuilder);
 			stringBuilder.Append("[]");
 		}
-		else if (TryFindPrimitiveAlias(value, out string? alias))
+		else if (!AppendedPrimitiveAlias(value, stringBuilder))
 		{
-			stringBuilder.Append(alias);
-		}
-		else if (value.IsGenericType)
-		{
-			Type genericTypeDefinition = value.GetGenericTypeDefinition();
-			stringBuilder.Append(genericTypeDefinition.Name.SubstringUntilFirst('`'));
-			stringBuilder.Append('<');
-			bool isFirstArgument = true;
-			foreach (Type argument in value.GetGenericArguments())
+			if (value.IsNested && value.DeclaringType is not null)
 			{
-				if (!isFirstArgument)
+				Type[]? declaringTypeGenericArguments = null;
+				if (value.IsGenericType)
 				{
-					stringBuilder.Append(", ");
+					int arity = GetArityOfGenericParameters(value.DeclaringType);
+					declaringTypeGenericArguments = [..value.GenericTypeArguments.Take(arity),];
+					genericArguments = [..(genericArguments ?? value.GenericTypeArguments).Skip(arity),];
 				}
 
-				isFirstArgument = false;
-				FormatType(argument, stringBuilder);
+				FormatType(value.DeclaringType, stringBuilder, declaringTypeGenericArguments);
+				stringBuilder.Append('.');
 			}
 
-			stringBuilder.Append('>');
-		}
-		else
-		{
-			stringBuilder.Append(value.Name);
+			if (value.IsGenericType)
+			{
+				Type genericTypeDefinition = value.GetGenericTypeDefinition();
+				stringBuilder.Append(genericTypeDefinition.Name.SubstringUntilFirst('`'));
+				if (genericArguments?.Length == 0)
+				{
+					return;
+				}
+
+				stringBuilder.Append('<');
+				bool isFirstArgument = true;
+				genericArguments ??= value.GetGenericArguments();
+				foreach (Type? argument in genericArguments)
+				{
+					if (!isFirstArgument)
+					{
+						stringBuilder.Append(", ");
+					}
+
+					isFirstArgument = false;
+					if (!argument.ContainsGenericParameters)
+					{
+						FormatType(argument, stringBuilder);
+					}
+				}
+
+				stringBuilder.Append('>');
+			}
+			else
+			{
+				stringBuilder.Append(value.Name);
+			}
 		}
 	}
+#pragma warning restore S3776
 
-	private static bool TryFindPrimitiveAlias(Type value, [NotNullWhen(true)] out string? alias)
+	private static int GetArityOfGenericParameters(Type type)
+	{
+		int tickIndex = type.Name.LastIndexOf('`');
+		if (tickIndex != -1)
+		{
+			string? arityStr = type.Name[(tickIndex + 1)..];
+			if (int.TryParse(arityStr, NumberStyles.None, CultureInfo.InvariantCulture, out int arity))
+			{
+				return arity;
+			}
+		}
+
+		return 0;
+	}
+
+	private static bool AppendedPrimitiveAlias(Type value, StringBuilder stringBuilder)
 	{
 		if (Aliases.TryGetValue(value, out string? typeAlias))
 		{
-			alias = typeAlias;
+			stringBuilder.Append(typeAlias);
 			return true;
 		}
 
 		Type? underlyingType = Nullable.GetUnderlyingType(value);
 
-		if (underlyingType != null &&
-		    Aliases.TryGetValue(underlyingType, out string? underlyingAlias))
+		if (underlyingType != null)
 		{
-			alias = $"{underlyingAlias}?";
+			if (Aliases.TryGetValue(underlyingType, out string? underlyingAlias))
+			{
+				stringBuilder.Append(underlyingAlias).Append('?');
+				return true;
+			}
+
+			FormatType(underlyingType, stringBuilder);
+			stringBuilder.Append('?');
 			return true;
 		}
 
-		alias = null;
 		return false;
 	}
 }

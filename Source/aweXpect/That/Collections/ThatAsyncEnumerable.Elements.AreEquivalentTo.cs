@@ -23,22 +23,33 @@ public static partial class ThatAsyncEnumerable
 				Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
 				[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		{
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
 			EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();
 			if (options != null)
 			{
 				equivalencyOptions = options(new EquivalencyOptions<TExpected>(equivalencyOptions));
 			}
 
+			expectationBuilder.AddEquivalencyContext(equivalencyOptions);
+
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-					=> new CollectionConstraint<TItem>(
-						it,
+				expectationBuilder.AddConstraint((it, grammars)
+					=> new AsyncCollectionConstraint<TItem>(
+						expectationBuilder,
+						it, grammars,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
-							? $"is equivalent to {Formatter.Format(expected)}"
-							: $"are equivalent to {Formatter.Format(expected)}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"is equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) =>
+									$"are not equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) =>
+									$"is not equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
 						a => equalityOptions.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

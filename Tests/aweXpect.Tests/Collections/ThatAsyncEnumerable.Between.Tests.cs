@@ -24,11 +24,14 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).Between(6).And(8).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             satisfies y => y < 6 for between 6 and 8 items,
-					             but could not verify, because it was cancelled early
+					             but could not verify, because it was already cancelled
+
+					             Collection:
+					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
 			}
 
@@ -57,13 +60,28 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for between 0 and 1 items,
 					             but at least 2 were
+
+					             Collection:
+					             [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsSufficientlyEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo(1);
@@ -74,7 +92,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo(2);
@@ -84,13 +102,16 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 2 for between 3 and 4 items,
 					             but only 2 of 7 were
+
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 				async Task Act()
 					=> await That(subject).Between(1).And(3).AreEqualTo(1);
@@ -99,7 +120,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 1 for between 1 and 3 items,
-					             but at least 4 were
+					             but 4 of 7 were
+
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -125,7 +149,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(0).And(1).AreEqualTo("foo").IgnoringCase();
@@ -134,14 +158,21 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to "foo" ignoring case for between 0 and 1 items,
-					             but at least 2 were
+					             but 2 of 3 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "bar"
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(2).And(3).AreEqualTo("foo");
@@ -152,7 +183,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo("foo");
@@ -162,13 +193,21 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for between 3 and 4 items,
 					             but only 2 of 4 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(0).And(1).AreEqualTo("foo");
@@ -177,7 +216,14 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to "foo" for between 0 and 1 items,
-					             but at least 2 were
+					             but 2 of 3 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 

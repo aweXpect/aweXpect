@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -14,6 +13,8 @@ namespace aweXpect;
 
 public static partial class ThatSignaler
 {
+	private const string Times = " times";
+
 	/// <summary>
 	///     Verifies that the expected callback was signaled at least once.
 	/// </summary>
@@ -21,8 +22,8 @@ public static partial class ThatSignaler
 		this IThat<Signaler> source)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new TriggerConstraint(it, 1, options)),
+		return new SignalCountResult(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint(it, grammars, 1, options)),
 			source,
 			options);
 	}
@@ -34,8 +35,8 @@ public static partial class ThatSignaler
 		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountWhoseResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new TriggerConstraint<TParameter>(it, 1, options)),
+		return new SignalCountWhoseResult<TParameter>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint<TParameter>(it, grammars, 1, options)),
 			source,
 			options);
 	}
@@ -49,8 +50,8 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new TriggerConstraint(it, times.Value, options)),
+		return new SignalCountResult(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint(it, grammars, times.Value, options)),
 			source,
 			options);
 	}
@@ -64,8 +65,8 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountWhoseResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new TriggerConstraint<TParameter>(it, times.Value, options)),
+		return new SignalCountWhoseResult<TParameter>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint<TParameter>(it, grammars, times.Value, options)),
 			source,
 			options);
 	}
@@ -77,8 +78,8 @@ public static partial class ThatSignaler
 		this IThat<Signaler> source)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new NotSignaledConstraint(it, 1, options)),
+		return new SignalCountResult(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint(it, grammars, 1, options).Invert()),
 			source,
 			options);
 	}
@@ -90,8 +91,8 @@ public static partial class ThatSignaler
 		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new NotSignaledConstraint<TParameter>(it, 1, options)),
+		return new SignalCountResult<TParameter>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint<TParameter>(it, grammars, 1, options).Invert()),
 			source,
 			options);
 	}
@@ -105,8 +106,8 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new NotSignaledConstraint(it, times.Value, options)),
+		return new SignalCountResult(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint(it, grammars, times.Value, options).Invert()),
 			source,
 			options);
 	}
@@ -120,251 +121,246 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new NotSignaledConstraint<TParameter>(it, times.Value, options)),
+		return new SignalCountResult<TParameter>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new SignaledConstraint<TParameter>(it, grammars, times.Value, options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct TriggerConstraint(string it, int count, SignalerOptions options)
-		: IAsyncConstraint<Signaler>
+	private sealed class SignaledConstraint(string it, ExpectationGrammars grammars, int count, SignalerOptions options)
+		: ConstraintResult.WithNotNullValue<SignalerResult>(it, grammars), IAsyncConstraint<Signaler>
 	{
 		public async Task<ConstraintResult> IsMetBy(Signaler actual, CancellationToken cancellationToken)
 		{
-			string expectation = count switch
-			{
-				1 => $"has recorded the callback at least once{options}",
-				_ => $"has recorded the callback at least {count} times{options}",
-			};
-
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			if (actual is null)
+			if (actual == null)
 			{
-				return new ConstraintResult.Failure<SignalerResult>(null!, expectation, $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			SignalerResult result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
-				result = await Task.Run(()
+				Actual = await Task.Run(()
 						=> actual.Wait(timeout, cancellationToken),
 					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
-				result = await Task.Run(()
+				Actual = await Task.Run(()
 						=> actual.Wait(amount, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 
-			if (result.IsSuccess)
-			{
-				return new ConstraintResult.Success<SignalerResult>(result, expectation);
-			}
-
-			StringBuilder sb = new();
-			sb.Append(it).Append(" was ");
-			if (result.Count == 0)
-			{
-				sb.Append("never recorded");
-			}
-			else if (result.Count == 1)
-			{
-				sb.Append("only recorded once");
-			}
-			else
-			{
-				sb.Append("only recorded ").Append(result.Count).Append(" times");
-			}
-
-			return new ConstraintResult.Failure<SignalerResult>(result, expectation, sb.ToString());
+			Outcome = Actual.IsSuccess ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
-	}
 
-	private readonly struct TriggerConstraint<TParameter>(string it, int count, SignalerOptions<TParameter> options)
-		: IAsyncConstraint<Signaler<TParameter>>
-	{
-		public async Task<ConstraintResult> IsMetBy(
-			Signaler<TParameter> actual,
-			CancellationToken cancellationToken)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			string expectation = count switch
-			{
-				1 => $"has recorded the callback at least once{options}",
-				_ => $"has recorded the callback at least {count} times{options}",
-			};
-
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<SignalerResult>(null!, expectation, $"{it} was <null>");
-			}
-
-			SignalerOptions<TParameter> o = options;
-			SignalerResult<TParameter> result;
-			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
-				result = await Task.Run(()
-						=> actual.Wait(o.Matches, timeout, cancellationToken),
-					CancellationToken.None);
+				stringBuilder.Append("has recorded the callback at least once");
+			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("has recorded the callback at least twice");
 			}
 			else
 			{
-				int amount = count;
-				result = await Task.Run(()
-						=> actual.Wait(amount, o.Matches, timeout, cancellationToken),
-					CancellationToken.None);
+				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(Times);
 			}
 
-			int actualCount = result.Parameters.Count(p => o.Matches(p));
-
-			if (result.IsSuccess && actualCount >= count)
-			{
-				return new ConstraintResult.Success<SignalerResult<TParameter>>(result, expectation);
-			}
-
-			StringBuilder sb = new();
-			sb.Append(it).Append(" was ");
-			if (actualCount == 0)
-			{
-				sb.Append("never recorded");
-			}
-			else if (actualCount == 1)
-			{
-				sb.Append("only recorded once");
-			}
-			else
-			{
-				sb.Append("only recorded ").Append(actualCount).Append(" times");
-			}
-
-			if (result.Count > 0)
-			{
-				sb.Append(" in ");
-				Formatter.Format(sb, result.Parameters, FormattingOptions.MultipleLines);
-			}
-
-			return new ConstraintResult.Failure<SignalerResult<TParameter>>(result, expectation, sb.ToString());
+			stringBuilder.Append(options);
 		}
-	}
 
-	private readonly struct NotSignaledConstraint(string it, int count, SignalerOptions options)
-		: IAsyncConstraint<Signaler>
-	{
-		public async Task<ConstraintResult> IsMetBy(Signaler actual, CancellationToken cancellationToken)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			string expectation = count switch
+			stringBuilder.Append(It).Append(" was ");
+			if (Actual?.Count == 0)
 			{
-				1 => $"does not have recorded the callback{options}",
-				_ => $"does not have recorded the callback at least {count} times{options}",
-			};
-
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<SignalerResult>(null!, expectation, $"{it} was <null>");
+				stringBuilder.Append("never recorded");
 			}
+			else if (Actual?.Count == 1)
+			{
+				stringBuilder.Append("only recorded once");
+			}
+			else if (Actual?.Count == 2)
+			{
+				stringBuilder.Append("only recorded twice");
+			}
+			else
+			{
+				stringBuilder.Append("only recorded ").Append(Actual?.Count).Append(Times);
+			}
+		}
 
-			SignalerResult result;
-			TimeSpan? timeout = options.Timeout;
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
 			if (count == 1)
 			{
-				result = await Task.Run(()
-						=> actual.Wait(timeout, cancellationToken),
-					CancellationToken.None);
+				stringBuilder.Append("does not have recorded the callback");
+			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("does not have recorded the callback at least twice");
 			}
 			else
 			{
-				int amount = count;
-				result = await Task.Run(()
-						=> actual.Wait(amount, timeout, cancellationToken),
-					CancellationToken.None);
+				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(Times);
 			}
 
-			if (!result.IsSuccess)
-			{
-				return new ConstraintResult.Success<SignalerResult>(result, expectation);
-			}
+			stringBuilder.Append(options);
+		}
 
-			StringBuilder sb = new();
-			sb.Append(it).Append(" was ");
-			if (result.Count == 1)
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			if (Actual?.Count == 1)
 			{
-				sb.Append("recorded once");
+				stringBuilder.Append("recorded once");
+			}
+			else if (Actual?.Count == 2)
+			{
+				stringBuilder.Append("recorded twice");
 			}
 			else
 			{
-				sb.Append("recorded ").Append(result.Count).Append(" times");
+				stringBuilder.Append("recorded ").Append(Actual?.Count).Append(Times);
 			}
-
-			return new ConstraintResult.Failure<SignalerResult>(result, expectation, sb.ToString());
 		}
 	}
 
-	private readonly struct NotSignaledConstraint<TParameter>(
+	private sealed class SignaledConstraint<TParameter>(
 		string it,
+		ExpectationGrammars grammars,
 		int count,
 		SignalerOptions<TParameter> options)
-		: IAsyncConstraint<Signaler<TParameter>>
+		: ConstraintResult.WithNotNullValue<SignalerResult<TParameter>>(it, grammars),
+			IAsyncConstraint<Signaler<TParameter>>
 	{
+		private int _actualCount;
+
 		public async Task<ConstraintResult> IsMetBy(
 			Signaler<TParameter> actual,
 			CancellationToken cancellationToken)
 		{
-			string expectation = count switch
-			{
-				1 => $"does not have recorded the callback{options}",
-				_ => $"does not have recorded the callback at least {count} times{options}",
-			};
-
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			if (actual is null)
+			if (actual == null)
 			{
-				return new ConstraintResult.Failure<SignalerResult>(null!, expectation, $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			SignalerOptions<TParameter> o = options;
-			SignalerResult<TParameter> result;
+
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
-				result = await Task.Run(()
+				Actual = await Task.Run(()
 						=> actual.Wait(o.Matches, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
-				result = await Task.Run(()
+				Actual = await Task.Run(()
 						=> actual.Wait(amount, o.Matches, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 
-			int actualCount = result.Parameters.Count(p => o.Matches(p));
+			_actualCount = Actual.Parameters.Count(p => o.Matches(p));
 
-			if (!result.IsSuccess || actualCount < count)
+			Outcome = Actual.IsSuccess && _actualCount >= count ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (count == 1)
 			{
-				return new ConstraintResult.Success<SignalerResult<TParameter>>(result, expectation);
+				stringBuilder.Append("has recorded the callback at least once");
 			}
-
-			StringBuilder sb = new();
-			sb.Append(it).Append(" was ");
-			if (actualCount == 1)
+			else if (count == 2)
 			{
-				sb.Append("recorded once");
+				stringBuilder.Append("has recorded the callback at least twice");
 			}
 			else
 			{
-				sb.Append("recorded ").Append(actualCount).Append(" times");
+				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(Times);
 			}
 
-			sb.Append(" in ");
-			Formatter.Format(sb, result.Parameters, FormattingOptions.MultipleLines);
+			stringBuilder.Append(options);
+		}
 
-			return new ConstraintResult.Failure<SignalerResult<TParameter>>(result, expectation, sb.ToString());
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			if (_actualCount == 0)
+			{
+				stringBuilder.Append("never recorded");
+			}
+			else if (_actualCount == 1)
+			{
+				stringBuilder.Append("only recorded once");
+			}
+			else if (_actualCount == 2)
+			{
+				stringBuilder.Append("only recorded twice");
+			}
+			else
+			{
+				stringBuilder.Append("only recorded ").Append(_actualCount).Append(Times);
+			}
+
+			if (Actual?.Count > 0)
+			{
+				stringBuilder.Append(" in ");
+				ValueFormatters.Format(Formatter, stringBuilder, Actual.Parameters, FormattingOptions.MultipleLines);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (count == 1)
+			{
+				stringBuilder.Append("does not have recorded the callback");
+			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("does not have recorded the callback at least twice");
+			}
+			else
+			{
+				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(Times);
+			}
+
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			if (_actualCount == 1)
+			{
+				stringBuilder.Append("recorded once");
+			}
+			else if (_actualCount == 2)
+			{
+				stringBuilder.Append("recorded twice");
+			}
+			else
+			{
+				stringBuilder.Append("recorded ").Append(_actualCount).Append(Times);
+			}
+
+			if (Actual?.Count > 0)
+			{
+				stringBuilder.Append(" in ");
+				ValueFormatters.Format(Formatter, stringBuilder, Actual.Parameters, FormattingOptions.MultipleLines);
+			}
 		}
 	}
 }

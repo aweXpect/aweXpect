@@ -24,11 +24,26 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).None().Satisfy(item => item < 0)
 							.WithCancellation(token);
 
-					await That(Act).Throws<XunitException>()
+					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
 						             satisfies item => item < 0 for no items,
-						             but could not verify, because it was cancelled early
+						             but could not verify, because it was already cancelled
+
+						             Collection:
+						             [
+						               0,
+						               1,
+						               2,
+						               3,
+						               4,
+						               5,
+						               6,
+						               7,
+						               8,
+						               9,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -57,13 +72,31 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item == 5 for no items,
 						             but at least one did
+
+						             Matching items:
+						             [5, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 1);
@@ -73,6 +106,21 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item == 1 for no items,
 						             but at least one did
+
+						             Matching items:
+						             [1, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               1,
+						               1,
+						               2,
+						               2,
+						               3,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -90,7 +138,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 42);

@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class Between
+	public sealed partial class Between
 	{
 		public sealed class ItemsTests
 		{
@@ -22,11 +22,26 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Between(6).And(8).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             satisfies y => y < 6 for between 6 and 8 items,
-					             but could not verify, because it was cancelled early
+					             but could not verify, because it was already cancelled
+
+					             Collection:
+					             [
+					               0,
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -55,13 +70,28 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for between 0 and 1 items,
 					             but at least 2 were
+
+					             Collection:
+					             [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsSufficientlyEqualItems_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo(1);
@@ -72,7 +102,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo(2);
@@ -82,13 +112,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 2 for between 3 and 4 items,
 					             but only 2 of 7 were
+
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).Between(1).And(3).AreEqualTo(1);
@@ -98,6 +131,18 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for between 1 and 3 items,
 					             but at least 4 were
+
+					             Collection:
+					             [
+					               1,
+					               1,
+					               1,
+					               1,
+					               2,
+					               2,
+					               3,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -123,7 +168,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(0).And(1).AreEqualTo("foo").IgnoringCase();
@@ -133,13 +178,21 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for between 0 and 1 items,
 					             but at least 2 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "bar",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(2).And(3).AreEqualTo("foo");
@@ -150,7 +203,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo("foo");
@@ -160,13 +213,21 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for between 3 and 4 items,
 					             but only 2 of 4 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(0).And(1).AreEqualTo("foo");
@@ -176,6 +237,14 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to "foo" for between 0 and 1 items,
 					             but at least 2 were
+
+					             Collection:
+					             [
+					               "foo",
+					               "foo",
+					               "bar",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 

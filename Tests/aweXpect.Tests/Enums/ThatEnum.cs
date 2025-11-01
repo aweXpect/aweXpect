@@ -1,11 +1,13 @@
 ﻿namespace aweXpect.Tests;
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed partial class ThatEnum
 {
 	public enum EnumLong : long
 	{
 		Int64Max = long.MaxValue,
 		Int64LessOne = long.MaxValue - 1,
+		Int64LessTwo = long.MaxValue - 2,
 	}
 
 	public enum EnumULong : ulong

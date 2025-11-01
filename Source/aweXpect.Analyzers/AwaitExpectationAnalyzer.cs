@@ -14,7 +14,7 @@ namespace aweXpect.Analyzers;
 public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 {
 	/// <inheritdoc />
-	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [Rules.AwaitExpectationRule];
+	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [Rules.AwaitExpectationRule,];
 
 	/// <inheritdoc />
 	public override void Initialize(AnalysisContext context)
@@ -53,24 +53,24 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 
 	private static bool IsAwaitedOrVerifyCalled(IInvocationOperation invocationOperation)
 	{
-		IOperation? parent = invocationOperation.Parent;
+		IOperation? operation = invocationOperation.Parent;
 
-		while (parent != null)
+		while (operation != null)
 		{
-			if (parent is IBlockOperation or IDelegateCreationOperation &&
-			    parent.SemanticModel != null)
+			if (operation.Parent is IBlockOperation or IDelegateCreationOperation &&
+			    operation.SemanticModel != null)
 			{
-				ExpressionSyntaxWalker walker = new(parent.SemanticModel);
-				walker.Visit(parent.Syntax);
+				ExpressionSyntaxWalker walker = new(operation.SemanticModel);
+				walker.Visit(operation.Syntax);
 				return walker.IsVerifyCalled;
 			}
 
-			if (parent is IAwaitOperation)
+			if (operation is IAwaitOperation)
 			{
 				return true;
 			}
 
-			parent = parent.Parent;
+			operation = operation.Parent;
 		}
 
 		return false;
@@ -87,20 +87,22 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 				return;
 			}
 
-			if (IsVerifyMatch(semanticModel, node, 0) ||
+			if (IsVerifyMatch(semanticModel, node) ||
 			    (node is MemberAccessExpressionSyntax memberAccessExpressionSyntax &&
-			     IsVerifyMatch(semanticModel, memberAccessExpressionSyntax.Name, 1)))
+			     IsVerifyMatch(semanticModel, memberAccessExpressionSyntax.Name)))
 			{
 				IsVerifyCalled = true;
 			}
 
 			base.Visit(node);
 
-			static bool IsVerifyMatch(SemanticModel semanticModel, SyntaxNode syntaxNode, int parameterCount)
+			static bool IsVerifyMatch(SemanticModel semanticModel, SyntaxNode syntaxNode)
 				=> syntaxNode is IdentifierNameSyntax nameSyntax &&
 				   semanticModel.GetSymbolInfo(nameSyntax).Symbol is IMethodSymbol methodSymbol &&
-				   methodSymbol.MatchesFullName("aweXpect", "Synchronous", "Synchronously", "Verify") &&
-				   methodSymbol.Parameters.Length == parameterCount;
+				   (methodSymbol.MatchesFullName("aweXpect", "Synchronous",
+					    "Synchronously", "Verify") ||
+				    methodSymbol.MatchesFullName("aweXpect", "Synchronous",
+					    "SynchronouslyExtensions", "VerifySynchronously"));
 		}
 	}
 }

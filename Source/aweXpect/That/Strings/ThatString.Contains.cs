@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -16,11 +19,17 @@ public static partial class ThatString
 		this IThat<string?> source,
 		string expected)
 	{
+		if (expected == string.Empty)
+		{
+			// ReSharper disable once LocalizableElement
+			throw new ArgumentException("The 'expected' string cannot be empty.", nameof(expected));
+		}
+
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ContainsConstraint(it, expected, quantifier, options)),
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new ContainsConstraint(it, grammars, expected, quantifier, options)),
 			source,
 			quantifier,
 			options);
@@ -29,47 +38,91 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject contains the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> DoesNotContain(
+	public static StringEqualityTypeCountResult<string?, IThat<string?>> DoesNotContain(
 		this IThat<string?> source,
 		string unexpected)
 	{
+		if (unexpected == string.Empty)
+		{
+			// ReSharper disable once LocalizableElement
+			throw new ArgumentException("The 'unexpected' string cannot be empty.", nameof(unexpected));
+		}
+
 		Quantifier quantifier = new();
-		quantifier.Exactly(0);
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ContainsConstraint(it, unexpected, quantifier, options)),
+		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new ContainsConstraint(it, grammars, unexpected, quantifier, options).Invert()),
 			source,
+			quantifier,
 			options);
 	}
 
-	private readonly struct ContainsConstraint(
+	private sealed class ContainsConstraint(
 		string it,
-		string expected,
+		ExpectationGrammars grammars,
+		string? expected,
 		Quantifier quantifier,
 		StringEqualityOptions options)
-		: IValueConstraint<string?>
+		: ConstraintResult(grammars),
+			IAsyncConstraint<string?>
 	{
+		private string? _actual;
+		private int _actualCount;
+		private bool _isNegated;
+
 		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
+		public async Task<ConstraintResult> IsMetBy(string? actual, CancellationToken cancellationToken)
 		{
-			if (actual is null)
+			_actual = actual;
+			if (actual is null || expected is null)
 			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			int actualCount = CountOccurrences(actual, expected, options);
-			if (quantifier.Check(actualCount, true) == true)
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				$"{it} contained it {actualCount} times in {Formatter.Format(actual)}");
+			_actualCount = await CountOccurrences(actual, expected, options);
+			Outcome = quantifier.Check(_actualCount, true) ?? _isNegated ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		private static int CountOccurrences(string actual, string expected,
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (quantifier.IsNever)
+			{
+				stringBuilder.Append("does not contain ");
+				Formatter.Format(stringBuilder, expected);
+			}
+			else if (_isNegated)
+			{
+				stringBuilder.Append("does not contain ");
+				Formatter.Format(stringBuilder, expected);
+				stringBuilder.Append(' ').Append(quantifier.ToNegatedString());
+			}
+			else
+			{
+				stringBuilder.Append("contains ");
+				Formatter.Format(stringBuilder, expected);
+				stringBuilder.Append(' ').Append(quantifier);
+			}
+
+			stringBuilder.Append(options);
+		}
+
+		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(string));
+		}
+
+		private static async Task<int> CountOccurrences(string actual, string expected,
 			StringEqualityOptions comparer)
 		{
 			if (expected.Length > actual.Length)
@@ -81,7 +134,7 @@ public static partial class ThatString
 			int index = 0;
 			while (index < actual.Length)
 			{
-				if (comparer.AreConsideredEqual(
+				if (await comparer.AreConsideredEqual(
 					    actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
 					    expected))
 				{
@@ -97,16 +150,51 @@ public static partial class ThatString
 			return count;
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			string quantifierString = quantifier.ToString();
-			if (quantifierString == "never")
+			if (_actual is null)
 			{
-				return $"does not contain {Formatter.Format(expected)}{options}";
+				stringBuilder.ItWasNull(it);
 			}
+			else if (expected is null)
+			{
+				Formatter.Format(stringBuilder, _actual);
+				stringBuilder.Append(" cannot be validated against <null>");
+			}
+			else
+			{
+				if (_actualCount == 0)
+				{
+					stringBuilder.Append(it).Append(" did not contain it in ");
+				}
+				else if (_actualCount == 1)
+				{
+					stringBuilder.Append(it).Append(" contained it once in ");
+				}
+				else if (_actualCount == 2)
+				{
+					stringBuilder.Append(it).Append(" contained it twice in ");
+				}
+				else
+				{
+					stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
+				}
 
-			return $"contains {Formatter.Format(expected)} {quantifier}{options}";
+				Formatter.Format(stringBuilder, _actual);
+			}
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
 		}
 	}
 }

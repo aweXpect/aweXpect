@@ -51,12 +51,12 @@ public sealed partial class ThatDelegate
 				Action action = () => { };
 
 				async Task<Exception> Act()
-					=> await That(action).ThrowsException();
+					=> await That(action).ThrowsException().Because("it should throw");
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception,
+					             throws an exception, because it should throw,
 					             but it did not throw any exception
 					             """);
 			}

@@ -27,6 +27,12 @@ public partial class AwexpectCustomization
 		internal SettingsCustomization(IAwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
+			DefaultCheckInterval = new CustomizationValue<TimeSpan>(
+				() => Get().DefaultCheckInterval,
+				v => Update(p => p with
+				{
+					DefaultCheckInterval = v,
+				}));
 			DefaultSignalerTimeout = new CustomizationValue<TimeSpan>(
 				() => Get().DefaultSignalerTimeout,
 				v => Update(p => p with
@@ -46,6 +52,9 @@ public partial class AwexpectCustomization
 					TestCancellation = v,
 				}));
 		}
+
+		/// <inheritdoc cref="SettingsCustomizationValue.DefaultCheckInterval" />
+		public ICustomizationValueSetter<TimeSpan> DefaultCheckInterval { get; }
 
 		/// <inheritdoc cref="SettingsCustomizationValue.DefaultSignalerTimeout" />
 		public ICustomizationValueSetter<TimeSpan> DefaultSignalerTimeout { get; }
@@ -75,6 +84,11 @@ public partial class AwexpectCustomization
 		///     If set, applies the cancellation logic for all test.
 		/// </summary>
 		public TestCancellation? TestCancellation { get; init; }
+
+		/// <summary>
+		///     The default interval for repeatedly checking the condition on an object.
+		/// </summary>
+		public TimeSpan DefaultCheckInterval { get; init; } = TimeSpan.FromMilliseconds(100);
 
 		/// <summary>
 		///     The default timeout for the <see cref="Signaler" />.

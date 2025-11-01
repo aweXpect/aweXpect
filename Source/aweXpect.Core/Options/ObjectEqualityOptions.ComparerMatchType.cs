@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
@@ -10,7 +11,7 @@ public partial class ObjectEqualityOptions<TSubject>
 	/// </summary>
 	public ObjectEqualityOptions<TSubject> Using(IEqualityComparer<object> comparer)
 	{
-		_matchType = new ComparerMatchType(comparer);
+		MatchType = new ComparerMatchType(comparer);
 		return this;
 	}
 
@@ -19,16 +20,21 @@ public partial class ObjectEqualityOptions<TSubject>
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
-			=> comparer.Equals(actual, expected);
+#if NET8_0_OR_GREATER
+		public ValueTask<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+			=> ValueTask.FromResult(comparer.Equals(actual, expected));
+#else
+		public Task<bool> AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+			=> Task.FromResult(comparer.Equals(actual, expected));
+#endif
 
-		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
-		public string GetExpectation(string expected, bool negate = false)
-			=> $"is {(negate ? "not " : "")}equal to {expected}" + ToString();
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
+		public string GetExpectation(string expected, ExpectationGrammars grammars)
+			=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equal to {expected}" + ToString();
 
-		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
-		public string GetExtendedFailure(string it, object? actual, object? expected)
-			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
+		public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.Indented())}";
 
 		/// <inheritdoc cref="object.ToString()" />
 		public override string ToString()

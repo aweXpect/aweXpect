@@ -13,8 +13,8 @@ public static partial class ThatNullableTimeSpan
 	/// </summary>
 	public static AndOrResult<TimeSpan?, IThat<TimeSpan?>> IsNegative(this IThat<TimeSpan?> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsNegativeConstraint(it)),
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsNegativeConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -23,43 +23,34 @@ public static partial class ThatNullableTimeSpan
 	public static AndOrResult<TimeSpan?, IThat<TimeSpan?>> IsNotNegative(
 		this IThat<TimeSpan?> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsNotNegativeConstraint(it)),
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsNegativeConstraint(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsNegativeConstraint(string it)
-		: IValueConstraint<TimeSpan?>
+	private sealed class IsNegativeConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<TimeSpan?>(it, grammars),
+			IValueConstraint<TimeSpan?>
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)
 		{
-			if (actual < TimeSpan.Zero)
-			{
-				return new ConstraintResult.Success<TimeSpan?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			Actual = actual;
+			Outcome = actual < TimeSpan.Zero ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> "is negative";
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is negative");
 
-	private readonly struct IsNotNegativeConstraint(string it)
-		: IValueConstraint<TimeSpan?>
-	{
-		public ConstraintResult IsMetBy(TimeSpan? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual >= TimeSpan.Zero)
-			{
-				return new ConstraintResult.Success<TimeSpan?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
 		}
 
-		public override string ToString()
-			=> "is not negative";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not negative");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }

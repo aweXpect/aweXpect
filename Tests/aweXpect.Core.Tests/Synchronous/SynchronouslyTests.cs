@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using aweXpect.Core.Tests.TestHelpers;
-using aweXpect.Synchronous;
+using static aweXpect.Synchronous.Synchronously;
 
 // ReSharper disable InvokeAsExtensionMethod
 
@@ -17,7 +17,7 @@ public class SynchronouslyTests
 		};
 
 		int value = subject.Bar;
-		Synchronously.Verify(That(() => ThrowIf(value != 3)).DoesNotThrow());
+		Verify(That(() => ThrowIf(value != 3)).DoesNotThrow());
 	}
 
 	[Fact]
@@ -28,9 +28,9 @@ public class SynchronouslyTests
 			Bar = 3,
 		};
 		int value = subject.Bar;
-		void Act() => Synchronously.Verify(That(() => ThrowIf(value == 3)).DoesNotThrow());
+		void Act() => Verify(That(() => ThrowIf(value == 3)).DoesNotThrow());
 
-		Synchronously.Verify(That(Act).Throws<XunitException>()
+		Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that () => ThrowIf(value == 3)
 			             does not throw any exception,
@@ -47,13 +47,13 @@ public class SynchronouslyTests
 			Bar = 3,
 		};
 		int value = subject.Bar;
-		void Act() => Synchronously.Verify(That(value).IsEqualTo(2));
+		void Act() => Verify(That(value).IsEqualTo(2));
 
-		Synchronously.Verify(That(Act).Throws<XunitException>()
+		Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that value
 			             is equal to 2,
-			             but it was 3
+			             but it was 3 which differs by 1
 			             """));
 	}
 
@@ -65,9 +65,9 @@ public class SynchronouslyTests
 			Bar = 3,
 		};
 
-		int value = Synchronously.Verify(That(subject.Bar).IsEqualTo(3));
+		int value = Verify(That(subject.Bar).IsEqualTo(3));
 
-		Synchronously.Verify(That(value).IsEqualTo(3));
+		Verify(That(value).IsEqualTo(3));
 	}
 
 	private static void ThrowIf(bool condition, [CallerMemberName] string message = "")

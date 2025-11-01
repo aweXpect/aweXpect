@@ -1,5 +1,6 @@
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
+using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 
@@ -9,19 +10,20 @@ namespace Build;
 	"Build",
 	GitHubActionsImage.UbuntuLatest,
 	AutoGenerate = false,
-	ImportSecrets = [nameof(GithubToken)]
+	ImportSecrets = [nameof(GithubToken),]
 )]
 partial class Build : NukeBuild
 {
-	[Parameter("Github Token")] readonly string GithubToken;
-
 	/// <summary>
 	///     Set this flag temporarily when you introduce breaking changes in the core library.
 	///     This will change the build pipeline to only build and publish the aweXpect.Core or aweXpect package.
 	///     <para />
-	///     Afterward you can update the package reference in `Directory.Packages.props` and reset this flag.
+	///     Afterward, you can update the package reference in `Directory.Packages.props` and reset this flag.
 	/// </summary>
 	readonly BuildScope BuildScope = BuildScope.Default;
+
+	[Parameter("Github Token")] readonly string GithubToken;
+	[GitRepository] readonly GitRepository Repository;
 
 	[Solution(GenerateProjects = true)] readonly Solution Solution;
 
@@ -33,5 +35,4 @@ partial class Build : NukeBuild
 	GitHubActions GitHubActions => GitHubActions.Instance;
 
 	public static int Main() => Execute<Build>(x => x.Pack, x => x.ApiChecks, x => x.Benchmarks, x => x.CodeAnalysis);
-
 }

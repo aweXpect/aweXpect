@@ -22,7 +22,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((byte)1, (byte)2)]
 			[InlineData((byte)1, (byte)0)]
-			public async Task ForByte_WhenValueIsDifferentToUnexpected_ShouldSucceed(byte subject,
+			public async Task ForByte_WhenValueIsDifferentFromUnexpected_ShouldSucceed(byte subject,
 				byte? unexpected)
 			{
 				async Task Act()
@@ -62,7 +62,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForDecimal_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForDecimal_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				double subjectValue, double unexpectedValue)
 			{
 				decimal subject = new(subjectValue);
@@ -151,7 +151,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForDouble_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForDouble_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				double subject, double unexpected)
 			{
 				async Task Act()
@@ -218,7 +218,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((float)1.1, (float)2.1)]
 			[InlineData((float)1.1, (float)0.1)]
-			public async Task ForFloat_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForFloat_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				float subject, float unexpected)
 			{
 				async Task Act()
@@ -259,7 +259,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1, 2)]
 			[InlineData(2, 1)]
-			public async Task ForInt_WhenValueIsDifferentToUnexpected_ShouldSucceed(int subject,
+			public async Task ForInt_WhenValueIsDifferentFromUnexpected_ShouldSucceed(int subject,
 				int? unexpected)
 			{
 				async Task Act()
@@ -283,6 +283,59 @@ public sealed partial class ThatNumber
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[AutoData]
+			public async Task ForInt128_WhenUnexpectedIsNull_ShouldSucceed(int subjectValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 2)]
+			[InlineData(2, 1)]
+			public async Task ForInt128_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? unexpected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 1)]
+			public async Task ForInt128_WhenValueIsEqualToUnexpected_ShouldFail(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? unexpected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not equal to {Formatter.Format(unexpected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
 
 			[Theory]
 			[InlineData(1L, 1)]
@@ -316,7 +369,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((long)1, (long)2)]
 			[InlineData((long)1, (long)0)]
-			public async Task ForLong_WhenValueIsDifferentToUnexpected_ShouldSucceed(long subject,
+			public async Task ForLong_WhenValueIsDifferentFromUnexpected_ShouldSucceed(long subject,
 				long? unexpected)
 			{
 				async Task Act()
@@ -344,7 +397,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((byte)1, (byte)2)]
 			[InlineData((byte)1, (byte)0)]
-			public async Task ForNullableByte_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableByte_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				byte? subject, byte? unexpected)
 			{
 				async Task Act()
@@ -397,7 +450,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForNullableDecimal_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableDecimal_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				double? subjectValue, double? unexpectedValue)
 			{
 				decimal? subject = subjectValue == null ? null : new decimal(subjectValue.Value);
@@ -445,7 +498,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForNullableDouble_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableDouble_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				double? subject, double? unexpected)
 			{
 				async Task Act()
@@ -485,7 +538,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((float)1.1, (float)2.1)]
 			[InlineData((float)1.1, (float)0.1)]
-			public async Task ForNullableFloat_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableFloat_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				float? subject, float? unexpected)
 			{
 				async Task Act()
@@ -513,7 +566,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1, 2)]
 			[InlineData(1, 0)]
-			public async Task ForNullableInt_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableInt_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				int? subject, int? unexpected)
 			{
 				async Task Act()
@@ -551,10 +604,63 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 
+#if NET8_0_OR_GREATER
+			[Theory]
+			[AutoData]
+			public async Task ForNullableInt128_WhenUnexpectedIsNull_ShouldSucceed(int subjectValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 2)]
+			[InlineData(2, 1)]
+			public async Task ForNullableInt128_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? unexpected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 1)]
+			public async Task ForNullableInt128_WhenValueIsEqualToUnexpected_ShouldFail(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? unexpected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not equal to {Formatter.Format(unexpected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
+
 			[Theory]
 			[InlineData((long)1, (long)2)]
 			[InlineData((long)1, (long)0)]
-			public async Task ForNullableLong_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableLong_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				long? subject, long? unexpected)
 			{
 				async Task Act()
@@ -595,7 +701,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((sbyte)1, (sbyte)2)]
 			[InlineData((sbyte)1, (sbyte)0)]
-			public async Task ForNullableSbyte_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableSbyte_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				sbyte? subject, sbyte? unexpected)
 			{
 				async Task Act()
@@ -636,7 +742,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((short)1, (short)2)]
 			[InlineData((short)1, (short)0)]
-			public async Task ForNullableShort_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableShort_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				short? subject, short? unexpected)
 			{
 				async Task Act()
@@ -677,7 +783,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((uint)1, (uint)2)]
 			[InlineData((uint)1, (uint)0)]
-			public async Task ForNullableUint_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableUint_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				uint? subject, uint? unexpected)
 			{
 				async Task Act()
@@ -718,7 +824,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ulong)1, (ulong)2)]
 			[InlineData((ulong)1, (ulong)0)]
-			public async Task ForNullableUlong_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableUlong_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				ulong? subject, ulong? unexpected)
 			{
 				async Task Act()
@@ -759,7 +865,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ushort)1, (ushort)2)]
 			[InlineData((ushort)1, (ushort)0)]
-			public async Task ForNullableUshort_WhenValueIsDifferentToUnexpected_ShouldSucceed(
+			public async Task ForNullableUshort_WhenValueIsDifferentFromUnexpected_ShouldSucceed(
 				ushort? subject, ushort? unexpected)
 			{
 				async Task Act()
@@ -813,7 +919,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((sbyte)1, (sbyte)2)]
 			[InlineData((sbyte)1, (sbyte)0)]
-			public async Task ForSbyte_WhenValueIsDifferentToUnexpected_ShouldSucceed(sbyte subject,
+			public async Task ForSbyte_WhenValueIsDifferentFromUnexpected_ShouldSucceed(sbyte subject,
 				sbyte? unexpected)
 			{
 				async Task Act()
@@ -854,7 +960,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((short)1, (short)2)]
 			[InlineData((short)1, (short)0)]
-			public async Task ForShort_WhenValueIsDifferentToUnexpected_ShouldSucceed(short subject,
+			public async Task ForShort_WhenValueIsDifferentFromUnexpected_ShouldSucceed(short subject,
 				short? unexpected)
 			{
 				async Task Act()
@@ -895,7 +1001,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((uint)1, (uint)2)]
 			[InlineData((uint)1, (uint)0)]
-			public async Task ForUint_WhenValueIsDifferentToUnexpected_ShouldSucceed(uint subject,
+			public async Task ForUint_WhenValueIsDifferentFromUnexpected_ShouldSucceed(uint subject,
 				uint? unexpected)
 			{
 				async Task Act()
@@ -936,7 +1042,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ulong)1, (ulong)2)]
 			[InlineData((ulong)1, (ulong)0)]
-			public async Task ForUlong_WhenValueIsDifferentToUnexpected_ShouldSucceed(ulong subject,
+			public async Task ForUlong_WhenValueIsDifferentFromUnexpected_ShouldSucceed(ulong subject,
 				ulong? unexpected)
 			{
 				async Task Act()
@@ -977,7 +1083,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ushort)1, (ushort)2)]
 			[InlineData((ushort)1, (ushort)0)]
-			public async Task ForUshort_WhenValueIsDifferentToUnexpected_ShouldSucceed(ushort subject,
+			public async Task ForUshort_WhenValueIsDifferentFromUnexpected_ShouldSucceed(ushort subject,
 				ushort? unexpected)
 			{
 				async Task Act()
@@ -1000,6 +1106,149 @@ public sealed partial class ThatNumber
 					              is not equal to {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+		}
+
+		public sealed class OverflowTests
+		{
+			[Fact]
+			public async Task DecimalDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(decimal.MinValue).IsNotEqualTo(decimal.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task DoubleDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(double.MinValue).IsNotEqualTo(double.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task FloatDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(float.MinValue).IsNotEqualTo(float.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IntDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(int.MinValue).IsNotEqualTo(int.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task LongDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(long.MinValue).IsNotEqualTo(long.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableDecimalDifferenceOverflow_ShouldSucceed()
+			{
+				decimal? minValue = decimal.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(decimal.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableDoubleDifferenceOverflow_ShouldSucceed()
+			{
+				double? minValue = double.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(double.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableFloatDifferenceOverflow_ShouldSucceed()
+			{
+				float? minValue = float.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(float.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableIntDifferenceOverflow_ShouldSucceed()
+			{
+				int? minValue = int.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(int.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableLongDifferenceOverflow_ShouldSucceed()
+			{
+				long? minValue = long.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(long.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableSbyteDifferenceOverflow_ShouldSucceed()
+			{
+				sbyte? minValue = sbyte.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(sbyte.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableShortDifferenceOverflow_ShouldSucceed()
+			{
+				short? minValue = short.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(short.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task SbyteDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(sbyte.MinValue).IsNotEqualTo(sbyte.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task ShortDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(short.MinValue).IsNotEqualTo(short.MaxValue);
+
+				await That(Action).DoesNotThrow();
 			}
 		}
 	}

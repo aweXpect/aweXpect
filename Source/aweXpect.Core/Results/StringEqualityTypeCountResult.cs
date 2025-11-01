@@ -17,11 +17,38 @@ public class StringEqualityTypeCountResult<TType, TThat>(
 	private readonly StringEqualityOptions _options = options;
 
 	/// <summary>
+	///     Interprets the expected <see langword="string" /> to be exactly equal.
+	/// </summary>
+	public StringCountResult<TType, TThat> Exactly()
+	{
+		_options.Exactly();
+		return this;
+	}
+
+	/// <summary>
+	///     Interprets the expected <see langword="string" /> as a prefix, so that the actual value starts with it.
+	/// </summary>
+	public StringCountResult<TType, TThat> AsPrefix()
+	{
+		_options.AsPrefix();
+		return this;
+	}
+
+	/// <summary>
 	///     Interprets the expected <see langword="string" /> as <see cref="Regex" /> pattern.
 	/// </summary>
 	public StringCountResult<TType, TThat> AsRegex()
 	{
 		_options.AsRegex();
+		return this;
+	}
+
+	/// <summary>
+	///     Interprets the expected <see langword="string" /> as a suffix, so that the actual value ends with it.
+	/// </summary>
+	public StringCountResult<TType, TThat> AsSuffix()
+	{
+		_options.AsSuffix();
 		return this;
 	}
 
@@ -32,15 +59,6 @@ public class StringEqualityTypeCountResult<TType, TThat>(
 	public StringCountResult<TType, TThat> AsWildcard()
 	{
 		_options.AsWildcard();
-		return this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> to be exactly equal.
-	/// </summary>
-	public StringCountResult<TType, TThat> Exactly()
-	{
-		_options.Exactly();
 		return this;
 	}
 }

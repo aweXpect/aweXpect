@@ -33,7 +33,7 @@ public sealed partial class ThatEventRecording
 					             Expected that recording
 					             has recorded the PropertyChanged event on sut with sender s => s == sender at least once,
 					             but it was never recorded in [
-					               PropertyChanged(PropertyChangedClass {
+					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 2
 					                 }, PropertyChangedEventArgs {
 					                   PropertyName = "MyValue"

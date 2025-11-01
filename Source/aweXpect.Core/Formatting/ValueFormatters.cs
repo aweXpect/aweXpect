@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 
@@ -37,117 +39,126 @@ public static partial class ValueFormatters
 		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
+			return;
 		}
-		else if (value is bool boolValue)
+
+		if (!ValueFormatter.RegisteredValueFormatters.IsEmpty &&
+		    ValueFormatter.RegisteredValueFormatters.Any(item
+			    => item.Value.TryFormat(stringBuilder, value, options)))
 		{
-			formatter.Format(stringBuilder, boolValue, options);
+			return;
 		}
-		else if (value is string stringValue)
+
+		switch (value)
 		{
-			formatter.Format(stringBuilder, stringValue, options);
-		}
-		else if (value is char charValue)
-		{
-			formatter.Format(stringBuilder, charValue, options);
-		}
-		else if (value is Type typeValue)
-		{
-			formatter.Format(stringBuilder, typeValue, options);
-		}
-		else if (value is IEnumerable enumerableValue)
-		{
-			formatter.Format(stringBuilder, enumerableValue, options);
-		}
-		else if (value is HttpStatusCode httpStatusCodeValue)
-		{
-			formatter.Format(stringBuilder, httpStatusCodeValue, options);
-		}
-		else if (value is DateTime dateTimeValue)
-		{
-			formatter.Format(stringBuilder, dateTimeValue, options);
-		}
-		else if (value is DateTimeOffset dateTimeOffsetValue)
-		{
-			formatter.Format(stringBuilder, dateTimeOffsetValue, options);
-		}
-		else if (value is TimeSpan timeSpanValue)
-		{
-			formatter.Format(stringBuilder, timeSpanValue, options);
-		}
+			case bool boolValue:
+				Format(formatter, stringBuilder, boolValue, options);
+				return;
+			case string stringValue:
+				Format(formatter, stringBuilder, stringValue, options);
+				return;
+			case char charValue:
+				Format(formatter, stringBuilder, charValue, options);
+				return;
+			case Type typeValue:
+				Format(formatter, stringBuilder, typeValue, options);
+				return;
+			case IEnumerable enumerableValue:
+				Format(formatter, stringBuilder, enumerableValue, options);
+				return;
+			case HttpStatusCode httpStatusCodeValue:
+				Format(formatter, stringBuilder, httpStatusCodeValue, options);
+				return;
+			case DateTime dateTimeValue:
+				Format(formatter, stringBuilder, dateTimeValue, options);
+				return;
+			case DateTimeOffset dateTimeOffsetValue:
+				Format(formatter, stringBuilder, dateTimeOffsetValue, options);
+				return;
+			case TimeSpan timeSpanValue:
+				Format(formatter, stringBuilder, timeSpanValue, options);
+				return;
 #if NET8_0_OR_GREATER
-		else if (value is DateOnly dateOnlyValue)
-		{
-			formatter.Format(stringBuilder, dateOnlyValue, options);
-		}
-		else if (value is TimeOnly timeOnlyValue)
-		{
-			formatter.Format(stringBuilder, timeOnlyValue, options);
-		}
+			case DateOnly dateOnlyValue:
+				Format(formatter, stringBuilder, dateOnlyValue, options);
+				return;
+			case TimeOnly timeOnlyValue:
+				Format(formatter, stringBuilder, timeOnlyValue, options);
+				return;
 #endif
-		else if (value is Guid guidValue)
-		{
-			formatter.Format(stringBuilder, guidValue, options);
+			case Guid guidValue:
+				Format(formatter, stringBuilder, guidValue, options);
+				return;
+			case Enum enumValue:
+				Format(formatter, stringBuilder, enumValue, options);
+				return;
+			case double doubleValue:
+				Format(formatter, stringBuilder, doubleValue, options);
+				return;
+			case float floatValue:
+				Format(formatter, stringBuilder, floatValue, options);
+				return;
+#if NET8_0_OR_GREATER
+			case Half halfValue:
+				Format(formatter, stringBuilder, halfValue, options);
+				return;
+#endif
+			case decimal decimalValue:
+				Format(formatter, stringBuilder, decimalValue, options);
+				return;
+			case int intValue:
+				Format(formatter, stringBuilder, intValue, options);
+				return;
+			case uint uintValue:
+				Format(formatter, stringBuilder, uintValue, options);
+				return;
+			case long longValue:
+				Format(formatter, stringBuilder, longValue, options);
+				return;
+			case ulong ulongValue:
+				Format(formatter, stringBuilder, ulongValue, options);
+				return;
+			case byte byteValue:
+				Format(formatter, stringBuilder, byteValue, options);
+				return;
+			case sbyte sbyteValue:
+				Format(formatter, stringBuilder, sbyteValue, options);
+				return;
+			case short shortValue:
+				Format(formatter, stringBuilder, shortValue, options);
+				return;
+			case ushort ushortValue:
+				Format(formatter, stringBuilder, ushortValue, options);
+				return;
+			case nint nintValue:
+				Format(formatter, stringBuilder, nintValue, options);
+				return;
+			case nuint nuintValue:
+				Format(formatter, stringBuilder, nuintValue, options);
+				return;
 		}
-		else if (value is Enum enumValue)
+
+		Type? valueType = value.GetType();
+		if (valueType.IsGenericType && valueType.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
 		{
-			formatter.Format(stringBuilder, enumValue, options);
+			if (options is not null)
+			{
+				options = options with
+				{
+					IncludeType = false,
+				};
+			}
+
+			object? key = valueType.GetProperty("Key")?.GetValue(value);
+			object? item = valueType.GetProperty("Value")?.GetValue(value);
+			stringBuilder.Append('[');
+			Formatter.Format(stringBuilder, key, options);
+			stringBuilder.Append("] = ");
+			Formatter.Format(stringBuilder, item, options);
+			return;
 		}
-		else if (value is double doubleValue)
-		{
-			formatter.Format(stringBuilder, doubleValue, options);
-		}
-		else if (value is float floatValue)
-		{
-			formatter.Format(stringBuilder, floatValue, options);
-		}
-		else if (value is decimal decimalValue)
-		{
-			formatter.Format(stringBuilder, decimalValue, options);
-		}
-		else if (value is int intValue)
-		{
-			formatter.Format(stringBuilder, intValue, options);
-		}
-		else if (value is uint uintValue)
-		{
-			formatter.Format(stringBuilder, uintValue, options);
-		}
-		else if (value is long longValue)
-		{
-			formatter.Format(stringBuilder, longValue, options);
-		}
-		else if (value is ulong ulongValue)
-		{
-			formatter.Format(stringBuilder, ulongValue, options);
-		}
-		else if (value is byte byteValue)
-		{
-			formatter.Format(stringBuilder, byteValue, options);
-		}
-		else if (value is sbyte sbyteValue)
-		{
-			formatter.Format(stringBuilder, sbyteValue, options);
-		}
-		else if (value is short shortValue)
-		{
-			formatter.Format(stringBuilder, shortValue, options);
-		}
-		else if (value is ushort ushortValue)
-		{
-			formatter.Format(stringBuilder, ushortValue, options);
-		}
-		else if (value is nint nintValue)
-		{
-			formatter.Format(stringBuilder, nintValue, options);
-		}
-		else if (value is nuint nuintValue)
-		{
-			formatter.Format(stringBuilder, nuintValue, options);
-		}
-		else
-		{
-			FormatObject(stringBuilder, value,
-				options ?? FormattingOptions.MultipleLines, context);
-		}
+
+		FormatObject(stringBuilder, value,
+			options ?? FormattingOptions.MultipleLines, context);
 	}
 }

@@ -32,6 +32,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not start with "some",
 					             but it was "some text"
+					             
+					             Actual:
+					             some text
 					             """);
 			}
 
@@ -65,11 +68,14 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not start with "sOmE" using IgnoreCaseForVocalsComparer,
 					             but it was "some arbitrary text"
+					             
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
 			[Fact]
-			public async Task WhenExpectedIsNull_ShouldFail()
+			public async Task WhenExpectedIsNull_ShouldSucceed()
 			{
 				string subject = "text";
 				string? expected = null;
@@ -77,12 +83,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(expected!);
 
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             does not start with <null>,
-					             but "text" cannot be validated against <null>
-					             """);
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -111,6 +112,9 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not start with "SOME" ignoring case,
 					             but it was "some text"
+					             
+					             Actual:
+					             some text
 					             """);
 			}
 
@@ -128,11 +132,14 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not start with "some text",
 					             but it was "some text"
+					             
+					             Actual:
+					             some text
 					             """);
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				string? subject = null;
 				string expected = "text";
@@ -140,12 +147,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(expected);
 
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             does not start with "text",
-					             but it was <null>
-					             """);
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

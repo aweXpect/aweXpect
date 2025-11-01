@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect.Internal.Tests.Collections;
@@ -12,40 +13,43 @@ public sealed class EnumerableQuantifierTests
 		[InlineData(-1)]
 		public async Task WhenMatchingDoesNotEqualTotalItems_ShouldReturnFailure(int difference)
 		{
-			int matchingItems = 4;
-			int totalItems = matchingItems + difference;
 			EnumerableQuantifier sut = EnumerableQuantifier.All();
 			StringBuilder sb = new();
+			int matchingCount = 4;
+			int notMatchingCount = 2;
+			int? totalCount = matchingCount + difference;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", matchingItems, 2, totalItems, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
-			await That(sb.ToString()).IsEqualTo($"only {matchingItems} of {totalItems} were");
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
+			await That(sb.ToString()).IsEqualTo($"only {matchingCount} of {totalCount} were");
 		}
 
 		[Fact]
 		public async Task WhenMatchingEqualsTotalItems_ShouldReturnSuccess()
 		{
-			int matchingItems = 4;
 			EnumerableQuantifier sut = EnumerableQuantifier.All();
+			int matchingCount = 4;
+			int notMatchingCount = 0;
+			int? totalCount = matchingCount;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", matchingItems, 0, matchingItems, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			await That(result.Outcome).IsEqualTo(Outcome.Success);
+			await That(result).IsEqualTo(Outcome.Success);
 		}
 
 		[Fact]
 		public async Task WhenNotEnumeratedCompletely_ShouldHaveUndecidedOutcome()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.All();
-			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 0;
+			int? totalCount = null;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 0, null, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Undecided);
-			await That(sb.ToString()).IsEqualTo("could not verify, because it was not enumerated completely");
+			await That(result).IsEqualTo(Outcome.Undecided);
 		}
 	}
 
@@ -57,10 +61,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenHavingSufficientItems_ShouldReturnSuccess(int foundItems)
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.AtLeast(3);
+			int matchingCount = foundItems;
+			int notMatchingCount = 2;
+			int? totalCount = 7;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", foundItems, 2, 7, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			await That(result.Outcome).IsEqualTo(Outcome.Success);
+			await That(result).IsEqualTo(Outcome.Success);
 		}
 
 		[Fact]
@@ -68,11 +75,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.AtLeast(3);
 			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 6;
+			int? totalCount = 8;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 6, 8, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo("only 2 of 8 were");
 		}
 
@@ -80,13 +90,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenNotEnumeratedCompletely_ShouldHaveUndecidedOutcome()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.AtLeast(3);
-			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 0;
+			int? totalCount = null;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 0, null, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Undecided);
-			await That(sb.ToString()).IsEqualTo("could not verify, because it was not enumerated completely");
+			await That(result).IsEqualTo(Outcome.Undecided);
 		}
 	}
 
@@ -98,10 +108,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenHavingSufficientItems_ShouldReturnSuccess(int foundItems)
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.AtMost(4);
+			int matchingCount = foundItems;
+			int notMatchingCount = 2;
+			int? totalCount = 7;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", foundItems, 2, 7, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			await That(result.Outcome).IsEqualTo(Outcome.Success);
+			await That(result).IsEqualTo(Outcome.Success);
 		}
 
 		[Fact]
@@ -109,11 +122,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.AtMost(4);
 			StringBuilder sb = new();
+			int matchingCount = 5;
+			int notMatchingCount = 2;
+			int? totalCount = 8;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 5, 2, 8, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo("5 of 8 were");
 		}
 
@@ -121,13 +137,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenNotEnumeratedCompletely_ShouldHaveUndecidedOutcome()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.AtMost(4);
-			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 0;
+			int? totalCount = null;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 0, null, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Undecided);
-			await That(sb.ToString()).IsEqualTo("could not verify, because it was not enumerated completely");
+			await That(result).IsEqualTo(Outcome.Undecided);
 		}
 	}
 
@@ -140,10 +156,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenHavingSufficientItems_ShouldReturnSuccess(int foundItems)
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Between(3, 5);
+			int matchingCount = foundItems;
+			int notMatchingCount = 2;
+			int? totalCount = 7;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", foundItems, 2, 7, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			await That(result.Outcome).IsEqualTo(Outcome.Success);
+			await That(result).IsEqualTo(Outcome.Success);
 		}
 
 		[Fact]
@@ -151,11 +170,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Between(3, 5);
 			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 5;
+			int? totalCount = 7;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 5, 7, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo("only 2 of 7 were");
 		}
 
@@ -164,11 +186,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Between(3, 5);
 			StringBuilder sb = new();
+			int matchingCount = 6;
+			int notMatchingCount = 2;
+			int? totalCount = 8;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 6, 2, 8, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo("6 of 8 were");
 		}
 
@@ -176,13 +201,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenNotEnumeratedCompletely_ShouldHaveUndecidedOutcome()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Between(3, 5);
-			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 0;
+			int? totalCount = null;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 0, null, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Undecided);
-			await That(sb.ToString()).IsEqualTo("could not verify, because it was not enumerated completely");
+			await That(result).IsEqualTo(Outcome.Undecided);
 		}
 	}
 
@@ -192,10 +217,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenHavingSufficientItems_ShouldReturnSuccess()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Exactly(3);
+			int matchingCount = 3;
+			int notMatchingCount = 2;
+			int? totalCount = 7;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 3, 2, 7, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			await That(result.Outcome).IsEqualTo(Outcome.Success);
+			await That(result).IsEqualTo(Outcome.Success);
 		}
 
 		[Theory]
@@ -205,11 +233,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Exactly(3);
 			StringBuilder sb = new();
+			int matchingCount = foundItems;
+			int notMatchingCount = 6;
+			int? totalCount = 8;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", foundItems, 6, 8, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo($"only {foundItems} of 8 were");
 		}
 
@@ -220,11 +251,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Exactly(3);
 			StringBuilder sb = new();
+			int matchingCount = foundItems;
+			int notMatchingCount = 6;
+			int? totalCount = 8;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", foundItems, 6, 8, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo($"{foundItems} of 8 were");
 		}
 
@@ -232,13 +266,13 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenNotEnumeratedCompletely_ShouldHaveUndecidedOutcome()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.Exactly(4);
-			StringBuilder sb = new();
+			int matchingCount = 2;
+			int notMatchingCount = 0;
+			int? totalCount = null;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 2, 0, null, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Undecided);
-			await That(sb.ToString()).IsEqualTo("could not verify, because it was not enumerated completely");
+			await That(result).IsEqualTo(Outcome.Undecided);
 		}
 	}
 
@@ -249,11 +283,14 @@ public sealed class EnumerableQuantifierTests
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.None();
 			StringBuilder sb = new();
+			int matchingCount = 1;
+			int notMatchingCount = 3;
+			int? totalCount = 4;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 1, 3, 4, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Failure);
+			sut.AppendResult(sb, ExpectationGrammars.None, matchingCount, notMatchingCount, totalCount, "were");
+			await That(result).IsEqualTo(Outcome.Failure);
 			await That(sb.ToString()).IsEqualTo("1 of 4 were");
 		}
 
@@ -261,25 +298,26 @@ public sealed class EnumerableQuantifierTests
 		public async Task WhenNotEnumeratedCompletely_ShouldHaveUndecidedOutcome()
 		{
 			EnumerableQuantifier sut = EnumerableQuantifier.None();
-			StringBuilder sb = new();
+			int matchingCount = 0;
+			int notMatchingCount = 2;
+			int? totalCount = null;
 
-			ConstraintResult result = sut.GetResult<int[]>([], "it", "_should_", 0, 2, null, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			result.AppendResult(sb);
-			await That(result.Outcome).IsEqualTo(Outcome.Undecided);
-			await That(sb.ToString()).IsEqualTo("could not verify, because it was not enumerated completely");
+			await That(result).IsEqualTo(Outcome.Undecided);
 		}
 
 		[Fact]
 		public async Task WhenNotMatchingEqualsTotalItems_ShouldReturnSuccess()
 		{
-			int notMatchingItems = 4;
 			EnumerableQuantifier sut = EnumerableQuantifier.None();
+			int matchingCount = 0;
+			int notMatchingCount = 4;
+			int? totalCount = notMatchingCount;
 
-			ConstraintResult result =
-				sut.GetResult<int[]>([], "it", "_should_", 0, notMatchingItems, notMatchingItems, null);
+			Outcome result = sut.GetOutcome(matchingCount, notMatchingCount, totalCount);
 
-			await That(result.Outcome).IsEqualTo(Outcome.Success);
+			await That(result).IsEqualTo(Outcome.Success);
 		}
 	}
 }

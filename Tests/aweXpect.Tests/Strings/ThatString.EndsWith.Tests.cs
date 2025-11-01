@@ -14,7 +14,7 @@ public sealed partial class ThatString
 					bool ignoreCase)
 			{
 				string subject = "some arbitrary text";
-				string expected = "TEXT";
+				string expected = "Text";
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected).IgnoringCase(ignoreCase);
@@ -23,8 +23,15 @@ public sealed partial class ThatString
 					.OnlyIf(!ignoreCase)
 					.WithMessage("""
 					             Expected that subject
-					             ends with "TEXT",
-					             but it was "some arbitrary text"
+					             ends with "Text",
+					             but it was "some arbitrary text" which differs before index 15:
+					                               ↓ (actual)
+					               "some arbitrary text"
+					                              "Text"
+					                               ↑ (expected suffix)
+
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -42,7 +49,14 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "SOME" ignoring case,
-					             but it was "some arbitrary text"
+					             but it was "some arbitrary text" which differs before index 18:
+					                                  ↓ (actual)
+					               "some arbitrary text"
+					                              "SOME"
+					                                  ↑ (expected suffix)
+
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -51,7 +65,7 @@ public sealed partial class ThatString
 				Using_WhenSubjectEndsWithIncorrectMatchAccordingToComparer_ShouldIncludeComparerInMessage()
 			{
 				string subject = "some arbitrary text";
-				string expected = "TEXT";
+				string expected = "Text";
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected)
@@ -60,8 +74,15 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with "TEXT" using IgnoreCaseForVocalsComparer,
-					             but it was "some arbitrary text"
+					             ends with "Text" using IgnoreCaseForVocalsComparer,
+					             but it was "some arbitrary text" which differs before index 15:
+					                               ↓ (actual)
+					               "some arbitrary text"
+					                              "Text"
+					                               ↑ (expected suffix)
+
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -80,6 +101,23 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
+			public async Task WhenActualIsEmpty_ShouldFail()
+			{
+				string subject = "";
+				string expected = "SOME";
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with "SOME",
+					             but it was ""
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				string subject = "text";
@@ -92,7 +130,10 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with <null>,
-					             but "text" cannot be validated against <null>
+					             but it was "text"
+
+					             Actual:
+					             text
 					             """);
 			}
 
@@ -109,7 +150,14 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             ends with "some",
-					             but it was "some arbitrary text"
+					             but it was "some arbitrary text" which differs before index 18:
+					                                  ↓ (actual)
+					               "some arbitrary text"
+					                              "some"
+					                                  ↑ (expected suffix)
+
+					             Actual:
+					             some arbitrary text
 					             """);
 			}
 
@@ -158,7 +206,7 @@ public sealed partial class ThatString
 			public async Task WhenSubjectIsShorterThanExpected_ShouldFail()
 			{
 				string subject = "text";
-				string expected = "text and more";
+				string expected = "more than text";
 
 				async Task Act()
 					=> await That(subject).EndsWith(expected);
@@ -166,8 +214,12 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             ends with "text and more",
-					             but it was "text" and with length 4 is shorter than the expected length of 13
+					             ends with "more than text",
+					             but it was "text" which is shorter than the expected length of 14 and misses the prefix:
+					               "more than "
+
+					             Actual:
+					             text
 					             """);
 			}
 		}

@@ -12,7 +12,7 @@ namespace aweXpect.Formatting;
 public static partial class ValueFormatters
 {
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
+	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format<T>(
 		this ValueFormatter formatter,
@@ -24,8 +24,9 @@ public static partial class ValueFormatters
 		return stringBuilder.ToString();
 	}
 
+#pragma warning disable S3776 // Cognitive Complexity of methods should not be too high
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format(
@@ -41,9 +42,17 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
+		if (options.IncludeType)
+		{
+			Format(Formatter, stringBuilder, value.GetType());
+			stringBuilder.Append(' ');
+		}
+
 		int maxCount = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		int count = maxCount;
-		stringBuilder.Append('[');
+
+		bool isDictionary = value is IDictionary;
+		stringBuilder.Append(isDictionary ? '{' : '[');
 		bool hasMoreValues = false;
 		bool isNotEmpty = false;
 		foreach (object? v in value)
@@ -73,7 +82,11 @@ public static partial class ValueFormatters
 				break;
 			}
 
-			stringBuilder.Append(Format(formatter, v, options).Indent("  ", false));
+			stringBuilder.Append(Format(formatter, v, options with
+			{
+				IncludeType = false,
+				UseLineBreaks = options.UseLineBreaks && v?.GetType() != typeof(string),
+			}).Indent("  ", false));
 		}
 
 		if (hasMoreValues)
@@ -87,11 +100,12 @@ public static partial class ValueFormatters
 			stringBuilder.AppendLine();
 		}
 
-		stringBuilder.Append(']');
+		stringBuilder.Append(isDictionary ? '}' : ']');
 	}
+#pragma warning restore S3776
 
 	/// <summary>
-	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
+	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
 	public static void Format<T>(

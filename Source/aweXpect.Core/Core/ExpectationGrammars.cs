@@ -3,7 +3,7 @@
 namespace aweXpect.Core;
 
 /// <summary>
-///     The grammar to use in the expectation text.
+///     The grammars to use in the expectation text.
 /// </summary>
 [Flags]
 public enum ExpectationGrammars
@@ -27,4 +27,9 @@ public enum ExpectationGrammars
 	///     The expectation should be in active voice.
 	/// </summary>
 	Active = 1 << 3,
+
+	/// <summary>
+	///     The expectation should be negated.
+	/// </summary>
+	Negated = 1 << 4,
 }

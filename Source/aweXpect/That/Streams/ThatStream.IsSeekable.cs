@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -12,11 +13,8 @@ public static partial class ThatStream
 	/// </summary>
 	public static AndOrResult<Stream?, IThat<Stream?>> IsSeekable(
 		this IThat<Stream?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ValueConstraint(
-					"is seekable",
-					actual => actual?.CanSeek == true,
-					actual => actual == null ? $"{it} was <null>" : $"{it} was not")),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsSeekableConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -24,10 +22,31 @@ public static partial class ThatStream
 	/// </summary>
 	public static AndOrResult<Stream?, IThat<Stream?>> IsNotSeekable(
 		this IThat<Stream?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ValueConstraint(
-					"is not seekable",
-					actual => actual?.CanSeek == false,
-					actual => actual == null ? $"{it} was <null>" : $"{it} was")),
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsSeekableConstraint(it, grammars).Invert()),
 			source);
+
+	private sealed class IsSeekableConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
+			IValueConstraint<Stream?>
+	{
+		public ConstraintResult IsMetBy(Stream? actual)
+		{
+			Actual = actual;
+			Outcome = actual?.CanSeek == true ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is seekable");
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was not");
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not seekable");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was");
+	}
 }
