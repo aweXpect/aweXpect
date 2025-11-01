@@ -14,24 +14,24 @@
             <guid>https://aweXpect.com/blog/why-another-assertion-library</guid>
             <pubDate>Fri, 29 Nov 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[I am an active contributor to fluentassertions and am well aware of the great improvements it has on the readability of unit tests.]]></description>
-            <content:encoded><![CDATA[<p>I am an active contributor to <a href="https://github.com/fluentassertions/fluentassertions" target="_blank" rel="noopener noreferrer">fluentassertions</a> and am well aware of the great improvements it has on the readability of unit tests.
+            <content:encoded><![CDATA[<p>I am an active contributor to <a href="https://github.com/fluentassertions/fluentassertions" target="_blank" rel="noopener noreferrer" class="">fluentassertions</a> and am well aware of the great improvements it has on the readability of unit tests.
 But I am also aware of its shortcomings.</p>
 <ol>
-<li>
+<li class="">
 <p><strong>Limited async support</strong><br>
 <!-- -->It's async support is very limited, e.g.</p>
 <ul>
-<li>The <a href="https://github.com/fluentassertions/fluentassertions/issues/1213" target="_blank" rel="noopener noreferrer">issue</a> to add support for <code>IAsyncEnumerable&lt;T&gt;</code> is open since 2019</li>
-<li>It is not possible to access the <code>Content</code> of an <code>HttpResponseMessage</code> without blocking</li>
+<li class="">The <a href="https://github.com/fluentassertions/fluentassertions/issues/1213" target="_blank" rel="noopener noreferrer" class="">issue</a> to add support for <code>IAsyncEnumerable&lt;T&gt;</code> is open since 2019</li>
+<li class="">It is not possible to access the <code>Content</code> of an <code>HttpResponseMessage</code> without blocking</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>No <code>params</code></strong><br>
 <!-- -->Because the <code>because</code> parameter is part of each call, you cannot use a <code>params</code> parameter.
-As a workaround the <code>because</code> parameter was omitted in <a href="https://github.com/fluentassertions/fluentassertions/blob/6.12.2/Src/FluentAssertions/Primitives/StringAssertions.cs#L70" target="_blank" rel="noopener noreferrer"><code>BeOneOf(params string[] validValues)</code></a>, but this leads to an inconsistent API.</p>
+As a workaround the <code>because</code> parameter was omitted in <a href="https://github.com/fluentassertions/fluentassertions/blob/6.12.2/Src/FluentAssertions/Primitives/StringAssertions.cs#L70" target="_blank" rel="noopener noreferrer" class=""><code>BeOneOf(params string[] validValues)</code></a>, but this leads to an inconsistent API.</p>
 </li>
 </ol>
-<p>That was the reason why I tried myself on a new concept which was also inspired by the approach from <a href="https://github.com/thomhurst/TUnit" target="_blank" rel="noopener noreferrer">TUnit</a> to make every assertion asynchronous.</p>
+<p>That was the reason why I tried myself on a new concept which was also inspired by the approach from <a href="https://github.com/thomhurst/TUnit" target="_blank" rel="noopener noreferrer" class="">TUnit</a> to make every assertion asynchronous.</p>
 <p>This allows to delay the evaluation of the assertion until the call is awaited, which in turn allows to move specifying a because reason to a separate call.<br>
 <!-- -->An additional benefit is, that the constraints themselves can decide if they need to be asynchronous, which allows mixing of sync and async constraints.</p>]]></content:encoded>
         </item>
