@@ -173,8 +173,16 @@ const config: Config = {
             from: '/aweXpect.Testably',
           },
           {
-          	to: '/docs/extensions/project/Reflection/index',
-          	from: '/aweXpect.Reflection',
+            to: '/docs/extensions/project/Reflection/index',
+            from: '/aweXpect.Reflection',
+          },
+          {
+            to: '/docs/extensions/project/Mockolate/index',
+            from: '/aweXpect.Mockolate',
+          },
+          {
+            to: '/docs/mockolate/index',
+            from: '/Mockolate',
           },
         ],
       },
