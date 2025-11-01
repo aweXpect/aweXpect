@@ -21,7 +21,7 @@ const config: Config = {
   projectName: 'aweXpect', // Usually your repo name.
   trailingSlash: false,
 
-  onBrokenLinks: 'throw', 
+  onBrokenLinks: 'throw',
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
