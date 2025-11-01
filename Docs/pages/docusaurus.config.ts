@@ -111,8 +111,8 @@ const config: Config = {
               to: '/docs/category/extension-projects',
             },
             {
-              label: 'Benchmarks',
-              to: '/benchmarks',
+              label: 'Mockolate',
+              to: '/docs/mockolate/index',
             },
           ],
         },
@@ -126,6 +126,10 @@ const config: Config = {
             {
               label: 'Stryker Mutator',
               href: 'https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main#mutant',
+            },
+            {
+              label: 'Benchmarks',
+              to: '/benchmarks',
             },
           ],
         },
