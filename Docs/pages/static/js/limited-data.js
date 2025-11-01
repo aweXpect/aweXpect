@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
-      {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          216.79970698697227,
           212.5159651239713,
           244.71037801106772,
           212.85053985913595,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           254.54036624091012,
           274.02026112874347,
           256.10494296891346,
-          254.6131167778602
+          254.6131167778602,
+          285.74720136935895
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -440,7 +440,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          247.27936498935406,
           240.82442121505738,
           277.4926059246063,
           253.2593138217926,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           263.15633358274187,
           250.60595995585123,
           247.0519516626994,
-          244.92349678675333
+          244.92349678675333,
+          261.4284641265869
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
-      {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          329485.657421875,
           304118.4240234375,
           312866.83642578125,
           307882.7823311942,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           312910.2020438058,
           315823.00320870534,
           308342.19852120534,
-          294365.7708658854
+          294365.7708658854,
+          309314.3746419271
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1066,7 +1066,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
+          335372,
           335372,
           335372,
           335372,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2341431.4955729167,
           2229663.6358816964,
           2461221.7703125,
           2244069.847395833,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2820004.6942708334,
           2776281.4359375,
           2756373.650716146,
-          2641871.62890625
+          2641871.62890625,
+          2605634.2682291665
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1194,10 +1194,10 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
-          4584416,
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
       {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          501.78691749572755,
           473.23738064084733,
           512.0118351618449,
           510.1876879374186,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           488.2768864264855,
           484.34494355519615,
           482.77581615447997,
-          451.3905556042989
+          451.3905556042989,
+          475.769470508282
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1674,7 +1674,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
+          1296,
           1296,
           1296,
           1296,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          503.74784259796144,
           492.8174043655396,
           543.4633234024047,
           499.3595628004808,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           485.96058177948,
           493.0568384170532,
           468.9928725560506,
-          477.4386760075887
+          477.4386760075887,
+          523.7218707891611
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
-      {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          262.6453261693319,
           239.1589420636495,
           263.1792084058126,
           262.7459104855855,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           261.46679814656574,
           258.23763790130613,
           257.87513268788655,
-          235.54053943497794
+          235.54053943497794,
+          258.2041842460632
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          269.3093709627787,
           246.53141527175904,
           280.71322504679364,
           248.89423175652823,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           267.5160671869914,
           267.9383024851481,
           248.12287497520447,
-          244.28450984954833
+          244.28450984954833,
+          258.4282611211141
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
-      {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          429.6565693787166,
           431.329376856486,
           466.5073441187541,
           432.7024888674418,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           415.08962099368756,
           436.0945650736491,
           424.4941523075104,
-          402.21302744547523
+          402.21302744547523,
+          438.06873995917186
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2890,7 +2890,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
+          1056,
           1056,
           1056,
           1056,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          484.4121147155762,
           457.65990911211287,
           529.0961756706238,
           466.54764740807667,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1209.5655851999918,
           1209.511166381836,
           1258.405481338501,
-          1208.7177644876333
+          1208.7177644876333,
+          1223.773504002889
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3015,13 +3015,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
       {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1754.320014136178,
           1741.0077984673637,
           1861.223882293701,
           1764.5257284800211,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1892.849231592814,
           1930.9388376871746,
           1875.0182125908989,
-          1847.8171161651612
+          1847.8171161651612,
+          1928.0517285664876
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3498,7 +3498,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
+          2568,
           2568,
           2568,
           2568,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1322.2879586537679,
           1357.894983427865,
           1435.0140235900878,
           1323.5876591546196,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1411.6592888150897,
           1406.80131149292,
           1348.4240549723306,
-          1415.9520005544027
+          1415.9520005544027,
+          1386.7892977850777
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "4a2b227a7c0561c9a1b79ae8009ff92e08804867",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 7 18:37:18 2025 \u002B0200",
-        "message": "refactor: remove core mutation tests only on \u0060main\u0060 (#768)"
-      },
-      {
         "sha": "d8833fcc139983c60015fb5750000579b02c6ead",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 7 22:19:46 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 18:42:03 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 17.14.2 to 18.1.0 (#827)"
+      },
+      {
+        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
+        "message": "fix: merge benchmarks into main"
       }
     ],
     "labels": [
-      "4a2b227a",
       "d8833fcc",
       "18eaf32b",
       "f51db771",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "05dcdeeb",
       "1db0b061",
       "7b4d4700",
-      "c12a0a10"
+      "c12a0a10",
+      "247863fe"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2210.833076477051,
           2176.868275778634,
           2313.2691228049143,
           2218.955516560872,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2489.2285372416177,
           2552.0935353597006,
           2523.747885386149,
-          2524.899168395996
+          2524.899168395996,
+          2482.997236887614
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4106,7 +4106,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
+          2760,
           2760,
           2760,
           2760,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          152462.7226186899,
           147667.5658830915,
           152865.48033854167,
           155030.77982271634,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           90593.26175130208,
           90105.34983723958,
           90854.88209635417,
-          90630.10972377232
+          90630.10972377232,
+          88381.16514369419
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          64323,
           63787,
           63788,
           63787,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58598,
-          58597
+          58597,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
