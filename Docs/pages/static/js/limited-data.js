@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
-      {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          215.1799734555758,
           212.07683657010395,
           242.10372683207194,
           212.292234758536,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           289.9769916216532,
           267.30346611567904,
           292.0768356323242,
-          252.16484223093306
+          252.16484223093306,
+          254.54036624091012
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -444,7 +444,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          241.7521196047465,
           242.05561491648356,
           262.36912775039673,
           246.66978308132715,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           290.63008696692333,
           233.86803712163652,
           278.48004828180586,
-          242.09413031169348
+          242.09413031169348,
+          263.15633358274187
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
-      {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          307841.2405761719,
           319958.157421875,
           302158.425764974,
           302476.5147879464,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           323039.63567708334,
           309435.77783203125,
           317126.2947716346,
-          309508.67239583336
+          309508.67239583336,
+          312910.2020438058
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1070,7 +1070,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
+          335372,
           335372,
           335372,
           335372,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2104858.768973214,
           2208691.5247395835,
           2232473.9018229167,
           2281983.8903459823,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2095357.879296875,
           2128684.866629464,
           2476967.408333333,
-          2666413.7333333334
+          2666413.7333333334,
+          2820004.6942708334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1198,10 +1198,10 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
-          4584416,
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
       {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          484.3203857421875,
           496.95010503133136,
           502.37464739481607,
           482.2821911743709,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           507.27856674194334,
           447.83819783528645,
           490.74452246152435,
-          469.52425651550294
+          469.52425651550294,
+          488.2768864264855
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1678,7 +1678,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
+          1296,
           1296,
           1296,
           1296,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          477.2508153548607,
           495.9535005569458,
           506.8223076502482,
           496.88989340464275,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           556.6596462249756,
           469.99402444703236,
           556.769964490618,
-          494.34254251207625
+          494.34254251207625,
+          485.96058177948
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
-      {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          240.65070530573527,
           249.83313779830934,
           250.53394985198975,
           250.84642774718148,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           275.17086191177367,
           279.0099122365316,
           280.469403107961,
-          264.41209752219066
+          264.41209752219066,
+          261.46679814656574
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          248.42559083302817,
           243.63641166687012,
           267.67520532608035,
           253.93141377766926,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           312.1749471596309,
           241.8310648713793,
           288.36552929878235,
-          244.36224834124246
+          244.36224834124246,
+          267.5160671869914
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
-      {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          414.25801073710124,
           455.679947750909,
           436.6501162528992,
           434.5228415897914,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           452.9621279920851,
           417.92175947825115,
           464.6669739314488,
-          417.1481029510498
+          417.1481029510498,
+          415.08962099368756
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2894,7 +2894,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
+          1056,
           1056,
           1056,
           1056,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          456.0181517918905,
           471.13205769856773,
           486.00647996266684,
           461.29454360689436,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1403.9719693320137,
           1184.2187130791801,
           1354.2897472381592,
-          1194.9270001820155
+          1194.9270001820155,
+          1209.5655851999918
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3019,13 +3019,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944
         ],
         "borderColor": "#FF671B",
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
       {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1770.3791221618653,
           1731.6198300679525,
           1789.1137566884358,
           1746.0731966018677,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1652.3186402638753,
           1797.72993850708,
           2016.3298437935966,
-          1814.2599040985108
+          1814.2599040985108,
+          1892.849231592814
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3502,7 +3502,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
+          2568,
           2568,
           2568,
           2568,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1305.0713628133137,
           1381.9386660257976,
           1360.7157407124837,
           1310.3537946065267,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1466.7270138604301,
           1291.689398901803,
           1486.4345049176898,
-          1356.7886479241508
+          1356.7886479241508,
+          1411.6592888150897
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "c3ab0ef84d8b1635a9c922952b433fcee613d9ee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 08:31:38 2025 \u002B0200",
-        "message": "Revert core changes in https://github.com/aweXpect/aweXpect/commit/5adc056107d4d47c4208071e5e033bb88dd719c0#diff-c5b33f0eeab99f044e3b57eca9fef984a61c734cdea105fbddc8cb038e1934e5"
-      },
-      {
         "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
-      "c3ab0ef8",
       "d94595c5",
       "4dc12c15",
       "d1490b5b",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2238.8356323242188,
           2180.8752095540362,
           2305.2198501586913,
           2256.9544631958006,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2163.2367927551268,
           2377.5007321493968,
           2800.5423728397914,
-          2478.7013999938963
+          2478.7013999938963,
+          2489.2285372416177
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4110,7 +4110,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
+          2760,
           2760,
           2760,
           2760,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149174.73503766741,
           153341.4591796875,
           150664.32568359375,
           147888.94861778847,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           95099.59767252604,
           125009.71847098214,
           127004.2629045759,
-          88348.58248197116
+          88348.58248197116,
+          90593.26175130208
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           64323,
           63787,
           63787,
@@ -4242,6 +4241,7 @@ window.BENCHMARK_DATA = {
           61710,
           61270,
           62239,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
