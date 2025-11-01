@@ -2538,6 +2538,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -2963,7 +2969,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -3392,7 +3399,8 @@ window.BENCHMARK_DATA = {
           274.02026112874347,
           256.10494296891346,
           254.6131167778602,
-          285.74720136935895
+          285.74720136935895,
+          277.7900096007756
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3797,6 +3805,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4263,7 +4272,8 @@ window.BENCHMARK_DATA = {
           250.60595995585123,
           247.0519516626994,
           244.92349678675333,
-          261.4284641265869
+          261.4284641265869,
+          247.33660112108504
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4456,6 +4466,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -6787,6 +6798,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -7135,7 +7152,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -7487,7 +7505,8 @@ window.BENCHMARK_DATA = {
           315823.00320870534,
           308342.19852120534,
           294365.7708658854,
-          309314.3746419271
+          309314.3746419271,
+          303716.33932291664
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7833,6 +7852,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
           335372,
           335372,
           335372,
@@ -8204,7 +8224,8 @@ window.BENCHMARK_DATA = {
           2776281.4359375,
           2756373.650716146,
           2641871.62890625,
-          2605634.2682291665
+          2605634.2682291665,
+          2677847.05546875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8556,6 +8577,7 @@ window.BENCHMARK_DATA = {
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -11113,6 +11135,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -11538,7 +11566,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -11967,7 +11996,8 @@ window.BENCHMARK_DATA = {
           484.34494355519615,
           482.77581615447997,
           451.3905556042989,
-          475.769470508282
+          475.769470508282,
+          495.6864360173543
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12390,6 +12420,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
           1296,
           1296,
           1296,
@@ -12838,7 +12869,8 @@ window.BENCHMARK_DATA = {
           493.0568384170532,
           468.9928725560506,
           477.4386760075887,
-          523.7218707891611
+          523.7218707891611,
+          492.310507774353
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13031,6 +13063,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -15824,6 +15857,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -16249,7 +16288,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -16678,7 +16718,8 @@ window.BENCHMARK_DATA = {
           258.23763790130613,
           257.87513268788655,
           235.54053943497794,
-          258.2041842460632
+          258.2041842460632,
+          257.1952115205618
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17037,6 +17078,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17549,7 +17591,8 @@ window.BENCHMARK_DATA = {
           267.9383024851481,
           248.12287497520447,
           244.28450984954833,
-          258.4282611211141
+          258.4282611211141,
+          263.3867840449015
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17742,6 +17785,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20535,6 +20579,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -20960,7 +21010,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -21389,7 +21440,8 @@ window.BENCHMARK_DATA = {
           436.0945650736491,
           424.4941523075104,
           402.21302744547523,
-          438.06873995917186
+          438.06873995917186,
+          428.74397678375243
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21812,6 +21864,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
           1056,
           1056,
           1056,
@@ -22260,7 +22313,8 @@ window.BENCHMARK_DATA = {
           1209.511166381836,
           1258.405481338501,
           1208.7177644876333,
-          1223.773504002889
+          1223.773504002889,
+          1280.271138381958
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22689,6 +22743,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -25246,6 +25301,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -25671,7 +25732,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -26100,7 +26162,8 @@ window.BENCHMARK_DATA = {
           1930.9388376871746,
           1875.0182125908989,
           1847.8171161651612,
-          1928.0517285664876
+          1928.0517285664876,
+          1853.577491378784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26523,6 +26586,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
           2568,
           2568,
           2568,
@@ -26971,7 +27035,8 @@ window.BENCHMARK_DATA = {
           1406.80131149292,
           1348.4240549723306,
           1415.9520005544027,
-          1386.7892977850777
+          1386.7892977850777,
+          1361.2812482288905
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27164,6 +27229,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -29957,6 +30023,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
         "message": "fix: merge benchmarks into main"
+      },
+      {
+        "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
+        "message": "chore: update TUnit to v0.88.0 (#830)"
       }
     ],
     "labels": [
@@ -30382,7 +30454,8 @@ window.BENCHMARK_DATA = {
       "1db0b061",
       "7b4d4700",
       "c12a0a10",
-      "247863fe"
+      "247863fe",
+      "3125a53b"
     ],
     "datasets": [
       {
@@ -30811,7 +30884,8 @@ window.BENCHMARK_DATA = {
           2552.0935353597006,
           2523.747885386149,
           2524.899168395996,
-          2482.997236887614
+          2482.997236887614,
+          2468.211933722863
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31234,6 +31308,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
           2760,
           2760,
           2760,
@@ -31682,7 +31757,8 @@ window.BENCHMARK_DATA = {
           90105.34983723958,
           90854.88209635417,
           90630.10972377232,
-          88381.16514369419
+          88381.16514369419,
+          88899.59036690848
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32116,6 +32192,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58597,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
