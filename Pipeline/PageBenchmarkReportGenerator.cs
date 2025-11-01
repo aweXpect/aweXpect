@@ -79,6 +79,11 @@ public class PageBenchmarkReportGenerator
 				return false;
 			}
 
+			if (!IsIncluded(type))
+			{
+				return true;
+			}
+			
 			if (!TryGetValue(name, out PageReport pageReport))
 			{
 				pageReport = new PageReport();
@@ -145,12 +150,14 @@ public class PageBenchmarkReportGenerator
 			timeDataset.Data.Add(benchmark.Statistics.Mean);
 		}
 
+		bool IsIncluded(string type)
+			=> type is "aweXpect" or "FluentAssertions";
+
 		string GetColor(string type)
 			=> type switch
 			{
 				"aweXpect" => "#63A2AC",
 				"FluentAssertions" => "#FF671B",
-				"TUnit" => "#1A6029",
 				_ => "#e84393",
 			};
 

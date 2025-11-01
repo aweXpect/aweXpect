@@ -20,8 +20,4 @@ public partial class HappyCaseBenchmarks
 	[Benchmark]
 	public AndConstraint<StringCollectionAssertions<IEnumerable<string>>> StringArray_FluentAssertions()
 		=> _stringArraySubject.Should().Equal(_stringArrayExpectation);
-
-	[Benchmark]
-	public async Task StringArray_TUnit()
-		=> (await Assert.That(_stringArraySubject).IsEquivalentTo(_stringArrayExpectation))?.Consume(_consumer);
 }

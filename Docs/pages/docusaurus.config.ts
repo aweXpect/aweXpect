@@ -88,9 +88,10 @@ const config: Config = {
           label: 'Extensions',
         },
         {
-          to: '/benchmarks',
-          label: 'Benchmarks',
-          position: 'left'
+          type: 'docSidebar',
+          sidebarId: 'mockolateSidebar',
+          position: 'left',
+          label: 'Mockolate',
         },
         // Add blog link here if blog functionality is re-enabled in the future (https://github.com/aweXpect/aweXpect/pull/722)
       ],
@@ -110,8 +111,8 @@ const config: Config = {
               to: '/docs/category/extension-projects',
             },
             {
-              label: 'Benchmarks',
-              to: '/benchmarks',
+              label: 'Mockolate',
+              to: '/docs/mockolate/index',
             },
           ],
         },
@@ -125,6 +126,10 @@ const config: Config = {
             {
               label: 'Stryker Mutator',
               href: 'https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main#mutant',
+            },
+            {
+              label: 'Benchmarks',
+              to: '/benchmarks',
             },
           ],
         },
@@ -168,8 +173,16 @@ const config: Config = {
             from: '/aweXpect.Testably',
           },
           {
-          	to: '/docs/extensions/project/Reflection/index',
-          	from: '/aweXpect.Reflection',
+            to: '/docs/extensions/project/Reflection/index',
+            from: '/aweXpect.Reflection',
+          },
+          {
+            to: '/docs/extensions/project/Mockolate/index',
+            from: '/aweXpect.Mockolate',
+          },
+          {
+            to: '/docs/mockolate/index',
+            from: '/Mockolate',
           },
         ],
       },
