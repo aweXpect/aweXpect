@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          223.86926261583963,
           231.044256512324,
           221.774701663426,
           245.91803005763464,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           273.26170335497176,
           272.2555152575175,
           269.78249740600586,
-          249.39345846857344
+          249.39345846857344,
+          270.5471285820007
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -450,7 +450,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          257.5262602170308,
           272.4241043971135,
           246.10164543787639,
           262.09784599450916,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           243.90225802935086,
           242.83908478418985,
           234.73464778753427,
-          239.51507058510413
+          239.51507058510413,
+          273.83617608887806
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          308629.3859700521,
           322263.2201660156,
           299271.2471028646,
           315188.4236979167,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           312976.320703125,
           309286.0847516741,
           314708.1344075521,
-          325841.9932942708
+          325841.9932942708,
+          300686.4139322917
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1201,7 +1201,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
+          335372,
           335372
         ],
         "borderColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2227939.5265625,
           2255916.359114583,
           2200448.0143229165,
           2227507.638113839,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2253866.540457589,
           2156462.2806490385,
           2367809.3622395834,
-          2177388.4837239585
+          2177388.4837239585,
+          2267730.275
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          523.0391578038533,
           502.271133295695,
           489.4889409201486,
           504.83726890270526,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           495.8614857991536,
           511.0399477141244,
           494.62177320627063,
-          435.2064858118693
+          435.2064858118693,
+          476.9213854585375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1934,7 +1934,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
+          1296,
           1296
         ],
         "borderColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          508.1092654546102,
           529.0278572082519,
           496.4816382271903,
           509.092633996691,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           474.6981451034546,
           483.3453311284383,
           468.3129890759786,
-          469.38727865900313
+          469.38727865900313,
+          505.331383228302
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          253.0040427525838,
           251.52391235645,
           244.2458694458008,
           252.2878304719925,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           252.78627014160156,
           254.27797209421794,
           249.4630912712642,
-          254.36252975463867
+          254.36252975463867,
+          260.20521446636747
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          246.302117284139,
           268.0469714164734,
           249.18391682306927,
           253.6632882118225,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           248.44107941218786,
           256.62459290822346,
           238.40484780531662,
-          237.68475545247395
+          237.68475545247395,
+          247.6996557553609
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          433.02853911717733,
           475.7194676081339,
           447.6604925473531,
           435.70586105493396,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           509.34662373860675,
           476.7005522410075,
           493.14027620951333,
-          417.1361598650614
+          417.1361598650614,
+          421.72915906906127
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3400,7 +3400,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
+          1056,
           1056
         ],
         "borderColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          493.5037216186523,
           530.8186480840047,
           462.2912927309672,
           493.6350006421407,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           477.04914719717846,
           478.9951577504476,
           548.7480166980198,
-          1222.8185269673666
+          1222.8185269673666,
+          1158.414110438029
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3525,7 +3525,7 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
+          3896,
           3896
         ],
         "borderColor": "#FF671B",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1798.8281017303466,
           1787.2566527048746,
           1711.0052505220685,
           1805.974021021525,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1964.5726053873698,
           1875.9855552400861,
           1882.722839864095,
-          1818.5281080881755
+          1818.5281080881755,
+          1842.647770336696
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2856,
           2888,
           2888,
           2888,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
           2568
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1343.606426532452,
           1416.480962371826,
           1397.2751046589442,
           1386.1319029490153,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1309.9062379201252,
           1324.6389726911273,
           1346.7257797241211,
-          1336.5098396301269
+          1336.5098396301269,
+          1312.4805297851562
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "67917e64abcc51554b4f74824f780f95aa2bbc39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:28:51 2025 \u002B0200",
-        "message": "chore: use latest Stryker.net version (#755)"
-      },
-      {
         "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.27.1 (#818)"
+      },
+      {
+        "sha": "be643c6fe158be8e2adf3c8cdcfad94d2828ea2a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
+        "message": "docs: document Mockolate (#828)"
       }
     ],
     "labels": [
-      "67917e64",
       "d9f4c5ad",
       "f000f6a6",
       "9d105c85",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "8d0e2bcb",
       "f62cf1d5",
       "bafccdb2",
-      "a8bcc4b2"
+      "a8bcc4b2",
+      "be643c6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2167.415320587158,
           2249.709725443522,
           2178.9087109883626,
           2294.214562225342,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           2524.7666524251304,
           2500.167182413737,
           2624.294271850586,
-          2485.525977543422
+          2485.525977543422,
+          2420.2496203104656
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4818,7 +4818,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          3048,
           3080,
           3080,
           3080,
@@ -4867,6 +4866,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
           2760
         ],
         "borderColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149834.27078683037,
           157030.31358924278,
           148099.1638671875,
           151624.069859096,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           128928.144921875,
           123922.04725864956,
           124601.16599818638,
-          129012.82985026042
+          129012.82985026042,
+          127116.38138020833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63352,
           63788,
           63352,
           63788,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           61719,
           61723,
           61719,
-          61723
+          61723,
+          61269
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
