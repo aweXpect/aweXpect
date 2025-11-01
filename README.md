@@ -75,3 +75,7 @@ More information can be found in the [extensibility guide](https://awexpect.com/
   [![Nuget](https://img.shields.io/nuget/v/aweXpect.Testably)](https://www.nuget.org/packages/aweXpect.Testably)  
   Expectations for the file and time system
   from [Testably.Abstractions](https://github.com/Testably/Testably.Abstractions).
+
+- [aweXpect.Mockolate](https://github.com/aweXpect/aweXpect.Mockolate)  
+  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Mockolate)](https://www.nuget.org/packages/aweXpect.Mockolate)  
+  Expectations to verify interactions with mocks from [Mockolate](https://github.com/aweXpect/Mockolate).
