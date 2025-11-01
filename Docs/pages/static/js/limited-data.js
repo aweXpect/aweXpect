@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
-      {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          212.07683657010395,
           242.10372683207194,
           212.292234758536,
           216.79970698697227,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           267.30346611567904,
           292.0768356323242,
           252.16484223093306,
-          254.54036624091012
+          254.54036624091012,
+          274.02026112874347
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -443,7 +443,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          242.05561491648356,
           262.36912775039673,
           246.66978308132715,
           247.27936498935406,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           233.86803712163652,
           278.48004828180586,
           242.09413031169348,
-          263.15633358274187
+          263.15633358274187,
+          250.60595995585123
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
-      {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          319958.157421875,
           302158.425764974,
           302476.5147879464,
           329485.657421875,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           309435.77783203125,
           317126.2947716346,
           309508.67239583336,
-          312910.2020438058
+          312910.2020438058,
+          315823.00320870534
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1069,7 +1069,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
+          335372,
           335372,
           335372,
           335372,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2208691.5247395835,
           2232473.9018229167,
           2281983.8903459823,
           2341431.4955729167,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2128684.866629464,
           2476967.408333333,
           2666413.7333333334,
-          2820004.6942708334
+          2820004.6942708334,
+          2776281.4359375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1197,10 +1197,10 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
-          4584416,
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906,
           4804906
         ],
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
       {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          496.95010503133136,
           502.37464739481607,
           482.2821911743709,
           501.78691749572755,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           447.83819783528645,
           490.74452246152435,
           469.52425651550294,
-          488.2768864264855
+          488.2768864264855,
+          484.34494355519615
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1677,7 +1677,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
+          1296,
           1296,
           1296,
           1296,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          495.9535005569458,
           506.8223076502482,
           496.88989340464275,
           503.74784259796144,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           469.99402444703236,
           556.769964490618,
           494.34254251207625,
-          485.96058177948
+          485.96058177948,
+          493.0568384170532
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
-      {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          249.83313779830934,
           250.53394985198975,
           250.84642774718148,
           262.6453261693319,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           279.0099122365316,
           280.469403107961,
           264.41209752219066,
-          261.46679814656574
+          261.46679814656574,
+          258.23763790130613
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.63641166687012,
           267.67520532608035,
           253.93141377766926,
           269.3093709627787,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           241.8310648713793,
           288.36552929878235,
           244.36224834124246,
-          267.5160671869914
+          267.5160671869914,
+          267.9383024851481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
-      {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          455.679947750909,
           436.6501162528992,
           434.5228415897914,
           429.6565693787166,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           417.92175947825115,
           464.6669739314488,
           417.1481029510498,
-          415.08962099368756
+          415.08962099368756,
+          436.0945650736491
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2893,7 +2893,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
+          1056,
           1056,
           1056,
           1056,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          471.13205769856773,
           486.00647996266684,
           461.29454360689436,
           484.4121147155762,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1184.2187130791801,
           1354.2897472381592,
           1194.9270001820155,
-          1209.5655851999918
+          1209.5655851999918,
+          1209.511166381836
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3018,13 +3018,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944
         ],
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
       {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1731.6198300679525,
           1789.1137566884358,
           1746.0731966018677,
           1754.320014136178,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1797.72993850708,
           2016.3298437935966,
           1814.2599040985108,
-          1892.849231592814
+          1892.849231592814,
+          1930.9388376871746
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3501,7 +3501,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
+          2568,
           2568,
           2568,
           2568,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1381.9386660257976,
           1360.7157407124837,
           1310.3537946065267,
           1322.2879586537679,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1291.689398901803,
           1486.4345049176898,
           1356.7886479241508,
-          1411.6592888150897
+          1411.6592888150897,
+          1406.80131149292
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "d94595c5294c63bc7cf958de8b644cd5a788ccc1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 5 10:29:53 2025 \u002B0200",
-        "message": "fix: Outcome of \u0060OrConstraintResult\u0060 (#762)"
-      },
-      {
         "sha": "4dc12c155f23e950b130f282fd6d16aa5600c181",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 6 23:17:29 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
-      "d94595c5",
       "4dc12c15",
       "d1490b5b",
       "4a2b227a",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2180.8752095540362,
           2305.2198501586913,
           2256.9544631958006,
           2210.833076477051,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2377.5007321493968,
           2800.5423728397914,
           2478.7013999938963,
-          2489.2285372416177
+          2489.2285372416177,
+          2552.0935353597006
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4109,7 +4109,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
+          2760,
           2760,
           2760,
           2760,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          153341.4591796875,
           150664.32568359375,
           147888.94861778847,
           152462.7226186899,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           125009.71847098214,
           127004.2629045759,
           88348.58248197116,
-          90593.26175130208
+          90593.26175130208,
+          90105.34983723958
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          64323,
           63787,
           63787,
           64323,
@@ -4241,6 +4240,7 @@ window.BENCHMARK_DATA = {
           61710,
           61270,
           62239,
+          58598,
           58598,
           58598
         ],
