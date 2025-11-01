@@ -2514,6 +2514,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -2935,7 +2941,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -3360,7 +3367,8 @@ window.BENCHMARK_DATA = {
           267.30346611567904,
           292.0768356323242,
           252.16484223093306,
-          254.54036624091012
+          254.54036624091012,
+          274.02026112874347
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3765,6 +3773,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4223,7 +4232,8 @@ window.BENCHMARK_DATA = {
           233.86803712163652,
           278.48004828180586,
           242.09413031169348,
-          263.15633358274187
+          263.15633358274187,
+          250.60595995585123
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4416,6 +4426,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -6719,6 +6730,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -7063,7 +7080,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -7411,7 +7429,8 @@ window.BENCHMARK_DATA = {
           309435.77783203125,
           317126.2947716346,
           309508.67239583336,
-          312910.2020438058
+          312910.2020438058,
+          315823.00320870534
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7757,6 +7776,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
           335372,
           335372,
           335372,
@@ -8120,7 +8140,8 @@ window.BENCHMARK_DATA = {
           2128684.866629464,
           2476967.408333333,
           2666413.7333333334,
-          2820004.6942708334
+          2820004.6942708334,
+          2776281.4359375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8472,6 +8493,7 @@ window.BENCHMARK_DATA = {
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906,
           4804906
         ],
@@ -11001,6 +11023,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -11422,7 +11450,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -11847,7 +11876,8 @@ window.BENCHMARK_DATA = {
           447.83819783528645,
           490.74452246152435,
           469.52425651550294,
-          488.2768864264855
+          488.2768864264855,
+          484.34494355519615
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12270,6 +12300,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
           1296,
           1296,
           1296,
@@ -12710,7 +12741,8 @@ window.BENCHMARK_DATA = {
           469.99402444703236,
           556.769964490618,
           494.34254251207625,
-          485.96058177948
+          485.96058177948,
+          493.0568384170532
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12903,6 +12935,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -15668,6 +15701,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -16089,7 +16128,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -16514,7 +16554,8 @@ window.BENCHMARK_DATA = {
           279.0099122365316,
           280.469403107961,
           264.41209752219066,
-          261.46679814656574
+          261.46679814656574,
+          258.23763790130613
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16873,6 +16914,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17377,7 +17419,8 @@ window.BENCHMARK_DATA = {
           241.8310648713793,
           288.36552929878235,
           244.36224834124246,
-          267.5160671869914
+          267.5160671869914,
+          267.9383024851481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17570,6 +17613,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20335,6 +20379,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -20756,7 +20806,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -21181,7 +21232,8 @@ window.BENCHMARK_DATA = {
           417.92175947825115,
           464.6669739314488,
           417.1481029510498,
-          415.08962099368756
+          415.08962099368756,
+          436.0945650736491
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21604,6 +21656,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
           1056,
           1056,
           1056,
@@ -22044,7 +22097,8 @@ window.BENCHMARK_DATA = {
           1184.2187130791801,
           1354.2897472381592,
           1194.9270001820155,
-          1209.5655851999918
+          1209.5655851999918,
+          1209.511166381836
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22473,6 +22527,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944
         ],
@@ -25002,6 +25057,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -25423,7 +25484,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -25848,7 +25910,8 @@ window.BENCHMARK_DATA = {
           1797.72993850708,
           2016.3298437935966,
           1814.2599040985108,
-          1892.849231592814
+          1892.849231592814,
+          1930.9388376871746
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26271,6 +26334,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
           2568,
           2568,
           2568,
@@ -26711,7 +26775,8 @@ window.BENCHMARK_DATA = {
           1291.689398901803,
           1486.4345049176898,
           1356.7886479241508,
-          1411.6592888150897
+          1411.6592888150897,
+          1406.80131149292
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26904,6 +26969,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -29669,6 +29735,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
         "message": "docs: fix docusaurus warning (#829)"
+      },
+      {
+        "sha": "1db0b06100b5ded8c306cacd26dd54e66c1e5b68",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:40:04 2025 \u002B0100",
+        "message": "Merge branch \u0027benchmarks\u0027"
       }
     ],
     "labels": [
@@ -30090,7 +30162,8 @@ window.BENCHMARK_DATA = {
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
-      "05dcdeeb"
+      "05dcdeeb",
+      "1db0b061"
     ],
     "datasets": [
       {
@@ -30515,7 +30588,8 @@ window.BENCHMARK_DATA = {
           2377.5007321493968,
           2800.5423728397914,
           2478.7013999938963,
-          2489.2285372416177
+          2489.2285372416177,
+          2552.0935353597006
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30938,6 +31012,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
           2760,
           2760,
           2760,
@@ -31378,7 +31453,8 @@ window.BENCHMARK_DATA = {
           125009.71847098214,
           127004.2629045759,
           88348.58248197116,
-          90593.26175130208
+          90593.26175130208,
+          90105.34983723958
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31807,6 +31883,7 @@ window.BENCHMARK_DATA = {
           61710,
           61270,
           62239,
+          58598,
           58598,
           58598
         ],
