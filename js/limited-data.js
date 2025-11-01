@@ -2,24 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -300,12 +282,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -352,16 +349,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          231.044256512324,
-          221.774701663426,
-          245.91803005763464,
           238.78139570781164,
           227.2964572429657,
           215.1799734555758,
@@ -408,7 +405,10 @@ window.BENCHMARK_DATA = {
           272.2555152575175,
           269.78249740600586,
           249.39345846857344,
-          270.5471285820007
+          270.5471285820007,
+          260.13838618596395,
+          289.9769916216532,
+          267.30346611567904
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -447,9 +447,9 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
-          504,
-          504,
+          712,
+          712,
+          712,
           712,
           712,
           712,
@@ -484,9 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          272.4241043971135,
-          246.10164543787639,
-          262.09784599450916,
           267.2407141465407,
           263.02050898869834,
           241.7521196047465,
@@ -533,7 +530,10 @@ window.BENCHMARK_DATA = {
           242.83908478418985,
           234.73464778753427,
           239.51507058510413,
-          273.83617608887806
+          273.83617608887806,
+          243.82066363554733,
+          290.63008696692333,
+          233.86803712163652
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -735,24 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -1033,12 +1015,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -1085,16 +1082,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          322263.2201660156,
-          299271.2471028646,
-          315188.4236979167,
           314810.6352050781,
           320644.7736816406,
           307841.2405761719,
@@ -1141,7 +1138,10 @@ window.BENCHMARK_DATA = {
           309286.0847516741,
           314708.1344075521,
           325841.9932942708,
-          300686.4139322917
+          300686.4139322917,
+          309425.7072591146,
+          323039.63567708334,
+          309435.77783203125
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1198,9 +1198,9 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
-          335556,
-          335556,
+          335372,
+          335372,
+          335372,
           335372,
           335372
         ],
@@ -1217,9 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2255916.359114583,
-          2200448.0143229165,
-          2227507.638113839,
           2432955.294363839,
           2289283.2338541667,
           2104858.768973214,
@@ -1266,7 +1263,10 @@ window.BENCHMARK_DATA = {
           2156462.2806490385,
           2367809.3622395834,
           2177388.4837239585,
-          2267730.275
+          2267730.275,
+          2295989.4557291665,
+          2095357.879296875,
+          2128684.866629464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1326,7 +1326,7 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
-          4584416,
+          4584401,
           4584416
         ],
         "borderColor": "#FF671B",
@@ -1468,24 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -1766,12 +1748,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -1818,16 +1815,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          502.271133295695,
-          489.4889409201486,
-          504.83726890270526,
           542.19067846934,
           511.07644880734955,
           484.3203857421875,
@@ -1874,7 +1871,10 @@ window.BENCHMARK_DATA = {
           511.0399477141244,
           494.62177320627063,
           435.2064858118693,
-          476.9213854585375
+          476.9213854585375,
+          495.99205646514895,
+          507.27856674194334,
+          447.83819783528645
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1931,9 +1931,9 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
-          1464,
-          1464,
+          1296,
+          1296,
+          1296,
           1296,
           1296
         ],
@@ -1950,9 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          529.0278572082519,
-          496.4816382271903,
-          509.092633996691,
           578.8854188919067,
           535.5808210372925,
           477.2508153548607,
@@ -1999,7 +1996,10 @@ window.BENCHMARK_DATA = {
           483.3453311284383,
           468.3129890759786,
           469.38727865900313,
-          505.331383228302
+          505.331383228302,
+          549.2067583084106,
+          556.6596462249756,
+          469.99402444703236
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2201,24 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -2499,12 +2481,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -2551,16 +2548,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          251.52391235645,
-          244.2458694458008,
-          252.2878304719925,
           263.9238931020101,
           258.907824073519,
           240.65070530573527,
@@ -2607,7 +2604,10 @@ window.BENCHMARK_DATA = {
           254.27797209421794,
           249.4630912712642,
           254.36252975463867,
-          260.20521446636747
+          260.20521446636747,
+          257.0191357294718,
+          275.17086191177367,
+          279.0099122365316
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,9 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          268.0469714164734,
-          249.18391682306927,
-          253.6632882118225,
           275.681583404541,
           260.8211002667745,
           248.42559083302817,
@@ -2732,7 +2729,10 @@ window.BENCHMARK_DATA = {
           256.62459290822346,
           238.40484780531662,
           237.68475545247395,
-          247.6996557553609
+          247.6996557553609,
+          256.2303510812613,
+          312.1749471596309,
+          241.8310648713793
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2934,24 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -3232,12 +3214,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -3284,16 +3281,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          475.7194676081339,
-          447.6604925473531,
-          435.70586105493396,
           438.261678536733,
           460.0618996620178,
           414.25801073710124,
@@ -3340,7 +3337,10 @@ window.BENCHMARK_DATA = {
           476.7005522410075,
           493.14027620951333,
           417.1361598650614,
-          421.72915906906127
+          421.72915906906127,
+          428.8254949251811,
+          452.9621279920851,
+          417.92175947825115
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3397,9 +3397,9 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
-          1232,
-          1232,
+          1056,
+          1056,
+          1056,
           1056,
           1056
         ],
@@ -3416,9 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          530.8186480840047,
-          462.2912927309672,
-          493.6350006421407,
           513.2092495600383,
           488.6699652353922,
           456.0181517918905,
@@ -3465,7 +3462,10 @@ window.BENCHMARK_DATA = {
           478.9951577504476,
           548.7480166980198,
           1222.8185269673666,
-          1158.414110438029
+          1158.414110438029,
+          1213.3131118187537,
+          1403.9719693320137,
+          1184.2187130791801
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3522,9 +3522,9 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
-          2168,
-          2168,
+          3896,
+          3896,
+          3896,
           3896,
           3896
         ],
@@ -3667,24 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -3965,12 +3947,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -4017,16 +4014,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1787.2566527048746,
-          1711.0052505220685,
-          1805.974021021525,
           1884.8077570597331,
           1768.9861426720252,
           1770.3791221618653,
@@ -4073,7 +4070,10 @@ window.BENCHMARK_DATA = {
           1875.9855552400861,
           1882.722839864095,
           1818.5281080881755,
-          1842.647770336696
+          1842.647770336696,
+          1818.443026815142,
+          1652.3186402638753,
+          1797.72993850708
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4130,9 +4130,9 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
-          2888,
-          2888,
+          2568,
+          2568,
+          2568,
           2568,
           2568
         ],
@@ -4149,9 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1416.480962371826,
-          1397.2751046589442,
-          1386.1319029490153,
           1376.590788269043,
           1465.0321689333234,
           1305.0713628133137,
@@ -4198,7 +4195,10 @@ window.BENCHMARK_DATA = {
           1324.6389726911273,
           1346.7257797241211,
           1336.5098396301269,
-          1312.4805297851562
+          1312.4805297851562,
+          1332.2870490210396,
+          1466.7270138604301,
+          1291.689398901803
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4400,24 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "d9f4c5ad4df17c9e07803eb6b1da6907d0f382ce",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 12:56:40 2025 \u002B0200",
-        "message": "coverage: improve test coverage of helpers (#757)"
-      },
-      {
-        "sha": "f000f6a6a9f87f6a04c87cb5f464b875ab8a950f",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 14:32:12 2025 \u002B0200",
-        "message": "fix: nullability of MemberAccessor (#758)"
-      },
-      {
-        "sha": "9d105c85e20c3685f42d1690ceb2496bcf6a25f3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Sep 4 16:06:19 2025 \u002B0200",
-        "message": "refactor: rename \u0060QuantifierContext\u0060 to \u0060QuantifierContexts\u0060 (#759)"
-      },
-      {
         "sha": "a7629c80dec8e7bccb156073939d8de6831d6f0f",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 4 17:04:51 2025 \u002B0200",
@@ -4698,12 +4680,27 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 16:52:12 2025 \u002B0100",
         "message": "docs: document Mockolate (#828)"
+      },
+      {
+        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
+        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
+      },
+      {
+        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
+        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
+      },
+      {
+        "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
+        "message": "chore: Bump actions/upload-artifact from 4 to 5 (#823)"
       }
     ],
     "labels": [
-      "d9f4c5ad",
-      "f000f6a6",
-      "9d105c85",
       "a7629c80",
       "7baba980",
       "c3ab0ef8",
@@ -4750,16 +4747,16 @@ window.BENCHMARK_DATA = {
       "f62cf1d5",
       "bafccdb2",
       "a8bcc4b2",
-      "be643c6f"
+      "be643c6f",
+      "d6cec126",
+      "cef93a9d",
+      "18f0a375"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2249.709725443522,
-          2178.9087109883626,
-          2294.214562225342,
           2303.6184623718264,
           2223.188729422433,
           2238.8356323242188,
@@ -4806,7 +4803,10 @@ window.BENCHMARK_DATA = {
           2500.167182413737,
           2624.294271850586,
           2485.525977543422,
-          2420.2496203104656
+          2420.2496203104656,
+          2414.7831937154133,
+          2163.2367927551268,
+          2377.5007321493968
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4863,9 +4863,9 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
-          3080,
-          3080,
+          2760,
+          2760,
+          2760,
           2760,
           2760
         ],
@@ -4882,9 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          157030.31358924278,
-          148099.1638671875,
-          151624.069859096,
           153872.11197916666,
           153520.98470052084,
           149174.73503766741,
@@ -4931,7 +4928,10 @@ window.BENCHMARK_DATA = {
           123922.04725864956,
           124601.16599818638,
           129012.82985026042,
-          127116.38138020833
+          127116.38138020833,
+          124119.09748186384,
+          95099.59767252604,
+          125009.71847098214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,9 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63788,
-          63352,
-          63788,
           63788,
           63787,
           63787,
@@ -4992,7 +4989,10 @@ window.BENCHMARK_DATA = {
           61723,
           61719,
           61723,
-          61269
+          61269,
+          61270,
+          61710,
+          61270
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
