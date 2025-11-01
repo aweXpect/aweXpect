@@ -2508,6 +2508,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -2928,7 +2934,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -3352,7 +3359,8 @@ window.BENCHMARK_DATA = {
           289.9769916216532,
           267.30346611567904,
           292.0768356323242,
-          252.16484223093306
+          252.16484223093306,
+          254.54036624091012
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3757,6 +3765,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4213,7 +4222,8 @@ window.BENCHMARK_DATA = {
           290.63008696692333,
           233.86803712163652,
           278.48004828180586,
-          242.09413031169348
+          242.09413031169348,
+          263.15633358274187
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4406,6 +4416,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -6702,6 +6713,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -7045,7 +7062,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -7392,7 +7410,8 @@ window.BENCHMARK_DATA = {
           323039.63567708334,
           309435.77783203125,
           317126.2947716346,
-          309508.67239583336
+          309508.67239583336,
+          312910.2020438058
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7738,6 +7757,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
           335372,
           335372,
           335372,
@@ -8099,7 +8119,8 @@ window.BENCHMARK_DATA = {
           2095357.879296875,
           2128684.866629464,
           2476967.408333333,
-          2666413.7333333334
+          2666413.7333333334,
+          2820004.6942708334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8451,6 +8472,7 @@ window.BENCHMARK_DATA = {
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -10973,6 +10995,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -11393,7 +11421,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -11817,7 +11846,8 @@ window.BENCHMARK_DATA = {
           507.27856674194334,
           447.83819783528645,
           490.74452246152435,
-          469.52425651550294
+          469.52425651550294,
+          488.2768864264855
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12240,6 +12270,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
           1296,
           1296,
           1296,
@@ -12678,7 +12709,8 @@ window.BENCHMARK_DATA = {
           556.6596462249756,
           469.99402444703236,
           556.769964490618,
-          494.34254251207625
+          494.34254251207625,
+          485.96058177948
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12871,6 +12903,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -15629,6 +15662,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -16049,7 +16088,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -16473,7 +16513,8 @@ window.BENCHMARK_DATA = {
           275.17086191177367,
           279.0099122365316,
           280.469403107961,
-          264.41209752219066
+          264.41209752219066,
+          261.46679814656574
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16832,6 +16873,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17334,7 +17376,8 @@ window.BENCHMARK_DATA = {
           312.1749471596309,
           241.8310648713793,
           288.36552929878235,
-          244.36224834124246
+          244.36224834124246,
+          267.5160671869914
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17527,6 +17570,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20285,6 +20329,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -20705,7 +20755,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -21129,7 +21180,8 @@ window.BENCHMARK_DATA = {
           452.9621279920851,
           417.92175947825115,
           464.6669739314488,
-          417.1481029510498
+          417.1481029510498,
+          415.08962099368756
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21552,6 +21604,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
           1056,
           1056,
           1056,
@@ -21990,7 +22043,8 @@ window.BENCHMARK_DATA = {
           1403.9719693320137,
           1184.2187130791801,
           1354.2897472381592,
-          1194.9270001820155
+          1194.9270001820155,
+          1209.5655851999918
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22419,6 +22473,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944
         ],
         "borderColor": "#FF671B",
@@ -24941,6 +24996,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -25361,7 +25422,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -25785,7 +25847,8 @@ window.BENCHMARK_DATA = {
           1652.3186402638753,
           1797.72993850708,
           2016.3298437935966,
-          1814.2599040985108
+          1814.2599040985108,
+          1892.849231592814
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26208,6 +26271,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
           2568,
           2568,
           2568,
@@ -26646,7 +26710,8 @@ window.BENCHMARK_DATA = {
           1466.7270138604301,
           1291.689398901803,
           1486.4345049176898,
-          1356.7886479241508
+          1356.7886479241508,
+          1411.6592888150897
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26839,6 +26904,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -29597,6 +29663,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
         "message": "chore: Bump FluentAssertions from 8.2.0 to 8.8.0 (#825)"
+      },
+      {
+        "sha": "05dcdeebc3b1330eda9dd3f531b579eca1638980",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 1 18:07:17 2025 \u002B0100",
+        "message": "docs: fix docusaurus warning (#829)"
       }
     ],
     "labels": [
@@ -30017,7 +30089,8 @@ window.BENCHMARK_DATA = {
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
-      "31a1b24e"
+      "31a1b24e",
+      "05dcdeeb"
     ],
     "datasets": [
       {
@@ -30441,7 +30514,8 @@ window.BENCHMARK_DATA = {
           2163.2367927551268,
           2377.5007321493968,
           2800.5423728397914,
-          2478.7013999938963
+          2478.7013999938963,
+          2489.2285372416177
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30864,6 +30938,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
           2760,
           2760,
           2760,
@@ -31302,7 +31377,8 @@ window.BENCHMARK_DATA = {
           95099.59767252604,
           125009.71847098214,
           127004.2629045759,
-          88348.58248197116
+          88348.58248197116,
+          90593.26175130208
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31731,6 +31807,7 @@ window.BENCHMARK_DATA = {
           61710,
           61270,
           62239,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
