@@ -38,8 +38,8 @@
 		<PackageVersion Include="TUnit" Version="0.88.0" />
 		<PackageVersion Include="TUnit.Assertions" Version="0.88.0" />
 		<PackageVersion Include="xunit" Version="2.9.3" />
-		<PackageVersion Include="xunit.v3" Version="3.1.0" />
-		<PackageVersion Include="xunit.v3.core" Version="3.1.0" />
+		<PackageVersion Include="xunit.v3" Version="3.2.0" />
+		<PackageVersion Include="xunit.v3.core" Version="3.2.0" />
 		<PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
 		<PackageVersion Include="AutoFixture.Xunit2" Version="4.18.1" />
 		<PackageVersion Include="coverlet.collector" Version="6.0.4" />
