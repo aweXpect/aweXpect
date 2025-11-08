@@ -2544,6 +2544,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -2970,7 +2988,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -3400,7 +3421,10 @@ window.BENCHMARK_DATA = {
           256.10494296891346,
           254.6131167778602,
           285.74720136935895,
-          277.7900096007756
+          277.7900096007756,
+          261.1710729598999,
+          282.6928520883833,
+          297.6433809598287
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3805,6 +3829,9 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
+          712,
+          712,
           712,
           712,
           712,
@@ -4273,7 +4300,10 @@ window.BENCHMARK_DATA = {
           247.0519516626994,
           244.92349678675333,
           261.4284641265869,
-          247.33660112108504
+          247.33660112108504,
+          256.6352813925062,
+          258.40846068518505,
+          270.5103018467243
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4466,6 +4496,9 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
+          952,
+          952,
           952,
           952,
           952,
@@ -6804,6 +6837,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -7153,7 +7204,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -7506,7 +7560,10 @@ window.BENCHMARK_DATA = {
           308342.19852120534,
           294365.7708658854,
           309314.3746419271,
-          303716.33932291664
+          303716.33932291664,
+          328828.925390625,
+          311908.51513671875,
+          316512.25556640624
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7852,6 +7909,9 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
+          335372,
+          335372,
           335372,
           335372,
           335372,
@@ -8225,7 +8285,10 @@ window.BENCHMARK_DATA = {
           2756373.650716146,
           2641871.62890625,
           2605634.2682291665,
-          2677847.05546875
+          2677847.05546875,
+          2821497.8822916667,
+          2778834.94296875,
+          2686527.970833333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8583,7 +8646,10 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
-          4804906
+          4804906,
+          4804906,
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11141,6 +11207,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -11567,7 +11651,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -11997,7 +12084,10 @@ window.BENCHMARK_DATA = {
           482.77581615447997,
           451.3905556042989,
           475.769470508282,
-          495.6864360173543
+          495.6864360173543,
+          471.4584501706637,
+          438.05776391710555,
+          460.32697347494275
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12420,6 +12510,9 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
+          1296,
+          1296,
           1296,
           1296,
           1296,
@@ -12870,7 +12963,10 @@ window.BENCHMARK_DATA = {
           468.9928725560506,
           477.4386760075887,
           523.7218707891611,
-          492.310507774353
+          492.310507774353,
+          514.1737758636475,
+          460.5053321202596,
+          505.9251218159994
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13063,6 +13159,9 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
+          2008,
+          2008,
           2008,
           2008,
           2008,
@@ -15863,6 +15962,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -16289,7 +16406,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -16719,7 +16839,10 @@ window.BENCHMARK_DATA = {
           257.87513268788655,
           235.54053943497794,
           258.2041842460632,
-          257.1952115205618
+          257.1952115205618,
+          255.35899410247802,
+          242.95119512081146,
+          263.1874970436096
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17078,6 +17201,9 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
+          816,
+          816,
           816,
           816,
           816,
@@ -17592,7 +17718,10 @@ window.BENCHMARK_DATA = {
           248.12287497520447,
           244.28450984954833,
           258.4282611211141,
-          263.3867840449015
+          263.3867840449015,
+          260.5290399619511,
+          237.2357437133789,
+          256.15830656687416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17785,6 +17914,9 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
+          1224,
+          1224,
           1224,
           1224,
           1224,
@@ -20585,6 +20717,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -21011,7 +21161,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -21441,7 +21594,10 @@ window.BENCHMARK_DATA = {
           424.4941523075104,
           402.21302744547523,
           438.06873995917186,
-          428.74397678375243
+          428.74397678375243,
+          418.94042015075684,
+          402.53800678253174,
+          410.13684269360135
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21864,6 +22020,9 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
+          1056,
+          1056,
           1056,
           1056,
           1056,
@@ -22314,7 +22473,10 @@ window.BENCHMARK_DATA = {
           1258.405481338501,
           1208.7177644876333,
           1223.773504002889,
-          1280.271138381958
+          1280.271138381958,
+          1202.6803359985352,
+          1208.4535071055095,
+          1183.8721885681152
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22743,6 +22905,9 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
+          3944,
+          3944,
           3944,
           3944,
           3944,
@@ -25307,6 +25472,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -25733,7 +25916,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -26163,7 +26349,10 @@ window.BENCHMARK_DATA = {
           1875.0182125908989,
           1847.8171161651612,
           1928.0517285664876,
-          1853.577491378784
+          1853.577491378784,
+          1839.4647000630696,
+          1862.0753470102945,
+          1897.2871106465657
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26586,6 +26775,9 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
+          2568,
+          2568,
           2568,
           2568,
           2568,
@@ -27036,7 +27228,10 @@ window.BENCHMARK_DATA = {
           1348.4240549723306,
           1415.9520005544027,
           1386.7892977850777,
-          1361.2812482288905
+          1361.2812482288905,
+          1398.9766906738282,
+          1344.8861371358237,
+          1337.8453980763754
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27229,6 +27424,9 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
+          4152,
+          4152,
           4152,
           4152,
           4152,
@@ -30029,6 +30227,24 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
         "message": "chore: update TUnit to v0.88.0 (#830)"
+      },
+      {
+        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
+        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
+      },
+      {
+        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#831)"
       }
     ],
     "labels": [
@@ -30455,7 +30671,10 @@ window.BENCHMARK_DATA = {
       "7b4d4700",
       "c12a0a10",
       "247863fe",
-      "3125a53b"
+      "3125a53b",
+      "4999d0aa",
+      "bd67be42",
+      "45348ee8"
     ],
     "datasets": [
       {
@@ -30885,7 +31104,10 @@ window.BENCHMARK_DATA = {
           2523.747885386149,
           2524.899168395996,
           2482.997236887614,
-          2468.211933722863
+          2468.211933722863,
+          2512.9916170756023,
+          2460.110077784612,
+          2521.0334447224936
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31308,6 +31530,9 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
+          2760,
+          2760,
           2760,
           2760,
           2760,
@@ -31758,7 +31983,10 @@ window.BENCHMARK_DATA = {
           90854.88209635417,
           90630.10972377232,
           88381.16514369419,
-          88899.59036690848
+          88899.59036690848,
+          87559.08297293527,
+          89454.54847005209,
+          87999.00865885416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32193,6 +32421,9 @@ window.BENCHMARK_DATA = {
           58598,
           58597,
           58598,
+          58598,
+          58598,
+          59100,
           58598
         ],
         "borderColor": "#FF671B",
