@@ -23,6 +23,9 @@ public sealed partial class ThatString
 					             
 					             Actual:
 					             some text
+					             
+					             Expected:
+					             TEXT
 					             """);
 			}
 
@@ -57,6 +60,9 @@ public sealed partial class ThatString
 					             
 					             Actual:
 					             some arbitrary text
+					             
+					             Expected:
+					             tExt
 					             """);
 			}
 
@@ -103,6 +109,9 @@ public sealed partial class ThatString
 					             
 					             Actual:
 					             some text
+					             
+					             Expected:
+					             text
 					             """);
 			}
 
@@ -134,6 +143,9 @@ public sealed partial class ThatString
 					             but it was "some text"
 					             
 					             Actual:
+					             some text
+					             
+					             Expected:
 					             some text
 					             """);
 			}

@@ -56,7 +56,13 @@ public static partial class ThatString
 			if (!string.IsNullOrEmpty(actual))
 			{
 				expectationBuilder.AddContext(new ResultContext.Fixed("Actual", actual));
+
+				if (Outcome != Outcome.Success && !string.IsNullOrEmpty(expected))
+				{
+					expectationBuilder.AddContext(new ResultContext.Fixed("Expected", expected));
+				}
 			}
+
 			return this;
 		}
 

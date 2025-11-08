@@ -90,7 +90,11 @@ public static partial class ThatDictionary
 		{
 			Actual = actual;
 			Outcome = actual?.ContainsKey(expected) == true ? Outcome.Success : Outcome.Failure;
-			expectationBuilder.AddCollectionContext(actual);
+			if (Outcome != Outcome.Success)
+			{
+				expectationBuilder.AddCollectionContext(actual);
+			}
+			
 			return this;
 		}
 

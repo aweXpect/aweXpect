@@ -136,6 +136,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             foo
+					             
+					             Expected:
+					             foo
 					             """);
 			}
 
@@ -174,6 +177,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              {unexpected}
 					              """);
 			}
 		}
@@ -198,9 +204,12 @@ public sealed partial class ThatString
 					              Expected that subject
 					              is not equal to "{unexpected.DisplayWhitespace()}" ignoring newline style,
 					              but it was "{subject.DisplayWhitespace()}"
-
+					              
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              {unexpected}
 					              """);
 			}
 		}
@@ -227,6 +236,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              {unexpected}
 					              """);
 			}
 		}

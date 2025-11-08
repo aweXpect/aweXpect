@@ -93,6 +93,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some text
+					             
+					             Expected:
+					              	 some text
 					             """);
 			}
 
@@ -113,6 +116,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some text
+					             
+					             Expected:
+					             some text 	 
 					             """);
 			}
 
@@ -133,6 +139,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					              	 some text
+					             
+					             Expected:
+					             some text
 					             """);
 			}
 
@@ -153,6 +162,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some text 	 
+					             
+					             Expected:
+					             some text
 					             """);
 			}
 
@@ -174,6 +186,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some text without out
+					             
+					             Expected:
+					             some text with
 					             """);
 			}
 
@@ -195,6 +210,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some text with
+					             
+					             Expected:
+					             some text without out
 					             """);
 			}
 
@@ -231,6 +249,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             actual text
+					             
+					             Expected:
+					             expected other text
 					             """);
 			}
 		}
@@ -259,6 +280,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              {expected}
 					              """);
 			}
 
@@ -284,6 +308,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              {expected}
 					              """);
 			}
 
@@ -326,6 +353,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              {expected}
 					              """);
 			}
 
@@ -369,6 +399,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              {subject}
+					              
+					              Expected:
+					              foo-bar
 					              """);
 			}
 
@@ -393,6 +426,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             foo-boo	
+					             
+					             Expected:
+					             foo-bar
 					             """);
 			}
 

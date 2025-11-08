@@ -41,6 +41,9 @@ public sealed partial class ThatDelegate
 
 					             Actual:
 					             ShouldIncludeWhichInErrorMessage
+					             
+					             Expected:
+					             foo
 					             """);
 			}
 
