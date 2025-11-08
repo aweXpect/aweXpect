@@ -100,7 +100,6 @@ public static partial class ThatReadOnlyDictionary
 			{
 				expectationBuilder.AddCollectionContext(actual);
 			}
-			
 			return this;
 		}
 
