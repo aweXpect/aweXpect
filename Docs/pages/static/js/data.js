@@ -2550,6 +2550,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -2977,7 +2983,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -3408,7 +3415,8 @@ window.BENCHMARK_DATA = {
           254.6131167778602,
           285.74720136935895,
           277.7900096007756,
-          261.1710729598999
+          261.1710729598999,
+          282.6928520883833
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3813,6 +3821,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4283,7 +4292,8 @@ window.BENCHMARK_DATA = {
           244.92349678675333,
           261.4284641265869,
           247.33660112108504,
-          256.6352813925062
+          256.6352813925062,
+          258.40846068518505
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4476,6 +4486,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -6821,6 +6832,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -7171,7 +7188,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -7525,7 +7543,8 @@ window.BENCHMARK_DATA = {
           294365.7708658854,
           309314.3746419271,
           303716.33932291664,
-          328828.925390625
+          328828.925390625,
+          311908.51513671875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7871,6 +7890,7 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
+          335372,
           335372,
           335372,
           335372,
@@ -8246,7 +8266,8 @@ window.BENCHMARK_DATA = {
           2641871.62890625,
           2605634.2682291665,
           2677847.05546875,
-          2821497.8822916667
+          2821497.8822916667,
+          2778834.94296875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8598,6 +8619,7 @@ window.BENCHMARK_DATA = {
           4584401,
           4584416,
           4584416,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -11169,6 +11191,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -11596,7 +11624,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -12027,7 +12056,8 @@ window.BENCHMARK_DATA = {
           451.3905556042989,
           475.769470508282,
           495.6864360173543,
-          471.4584501706637
+          471.4584501706637,
+          438.05776391710555
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12450,6 +12480,7 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
+          1296,
           1296,
           1296,
           1296,
@@ -12902,7 +12933,8 @@ window.BENCHMARK_DATA = {
           477.4386760075887,
           523.7218707891611,
           492.310507774353,
-          514.1737758636475
+          514.1737758636475,
+          460.5053321202596
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13095,6 +13127,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -15902,6 +15935,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -16329,7 +16368,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -16760,7 +16800,8 @@ window.BENCHMARK_DATA = {
           235.54053943497794,
           258.2041842460632,
           257.1952115205618,
-          255.35899410247802
+          255.35899410247802,
+          242.95119512081146
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17119,6 +17160,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17635,7 +17677,8 @@ window.BENCHMARK_DATA = {
           244.28450984954833,
           258.4282611211141,
           263.3867840449015,
-          260.5290399619511
+          260.5290399619511,
+          237.2357437133789
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17828,6 +17871,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20635,6 +20679,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -21062,7 +21112,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -21493,7 +21544,8 @@ window.BENCHMARK_DATA = {
           402.21302744547523,
           438.06873995917186,
           428.74397678375243,
-          418.94042015075684
+          418.94042015075684,
+          402.53800678253174
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21916,6 +21968,7 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
+          1056,
           1056,
           1056,
           1056,
@@ -22368,7 +22421,8 @@ window.BENCHMARK_DATA = {
           1208.7177644876333,
           1223.773504002889,
           1280.271138381958,
-          1202.6803359985352
+          1202.6803359985352,
+          1208.4535071055095
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22797,6 +22851,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -25368,6 +25423,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -25795,7 +25856,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -26226,7 +26288,8 @@ window.BENCHMARK_DATA = {
           1847.8171161651612,
           1928.0517285664876,
           1853.577491378784,
-          1839.4647000630696
+          1839.4647000630696,
+          1862.0753470102945
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26649,6 +26712,7 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
+          2568,
           2568,
           2568,
           2568,
@@ -27101,7 +27165,8 @@ window.BENCHMARK_DATA = {
           1415.9520005544027,
           1386.7892977850777,
           1361.2812482288905,
-          1398.9766906738282
+          1398.9766906738282,
+          1344.8861371358237
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27294,6 +27359,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30101,6 +30167,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
         "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
+      },
+      {
+        "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
+        "author": "dependabot[bot]",
+        "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#833)"
       }
     ],
     "labels": [
@@ -30528,7 +30600,8 @@ window.BENCHMARK_DATA = {
       "c12a0a10",
       "247863fe",
       "3125a53b",
-      "4999d0aa"
+      "4999d0aa",
+      "bd67be42"
     ],
     "datasets": [
       {
@@ -30959,7 +31032,8 @@ window.BENCHMARK_DATA = {
           2524.899168395996,
           2482.997236887614,
           2468.211933722863,
-          2512.9916170756023
+          2512.9916170756023,
+          2460.110077784612
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31382,6 +31456,7 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
+          2760,
           2760,
           2760,
           2760,
@@ -31834,7 +31909,8 @@ window.BENCHMARK_DATA = {
           90630.10972377232,
           88381.16514369419,
           88899.59036690848,
-          87559.08297293527
+          87559.08297293527,
+          89454.54847005209
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32270,7 +32346,8 @@ window.BENCHMARK_DATA = {
           58597,
           58598,
           58598,
-          58598
+          58598,
+          59100
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
