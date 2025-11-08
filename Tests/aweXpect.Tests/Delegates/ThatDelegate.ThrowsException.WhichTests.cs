@@ -43,6 +43,9 @@ public sealed partial class ThatDelegate
 					             
 					             Actual:
 					             foo
+					             
+					             Expected:
+					             bar
 					             """);
 			}
 

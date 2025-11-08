@@ -81,13 +81,9 @@ public sealed partial class ThatDictionary
 
 					             Actual:
 					             bar
-
-					             Dictionary:
-					             {
-					               [1] = "foo",
-					               [2] = "bar",
-					               [3] = "baz"
-					             }
+					             
+					             Expected:
+					             foo
 					             """);
 			}
 

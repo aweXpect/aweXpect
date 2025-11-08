@@ -27,6 +27,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              some message
+					              
+					              Expected:
+					              .*ME ME.*
 					              """);
 			}
 
@@ -55,6 +58,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some message
+					             
+					             Expected:
+					             .*ME ME.*
 					             """);
 			}
 		}

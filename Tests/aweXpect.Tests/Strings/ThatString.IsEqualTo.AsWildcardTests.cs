@@ -31,6 +31,9 @@ public sealed partial class ThatString
 
 					              Actual:
 					              some message
+					              
+					              Expected:
+					              {pattern}
 					              """);
 			}
 
@@ -59,6 +62,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some message
+					             
+					             Expected:
+					             *ME ME*
 					             """);
 			}
 		}

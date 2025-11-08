@@ -27,6 +27,9 @@ public sealed partial class ThatString
 
 					             Actual:
 					             some message
+					             
+					             Expected:
+					             *ME ME*
 					             """);
 			}
 		}
