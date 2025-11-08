@@ -79,10 +79,10 @@ public sealed partial class ThatReadOnlyDictionary
 					               "bar"
 					               "foo"
 					                ↑ (expected)
-					             
+
 					             Actual:
 					             bar
-					             
+
 					             Expected:
 					             foo
 					             """);
