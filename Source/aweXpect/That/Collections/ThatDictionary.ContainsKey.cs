@@ -94,7 +94,6 @@ public static partial class ThatDictionary
 			{
 				expectationBuilder.AddCollectionContext(actual);
 			}
-			
 			return this;
 		}
 
