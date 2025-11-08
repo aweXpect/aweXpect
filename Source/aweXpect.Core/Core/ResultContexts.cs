@@ -57,8 +57,8 @@ public class ResultContexts : IEnumerable<ResultContext>
 			}
 			else
 			{
-				context._next = _first._next;
-				_first._next = context;
+				context._next = _first;
+				_first = context;
 			}
 		}
 

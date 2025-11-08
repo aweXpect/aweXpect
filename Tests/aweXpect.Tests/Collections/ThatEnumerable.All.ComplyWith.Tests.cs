@@ -14,30 +14,6 @@ public sealed partial class ThatEnumerable
 		{
 			public sealed class Tests
 			{
-#if NET8_0_OR_GREATER
-				[Theory]
-				[AutoData]
-				public async Task GenerateRandom_NextBytes_WithSmallerBuffer_ShouldReturnPartlyInitializedBytes(
-					int seed, byte[] value)
-				{
-					List<byte[]> results = [];
-
-					Random random = Random.Shared;
-					for (int i = 0; i < 100; i++)
-					{
-						byte[] buffer = new byte[value.Length + 1];
-						random.NextBytes(buffer);
-						results.Add(buffer);
-					}
-
-					byte[] expected = value.Concat(new[]
-					{
-						(byte)0,
-					}).ToArray();
-
-					await That(results).All().ComplyWith(v => v.IsEqualTo(expected));
-				}
-#endif
 				[Fact]
 				public async Task ConsidersCancellationToken()
 				{
