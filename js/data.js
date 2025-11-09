@@ -2574,6 +2574,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -3005,7 +3011,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -3440,7 +3447,8 @@ window.BENCHMARK_DATA = {
           282.6928520883833,
           297.6433809598287,
           263.93456913630166,
-          255.11932544708253
+          255.11932544708253,
+          260.76867713247026
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3845,6 +3853,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4323,7 +4332,8 @@ window.BENCHMARK_DATA = {
           258.40846068518505,
           270.5103018467243,
           246.24050736427307,
-          241.9665836606707
+          241.9665836606707,
+          269.3426177024841
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4516,6 +4526,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -6889,6 +6900,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -7243,7 +7260,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -7601,7 +7619,8 @@ window.BENCHMARK_DATA = {
           311908.51513671875,
           316512.25556640624,
           332606.125,
-          311143.73118489585
+          311143.73118489585,
+          312829.48685128347
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7964,7 +7983,8 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
-          335372
+          335372,
+          335452
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8330,7 +8350,8 @@ window.BENCHMARK_DATA = {
           2778834.94296875,
           2686527.970833333,
           2806034.650260417,
-          2660209.2087053573
+          2660209.2087053573,
+          2650243.2794471155
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8692,6 +8713,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906
         ],
@@ -11281,6 +11303,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -11712,7 +11740,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -12147,7 +12176,8 @@ window.BENCHMARK_DATA = {
           438.05776391710555,
           460.32697347494275,
           464.10953896840414,
-          427.61443315233504
+          427.61443315233504,
+          492.0156497955322
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12587,7 +12617,8 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
-          1296
+          1296,
+          1368
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13030,7 +13061,8 @@ window.BENCHMARK_DATA = {
           460.5053321202596,
           505.9251218159994,
           486.9550390879313,
-          485.3194377081735
+          485.3194377081735,
+          503.9999958674113
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13223,6 +13255,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16058,6 +16091,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -16489,7 +16528,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -16924,7 +16964,8 @@ window.BENCHMARK_DATA = {
           242.95119512081146,
           263.1874970436096,
           252.32644286522498,
-          247.41135123797827
+          247.41135123797827,
+          246.33154214223225
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17283,6 +17324,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17807,7 +17849,8 @@ window.BENCHMARK_DATA = {
           237.2357437133789,
           256.15830656687416,
           250.86386850902014,
-          246.57284311147836
+          246.57284311147836,
+          268.8595001147344
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18000,6 +18043,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20835,6 +20879,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -21266,7 +21316,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -21701,7 +21752,8 @@ window.BENCHMARK_DATA = {
           402.53800678253174,
           410.13684269360135,
           423.65541563715254,
-          409.0791465759277
+          409.0791465759277,
+          451.94028263825635
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22141,7 +22193,8 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
-          1056
+          1056,
+          1136
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22584,7 +22637,8 @@ window.BENCHMARK_DATA = {
           1208.4535071055095,
           1183.8721885681152,
           1236.2538581575666,
-          1182.9263760493352
+          1182.9263760493352,
+          1335.319766362508
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23013,6 +23067,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -25612,6 +25667,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -26043,7 +26104,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -26478,7 +26540,8 @@ window.BENCHMARK_DATA = {
           1862.0753470102945,
           1897.2871106465657,
           1803.7326568603517,
-          1813.282754389445
+          1813.282754389445,
+          1892.0803848902385
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26918,7 +26981,8 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568
+          2568,
+          2632
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27361,7 +27425,8 @@ window.BENCHMARK_DATA = {
           1344.8861371358237,
           1337.8453980763754,
           1383.4462158203125,
-          1341.1950542743389
+          1341.1950542743389,
+          1280.9150220326014
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27554,6 +27619,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30389,6 +30455,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 8 23:18:37 2025 \u002B0100",
         "message": "fix: infinite loop in result contexts (#836)"
+      },
+      {
+        "sha": "f179ef082e68d0c964c1243e4c1aacd4eecd425f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.28.0 (#841)"
       }
     ],
     "labels": [
@@ -30820,7 +30892,8 @@ window.BENCHMARK_DATA = {
       "bd67be42",
       "45348ee8",
       "4919d3fa",
-      "52008dd3"
+      "52008dd3",
+      "f179ef08"
     ],
     "datasets": [
       {
@@ -31255,7 +31328,8 @@ window.BENCHMARK_DATA = {
           2460.110077784612,
           2521.0334447224936,
           2505.647640482585,
-          2472.413246154785
+          2472.413246154785,
+          2454.133862813314
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31695,7 +31769,8 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
-          2760
+          2760,
+          2824
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32138,7 +32213,8 @@ window.BENCHMARK_DATA = {
           89454.54847005209,
           87999.00865885416,
           91536.00325520833,
-          88684.57991536458
+          88684.57991536458,
+          87596.2677873884
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32576,6 +32652,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598,
           58598,
           58598
