@@ -39,6 +39,10 @@ public sealed partial class StringEqualityOptionsTests
 				             Actual:
 				             foo
 				             bar
+				             
+				             Expected:
+				             FOO
+				             BAR
 				             """).IgnoringNewlineStyle();
 		}
 
@@ -62,6 +66,9 @@ public sealed partial class StringEqualityOptionsTests
 
 				             Actual:
 				             foo
+				             
+				             Expected:
+				             bar
 				             """);
 		}
 
@@ -86,6 +93,10 @@ public sealed partial class StringEqualityOptionsTests
 				             Actual:
 				             foo
 				             bar
+				             
+				             Expected:
+				             	something
+				             else
 				             """).IgnoringNewlineStyle();
 		}
 

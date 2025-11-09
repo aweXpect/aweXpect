@@ -9,8 +9,6 @@ namespace aweXpect.Core;
 /// </summary>
 public abstract class ResultContext
 {
-	internal ResultContext? _next;
-
 	/// <summary>
 	///     A result context that is appended to a result error.
 	/// </summary>

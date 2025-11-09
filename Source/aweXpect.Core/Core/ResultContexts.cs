@@ -9,19 +9,12 @@ namespace aweXpect.Core;
 /// </summary>
 public class ResultContexts : IEnumerable<ResultContext>
 {
-	private ResultContext? _first;
+	private readonly List<ResultContext> _results = new();
 	private bool _isOpen = true;
 
 	/// <inheritdoc cref="IEnumerable{ResultContext}.GetEnumerator()" />
 	public IEnumerator<ResultContext> GetEnumerator()
-	{
-		ResultContext? current = _first;
-		while (current != null)
-		{
-			yield return current;
-			current = current._next;
-		}
-	}
+		=> _results.GetEnumerator();
 
 	/// <inheritdoc cref="IEnumerable.GetEnumerator()" />
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -51,15 +44,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	{
 		if (_isOpen)
 		{
-			if (_first is null)
-			{
-				_first = context;
-			}
-			else
-			{
-				context._next = _first;
-				_first = context;
-			}
+			_results.Add(context);
 		}
 
 		return this;
@@ -72,7 +57,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	{
 		if (_isOpen)
 		{
-			_first = null;
+			_results.Clear();
 		}
 
 		return this;
@@ -91,28 +76,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	{
 		if (_isOpen)
 		{
-			ResultContext? previous = null;
-			ResultContext? current = _first;
-			while (current != null)
-			{
-				if (predicate(current))
-				{
-					if (previous == null)
-					{
-						_first = current._next;
-					}
-					else
-					{
-						previous._next = current._next;
-					}
-				}
-				else
-				{
-					previous = current;
-				}
-
-				current = current._next;
-			}
+			_results.RemoveAll(predicate);
 		}
 
 		return this;

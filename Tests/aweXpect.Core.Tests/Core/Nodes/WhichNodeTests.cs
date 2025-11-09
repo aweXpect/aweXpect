@@ -531,6 +531,9 @@ public sealed class WhichNodeTests
 
 			             Actual:
 			             foo
+			             
+			             Expected:
+			             bar
 			             """);
 	}
 

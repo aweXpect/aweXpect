@@ -1,4 +1,7 @@
-﻿namespace aweXpect.Core.Tests.Core;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace aweXpect.Core.Tests.Core;
 
 public sealed class ResultContextsTests
 {
@@ -27,6 +30,18 @@ public sealed class ResultContextsTests
 		sut.Add(new ResultContext.Fixed("foo", "4"));
 
 		await That(sut).HasCount().EqualTo(5);
+	}
+
+	[Fact]
+	public async Task AddSameContextMultipleTimes_ShouldStillWork()
+	{
+		var sharedContext = new ResultContext.Fixed("foo", "1");
+		ResultContexts sut = new();
+		sut.Add(sharedContext);
+		sut.Add(sharedContext);
+		sut.Add(sharedContext);
+		
+		await That(sut).All().ComplyWith(x => x.IsSameAs(sharedContext));
 	}
 
 	[Fact]
