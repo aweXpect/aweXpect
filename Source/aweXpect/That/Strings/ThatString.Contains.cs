@@ -28,8 +28,8 @@ public static partial class ThatString
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsConstraint(it, grammars, expected, quantifier, options)),
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new ContainsConstraint(expectationBuilder, it, grammars, expected, quantifier, options)),
 			source,
 			quantifier,
 			options);
@@ -51,14 +51,15 @@ public static partial class ThatString
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsConstraint(it, grammars, unexpected, quantifier, options).Invert()),
+			source.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new ContainsConstraint(expectationBuilder, it, grammars, unexpected, quantifier, options).Invert()),
 			source,
 			quantifier,
 			options);
 	}
 
 	private sealed class ContainsConstraint(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		string? expected,
@@ -83,6 +84,15 @@ public static partial class ThatString
 
 			_actualCount = await CountOccurrences(actual, expected, options);
 			Outcome = quantifier.Check(_actualCount, true) ?? _isNegated ? Outcome.Success : Outcome.Failure;
+			if (Outcome != Outcome.Success && !string.IsNullOrEmpty(actual))
+			{
+				expectationBuilder.AddContext(new ResultContext.Fixed("Actual", actual));
+				if (!string.IsNullOrEmpty(expected))
+				{
+					expectationBuilder.AddContext(new ResultContext.Fixed("Expected", expected));
+				}
+			}
+			
 			return this;
 		}
 
@@ -165,19 +175,27 @@ public static partial class ThatString
 			{
 				if (_actualCount == 0)
 				{
-					stringBuilder.Append(it).Append(" did not contain it in ");
+					stringBuilder.Append(it).Append(" did not contain ");
+					Formatter.Format(stringBuilder, expected);
+					stringBuilder.Append(" in ");
 				}
 				else if (_actualCount == 1)
 				{
-					stringBuilder.Append(it).Append(" contained it once in ");
+					stringBuilder.Append(it).Append(" contained ");
+					Formatter.Format(stringBuilder, expected);
+					stringBuilder.Append(" once in ");
 				}
 				else if (_actualCount == 2)
 				{
-					stringBuilder.Append(it).Append(" contained it twice in ");
+					stringBuilder.Append(it).Append(" contained ");
+					Formatter.Format(stringBuilder, expected);
+					stringBuilder.Append(" twice in ");
 				}
 				else
 				{
-					stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
+					stringBuilder.Append(it).Append(" contained ");
+					Formatter.Format(stringBuilder, expected);
+					stringBuilder.Append(" ").Append(_actualCount).Append(" times in ");
 				}
 
 				Formatter.Format(stringBuilder, _actual);

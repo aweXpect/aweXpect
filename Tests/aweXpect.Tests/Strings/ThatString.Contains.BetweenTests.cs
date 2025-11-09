@@ -20,7 +20,13 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             contains "in" between 4 and 9 times,
-					             but it contained it 3 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained "in" 3 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             
+					             Actual:
+					             In this text in between the word an investigator should find the word 'IN' multiple times.
+					             
+					             Expected:
+					             in
 					             """);
 			}
 
@@ -38,7 +44,13 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             contains "in" between 1 and 2 times,
-					             but it contained it 3 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained "in" 3 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             
+					             Actual:
+					             In this text in between the word an investigator should find the word 'IN' multiple times.
+					             
+					             Expected:
+					             in
 					             """);
 			}
 
