@@ -73,6 +73,9 @@ public sealed class CustomizeFormattingTests
 
 				             Actual:
 				             this is some text with lots of words after the first difference to verify the customization setting
+				             
+				             Expected:
+				             this is another text with lots of words after the first difference to verify the customization setting
 				             """);
 		}
 
@@ -88,6 +91,9 @@ public sealed class CustomizeFormattingTests
 
 			             Actual:
 			             this is some text with lots of words after the first difference to verify the customization setting
+			             
+			             Expected:
+			             this is another text with lots of words after the first difference to verify the customization setting
 			             """);
 	}
 }
