@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
-      {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          228.35234853426616,
           221.67533109738275,
           210.96696621576945,
           222.42121995412387,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           297.6433809598287,
           263.93456913630166,
           255.11932544708253,
-          260.76867713247026
+          260.76867713247026,
+          274.4522070248922
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -432,7 +432,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          260.6707429885864,
           249.35365098317465,
           245.29265890802657,
           245.9357629140218,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           270.5103018467243,
           246.24050736427307,
           241.9665836606707,
-          269.3426177024841
+          269.3426177024841,
+          239.3174580505916
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
-      {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          326642.5024789664,
           311990.03629557294,
           306516.7656598772,
           304240.14400809153,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           316512.25556640624,
           332606.125,
           311143.73118489585,
-          312829.48685128347
+          312829.48685128347,
+          330369.46048409597
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1058,7 +1058,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1077,6 +1076,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452
         ],
         "borderColor": "#63A2AC",
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2246155.509765625,
           2244084.417708333,
           2210116.6463341345,
           2144177.4609375,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2686527.970833333,
           2806034.650260417,
           2660209.2087053573,
-          2650243.2794471155
+          2650243.2794471155,
+          2664212.1088541667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
       {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          523.5016982396444,
           504.6580323537191,
           497.591183535258,
           507.4043729645865,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           460.32697347494275,
           464.10953896840414,
           427.61443315233504,
-          492.0156497955322
+          492.0156497955322,
+          456.935839176178
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1666,7 +1666,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1685,6 +1684,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368
         ],
         "borderColor": "#63A2AC",
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          518.7926048551287,
           499.90902112325034,
           493.5938486735026,
           484.3290264265878,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           505.9251218159994,
           486.9550390879313,
           485.3194377081735,
-          503.9999958674113
+          503.9999958674113,
+          486.6053017775218
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
-      {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          257.41368395487467,
           256.8662165914263,
           247.1733341557639,
           258.9372503757477,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           263.1874970436096,
           252.32644286522498,
           247.41135123797827,
-          246.33154214223225
+          246.33154214223225,
+          242.9109561284383
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          263.9341005938394,
           262.5004315376282,
           246.4766256014506,
           245.670804133782,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           256.15830656687416,
           250.86386850902014,
           246.57284311147836,
-          268.8595001147344
+          268.8595001147344,
+          246.48304192225137
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
-      {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          450.38661425908407,
           435.8279695828756,
           425.59944508870444,
           417.7533317345839,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           410.13684269360135,
           423.65541563715254,
           409.0791465759277,
-          451.94028263825635
+          451.94028263825635,
+          470.719544951121
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2882,7 +2882,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2901,6 +2900,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136
         ],
         "borderColor": "#63A2AC",
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          505.41757990519204,
           485.9532375971476,
           472.77169370651245,
           452.14571247782027,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1183.8721885681152,
           1236.2538581575666,
           1182.9263760493352,
-          1335.319766362508
+          1335.319766362508,
+          1196.1245600382488
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3007,13 +3007,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
       {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1777.8413832346598,
           1768.8057811443623,
           1748.8558232625326,
           1753.2375204722086,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1897.2871106465657,
           1803.7326568603517,
           1813.282754389445,
-          1892.0803848902385
+          1892.0803848902385,
+          1943.3307055155435
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3490,7 +3490,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3509,6 +3508,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632
         ],
         "borderColor": "#63A2AC",
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1415.1540985107422,
           1339.4392157236734,
           1260.4743906167837,
           1293.5604891459147,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1337.8453980763754,
           1383.4462158203125,
           1341.1950542743389,
-          1280.9150220326014
+          1280.9150220326014,
+          1372.1143292018346
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "70e516b2e0a48d61ee3630049e5ef6d5d7e34e3c",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:30:16 2025 \u002B0200",
-        "message": "feat: add expectations on \u0060Uri\u0060 (#782)"
-      },
-      {
         "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:21:52 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.28.0 (#841)"
+      },
+      {
+        "sha": "07780e6fca2ef6cfa6f9990a8c78aacf49529478",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
+        "message": "refactor: move needs from pack to push (#840)"
       }
     ],
     "labels": [
-      "70e516b2",
       "a3283c9b",
       "904d8ac2",
       "6545f651",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "45348ee8",
       "4919d3fa",
       "52008dd3",
-      "f179ef08"
+      "f179ef08",
+      "07780e6f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2226.0806151798793,
           2216.9763575236,
           2153.8405438936675,
           2224.6414519718714,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2521.0334447224936,
           2505.647640482585,
           2472.413246154785,
-          2454.133862813314
+          2454.133862813314,
+          2574.4000028882706
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4098,7 +4098,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4117,6 +4116,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824
         ],
         "borderColor": "#63A2AC",
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          156546.865687779,
           153577.33370535713,
           151098.80350748697,
           151731.6606794085,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           87999.00865885416,
           91536.00325520833,
           88684.57991536458,
-          87596.2677873884
+          87596.2677873884,
+          88990.0255998884
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          64324,
           63787,
           63787,
           63788,
@@ -4239,6 +4238,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598,
           58598,
           58598,
