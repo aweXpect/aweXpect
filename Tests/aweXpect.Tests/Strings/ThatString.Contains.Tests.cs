@@ -78,7 +78,13 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             contains "not" at least once,
-					             but it did not contain it in "some text"
+					             but it did not contain "not" in "some text"
+					             
+					             Actual:
+					             some text
+					             
+					             Expected:
+					             not
 					             """);
 			}
 		}
@@ -99,7 +105,13 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             contains "in" at least 7 times ignoring case,
-					             but it contained it 5 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained "in" 5 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             
+					             Actual:
+					             In this text in between the word an investigator should find the word 'IN' multiple times.
+					             
+					             Expected:
+					             in
 					             """);
 			}
 
@@ -151,7 +163,13 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             contains "in" exactly 5 times using IgnoreCaseForVocalsComparer,
-					             but it contained it 4 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained "in" 4 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             
+					             Actual:
+					             In this text in between the word an investigator should find the word 'IN' multiple times.
+					             
+					             Expected:
+					             in
 					             """);
 			}
 		}
