@@ -195,7 +195,7 @@ public static partial class ThatString
 				{
 					stringBuilder.Append(it).Append(" contained ");
 					Formatter.Format(stringBuilder, expected);
-					stringBuilder.Append(" ").Append(_actualCount).Append(" times in ");
+					stringBuilder.Append(' ').Append(_actualCount).Append(" times in ");
 				}
 
 				Formatter.Format(stringBuilder, _actual);
