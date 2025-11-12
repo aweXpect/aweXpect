@@ -2,18 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
-      {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Sep 15 14:35:59 2025 \u002B0200",
@@ -300,11 +288,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -352,15 +350,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          221.67533109738275,
-          210.96696621576945,
           222.42121995412387,
           225.40423487027485,
           220.02118115765708,
@@ -408,7 +406,9 @@ window.BENCHMARK_DATA = {
           263.93456913630166,
           255.11932544708253,
           260.76867713247026,
-          274.4522070248922
+          274.4522070248922,
+          254.93189900716146,
+          293.9299639293126
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -430,8 +430,8 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
-          504,
+          712,
+          712,
           712,
           712,
           712,
@@ -484,8 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          249.35365098317465,
-          245.29265890802657,
           245.9357629140218,
           257.21087856292723,
           241.75672996961154,
@@ -533,7 +531,9 @@ window.BENCHMARK_DATA = {
           246.24050736427307,
           241.9665836606707,
           269.3426177024841,
-          239.3174580505916
+          239.3174580505916,
+          233.5852732317788,
+          237.07648284094674
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,18 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
-      {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Sep 15 14:35:59 2025 \u002B0200",
@@ -908,11 +896,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -960,15 +958,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          311990.03629557294,
-          306516.7656598772,
           304240.14400809153,
           315164.1796499399,
           307990.27106584824,
@@ -1016,7 +1014,9 @@ window.BENCHMARK_DATA = {
           332606.125,
           311143.73118489585,
           312829.48685128347,
-          330369.46048409597
+          330369.46048409597,
+          296348.87711588544,
+          305138.683203125
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1028,8 +1028,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          335556,
-          335556,
           335556,
           335556,
           335556,
@@ -1077,6 +1075,8 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335452,
+          335452,
+          335452,
           335452
         ],
         "borderColor": "#63A2AC",
@@ -1092,8 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2244084.417708333,
-          2210116.6463341345,
           2144177.4609375,
           2286586.1763020833,
           2277326.562760417,
@@ -1141,7 +1139,9 @@ window.BENCHMARK_DATA = {
           2806034.650260417,
           2660209.2087053573,
           2650243.2794471155,
-          2664212.1088541667
+          2664212.1088541667,
+          2575638.993582589,
+          2652655.777644231
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,8 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,6 +1200,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,18 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
       {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
@@ -1516,11 +1504,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -1568,15 +1566,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          504.6580323537191,
-          497.591183535258,
           507.4043729645865,
           525.6780950839703,
           499.99773250307356,
@@ -1624,7 +1622,9 @@ window.BENCHMARK_DATA = {
           464.10953896840414,
           427.61443315233504,
           492.0156497955322,
-          456.935839176178
+          456.935839176178,
+          487.96678530375164,
+          464.8725470029391
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1636,8 +1636,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1464,
-          1464,
           1464,
           1464,
           1464,
@@ -1685,6 +1683,8 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1368,
+          1368,
+          1368,
           1368
         ],
         "borderColor": "#63A2AC",
@@ -1700,8 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          499.90902112325034,
-          493.5938486735026,
           484.3290264265878,
           526.4000341551645,
           495.33144072123935,
@@ -1749,7 +1747,9 @@ window.BENCHMARK_DATA = {
           486.9550390879313,
           485.3194377081735,
           503.9999958674113,
-          486.6053017775218
+          486.6053017775218,
+          449.5753818511963,
+          473.97114634513855
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,18 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
-      {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Sep 15 14:35:59 2025 \u002B0200",
@@ -2124,11 +2112,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -2176,15 +2174,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          256.8662165914263,
-          247.1733341557639,
           258.9372503757477,
           260.16957734425864,
           239.7945738519941,
@@ -2232,7 +2230,9 @@ window.BENCHMARK_DATA = {
           252.32644286522498,
           247.41135123797827,
           246.33154214223225,
-          242.9109561284383
+          242.9109561284383,
+          255.3863203048706,
+          242.05455442575308
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,8 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          262.5004315376282,
-          246.4766256014506,
           245.670804133782,
           274.2320398330688,
           261.5186161994934,
@@ -2357,7 +2355,9 @@ window.BENCHMARK_DATA = {
           250.86386850902014,
           246.57284311147836,
           268.8595001147344,
-          246.48304192225137
+          246.48304192225137,
+          240.58927151362101,
+          238.92587127685547
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,18 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
-      {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Sep 15 14:35:59 2025 \u002B0200",
@@ -2732,11 +2720,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -2784,15 +2782,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          435.8279695828756,
-          425.59944508870444,
           417.7533317345839,
           449.55778255462644,
           483.25185521443683,
@@ -2840,7 +2838,9 @@ window.BENCHMARK_DATA = {
           423.65541563715254,
           409.0791465759277,
           451.94028263825635,
-          470.719544951121
+          470.719544951121,
+          476.98880389531456,
+          444.1967217763265
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2852,8 +2852,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1232,
-          1232,
           1232,
           1232,
           1232,
@@ -2901,6 +2899,8 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1136,
+          1136,
+          1136,
           1136
         ],
         "borderColor": "#63A2AC",
@@ -2916,8 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          485.9532375971476,
-          472.77169370651245,
           452.14571247782027,
           456.9725922175816,
           467.848566309611,
@@ -2965,7 +2963,9 @@ window.BENCHMARK_DATA = {
           1236.2538581575666,
           1182.9263760493352,
           1335.319766362508,
-          1196.1245600382488
+          1196.1245600382488,
+          1167.0835252126058,
+          1240.8956281026205
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3005,14 +3005,14 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,18 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
       {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
@@ -3340,11 +3328,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -3392,15 +3390,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1768.8057811443623,
-          1748.8558232625326,
           1753.2375204722086,
           1675.2504884084067,
           1932.1340344746907,
@@ -3448,7 +3446,9 @@ window.BENCHMARK_DATA = {
           1803.7326568603517,
           1813.282754389445,
           1892.0803848902385,
-          1943.3307055155435
+          1943.3307055155435,
+          1830.3944552285332,
+          1813.836116027832
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3460,8 +3460,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2888,
-          2888,
           2888,
           2888,
           2888,
@@ -3509,6 +3507,8 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2632,
+          2632,
+          2632,
           2632
         ],
         "borderColor": "#63A2AC",
@@ -3524,8 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1339.4392157236734,
-          1260.4743906167837,
           1293.5604891459147,
           1311.0709548950194,
           1326.581183751424,
@@ -3573,7 +3571,9 @@ window.BENCHMARK_DATA = {
           1383.4462158203125,
           1341.1950542743389,
           1280.9150220326014,
-          1372.1143292018346
+          1372.1143292018346,
+          1261.6591304779054,
+          1294.6484115600585
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,18 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "a3283c9b6999d7d07743aa910d6ae7d0be9ab5f5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 08:44:05 2025 \u002B0200",
-        "message": "feat: add \u0060IsNullOrEmpty\u0060 expectation for nullable \u0060Guid\u0060 (#783)"
-      },
-      {
-        "sha": "904d8ac2e7ca0009205e5b76a04197e80e9043c1",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Sep 14 10:06:37 2025 \u002B0200",
-        "message": "refactor: move expectations on \u0060Uri\u0060 to \u0060aweXpect.Web\u0060 (#784)"
-      },
-      {
         "sha": "6545f65159e8f95000f320f872e508fd843ced3e",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Sep 15 14:35:59 2025 \u002B0200",
@@ -3948,11 +3936,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
+      },
+      {
+        "sha": "8305ac51e8df50b68e032355d232427a71c21663",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.5 to 0.15.6 (#843)"
       }
     ],
     "labels": [
-      "a3283c9b",
-      "904d8ac2",
       "6545f651",
       "d7e7a07f",
       "a1f5370c",
@@ -4000,15 +3998,15 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24",
+      "8305ac51"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2216.9763575236,
-          2153.8405438936675,
           2224.6414519718714,
           2154.1762952168783,
           2467.7597985948837,
@@ -4056,7 +4054,9 @@ window.BENCHMARK_DATA = {
           2505.647640482585,
           2472.413246154785,
           2454.133862813314,
-          2574.4000028882706
+          2574.4000028882706,
+          2533.934542020162,
+          2461.4658999125163
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4068,8 +4068,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          3080,
-          3080,
           3080,
           3080,
           3080,
@@ -4117,6 +4115,8 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2824,
+          2824,
+          2824,
           2824
         ],
         "borderColor": "#63A2AC",
@@ -4132,8 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          153577.33370535713,
-          151098.80350748697,
           151731.6606794085,
           152394.18334960938,
           155568.91028645833,
@@ -4181,7 +4179,9 @@ window.BENCHMARK_DATA = {
           91536.00325520833,
           88684.57991536458,
           87596.2677873884,
-          88990.0255998884
+          88990.0255998884,
+          89078.41203962054,
+          86371.32921424278
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,8 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
-          63787,
           63788,
           63351,
           63788,
@@ -4238,6 +4236,8 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
+          58598,
           58598,
           58598,
           58598,
