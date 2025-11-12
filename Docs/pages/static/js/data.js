@@ -2586,6 +2586,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -3019,7 +3025,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -3456,7 +3463,8 @@ window.BENCHMARK_DATA = {
           263.93456913630166,
           255.11932544708253,
           260.76867713247026,
-          274.4522070248922
+          274.4522070248922,
+          254.93189900716146
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3861,6 +3869,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4343,7 +4352,8 @@ window.BENCHMARK_DATA = {
           246.24050736427307,
           241.9665836606707,
           269.3426177024841,
-          239.3174580505916
+          239.3174580505916,
+          233.5852732317788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4536,6 +4546,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -6923,6 +6934,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -7279,7 +7296,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -7639,7 +7657,8 @@ window.BENCHMARK_DATA = {
           332606.125,
           311143.73118489585,
           312829.48685128347,
-          330369.46048409597
+          330369.46048409597,
+          296348.87711588544
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8003,6 +8022,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452
         ],
@@ -8372,7 +8392,8 @@ window.BENCHMARK_DATA = {
           2806034.650260417,
           2660209.2087053573,
           2650243.2794471155,
-          2664212.1088541667
+          2664212.1088541667,
+          2575638.993582589
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8734,6 +8755,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -11337,6 +11359,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -11770,7 +11798,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -12207,7 +12236,8 @@ window.BENCHMARK_DATA = {
           464.10953896840414,
           427.61443315233504,
           492.0156497955322,
-          456.935839176178
+          456.935839176178,
+          487.96678530375164
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12648,6 +12678,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368
         ],
@@ -13094,7 +13125,8 @@ window.BENCHMARK_DATA = {
           486.9550390879313,
           485.3194377081735,
           503.9999958674113,
-          486.6053017775218
+          486.6053017775218,
+          449.5753818511963
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13287,6 +13319,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16136,6 +16169,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -16569,7 +16608,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -17006,7 +17046,8 @@ window.BENCHMARK_DATA = {
           252.32644286522498,
           247.41135123797827,
           246.33154214223225,
-          242.9109561284383
+          242.9109561284383,
+          255.3863203048706
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17365,6 +17406,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -17893,7 +17935,8 @@ window.BENCHMARK_DATA = {
           250.86386850902014,
           246.57284311147836,
           268.8595001147344,
-          246.48304192225137
+          246.48304192225137,
+          240.58927151362101
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18086,6 +18129,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -20935,6 +20979,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -21368,7 +21418,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -21805,7 +21856,8 @@ window.BENCHMARK_DATA = {
           423.65541563715254,
           409.0791465759277,
           451.94028263825635,
-          470.719544951121
+          470.719544951121,
+          476.98880389531456
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22246,6 +22298,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136
         ],
@@ -22692,7 +22745,8 @@ window.BENCHMARK_DATA = {
           1236.2538581575666,
           1182.9263760493352,
           1335.319766362508,
-          1196.1245600382488
+          1196.1245600382488,
+          1167.0835252126058
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23121,6 +23175,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -25734,6 +25789,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -26167,7 +26228,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -26604,7 +26666,8 @@ window.BENCHMARK_DATA = {
           1803.7326568603517,
           1813.282754389445,
           1892.0803848902385,
-          1943.3307055155435
+          1943.3307055155435,
+          1830.3944552285332
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27045,6 +27108,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632
         ],
@@ -27491,7 +27555,8 @@ window.BENCHMARK_DATA = {
           1383.4462158203125,
           1341.1950542743389,
           1280.9150220326014,
-          1372.1143292018346
+          1372.1143292018346,
+          1261.6591304779054
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27684,6 +27749,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30533,6 +30599,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 9 11:22:43 2025 \u002B0100",
         "message": "refactor: move needs from pack to push (#840)"
+      },
+      {
+        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
+        "author": "dependabot[bot]",
+        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#842)"
       }
     ],
     "labels": [
@@ -30966,7 +31038,8 @@ window.BENCHMARK_DATA = {
       "4919d3fa",
       "52008dd3",
       "f179ef08",
-      "07780e6f"
+      "07780e6f",
+      "5ad6fc24"
     ],
     "datasets": [
       {
@@ -31403,7 +31476,8 @@ window.BENCHMARK_DATA = {
           2505.647640482585,
           2472.413246154785,
           2454.133862813314,
-          2574.4000028882706
+          2574.4000028882706,
+          2533.934542020162
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31844,6 +31918,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824
         ],
@@ -32290,7 +32365,8 @@ window.BENCHMARK_DATA = {
           91536.00325520833,
           88684.57991536458,
           87596.2677873884,
-          88990.0255998884
+          88990.0255998884,
+          89078.41203962054
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32728,6 +32804,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598,
           58598,
           58598,
