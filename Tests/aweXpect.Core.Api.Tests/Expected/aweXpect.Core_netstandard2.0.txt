@@ -646,7 +646,6 @@ namespace aweXpect
         public static aweXpect.Results.Expectation.Combination.All ThatAll(params aweXpect.Results.Expectation[] expectations) { }
         public static aweXpect.Results.Expectation.Combination.Any ThatAny(params aweXpect.Results.Expectation[] expectations) { }
     }
-    [System.Diagnostics.StackTraceHidden]
     public static class Fail
     {
         [System.Diagnostics.CodeAnalysis.DoesNotReturn]
@@ -664,7 +663,6 @@ namespace aweXpect
     {
         public InconclusiveException(string message) { }
     }
-    [System.Diagnostics.StackTraceHidden]
     public static class Skip
     {
         [System.Diagnostics.CodeAnalysis.DoesNotReturn]
@@ -1113,7 +1111,6 @@ namespace aweXpect.Results
             public TResult And(System.TimeSpan maximum) { }
         }
     }
-    [System.Diagnostics.StackTraceHidden]
     public abstract class Expectation
     {
         protected Expectation() { }
@@ -1141,7 +1138,6 @@ namespace aweXpect.Results
             }
         }
     }
-    [System.Diagnostics.StackTraceHidden]
     public class ExpectationResult : aweXpect.Results.Expectation, aweXpect.Core.IOptionsProvider<aweXpect.Core.ExpectationBuilder>
     {
         public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
@@ -1155,13 +1151,11 @@ namespace aweXpect.Results
     {
         public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
     }
-    [System.Diagnostics.StackTraceHidden]
     public class ExpectationResult<TType, TSelf> : aweXpect.Results.Expectation, aweXpect.Core.IOptionsProvider<aweXpect.Core.ExpectationBuilder>
         where TSelf : aweXpect.Results.ExpectationResult<TType, TSelf>
     {
         public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public TSelf Because(string reason) { }
-        [System.Diagnostics.StackTraceHidden]
         public System.Runtime.CompilerServices.TaskAwaiter<TType> GetAwaiter() { }
         public override string? ToString() { }
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }

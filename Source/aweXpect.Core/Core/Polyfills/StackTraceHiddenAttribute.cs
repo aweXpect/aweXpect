@@ -14,5 +14,5 @@ namespace System.Diagnostics;
                 AttributeTargets.Struct,
 	Inherited = false)]
 [ExcludeFromCodeCoverage]
-public sealed class StackTraceHiddenAttribute : Attribute;
+internal sealed class StackTraceHiddenAttribute : Attribute;
 #endif
