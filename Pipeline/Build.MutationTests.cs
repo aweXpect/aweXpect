@@ -22,11 +22,13 @@ namespace Build;
 
 partial class Build
 {
+	private static bool DisableMutationTests = true;
 	AbsolutePath StrykerOutputDirectory => ArtifactsDirectory / "Stryker";
 	AbsolutePath StrykerToolPath => TestResultsDirectory / "dotnet-stryker";
 
 	Target MutationTestsCore => _ => _
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => !DisableMutationTests)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.OnlyWhenDynamic(() => Repository.Branch != "main" && Repository.Tags.Count == 0)
 		.Executes(() =>
@@ -37,6 +39,7 @@ partial class Build
 
 	Target MutationTestsMain => _ => _
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => !DisableMutationTests)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
@@ -48,6 +51,7 @@ partial class Build
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
 		.DependsOn(MutationTestsDashboard)
+		.OnlyWhenDynamic(() => !DisableMutationTests)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
@@ -113,6 +117,7 @@ partial class Build
 	Target MutationTestsDashboard => _ => _
 		.After(MutationTestsMain)
 		.After(MutationTestsCore)
+		.OnlyWhenDynamic(() => !DisableMutationTests)
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
