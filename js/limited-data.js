@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
-      {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          214.40062243143717,
           211.13208314350672,
           215.4259432724544,
           248.7013270344053,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           262.99191328457425,
           290.9937463760376,
           243.60638585457434,
-          276.6520478566488
+          276.6520478566488,
+          270.4108124801091
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -425,7 +425,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          248.7946160389827,
           240.84753802844457,
           256.8775446256002,
           251.86770606040955,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           254.28990861347742,
           265.434599908193,
           227.94614538124628,
-          254.59018131891887
+          254.59018131891887,
+          285.8850337096623
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
-      {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          298676.5465494792,
           316257.0925292969,
           326733.5488978795,
           297787.7237304688,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           310589.97604166664,
           318224.71930803574,
           318445.8439941406,
-          313889.41354166664
+          313889.41354166664,
+          301313.86561802455
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1051,7 +1051,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1070,6 +1069,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2194289.82421875,
           2234732.353515625,
           2407578.591238839,
           2263092.3582589286,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2683772.801081731,
           2867276.1947916667,
           2632774.782752404,
-          2705892.777604167
+          2705892.777604167,
+          2475290.523995536
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,7 +1201,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
-          4804906
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
       {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          491.63686650594076,
           478.0444595019023,
           523.3902828216553,
           496.2946443557739,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           468.0736713091532,
           536.5715546925862,
           473.1941611925761,
-          519.3355581919352
+          519.3355581919352,
+          485.952849706014
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1659,7 +1659,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1678,6 +1677,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          484.3120264325823,
           468.2287917137146,
           526.493068768428,
           505.9104931513468,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           473.42465039661954,
           534.1773337636675,
           448.35982036590576,
-          522.257331530253
+          522.257331530253,
+          567.6923479352679
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
-      {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          253.85909172466822,
           242.3988242830549,
           264.3699197133382,
           251.37558581034344,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           248.4746085802714,
           267.26326440175376,
           245.28955494562786,
-          262.353364944458
+          262.353364944458,
+          262.42293007033214
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          246.05376093728202,
           240.23527424676078,
           274.0578015191214,
           259.05390787124634,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           247.8543791430337,
           285.2920396486918,
           239.61556302584134,
-          270.68733940124514
+          270.68733940124514,
+          286.44428030649823
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
-      {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          496.1378790310451,
           461.6624502454485,
           506.2351643698556,
           472.7600017229716,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           457.9279131889343,
           488.3778293609619,
           441.3670855840047,
-          504.2049987157186
+          504.2049987157186,
+          485.37851289113365
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2875,7 +2875,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2894,6 +2893,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          461.2750885327657,
           456.0559544881185,
           479.63954594930016,
           473.97689507557794,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1187.8277843475341,
           1251.7257734445425,
           1149.287575785319,
-          1397.923133722941
+          1397.923133722941,
+          1240.8684731892176
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3000,13 +3000,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
       {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1941.8967473347982,
           1921.1778926849365,
           1932.8731807708741,
           1937.5697926112584,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1914.7355253855387,
           1955.1941125052315,
           1896.5566106160481,
-          2041.9749987284342
+          2041.9749987284342,
+          1870.663264465332
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3483,7 +3483,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3502,6 +3501,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1260.040162785848,
           1279.5674416859945,
           1340.723444529942,
           1378.096979268392,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1391.9773173014323,
           1374.589400736491,
           1251.595383453369,
-          1370.79592628479
+          1370.79592628479,
+          1451.4868713378905
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "05fb28b3bcb7887b281ae6c7b1ca03e508181f73",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Sep 17 20:48:06 2025 \u002B0200",
-        "message": "fix: correct error message for prefix/suffix of empty strings (#791)"
-      },
-      {
         "sha": "935f53e07753b6e5c00e334b587e09732a6a3ea1",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Sep 18 03:55:11 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
-      "05fb28b3",
       "935f53e0",
       "dd79b966",
       "704d02de",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2505.615651448568,
           2556.1810656229654,
           2515.7020017183745,
           2536.592486826579,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2507.8479784647625,
           2608.6426175435386,
           2566.2507239750453,
-          2625.1601809183758
+          2625.1601809183758,
+          2484.6689158848353
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4091,7 +4091,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4110,6 +4109,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          147404.5851236979,
           152428.44996744793,
           151204.05447823662,
           157370.6958705357,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           91136.08956473214,
           89743.46718052456,
           85922.43911508414,
-          89459.74424525669
+          89459.74424525669,
+          62325.50304236779
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63787,
           63787,
           63787,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           59100,
           58598,
           58598,
-          58598
+          58598,
+          59100
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",

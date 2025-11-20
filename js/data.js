@@ -2622,6 +2622,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -3061,7 +3067,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -3504,7 +3511,8 @@ window.BENCHMARK_DATA = {
           262.99191328457425,
           290.9937463760376,
           243.60638585457434,
-          276.6520478566488
+          276.6520478566488,
+          270.4108124801091
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3909,6 +3917,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4403,7 +4412,8 @@ window.BENCHMARK_DATA = {
           254.28990861347742,
           265.434599908193,
           227.94614538124628,
-          254.59018131891887
+          254.59018131891887,
+          285.8850337096623
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4596,6 +4606,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7025,6 +7036,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -7387,7 +7404,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -7753,7 +7771,8 @@ window.BENCHMARK_DATA = {
           310589.97604166664,
           318224.71930803574,
           318445.8439941406,
-          313889.41354166664
+          313889.41354166664,
+          301313.86561802455
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8117,6 +8136,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8498,7 +8518,8 @@ window.BENCHMARK_DATA = {
           2683772.801081731,
           2867276.1947916667,
           2632774.782752404,
-          2705892.777604167
+          2705892.777604167,
+          2475290.523995536
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8869,7 +8890,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
-          4804906
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11505,6 +11527,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -11944,7 +11972,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -12387,7 +12416,8 @@ window.BENCHMARK_DATA = {
           468.0736713091532,
           536.5715546925862,
           473.1941611925761,
-          519.3355581919352
+          519.3355581919352,
+          485.952849706014
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12828,6 +12858,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13286,7 +13317,8 @@ window.BENCHMARK_DATA = {
           473.42465039661954,
           534.1773337636675,
           448.35982036590576,
-          522.257331530253
+          522.257331530253,
+          567.6923479352679
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13479,6 +13511,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16370,6 +16403,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -16809,7 +16848,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -17252,7 +17292,8 @@ window.BENCHMARK_DATA = {
           248.4746085802714,
           267.26326440175376,
           245.28955494562786,
-          262.353364944458
+          262.353364944458,
+          262.42293007033214
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17611,6 +17652,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18151,7 +18193,8 @@ window.BENCHMARK_DATA = {
           247.8543791430337,
           285.2920396486918,
           239.61556302584134,
-          270.68733940124514
+          270.68733940124514,
+          286.44428030649823
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18344,6 +18387,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -21235,6 +21279,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -21674,7 +21724,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -22117,7 +22168,8 @@ window.BENCHMARK_DATA = {
           457.9279131889343,
           488.3778293609619,
           441.3670855840047,
-          504.2049987157186
+          504.2049987157186,
+          485.37851289113365
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22558,6 +22610,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23016,7 +23069,8 @@ window.BENCHMARK_DATA = {
           1187.8277843475341,
           1251.7257734445425,
           1149.287575785319,
-          1397.923133722941
+          1397.923133722941,
+          1240.8684731892176
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23445,6 +23499,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -26100,6 +26155,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -26539,7 +26600,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -26982,7 +27044,8 @@ window.BENCHMARK_DATA = {
           1914.7355253855387,
           1955.1941125052315,
           1896.5566106160481,
-          2041.9749987284342
+          2041.9749987284342,
+          1870.663264465332
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27423,6 +27486,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -27881,7 +27945,8 @@ window.BENCHMARK_DATA = {
           1391.9773173014323,
           1374.589400736491,
           1251.595383453369,
-          1370.79592628479
+          1370.79592628479,
+          1451.4868713378905
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28074,6 +28139,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -30965,6 +31031,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
         "message": "fix: disable failing mutation tests (#847)"
+      },
+      {
+        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
       }
     ],
     "labels": [
@@ -31404,7 +31476,8 @@ window.BENCHMARK_DATA = {
       "6211e670",
       "e2a90b07",
       "a4620c7c",
-      "de27b024"
+      "de27b024",
+      "43736e06"
     ],
     "datasets": [
       {
@@ -31847,7 +31920,8 @@ window.BENCHMARK_DATA = {
           2507.8479784647625,
           2608.6426175435386,
           2566.2507239750453,
-          2625.1601809183758
+          2625.1601809183758,
+          2484.6689158848353
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32288,6 +32362,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -32746,7 +32821,8 @@ window.BENCHMARK_DATA = {
           91136.08956473214,
           89743.46718052456,
           85922.43911508414,
-          89459.74424525669
+          89459.74424525669,
+          62325.50304236779
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33194,7 +33270,8 @@ window.BENCHMARK_DATA = {
           59100,
           58598,
           58598,
-          58598
+          58598,
+          59100
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
