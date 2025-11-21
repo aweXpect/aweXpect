@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
-      {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          248.7013270344053,
           218.2792849858602,
           226.28476893901825,
           293.5846767425537,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           276.6520478566488,
           270.4108124801091,
           256.83671273503984,
-          263.83412764622614
+          263.83412764622614,
+          256.1162194105295
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -422,7 +422,7 @@ window.BENCHMARK_DATA = {
         "data": [
           504,
           504,
-          504,
+          712,
           712,
           712,
           712,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          251.86770606040955,
           243.5061046055385,
           262.13109321594237,
           265.47640994616916,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           254.59018131891887,
           285.8850337096623,
           243.2654959133693,
-          236.4879608551661
+          236.4879608551661,
+          239.8696618446937
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
-      {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          297787.7237304688,
           307700.7756347656,
           318329.77699497767,
           319470.7986886161,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           313889.41354166664,
           301313.86561802455,
           307319.4486328125,
-          305008.12552083336
+          305008.12552083336,
+          314541.7482747396
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1048,7 +1048,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1067,6 +1066,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2263092.3582589286,
           2217637.4772135415,
           2333205.953125,
           2350161.5484375,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2705892.777604167,
           2475290.523995536,
           2629846.0625,
-          2626694.638802083
+          2626694.638802083,
+          2620273.9385416666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,7 +1201,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
-          4804906
+          4804906,
+          4804904
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
       {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          496.2946443557739,
           527.724445956094,
           492.6347035566966,
           543.4163740158081,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           519.3355581919352,
           485.952849706014,
           509.3042878423418,
-          474.5356150309245
+          474.5356150309245,
+          512.6694970448812
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1656,7 +1656,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1675,6 +1674,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          505.9104931513468,
           480.7921098300389,
           520.1926217397054,
           530.1407087766207,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           522.257331530253,
           567.6923479352679,
           516.2955814089094,
-          480.9509044965108
+          480.9509044965108,
+          471.29851627349854
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
-      {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          251.37558581034344,
           241.14155527523585,
           250.59288704395294,
           263.2963466962179,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           262.353364944458,
           262.42293007033214,
           250.95766738744882,
-          249.85914344787597
+          249.85914344787597,
+          242.55047556559245
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          259.05390787124634,
           251.24353764607355,
           274.09875849315097,
           330.51131664911907,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           270.68733940124514,
           286.44428030649823,
           247.98182751337689,
-          249.73944438298543
+          249.73944438298543,
+          239.51840945652552
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
-      {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          472.7600017229716,
           482.68781960805256,
           472.96145346959435,
           512.112722269694,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           504.2049987157186,
           485.37851289113365,
           494.85361709594724,
-          437.23168385823567
+          437.23168385823567,
+          465.7572832448142
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2872,7 +2872,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2891,6 +2890,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          473.97689507557794,
           463.76653374158417,
           474.33885803222654,
           645.7190235773722,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1397.923133722941,
           1240.8684731892176,
           1190.2750749588013,
-          1195.3774709701538
+          1195.3774709701538,
+          1175.516543706258
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2997,13 +2997,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
       {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1937.5697926112584,
           1863.6905127207438,
           2004.574562890189,
           2021.5065406799317,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           2041.9749987284342,
           1870.663264465332,
           1943.5551266988118,
-          1925.5989236195883
+          1925.5989236195883,
+          2007.744308980306
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3480,7 +3480,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3499,6 +3498,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1378.096979268392,
           1266.162911928617,
           1306.0863279978435,
           1369.018996511187,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1370.79592628479,
           1451.4868713378905,
           1292.5556535720825,
-          1290.2514144352504
+          1290.2514144352504,
+          1301.8860315595355
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "704d02de889bf1d486a638305133f24c4e10945d",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 19 21:20:43 2025 \u002B0200",
-        "message": "feat: add support for .NET 10"
-      },
-      {
         "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
-      "704d02de",
       "9fca9804",
       "42ec1de1",
       "d5661d2e",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2536.592486826579,
           2473.494277191162,
           2530.9524906703405,
           2639.119336641752,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2625.1601809183758,
           2484.6689158848353,
           2545.0536323547362,
-          2554.7746991475424
+          2554.7746991475424,
+          2625.385095469157
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4088,7 +4088,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4107,6 +4106,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          157370.6958705357,
           147939.31870814733,
           151533.65690104166,
           154778.86576021634,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           89459.74424525669,
           62325.50304236779,
           85686.09716796875,
-          89261.32568359375
+          89261.32568359375,
+          87880.94576590402
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63787,
           63787,
           64324,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           58598,
           59100,
           58598,
-          58136
+          58136,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
