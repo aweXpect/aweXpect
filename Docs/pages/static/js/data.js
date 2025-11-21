@@ -2640,6 +2640,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -3082,7 +3088,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -3528,7 +3535,8 @@ window.BENCHMARK_DATA = {
           276.6520478566488,
           270.4108124801091,
           256.83671273503984,
-          263.83412764622614
+          263.83412764622614,
+          256.1162194105295
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3933,6 +3941,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4433,7 +4442,8 @@ window.BENCHMARK_DATA = {
           254.59018131891887,
           285.8850337096623,
           243.2654959133693,
-          236.4879608551661
+          236.4879608551661,
+          239.8696618446937
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4626,6 +4636,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7076,6 +7087,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -7441,7 +7458,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -7810,7 +7828,8 @@ window.BENCHMARK_DATA = {
           313889.41354166664,
           301313.86561802455,
           307319.4486328125,
-          305008.12552083336
+          305008.12552083336,
+          314541.7482747396
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8174,6 +8193,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8561,7 +8581,8 @@ window.BENCHMARK_DATA = {
           2705892.777604167,
           2475290.523995536,
           2629846.0625,
-          2626694.638802083
+          2626694.638802083,
+          2620273.9385416666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8935,7 +8956,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
-          4804906
+          4804906,
+          4804904
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11589,6 +11611,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -12031,7 +12059,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -12477,7 +12506,8 @@ window.BENCHMARK_DATA = {
           519.3355581919352,
           485.952849706014,
           509.3042878423418,
-          474.5356150309245
+          474.5356150309245,
+          512.6694970448812
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12918,6 +12948,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13382,7 +13413,8 @@ window.BENCHMARK_DATA = {
           522.257331530253,
           567.6923479352679,
           516.2955814089094,
-          480.9509044965108
+          480.9509044965108,
+          471.29851627349854
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13575,6 +13607,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16487,6 +16520,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -16929,7 +16968,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -17375,7 +17415,8 @@ window.BENCHMARK_DATA = {
           262.353364944458,
           262.42293007033214,
           250.95766738744882,
-          249.85914344787597
+          249.85914344787597,
+          242.55047556559245
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17734,6 +17775,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18280,7 +18322,8 @@ window.BENCHMARK_DATA = {
           270.68733940124514,
           286.44428030649823,
           247.98182751337689,
-          249.73944438298543
+          249.73944438298543,
+          239.51840945652552
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18473,6 +18516,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -21385,6 +21429,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -21827,7 +21877,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -22273,7 +22324,8 @@ window.BENCHMARK_DATA = {
           504.2049987157186,
           485.37851289113365,
           494.85361709594724,
-          437.23168385823567
+          437.23168385823567,
+          465.7572832448142
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22714,6 +22766,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23178,7 +23231,8 @@ window.BENCHMARK_DATA = {
           1397.923133722941,
           1240.8684731892176,
           1190.2750749588013,
-          1195.3774709701538
+          1195.3774709701538,
+          1175.516543706258
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23607,6 +23661,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -26283,6 +26338,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -26725,7 +26786,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -27171,7 +27233,8 @@ window.BENCHMARK_DATA = {
           2041.9749987284342,
           1870.663264465332,
           1943.5551266988118,
-          1925.5989236195883
+          1925.5989236195883,
+          2007.744308980306
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27612,6 +27675,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -28076,7 +28140,8 @@ window.BENCHMARK_DATA = {
           1370.79592628479,
           1451.4868713378905,
           1292.5556535720825,
-          1290.2514144352504
+          1290.2514144352504,
+          1301.8860315595355
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28269,6 +28334,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -31181,6 +31247,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test"
+      },
+      {
+        "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
+        "message": "fix: build error with MTP mode of dotnet test (#849)"
       }
     ],
     "labels": [
@@ -31623,7 +31695,8 @@ window.BENCHMARK_DATA = {
       "de27b024",
       "43736e06",
       "9a926765",
-      "c2972833"
+      "c2972833",
+      "a7f551d5"
     ],
     "datasets": [
       {
@@ -32069,7 +32142,8 @@ window.BENCHMARK_DATA = {
           2625.1601809183758,
           2484.6689158848353,
           2545.0536323547362,
-          2554.7746991475424
+          2554.7746991475424,
+          2625.385095469157
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32510,6 +32584,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -32974,7 +33049,8 @@ window.BENCHMARK_DATA = {
           89459.74424525669,
           62325.50304236779,
           85686.09716796875,
-          89261.32568359375
+          89261.32568359375,
+          87880.94576590402
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33425,7 +33501,8 @@ window.BENCHMARK_DATA = {
           58598,
           59100,
           58598,
-          58136
+          58136,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
