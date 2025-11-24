@@ -2,18 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
-      {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 26 23:12:33 2025 \u002B0200",
@@ -300,11 +288,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -352,15 +350,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          218.2792849858602,
-          226.28476893901825,
           293.5846767425537,
           285.36054642995197,
           251.54214681897844,
@@ -408,7 +406,9 @@ window.BENCHMARK_DATA = {
           270.4108124801091,
           256.83671273503984,
           263.83412764622614,
-          256.1162194105295
+          256.1162194105295,
+          255.57789754867554,
+          268.1248031343733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -420,8 +420,8 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          504,
-          504,
+          712,
+          712,
           712,
           712,
           712,
@@ -484,8 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.5061046055385,
-          262.13109321594237,
           265.47640994616916,
           257.5898955663045,
           249.4172920158931,
@@ -533,7 +531,9 @@ window.BENCHMARK_DATA = {
           285.8850337096623,
           243.2654959133693,
           236.4879608551661,
-          239.8696618446937
+          239.8696618446937,
+          235.49215126037598,
+          234.44791711171467
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,18 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
-      {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 26 23:12:33 2025 \u002B0200",
@@ -908,11 +896,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -960,15 +958,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          307700.7756347656,
-          318329.77699497767,
           319470.7986886161,
           318235.4892578125,
           319923.10867513024,
@@ -1016,7 +1014,9 @@ window.BENCHMARK_DATA = {
           301313.86561802455,
           307319.4486328125,
           305008.12552083336,
-          314541.7482747396
+          314541.7482747396,
+          297362.6296386719,
+          315876.72265625
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1046,8 +1046,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1066,6 +1064,8 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,8 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2217637.4772135415,
-          2333205.953125,
           2350161.5484375,
           2396841.797135417,
           2251739.5733816964,
@@ -1141,7 +1139,9 @@ window.BENCHMARK_DATA = {
           2475290.523995536,
           2629846.0625,
           2626694.638802083,
-          2620273.9385416666
+          2620273.9385416666,
+          2633151.505408654,
+          2598664.7973958333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,8 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,7 +1200,9 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804906,
-          4804904
+          4804904,
+          4804906,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,18 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
       {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
@@ -1516,11 +1504,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -1568,15 +1566,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          527.724445956094,
-          492.6347035566966,
           543.4163740158081,
           536.1366227467855,
           502.4512078211858,
@@ -1624,7 +1622,9 @@ window.BENCHMARK_DATA = {
           485.952849706014,
           509.3042878423418,
           474.5356150309245,
-          512.6694970448812
+          512.6694970448812,
+          460.17647910118103,
+          479.9306276957194
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1654,8 +1654,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1674,6 +1672,8 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,8 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          480.7921098300389,
-          520.1926217397054,
           530.1407087766207,
           502.3508940378825,
           504.40869534810383,
@@ -1749,7 +1747,9 @@ window.BENCHMARK_DATA = {
           567.6923479352679,
           516.2955814089094,
           480.9509044965108,
-          471.29851627349854
+          471.29851627349854,
+          462.062477906545,
+          474.14688151223316
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,18 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
-      {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 26 23:12:33 2025 \u002B0200",
@@ -2124,11 +2112,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -2176,15 +2174,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          241.14155527523585,
-          250.59288704395294,
           263.2963466962179,
           262.6911264737447,
           241.3037872681251,
@@ -2232,7 +2230,9 @@ window.BENCHMARK_DATA = {
           262.42293007033214,
           250.95766738744882,
           249.85914344787597,
-          242.55047556559245
+          242.55047556559245,
+          250.6757323582967,
+          274.14725763457164
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,8 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          251.24353764607355,
-          274.09875849315097,
           330.51131664911907,
           255.7410696665446,
           244.47551705042522,
@@ -2357,7 +2355,9 @@ window.BENCHMARK_DATA = {
           286.44428030649823,
           247.98182751337689,
           249.73944438298543,
-          239.51840945652552
+          239.51840945652552,
+          236.64041778019495,
+          241.06006774902343
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,18 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
-      {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 26 23:12:33 2025 \u002B0200",
@@ -2732,11 +2720,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -2784,15 +2782,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          482.68781960805256,
-          472.96145346959435,
           512.112722269694,
           494.0269825617472,
           467.2325421969096,
@@ -2840,7 +2838,9 @@ window.BENCHMARK_DATA = {
           485.37851289113365,
           494.85361709594724,
           437.23168385823567,
-          465.7572832448142
+          465.7572832448142,
+          444.0362708909171,
+          460.551322778066
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2870,8 +2870,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2890,6 +2888,8 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,8 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          463.76653374158417,
-          474.33885803222654,
           645.7190235773722,
           499.6340201059977,
           464.5885016123454,
@@ -2965,7 +2963,9 @@ window.BENCHMARK_DATA = {
           1240.8684731892176,
           1190.2750749588013,
           1195.3774709701538,
-          1175.516543706258
+          1175.516543706258,
+          1193.6906276430402,
+          1201.9932729176112
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2995,14 +2995,14 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,18 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
       {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
@@ -3340,11 +3328,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -3392,15 +3390,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1863.6905127207438,
-          2004.574562890189,
           2021.5065406799317,
           1974.424671936035,
           1940.6831729595478,
@@ -3448,7 +3446,9 @@ window.BENCHMARK_DATA = {
           1870.663264465332,
           1943.5551266988118,
           1925.5989236195883,
-          2007.744308980306
+          2007.744308980306,
+          1926.7944897242955,
+          1803.3422777811686
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3478,8 +3478,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3498,6 +3496,8 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,8 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1266.162911928617,
-          1306.0863279978435,
           1369.018996511187,
           1385.855007425944,
           1336.7990465799967,
@@ -3573,7 +3571,9 @@ window.BENCHMARK_DATA = {
           1451.4868713378905,
           1292.5556535720825,
           1290.2514144352504,
-          1301.8860315595355
+          1301.8860315595355,
+          1278.95707321167,
+          1316.1429623921713
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,18 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "9fca9804d7c7f06e3ee5aae374f0ddd2ee3f8283",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Sep 20 07:24:19 2025 \u002B0200",
-        "message": "feat: add string property result (#795)"
-      },
-      {
-        "sha": "42ec1de1a26ffb4d0b9789f8185984d8c194e059",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Sep 26 22:29:29 2025 \u002B0200",
-        "message": "feat: support direct check for boolean is \u0060true\u0060 (#797)"
-      },
-      {
         "sha": "d5661d2ee6cb2f698dd6d3f5c90daedfe4a82e84",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Sep 26 23:12:33 2025 \u002B0200",
@@ -3948,11 +3936,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
         "message": "fix: build error with MTP mode of dotnet test (#849)"
+      },
+      {
+        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
+        "message": "chore: Bump the mstest group with 2 updates (#851)"
+      },
+      {
+        "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
+        "message": "chore: Bump actions/checkout from 5 to 6 (#850)"
       }
     ],
     "labels": [
-      "9fca9804",
-      "42ec1de1",
       "d5661d2e",
       "93c3b02c",
       "91c60ba8",
@@ -4000,15 +3998,15 @@ window.BENCHMARK_DATA = {
       "43736e06",
       "9a926765",
       "c2972833",
-      "a7f551d5"
+      "a7f551d5",
+      "29e36632",
+      "3b2f04fa"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2473.494277191162,
-          2530.9524906703405,
           2639.119336641752,
           2557.122881825765,
           2540.0516452789307,
@@ -4056,7 +4054,9 @@ window.BENCHMARK_DATA = {
           2484.6689158848353,
           2545.0536323547362,
           2554.7746991475424,
-          2625.385095469157
+          2625.385095469157,
+          2506.0713923136395,
+          2459.7958170572915
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4086,8 +4086,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4106,6 +4104,8 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,8 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          147939.31870814733,
-          151533.65690104166,
           154778.86576021634,
           157487.23203125,
           149671.16329520088,
@@ -4181,7 +4179,9 @@ window.BENCHMARK_DATA = {
           62325.50304236779,
           85686.09716796875,
           89261.32568359375,
-          87880.94576590402
+          87880.94576590402,
+          86548.7185546875,
+          87331.20862630209
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,8 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
-          63787,
           64324,
           63788,
           63788,
@@ -4242,6 +4240,8 @@ window.BENCHMARK_DATA = {
           59100,
           58598,
           58136,
+          58598,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
