@@ -2676,6 +2676,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -3124,7 +3130,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -3576,7 +3583,8 @@ window.BENCHMARK_DATA = {
           268.1248031343733,
           256.1255780855815,
           260.40536136627196,
-          252.54760516484578
+          252.54760516484578,
+          253.7332250912984
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3981,6 +3989,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4493,7 +4502,8 @@ window.BENCHMARK_DATA = {
           234.44791711171467,
           236.45655672366803,
           245.93631155150277,
-          236.70832756587438
+          236.70832756587438,
+          234.87937109810966
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4686,6 +4696,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7178,6 +7189,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -7549,7 +7566,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -7924,7 +7942,8 @@ window.BENCHMARK_DATA = {
           315876.72265625,
           303297.1940917969,
           308332.6718424479,
-          304608.14515904017
+          304608.14515904017,
+          317862.0110560826
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8288,6 +8307,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8687,7 +8707,8 @@ window.BENCHMARK_DATA = {
           2598664.7973958333,
           2650135.716666667,
           2698391.4934895835,
-          2650141.731863839
+          2650141.731863839,
+          2527002.5555889425
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9067,7 +9088,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
-          4804902
+          4804902,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11757,6 +11779,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -12205,7 +12233,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -12657,7 +12686,8 @@ window.BENCHMARK_DATA = {
           479.9306276957194,
           465.1278178215027,
           487.2945702234904,
-          478.9699533144633
+          478.9699533144633,
+          460.85194536617826
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13098,6 +13128,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13574,7 +13605,8 @@ window.BENCHMARK_DATA = {
           474.14688151223316,
           477.2973515192668,
           465.3482033411662,
-          512.3317754109701
+          512.3317754109701,
+          469.6192213807787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13767,6 +13799,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16721,6 +16754,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -17169,7 +17208,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -17621,7 +17661,8 @@ window.BENCHMARK_DATA = {
           274.14725763457164,
           249.77424355915613,
           255.86469701358251,
-          245.2874663426326
+          245.2874663426326,
+          247.58607864379883
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17980,6 +18021,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18538,7 +18580,8 @@ window.BENCHMARK_DATA = {
           241.06006774902343,
           242.009511250716,
           248.55672407150269,
-          240.34878436156683
+          240.34878436156683,
+          238.34651749928793
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18731,6 +18774,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -21685,6 +21729,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -22133,7 +22183,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -22585,7 +22636,8 @@ window.BENCHMARK_DATA = {
           460.551322778066,
           467.4443635940552,
           488.6081900278727,
-          468.2932273864746
+          468.2932273864746,
+          464.7819416182382
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23026,6 +23078,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23502,7 +23555,8 @@ window.BENCHMARK_DATA = {
           1201.9932729176112,
           1197.113636310284,
           1231.5286661783855,
-          1181.6007381439208
+          1181.6007381439208,
+          1136.6536067962647
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23931,6 +23985,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -26649,6 +26704,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -27097,7 +27158,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -27549,7 +27611,8 @@ window.BENCHMARK_DATA = {
           1803.3422777811686,
           1934.0759019851685,
           1945.1539843241374,
-          1879.881801877703
+          1879.881801877703,
+          1850.996755472819
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -27990,6 +28053,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -28466,7 +28530,8 @@ window.BENCHMARK_DATA = {
           1316.1429623921713,
           1309.8577658335369,
           1411.3168356577555,
-          1373.9519111633301
+          1373.9519111633301,
+          1224.3133642832438
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28659,6 +28724,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -31613,6 +31679,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
@@ -32061,7 +32133,8 @@ window.BENCHMARK_DATA = {
       "3b2f04fa",
       "090496e7",
       "b358648a",
-      "1885ef82"
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
@@ -32513,7 +32586,8 @@ window.BENCHMARK_DATA = {
           2459.7958170572915,
           2699.948151452201,
           2563.241558837891,
-          2506.648887379964
+          2506.648887379964,
+          2487.662962504796
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32954,6 +33028,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -33430,7 +33505,8 @@ window.BENCHMARK_DATA = {
           87331.20862630209,
           89612.84615652902,
           89235.764453125,
-          86549.72975510817
+          86549.72975510817,
+          85148.07113882211
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33887,7 +33963,8 @@ window.BENCHMARK_DATA = {
           58598,
           59100,
           58137,
-          58597
+          58597,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
