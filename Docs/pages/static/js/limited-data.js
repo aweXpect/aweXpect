@@ -2,18 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
-      {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
@@ -300,11 +288,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -352,15 +350,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          251.54214681897844,
-          269.35961030079767,
           266.9320656776428,
           260.9475195248922,
           253.9388194402059,
@@ -408,7 +406,9 @@ window.BENCHMARK_DATA = {
           255.57789754867554,
           268.1248031343733,
           256.1255780855815,
-          260.40536136627196
+          260.40536136627196,
+          252.54760516484578,
+          253.7332250912984
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,8 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          249.4172920158931,
-          245.48226475715637,
           259.1422365052359,
           258.52626819610595,
           243.68274565537772,
@@ -533,7 +531,9 @@ window.BENCHMARK_DATA = {
           235.49215126037598,
           234.44791711171467,
           236.45655672366803,
-          245.93631155150277
+          245.93631155150277,
+          236.70832756587438,
+          234.87937109810966
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,18 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
-      {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
@@ -908,11 +896,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -960,15 +958,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          319923.10867513024,
-          310006.18899739586,
           306540.39103816106,
           308796.3005859375,
           301751.59490094864,
@@ -1016,7 +1014,9 @@ window.BENCHMARK_DATA = {
           297362.6296386719,
           315876.72265625,
           303297.1940917969,
-          308332.6718424479
+          308332.6718424479,
+          304608.14515904017,
+          317862.0110560826
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1042,8 +1042,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1062,6 +1060,8 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,8 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2251739.5733816964,
-          2252879.4778645835,
           2236315.8192708334,
           2277476.037239583,
           2276148.311298077,
@@ -1141,7 +1139,9 @@ window.BENCHMARK_DATA = {
           2633151.505408654,
           2598664.7973958333,
           2650135.716666667,
-          2698391.4934895835
+          2698391.4934895835,
+          2650141.731863839,
+          2527002.5555889425
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,8 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,6 +1200,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
+          4804902,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,18 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
       {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
@@ -1516,11 +1504,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -1568,15 +1566,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          502.4512078211858,
-          510.04182313283286,
           484.45854663848877,
           496.76884324210033,
           482.1351268132528,
@@ -1624,7 +1622,9 @@ window.BENCHMARK_DATA = {
           460.17647910118103,
           479.9306276957194,
           465.1278178215027,
-          487.2945702234904
+          487.2945702234904,
+          478.9699533144633,
+          460.85194536617826
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1650,8 +1650,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1670,6 +1668,8 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,8 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          504.40869534810383,
-          494.71239927836825,
           501.4160306930542,
           493.6545466014317,
           473.2058364663805,
@@ -1749,7 +1747,9 @@ window.BENCHMARK_DATA = {
           462.062477906545,
           474.14688151223316,
           477.2973515192668,
-          465.3482033411662
+          465.3482033411662,
+          512.3317754109701,
+          469.6192213807787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,18 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
-      {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
@@ -2124,11 +2112,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -2176,15 +2174,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          241.3037872681251,
-          260.63022832870485,
           264.0326773961385,
           244.1380992276328,
           251.7755309854235,
@@ -2232,7 +2230,9 @@ window.BENCHMARK_DATA = {
           250.6757323582967,
           274.14725763457164,
           249.77424355915613,
-          255.86469701358251
+          255.86469701358251,
+          245.2874663426326,
+          247.58607864379883
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,8 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          244.47551705042522,
-          252.34349285761516,
           259.07821341923307,
           256.7869305610657,
           245.4770554860433,
@@ -2357,7 +2355,9 @@ window.BENCHMARK_DATA = {
           236.64041778019495,
           241.06006774902343,
           242.009511250716,
-          248.55672407150269
+          248.55672407150269,
+          240.34878436156683,
+          238.34651749928793
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,18 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
-      {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
@@ -2732,11 +2720,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -2784,15 +2782,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          467.2325421969096,
-          493.94981346130373,
           478.46248556772866,
           458.3356009165446,
           469.0961554600642,
@@ -2840,7 +2838,9 @@ window.BENCHMARK_DATA = {
           444.0362708909171,
           460.551322778066,
           467.4443635940552,
-          488.6081900278727
+          488.6081900278727,
+          468.2932273864746,
+          464.7819416182382
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2866,8 +2866,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2886,6 +2884,8 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,8 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          464.5885016123454,
-          464.2724816640218,
           489.9969794409616,
           526.9969946543375,
           474.98258851369224,
@@ -2965,7 +2963,9 @@ window.BENCHMARK_DATA = {
           1193.6906276430402,
           1201.9932729176112,
           1197.113636310284,
-          1231.5286661783855
+          1231.5286661783855,
+          1181.6007381439208,
+          1136.6536067962647
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2991,14 +2991,14 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,18 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
       {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
@@ -3340,11 +3328,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -3392,15 +3390,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1940.6831729595478,
-          1982.46843846639,
           2008.2560424804688,
           1970.7028912862143,
           1868.8411866596766,
@@ -3448,7 +3446,9 @@ window.BENCHMARK_DATA = {
           1926.7944897242955,
           1803.3422777811686,
           1934.0759019851685,
-          1945.1539843241374
+          1945.1539843241374,
+          1879.881801877703,
+          1850.996755472819
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3474,8 +3474,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3494,6 +3492,8 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,8 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1336.7990465799967,
-          1355.7677356175013,
           1432.3283816746302,
           1323.483294214521,
           1325.3668045316424,
@@ -3573,7 +3571,9 @@ window.BENCHMARK_DATA = {
           1278.95707321167,
           1316.1429623921713,
           1309.8577658335369,
-          1411.3168356577555
+          1411.3168356577555,
+          1373.9519111633301,
+          1224.3133642832438
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,18 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "91c60ba855431973af34bede2f2a88577778e5cf",
-        "author": "dependabot[bot]",
-        "date": "Wed Oct 8 09:42:08 2025 \u002B0200",
-        "message": "chore: Bump the xunit group with 3 updates (#800)"
-      },
-      {
-        "sha": "36587259c98421e9f94081815c9fbf3ff7292138",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 09:48:18 2025 \u002B0200",
-        "message": "feat: allow customization of the \u0060MaximumStringLength\u0060 (#802)"
-      },
-      {
         "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
@@ -3948,11 +3936,21 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.TrxReport from 2.0.1 to 2.0.2 (#855)"
+      },
+      {
+        "sha": "1885ef82eeb9ece692e581c1c1d1e6427ee68c4c",
+        "author": "dependabot[bot]",
+        "date": "Mon Nov 24 16:22:34 2025 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.0 to 18.0.1 (#854)"
+      },
+      {
+        "sha": "c02d0824510ddd9aea1883ff907d824f61eab372",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
+        "message": "chore: update docusaurus dependencies (#856)"
       }
     ],
     "labels": [
-      "91c60ba8",
-      "36587259",
       "0a4f21e4",
       "7ce73592",
       "e2088cee",
@@ -4000,15 +3998,15 @@ window.BENCHMARK_DATA = {
       "29e36632",
       "3b2f04fa",
       "090496e7",
-      "b358648a"
+      "b358648a",
+      "1885ef82",
+      "c02d0824"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2540.0516452789307,
-          2548.856093597412,
           2533.363140106201,
           2448.338173421224,
           2444.1791111628213,
@@ -4056,7 +4054,9 @@ window.BENCHMARK_DATA = {
           2506.0713923136395,
           2459.7958170572915,
           2699.948151452201,
-          2563.241558837891
+          2563.241558837891,
+          2506.648887379964,
+          2487.662962504796
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4082,8 +4082,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4102,6 +4100,8 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,8 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149671.16329520088,
-          155031.1821637835,
           155127.50170898438,
           152000.00732421875,
           126311.7653483073,
@@ -4181,7 +4179,9 @@ window.BENCHMARK_DATA = {
           86548.7185546875,
           87331.20862630209,
           89612.84615652902,
-          89235.764453125
+          89235.764453125,
+          86549.72975510817,
+          85148.07113882211
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,8 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63788,
-          63788,
           63352,
           63788,
           61719,
@@ -4242,7 +4240,9 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
-          58137
+          58137,
+          58597,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
