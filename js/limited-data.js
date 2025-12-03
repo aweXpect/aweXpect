@@ -2,18 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
-      {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 17:58:17 2025 \u002B0200",
@@ -300,11 +288,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -352,15 +350,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          266.9320656776428,
-          260.9475195248922,
           253.9388194402059,
           275.2111526807149,
           264.20168126424153,
@@ -408,7 +406,9 @@ window.BENCHMARK_DATA = {
           256.1255780855815,
           260.40536136627196,
           252.54760516484578,
-          253.7332250912984
+          253.7332250912984,
+          279.3317527135213,
+          257.93246269226074
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,8 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          259.1422365052359,
-          258.52626819610595,
           243.68274565537772,
           274.91797116597496,
           249.55248854955036,
@@ -533,7 +531,9 @@ window.BENCHMARK_DATA = {
           236.45655672366803,
           245.93631155150277,
           236.70832756587438,
-          234.87937109810966
+          234.87937109810966,
+          269.04841674168904,
+          246.69245708905734
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,18 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
-      {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 17:58:17 2025 \u002B0200",
@@ -908,11 +896,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -960,15 +958,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          306540.39103816106,
-          308796.3005859375,
           301751.59490094864,
           319418.7615234375,
           313962.5345703125,
@@ -1016,7 +1014,9 @@ window.BENCHMARK_DATA = {
           303297.1940917969,
           308332.6718424479,
           304608.14515904017,
-          317862.0110560826
+          317862.0110560826,
+          333895.13828822545,
+          327561.9439978966
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1040,8 +1040,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1060,6 +1058,8 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,8 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2236315.8192708334,
-          2277476.037239583,
           2276148.311298077,
           2403456.5044270833,
           2253086.515625,
@@ -1141,7 +1139,9 @@ window.BENCHMARK_DATA = {
           2650135.716666667,
           2698391.4934895835,
           2650141.731863839,
-          2527002.5555889425
+          2527002.5555889425,
+          2964803.797135417,
+          2789778.7823660714
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,8 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,6 +1200,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
+          4804902,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,18 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
       {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
@@ -1516,11 +1504,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -1568,15 +1566,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          484.45854663848877,
-          496.76884324210033,
           482.1351268132528,
           485.7296449025472,
           479.46115020116173,
@@ -1624,7 +1622,9 @@ window.BENCHMARK_DATA = {
           465.1278178215027,
           487.2945702234904,
           478.9699533144633,
-          460.85194536617826
+          460.85194536617826,
+          501.96063569875867,
+          489.7332473754883
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1648,8 +1648,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1668,6 +1666,8 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,8 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          501.4160306930542,
-          493.6545466014317,
           473.2058364663805,
           511.4753552118937,
           510.4462281862895,
@@ -1749,7 +1747,9 @@ window.BENCHMARK_DATA = {
           477.2973515192668,
           465.3482033411662,
           512.3317754109701,
-          469.6192213807787
+          469.6192213807787,
+          492.9126252492269,
+          489.859358719417
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,18 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
-      {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 17:58:17 2025 \u002B0200",
@@ -2124,11 +2112,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -2176,15 +2174,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          264.0326773961385,
-          244.1380992276328,
           251.7755309854235,
           250.67192548116049,
           259.3954161008199,
@@ -2232,7 +2230,9 @@ window.BENCHMARK_DATA = {
           249.77424355915613,
           255.86469701358251,
           245.2874663426326,
-          247.58607864379883
+          247.58607864379883,
+          262.6404063542684,
+          251.02272357940674
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,8 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          259.07821341923307,
-          256.7869305610657,
           245.4770554860433,
           258.6703272547041,
           248.57355223383223,
@@ -2357,7 +2355,9 @@ window.BENCHMARK_DATA = {
           242.009511250716,
           248.55672407150269,
           240.34878436156683,
-          238.34651749928793
+          238.34651749928793,
+          277.22094910939535,
+          260.31332534154257
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,18 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
-      {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 17:58:17 2025 \u002B0200",
@@ -2732,11 +2720,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -2784,15 +2782,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          478.46248556772866,
-          458.3356009165446,
           469.0961554600642,
           503.9838460286458,
           495.38142693837483,
@@ -2840,7 +2838,9 @@ window.BENCHMARK_DATA = {
           467.4443635940552,
           488.6081900278727,
           468.2932273864746,
-          464.7819416182382
+          464.7819416182382,
+          486.66230297088623,
+          472.07983080546063
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2864,8 +2864,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2884,6 +2882,8 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,8 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          489.9969794409616,
-          526.9969946543375,
           474.98258851369224,
           488.6703682626997,
           477.5152720723833,
@@ -2965,7 +2963,9 @@ window.BENCHMARK_DATA = {
           1197.113636310284,
           1231.5286661783855,
           1181.6007381439208,
-          1136.6536067962647
+          1136.6536067962647,
+          1222.9648002624513,
+          1216.0624587719258
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2989,14 +2989,14 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,18 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
       {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
@@ -3340,11 +3328,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -3392,15 +3390,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2008.2560424804688,
-          1970.7028912862143,
           1868.8411866596766,
           1927.11331354777,
           2019.3273142496744,
@@ -3448,7 +3446,9 @@ window.BENCHMARK_DATA = {
           1934.0759019851685,
           1945.1539843241374,
           1879.881801877703,
-          1850.996755472819
+          1850.996755472819,
+          1908.95061983381,
+          1959.62144724528
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3472,8 +3472,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3492,6 +3490,8 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,8 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1432.3283816746302,
-          1323.483294214521,
           1325.3668045316424,
           1421.1097104390462,
           1330.9589940388998,
@@ -3573,7 +3571,9 @@ window.BENCHMARK_DATA = {
           1309.8577658335369,
           1411.3168356577555,
           1373.9519111633301,
-          1224.3133642832438
+          1224.3133642832438,
+          1360.2024543762207,
+          1288.5235251108804
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,18 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "0a4f21e41d630f23c7017d2ff39ccffd5a464b81",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Oct 8 16:52:49 2025 \u002B0200",
-        "message": "chore: update docusaurus to v3.9.1 (#803)"
-      },
-      {
-        "sha": "7ce73592f7520bd32f6115febcf0eb56ffddb9f0",
-        "author": "dependabot[bot]",
-        "date": "Mon Oct 13 07:56:46 2025 \u002B0000",
-        "message": "chore: Bump the tunit group with 2 updates"
-      },
-      {
         "sha": "e2088cee4f49ff63940a4e402ebe76ddf3bda5a1",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Oct 13 17:58:17 2025 \u002B0200",
@@ -3948,11 +3936,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Nov 30 12:13:02 2025 \u002B0100",
         "message": "chore: update docusaurus dependencies (#856)"
+      },
+      {
+        "sha": "f435b8369aaae623a3cbb4caad47af7399e8d3fe",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:04:59 2025 \u002B0100",
+        "message": "chore: Bump BenchmarkDotNet from 0.15.6 to 0.15.8 (#860)"
+      },
+      {
+        "sha": "17b6a822a33b1d683b45e13a97401c50c2feb830",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
+        "message": "chore: bump nuke to v10.1.0 (#862)"
       }
     ],
     "labels": [
-      "0a4f21e4",
-      "7ce73592",
       "e2088cee",
       "e6be53a3",
       "bdf6ee04",
@@ -4000,15 +3998,15 @@ window.BENCHMARK_DATA = {
       "090496e7",
       "b358648a",
       "1885ef82",
-      "c02d0824"
+      "c02d0824",
+      "f435b836",
+      "17b6a822"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2533.363140106201,
-          2448.338173421224,
           2444.1791111628213,
           2567.723194376628,
           2591.9180961608886,
@@ -4056,7 +4054,9 @@ window.BENCHMARK_DATA = {
           2699.948151452201,
           2563.241558837891,
           2506.648887379964,
-          2487.662962504796
+          2487.662962504796,
+          2501.433135168893,
+          2657.5566169738768
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4080,8 +4080,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4100,6 +4098,8 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,8 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          155127.50170898438,
-          152000.00732421875,
           126311.7653483073,
           156031.2494140625,
           154598.55149739582,
@@ -4181,7 +4179,9 @@ window.BENCHMARK_DATA = {
           89612.84615652902,
           89235.764453125,
           86549.72975510817,
-          85148.07113882211
+          85148.07113882211,
+          89873.24925130208,
+          87470.211164202
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,8 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63352,
-          63788,
           61719,
           63352,
           64324,
@@ -4242,7 +4240,9 @@ window.BENCHMARK_DATA = {
           59100,
           58137,
           58597,
-          58598
+          58598,
+          58137,
+          58588
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
