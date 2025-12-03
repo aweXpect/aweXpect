@@ -2694,6 +2694,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -3145,7 +3151,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -3600,7 +3607,8 @@ window.BENCHMARK_DATA = {
           252.54760516484578,
           253.7332250912984,
           279.3317527135213,
-          257.93246269226074
+          257.93246269226074,
+          277.96284243265785
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4005,6 +4013,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4523,7 +4532,8 @@ window.BENCHMARK_DATA = {
           236.70832756587438,
           234.87937109810966,
           269.04841674168904,
-          246.69245708905734
+          246.69245708905734,
+          251.72965453465778
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4716,6 +4726,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7229,6 +7240,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -7603,7 +7620,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -7981,7 +7999,8 @@ window.BENCHMARK_DATA = {
           304608.14515904017,
           317862.0110560826,
           333895.13828822545,
-          327561.9439978966
+          327561.9439978966,
+          319051.619913737
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8345,6 +8364,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8750,7 +8770,8 @@ window.BENCHMARK_DATA = {
           2650141.731863839,
           2527002.5555889425,
           2964803.797135417,
-          2789778.7823660714
+          2789778.7823660714,
+          2816708.0719866073
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9133,6 +9154,7 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804902,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -11841,6 +11863,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -12292,7 +12320,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -12747,7 +12776,8 @@ window.BENCHMARK_DATA = {
           478.9699533144633,
           460.85194536617826,
           501.96063569875867,
-          489.7332473754883
+          489.7332473754883,
+          482.34214210510254
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13188,6 +13218,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13670,7 +13701,8 @@ window.BENCHMARK_DATA = {
           512.3317754109701,
           469.6192213807787,
           492.9126252492269,
-          489.859358719417
+          489.859358719417,
+          484.68963689804076
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13863,6 +13895,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16838,6 +16871,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -17289,7 +17328,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -17744,7 +17784,8 @@ window.BENCHMARK_DATA = {
           245.2874663426326,
           247.58607864379883,
           262.6404063542684,
-          251.02272357940674
+          251.02272357940674,
+          272.3747438112895
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18103,6 +18144,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18667,7 +18709,8 @@ window.BENCHMARK_DATA = {
           240.34878436156683,
           238.34651749928793,
           277.22094910939535,
-          260.31332534154257
+          260.31332534154257,
+          258.3463686943054
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18860,6 +18903,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -21835,6 +21879,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -22286,7 +22336,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -22741,7 +22792,8 @@ window.BENCHMARK_DATA = {
           468.2932273864746,
           464.7819416182382,
           486.66230297088623,
-          472.07983080546063
+          472.07983080546063,
+          473.76199467976886
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23182,6 +23234,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23664,7 +23717,8 @@ window.BENCHMARK_DATA = {
           1181.6007381439208,
           1136.6536067962647,
           1222.9648002624513,
-          1216.0624587719258
+          1216.0624587719258,
+          1256.9610354105632
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24093,6 +24147,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -26832,6 +26887,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -27283,7 +27344,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -27738,7 +27800,8 @@ window.BENCHMARK_DATA = {
           1879.881801877703,
           1850.996755472819,
           1908.95061983381,
-          1959.62144724528
+          1959.62144724528,
+          1952.0348284403483
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28179,6 +28242,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -28661,7 +28725,8 @@ window.BENCHMARK_DATA = {
           1373.9519111633301,
           1224.3133642832438,
           1360.2024543762207,
-          1288.5235251108804
+          1288.5235251108804,
+          1268.5727484776423
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28854,6 +28919,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -31829,6 +31895,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Dec 3 20:04:43 2025 \u002B0100",
         "message": "chore: bump nuke to v10.1.0 (#862)"
+      },
+      {
+        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
+        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
       }
     ],
     "labels": [
@@ -32280,7 +32352,8 @@ window.BENCHMARK_DATA = {
       "1885ef82",
       "c02d0824",
       "f435b836",
-      "17b6a822"
+      "17b6a822",
+      "adc74259"
     ],
     "datasets": [
       {
@@ -32735,7 +32808,8 @@ window.BENCHMARK_DATA = {
           2506.648887379964,
           2487.662962504796,
           2501.433135168893,
-          2657.5566169738768
+          2657.5566169738768,
+          2545.9479540507
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33176,6 +33250,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -33658,7 +33733,8 @@ window.BENCHMARK_DATA = {
           86549.72975510817,
           85148.07113882211,
           89873.24925130208,
-          87470.211164202
+          87470.211164202,
+          88265.43655598958
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34118,7 +34194,8 @@ window.BENCHMARK_DATA = {
           58597,
           58598,
           58137,
-          58588
+          58588,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
