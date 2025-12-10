@@ -2706,6 +2706,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -3159,7 +3165,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -3616,7 +3623,8 @@ window.BENCHMARK_DATA = {
           279.3317527135213,
           257.93246269226074,
           277.96284243265785,
-          256.58562800089516
+          256.58562800089516,
+          286.2793915952955
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4021,6 +4029,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4543,7 +4552,8 @@ window.BENCHMARK_DATA = {
           269.04841674168904,
           246.69245708905734,
           251.72965453465778,
-          244.6730202947344
+          244.6730202947344,
+          266.19269466400146
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4736,6 +4746,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7263,6 +7274,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -7639,7 +7656,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -8019,7 +8037,8 @@ window.BENCHMARK_DATA = {
           333895.13828822545,
           327561.9439978966,
           319051.619913737,
-          316846.62387695315
+          316846.62387695315,
+          340055.86955915176
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8383,6 +8402,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8792,7 +8812,8 @@ window.BENCHMARK_DATA = {
           2964803.797135417,
           2789778.7823660714,
           2816708.0719866073,
-          2654250.218489583
+          2654250.218489583,
+          2846577.9813058036
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9177,7 +9198,8 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804906,
-          4804906
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11897,6 +11919,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -12350,7 +12378,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -12807,7 +12836,8 @@ window.BENCHMARK_DATA = {
           501.96063569875867,
           489.7332473754883,
           482.34214210510254,
-          487.4837978069599
+          487.4837978069599,
+          535.6228993279593
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13248,6 +13278,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13734,7 +13765,8 @@ window.BENCHMARK_DATA = {
           492.9126252492269,
           489.859358719417,
           484.68963689804076,
-          506.88361522129605
+          506.88361522129605,
+          517.8432790756226
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13927,6 +13959,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16916,6 +16949,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -17369,7 +17408,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -17826,7 +17866,8 @@ window.BENCHMARK_DATA = {
           262.6404063542684,
           251.02272357940674,
           272.3747438112895,
-          240.3281974474589
+          240.3281974474589,
+          263.2319943745931
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18185,6 +18226,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18753,7 +18795,8 @@ window.BENCHMARK_DATA = {
           277.22094910939535,
           260.31332534154257,
           258.3463686943054,
-          243.00272045135497
+          243.00272045135497,
+          274.30932191440036
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18946,6 +18989,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -21935,6 +21979,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -22388,7 +22438,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -22845,7 +22896,8 @@ window.BENCHMARK_DATA = {
           486.66230297088623,
           472.07983080546063,
           473.76199467976886,
-          485.76467081705727
+          485.76467081705727,
+          502.207675298055
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23286,6 +23338,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23772,7 +23825,8 @@ window.BENCHMARK_DATA = {
           1222.9648002624513,
           1216.0624587719258,
           1256.9610354105632,
-          1296.5684993743896
+          1296.5684993743896,
+          1256.3972023555211
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24201,6 +24255,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -26954,6 +27009,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -27407,7 +27468,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -27864,7 +27926,8 @@ window.BENCHMARK_DATA = {
           1908.95061983381,
           1959.62144724528,
           1952.0348284403483,
-          1854.2924808774676
+          1854.2924808774676,
+          2005.7013147989908
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28305,6 +28368,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -28791,7 +28855,8 @@ window.BENCHMARK_DATA = {
           1360.2024543762207,
           1288.5235251108804,
           1268.5727484776423,
-          1336.1510782877604
+          1336.1510782877604,
+          1485.084701792399
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28984,6 +29049,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -31973,6 +32039,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#858)"
+      },
+      {
+        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#863)"
       }
     ],
     "labels": [
@@ -32426,7 +32498,8 @@ window.BENCHMARK_DATA = {
       "f435b836",
       "17b6a822",
       "adc74259",
-      "a2bb269c"
+      "a2bb269c",
+      "85479583"
     ],
     "datasets": [
       {
@@ -32883,7 +32956,8 @@ window.BENCHMARK_DATA = {
           2501.433135168893,
           2657.5566169738768,
           2545.9479540507,
-          2452.8310347965785
+          2452.8310347965785,
+          2640.0172931126185
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33324,6 +33398,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -33810,7 +33885,8 @@ window.BENCHMARK_DATA = {
           89873.24925130208,
           87470.211164202,
           88265.43655598958,
-          86918.22303989956
+          86918.22303989956,
+          89489.46942608173
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34272,7 +34348,8 @@ window.BENCHMARK_DATA = {
           58137,
           58588,
           58598,
-          58598
+          58598,
+          58137
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
