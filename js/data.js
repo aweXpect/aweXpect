@@ -2700,6 +2700,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -3152,7 +3158,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -3608,7 +3615,8 @@ window.BENCHMARK_DATA = {
           253.7332250912984,
           279.3317527135213,
           257.93246269226074,
-          277.96284243265785
+          277.96284243265785,
+          256.58562800089516
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4013,6 +4021,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4533,7 +4542,8 @@ window.BENCHMARK_DATA = {
           234.87937109810966,
           269.04841674168904,
           246.69245708905734,
-          251.72965453465778
+          251.72965453465778,
+          244.6730202947344
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4726,6 +4736,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7246,6 +7257,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -7621,7 +7638,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -8000,7 +8018,8 @@ window.BENCHMARK_DATA = {
           317862.0110560826,
           333895.13828822545,
           327561.9439978966,
-          319051.619913737
+          319051.619913737,
+          316846.62387695315
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8364,6 +8383,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8771,7 +8791,8 @@ window.BENCHMARK_DATA = {
           2527002.5555889425,
           2964803.797135417,
           2789778.7823660714,
-          2816708.0719866073
+          2816708.0719866073,
+          2654250.218489583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9154,6 +9175,7 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906
         ],
@@ -11869,6 +11891,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -12321,7 +12349,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -12777,7 +12806,8 @@ window.BENCHMARK_DATA = {
           460.85194536617826,
           501.96063569875867,
           489.7332473754883,
-          482.34214210510254
+          482.34214210510254,
+          487.4837978069599
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13218,6 +13248,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13702,7 +13733,8 @@ window.BENCHMARK_DATA = {
           469.6192213807787,
           492.9126252492269,
           489.859358719417,
-          484.68963689804076
+          484.68963689804076,
+          506.88361522129605
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13895,6 +13927,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -16877,6 +16910,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -17329,7 +17368,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -17785,7 +17825,8 @@ window.BENCHMARK_DATA = {
           247.58607864379883,
           262.6404063542684,
           251.02272357940674,
-          272.3747438112895
+          272.3747438112895,
+          240.3281974474589
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18144,6 +18185,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18710,7 +18752,8 @@ window.BENCHMARK_DATA = {
           238.34651749928793,
           277.22094910939535,
           260.31332534154257,
-          258.3463686943054
+          258.3463686943054,
+          243.00272045135497
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18903,6 +18946,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -21885,6 +21929,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -22337,7 +22387,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -22793,7 +22844,8 @@ window.BENCHMARK_DATA = {
           464.7819416182382,
           486.66230297088623,
           472.07983080546063,
-          473.76199467976886
+          473.76199467976886,
+          485.76467081705727
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23234,6 +23286,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23718,7 +23771,8 @@ window.BENCHMARK_DATA = {
           1136.6536067962647,
           1222.9648002624513,
           1216.0624587719258,
-          1256.9610354105632
+          1256.9610354105632,
+          1296.5684993743896
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24147,6 +24201,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -26893,6 +26948,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -27345,7 +27406,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -27801,7 +27863,8 @@ window.BENCHMARK_DATA = {
           1850.996755472819,
           1908.95061983381,
           1959.62144724528,
-          1952.0348284403483
+          1952.0348284403483,
+          1854.2924808774676
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28242,6 +28305,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -28726,7 +28790,8 @@ window.BENCHMARK_DATA = {
           1224.3133642832438,
           1360.2024543762207,
           1288.5235251108804,
-          1268.5727484776423
+          1268.5727484776423,
+          1336.1510782877604
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -28919,6 +28984,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -31901,6 +31967,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
@@ -32353,7 +32425,8 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
@@ -32809,7 +32882,8 @@ window.BENCHMARK_DATA = {
           2487.662962504796,
           2501.433135168893,
           2657.5566169738768,
-          2545.9479540507
+          2545.9479540507,
+          2452.8310347965785
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33250,6 +33324,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -33734,7 +33809,8 @@ window.BENCHMARK_DATA = {
           85148.07113882211,
           89873.24925130208,
           87470.211164202,
-          88265.43655598958
+          88265.43655598958,
+          86918.22303989956
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34195,6 +34271,7 @@ window.BENCHMARK_DATA = {
           58598,
           58137,
           58588,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",

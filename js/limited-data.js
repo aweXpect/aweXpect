@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
-      {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
         "date": "Mon Oct 13 19:57:42 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          275.2111526807149,
           264.20168126424153,
           271.8760177930196,
           274.6898914405278,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           253.7332250912984,
           279.3317527135213,
           257.93246269226074,
-          277.96284243265785
+          277.96284243265785,
+          256.58562800089516
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          274.91797116597496,
           249.55248854955036,
           261.5353520257132,
           259.6588776906331,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           234.87937109810966,
           269.04841674168904,
           246.69245708905734,
-          251.72965453465778
+          251.72965453465778,
+          244.6730202947344
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
-      {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
         "date": "Mon Oct 13 19:57:42 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          319418.7615234375,
           313962.5345703125,
           328157.19876302086,
           289638.26826171874,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           317862.0110560826,
           333895.13828822545,
           327561.9439978966,
-          319051.619913737
+          319051.619913737,
+          316846.62387695315
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1038,7 +1038,6 @@ window.BENCHMARK_DATA = {
           335556,
           335556,
           335556,
-          335556,
           335372,
           335372,
           335372,
@@ -1057,6 +1056,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2403456.5044270833,
           2253086.515625,
           2376494.7257254464,
           2085050.3700520834,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2527002.5555889425,
           2964803.797135417,
           2789778.7823660714,
-          2816708.0719866073
+          2816708.0719866073,
+          2654250.218489583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
       {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          485.7296449025472,
           479.46115020116173,
           520.7586452484131,
           499.06778888702394,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           460.85194536617826,
           501.96063569875867,
           489.7332473754883,
-          482.34214210510254
+          482.34214210510254,
+          487.4837978069599
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1646,7 +1646,6 @@ window.BENCHMARK_DATA = {
           1464,
           1464,
           1464,
-          1464,
           1296,
           1296,
           1296,
@@ -1665,6 +1664,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          511.4753552118937,
           510.4462281862895,
           530.8546799932208,
           514.6282585144043,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           469.6192213807787,
           492.9126252492269,
           489.859358719417,
-          484.68963689804076
+          484.68963689804076,
+          506.88361522129605
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
-      {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
         "date": "Mon Oct 13 19:57:42 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          250.67192548116049,
           259.3954161008199,
           257.72817233403526,
           247.46528295370248,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           247.58607864379883,
           262.6404063542684,
           251.02272357940674,
-          272.3747438112895
+          272.3747438112895,
+          240.3281974474589
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          258.6703272547041,
           248.57355223383223,
           264.49719544819425,
           260.0346993718828,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           238.34651749928793,
           277.22094910939535,
           260.31332534154257,
-          258.3463686943054
+          258.3463686943054,
+          243.00272045135497
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
-      {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
         "date": "Mon Oct 13 19:57:42 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          503.9838460286458,
           495.38142693837483,
           508.9947265897478,
           489.0047341755458,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           464.7819416182382,
           486.66230297088623,
           472.07983080546063,
-          473.76199467976886
+          473.76199467976886,
+          485.76467081705727
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2862,7 +2862,6 @@ window.BENCHMARK_DATA = {
           1232,
           1232,
           1232,
-          1232,
           1056,
           1056,
           1056,
@@ -2881,6 +2880,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          488.6703682626997,
           477.5152720723833,
           494.6512009938558,
           487.08661162058513,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1136.6536067962647,
           1222.9648002624513,
           1216.0624587719258,
-          1256.9610354105632
+          1256.9610354105632,
+          1296.5684993743896
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2987,13 +2987,13 @@ window.BENCHMARK_DATA = {
           2168,
           2168,
           2168,
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3041,12 +3041,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
       {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1927.11331354777,
           2019.3273142496744,
           2014.6843386332193,
           1931.8058667864118,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1850.996755472819,
           1908.95061983381,
           1959.62144724528,
-          1952.0348284403483
+          1952.0348284403483,
+          1854.2924808774676
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3470,7 +3470,6 @@ window.BENCHMARK_DATA = {
           2888,
           2888,
           2888,
-          2888,
           2568,
           2568,
           2568,
@@ -3489,6 +3488,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1421.1097104390462,
           1330.9589940388998,
           1443.1974104563394,
           1355.1511698404947,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1224.3133642832438,
           1360.2024543762207,
           1288.5235251108804,
-          1268.5727484776423
+          1268.5727484776423,
+          1336.1510782877604
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "e6be53a39856a79fc78368c84b889c23f3d79cfe",
-        "author": "Valentin Breu\u00DF",
-        "date": "Mon Oct 13 18:13:28 2025 \u002B0200",
-        "message": "fix: formatting of nullable types (#808)"
-      },
-      {
         "sha": "bdf6ee04fd9e6da82fba87adf8b50b675b6ea8e9",
         "author": "dependabot[bot]",
         "date": "Mon Oct 13 19:57:42 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
         "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
+      },
+      {
+        "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
+        "author": "dependabot[bot]",
+        "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#858)"
       }
     ],
     "labels": [
-      "e6be53a3",
       "bdf6ee04",
       "36732fb7",
       "1766c989",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "c02d0824",
       "f435b836",
       "17b6a822",
-      "adc74259"
+      "adc74259",
+      "a2bb269c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2567.723194376628,
           2591.9180961608886,
           2663.1645612080893,
           2528.8717498779297,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2487.662962504796,
           2501.433135168893,
           2657.5566169738768,
-          2545.9479540507
+          2545.9479540507,
+          2452.8310347965785
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4078,7 +4078,6 @@ window.BENCHMARK_DATA = {
           3080,
           3080,
           3080,
-          3080,
           2760,
           2760,
           2760,
@@ -4097,6 +4096,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          156031.2494140625,
           154598.55149739582,
           157725.4927408854,
           97269.90286020133,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           85148.07113882211,
           89873.24925130208,
           87470.211164202,
-          88265.43655598958
+          88265.43655598958,
+          86918.22303989956
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63352,
           64324,
           64324,
           61718,
@@ -4242,6 +4241,7 @@ window.BENCHMARK_DATA = {
           58598,
           58137,
           58588,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
