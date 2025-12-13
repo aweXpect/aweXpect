@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Setup | aweXpect</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://aweXpect.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://aweXpect.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://aweXpect.com/docs/mockolate/setup"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Setup | aweXpect"><meta data-rh="true" name="description" content="Set up return values or behaviors for methods, properties, and indexers on your mock. Control how the mock responds to"><meta data-rh="true" property="og:description" content="Set up return values or behaviors for methods, properties, and indexers on your mock. Control how the mock responds to"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://aweXpect.com/docs/mockolate/setup"><link data-rh="true" rel="alternate" href="https://aweXpect.com/docs/mockolate/setup" hreflang="en"><link data-rh="true" rel="alternate" href="https://aweXpect.com/docs/mockolate/setup" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Setup","item":"https://aweXpect.com/docs/mockolate/setup"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="aweXpect RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="aweXpect Atom Feed"><link rel="stylesheet" href="/assets/css/styles.0d304356.css">
-<script src="/assets/js/runtime~main.35969031.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.cf43bd9c.js" defer="defer"></script>
 <script src="/assets/js/main.5abb8d40.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -36,13 +36,18 @@ call).</li>
 <p>Mockolate provides flexible parameter matching for method setups and verifications:</p>
 <ul>
 <li class=""><code>It.IsAny&lt;T&gt;()</code>: Matches any value of type <code>T</code>.</li>
-<li class=""><code>It.Is&lt;T&gt;(predicate)</code>: Matches values based on a predicate.</li>
-<li class=""><code>It.Is&lt;T&gt;(value)</code>: Matches a specific value.</li>
+<li class=""><code>It.Is&lt;T&gt;(value)</code>: Matches a specific value. With <code>.Using(IEqualityComparer&lt;T&gt;)</code>, you can provide a custom equality comparer.</li>
+<li class=""><code>It.IsOneOf&lt;T&gt;(params T[] values)</code>: Matches any of the given values. With <code>.Using(IEqualityComparer&lt;T&gt;)</code>, you can provide a custom equality comparer.</li>
 <li class=""><code>It.IsNull&lt;T&gt;()</code>: Matches null.</li>
 <li class=""><code>It.IsTrue()</code>/<code>It.IsFalse()</code>: Matches boolean true/false.</li>
-<li class=""><code>It.IsInRange(min, max)</code>: Matches a number within the given range. You can append <code>.Exclusive()</code> to exclude the minimum and maximum value.</li>
-<li class=""><code>It.IsOut&lt;T&gt;(…)</code>/<code>It.IsRef&lt;T&gt;(…)</code>: Matches and sets out/ref parameters, supports value setting and
+<li class=""><code>It.IsInRange(min, max)</code>: Matches a number within the given range. You can append <code>.Exclusive()</code> to exclude the
+minimum and maximum value.</li>
+<li class=""><code>It.IsOut&lt;T&gt;(…)</code>/<code>It.IsAnyOut&lt;T&gt;(…)</code>: Matches and sets out parameters, supports value setting and
 predicates.</li>
+<li class=""><code>It.IsRef&lt;T&gt;(…)</code>/<code>It.IsAnyRef&lt;T&gt;(…)</code>: Matches and sets ref parameters, supports value setting and
+predicates.</li>
+<li class=""><code>It.Matches&lt;string&gt;(pattern)</code>: Matches strings using wildcard patterns (<code>*</code> and <code>?</code>). With <code>.AsRegex()</code>, you can use regular expressions instead.</li>
+<li class=""><code>It.Satisfies&lt;T&gt;(predicate)</code>: Matches values based on a predicate.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="parameter-interaction">Parameter Interaction<a href="#parameter-interaction" class="hash-link" aria-label="Direct link to Parameter Interaction" title="Direct link to Parameter Interaction" translate="no">​</a></h4>
 <p>With <code>Do</code>, you can register a callback for individual parameters of a method setup. This allows you to implement side
