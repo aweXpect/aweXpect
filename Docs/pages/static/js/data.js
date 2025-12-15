@@ -2724,6 +2724,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -3180,7 +3186,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -3640,7 +3647,8 @@ window.BENCHMARK_DATA = {
           256.58562800089516,
           286.2793915952955,
           296.5693815435682,
-          263.3704100290934
+          263.3704100290934,
+          251.2219662030538
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4045,6 +4053,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4573,7 +4582,8 @@ window.BENCHMARK_DATA = {
           244.6730202947344,
           266.19269466400146,
           260.07902606328327,
-          243.59214305877686
+          243.59214305877686,
+          236.3092998777117
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4766,6 +4776,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7314,6 +7325,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -7693,7 +7710,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -8076,7 +8094,8 @@ window.BENCHMARK_DATA = {
           316846.62387695315,
           340055.86955915176,
           312984.25638253347,
-          316860.426546224
+          316860.426546224,
+          309264.40767996653
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8440,6 +8459,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8855,7 +8875,8 @@ window.BENCHMARK_DATA = {
           2654250.218489583,
           2846577.9813058036,
           2840669.1044270834,
-          2669477.157451923
+          2669477.157451923,
+          2639451.3864397323
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9242,6 +9263,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906
         ],
@@ -11981,6 +12003,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -12437,7 +12465,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -12897,7 +12926,8 @@ window.BENCHMARK_DATA = {
           487.4837978069599,
           535.6228993279593,
           510.74155814831073,
-          481.78320026397705
+          481.78320026397705,
+          463.786981179164
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13338,6 +13368,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13830,7 +13861,8 @@ window.BENCHMARK_DATA = {
           506.88361522129605,
           517.8432790756226,
           478.3175189971924,
-          503.9329269091288
+          503.9329269091288,
+          486.7771451813834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14023,6 +14055,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17033,6 +17066,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -17489,7 +17528,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -17949,7 +17989,8 @@ window.BENCHMARK_DATA = {
           240.3281974474589,
           263.2319943745931,
           246.56725441614788,
-          260.93338549931843
+          260.93338549931843,
+          240.82350600560505
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18308,6 +18349,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18882,7 +18924,8 @@ window.BENCHMARK_DATA = {
           243.00272045135497,
           274.30932191440036,
           252.8639535537133,
-          241.9848823229472
+          241.9848823229472,
+          244.92356174332755
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19075,6 +19118,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -22085,6 +22129,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -22541,7 +22591,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -23001,7 +23052,8 @@ window.BENCHMARK_DATA = {
           485.76467081705727,
           502.207675298055,
           457.3616619427999,
-          475.67078488667806
+          475.67078488667806,
+          444.71676972934176
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23442,6 +23494,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -23934,7 +23987,8 @@ window.BENCHMARK_DATA = {
           1296.5684993743896,
           1256.3972023555211,
           1183.0247463498797,
-          1254.643728129069
+          1254.643728129069,
+          1227.0699108123779
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24363,6 +24417,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -27137,6 +27192,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -27593,7 +27654,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -28053,7 +28115,8 @@ window.BENCHMARK_DATA = {
           1854.2924808774676,
           2005.7013147989908,
           1963.410169328962,
-          1976.0043668111166
+          1976.0043668111166,
+          1821.4311475753784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28494,6 +28557,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -28986,7 +29050,8 @@ window.BENCHMARK_DATA = {
           1336.1510782877604,
           1485.084701792399,
           1294.1252066748482,
-          1436.9808774312337
+          1436.9808774312337,
+          1362.8858048756917
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29179,6 +29244,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -32189,6 +32255,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:39 2025 \u002B0100",
         "message": "chore: Bump actions/upload-artifact from 5 to 6 (#867)"
+      },
+      {
+        "sha": "1bb936f7f641aa0b0a76741fd9328253840e758f",
+        "author": "dependabot[bot]",
+        "date": "Mon Dec 15 21:31:46 2025 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#868)"
       }
     ],
     "labels": [
@@ -32645,7 +32717,8 @@ window.BENCHMARK_DATA = {
       "a2bb269c",
       "85479583",
       "69c35d41",
-      "9875869d"
+      "9875869d",
+      "1bb936f7"
     ],
     "datasets": [
       {
@@ -33105,7 +33178,8 @@ window.BENCHMARK_DATA = {
           2452.8310347965785,
           2640.0172931126185,
           2532.328660583496,
-          2618.133165904454
+          2618.133165904454,
+          2402.109261830648
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33546,6 +33620,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -34038,7 +34113,8 @@ window.BENCHMARK_DATA = {
           86918.22303989956,
           89489.46942608173,
           89824.42639973959,
-          90341.77333286831
+          90341.77333286831,
+          88157.99780273438
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34503,7 +34579,8 @@ window.BENCHMARK_DATA = {
           58598,
           58137,
           58598,
-          58598
+          58598,
+          59100
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
