@@ -188,7 +188,7 @@ jobs:
         if: always()
         steps:
             -   name: Download Artifacts
-                uses: actions/download-artifact@v6
+                uses: actions/download-artifact@v7
                 with:
                     path: artifacts
             -   name: Publish Test Results
@@ -231,7 +231,7 @@ jobs:
             contents: write
         steps:
             -   name: Download packages
-                uses: actions/download-artifact@v6
+                uses: actions/download-artifact@v7
                 with:
                     name: Packages
                     path: Artifacts/Packages
@@ -273,7 +273,7 @@ jobs:
         needs: [ pack, publish-test-results, static-code-analysis, build-pages ]
         steps:
             -   name: Download packages
-                uses: actions/download-artifact@v6
+                uses: actions/download-artifact@v7
                 with:
                     name: Packages
                     path: Artifacts/Packages
