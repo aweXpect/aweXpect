@@ -2748,6 +2748,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -3208,7 +3214,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -3672,7 +3679,8 @@ window.BENCHMARK_DATA = {
           251.2219662030538,
           259.48833831151325,
           251.66675072449905,
-          277.15419254984175
+          277.15419254984175,
+          255.35857020105635
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4077,6 +4085,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4613,7 +4622,8 @@ window.BENCHMARK_DATA = {
           236.3092998777117,
           236.76891649686374,
           229.0218552180699,
-          264.28134816033497
+          264.28134816033497,
+          236.5278637068612
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4806,6 +4816,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7382,6 +7393,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -7765,7 +7782,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -8152,7 +8170,8 @@ window.BENCHMARK_DATA = {
           309264.40767996653,
           301519.12626953126,
           301233.7068434495,
-          294638.8506835938
+          294638.8506835938,
+          307080.0887276786
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8516,6 +8535,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8939,7 +8959,8 @@ window.BENCHMARK_DATA = {
           2639451.3864397323,
           2523305.9606584823,
           2609997.1020833333,
-          2471933.809988839
+          2471933.809988839,
+          2509995.688701923
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9326,6 +9347,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12093,6 +12115,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -12553,7 +12581,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -13017,7 +13046,8 @@ window.BENCHMARK_DATA = {
           463.786981179164,
           482.8576327470633,
           456.1418684445895,
-          503.0476961771647
+          503.0476961771647,
+          455.54577312469485
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13458,6 +13488,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13958,7 +13989,8 @@ window.BENCHMARK_DATA = {
           486.7771451813834,
           475.6191392966679,
           454.30071252187093,
-          538.3768793106079
+          538.3768793106079,
+          476.29076399121965
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14151,6 +14183,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17189,6 +17222,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -17649,7 +17688,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -18113,7 +18153,8 @@ window.BENCHMARK_DATA = {
           240.82350600560505,
           248.12951453526816,
           244.3940683878385,
-          262.34208812032426
+          262.34208812032426,
+          251.43657167141254
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18472,6 +18513,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -19054,7 +19096,8 @@ window.BENCHMARK_DATA = {
           244.92356174332755,
           242.66643069585163,
           231.87754769325255,
-          277.2392265001933
+          277.2392265001933,
+          235.7345404965537
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19247,6 +19290,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -22285,6 +22329,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -22745,7 +22795,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -23209,7 +23260,8 @@ window.BENCHMARK_DATA = {
           444.71676972934176,
           454.6465903428885,
           441.82863086064657,
-          495.57191336949666
+          495.57191336949666,
+          463.51147164617265
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23650,6 +23702,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -24150,7 +24203,8 @@ window.BENCHMARK_DATA = {
           1227.0699108123779,
           1167.0865657806396,
           1150.6516721089681,
-          1236.5632545471192
+          1236.5632545471192,
+          1218.2815177100044
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24579,6 +24633,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -27381,6 +27436,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -27841,7 +27902,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -28305,7 +28367,8 @@ window.BENCHMARK_DATA = {
           1821.4311475753784,
           1798.928283397968,
           1774.1404014314924,
-          1979.4111666361491
+          1979.4111666361491,
+          1894.9790550231933
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28746,6 +28809,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -29246,7 +29310,8 @@ window.BENCHMARK_DATA = {
           1362.8858048756917,
           1269.8954306284586,
           1300.0463006337484,
-          1406.4692728678385
+          1406.4692728678385,
+          1300.5529863993327
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29439,6 +29504,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -32477,6 +32543,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage and 2 others (#875)"
+      },
+      {
+        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
+        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
       }
     ],
     "labels": [
@@ -32937,7 +33009,8 @@ window.BENCHMARK_DATA = {
       "1bb936f7",
       "d988d253",
       "7178849c",
-      "bf7d4907"
+      "bf7d4907",
+      "a61da7b8"
     ],
     "datasets": [
       {
@@ -33401,7 +33474,8 @@ window.BENCHMARK_DATA = {
           2402.109261830648,
           2447.1108238220213,
           2469.5860608418784,
-          2552.189424641927
+          2552.189424641927,
+          2513.509962463379
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33842,6 +33916,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -34342,7 +34417,8 @@ window.BENCHMARK_DATA = {
           88157.99780273438,
           87404.42197963169,
           87044.60247395834,
-          65075.09894670759
+          65075.09894670759,
+          86011.31978352864
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34811,7 +34887,8 @@ window.BENCHMARK_DATA = {
           59100,
           58598,
           58598,
-          58598
+          58598,
+          59100
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
