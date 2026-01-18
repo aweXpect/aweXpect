@@ -46,7 +46,7 @@ internal class DummyNode(string name, Func<ConstraintResult>? result = null) : N
 		where TValue : default
 		=> result == null ? throw new NotSupportedException() : Task.FromResult(result());
 
-	public override void SetReason(BecauseReason becauseReason)
+	public override void SetReason(IBecauseReason becauseReason)
 		=> ReceivedReason = becauseReason.ToString();
 
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)

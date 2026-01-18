@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect.Core.Helpers;
 
-internal readonly struct BecauseReason(string reason)
+internal readonly struct BecauseReason(string reason) : IBecauseReason
 {
 	private readonly Lazy<string> _message = new(() => CreateMessage(reason));
 
@@ -19,10 +20,19 @@ internal readonly struct BecauseReason(string reason)
 
 	public override string ToString()
 		=> _message.Value;
-
-	public ConstraintResult ApplyTo(ConstraintResult result)
+	
+#if NET8_0_OR_GREATER
+	public ValueTask<ConstraintResult>
+#else
+	public Task<ConstraintResult>
+#endif
+	ApplyTo(ConstraintResult result)
 	{
 		string message = _message.Value;
-		return result.AppendExpectationText(e => e.Append(message));
+#if NET8_0_OR_GREATER
+		return ValueTask.FromResult(result.AppendExpectationText(e => e.Append(message)));
+#else
+		return Task.FromResult(result.AppendExpectationText(e => e.Append(message)));
+#endif
 	}
 }

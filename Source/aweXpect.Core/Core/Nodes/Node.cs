@@ -47,7 +47,7 @@ internal abstract class Node
 	/// <summary>
 	///     Set the <paramref name="becauseReason" /> on the current node.
 	/// </summary>
-	public abstract void SetReason(BecauseReason becauseReason);
+	public abstract void SetReason(IBecauseReason becauseReason);
 
 	/// <summary>
 	///     Appends the expectation to the <paramref name="stringBuilder" />.

@@ -38,6 +38,16 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder)
 	}
 
 	/// <summary>
+	///     Provide an <see langword="async" /> <paramref name="reason" /> explaining why the constraint is needed.<br />
+	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.
+	/// </summary>
+	public ExpectationResult Because(Task<string> reason)
+	{
+		expectationBuilder.AddReason(reason);
+		return this;
+	}
+
+	/// <summary>
 	///     Sets the <see cref="CancellationToken" /> to be passed to expectations.
 	/// </summary>
 	/// <remarks>
@@ -158,6 +168,16 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.
 	/// </summary>
 	public TSelf Because(string reason)
+	{
+		expectationBuilder.AddReason(reason);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Provide an <see langword="async" /> <paramref name="reason" /> explaining why the constraint is needed.<br />
+	///     If the phrase does not start with the word <i>because</i>, it is prepended automatically.
+	/// </summary>
+	public TSelf Because(Task<string> reason)
 	{
 		expectationBuilder.AddReason(reason);
 		return (TSelf)this;
