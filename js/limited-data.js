@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
-      {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          269.78249740600586,
           249.39345846857344,
           270.5471285820007,
           260.13838618596395,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           251.66675072449905,
           277.15419254984175,
           255.35857020105635,
-          284.98652833302816
+          284.98652833302816,
+          292.37138277689616
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          234.73464778753427,
           239.51507058510413,
           273.83617608887806,
           243.82066363554733,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           229.0218552180699,
           264.28134816033497,
           236.5278637068612,
-          245.31624037424723
+          245.31624037424723,
+          251.26018158594766
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
-      {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          314708.1344075521,
           325841.9932942708,
           300686.4139322917,
           309425.7072591146,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           301233.7068434495,
           294638.8506835938,
           307080.0887276786,
-          323968.51025390625
+          323968.51025390625,
+          315327.768359375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1028,7 +1028,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          335556,
           335372,
           335372,
           335372,
@@ -1047,6 +1046,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2367809.3622395834,
           2177388.4837239585,
           2267730.275,
           2295989.4557291665,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2609997.1020833333,
           2471933.809988839,
           2509995.688701923,
-          2652368.6463341345
+          2652368.6463341345,
+          2714056.3393229167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4584416,
           4584416,
           4584416,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
       {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          494.62177320627063,
           435.2064858118693,
           476.9213854585375,
           495.99205646514895,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           456.1418684445895,
           503.0476961771647,
           455.54577312469485,
-          501.5169469833374
+          501.5169469833374,
+          489.32725177492415
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1636,7 +1636,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1464,
           1296,
           1296,
           1296,
@@ -1655,6 +1654,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          468.3129890759786,
           469.38727865900313,
           505.331383228302,
           549.2067583084106,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           454.30071252187093,
           538.3768793106079,
           476.29076399121965,
-          504.91691623415267
+          504.91691623415267,
+          488.45515995025636
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
-      {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          249.4630912712642,
           254.36252975463867,
           260.20521446636747,
           257.0191357294718,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           244.3940683878385,
           262.34208812032426,
           251.43657167141254,
-          253.01466881434123
+          253.01466881434123,
+          252.15586341222127
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          238.40484780531662,
           237.68475545247395,
           247.6996557553609,
           256.2303510812613,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           231.87754769325255,
           277.2392265001933,
           235.7345404965537,
-          249.73073666890463
+          249.73073666890463,
+          250.99924275080363
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
-      {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          493.14027620951333,
           417.1361598650614,
           421.72915906906127,
           428.8254949251811,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           441.82863086064657,
           495.57191336949666,
           463.51147164617265,
-          449.0674800554911
+          449.0674800554911,
+          494.7442384719849
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2852,7 +2852,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1232,
           1056,
           1056,
           1056,
@@ -2871,6 +2870,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          548.7480166980198,
           1222.8185269673666,
           1158.414110438029,
           1213.3131118187537,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1150.6516721089681,
           1236.5632545471192,
           1218.2815177100044,
-          1184.700120417277
+          1184.700120417277,
+          1256.5540840148926
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2977,13 +2977,13 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          2168,
           3896,
           3896,
           3896,
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
-      {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1882.722839864095,
           1818.5281080881755,
           1842.647770336696,
           1818.443026815142,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1774.1404014314924,
           1979.4111666361491,
           1894.9790550231933,
-          1869.0229784647624
+          1869.0229784647624,
+          2012.717963663737
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3460,7 +3460,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2888,
           2568,
           2568,
           2568,
@@ -3479,6 +3478,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1346.7257797241211,
           1336.5098396301269,
           1312.4805297851562,
           1332.2870490210396,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1300.0463006337484,
           1406.4692728678385,
           1300.5529863993327,
-          1355.4595438639324
+          1355.4595438639324,
+          1267.482897077288
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "bafccdb2aafc9d3a8a94b14dca2e7adc7584a473",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Oct 18 17:14:58 2025 \u002B0200",
-        "message": "fix: formatting of nested types within generic types (#815)"
-      },
-      {
         "sha": "a8bcc4b232ba0107338ab71f43e6cb362fa785fb",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Oct 18 22:07:56 2025 \u002B0200",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
-      "bafccdb2",
       "a8bcc4b2",
       "be643c6f",
       "d6cec126",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2624.294271850586,
           2485.525977543422,
           2420.2496203104656,
           2414.7831937154133,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2469.5860608418784,
           2552.189424641927,
           2513.509962463379,
-          2475.283965519496
+          2475.283965519496,
+          2562.5491035461428
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4068,7 +4068,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          3080,
           2760,
           2760,
           2760,
@@ -4087,6 +4086,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          124601.16599818638,
           129012.82985026042,
           127116.38138020833,
           124119.09748186384,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           87044.60247395834,
           65075.09894670759,
           86011.31978352864,
-          86610.57457682291
+          86610.57457682291,
+          86689.00275530134
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          61719,
           61723,
           61269,
           61270,
@@ -4242,6 +4241,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
