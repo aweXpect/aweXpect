@@ -17,4 +17,12 @@ public readonly struct Times(int value)
 	{
 		return new Times(value);
 	}
+
+	/// <summary>
+	///     Implicitly convert the <paramref name="value" /> to an <see langword="int" />.
+	/// </summary>
+	public static implicit operator int(Times value)
+	{
+		return value.Value;
+	}
 }
