@@ -2736,6 +2736,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -3194,7 +3200,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -3656,7 +3663,8 @@ window.BENCHMARK_DATA = {
           296.5693815435682,
           263.3704100290934,
           251.2219662030538,
-          259.48833831151325
+          259.48833831151325,
+          251.66675072449905
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4061,6 +4069,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4593,7 +4602,8 @@ window.BENCHMARK_DATA = {
           260.07902606328327,
           243.59214305877686,
           236.3092998777117,
-          236.76891649686374
+          236.76891649686374,
+          229.0218552180699
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4786,6 +4796,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7348,6 +7359,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -7729,7 +7746,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -8114,7 +8132,8 @@ window.BENCHMARK_DATA = {
           312984.25638253347,
           316860.426546224,
           309264.40767996653,
-          301519.12626953126
+          301519.12626953126,
+          301233.7068434495
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8478,6 +8497,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8897,7 +8917,8 @@ window.BENCHMARK_DATA = {
           2840669.1044270834,
           2669477.157451923,
           2639451.3864397323,
-          2523305.9606584823
+          2523305.9606584823,
+          2609997.1020833333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9284,6 +9305,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12037,6 +12059,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -12495,7 +12523,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -12957,7 +12986,8 @@ window.BENCHMARK_DATA = {
           510.74155814831073,
           481.78320026397705,
           463.786981179164,
-          482.8576327470633
+          482.8576327470633,
+          456.1418684445895
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13398,6 +13428,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -13894,7 +13925,8 @@ window.BENCHMARK_DATA = {
           478.3175189971924,
           503.9329269091288,
           486.7771451813834,
-          475.6191392966679
+          475.6191392966679,
+          454.30071252187093
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14087,6 +14119,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17111,6 +17144,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -17569,7 +17608,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -18031,7 +18071,8 @@ window.BENCHMARK_DATA = {
           246.56725441614788,
           260.93338549931843,
           240.82350600560505,
-          248.12951453526816
+          248.12951453526816,
+          244.3940683878385
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18390,6 +18431,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -18968,7 +19010,8 @@ window.BENCHMARK_DATA = {
           252.8639535537133,
           241.9848823229472,
           244.92356174332755,
-          242.66643069585163
+          242.66643069585163,
+          231.87754769325255
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19161,6 +19204,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -22185,6 +22229,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -22643,7 +22693,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -23105,7 +23156,8 @@ window.BENCHMARK_DATA = {
           457.3616619427999,
           475.67078488667806,
           444.71676972934176,
-          454.6465903428885
+          454.6465903428885,
+          441.82863086064657
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23546,6 +23598,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -24042,7 +24095,8 @@ window.BENCHMARK_DATA = {
           1183.0247463498797,
           1254.643728129069,
           1227.0699108123779,
-          1167.0865657806396
+          1167.0865657806396,
+          1150.6516721089681
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24471,6 +24525,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -27259,6 +27314,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -27717,7 +27778,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -28179,7 +28241,8 @@ window.BENCHMARK_DATA = {
           1963.410169328962,
           1976.0043668111166,
           1821.4311475753784,
-          1798.928283397968
+          1798.928283397968,
+          1774.1404014314924
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28620,6 +28683,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -29116,7 +29180,8 @@ window.BENCHMARK_DATA = {
           1294.1252066748482,
           1436.9808774312337,
           1362.8858048756917,
-          1269.8954306284586
+          1269.8954306284586,
+          1300.0463006337484
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29309,6 +29374,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -32333,6 +32399,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:32:04 2025 \u002B0100",
         "message": "chore: Bump SharpCompress from 0.41.0 to 0.42.1 (#869)"
+      },
+      {
+        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
+        "author": "dependabot[bot]",
+        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 1 update (#876)"
       }
     ],
     "labels": [
@@ -32791,7 +32863,8 @@ window.BENCHMARK_DATA = {
       "69c35d41",
       "9875869d",
       "1bb936f7",
-      "d988d253"
+      "d988d253",
+      "7178849c"
     ],
     "datasets": [
       {
@@ -33253,7 +33326,8 @@ window.BENCHMARK_DATA = {
           2532.328660583496,
           2618.133165904454,
           2402.109261830648,
-          2447.1108238220213
+          2447.1108238220213,
+          2469.5860608418784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33694,6 +33768,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -34190,7 +34265,8 @@ window.BENCHMARK_DATA = {
           89824.42639973959,
           90341.77333286831,
           88157.99780273438,
-          87404.42197963169
+          87404.42197963169,
+          87044.60247395834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34657,6 +34733,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
