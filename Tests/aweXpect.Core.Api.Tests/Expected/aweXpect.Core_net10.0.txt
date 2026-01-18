@@ -351,6 +351,7 @@ namespace aweXpect.Core
     {
         public Times(int value) { }
         public int Value { get; }
+        public static int op_Implicit(aweXpect.Core.Times value) { }
         public static aweXpect.Core.Times op_Implicit(int value) { }
     }
     public static class TimesExtensions
