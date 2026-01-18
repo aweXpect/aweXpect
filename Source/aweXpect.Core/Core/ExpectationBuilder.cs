@@ -296,6 +296,15 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Adds a <paramref name="reason" /> to the current expectation constraint.
+	/// </summary>
+	internal void AddReason(Task<string> reason)
+	{
+		AsyncBecauseReason becauseReason = new(reason);
+		_node.SetReason(becauseReason);
+	}
+
+	/// <summary>
 	///     Supports chaining for subsequent expectation constraints with the <paramref name="textSeparator" />.
 	/// </summary>
 	public ExpectationBuilder And(string textSeparator = " and ")

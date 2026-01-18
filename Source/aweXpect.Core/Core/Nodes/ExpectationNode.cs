@@ -15,7 +15,7 @@ internal class ExpectationNode : Node
 
 	private Node? _inner;
 
-	private BecauseReason? _reason;
+	private IBecauseReason? _reason;
 
 	/// <inheritdoc />
 	public override void AddConstraint(IConstraint constraint)
@@ -85,22 +85,23 @@ internal class ExpectationNode : Node
 			if (_constraint is IValueConstraint<TValue?> valueConstraint)
 			{
 				result = valueConstraint.IsMetBy(value);
-				result = _reason?.ApplyTo(result) ?? result;
 			}
 			else if (_constraint is IContextConstraint<TValue?> contextConstraint)
 			{
 				result = contextConstraint.IsMetBy(value, context);
-				result = _reason?.ApplyTo(result) ?? result;
 			}
 			else if (_constraint is IAsyncConstraint<TValue?> asyncConstraint)
 			{
 				result = await asyncConstraint.IsMetBy(value, cancellationToken);
-				result = _reason?.ApplyTo(result) ?? result;
 			}
 			else if (_constraint is IAsyncContextConstraint<TValue?> asyncContextConstraint)
 			{
 				result = await asyncContextConstraint.IsMetBy(value, context, cancellationToken);
-				result = _reason?.ApplyTo(result) ?? result;
+			}
+
+			if (_reason is not null && result is not null)
+			{
+				result = await _reason.ApplyTo(result);
 			}
 		}
 		catch (Exception e) when (e is not ArgumentException && _constraint is not null)
@@ -123,8 +124,8 @@ internal class ExpectationNode : Node
 			.LogTrace();
 	}
 
-	/// <inheritdoc />
-	public override void SetReason(BecauseReason becauseReason) => _reason = becauseReason;
+	/// <inheritdoc cref="Node.SetReason(IBecauseReason)" />
+	public override void SetReason(IBecauseReason becauseReason) => _reason = becauseReason;
 
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{

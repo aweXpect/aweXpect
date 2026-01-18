@@ -138,8 +138,8 @@ internal class WhichNode<TSource, TMember> : Node
 			value);
 	}
 
-	/// <inheritdoc />
-	public override void SetReason(BecauseReason becauseReason)
+	/// <inheritdoc cref="Node.SetReason(IBecauseReason)" />
+	public override void SetReason(IBecauseReason becauseReason)
 		=> _inner?.SetReason(becauseReason);
 
 	/// <inheritdoc />

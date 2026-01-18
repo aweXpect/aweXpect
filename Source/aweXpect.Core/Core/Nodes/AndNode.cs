@@ -77,8 +77,8 @@ internal class AndNode : Node
 		return combinedResult!;
 	}
 
-	/// <inheritdoc />
-	public override void SetReason(BecauseReason becauseReason)
+	/// <inheritdoc cref="Node.SetReason(IBecauseReason)" />
+	public override void SetReason(IBecauseReason becauseReason)
 	{
 		if (_nodes.Any() && Current is ExpectationNode expectationNode && expectationNode.IsEmpty())
 		{
