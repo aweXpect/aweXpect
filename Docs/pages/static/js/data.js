@@ -2760,6 +2760,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -3222,7 +3228,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -3688,7 +3695,8 @@ window.BENCHMARK_DATA = {
           251.66675072449905,
           277.15419254984175,
           255.35857020105635,
-          284.98652833302816
+          284.98652833302816,
+          292.37138277689616
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4093,6 +4101,7 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
+          712,
           712,
           712,
           712,
@@ -4633,7 +4642,8 @@ window.BENCHMARK_DATA = {
           229.0218552180699,
           264.28134816033497,
           236.5278637068612,
-          245.31624037424723
+          245.31624037424723,
+          251.26018158594766
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4826,6 +4836,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7416,6 +7427,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -7801,7 +7818,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -8190,7 +8208,8 @@ window.BENCHMARK_DATA = {
           301233.7068434495,
           294638.8506835938,
           307080.0887276786,
-          323968.51025390625
+          323968.51025390625,
+          315327.768359375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8554,6 +8573,7 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
+          335452,
           335452,
           335452,
           335452,
@@ -8981,7 +9001,8 @@ window.BENCHMARK_DATA = {
           2609997.1020833333,
           2471933.809988839,
           2509995.688701923,
-          2652368.6463341345
+          2652368.6463341345,
+          2714056.3393229167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9368,6 +9389,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12149,6 +12171,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -12611,7 +12639,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -13077,7 +13106,8 @@ window.BENCHMARK_DATA = {
           456.1418684445895,
           503.0476961771647,
           455.54577312469485,
-          501.5169469833374
+          501.5169469833374,
+          489.32725177492415
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13518,6 +13548,7 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
+          1368,
           1368,
           1368,
           1368,
@@ -14022,7 +14053,8 @@ window.BENCHMARK_DATA = {
           454.30071252187093,
           538.3768793106079,
           476.29076399121965,
-          504.91691623415267
+          504.91691623415267,
+          488.45515995025636
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14215,6 +14247,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17267,6 +17300,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -17729,7 +17768,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -18195,7 +18235,8 @@ window.BENCHMARK_DATA = {
           244.3940683878385,
           262.34208812032426,
           251.43657167141254,
-          253.01466881434123
+          253.01466881434123,
+          252.15586341222127
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18554,6 +18595,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          816,
           816,
           816,
           816,
@@ -19140,7 +19182,8 @@ window.BENCHMARK_DATA = {
           231.87754769325255,
           277.2392265001933,
           235.7345404965537,
-          249.73073666890463
+          249.73073666890463,
+          250.99924275080363
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19333,6 +19376,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -22385,6 +22429,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -22847,7 +22897,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -23313,7 +23364,8 @@ window.BENCHMARK_DATA = {
           441.82863086064657,
           495.57191336949666,
           463.51147164617265,
-          449.0674800554911
+          449.0674800554911,
+          494.7442384719849
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23754,6 +23806,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          1136,
           1136,
           1136,
           1136,
@@ -24258,7 +24311,8 @@ window.BENCHMARK_DATA = {
           1150.6516721089681,
           1236.5632545471192,
           1218.2815177100044,
-          1184.700120417277
+          1184.700120417277,
+          1256.5540840148926
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24687,6 +24741,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -27503,6 +27558,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -27965,7 +28026,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -28431,7 +28493,8 @@ window.BENCHMARK_DATA = {
           1774.1404014314924,
           1979.4111666361491,
           1894.9790550231933,
-          1869.0229784647624
+          1869.0229784647624,
+          2012.717963663737
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -28872,6 +28935,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2632,
           2632,
           2632,
           2632,
@@ -29376,7 +29440,8 @@ window.BENCHMARK_DATA = {
           1300.0463006337484,
           1406.4692728678385,
           1300.5529863993327,
-          1355.4595438639324
+          1355.4595438639324,
+          1267.482897077288
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29569,6 +29634,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -32621,6 +32687,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
         "message": "chore: Bump TUnit and TUnit.Assertions (#879)"
+      },
+      {
+        "sha": "23cb7fabcbad33ddff6508167dc46c27f30f2b86",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 18 16:29:32 2026 \u002B0100",
+        "message": "feat: support async \u0060Because\u0060 reason (#880)"
       }
     ],
     "labels": [
@@ -33083,7 +33155,8 @@ window.BENCHMARK_DATA = {
       "7178849c",
       "bf7d4907",
       "a61da7b8",
-      "9f92c671"
+      "9f92c671",
+      "23cb7fab"
     ],
     "datasets": [
       {
@@ -33549,7 +33622,8 @@ window.BENCHMARK_DATA = {
           2469.5860608418784,
           2552.189424641927,
           2513.509962463379,
-          2475.283965519496
+          2475.283965519496,
+          2562.5491035461428
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -33990,6 +34064,7 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
+          2824,
           2824,
           2824,
           2824,
@@ -34494,7 +34569,8 @@ window.BENCHMARK_DATA = {
           87044.60247395834,
           65075.09894670759,
           86011.31978352864,
-          86610.57457682291
+          86610.57457682291,
+          86689.00275530134
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -34965,6 +35041,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
