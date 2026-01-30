@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
-      {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          260.13838618596395,
           289.9769916216532,
           267.30346611567904,
           292.0768356323242,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           284.98652833302816,
           292.37138277689616,
           260.1551948956081,
-          266.32849894251143
+          266.32849894251143,
+          252.72715813773019
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -467,7 +467,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696
         ],
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.82066363554733,
           290.63008696692333,
           233.86803712163652,
           278.48004828180586,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           245.31624037424723,
           251.26018158594766,
           269.2377882321676,
-          253.8104738507952
+          253.8104738507952,
+          237.63500305584498
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
-      {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          309425.7072591146,
           323039.63567708334,
           309435.77783203125,
           317126.2947716346,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           323968.51025390625,
           315327.768359375,
           300378.32254464284,
-          316852.436593192
+          316852.436593192,
+          311220.9062848772
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1028,7 +1028,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          335372,
           335372,
           335372,
           335372,
@@ -1077,6 +1076,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335444,
+          335444,
           335444
         ],
         "borderColor": "#63A2AC",
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2295989.4557291665,
           2095357.879296875,
           2128684.866629464,
           2476967.408333333,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2652368.6463341345,
           2714056.3393229167,
           2401422.7684895834,
-          2776174.566145833
+          2776174.566145833,
+          2678586.1421875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4584401,
           4584416,
           4584416,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
       {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          495.99205646514895,
           507.27856674194334,
           447.83819783528645,
           490.74452246152435,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           501.5169469833374,
           489.32725177492415,
           508.0377559661865,
-          516.5232648849487
+          516.5232648849487,
+          481.12435315450034
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1636,7 +1636,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1296,
           1296,
           1296,
           1296,
@@ -1685,6 +1684,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1360,
+          1360,
           1360
         ],
         "borderColor": "#63A2AC",
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          549.2067583084106,
           556.6596462249756,
           469.99402444703236,
           556.769964490618,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           504.91691623415267,
           488.45515995025636,
           512.5921005249023,
-          528.695225919996
+          528.695225919996,
+          461.08623968760173
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
-      {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          257.0191357294718,
           275.17086191177367,
           279.0099122365316,
           280.469403107961,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           253.01466881434123,
           252.15586341222127,
           283.4110140800476,
-          257.54840898513794
+          257.54840898513794,
+          246.59749922385583
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2291,7 +2291,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808
         ],
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          256.2303510812613,
           312.1749471596309,
           241.8310648713793,
           288.36552929878235,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           249.73073666890463,
           250.99924275080363,
           285.5109028816223,
-          261.35157305399576
+          261.35157305399576,
+          242.90483951568604
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
-      {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          428.8254949251811,
           452.9621279920851,
           417.92175947825115,
           464.6669739314488,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           449.0674800554911,
           494.7442384719849,
           502.3270462036133,
-          482.9268593470255
+          482.9268593470255,
+          468.40364974339803
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2852,7 +2852,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1056,
           1056,
           1056,
           1056,
@@ -2901,6 +2900,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1128,
+          1128,
           1128
         ],
         "borderColor": "#63A2AC",
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1213.3131118187537,
           1403.9719693320137,
           1184.2187130791801,
           1354.2897472381592,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1184.700120417277,
           1256.5540840148926,
           1352.306411488851,
-          1352.3428447723388
+          1352.3428447723388,
+          1195.8763028658354
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2980,7 +2980,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
-          3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
-      {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1818.443026815142,
           1652.3186402638753,
           1797.72993850708,
           2016.3298437935966,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1869.0229784647624,
           2012.717963663737,
           1738.131617863973,
-          1965.2517038072858
+          1965.2517038072858,
+          1877.2079965046473
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3460,7 +3460,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2568,
           2568,
           2568,
           2568,
@@ -3509,6 +3508,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2624,
+          2624,
           2624
         ],
         "borderColor": "#63A2AC",
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1332.2870490210396,
           1466.7270138604301,
           1291.689398901803,
           1486.4345049176898,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1355.4595438639324,
           1267.482897077288,
           1394.4780248006184,
-          1401.2922957102458
+          1401.2922957102458,
+          1293.8594581604004
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "d6cec126a8ff00e8d6a9bd1338d39c8037f10f46",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:37 2025 \u002B0100",
-        "message": "chore: Bump actions/setup-node from 5 to 6 (#819)"
-      },
-      {
         "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:57 2026 \u002B0100",
         "message": "chore: Bump apexskier/github-release-commenter from 1.3.6 to 1.4.1 (#884)"
+      },
+      {
+        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
+        "message": "chore: Bump the xunit group with 2 updates (#883)"
       }
     ],
     "labels": [
-      "d6cec126",
       "cef93a9d",
       "18f0a375",
       "a50dd36a",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "9f92c671",
       "23cb7fab",
       "16def956",
-      "9d5a5856"
+      "9d5a5856",
+      "4e0f878d"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2414.7831937154133,
           2163.2367927551268,
           2377.5007321493968,
           2800.5423728397914,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2475.283965519496,
           2562.5491035461428,
           2189.664505822318,
-          2535.6421712239585
+          2535.6421712239585,
+          2463.1350833347865
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4068,7 +4068,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2760,
           2760,
           2760,
           2760,
@@ -4117,6 +4116,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2816,
+          2816,
           2816
         ],
         "borderColor": "#63A2AC",
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          124119.09748186384,
           95099.59767252604,
           125009.71847098214,
           127004.2629045759,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           86610.57457682291,
           86689.00275530134,
           68438.77999441964,
-          89913.84602864583
+          89913.84602864583,
+          87758.57204026442
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          61270,
           61710,
           61270,
           62239,
@@ -4242,6 +4241,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
