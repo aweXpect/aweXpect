@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
-      {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          289.9769916216532,
           267.30346611567904,
           292.0768356323242,
           252.16484223093306,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           292.37138277689616,
           260.1551948956081,
           266.32849894251143,
-          252.72715813773019
+          252.72715813773019,
+          280.3093831062317
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -466,7 +466,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          290.63008696692333,
           233.86803712163652,
           278.48004828180586,
           242.09413031169348,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           251.26018158594766,
           269.2377882321676,
           253.8104738507952,
-          237.63500305584498
+          237.63500305584498,
+          250.10903949737548
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
-      {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          323039.63567708334,
           309435.77783203125,
           317126.2947716346,
           309508.67239583336,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           315327.768359375,
           300378.32254464284,
           316852.436593192,
-          311220.9062848772
+          311220.9062848772,
+          304146.2848307292
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1042,7 +1042,6 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
-          335372,
           335452,
           335452,
           335452,
@@ -1075,6 +1074,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2095357.879296875,
           2128684.866629464,
           2476967.408333333,
           2666413.7333333334,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2714056.3393229167,
           2401422.7684895834,
           2776174.566145833,
-          2678586.1421875
+          2678586.1421875,
+          2670087.6234375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584401,
           4584416,
           4584416,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804887,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
       {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          507.27856674194334,
           447.83819783528645,
           490.74452246152435,
           469.52425651550294,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           489.32725177492415,
           508.0377559661865,
           516.5232648849487,
-          481.12435315450034
+          481.12435315450034,
+          485.612482992808
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1650,7 +1650,6 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
-          1296,
           1368,
           1368,
           1368,
@@ -1683,6 +1682,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          556.6596462249756,
           469.99402444703236,
           556.769964490618,
           494.34254251207625,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           488.45515995025636,
           512.5921005249023,
           528.695225919996,
-          461.08623968760173
+          461.08623968760173,
+          459.4695859909058
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
-      {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          275.17086191177367,
           279.0099122365316,
           280.469403107961,
           264.41209752219066,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           252.15586341222127,
           283.4110140800476,
           257.54840898513794,
-          246.59749922385583
+          246.59749922385583,
+          240.5951186498006
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2290,7 +2290,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          312.1749471596309,
           241.8310648713793,
           288.36552929878235,
           244.36224834124246,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           250.99924275080363,
           285.5109028816223,
           261.35157305399576,
-          242.90483951568604
+          242.90483951568604,
+          247.96704540252685
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
-      {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          452.9621279920851,
           417.92175947825115,
           464.6669739314488,
           417.1481029510498,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           494.7442384719849,
           502.3270462036133,
           482.9268593470255,
-          468.40364974339803
+          468.40364974339803,
+          477.40524133046466
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2866,7 +2866,6 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
-          1056,
           1136,
           1136,
           1136,
@@ -2899,6 +2898,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1403.9719693320137,
           1184.2187130791801,
           1354.2897472381592,
           1194.9270001820155,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1256.5540840148926,
           1352.306411488851,
           1352.3428447723388,
-          1195.8763028658354
+          1195.8763028658354,
+          1279.3265654246013
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2979,7 +2979,7 @@ window.BENCHMARK_DATA = {
         "data": [
           3896,
           3896,
-          3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
-      {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1652.3186402638753,
           1797.72993850708,
           2016.3298437935966,
           1814.2599040985108,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           2012.717963663737,
           1738.131617863973,
           1965.2517038072858,
-          1877.2079965046473
+          1877.2079965046473,
+          1883.368688583374
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3474,7 +3474,6 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568,
           2632,
           2632,
           2632,
@@ -3507,6 +3506,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1466.7270138604301,
           1291.689398901803,
           1486.4345049176898,
           1356.7886479241508,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1267.482897077288,
           1394.4780248006184,
           1401.2922957102458,
-          1293.8594581604004
+          1293.8594581604004,
+          1296.8097412109375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "cef93a9d073adabc3ce19f3d77a64e0649a5dabe",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:00:58 2025 \u002B0100",
-        "message": "chore: Bump actions/download-artifact from 5 to 6 (#822)"
-      },
-      {
         "sha": "18f0a375dbffcc41078402d8fc06a1cacc96d320",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:01:15 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
         "message": "chore: Bump the xunit group with 2 updates (#883)"
+      },
+      {
+        "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
+        "author": "dependabot[bot]",
+        "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.42.1 to 0.44.3 (#886)"
       }
     ],
     "labels": [
-      "cef93a9d",
       "18f0a375",
       "a50dd36a",
       "31a1b24e",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "23cb7fab",
       "16def956",
       "9d5a5856",
-      "4e0f878d"
+      "4e0f878d",
+      "9c18e663"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2163.2367927551268,
           2377.5007321493968,
           2800.5423728397914,
           2478.7013999938963,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2562.5491035461428,
           2189.664505822318,
           2535.6421712239585,
-          2463.1350833347865
+          2463.1350833347865,
+          2567.3348298754013
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4082,7 +4082,6 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
-          2760,
           2824,
           2824,
           2824,
@@ -4115,6 +4114,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          95099.59767252604,
           125009.71847098214,
           127004.2629045759,
           88348.58248197116,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           86689.00275530134,
           68438.77999441964,
           89913.84602864583,
-          87758.57204026442
+          87758.57204026442,
+          88605.09134114583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          61710,
           61270,
           62239,
           58598,
@@ -4241,6 +4240,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598
         ],
