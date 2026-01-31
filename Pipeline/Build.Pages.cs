@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Serilog;
@@ -86,28 +87,53 @@ partial class Build
 			JsonDocument jsonDocument = JsonDocument.Parse(responseContent);
 			foreach (JsonElement file in jsonDocument.RootElement.EnumerateArray())
 			{
-				string name = file.GetProperty("name").GetString()!;
-				string filePath = Path.Combine(baseDirectory, name);
-				HttpResponseMessage fileResponse =
-					await client.GetAsync(
-						$"https://api.github.com/repos/aweXpect/{projectName}/contents/Docs/pages/{name}");
-				string fileResponseContent = await fileResponse.Content.ReadAsStringAsync();
-				using JsonDocument document = JsonDocument.Parse(fileResponseContent);
-				string content = Base64Decode(document.RootElement.GetProperty("content").GetString());
-				if (name.StartsWith("00-") && content.Contains("{README}", StringComparison.OrdinalIgnoreCase))
+				await DownloadFileOrDirectory(client, projectName, "/", file, baseDirectory, (name, content) =>
 				{
-					content = content.Replace("{README}", readmeContent.Replace("Docs/pages/", "./"));
-					readmeContent = string.Empty;
-					Log.Information($"  Replace \"{{README}}\" with content from README.md for {name}");
-				}
-
-				await File.WriteAllTextAsync(filePath, content);
-				Log.Information($"  {name} under {filePath}");
+					if (name.StartsWith("00-") && content.Contains("{README}", StringComparison.OrdinalIgnoreCase))
+					{
+						content = content.Replace("{README}", readmeContent.Replace("Docs/pages/", "./"));
+						readmeContent = string.Empty;
+						Log.Information($"  Replace \"{{README}}\" with content from README.md for {name}");
+					}
+					return content;
+				});
 			}
 		}
 		catch (JsonException e)
 		{
 			Log.Error($"Could not parse JSON: {e.Message}\n{responseContent}");
+		}
+	}
+
+	async Task DownloadFileOrDirectory(HttpClient client, string projectName, string subPath, JsonElement fileOrDirectory,
+		AbsolutePath targetDirectory, [CanBeNull] Func<string, string, string> contentManipulator = null)
+	{
+		string name = fileOrDirectory.GetProperty("name").GetString()!;
+		string filePath = targetDirectory / name;
+		HttpResponseMessage fileResponse =
+			await client.GetAsync(
+				$"https://api.github.com/repos/aweXpect/{projectName}/contents/Docs/pages{subPath}{name}");
+		string fileResponseContent = await fileResponse.Content.ReadAsStringAsync();
+		using JsonDocument document = JsonDocument.Parse(fileResponseContent);
+		if (document.RootElement.ValueKind == JsonValueKind.Array)
+		{
+			var subDirectory = targetDirectory / name;
+			subDirectory.CreateDirectory();
+			foreach (JsonElement subFileOrDirectory in document.RootElement.EnumerateArray())
+			{
+				await DownloadFileOrDirectory(client, projectName, subPath + name + "/", subFileOrDirectory, subDirectory);
+			}
+		}
+		else
+		{
+			string content = Base64Decode(document.RootElement.GetProperty("content").GetString());
+			if (contentManipulator is not null)
+			{
+				content = contentManipulator(name, content);
+			}
+
+			await File.WriteAllTextAsync(filePath, content);
+			Log.Information($"  {name} under {filePath}");
 		}
 	}
 }
