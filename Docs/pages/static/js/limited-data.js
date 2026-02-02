@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
-      {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          292.0768356323242,
           252.16484223093306,
           254.54036624091012,
           274.02026112874347,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           266.32849894251143,
           252.72715813773019,
           280.3093831062317,
-          283.63104089101154
+          283.63104089101154,
+          266.4278591473897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -464,7 +464,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          278.48004828180586,
           242.09413031169348,
           263.15633358274187,
           250.60595995585123,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           253.8104738507952,
           237.63500305584498,
           250.10903949737548,
-          247.96393378575644
+          247.96393378575644,
+          246.72612738609314
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
-      {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          317126.2947716346,
           309508.67239583336,
           312910.2020438058,
           315823.00320870534,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           316852.436593192,
           311220.9062848772,
           304146.2848307292,
-          304551.24983723956
+          304551.24983723956,
+          309351.11951622594
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1040,7 +1040,6 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
-          335372,
           335452,
           335452,
           335452,
@@ -1073,6 +1072,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2476967.408333333,
           2666413.7333333334,
           2820004.6942708334,
           2776281.4359375,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2776174.566145833,
           2678586.1421875,
           2670087.6234375,
-          2669636.982552083
+          2669636.982552083,
+          2721211.091666667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4584416,
           4804906,
           4804906,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
       {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          490.74452246152435,
           469.52425651550294,
           488.2768864264855,
           484.34494355519615,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           516.5232648849487,
           481.12435315450034,
           485.612482992808,
-          483.65077253977455
+          483.65077253977455,
+          514.8296607335409
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1648,7 +1648,6 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
-          1296,
           1368,
           1368,
           1368,
@@ -1681,6 +1680,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          556.769964490618,
           494.34254251207625,
           485.96058177948,
           493.0568384170532,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           528.695225919996,
           461.08623968760173,
           459.4695859909058,
-          459.09368499120075
+          459.09368499120075,
+          481.4837484995524
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
-      {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          280.469403107961,
           264.41209752219066,
           261.46679814656574,
           258.23763790130613,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           257.54840898513794,
           246.59749922385583,
           240.5951186498006,
-          251.62415653864542
+          251.62415653864542,
+          256.68456312815346
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2288,7 +2288,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          288.36552929878235,
           244.36224834124246,
           267.5160671869914,
           267.9383024851481,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           261.35157305399576,
           242.90483951568604,
           247.96704540252685,
-          246.0950667063395
+          246.0950667063395,
+          261.2673779805501
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
-      {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          464.6669739314488,
           417.1481029510498,
           415.08962099368756,
           436.0945650736491,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           482.9268593470255,
           468.40364974339803,
           477.40524133046466,
-          455.50418186187744
+          455.50418186187744,
+          480.4333353996277
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2864,7 +2864,6 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
-          1056,
           1136,
           1136,
           1136,
@@ -2897,6 +2896,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1354.2897472381592,
           1194.9270001820155,
           1209.5655851999918,
           1209.511166381836,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1352.3428447723388,
           1195.8763028658354,
           1279.3265654246013,
-          1341.3342341105142
+          1341.3342341105142,
+          1277.8287263234456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2977,7 +2977,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          3896,
+          3944,
           3944,
           3944,
           3944,
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
-      {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2016.3298437935966,
           1814.2599040985108,
           1892.849231592814,
           1930.9388376871746,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1965.2517038072858,
           1877.2079965046473,
           1883.368688583374,
-          1975.8320676167807
+          1975.8320676167807,
+          1909.7076311747232
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3472,7 +3472,6 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568,
           2632,
           2632,
           2632,
@@ -3505,6 +3504,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1486.4345049176898,
           1356.7886479241508,
           1411.6592888150897,
           1406.80131149292,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1401.2922957102458,
           1293.8594581604004,
           1296.8097412109375,
-          1272.9032246907552
+          1272.9032246907552,
+          1307.3820737692026
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "a50dd36ad4f88e5ad0e10313651daea27c065258",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 1 17:05:22 2025 \u002B0100",
-        "message": "chore: Bump BenchmarkDotNet from 0.14.0 to 0.15.4 (#824)"
-      },
-      {
         "sha": "31a1b24e20b8103fe607a9baef31692d694108e9",
         "author": "dependabot[bot]",
         "date": "Sat Nov 1 17:05:36 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
-      "a50dd36a",
       "31a1b24e",
       "05dcdeeb",
       "1db0b061",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2800.5423728397914,
           2478.7013999938963,
           2489.2285372416177,
           2552.0935353597006,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2535.6421712239585,
           2463.1350833347865,
           2567.3348298754013,
-          2530.9322708129885
+          2530.9322708129885,
+          2504.5855895451136
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4080,7 +4080,6 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
-          2760,
           2824,
           2824,
           2824,
@@ -4113,6 +4112,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          127004.2629045759,
           88348.58248197116,
           90593.26175130208,
           90105.34983723958,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           89913.84602864583,
           87758.57204026442,
           88605.09134114583,
-          88204.74019949777
+          88204.74019949777,
+          88540.18547175481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          62239,
           58598,
           58598,
           58598,
@@ -4239,6 +4238,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
