@@ -2796,6 +2796,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -3264,7 +3270,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -3736,7 +3743,8 @@ window.BENCHMARK_DATA = {
           266.32849894251143,
           252.72715813773019,
           280.3093831062317,
-          283.63104089101154
+          283.63104089101154,
+          266.4278591473897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4209,6 +4217,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4693,7 +4702,8 @@ window.BENCHMARK_DATA = {
           253.8104738507952,
           237.63500305584498,
           250.10903949737548,
-          247.96393378575644
+          247.96393378575644,
+          246.72612738609314
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4886,6 +4896,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7518,6 +7529,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -7909,7 +7926,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -8304,7 +8322,8 @@ window.BENCHMARK_DATA = {
           316852.436593192,
           311220.9062848772,
           304146.2848307292,
-          304551.24983723956
+          304551.24983723956,
+          309351.11951622594
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8700,6 +8719,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9107,7 +9127,8 @@ window.BENCHMARK_DATA = {
           2776174.566145833,
           2678586.1421875,
           2670087.6234375,
-          2669636.982552083
+          2669636.982552083,
+          2721211.091666667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9504,6 +9525,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12317,6 +12339,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -12785,7 +12813,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -13257,7 +13286,8 @@ window.BENCHMARK_DATA = {
           516.5232648849487,
           481.12435315450034,
           485.612482992808,
-          483.65077253977455
+          483.65077253977455,
+          514.8296607335409
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13730,6 +13760,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14214,7 +14245,8 @@ window.BENCHMARK_DATA = {
           528.695225919996,
           461.08623968760173,
           459.4695859909058,
-          459.09368499120075
+          459.09368499120075,
+          481.4837484995524
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14407,6 +14439,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17501,6 +17534,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -17969,7 +18008,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -18441,7 +18481,8 @@ window.BENCHMARK_DATA = {
           257.54840898513794,
           246.59749922385583,
           240.5951186498006,
-          251.62415653864542
+          251.62415653864542,
+          256.68456312815346
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18914,6 +18955,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19398,7 +19440,8 @@ window.BENCHMARK_DATA = {
           261.35157305399576,
           242.90483951568604,
           247.96704540252685,
-          246.0950667063395
+          246.0950667063395,
+          261.2673779805501
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19591,6 +19634,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -22685,6 +22729,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -23153,7 +23203,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -23625,7 +23676,8 @@ window.BENCHMARK_DATA = {
           482.9268593470255,
           468.40364974339803,
           477.40524133046466,
-          455.50418186187744
+          455.50418186187744,
+          480.4333353996277
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24098,6 +24150,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -24582,7 +24635,8 @@ window.BENCHMARK_DATA = {
           1352.3428447723388,
           1195.8763028658354,
           1279.3265654246013,
-          1341.3342341105142
+          1341.3342341105142,
+          1277.8287263234456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25011,6 +25065,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -27869,6 +27924,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -28337,7 +28398,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -28809,7 +28871,8 @@ window.BENCHMARK_DATA = {
           1965.2517038072858,
           1877.2079965046473,
           1883.368688583374,
-          1975.8320676167807
+          1975.8320676167807,
+          1909.7076311747232
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29282,6 +29345,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -29766,7 +29830,8 @@ window.BENCHMARK_DATA = {
           1401.2922957102458,
           1293.8594581604004,
           1296.8097412109375,
-          1272.9032246907552
+          1272.9032246907552,
+          1307.3820737692026
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -29959,6 +30024,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33053,6 +33119,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Jan 31 07:22:57 2026 \u002B0100",
         "message": "docs: support nested directories in extensions (#887)"
+      },
+      {
+        "sha": "6a8bb3d30f2664f0d8a2aa9bdde98696c2d39fe9",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
+        "message": "chore: Bump the tunit group with 2 updates (#888)"
       }
     ],
     "labels": [
@@ -33521,7 +33593,8 @@ window.BENCHMARK_DATA = {
       "9d5a5856",
       "4e0f878d",
       "9c18e663",
-      "d34ed13b"
+      "d34ed13b",
+      "6a8bb3d3"
     ],
     "datasets": [
       {
@@ -33993,7 +34066,8 @@ window.BENCHMARK_DATA = {
           2535.6421712239585,
           2463.1350833347865,
           2567.3348298754013,
-          2530.9322708129885
+          2530.9322708129885,
+          2504.5855895451136
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -34466,6 +34540,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -34950,7 +35025,8 @@ window.BENCHMARK_DATA = {
           89913.84602864583,
           87758.57204026442,
           88605.09134114583,
-          88204.74019949777
+          88204.74019949777,
+          88540.18547175481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -35424,6 +35500,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
