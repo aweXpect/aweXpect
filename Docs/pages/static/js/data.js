@@ -2802,6 +2802,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -3271,7 +3277,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -3744,7 +3751,8 @@ window.BENCHMARK_DATA = {
           252.72715813773019,
           280.3093831062317,
           283.63104089101154,
-          266.4278591473897
+          266.4278591473897,
+          272.02225332993726
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4217,6 +4225,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4703,7 +4712,8 @@ window.BENCHMARK_DATA = {
           237.63500305584498,
           250.10903949737548,
           247.96393378575644,
-          246.72612738609314
+          246.72612738609314,
+          235.20742781956992
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4896,6 +4906,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7535,6 +7546,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -7927,7 +7944,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -8323,7 +8341,8 @@ window.BENCHMARK_DATA = {
           311220.9062848772,
           304146.2848307292,
           304551.24983723956,
-          309351.11951622594
+          309351.11951622594,
+          328540.29759114585
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8719,6 +8738,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9128,7 +9148,8 @@ window.BENCHMARK_DATA = {
           2678586.1421875,
           2670087.6234375,
           2669636.982552083,
-          2721211.091666667
+          2721211.091666667,
+          2562040.3702566964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9525,6 +9546,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12345,6 +12367,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -12814,7 +12842,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -13287,7 +13316,8 @@ window.BENCHMARK_DATA = {
           481.12435315450034,
           485.612482992808,
           483.65077253977455,
-          514.8296607335409
+          514.8296607335409,
+          487.84494168417797
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13760,6 +13790,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14246,7 +14277,8 @@ window.BENCHMARK_DATA = {
           461.08623968760173,
           459.4695859909058,
           459.09368499120075,
-          481.4837484995524
+          481.4837484995524,
+          453.142475264413
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14439,6 +14471,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17540,6 +17573,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -18009,7 +18048,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -18482,7 +18522,8 @@ window.BENCHMARK_DATA = {
           246.59749922385583,
           240.5951186498006,
           251.62415653864542,
-          256.68456312815346
+          256.68456312815346,
+          248.45824476877848
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18955,6 +18996,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19441,7 +19483,8 @@ window.BENCHMARK_DATA = {
           242.90483951568604,
           247.96704540252685,
           246.0950667063395,
-          261.2673779805501
+          261.2673779805501,
+          236.07220255533855
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19634,6 +19677,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -22735,6 +22779,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -23204,7 +23254,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -23677,7 +23728,8 @@ window.BENCHMARK_DATA = {
           468.40364974339803,
           477.40524133046466,
           455.50418186187744,
-          480.4333353996277
+          480.4333353996277,
+          466.6054487546285
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24150,6 +24202,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -24636,7 +24689,8 @@ window.BENCHMARK_DATA = {
           1195.8763028658354,
           1279.3265654246013,
           1341.3342341105142,
-          1277.8287263234456
+          1277.8287263234456,
+          1156.1234889711652
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25065,6 +25119,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -27930,6 +27985,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -28399,7 +28460,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -28872,7 +28934,8 @@ window.BENCHMARK_DATA = {
           1877.2079965046473,
           1883.368688583374,
           1975.8320676167807,
-          1909.7076311747232
+          1909.7076311747232,
+          1835.6480666796367
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29345,6 +29408,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -29831,7 +29895,8 @@ window.BENCHMARK_DATA = {
           1293.8594581604004,
           1296.8097412109375,
           1272.9032246907552,
-          1307.3820737692026
+          1307.3820737692026,
+          1279.665875162397
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30024,6 +30089,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33125,6 +33191,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 2 12:58:39 2026 \u002B0100",
         "message": "chore: Bump the tunit group with 2 updates (#888)"
+      },
+      {
+        "sha": "5bbe9276b406a60f1753243d4e5a567fcfe3b027",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 2 12:58:50 2026 \u002B0100",
+        "message": "chore: Bump SharpCompress from 0.44.3 to 0.44.5 (#889)"
       }
     ],
     "labels": [
@@ -33594,7 +33666,8 @@ window.BENCHMARK_DATA = {
       "4e0f878d",
       "9c18e663",
       "d34ed13b",
-      "6a8bb3d3"
+      "6a8bb3d3",
+      "5bbe9276"
     ],
     "datasets": [
       {
@@ -34067,7 +34140,8 @@ window.BENCHMARK_DATA = {
           2463.1350833347865,
           2567.3348298754013,
           2530.9322708129885,
-          2504.5855895451136
+          2504.5855895451136,
+          2512.1908986227854
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -34540,6 +34614,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35026,7 +35101,8 @@ window.BENCHMARK_DATA = {
           87758.57204026442,
           88605.09134114583,
           88204.74019949777,
-          88540.18547175481
+          88540.18547175481,
+          86645.81110491071
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -35500,6 +35576,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
