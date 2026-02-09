@@ -17,6 +17,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+  	<PackageReference Include="Microsoft.CodeAnalysis.Common" VersionOverride="5.0.0" />
+  	<PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
 		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 
