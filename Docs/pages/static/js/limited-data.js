@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
-      {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          285.74720136935895,
           277.7900096007756,
           261.1710729598999,
           282.6928520883833,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           271.8221520105998,
           267.37161986033124,
           250.84299635887146,
-          263.5331333705357
+          263.5331333705357,
+          278.7213392893473
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -458,7 +458,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          261.4284641265869,
           247.33660112108504,
           256.6352813925062,
           258.40846068518505,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           265.79296936307634,
           241.2708761351449,
           229.21329975128174,
-          230.8140913327535
+          230.8140913327535,
+          236.4197154385703
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
-      {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          309314.3746419271,
           303716.33932291664,
           328828.925390625,
           311908.51513671875,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           312262.4853841146,
           346484.9851422991,
           308634.7874474159,
-          323228.1271484375
+          323228.1271484375,
+          318231.6474233774
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1034,7 +1034,6 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
-          335372,
           335452,
           335452,
           335452,
@@ -1067,6 +1066,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2605634.2682291665,
           2677847.05546875,
           2821497.8822916667,
           2778834.94296875,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2797757.5419270834,
           2899627.1322916667,
           2511978.9489397323,
-          2627771.4544270835
+          2627771.4544270835,
+          2702339.1487165177
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804906,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
       {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          475.769470508282,
           495.6864360173543,
           471.4584501706637,
           438.05776391710555,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           509.7549436569214,
           488.97239786783854,
           491.2775817235311,
-          487.34094285964966
+          487.34094285964966,
+          509.20142786843434
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1642,7 +1642,6 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
-          1296,
           1368,
           1368,
           1368,
@@ -1675,6 +1674,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          523.7218707891611,
           492.310507774353,
           514.1737758636475,
           460.5053321202596,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           517.2347898483276,
           490.8028434753418,
           455.07171317509244,
-          465.17105099360145
+          465.17105099360145,
+          458.45469357172647
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
-      {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          258.2041842460632,
           257.1952115205618,
           255.35899410247802,
           242.95119512081146,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           261.82209097544353,
           245.24079701105754,
           237.24129445212228,
-          234.1531896909078
+          234.1531896909078,
+          271.5756461279733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2282,7 +2282,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          258.4282611211141,
           263.3867840449015,
           260.5290399619511,
           237.2357437133789,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           267.6064671516418,
           250.52479286193847,
           239.1205061844417,
-          238.37504285176595
+          238.37504285176595,
+          238.7645983695984
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
-      {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          438.06873995917186,
           428.74397678375243,
           418.94042015075684,
           402.53800678253174,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           493.50351060231526,
           486.6617435455322,
           447.41257105554854,
-          453.19023609161377
+          453.19023609161377,
+          475.71959554232086
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2858,7 +2858,6 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
-          1056,
           1136,
           1136,
           1136,
@@ -2891,6 +2890,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1223.773504002889,
           1280.271138381958,
           1202.6803359985352,
           1208.4535071055095,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1319.760937009539,
           1307.6220469156901,
           1224.544841493879,
-          1318.8236610412598
+          1318.8236610412598,
+          1219.223635160006
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
-      {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1928.0517285664876,
           1853.577491378784,
           1839.4647000630696,
           1862.0753470102945,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1946.5554180145264,
           1981.9845700945173,
           1875.6047532008245,
-          1846.5016866048177
+          1846.5016866048177,
+          1876.7450063069662
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3466,7 +3466,6 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568,
           2632,
           2632,
           2632,
@@ -3499,6 +3498,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1386.7892977850777,
           1361.2812482288905,
           1398.9766906738282,
           1344.8861371358237,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1397.6151933034262,
           1439.5374179840087,
           1296.1729478200277,
-          1300.813966623942
+          1300.813966623942,
+          1274.6752377827963
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "247863fef258904aa3ffc005487ba38c9d0c8294",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 1 19:03:48 2025 \u002B0100",
-        "message": "fix: merge benchmarks into main"
-      },
-      {
         "sha": "3125a53bf5ddd606d3eaf762a61dbe67fc571d1f",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Nov 1 19:27:33 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:15:57 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 1 update (#895)"
+      },
+      {
+        "sha": "35c4a43c7dc0340202d24719b0b5e63267bee244",
+        "author": "dependabot[bot]",
+        "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
+        "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
       }
     ],
     "labels": [
-      "247863fe",
       "3125a53b",
       "4999d0aa",
       "bd67be42",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "6d8658fd",
       "97d102a0",
       "53280373",
-      "2d01d5d4"
+      "2d01d5d4",
+      "35c4a43c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2482.997236887614,
           2468.211933722863,
           2512.9916170756023,
           2460.110077784612,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2559.9431947980606,
           2553.876935068766,
           2527.417298243596,
-          2446.9000423976354
+          2446.9000423976354,
+          2451.813960484096
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4074,7 +4074,6 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
-          2760,
           2824,
           2824,
           2824,
@@ -4107,6 +4106,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          88381.16514369419,
           88899.59036690848,
           87559.08297293527,
           89454.54847005209,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           89158.824609375,
           88844.73707682292,
           88595.19474283855,
-          88087.75282505581
+          88087.75282505581,
+          85927.06174879808
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           58598,
           59100,
@@ -4233,6 +4232,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
