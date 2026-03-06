@@ -59,10 +59,14 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     The explicit cancellation token to be used for the expectation.
 	/// </summary>
+	/// <remarks>
+	///     When not set, the expectation will still use the cancellation token from
+	///     <see cref="AwexpectCustomization.SettingsCustomization.TestCancellation" />
+	/// </remarks>
 	public CancellationToken? CancellationToken { get; private set; }
 
 	/// <summary>
-	///     The timeout to be applied to the expectation.
+	///     The explicit timeout to be applied to the expectation.
 	/// </summary>
 	public TimeSpan? Timeout { get; private set; }
 
@@ -470,10 +474,11 @@ public abstract class ExpectationBuilder
 		EvaluationContext.EvaluationContext context = new();
 		ITimeSystem timeSystem = _timeSystem ?? RealTimeSystem.Instance;
 		TestCancellation? testCancellation = Customize.aweXpect.Settings().TestCancellation.Get();
-		CancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ??
-		                      System.Threading.CancellationToken.None;
+		CancellationToken cancellationToken = CancellationToken ??
+		                                      testCancellation?.CancellationTokenFactory?.Invoke() ??
+		                                      System.Threading.CancellationToken.None;
 		return IsMet(GetRootNode(), context, timeSystem, Timeout ?? testCancellation?.Timeout,
-			CancellationToken.Value);
+			cancellationToken);
 	}
 
 	internal abstract Task<ConstraintResult> IsMet(Node rootNode,
