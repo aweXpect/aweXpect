@@ -21,8 +21,6 @@ public abstract class ExpectationBuilder
 {
 	private const string DefaultCurrentSubject = "it";
 
-	private CancellationToken? _cancellationToken;
-
 	private ResultContexts? _contexts;
 
 	/// <summary>
@@ -31,7 +29,6 @@ public abstract class ExpectationBuilder
 	private string _it = DefaultCurrentSubject;
 
 	private Node _node = new ExpectationNode();
-	private TimeSpan? _timeout;
 
 	private ITimeSystem? _timeSystem;
 
@@ -58,6 +55,16 @@ public abstract class ExpectationBuilder
 		_it = "";
 		ExpectationGrammars = ExpectationGrammars.None;
 	}
+
+	/// <summary>
+	///     The explicit cancellation token to be used for the expectation.
+	/// </summary>
+	public CancellationToken? CancellationToken { get; private set; }
+
+	/// <summary>
+	///     The timeout to be applied to the expectation.
+	/// </summary>
+	public TimeSpan? Timeout { get; private set; }
 
 	/// <summary>
 	///     The expected grammatical form of the expectation text.
@@ -278,13 +285,13 @@ public abstract class ExpectationBuilder
 	///     Adds a <paramref name="cancellationToken" /> to be used by the constraints.
 	/// </summary>
 	public void WithCancellation(CancellationToken cancellationToken)
-		=> _cancellationToken = cancellationToken;
+		=> CancellationToken = cancellationToken;
 
 	/// <summary>
 	///     Adds a <paramref name="timeout" /> to be used by the constraints.
 	/// </summary>
 	public void WithTimeout(TimeSpan timeout)
-		=> _timeout = timeout;
+		=> Timeout = timeout;
 
 	/// <summary>
 	///     Adds a <paramref name="reason" /> to the current expectation constraint.
@@ -388,7 +395,7 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
-	///     Adds the <paramref name="resultContext"/> to the context that is included in the failure message.
+	///     Adds the <paramref name="resultContext" /> to the context that is included in the failure message.
 	/// </summary>
 	public virtual ExpectationBuilder AddContext(ResultContext resultContext)
 	{
@@ -406,7 +413,7 @@ public abstract class ExpectationBuilder
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
 	internal Task<string> FromFailure(ConstraintResult failure)
-		=> FromFailure(Subject, failure, _contexts, _cancellationToken ?? CancellationToken.None);
+		=> FromFailure(Subject, failure, _contexts, CancellationToken ?? System.Threading.CancellationToken.None);
 
 	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.
@@ -463,9 +470,10 @@ public abstract class ExpectationBuilder
 		EvaluationContext.EvaluationContext context = new();
 		ITimeSystem timeSystem = _timeSystem ?? RealTimeSystem.Instance;
 		TestCancellation? testCancellation = Customize.aweXpect.Settings().TestCancellation.Get();
-		_cancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ?? CancellationToken.None;
-		return IsMet(GetRootNode(), context, timeSystem, _timeout ?? testCancellation?.Timeout,
-			_cancellationToken.Value);
+		CancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ??
+		                      System.Threading.CancellationToken.None;
+		return IsMet(GetRootNode(), context, timeSystem, Timeout ?? testCancellation?.Timeout,
+			CancellationToken.Value);
 	}
 
 	internal abstract Task<ConstraintResult> IsMet(Node rootNode,
