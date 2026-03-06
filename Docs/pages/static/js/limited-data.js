@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
-      {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          261.1710729598999,
           282.6928520883833,
           297.6433809598287,
           263.93456913630166,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           250.84299635887146,
           263.5331333705357,
           278.7213392893473,
-          259.43754277910506
+          259.43754277910506,
+          255.43598403930665
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -456,7 +456,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          256.6352813925062,
           258.40846068518505,
           270.5103018467243,
           246.24050736427307,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           229.21329975128174,
           230.8140913327535,
           236.4197154385703,
-          251.80484850066048
+          251.80484850066048,
+          238.8532030765827
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
-      {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          328828.925390625,
           311908.51513671875,
           316512.25556640624,
           332606.125,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           308634.7874474159,
           323228.1271484375,
           318231.6474233774,
-          310285.5333909255
+          310285.5333909255,
+          323185.21315104165
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1032,7 +1032,6 @@ window.BENCHMARK_DATA = {
           335372,
           335372,
           335372,
-          335372,
           335452,
           335452,
           335452,
@@ -1065,6 +1064,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2821497.8822916667,
           2778834.94296875,
           2686527.970833333,
           2806034.650260417,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2511978.9489397323,
           2627771.4544270835,
           2702339.1487165177,
-          2716350.6177884615
+          2716350.6177884615,
+          2661700.421574519
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804902,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
       {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          471.4584501706637,
           438.05776391710555,
           460.32697347494275,
           464.10953896840414,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           491.2775817235311,
           487.34094285964966,
           509.20142786843434,
-          495.4024134363447
+          495.4024134363447,
+          474.37436154683434
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1640,7 +1640,6 @@ window.BENCHMARK_DATA = {
           1296,
           1296,
           1296,
-          1296,
           1368,
           1368,
           1368,
@@ -1673,6 +1672,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          514.1737758636475,
           460.5053321202596,
           505.9251218159994,
           486.9550390879313,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           455.07171317509244,
           465.17105099360145,
           458.45469357172647,
-          480.3576805114746
+          480.3576805114746,
+          487.0893595559256
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
-      {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          255.35899410247802,
           242.95119512081146,
           263.1874970436096,
           252.32644286522498,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           237.24129445212228,
           234.1531896909078,
           271.5756461279733,
-          257.62049766949247
+          257.62049766949247,
+          250.18207321166992
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2280,7 +2280,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          260.5290399619511,
           237.2357437133789,
           256.15830656687416,
           250.86386850902014,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           239.1205061844417,
           238.37504285176595,
           238.7645983695984,
-          266.93414096832277
+          266.93414096832277,
+          247.5719152178083
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
-      {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          418.94042015075684,
           402.53800678253174,
           410.13684269360135,
           423.65541563715254,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           447.41257105554854,
           453.19023609161377,
           475.71959554232086,
-          480.1629158337911
+          480.1629158337911,
+          466.8385944684347
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2856,7 +2856,6 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
-          1056,
           1136,
           1136,
           1136,
@@ -2889,6 +2888,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1202.6803359985352,
           1208.4535071055095,
           1183.8721885681152,
           1236.2538581575666,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1224.544841493879,
           1318.8236610412598,
           1219.223635160006,
-          1200.5062602116511
+          1200.5062602116511,
+          1249.1121862956456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
-      {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1839.4647000630696,
           1862.0753470102945,
           1897.2871106465657,
           1803.7326568603517,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1875.6047532008245,
           1846.5016866048177,
           1876.7450063069662,
-          1897.1938844827505
+          1897.1938844827505,
+          2004.8365948994954
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3464,7 +3464,6 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568,
           2632,
           2632,
           2632,
@@ -3497,6 +3496,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1398.9766906738282,
           1344.8861371358237,
           1337.8453980763754,
           1383.4462158203125,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1296.1729478200277,
           1300.813966623942,
           1274.6752377827963,
-          1354.9895329108606
+          1354.9895329108606,
+          1313.6850591023763
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "4999d0aa2db224de1922e39bb3d959f7c04f7d2b",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sat Nov 8 22:59:55 2025 \u002B0100",
-        "message": "feat: improve test output for dictionary \u0060ContainsKey\u0060 (#835)"
-      },
-      {
         "sha": "bd67be420c8d1a6ce2ab3c6bebc7faa6d2009068",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:03:51 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
-      "4999d0aa",
       "bd67be42",
       "45348ee8",
       "4919d3fa",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2512.9916170756023,
           2460.110077784612,
           2521.0334447224936,
           2505.647640482585,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2527.417298243596,
           2446.9000423976354,
           2451.813960484096,
-          2606.99295098441
+          2606.99295098441,
+          2635.6223008292063
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4072,7 +4072,6 @@ window.BENCHMARK_DATA = {
           2760,
           2760,
           2760,
-          2760,
           2824,
           2824,
           2824,
@@ -4105,6 +4104,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          87559.08297293527,
           89454.54847005209,
           87999.00865885416,
           91536.00325520833,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           88595.19474283855,
           88087.75282505581,
           85927.06174879808,
-          88615.19264322917
+          88615.19264322917,
+          88515.51064453126
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           59100,
           58598,
           58598,
@@ -4231,6 +4230,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
