@@ -2850,6 +2850,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -3327,7 +3333,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -3808,7 +3815,8 @@ window.BENCHMARK_DATA = {
           263.5331333705357,
           278.7213392893473,
           259.43754277910506,
-          255.43598403930665
+          255.43598403930665,
+          263.6416559537252
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4281,6 +4289,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4783,7 +4792,8 @@ window.BENCHMARK_DATA = {
           230.8140913327535,
           236.4197154385703,
           251.80484850066048,
-          238.8532030765827
+          238.8532030765827,
+          265.8687606224647
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4976,6 +4986,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7671,6 +7682,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -8071,7 +8088,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -8475,7 +8493,8 @@ window.BENCHMARK_DATA = {
           323228.1271484375,
           318231.6474233774,
           310285.5333909255,
-          323185.21315104165
+          323185.21315104165,
+          339061.4876464844
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8871,6 +8890,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9296,7 +9316,8 @@ window.BENCHMARK_DATA = {
           2627771.4544270835,
           2702339.1487165177,
           2716350.6177884615,
-          2661700.421574519
+          2661700.421574519,
+          2628906.339285714
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9693,6 +9714,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12569,6 +12591,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -13046,7 +13074,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -13527,7 +13556,8 @@ window.BENCHMARK_DATA = {
           487.34094285964966,
           509.20142786843434,
           495.4024134363447,
-          474.37436154683434
+          474.37436154683434,
+          506.95444876352946
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14000,6 +14030,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14502,7 +14533,8 @@ window.BENCHMARK_DATA = {
           465.17105099360145,
           458.45469357172647,
           480.3576805114746,
-          487.0893595559256
+          487.0893595559256,
+          500.7376543925359
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14695,6 +14727,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17852,6 +17885,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -18329,7 +18368,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -18810,7 +18850,8 @@ window.BENCHMARK_DATA = {
           234.1531896909078,
           271.5756461279733,
           257.62049766949247,
-          250.18207321166992
+          250.18207321166992,
+          245.01450351079305
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19283,6 +19324,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19785,7 +19827,8 @@ window.BENCHMARK_DATA = {
           238.37504285176595,
           238.7645983695984,
           266.93414096832277,
-          247.5719152178083
+          247.5719152178083,
+          265.4116718610128
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19978,6 +20021,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23135,6 +23179,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -23612,7 +23662,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -24093,7 +24144,8 @@ window.BENCHMARK_DATA = {
           453.19023609161377,
           475.71959554232086,
           480.1629158337911,
-          466.8385944684347
+          466.8385944684347,
+          452.8107095105307
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24566,6 +24618,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25068,7 +25121,8 @@ window.BENCHMARK_DATA = {
           1318.8236610412598,
           1219.223635160006,
           1200.5062602116511,
-          1249.1121862956456
+          1249.1121862956456,
+          1262.7269182840982
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25497,6 +25551,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28418,6 +28473,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -28895,7 +28956,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -29376,7 +29438,8 @@ window.BENCHMARK_DATA = {
           1846.5016866048177,
           1876.7450063069662,
           1897.1938844827505,
-          2004.8365948994954
+          2004.8365948994954,
+          1922.7649700164795
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29849,6 +29912,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30351,7 +30415,8 @@ window.BENCHMARK_DATA = {
           1300.813966623942,
           1274.6752377827963,
           1354.9895329108606,
-          1313.6850591023763
+          1313.6850591023763,
+          1316.8638970692953
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30544,6 +30609,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33701,6 +33767,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
         "message": "refactor: fix build warnings (#902)"
+      },
+      {
+        "sha": "d205de6c0ddc96bb4075cabade715fb9f78e88a3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
+        "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
       }
     ],
     "labels": [
@@ -34178,7 +34250,8 @@ window.BENCHMARK_DATA = {
       "2d01d5d4",
       "35c4a43c",
       "b222f4f1",
-      "91119c67"
+      "91119c67",
+      "d205de6c"
     ],
     "datasets": [
       {
@@ -34659,7 +34732,8 @@ window.BENCHMARK_DATA = {
           2446.9000423976354,
           2451.813960484096,
           2606.99295098441,
-          2635.6223008292063
+          2635.6223008292063,
+          2624.485747528076
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35132,6 +35206,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35634,7 +35709,8 @@ window.BENCHMARK_DATA = {
           88087.75282505581,
           85927.06174879808,
           88615.19264322917,
-          88515.51064453126
+          88515.51064453126,
+          90939.52669270833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36108,6 +36184,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
