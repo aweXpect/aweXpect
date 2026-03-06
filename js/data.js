@@ -2844,6 +2844,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -3320,7 +3326,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -3800,7 +3807,8 @@ window.BENCHMARK_DATA = {
           250.84299635887146,
           263.5331333705357,
           278.7213392893473,
-          259.43754277910506
+          259.43754277910506,
+          255.43598403930665
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4273,6 +4281,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4773,7 +4782,8 @@ window.BENCHMARK_DATA = {
           229.21329975128174,
           230.8140913327535,
           236.4197154385703,
-          251.80484850066048
+          251.80484850066048,
+          238.8532030765827
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4966,6 +4976,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7654,6 +7665,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -8053,7 +8070,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -8456,7 +8474,8 @@ window.BENCHMARK_DATA = {
           308634.7874474159,
           323228.1271484375,
           318231.6474233774,
-          310285.5333909255
+          310285.5333909255,
+          323185.21315104165
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8852,6 +8871,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9275,7 +9295,8 @@ window.BENCHMARK_DATA = {
           2511978.9489397323,
           2627771.4544270835,
           2702339.1487165177,
-          2716350.6177884615
+          2716350.6177884615,
+          2661700.421574519
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9672,6 +9693,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12541,6 +12563,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -13017,7 +13045,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -13497,7 +13526,8 @@ window.BENCHMARK_DATA = {
           491.2775817235311,
           487.34094285964966,
           509.20142786843434,
-          495.4024134363447
+          495.4024134363447,
+          474.37436154683434
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13970,6 +14000,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14470,7 +14501,8 @@ window.BENCHMARK_DATA = {
           455.07171317509244,
           465.17105099360145,
           458.45469357172647,
-          480.3576805114746
+          480.3576805114746,
+          487.0893595559256
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14663,6 +14695,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17813,6 +17846,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -18289,7 +18328,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -18769,7 +18809,8 @@ window.BENCHMARK_DATA = {
           237.24129445212228,
           234.1531896909078,
           271.5756461279733,
-          257.62049766949247
+          257.62049766949247,
+          250.18207321166992
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19242,6 +19283,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19742,7 +19784,8 @@ window.BENCHMARK_DATA = {
           239.1205061844417,
           238.37504285176595,
           238.7645983695984,
-          266.93414096832277
+          266.93414096832277,
+          247.5719152178083
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19935,6 +19978,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23085,6 +23129,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -23561,7 +23611,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -24041,7 +24092,8 @@ window.BENCHMARK_DATA = {
           447.41257105554854,
           453.19023609161377,
           475.71959554232086,
-          480.1629158337911
+          480.1629158337911,
+          466.8385944684347
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24514,6 +24566,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25014,7 +25067,8 @@ window.BENCHMARK_DATA = {
           1224.544841493879,
           1318.8236610412598,
           1219.223635160006,
-          1200.5062602116511
+          1200.5062602116511,
+          1249.1121862956456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25443,6 +25497,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28357,6 +28412,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -28833,7 +28894,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -29313,7 +29375,8 @@ window.BENCHMARK_DATA = {
           1875.6047532008245,
           1846.5016866048177,
           1876.7450063069662,
-          1897.1938844827505
+          1897.1938844827505,
+          2004.8365948994954
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29786,6 +29849,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30286,7 +30350,8 @@ window.BENCHMARK_DATA = {
           1296.1729478200277,
           1300.813966623942,
           1274.6752377827963,
-          1354.9895329108606
+          1354.9895329108606,
+          1313.6850591023763
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30479,6 +30544,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33629,6 +33695,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
         "message": "chore: update docusaurus webpage (#900)"
+      },
+      {
+        "sha": "91119c67df62e12e31b89dc3e457ab2fa34b500b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 13:56:46 2026 \u002B0100",
+        "message": "refactor: fix build warnings (#902)"
       }
     ],
     "labels": [
@@ -34105,7 +34177,8 @@ window.BENCHMARK_DATA = {
       "53280373",
       "2d01d5d4",
       "35c4a43c",
-      "b222f4f1"
+      "b222f4f1",
+      "91119c67"
     ],
     "datasets": [
       {
@@ -34585,7 +34658,8 @@ window.BENCHMARK_DATA = {
           2527.417298243596,
           2446.9000423976354,
           2451.813960484096,
-          2606.99295098441
+          2606.99295098441,
+          2635.6223008292063
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35058,6 +35132,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35558,7 +35633,8 @@ window.BENCHMARK_DATA = {
           88595.19474283855,
           88087.75282505581,
           85927.06174879808,
-          88615.19264322917
+          88615.19264322917,
+          88515.51064453126
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36032,6 +36108,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
