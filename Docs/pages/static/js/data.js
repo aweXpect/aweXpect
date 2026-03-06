@@ -2838,6 +2838,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -3313,7 +3319,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -3792,7 +3799,8 @@ window.BENCHMARK_DATA = {
           267.37161986033124,
           250.84299635887146,
           263.5331333705357,
-          278.7213392893473
+          278.7213392893473,
+          259.43754277910506
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4265,6 +4273,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4763,7 +4772,8 @@ window.BENCHMARK_DATA = {
           241.2708761351449,
           229.21329975128174,
           230.8140913327535,
-          236.4197154385703
+          236.4197154385703,
+          251.80484850066048
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4956,6 +4966,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7637,6 +7648,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -8035,7 +8052,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -8437,7 +8455,8 @@ window.BENCHMARK_DATA = {
           346484.9851422991,
           308634.7874474159,
           323228.1271484375,
-          318231.6474233774
+          318231.6474233774,
+          310285.5333909255
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8833,6 +8852,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9254,7 +9274,8 @@ window.BENCHMARK_DATA = {
           2899627.1322916667,
           2511978.9489397323,
           2627771.4544270835,
-          2702339.1487165177
+          2702339.1487165177,
+          2716350.6177884615
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9651,6 +9672,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12513,6 +12535,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -12988,7 +13016,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -13467,7 +13496,8 @@ window.BENCHMARK_DATA = {
           488.97239786783854,
           491.2775817235311,
           487.34094285964966,
-          509.20142786843434
+          509.20142786843434,
+          495.4024134363447
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13940,6 +13970,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14438,7 +14469,8 @@ window.BENCHMARK_DATA = {
           490.8028434753418,
           455.07171317509244,
           465.17105099360145,
-          458.45469357172647
+          458.45469357172647,
+          480.3576805114746
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14631,6 +14663,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17774,6 +17807,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -18249,7 +18288,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -18728,7 +18768,8 @@ window.BENCHMARK_DATA = {
           245.24079701105754,
           237.24129445212228,
           234.1531896909078,
-          271.5756461279733
+          271.5756461279733,
+          257.62049766949247
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19201,6 +19242,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19699,7 +19741,8 @@ window.BENCHMARK_DATA = {
           250.52479286193847,
           239.1205061844417,
           238.37504285176595,
-          238.7645983695984
+          238.7645983695984,
+          266.93414096832277
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19892,6 +19935,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23035,6 +23079,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -23510,7 +23560,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -23989,7 +24040,8 @@ window.BENCHMARK_DATA = {
           486.6617435455322,
           447.41257105554854,
           453.19023609161377,
-          475.71959554232086
+          475.71959554232086,
+          480.1629158337911
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24462,6 +24514,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -24960,7 +25013,8 @@ window.BENCHMARK_DATA = {
           1307.6220469156901,
           1224.544841493879,
           1318.8236610412598,
-          1219.223635160006
+          1219.223635160006,
+          1200.5062602116511
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25389,6 +25443,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28296,6 +28351,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -28771,7 +28832,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -29250,7 +29312,8 @@ window.BENCHMARK_DATA = {
           1981.9845700945173,
           1875.6047532008245,
           1846.5016866048177,
-          1876.7450063069662
+          1876.7450063069662,
+          1897.1938844827505
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29723,6 +29786,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30221,7 +30285,8 @@ window.BENCHMARK_DATA = {
           1439.5374179840087,
           1296.1729478200277,
           1300.813966623942,
-          1274.6752377827963
+          1274.6752377827963,
+          1354.9895329108606
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30414,6 +30479,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33557,6 +33623,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Thu Mar 5 21:16:04 2026 \u002B0100",
         "message": "chore: Bump coverlet.collector from 6.0.4 to 8.0.0 (#897)"
+      },
+      {
+        "sha": "b222f4f1b22affc6939c7a0da09535f584c98287",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 6 12:28:00 2026 \u002B0100",
+        "message": "chore: update docusaurus webpage (#900)"
       }
     ],
     "labels": [
@@ -34032,7 +34104,8 @@ window.BENCHMARK_DATA = {
       "97d102a0",
       "53280373",
       "2d01d5d4",
-      "35c4a43c"
+      "35c4a43c",
+      "b222f4f1"
     ],
     "datasets": [
       {
@@ -34511,7 +34584,8 @@ window.BENCHMARK_DATA = {
           2553.876935068766,
           2527.417298243596,
           2446.9000423976354,
-          2451.813960484096
+          2451.813960484096,
+          2606.99295098441
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -34984,6 +35058,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35482,7 +35557,8 @@ window.BENCHMARK_DATA = {
           88844.73707682292,
           88595.19474283855,
           88087.75282505581,
-          85927.06174879808
+          85927.06174879808,
+          88615.19264322917
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -35956,6 +36032,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
