@@ -3,6 +3,7 @@ using aweXpect.Options;
 
 namespace aweXpect.Results;
 
+#pragma warning disable S2436 // Reduce the number of generic parameters
 /// <summary>
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />
 ///     that allows specifying a <typeparamref name="TTolerance" />.
@@ -52,3 +53,4 @@ public class ToleranceEqualityResult<TType, TThat, TElement, TTolerance, TSelf>(
 		return this;
 	}
 }
+#pragma warning restore S2436 // Reduce the number of generic parameters

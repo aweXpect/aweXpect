@@ -3,6 +3,7 @@ using System.Reflection;
 
 namespace aweXpect.Equivalency;
 
+#pragma warning disable S1694 // Convert this abstract class to an interface
 /// <summary>
 ///     Class to specify which members to ignore.
 /// </summary>
@@ -39,3 +40,4 @@ public abstract class MemberToIgnore
 		public override string ToString() => $"\"{memberName}\"";
 	}
 }
+#pragma warning restore S1694 // Convert this abstract class to an interface

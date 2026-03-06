@@ -10,6 +10,7 @@ namespace aweXpect.Core.Constraints;
 /// </summary>
 public abstract partial class ConstraintResult
 {
+#pragma warning disable S2166 // Rename this class to remove "Exception" or correct its inheritance
 	/// <summary>
 	///     A failed <see cref="ConstraintResult" /> due to an <see cref="Exception" />.
 	/// </summary>
@@ -69,4 +70,5 @@ public abstract partial class ConstraintResult
 		public override ConstraintResult Negate()
 			=> _inner.Negate();
 	}
+#pragma warning restore S2166 // Rename this class to remove "Exception" or correct its inheritance
 }

@@ -76,7 +76,7 @@ internal class OrNode : Node
 	{
 		if (_nodes.Any() && Current is ExpectationNode expectationNode && expectationNode.IsEmpty())
 		{
-			_nodes.Last().Item2.SetReason(becauseReason);
+			_nodes[^1].Item2.SetReason(becauseReason);
 		}
 		else
 		{
