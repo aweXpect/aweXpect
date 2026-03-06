@@ -146,7 +146,9 @@ namespace aweXpect.Core
     public abstract class ExpectationBuilder
     {
         protected ExpectationBuilder(string subjectExpression, aweXpect.Core.ExpectationGrammars grammars = 0) { }
+        public System.Threading.CancellationToken? CancellationToken { get; }
         public aweXpect.Core.ExpectationGrammars ExpectationGrammars { get; }
+        public System.TimeSpan? Timeout { get; }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
@@ -1179,6 +1181,7 @@ namespace aweXpect.Results
     public class ExpectationResult : aweXpect.Results.Expectation, aweXpect.Core.IOptionsProvider<aweXpect.Core.ExpectationBuilder>
     {
         public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
+        public aweXpect.Results.ExpectationResult Because(System.Threading.Tasks.Task<string> reason) { }
         public aweXpect.Results.ExpectationResult Because(string reason) { }
         public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
         public override string? ToString() { }
@@ -1194,6 +1197,7 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ExpectationResult<TType, TSelf>
     {
         public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
+        public TSelf Because(System.Threading.Tasks.Task<string> reason) { }
         public TSelf Because(string reason) { }
         [System.Diagnostics.StackTraceHidden]
         public System.Runtime.CompilerServices.TaskAwaiter<TType> GetAwaiter() { }
