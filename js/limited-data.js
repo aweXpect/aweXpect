@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
-      {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:04:20 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          297.6433809598287,
           263.93456913630166,
           255.11932544708253,
           260.76867713247026,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           278.7213392893473,
           259.43754277910506,
           255.43598403930665,
-          263.6416559537252
+          263.6416559537252,
+          246.52351846694947
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -454,7 +454,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          270.5103018467243,
           246.24050736427307,
           241.9665836606707,
           269.3426177024841,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           236.4197154385703,
           251.80484850066048,
           238.8532030765827,
-          265.8687606224647
+          265.8687606224647,
+          238.11322654088337
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
-      {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:04:20 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          316512.25556640624,
           332606.125,
           311143.73118489585,
           312829.48685128347,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           318231.6474233774,
           310285.5333909255,
           323185.21315104165,
-          339061.4876464844
+          339061.4876464844,
+          306435.1392252604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1030,7 +1030,6 @@ window.BENCHMARK_DATA = {
         "data": [
           335372,
           335372,
-          335372,
           335452,
           335452,
           335452,
@@ -1063,6 +1062,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2686527.970833333,
           2806034.650260417,
           2660209.2087053573,
           2650243.2794471155,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2702339.1487165177,
           2716350.6177884615,
           2661700.421574519,
-          2628906.339285714
+          2628906.339285714,
+          2610370.2845052085
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804902,
           4804906,
           4804906,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
       {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          460.32697347494275,
           464.10953896840414,
           427.61443315233504,
           492.0156497955322,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           509.20142786843434,
           495.4024134363447,
           474.37436154683434,
-          506.95444876352946
+          506.95444876352946,
+          490.06468060811363
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1638,7 +1638,6 @@ window.BENCHMARK_DATA = {
         "data": [
           1296,
           1296,
-          1296,
           1368,
           1368,
           1368,
@@ -1671,6 +1670,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          505.9251218159994,
           486.9550390879313,
           485.3194377081735,
           503.9999958674113,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           458.45469357172647,
           480.3576805114746,
           487.0893595559256,
-          500.7376543925359
+          500.7376543925359,
+          462.64450785091947
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
-      {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:04:20 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          263.1874970436096,
           252.32644286522498,
           247.41135123797827,
           246.33154214223225,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           271.5756461279733,
           257.62049766949247,
           250.18207321166992,
-          245.01450351079305
+          245.01450351079305,
+          252.4207589785258
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2278,7 +2278,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          256.15830656687416,
           250.86386850902014,
           246.57284311147836,
           268.8595001147344,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           238.7645983695984,
           266.93414096832277,
           247.5719152178083,
-          265.4116718610128
+          265.4116718610128,
+          236.38564470836096
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
-      {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:04:20 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          410.13684269360135,
           423.65541563715254,
           409.0791465759277,
           451.94028263825635,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           475.71959554232086,
           480.1629158337911,
           466.8385944684347,
-          452.8107095105307
+          452.8107095105307,
+          434.6160683291299
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2854,7 +2854,6 @@ window.BENCHMARK_DATA = {
         "data": [
           1056,
           1056,
-          1056,
           1136,
           1136,
           1136,
@@ -2887,6 +2886,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1183.8721885681152,
           1236.2538581575666,
           1182.9263760493352,
           1335.319766362508,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1219.223635160006,
           1200.5062602116511,
           1249.1121862956456,
-          1262.7269182840982
+          1262.7269182840982,
+          1219.7700771331788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
-      {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:04:20 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1897.2871106465657,
           1803.7326568603517,
           1813.282754389445,
           1892.0803848902385,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1876.7450063069662,
           1897.1938844827505,
           2004.8365948994954,
-          1922.7649700164795
+          1922.7649700164795,
+          1916.6972241719563
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3462,7 +3462,6 @@ window.BENCHMARK_DATA = {
         "data": [
           2568,
           2568,
-          2568,
           2632,
           2632,
           2632,
@@ -3495,6 +3494,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1337.8453980763754,
           1383.4462158203125,
           1341.1950542743389,
           1280.9150220326014,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1274.6752377827963,
           1354.9895329108606,
           1313.6850591023763,
-          1316.8638970692953
+          1316.8638970692953,
+          1312.3660928090414
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "45348ee80a16c82a7c6cac49e2301595ed0ece72",
-        "author": "dependabot[bot]",
-        "date": "Sat Nov 8 23:04:04 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#831)"
-      },
-      {
         "sha": "4919d3fadbbf799707279d728e47486f0cfe5b5a",
         "author": "dependabot[bot]",
         "date": "Sat Nov 8 23:04:20 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 6 14:13:35 2026 \u002B0100",
         "message": "feat: give access to \u0060Timeout\u0060 and \u0060CancellationToken\u0060 in the \u0060ExpectationBuilder\u0060 (#901)"
+      },
+      {
+        "sha": "ad9a5bc17826bcc653b63c60ff1e1a69382481d6",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
       }
     ],
     "labels": [
-      "45348ee8",
       "4919d3fa",
       "52008dd3",
       "f179ef08",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "35c4a43c",
       "b222f4f1",
       "91119c67",
-      "d205de6c"
+      "d205de6c",
+      "ad9a5bc1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2521.0334447224936,
           2505.647640482585,
           2472.413246154785,
           2454.133862813314,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2451.813960484096,
           2606.99295098441,
           2635.6223008292063,
-          2624.485747528076
+          2624.485747528076,
+          2564.1558205740794
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4070,7 +4070,6 @@ window.BENCHMARK_DATA = {
         "data": [
           2760,
           2760,
-          2760,
           2824,
           2824,
           2824,
@@ -4103,6 +4102,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          87999.00865885416,
           91536.00325520833,
           88684.57991536458,
           87596.2677873884,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           85927.06174879808,
           88615.19264322917,
           88515.51064453126,
-          90939.52669270833
+          90939.52669270833,
+          85872.35096153847
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           58598,
           58598,
@@ -4229,6 +4228,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58141,
+          58598,
           58598,
           58598,
           58598,
