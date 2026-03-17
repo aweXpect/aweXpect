@@ -2874,6 +2874,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -3355,7 +3361,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -3840,7 +3847,8 @@ window.BENCHMARK_DATA = {
           263.6416559537252,
           246.52351846694947,
           277.33378842898776,
-          248.5066386290959
+          248.5066386290959,
+          258.0216953277588
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4313,6 +4321,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4823,7 +4832,8 @@ window.BENCHMARK_DATA = {
           265.8687606224647,
           238.11322654088337,
           258.2727716445923,
-          233.3314108053843
+          233.3314108053843,
+          234.4076029062271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5016,6 +5026,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7739,6 +7750,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -8143,7 +8160,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -8551,7 +8569,8 @@ window.BENCHMARK_DATA = {
           339061.4876464844,
           306435.1392252604,
           310221.6845377604,
-          305610.11399739585
+          305610.11399739585,
+          309059.9609375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8947,6 +8966,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9380,7 +9400,8 @@ window.BENCHMARK_DATA = {
           2628906.339285714,
           2610370.2845052085,
           2741954.3526041666,
-          2707282.3856770834
+          2707282.3856770834,
+          2687938.640885417
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9777,6 +9798,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12681,6 +12703,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -13162,7 +13190,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -13647,7 +13676,8 @@ window.BENCHMARK_DATA = {
           506.95444876352946,
           490.06468060811363,
           490.6396679878235,
-          471.9445881207784
+          471.9445881207784,
+          459.94838798963104
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14120,6 +14150,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14630,7 +14661,8 @@ window.BENCHMARK_DATA = {
           500.7376543925359,
           462.64450785091947,
           496.7702851295471,
-          454.3674567086356
+          454.3674567086356,
+          447.1297173500061
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14823,6 +14855,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18008,6 +18041,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -18489,7 +18528,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -18974,7 +19014,8 @@ window.BENCHMARK_DATA = {
           245.01450351079305,
           252.4207589785258,
           259.45027888615925,
-          242.91976623535157
+          242.91976623535157,
+          249.76007059642248
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19447,6 +19488,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19957,7 +19999,8 @@ window.BENCHMARK_DATA = {
           265.4116718610128,
           236.38564470836096,
           252.89722798665363,
-          239.50946207046508
+          239.50946207046508,
+          243.25604276657106
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20150,6 +20193,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23335,6 +23379,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -23816,7 +23866,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -24301,7 +24352,8 @@ window.BENCHMARK_DATA = {
           452.8107095105307,
           434.6160683291299,
           454.3024052302043,
-          456.7321134249369
+          456.7321134249369,
+          461.3384098273057
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24774,6 +24826,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25284,7 +25337,8 @@ window.BENCHMARK_DATA = {
           1262.7269182840982,
           1219.7700771331788,
           1297.0697533534124,
-          1199.8335903712682
+          1199.8335903712682,
+          1160.3115118662515
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25713,6 +25767,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28662,6 +28717,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -29143,7 +29204,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -29628,7 +29690,8 @@ window.BENCHMARK_DATA = {
           1922.7649700164795,
           1916.6972241719563,
           1877.6324087778728,
-          1905.5466705322265
+          1905.5466705322265,
+          1957.0270599365235
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30101,6 +30164,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30611,7 +30675,8 @@ window.BENCHMARK_DATA = {
           1316.8638970692953,
           1312.3660928090414,
           1344.6447956085206,
-          1255.3370518003192
+          1255.3370518003192,
+          1339.0221051534018
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30804,6 +30869,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33989,6 +34055,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
         "message": "chore: Bump the nunit group with 2 updates (#903)"
+      },
+      {
+        "sha": "3a87b274fee022a3fb550fa0fbd1a2ef700a8547",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 17 16:15:55 2026 \u002B0100",
+        "message": "chore: bump aweXpect.Core to v2.28.0 (#909)"
       }
     ],
     "labels": [
@@ -34470,7 +34542,8 @@ window.BENCHMARK_DATA = {
       "d205de6c",
       "ad9a5bc1",
       "53a7bc7d",
-      "e257ec5a"
+      "e257ec5a",
+      "3a87b274"
     ],
     "datasets": [
       {
@@ -34955,7 +35028,8 @@ window.BENCHMARK_DATA = {
           2624.485747528076,
           2564.1558205740794,
           2524.2061381022136,
-          2473.4556050981796
+          2473.4556050981796,
+          2561.3218955993652
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35428,6 +35502,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35938,7 +36013,8 @@ window.BENCHMARK_DATA = {
           90939.52669270833,
           85872.35096153847,
           88075.89565805289,
-          86934.47059044472
+          86934.47059044472,
+          89031.1101422991
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36428,6 +36504,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598
         ],
         "borderColor": "#FF671B",
