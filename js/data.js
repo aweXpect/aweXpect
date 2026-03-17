@@ -2862,6 +2862,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -3341,7 +3347,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -3824,7 +3831,8 @@ window.BENCHMARK_DATA = {
           259.43754277910506,
           255.43598403930665,
           263.6416559537252,
-          246.52351846694947
+          246.52351846694947,
+          277.33378842898776
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4297,6 +4305,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4803,7 +4812,8 @@ window.BENCHMARK_DATA = {
           251.80484850066048,
           238.8532030765827,
           265.8687606224647,
-          238.11322654088337
+          238.11322654088337,
+          258.2727716445923
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4996,6 +5006,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7705,6 +7716,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -8107,7 +8124,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -8513,7 +8531,8 @@ window.BENCHMARK_DATA = {
           310285.5333909255,
           323185.21315104165,
           339061.4876464844,
-          306435.1392252604
+          306435.1392252604,
+          310221.6845377604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8909,6 +8928,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9338,7 +9358,8 @@ window.BENCHMARK_DATA = {
           2716350.6177884615,
           2661700.421574519,
           2628906.339285714,
-          2610370.2845052085
+          2610370.2845052085,
+          2741954.3526041666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9735,6 +9756,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12625,6 +12647,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -13104,7 +13132,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -13587,7 +13616,8 @@ window.BENCHMARK_DATA = {
           495.4024134363447,
           474.37436154683434,
           506.95444876352946,
-          490.06468060811363
+          490.06468060811363,
+          490.6396679878235
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14060,6 +14090,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14566,7 +14597,8 @@ window.BENCHMARK_DATA = {
           480.3576805114746,
           487.0893595559256,
           500.7376543925359,
-          462.64450785091947
+          462.64450785091947,
+          496.7702851295471
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14759,6 +14791,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17930,6 +17963,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -18409,7 +18448,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -18892,7 +18932,8 @@ window.BENCHMARK_DATA = {
           257.62049766949247,
           250.18207321166992,
           245.01450351079305,
-          252.4207589785258
+          252.4207589785258,
+          259.45027888615925
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19365,6 +19406,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19871,7 +19913,8 @@ window.BENCHMARK_DATA = {
           266.93414096832277,
           247.5719152178083,
           265.4116718610128,
-          236.38564470836096
+          236.38564470836096,
+          252.89722798665363
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20064,6 +20107,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23235,6 +23279,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -23714,7 +23764,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -24197,7 +24248,8 @@ window.BENCHMARK_DATA = {
           480.1629158337911,
           466.8385944684347,
           452.8107095105307,
-          434.6160683291299
+          434.6160683291299,
+          454.3024052302043
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24670,6 +24722,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25176,7 +25229,8 @@ window.BENCHMARK_DATA = {
           1200.5062602116511,
           1249.1121862956456,
           1262.7269182840982,
-          1219.7700771331788
+          1219.7700771331788,
+          1297.0697533534124
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25605,6 +25659,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28540,6 +28595,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -29019,7 +29080,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -29502,7 +29564,8 @@ window.BENCHMARK_DATA = {
           1897.1938844827505,
           2004.8365948994954,
           1922.7649700164795,
-          1916.6972241719563
+          1916.6972241719563,
+          1877.6324087778728
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -29975,6 +30038,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30481,7 +30545,8 @@ window.BENCHMARK_DATA = {
           1354.9895329108606,
           1313.6850591023763,
           1316.8638970692953,
-          1312.3660928090414
+          1312.3660928090414,
+          1344.6447956085206
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30674,6 +30739,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33845,6 +33911,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:16 2026 \u002B0100",
         "message": "chore: Bump Microsoft.Testing.Extensions.CodeCoverage from 18.3.2 to 18.5.2 (#906)"
+      },
+      {
+        "sha": "53a7bc7d4e8453a408d563756dc9f2a58ab3af53",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
+        "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
       }
     ],
     "labels": [
@@ -34324,7 +34396,8 @@ window.BENCHMARK_DATA = {
       "b222f4f1",
       "91119c67",
       "d205de6c",
-      "ad9a5bc1"
+      "ad9a5bc1",
+      "53a7bc7d"
     ],
     "datasets": [
       {
@@ -34807,7 +34880,8 @@ window.BENCHMARK_DATA = {
           2606.99295098441,
           2635.6223008292063,
           2624.485747528076,
-          2564.1558205740794
+          2564.1558205740794,
+          2524.2061381022136
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35280,6 +35354,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35786,7 +35861,8 @@ window.BENCHMARK_DATA = {
           88615.19264322917,
           88515.51064453126,
           90939.52669270833,
-          85872.35096153847
+          85872.35096153847,
+          88075.89565805289
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36274,7 +36350,8 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58598,
-          58598
+          58598,
+          59100
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
