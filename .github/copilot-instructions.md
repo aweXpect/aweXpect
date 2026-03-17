@@ -29,10 +29,10 @@ When encountering GitVersion issues (common with branch refs), use direct dotnet
 export DOTNET_PATH="/home/runner/work/aweXpect/aweXpect/.nuke/temp/dotnet-unix/dotnet"
 
 # Build the solution
-$DOTNET_PATH build aweXpect.sln --configuration Release  # Takes 1m20s. NEVER CANCEL. Set timeout to 3+ minutes.
+$DOTNET_PATH build aweXpect.slnx --configuration Release  # Takes 1m20s. NEVER CANCEL. Set timeout to 3+ minutes.
 
 # Run tests (.NET 8.0 only to avoid mono dependency issues)
-$DOTNET_PATH test aweXpect.sln --configuration Release --no-build --framework net8.0  # Takes 30s. NEVER CANCEL. Set timeout to 2+ minutes.
+$DOTNET_PATH test aweXpect.slnx --configuration Release --no-build --framework net8.0  # Takes 30s. NEVER CANCEL. Set timeout to 2+ minutes.
 ```
 
 ### Available NUKE Build Targets
@@ -125,7 +125,7 @@ To communicate intent to the consumers of your library, the title of the pull re
 ### Key Configuration Files
 - **global.json**: SDK version requirements (.NET 8.0.407)
 - **Directory.Packages.props**: Centralized package management
-- **aweXpect.sln**: Main solution file
+- **aweXpect.slnx**: Main solution file
 - **Pipeline/Build.cs**: NUKE build configuration
 
 ## Extension Development
