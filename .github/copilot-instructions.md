@@ -7,7 +7,7 @@ Always reference these instructions first and fallback to search or bash command
 ## Working Effectively
 
 ### Bootstrap and Build Requirements
-- **Required SDK**: .NET 8.0.407 (specified in `global.json`)
+- **Required SDK**: .NET SDK as specified in `global.json`
 - **Build System**: NUKE build automation system
 - **Git Requirements**: Full git history required (`git fetch --unshallow` if shallow clone)
 
