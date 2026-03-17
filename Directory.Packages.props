@@ -3,8 +3,8 @@
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageVersion Include="aweXpect" Version="2.28.0" />
-		<PackageVersion Include="aweXpect.Core" Version="2.27.0" />
+		<PackageVersion Include="aweXpect" Version="2.30.0" />
+		<PackageVersion Include="aweXpect.Core" Version="2.28.0" />
 		<PackageVersion Include="aweXpect.Chronology" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
@@ -30,11 +30,11 @@
 		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp.CodeRefactoring.Testing" Version="1.1.2" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
 		<PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
-		<PackageVersion Include="NUnit" Version="4.5.0" />
+		<PackageVersion Include="NUnit" Version="4.5.1" />
 		<PackageVersion Include="NUnit3TestAdapter" Version="6.1.0" />
-		<PackageVersion Include="NUnit.Analyzers" Version="4.11.2" />
+		<PackageVersion Include="NUnit.Analyzers" Version="4.12.0" />
 		<PackageVersion Include="TUnit" Version="1.12.111" />
 		<PackageVersion Include="TUnit.Assertions" Version="1.12.111" />
 		<PackageVersion Include="xunit" Version="2.9.3" />
@@ -45,7 +45,7 @@
 		<PackageVersion Include="coverlet.collector" Version="8.0.0" />
 		<PackageVersion Include="FluentAssertions" Version="8.8.0" />
 		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="2.0.2" />
-		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.3.2" />
+		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.5.2" />
 		<PackageVersion Include="PublicApiGenerator" Version="11.5.4" />
 		<PackageVersion Include="MSTest.TestAdapter" Version="4.1.0" />
 		<PackageVersion Include="MSTest.TestFramework" Version="4.1.0" />
