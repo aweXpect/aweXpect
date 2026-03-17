@@ -2868,6 +2868,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -3348,7 +3354,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -3832,7 +3839,8 @@ window.BENCHMARK_DATA = {
           255.43598403930665,
           263.6416559537252,
           246.52351846694947,
-          277.33378842898776
+          277.33378842898776,
+          248.5066386290959
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4305,6 +4313,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4813,7 +4822,8 @@ window.BENCHMARK_DATA = {
           238.8532030765827,
           265.8687606224647,
           238.11322654088337,
-          258.2727716445923
+          258.2727716445923,
+          233.3314108053843
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5006,6 +5016,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7722,6 +7733,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -8125,7 +8142,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -8532,7 +8550,8 @@ window.BENCHMARK_DATA = {
           323185.21315104165,
           339061.4876464844,
           306435.1392252604,
-          310221.6845377604
+          310221.6845377604,
+          305610.11399739585
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8928,6 +8947,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9359,7 +9379,8 @@ window.BENCHMARK_DATA = {
           2661700.421574519,
           2628906.339285714,
           2610370.2845052085,
-          2741954.3526041666
+          2741954.3526041666,
+          2707282.3856770834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9756,6 +9777,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12653,6 +12675,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -13133,7 +13161,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -13617,7 +13646,8 @@ window.BENCHMARK_DATA = {
           474.37436154683434,
           506.95444876352946,
           490.06468060811363,
-          490.6396679878235
+          490.6396679878235,
+          471.9445881207784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14090,6 +14120,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14598,7 +14629,8 @@ window.BENCHMARK_DATA = {
           487.0893595559256,
           500.7376543925359,
           462.64450785091947,
-          496.7702851295471
+          496.7702851295471,
+          454.3674567086356
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14791,6 +14823,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -17969,6 +18002,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -18449,7 +18488,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -18933,7 +18973,8 @@ window.BENCHMARK_DATA = {
           250.18207321166992,
           245.01450351079305,
           252.4207589785258,
-          259.45027888615925
+          259.45027888615925,
+          242.91976623535157
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19406,6 +19447,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -19914,7 +19956,8 @@ window.BENCHMARK_DATA = {
           247.5719152178083,
           265.4116718610128,
           236.38564470836096,
-          252.89722798665363
+          252.89722798665363,
+          239.50946207046508
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20107,6 +20150,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23285,6 +23329,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -23765,7 +23815,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -24249,7 +24300,8 @@ window.BENCHMARK_DATA = {
           466.8385944684347,
           452.8107095105307,
           434.6160683291299,
-          454.3024052302043
+          454.3024052302043,
+          456.7321134249369
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24722,6 +24774,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25230,7 +25283,8 @@ window.BENCHMARK_DATA = {
           1249.1121862956456,
           1262.7269182840982,
           1219.7700771331788,
-          1297.0697533534124
+          1297.0697533534124,
+          1199.8335903712682
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25659,6 +25713,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28601,6 +28656,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -29081,7 +29142,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -29565,7 +29627,8 @@ window.BENCHMARK_DATA = {
           2004.8365948994954,
           1922.7649700164795,
           1916.6972241719563,
-          1877.6324087778728
+          1877.6324087778728,
+          1905.5466705322265
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30038,6 +30101,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30546,7 +30610,8 @@ window.BENCHMARK_DATA = {
           1313.6850591023763,
           1316.8638970692953,
           1312.3660928090414,
-          1344.6447956085206
+          1344.6447956085206,
+          1255.3370518003192
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30739,6 +30804,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -33917,6 +33983,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 17 15:59:28 2026 \u002B0100",
         "message": "chore: Bump Microsoft.NET.Test.Sdk from 18.0.1 to 18.3.0 (#905)"
+      },
+      {
+        "sha": "e257ec5aa3cafc3a0757cf00079de5f82d33b889",
+        "author": "dependabot[bot]",
+        "date": "Tue Mar 17 15:59:39 2026 \u002B0100",
+        "message": "chore: Bump the nunit group with 2 updates (#903)"
       }
     ],
     "labels": [
@@ -34397,7 +34469,8 @@ window.BENCHMARK_DATA = {
       "91119c67",
       "d205de6c",
       "ad9a5bc1",
-      "53a7bc7d"
+      "53a7bc7d",
+      "e257ec5a"
     ],
     "datasets": [
       {
@@ -34881,7 +34954,8 @@ window.BENCHMARK_DATA = {
           2635.6223008292063,
           2624.485747528076,
           2564.1558205740794,
-          2524.2061381022136
+          2524.2061381022136,
+          2473.4556050981796
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35354,6 +35428,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -35862,7 +35937,8 @@ window.BENCHMARK_DATA = {
           88515.51064453126,
           90939.52669270833,
           85872.35096153847,
-          88075.89565805289
+          88075.89565805289,
+          86934.47059044472
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36351,7 +36427,8 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58598,
-          59100
+          59100,
+          58598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
