@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -37,6 +38,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains exactly one item.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static SingleItemResult<IEnumerable, object?> HasSingle(
 		this IThat<IEnumerable> source)
 	{

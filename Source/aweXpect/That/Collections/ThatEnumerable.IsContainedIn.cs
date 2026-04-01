@@ -66,6 +66,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCollectionBeContainedInResult<IEnumerable, IThat<IEnumerable>, TItem>
 		IsContainedIn<TItem>(
 			this IThat<IEnumerable> source,
@@ -234,6 +235,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is not contained in the provided <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCollectionBeContainedInResult<IEnumerable, IThat<IEnumerable>, TItem>
 		IsNotContainedIn<TItem>(
 			this IThat<IEnumerable> source,

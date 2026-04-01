@@ -120,6 +120,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has an item matching the <paramref name="predicate" />…
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static HasItemResult<IEnumerable> HasItem(
 		this IThat<IEnumerable> source, Func<object?, bool> predicate,
 		[CallerArgumentExpression("predicate")]

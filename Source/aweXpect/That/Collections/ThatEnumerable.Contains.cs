@@ -102,6 +102,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCountResult<IEnumerable, IThat<IEnumerable>, object?>
 		Contains(
 			this IThat<IEnumerable> source,
@@ -301,6 +302,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCollectionContainResult<IEnumerable, IThat<IEnumerable>, TItem>
 		Contains<TItem>(
 			this IThat<IEnumerable> source,
@@ -493,6 +495,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCountResult<IEnumerable, IThat<IEnumerable>, object?>
 		DoesNotContain(
 			this IThat<IEnumerable> source,
@@ -695,6 +698,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the provided <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCollectionContainResult<IEnumerable, IThat<IEnumerable>, TItem>
 		DoesNotContain<TItem>(
 			this IThat<IEnumerable> source,

@@ -64,6 +64,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in descending order.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static CollectionOrderResult<object?, IEnumerable, IThat<IEnumerable>>
 		IsInDescendingOrder(this IThat<IEnumerable> source)
 	{
@@ -204,6 +205,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is not in descending order.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static CollectionOrderResult<object?, IEnumerable, IThat<IEnumerable>>
 		IsNotInDescendingOrder(this IThat<IEnumerable> source)
 	{

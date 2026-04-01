@@ -391,6 +391,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCollectionMatchResult<IEnumerable, IThat<IEnumerable>, TItem>
 		IsEqualTo<TItem>(
 			this IThat<IEnumerable> source,
@@ -895,6 +896,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectCollectionMatchResult<IEnumerable, IThat<IEnumerable>, TItem>
 		IsNotEqualTo<TItem>(
 			this IThat<IEnumerable> source,

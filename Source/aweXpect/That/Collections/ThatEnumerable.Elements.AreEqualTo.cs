@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -282,6 +283,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     …are equal to the <paramref name="expected" /> value.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, object?>
 		AreEqualTo(this ElementsForEnumerable<IEnumerable> elements, object? expected)
 	{
