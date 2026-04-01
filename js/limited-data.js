@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
-      {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          290.9937463760376,
           243.60638585457434,
           276.6520478566488,
           270.4108124801091,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           256.64958276748655,
           257.56788249810535,
           292.9563946723938,
-          247.3010997405419
+          247.3010997405419,
+          251.38871068954467
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -446,7 +446,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          265.434599908193,
           227.94614538124628,
           254.59018131891887,
           285.8850337096623,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           237.84907273451486,
           246.25603069577897,
           243.35055802663166,
-          238.34752456958478
+          238.34752456958478,
+          242.9310405070965
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
-      {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          318224.71930803574,
           318445.8439941406,
           313889.41354166664,
           301313.86561802455,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           329450.0514322917,
           311301.01764322916,
           312479.08654785156,
-          294185.44536132814
+          294185.44536132814,
+          306580.2018229167
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1054,7 +1054,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2867276.1947916667,
           2632774.782752404,
           2705892.777604167,
           2475290.523995536,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2822776.1330915177,
           2803125.2580915177,
           2682176.25390625,
-          2676068.312239583
+          2676068.312239583,
+          2608338.4241071427
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804902,
           4804906,
           4804906,
           4804902,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
       {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          536.5715546925862,
           473.1941611925761,
           519.3355581919352,
           485.952849706014,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           582.559289418734,
           481.03004557291666,
           462.20418338775636,
-          489.88828665415446
+          489.88828665415446,
+          530.7397397994995
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1662,7 +1662,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          534.1773337636675,
           448.35982036590576,
           522.257331530253,
           567.6923479352679,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           561.0213035583496,
           495.86608645121254,
           478.9792293548584,
-          500.7757240022932
+          500.7757240022932,
+          490.29199167887367
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
-      {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          267.26326440175376,
           245.28955494562786,
           262.353364944458,
           262.42293007033214,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           273.3258000101362,
           248.891809908549,
           256.0431020259857,
-          236.7407497406006
+          236.7407497406006,
+          253.5041307449341
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2270,7 +2270,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          285.2920396486918,
           239.61556302584134,
           270.68733940124514,
           286.44428030649823,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           287.00287331853593,
           261.3400267601013,
           239.8997587521871,
-          247.30938777923583
+          247.30938777923583,
+          244.96448500951132
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
-      {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          488.3778293609619,
           441.3670855840047,
           504.2049987157186,
           485.37851289113365,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           506.6645399093628,
           487.2669871194022,
           484.0471749623617,
-          456.87574961980187
+          456.87574961980187,
+          456.25001430511475
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2878,7 +2878,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1251.7257734445425,
           1149.287575785319,
           1397.923133722941,
           1240.8684731892176,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1346.704011623676,
           1218.3634361539569,
           1385.1634359995523,
-          1419.0466421763101
+          1419.0466421763101,
+          1178.812040056501
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
-      {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1955.1941125052315,
           1896.5566106160481,
           2041.9749987284342,
           1870.663264465332,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1969.7964210510254,
           1995.9395746866862,
           2047.0045290629068,
-          2002.14381052653
+          2002.14381052653,
+          1978.0412147521972
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3486,7 +3486,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1374.589400736491,
           1251.595383453369,
           1370.79592628479,
           1451.4868713378905,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1478.572190475464,
           1333.320147450765,
           1462.978379313151,
-          1435.0550885518392
+          1435.0550885518392,
+          1282.6236000061035
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "e2a90b0766d8f7883738fc6257e74bb371a163a4",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:50:00 2025 \u002B0100",
-        "message": "chore: Bump SharpCompress from 0.39.0 to 0.41.0 (#845)"
-      },
-      {
         "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
         "author": "Valentin Breu\u00DF",
         "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
         "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
+      },
+      {
+        "sha": "0f9789f55d09b225c34fe50edd9cdba2a14a129f",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
+        "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
       }
     ],
     "labels": [
-      "e2a90b07",
       "a4620c7c",
       "de27b024",
       "43736e06",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "e1f004a0",
       "3acb7b65",
       "2279ac3e",
-      "944d5c8f"
+      "944d5c8f",
+      "0f9789f5"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2608.6426175435386,
           2566.2507239750453,
           2625.1601809183758,
           2484.6689158848353,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2534.7219200134277,
           2542.289687816913,
           2712.7891644795736,
-          2569.192872619629
+          2569.192872619629,
+          2634.1716435750327
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4094,7 +4094,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89743.46718052456,
           85922.43911508414,
           89459.74424525669,
           62325.50304236779,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           87612.40712193081,
           87532.54624720982,
           94248.31761067708,
-          91714.59221540179
+          91714.59221540179,
+          90774.72347005208
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           58598,
           59100,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58598,
-          58598
+          58598,
+          57480
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
