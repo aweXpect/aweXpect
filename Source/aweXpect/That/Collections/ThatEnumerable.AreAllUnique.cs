@@ -103,6 +103,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, object?> AreAllUnique(
 		this IThat<IEnumerable> source)
 	{
@@ -120,6 +121,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection only contains items with unique members specified by the
 	///     <paramref name="memberAccessor" />.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TMember> AreAllUnique<TMember>(
 		this IThat<IEnumerable> source,
 		Func<object?, TMember> memberAccessor,

@@ -108,6 +108,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		EndsWith<TItem>(
 			this IThat<IEnumerable> source,
@@ -128,6 +129,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		EndsWith<TItem>(
 			this IThat<IEnumerable> source,
@@ -328,6 +330,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		DoesNotEndWith<TItem>(
 			this IThat<IEnumerable> source,
@@ -348,6 +351,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		DoesNotEndWith<TItem>(
 			this IThat<IEnumerable> source,

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Helpers;
 #if NET8_0_OR_GREATER
@@ -27,6 +28,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection all items…
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ElementsForEnumerable<IEnumerable> All(
 		this IThat<IEnumerable> subject)
 		=> new(subject, EnumerableQuantifier.All(subject.Get().ExpectationBuilder.ExpectationGrammars));

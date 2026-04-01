@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Results;
@@ -32,6 +33,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection between <paramref name="minimum" />…
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static BetweenResult<ElementsForEnumerable<IEnumerable>> Between(
 		this IThat<IEnumerable> subject,
 		int minimum)

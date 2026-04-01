@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Helpers;
 #if NET8_0_OR_GREATER
@@ -29,6 +30,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection more than <paramref name="minimum" /> items…
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ElementsForEnumerable<IEnumerable> MoreThan(
 		this IThat<IEnumerable> subject,
 		int minimum)

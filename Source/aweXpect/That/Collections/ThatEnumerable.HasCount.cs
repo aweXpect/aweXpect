@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -71,6 +72,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the <paramref name="subject" /> has an item count of…
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static CollectionCountResult<AndOrResult<IEnumerable, IThat<IEnumerable>>> HasCount(
 		this IThat<IEnumerable> subject)
 	{
@@ -163,6 +165,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the <paramref name="subject" /> does not have <paramref name="unexpected" /> items.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static AndOrResult<IEnumerable, IThat<IEnumerable>> DoesNotHaveCount(
 		this IThat<IEnumerable> subject, int unexpected)
 	{

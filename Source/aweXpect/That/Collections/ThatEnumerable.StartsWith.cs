@@ -108,6 +108,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		StartsWith<TItem>(
 			this IThat<IEnumerable> source,
@@ -128,6 +129,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		StartsWith<TItem>(
 			this IThat<IEnumerable> source,
@@ -328,6 +330,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		DoesNotStartWith<TItem>(
 			this IThat<IEnumerable> source,
@@ -348,6 +351,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
+	[OverloadResolutionPriority(-1)]
 	public static ObjectEqualityResult<IEnumerable, IThat<IEnumerable>, TItem>
 		DoesNotStartWith<TItem>(
 			this IThat<IEnumerable> source,

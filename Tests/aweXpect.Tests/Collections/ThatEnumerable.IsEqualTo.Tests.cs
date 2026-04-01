@@ -45,7 +45,6 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 
-
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
@@ -192,6 +191,17 @@ public sealed partial class ThatEnumerable
 					             but it cannot compare to <null>
 					             """);
 			}
+			
+			[Fact]
+			public async Task WhenReferenceTypeDoesNotMatchNullability_ShouldStillWork()
+			{
+				IEnumerable<string?> subject = ["foo", null, "baz",];
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(["foo", "", "baz",]);
+				
+				await That(Act).DoesNotThrow();
+			}
 
 			[Fact]
 			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
@@ -219,6 +229,17 @@ public sealed partial class ThatEnumerable
 					             matches collection Array.Empty<string>() in order,
 					             but it was <null>
 					             """);
+			}
+			
+			[Fact]
+			public async Task WhenTypeDoesNotMatchNullability_ShouldStillWork()
+			{
+				IEnumerable<int?> subject = [1, 2, 3,];
+
+				async Task Act()
+					=> await That(subject).IsEqualTo([1, 2, 3,]);
+				
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
