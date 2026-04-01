@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
-      {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
         "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          254.93189900716146,
           293.9299639293126,
           262.99191328457425,
           290.9937463760376,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           277.33378842898776,
           248.5066386290959,
           258.0216953277588,
-          256.64958276748655
+          256.64958276748655,
+          257.56788249810535
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -449,7 +449,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          233.5852732317788,
           237.07648284094674,
           254.28990861347742,
           265.434599908193,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           258.2727716445923,
           233.3314108053843,
           234.4076029062271,
-          237.84907273451486
+          237.84907273451486,
+          246.25603069577897
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
-      {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
         "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          296348.87711588544,
           305138.683203125,
           310589.97604166664,
           318224.71930803574,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           310221.6845377604,
           305610.11399739585,
           309059.9609375,
-          329450.0514322917
+          329450.0514322917,
+          311301.01764322916
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1057,7 +1057,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2575638.993582589,
           2652655.777644231,
           2683772.801081731,
           2867276.1947916667,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2741954.3526041666,
           2707282.3856770834,
           2687938.640885417,
-          2822776.1330915177
+          2822776.1330915177,
+          2803125.2580915177
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804906,
           4804902,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
       {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          487.96678530375164,
           464.8725470029391,
           468.0736713091532,
           536.5715546925862,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           490.6396679878235,
           471.9445881207784,
           459.94838798963104,
-          582.559289418734
+          582.559289418734,
+          481.03004557291666
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1665,7 +1665,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          449.5753818511963,
           473.97114634513855,
           473.42465039661954,
           534.1773337636675,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           496.7702851295471,
           454.3674567086356,
           447.1297173500061,
-          561.0213035583496
+          561.0213035583496,
+          495.86608645121254
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
-      {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
         "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          255.3863203048706,
           242.05455442575308,
           248.4746085802714,
           267.26326440175376,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           259.45027888615925,
           242.91976623535157,
           249.76007059642248,
-          273.3258000101362
+          273.3258000101362,
+          248.891809908549
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2273,7 +2273,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          240.58927151362101,
           238.92587127685547,
           247.8543791430337,
           285.2920396486918,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           252.89722798665363,
           239.50946207046508,
           243.25604276657106,
-          287.00287331853593
+          287.00287331853593,
+          261.3400267601013
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
-      {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
         "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          476.98880389531456,
           444.1967217763265,
           457.9279131889343,
           488.3778293609619,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           454.3024052302043,
           456.7321134249369,
           461.3384098273057,
-          506.6645399093628
+          506.6645399093628,
+          487.2669871194022
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2881,7 +2881,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1167.0835252126058,
           1240.8956281026205,
           1187.8277843475341,
           1251.7257734445425,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1297.0697533534124,
           1199.8335903712682,
           1160.3115118662515,
-          1346.704011623676
+          1346.704011623676,
+          1218.3634361539569
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
-      {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
         "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1830.3944552285332,
           1813.836116027832,
           1914.7355253855387,
           1955.1941125052315,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1877.6324087778728,
           1905.5466705322265,
           1957.0270599365235,
-          1969.7964210510254
+          1969.7964210510254,
+          1995.9395746866862
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3489,7 +3489,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1261.6591304779054,
           1294.6484115600585,
           1391.9773173014323,
           1374.589400736491,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1344.6447956085206,
           1255.3370518003192,
           1339.0221051534018,
-          1478.572190475464
+          1478.572190475464,
+          1333.320147450765
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "5ad6fc247136b9892ec1ba4601c600ab0d4ef924",
-        "author": "dependabot[bot]",
-        "date": "Wed Nov 12 07:49:20 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 2 updates (#842)"
-      },
-      {
         "sha": "8305ac51e8df50b68e032355d232427a71c21663",
         "author": "dependabot[bot]",
         "date": "Wed Nov 12 07:49:39 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
-      "5ad6fc24",
       "8305ac51",
       "6211e670",
       "e2a90b07",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2533.934542020162,
           2461.4658999125163,
           2507.8479784647625,
           2608.6426175435386,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2524.2061381022136,
           2473.4556050981796,
           2561.3218955993652,
-          2534.7219200134277
+          2534.7219200134277,
+          2542.289687816913
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4097,7 +4097,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89078.41203962054,
           86371.32921424278,
           91136.08956473214,
           89743.46718052456,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           88075.89565805289,
           86934.47059044472,
           89031.1101422991,
-          87612.40712193081
+          87612.40712193081,
+          87532.54624720982
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           59100,
           58598,
@@ -4240,6 +4239,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598,
           58598,
           58598
