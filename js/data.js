@@ -2898,6 +2898,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -3383,7 +3389,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -3872,7 +3879,8 @@ window.BENCHMARK_DATA = {
           258.0216953277588,
           256.64958276748655,
           257.56788249810535,
-          292.9563946723938
+          292.9563946723938,
+          247.3010997405419
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4345,6 +4353,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4863,7 +4872,8 @@ window.BENCHMARK_DATA = {
           234.4076029062271,
           237.84907273451486,
           246.25603069577897,
-          243.35055802663166
+          243.35055802663166,
+          238.34752456958478
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5056,6 +5066,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7807,6 +7818,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -8215,7 +8232,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -8627,7 +8645,8 @@ window.BENCHMARK_DATA = {
           309059.9609375,
           329450.0514322917,
           311301.01764322916,
-          312479.08654785156
+          312479.08654785156,
+          294185.44536132814
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9023,6 +9042,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9464,7 +9484,8 @@ window.BENCHMARK_DATA = {
           2687938.640885417,
           2822776.1330915177,
           2803125.2580915177,
-          2682176.25390625
+          2682176.25390625,
+          2676068.312239583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9861,6 +9882,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12793,6 +12815,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -13278,7 +13306,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -13767,7 +13796,8 @@ window.BENCHMARK_DATA = {
           459.94838798963104,
           582.559289418734,
           481.03004557291666,
-          462.20418338775636
+          462.20418338775636,
+          489.88828665415446
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14240,6 +14270,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14758,7 +14789,8 @@ window.BENCHMARK_DATA = {
           447.1297173500061,
           561.0213035583496,
           495.86608645121254,
-          478.9792293548584
+          478.9792293548584,
+          500.7757240022932
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14951,6 +14983,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18164,6 +18197,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -18649,7 +18688,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -19138,7 +19178,8 @@ window.BENCHMARK_DATA = {
           249.76007059642248,
           273.3258000101362,
           248.891809908549,
-          256.0431020259857
+          256.0431020259857,
+          236.7407497406006
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19611,6 +19652,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20129,7 +20171,8 @@ window.BENCHMARK_DATA = {
           243.25604276657106,
           287.00287331853593,
           261.3400267601013,
-          239.8997587521871
+          239.8997587521871,
+          247.30938777923583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20322,6 +20365,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23535,6 +23579,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -24020,7 +24070,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -24509,7 +24560,8 @@ window.BENCHMARK_DATA = {
           461.3384098273057,
           506.6645399093628,
           487.2669871194022,
-          484.0471749623617
+          484.0471749623617,
+          456.87574961980187
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24982,6 +25034,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25500,7 +25553,8 @@ window.BENCHMARK_DATA = {
           1160.3115118662515,
           1346.704011623676,
           1218.3634361539569,
-          1385.1634359995523
+          1385.1634359995523,
+          1419.0466421763101
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25929,6 +25983,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28906,6 +28961,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -29391,7 +29452,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -29880,7 +29942,8 @@ window.BENCHMARK_DATA = {
           1957.0270599365235,
           1969.7964210510254,
           1995.9395746866862,
-          2047.0045290629068
+          2047.0045290629068,
+          2002.14381052653
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30353,6 +30416,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30871,7 +30935,8 @@ window.BENCHMARK_DATA = {
           1339.0221051534018,
           1478.572190475464,
           1333.320147450765,
-          1462.978379313151
+          1462.978379313151,
+          1435.0550885518392
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31064,6 +31129,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34277,6 +34343,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 06:24:53 2026 \u002B0200",
         "message": "chore: Bump coverlet.collector from 8.0.0 to 8.0.1 (#913)"
+      },
+      {
+        "sha": "944d5c8f8e34543594da72fcf2569279973a2726",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 1 07:29:32 2026 \u002B0200",
+        "message": "fix: add \u0060OverloadResolutionPriority\u0060 to collection expectations (#916)"
       }
     ],
     "labels": [
@@ -34762,7 +34834,8 @@ window.BENCHMARK_DATA = {
       "3a87b274",
       "e1f004a0",
       "3acb7b65",
-      "2279ac3e"
+      "2279ac3e",
+      "944d5c8f"
     ],
     "datasets": [
       {
@@ -35251,7 +35324,8 @@ window.BENCHMARK_DATA = {
           2561.3218955993652,
           2534.7219200134277,
           2542.289687816913,
-          2712.7891644795736
+          2712.7891644795736,
+          2569.192872619629
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35724,6 +35798,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -36242,7 +36317,8 @@ window.BENCHMARK_DATA = {
           89031.1101422991,
           87612.40712193081,
           87532.54624720982,
-          94248.31761067708
+          94248.31761067708,
+          91714.59221540179
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36732,6 +36808,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598,
           58598,
           58598,
