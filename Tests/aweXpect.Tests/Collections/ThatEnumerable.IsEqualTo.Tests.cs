@@ -195,10 +195,10 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenReferenceTypeDoesNotMatchNullability_ShouldStillWork()
 			{
-				IEnumerable<string?> subject = ["foo", null, "baz",];
+				IEnumerable<string?> subject = ["foo", "bar", "baz",];
 
 				async Task Act()
-					=> await That(subject).IsNotEqualTo(["foo", "", "baz",]);
+					=> await That(subject).IsEqualTo(["foo", "bar", "baz",]);
 				
 				await That(Act).DoesNotThrow();
 			}
