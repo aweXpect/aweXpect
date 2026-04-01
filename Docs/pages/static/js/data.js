@@ -2886,6 +2886,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -3369,7 +3375,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -3856,7 +3863,8 @@ window.BENCHMARK_DATA = {
           277.33378842898776,
           248.5066386290959,
           258.0216953277588,
-          256.64958276748655
+          256.64958276748655,
+          257.56788249810535
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4329,6 +4337,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4843,7 +4852,8 @@ window.BENCHMARK_DATA = {
           258.2727716445923,
           233.3314108053843,
           234.4076029062271,
-          237.84907273451486
+          237.84907273451486,
+          246.25603069577897
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5036,6 +5046,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7773,6 +7784,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -8179,7 +8196,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -8589,7 +8607,8 @@ window.BENCHMARK_DATA = {
           310221.6845377604,
           305610.11399739585,
           309059.9609375,
-          329450.0514322917
+          329450.0514322917,
+          311301.01764322916
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8985,6 +9004,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9422,7 +9442,8 @@ window.BENCHMARK_DATA = {
           2741954.3526041666,
           2707282.3856770834,
           2687938.640885417,
-          2822776.1330915177
+          2822776.1330915177,
+          2803125.2580915177
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9819,6 +9840,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12737,6 +12759,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -13220,7 +13248,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -13707,7 +13736,8 @@ window.BENCHMARK_DATA = {
           490.6396679878235,
           471.9445881207784,
           459.94838798963104,
-          582.559289418734
+          582.559289418734,
+          481.03004557291666
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14180,6 +14210,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14694,7 +14725,8 @@ window.BENCHMARK_DATA = {
           496.7702851295471,
           454.3674567086356,
           447.1297173500061,
-          561.0213035583496
+          561.0213035583496,
+          495.86608645121254
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14887,6 +14919,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18086,6 +18119,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -18569,7 +18608,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -19056,7 +19096,8 @@ window.BENCHMARK_DATA = {
           259.45027888615925,
           242.91976623535157,
           249.76007059642248,
-          273.3258000101362
+          273.3258000101362,
+          248.891809908549
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19529,6 +19570,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20043,7 +20085,8 @@ window.BENCHMARK_DATA = {
           252.89722798665363,
           239.50946207046508,
           243.25604276657106,
-          287.00287331853593
+          287.00287331853593,
+          261.3400267601013
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20236,6 +20279,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23435,6 +23479,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -23918,7 +23968,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -24405,7 +24456,8 @@ window.BENCHMARK_DATA = {
           454.3024052302043,
           456.7321134249369,
           461.3384098273057,
-          506.6645399093628
+          506.6645399093628,
+          487.2669871194022
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -24878,6 +24930,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25392,7 +25445,8 @@ window.BENCHMARK_DATA = {
           1297.0697533534124,
           1199.8335903712682,
           1160.3115118662515,
-          1346.704011623676
+          1346.704011623676,
+          1218.3634361539569
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -25821,6 +25875,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -28784,6 +28839,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -29267,7 +29328,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -29754,7 +29816,8 @@ window.BENCHMARK_DATA = {
           1877.6324087778728,
           1905.5466705322265,
           1957.0270599365235,
-          1969.7964210510254
+          1969.7964210510254,
+          1995.9395746866862
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30227,6 +30290,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -30741,7 +30805,8 @@ window.BENCHMARK_DATA = {
           1344.6447956085206,
           1255.3370518003192,
           1339.0221051534018,
-          1478.572190475464
+          1478.572190475464,
+          1333.320147450765
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -30934,6 +30999,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34133,6 +34199,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 17 16:34:29 2026 \u002B0100",
         "message": "refactor: migrate to slnx format (#908)"
+      },
+      {
+        "sha": "3acb7b65433528fd1196a9e38c3c1af24ed998d1",
+        "author": "dependabot[bot]",
+        "date": "Wed Apr 1 06:24:44 2026 \u002B0200",
+        "message": "chore: Bump the nunit group with 1 update (#911)"
       }
     ],
     "labels": [
@@ -34616,7 +34688,8 @@ window.BENCHMARK_DATA = {
       "53a7bc7d",
       "e257ec5a",
       "3a87b274",
-      "e1f004a0"
+      "e1f004a0",
+      "3acb7b65"
     ],
     "datasets": [
       {
@@ -35103,7 +35176,8 @@ window.BENCHMARK_DATA = {
           2524.2061381022136,
           2473.4556050981796,
           2561.3218955993652,
-          2534.7219200134277
+          2534.7219200134277,
+          2542.289687816913
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35576,6 +35650,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -36090,7 +36165,8 @@ window.BENCHMARK_DATA = {
           88075.89565805289,
           86934.47059044472,
           89031.1101422991,
-          87612.40712193081
+          87612.40712193081,
+          87532.54624720982
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36580,6 +36656,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           59100,
+          58598,
           58598,
           58598,
           58598
