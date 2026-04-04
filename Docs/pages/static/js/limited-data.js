@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
-      {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          243.60638585457434,
           276.6520478566488,
           270.4108124801091,
           256.83671273503984,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           257.56788249810535,
           292.9563946723938,
           247.3010997405419,
-          251.38871068954467
+          251.38871068954467,
+          247.01689154307047
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -445,7 +445,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          227.94614538124628,
           254.59018131891887,
           285.8850337096623,
           243.2654959133693,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           246.25603069577897,
           243.35055802663166,
           238.34752456958478,
-          242.9310405070965
+          242.9310405070965,
+          233.82985033988953
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
-      {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          318445.8439941406,
           313889.41354166664,
           301313.86561802455,
           307319.4486328125,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           311301.01764322916,
           312479.08654785156,
           294185.44536132814,
-          306580.2018229167
+          306580.2018229167,
+          295828.3948692909
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1053,7 +1053,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2632774.782752404,
           2705892.777604167,
           2475290.523995536,
           2629846.0625,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2803125.2580915177,
           2682176.25390625,
           2676068.312239583,
-          2608338.4241071427
+          2608338.4241071427,
+          2690390.7544270833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804902,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
       {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          473.1941611925761,
           519.3355581919352,
           485.952849706014,
           509.3042878423418,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           481.03004557291666,
           462.20418338775636,
           489.88828665415446,
-          530.7397397994995
+          530.7397397994995,
+          494.03237122755786
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1661,7 +1661,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          448.35982036590576,
           522.257331530253,
           567.6923479352679,
           516.2955814089094,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           495.86608645121254,
           478.9792293548584,
           500.7757240022932,
-          490.29199167887367
+          490.29199167887367,
+          493.95643263596753
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
-      {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          245.28955494562786,
           262.353364944458,
           262.42293007033214,
           250.95766738744882,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           248.891809908549,
           256.0431020259857,
           236.7407497406006,
-          253.5041307449341
+          253.5041307449341,
+          246.61869209153312
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2269,7 +2269,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          239.61556302584134,
           270.68733940124514,
           286.44428030649823,
           247.98182751337689,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           261.3400267601013,
           239.8997587521871,
           247.30938777923583,
-          244.96448500951132
+          244.96448500951132,
+          240.18964398701985
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
-      {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          441.3670855840047,
           504.2049987157186,
           485.37851289113365,
           494.85361709594724,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           487.2669871194022,
           484.0471749623617,
           456.87574961980187,
-          456.25001430511475
+          456.25001430511475,
+          453.0842537562052
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2877,7 +2877,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1149.287575785319,
           1397.923133722941,
           1240.8684731892176,
           1190.2750749588013,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1218.3634361539569,
           1385.1634359995523,
           1419.0466421763101,
-          1178.812040056501
+          1178.812040056501,
+          1219.3546211242676
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
-      {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1896.5566106160481,
           2041.9749987284342,
           1870.663264465332,
           1943.5551266988118,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1995.9395746866862,
           2047.0045290629068,
           2002.14381052653,
-          1978.0412147521972
+          1978.0412147521972,
+          1837.5042481055627
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3485,7 +3485,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1251.595383453369,
           1370.79592628479,
           1451.4868713378905,
           1292.5556535720825,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1333.320147450765,
           1462.978379313151,
           1435.0550885518392,
-          1282.6236000061035
+          1282.6236000061035,
+          1364.3199944814046
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "a4620c7c699e890bc9886ac9e3e62fd6e66a168e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Nov 12 08:08:35 2025 \u002B0100",
-        "message": "feat: add support for .NET 10 (#794)"
-      },
-      {
         "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Wed Apr 1 10:08:20 2026 \u002B0200",
         "message": "chore: Bump FluentAssertions from 8.8.0 to 8.9.0 (#914)"
+      },
+      {
+        "sha": "33ff4d659368285ca7bfd1f2b2ec98a70a1894ad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
+        "message": "chore: upgrade docusaurus dependencies (#915)"
       }
     ],
     "labels": [
-      "a4620c7c",
       "de27b024",
       "43736e06",
       "9a926765",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "3acb7b65",
       "2279ac3e",
       "944d5c8f",
-      "0f9789f5"
+      "0f9789f5",
+      "33ff4d65"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2566.2507239750453,
           2625.1601809183758,
           2484.6689158848353,
           2545.0536323547362,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2542.289687816913,
           2712.7891644795736,
           2569.192872619629,
-          2634.1716435750327
+          2634.1716435750327,
+          2496.673701731364
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4093,7 +4093,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          85922.43911508414,
           89459.74424525669,
           62325.50304236779,
           85686.09716796875,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           87532.54624720982,
           94248.31761067708,
           91714.59221540179,
-          90774.72347005208
+          90774.72347005208,
+          89676.46330378606
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           59100,
           58598,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           58598,
-          57480
+          57480,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
