@@ -6,11 +6,11 @@ on:
         paths:
             - 'Docs/pages/docs/expectations/**'
             - 'Docs/pages/docs/extensions/**'
-            - '.github/workflows/notify-docs-site.yml'
     workflow_dispatch:
 
 jobs:
     dispatch:
+        if: github.ref == 'refs/heads/main'
         name: Trigger Site rebuild
         runs-on: ubuntu-latest
         steps:
