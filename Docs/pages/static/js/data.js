@@ -2928,6 +2928,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -3418,7 +3424,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -3912,7 +3919,8 @@ window.BENCHMARK_DATA = {
           251.38871068954467,
           247.01689154307047,
           266.2969425405775,
-          271.1530883652823
+          271.1530883652823,
+          251.29293285097395
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4385,6 +4393,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4913,7 +4922,8 @@ window.BENCHMARK_DATA = {
           242.9310405070965,
           233.82985033988953,
           258.68744155338834,
-          252.99936056137085
+          252.99936056137085,
+          249.43486084256853
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5106,6 +5116,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7892,6 +7903,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -8305,7 +8322,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -8722,7 +8740,8 @@ window.BENCHMARK_DATA = {
           306580.2018229167,
           295828.3948692909,
           306320.3705403646,
-          309191.59329659597
+          309191.59329659597,
+          309507.34633091517
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9118,6 +9137,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9569,7 +9589,8 @@ window.BENCHMARK_DATA = {
           2608338.4241071427,
           2690390.7544270833,
           2599897.3625,
-          2742604.640066964
+          2742604.640066964,
+          2531989.426339286
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9991,7 +10012,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
-          4804906
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12933,6 +12955,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -13423,7 +13451,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -13917,7 +13946,8 @@ window.BENCHMARK_DATA = {
           530.7397397994995,
           494.03237122755786,
           496.8649320602417,
-          492.3057597705296
+          492.3057597705296,
+          472.0799520492554
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14390,6 +14420,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14918,7 +14949,8 @@ window.BENCHMARK_DATA = {
           490.29199167887367,
           493.95643263596753,
           496.9368233998617,
-          537.5483888626098
+          537.5483888626098,
+          473.1987294038137
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15111,6 +15143,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18359,6 +18392,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -18849,7 +18888,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -19343,7 +19383,8 @@ window.BENCHMARK_DATA = {
           253.5041307449341,
           246.61869209153312,
           245.47875680242265,
-          260.6599381128947
+          260.6599381128947,
+          240.8555198987325
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19816,6 +19857,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20344,7 +20386,8 @@ window.BENCHMARK_DATA = {
           244.96448500951132,
           240.18964398701985,
           247.40992552893502,
-          269.4070638509897
+          269.4070638509897,
+          245.11609716415404
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20537,6 +20580,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23785,6 +23829,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -24275,7 +24325,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -24769,7 +24820,8 @@ window.BENCHMARK_DATA = {
           456.25001430511475,
           453.0842537562052,
           502.7252906799316,
-          496.77405745188395
+          496.77405745188395,
+          467.20627002716066
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25242,6 +25294,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25770,7 +25823,8 @@ window.BENCHMARK_DATA = {
           1178.812040056501,
           1219.3546211242676,
           1211.9035541827861,
-          1279.2930216471354
+          1279.2930216471354,
+          1130.1894224802652
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26199,6 +26253,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29211,6 +29266,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -29701,7 +29762,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -30195,7 +30257,8 @@ window.BENCHMARK_DATA = {
           1978.0412147521972,
           1837.5042481055627,
           1901.1095701853435,
-          2042.3155853271485
+          2042.3155853271485,
+          1864.9442280360631
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30668,6 +30731,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31196,7 +31260,8 @@ window.BENCHMARK_DATA = {
           1282.6236000061035,
           1364.3199944814046,
           1377.5556783676147,
-          1363.8280398505074
+          1363.8280398505074,
+          1292.2264111382622
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31389,6 +31454,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34637,6 +34703,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:11 2026 \u002B0200",
         "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
+      },
+      {
+        "sha": "fcab6cc8c6ff7d728764463fcc8e408f69d5a949",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:23 2026 \u002B0200",
+        "message": "chore: Bump the mstest group with 2 updates (#921)"
       }
     ],
     "labels": [
@@ -35127,7 +35199,8 @@ window.BENCHMARK_DATA = {
       "0f9789f5",
       "33ff4d65",
       "13ae6d2e",
-      "2990f5e0"
+      "2990f5e0",
+      "fcab6cc8"
     ],
     "datasets": [
       {
@@ -35621,7 +35694,8 @@ window.BENCHMARK_DATA = {
           2634.1716435750327,
           2496.673701731364,
           2489.4116404215497,
-          2558.7981918334963
+          2558.7981918334963,
+          2423.3802020733174
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36094,6 +36168,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -36622,7 +36697,8 @@ window.BENCHMARK_DATA = {
           90774.72347005208,
           89676.46330378606,
           65326.66466346154,
-          93161.18085186298
+          93161.18085186298,
+          61502.32177734375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -37121,7 +37197,8 @@ window.BENCHMARK_DATA = {
           57480,
           57481,
           57481,
-          56986
+          56986,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
