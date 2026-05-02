@@ -2916,6 +2916,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -3404,7 +3410,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -3896,7 +3903,8 @@ window.BENCHMARK_DATA = {
           292.9563946723938,
           247.3010997405419,
           251.38871068954467,
-          247.01689154307047
+          247.01689154307047,
+          266.2969425405775
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4369,6 +4377,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4893,7 +4902,8 @@ window.BENCHMARK_DATA = {
           243.35055802663166,
           238.34752456958478,
           242.9310405070965,
-          233.82985033988953
+          233.82985033988953,
+          258.68744155338834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5086,6 +5096,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7858,6 +7869,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -8269,7 +8286,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -8684,7 +8702,8 @@ window.BENCHMARK_DATA = {
           312479.08654785156,
           294185.44536132814,
           306580.2018229167,
-          295828.3948692909
+          295828.3948692909,
+          306320.3705403646
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9080,6 +9099,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9527,7 +9547,8 @@ window.BENCHMARK_DATA = {
           2682176.25390625,
           2676068.312239583,
           2608338.4241071427,
-          2690390.7544270833
+          2690390.7544270833,
+          2599897.3625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9924,6 +9945,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -12877,6 +12899,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -13365,7 +13393,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -13857,7 +13886,8 @@ window.BENCHMARK_DATA = {
           462.20418338775636,
           489.88828665415446,
           530.7397397994995,
-          494.03237122755786
+          494.03237122755786,
+          496.8649320602417
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14330,6 +14360,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -14854,7 +14885,8 @@ window.BENCHMARK_DATA = {
           478.9792293548584,
           500.7757240022932,
           490.29199167887367,
-          493.95643263596753
+          493.95643263596753,
+          496.9368233998617
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15047,6 +15079,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18281,6 +18314,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -18769,7 +18808,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -19261,7 +19301,8 @@ window.BENCHMARK_DATA = {
           256.0431020259857,
           236.7407497406006,
           253.5041307449341,
-          246.61869209153312
+          246.61869209153312,
+          245.47875680242265
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19734,6 +19775,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20258,7 +20300,8 @@ window.BENCHMARK_DATA = {
           239.8997587521871,
           247.30938777923583,
           244.96448500951132,
-          240.18964398701985
+          240.18964398701985,
+          247.40992552893502
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20451,6 +20494,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23685,6 +23729,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -24173,7 +24223,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -24665,7 +24716,8 @@ window.BENCHMARK_DATA = {
           484.0471749623617,
           456.87574961980187,
           456.25001430511475,
-          453.0842537562052
+          453.0842537562052,
+          502.7252906799316
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25138,6 +25190,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25662,7 +25715,8 @@ window.BENCHMARK_DATA = {
           1385.1634359995523,
           1419.0466421763101,
           1178.812040056501,
-          1219.3546211242676
+          1219.3546211242676,
+          1211.9035541827861
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26091,6 +26145,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29089,6 +29144,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -29577,7 +29638,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -30069,7 +30131,8 @@ window.BENCHMARK_DATA = {
           2047.0045290629068,
           2002.14381052653,
           1978.0412147521972,
-          1837.5042481055627
+          1837.5042481055627,
+          1901.1095701853435
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30542,6 +30605,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31066,7 +31130,8 @@ window.BENCHMARK_DATA = {
           1462.978379313151,
           1435.0550885518392,
           1282.6236000061035,
-          1364.3199944814046
+          1364.3199944814046,
+          1377.5556783676147
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31259,6 +31324,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34493,6 +34559,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
       }
     ],
     "labels": [
@@ -34981,7 +35053,8 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e"
     ],
     "datasets": [
       {
@@ -35473,7 +35546,8 @@ window.BENCHMARK_DATA = {
           2712.7891644795736,
           2569.192872619629,
           2634.1716435750327,
-          2496.673701731364
+          2496.673701731364,
+          2489.4116404215497
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -35946,6 +36020,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -36470,7 +36545,8 @@ window.BENCHMARK_DATA = {
           94248.31761067708,
           91714.59221540179,
           90774.72347005208,
-          89676.46330378606
+          89676.46330378606,
+          65326.66466346154
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -36967,6 +37043,7 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           57480,
+          57481,
           57481
         ],
         "borderColor": "#FF671B",
