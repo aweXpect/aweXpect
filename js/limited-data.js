@@ -2,18 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
-      {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
@@ -300,11 +288,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -352,15 +350,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          276.6520478566488,
-          270.4108124801091,
           256.83671273503984,
           263.83412764622614,
           256.1162194105295,
@@ -408,7 +406,9 @@ window.BENCHMARK_DATA = {
           292.9563946723938,
           247.3010997405419,
           251.38871068954467,
-          247.01689154307047
+          247.01689154307047,
+          266.2969425405775,
+          271.1530883652823
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -443,8 +443,8 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
-          712,
+          696,
+          696,
           696,
           696,
           696,
@@ -484,8 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          254.59018131891887,
-          285.8850337096623,
           243.2654959133693,
           236.4879608551661,
           239.8696618446937,
@@ -533,7 +531,9 @@ window.BENCHMARK_DATA = {
           243.35055802663166,
           238.34752456958478,
           242.9310405070965,
-          233.82985033988953
+          233.82985033988953,
+          258.68744155338834,
+          252.99936056137085
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,18 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
-      {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
@@ -908,11 +896,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -960,15 +958,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          313889.41354166664,
-          301313.86561802455,
           307319.4486328125,
           305008.12552083336,
           314541.7482747396,
@@ -1016,7 +1014,9 @@ window.BENCHMARK_DATA = {
           312479.08654785156,
           294185.44536132814,
           306580.2018229167,
-          295828.3948692909
+          295828.3948692909,
+          306320.3705403646,
+          309191.59329659597
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1051,8 +1051,8 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
-          335452,
+          335444,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,8 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2705892.777604167,
-          2475290.523995536,
           2629846.0625,
           2626694.638802083,
           2620273.9385416666,
@@ -1141,7 +1139,9 @@ window.BENCHMARK_DATA = {
           2682176.25390625,
           2676068.312239583,
           2608338.4241071427,
-          2690390.7544270833
+          2690390.7544270833,
+          2599897.3625,
+          2742604.640066964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,8 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
-          4804902,
           4804906,
           4804906,
           4804904,
@@ -1202,6 +1200,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,18 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
       {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
@@ -1516,11 +1504,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -1568,15 +1566,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          519.3355581919352,
-          485.952849706014,
           509.3042878423418,
           474.5356150309245,
           512.6694970448812,
@@ -1624,7 +1622,9 @@ window.BENCHMARK_DATA = {
           462.20418338775636,
           489.88828665415446,
           530.7397397994995,
-          494.03237122755786
+          494.03237122755786,
+          496.8649320602417,
+          492.3057597705296
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1659,8 +1659,8 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
-          1368,
+          1360,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,8 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          522.257331530253,
-          567.6923479352679,
           516.2955814089094,
           480.9509044965108,
           471.29851627349854,
@@ -1749,7 +1747,9 @@ window.BENCHMARK_DATA = {
           478.9792293548584,
           500.7757240022932,
           490.29199167887367,
-          493.95643263596753
+          493.95643263596753,
+          496.9368233998617,
+          537.5483888626098
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,18 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
-      {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
@@ -2124,11 +2112,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -2176,15 +2174,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          262.353364944458,
-          262.42293007033214,
           250.95766738744882,
           249.85914344787597,
           242.55047556559245,
@@ -2232,7 +2230,9 @@ window.BENCHMARK_DATA = {
           256.0431020259857,
           236.7407497406006,
           253.5041307449341,
-          246.61869209153312
+          246.61869209153312,
+          245.47875680242265,
+          260.6599381128947
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2267,8 +2267,8 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
-          816,
+          808,
+          808,
           808,
           808,
           808,
@@ -2308,8 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          270.68733940124514,
-          286.44428030649823,
           247.98182751337689,
           249.73944438298543,
           239.51840945652552,
@@ -2357,7 +2355,9 @@ window.BENCHMARK_DATA = {
           239.8997587521871,
           247.30938777923583,
           244.96448500951132,
-          240.18964398701985
+          240.18964398701985,
+          247.40992552893502,
+          269.4070638509897
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,18 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
-      {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
@@ -2732,11 +2720,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -2784,15 +2782,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          504.2049987157186,
-          485.37851289113365,
           494.85361709594724,
           437.23168385823567,
           465.7572832448142,
@@ -2840,7 +2838,9 @@ window.BENCHMARK_DATA = {
           484.0471749623617,
           456.87574961980187,
           456.25001430511475,
-          453.0842537562052
+          453.0842537562052,
+          502.7252906799316,
+          496.77405745188395
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2875,8 +2875,8 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
-          1136,
+          1128,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,8 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1397.923133722941,
-          1240.8684731892176,
           1190.2750749588013,
           1195.3774709701538,
           1175.516543706258,
@@ -2965,7 +2963,9 @@ window.BENCHMARK_DATA = {
           1385.1634359995523,
           1419.0466421763101,
           1178.812040056501,
-          1219.3546211242676
+          1219.3546211242676,
+          1211.9035541827861,
+          1279.2930216471354
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,18 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
-      {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
@@ -3340,11 +3328,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -3392,15 +3390,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2041.9749987284342,
-          1870.663264465332,
           1943.5551266988118,
           1925.5989236195883,
           2007.744308980306,
@@ -3448,7 +3446,9 @@ window.BENCHMARK_DATA = {
           2047.0045290629068,
           2002.14381052653,
           1978.0412147521972,
-          1837.5042481055627
+          1837.5042481055627,
+          1901.1095701853435,
+          2042.3155853271485
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3483,8 +3483,8 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
-          2632,
+          2624,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,8 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1370.79592628479,
-          1451.4868713378905,
           1292.5556535720825,
           1290.2514144352504,
           1301.8860315595355,
@@ -3573,7 +3571,9 @@ window.BENCHMARK_DATA = {
           1462.978379313151,
           1435.0550885518392,
           1282.6236000061035,
-          1364.3199944814046
+          1364.3199944814046,
+          1377.5556783676147,
+          1363.8280398505074
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,18 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "de27b024ccd59d40e32a3155684dacd0334bb031",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:22:32 2025 \u002B0100",
-        "message": "fix: disable failing mutation tests (#847)"
-      },
-      {
-        "sha": "43736e060eda795a1e6e5acfb517fd9fd0b07725",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 16:47:31 2025 \u002B0100",
-        "message": "chore: bump aweXpect.Core to v2.26.0 (#848)"
-      },
-      {
         "sha": "9a926765472827006293a7f135b7f4bee6d76599",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
@@ -3948,11 +3936,21 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 4 15:07:44 2026 \u002B0200",
         "message": "chore: upgrade docusaurus dependencies (#915)"
+      },
+      {
+        "sha": "13ae6d2ed0a410f1ed1ed84854341f8d8a6ea8da",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:20:57 2026 \u002B0200",
+        "message": "chore: Bump SharpCompress from 0.44.5 to 0.47.4 (#918)"
+      },
+      {
+        "sha": "2990f5e024889880cba3b43decee40cdd0581472",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:11 2026 \u002B0200",
+        "message": "chore: Bump softprops/action-gh-release from 2 to 3 (#919)"
       }
     ],
     "labels": [
-      "de27b024",
-      "43736e06",
       "9a926765",
       "c2972833",
       "a7f551d5",
@@ -4000,15 +3998,15 @@ window.BENCHMARK_DATA = {
       "2279ac3e",
       "944d5c8f",
       "0f9789f5",
-      "33ff4d65"
+      "33ff4d65",
+      "13ae6d2e",
+      "2990f5e0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2625.1601809183758,
-          2484.6689158848353,
           2545.0536323547362,
           2554.7746991475424,
           2625.385095469157,
@@ -4056,7 +4054,9 @@ window.BENCHMARK_DATA = {
           2712.7891644795736,
           2569.192872619629,
           2634.1716435750327,
-          2496.673701731364
+          2496.673701731364,
+          2489.4116404215497,
+          2558.7981918334963
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4091,8 +4091,8 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
-          2824,
+          2816,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,8 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89459.74424525669,
-          62325.50304236779,
           85686.09716796875,
           89261.32568359375,
           87880.94576590402,
@@ -4181,7 +4179,9 @@ window.BENCHMARK_DATA = {
           94248.31761067708,
           91714.59221540179,
           90774.72347005208,
-          89676.46330378606
+          89676.46330378606,
+          65326.66466346154,
+          93161.18085186298
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,8 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
-          59100,
           58598,
           58136,
           58598,
@@ -4242,7 +4240,9 @@ window.BENCHMARK_DATA = {
           58598,
           58598,
           57480,
-          57481
+          57481,
+          57481,
+          56986
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
