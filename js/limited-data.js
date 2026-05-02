@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
-      {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          263.83412764622614,
           256.1162194105295,
           255.57789754867554,
           268.1248031343733,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           247.01689154307047,
           266.2969425405775,
           271.1530883652823,
-          251.29293285097395
+          251.29293285097395,
+          243.98802202088493
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -441,7 +441,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          236.4879608551661,
           239.8696618446937,
           235.49215126037598,
           234.44791711171467,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           233.82985033988953,
           258.68744155338834,
           252.99936056137085,
-          249.43486084256853
+          249.43486084256853,
+          231.5416271136357
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
-      {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          305008.12552083336,
           314541.7482747396,
           297362.6296386719,
           315876.72265625,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           295828.3948692909,
           306320.3705403646,
           309191.59329659597,
-          309507.34633091517
+          309507.34633091517,
+          297022.89878627233
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1049,7 +1049,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2626694.638802083,
           2620273.9385416666,
           2633151.505408654,
           2598664.7973958333,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2690390.7544270833,
           2599897.3625,
           2742604.640066964,
-          2531989.426339286
+          2531989.426339286,
+          2678833.5027901786
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804904,
           4804906,
           4804906,
@@ -1202,7 +1201,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
-          4804902
+          4804902,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
       {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          474.5356150309245,
           512.6694970448812,
           460.17647910118103,
           479.9306276957194,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           494.03237122755786,
           496.8649320602417,
           492.3057597705296,
-          472.0799520492554
+          472.0799520492554,
+          470.2426012357076
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1657,7 +1657,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          480.9509044965108,
           471.29851627349854,
           462.062477906545,
           474.14688151223316,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           493.95643263596753,
           496.9368233998617,
           537.5483888626098,
-          473.1987294038137
+          473.1987294038137,
+          458.4377720832825
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
-      {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          249.85914344787597,
           242.55047556559245,
           250.6757323582967,
           274.14725763457164,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           246.61869209153312,
           245.47875680242265,
           260.6599381128947,
-          240.8555198987325
+          240.8555198987325,
+          239.44222489992777
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2265,7 +2265,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          249.73944438298543,
           239.51840945652552,
           236.64041778019495,
           241.06006774902343,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           240.18964398701985,
           247.40992552893502,
           269.4070638509897,
-          245.11609716415404
+          245.11609716415404,
+          229.3851644039154
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
-      {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          437.23168385823567,
           465.7572832448142,
           444.0362708909171,
           460.551322778066,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           453.0842537562052,
           502.7252906799316,
           496.77405745188395,
-          467.20627002716066
+          467.20627002716066,
+          464.14828589757286
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2873,7 +2873,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1195.3774709701538,
           1175.516543706258,
           1193.6906276430402,
           1201.9932729176112,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1219.3546211242676,
           1211.9035541827861,
           1279.2930216471354,
-          1130.1894224802652
+          1130.1894224802652,
+          1181.8798191887993
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
-      {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1925.5989236195883,
           2007.744308980306,
           1926.7944897242955,
           1803.3422777811686,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1837.5042481055627,
           1901.1095701853435,
           2042.3155853271485,
-          1864.9442280360631
+          1864.9442280360631,
+          1914.142994562785
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3481,7 +3481,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1290.2514144352504,
           1301.8860315595355,
           1278.95707321167,
           1316.1429623921713,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1364.3199944814046,
           1377.5556783676147,
           1363.8280398505074,
-          1292.2264111382622
+          1292.2264111382622,
+          1216.431070582072
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "c2972833b7ede12178025c481f2e9686c8d9e209",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Nov 20 17:16:01 2025 \u002B0100",
-        "message": "fix: build error with MTP mode of dotnet test"
-      },
-      {
         "sha": "a7f551d54071d3a0a4f5f3bc12a8d6c98746ed15",
         "author": "Valentin Breu\u00DF",
         "date": "Fri Nov 21 08:09:23 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat May 2 12:21:23 2026 \u002B0200",
         "message": "chore: Bump the mstest group with 2 updates (#921)"
+      },
+      {
+        "sha": "72cc22d39dba4e5966016bc86b24ea778823a04b",
+        "author": "dependabot[bot]",
+        "date": "Sat May 2 12:21:34 2026 \u002B0200",
+        "message": "chore: Bump coverlet.collector from 8.0.1 to 10.0.0 (#923)"
       }
     ],
     "labels": [
-      "c2972833",
       "a7f551d5",
       "29e36632",
       "3b2f04fa",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "33ff4d65",
       "13ae6d2e",
       "2990f5e0",
-      "fcab6cc8"
+      "fcab6cc8",
+      "72cc22d3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2554.7746991475424,
           2625.385095469157,
           2506.0713923136395,
           2459.7958170572915,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2496.673701731364,
           2489.4116404215497,
           2558.7981918334963,
-          2423.3802020733174
+          2423.3802020733174,
+          2507.998802439372
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4089,7 +4089,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89261.32568359375,
           87880.94576590402,
           86548.7185546875,
           87331.20862630209,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           89676.46330378606,
           65326.66466346154,
           93161.18085186298,
-          61502.32177734375
+          61502.32177734375,
+          88445.533203125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58136,
           58598,
           58598,
           58598,
@@ -4242,6 +4241,7 @@ window.BENCHMARK_DATA = {
           57481,
           57481,
           56986,
+          57481,
           57481
         ],
         "borderColor": "#FF671B",
