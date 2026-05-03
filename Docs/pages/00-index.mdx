@@ -1,0 +1,119 @@
+---
+title: aweXpect
+sidebar_position: -1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+[![Nuget](https://img.shields.io/nuget/v/aweXpect?label=aweXpect&logo=nuget)](https://www.nuget.org/packages/aweXpect)
+[![Nuget](https://img.shields.io/nuget/v/aweXpect.Core?label=aweXpect.Core&logo=nuget)](https://www.nuget.org/packages/aweXpect.Core)
+
+`aweXpect` is a fluent assertion library for .NET. It turns test verifications into readable sentences and produces failure messages that explain — in plain English — what was expected and what actually happened.
+
+```csharp
+await Expect.That(result).IsEqualTo(42);
+```
+
+> ```
+> Expected result to
+> be equal to 42,
+> but it was 41
+> ```
+
+## Why aweXpect?
+
+<Tabs groupId="aweXpectFeatures">
+<TabItem value="async" label="Async-first" default>
+
+Every expectation is awaited. The same fluent chain works for sync values, `Task`, `IAsyncEnumerable`, exceptions and HTTP responses — there is no parallel `…Async()` API to remember.
+
+```csharp
+// Plain value
+await Expect.That(result).IsEqualTo(42);
+
+// Task<T>
+await Expect.That(_users.GetAsync(id))
+    .Satisfies(u => u.IsActive);
+
+// IAsyncEnumerable<T> — the cancellation token flows through the stream
+await Expect.That(_orders.StreamAsync())
+    .Contains(o => o.IsPriority)
+    .WithCancellation(cancellationToken);
+
+// Delegate that throws
+await Expect.That(() => _payments.ChargeAsync(-1m))
+    .ThrowsExactly<ArgumentOutOfRangeException>();
+```
+
+Because the chain is awaited, `Because(...)` and `WithCancellation(...)` attach once at the end instead of being threaded through every method. Multiple expectations compose directly via `Expect.ThatAll(...)` — no thread-static assertion scope.
+
+</TabItem>
+<TabItem value="performant" label="Performant">
+
+The happy path — passing assertions, the common case in a healthy test suite — is the path that has been optimised. See the [benchmarks](https://awexpect.com/benchmarks) for numbers.
+
+</TabItem>
+<TabItem value="extensible" label="Extensible">
+
+The [`aweXpect.Core`](https://www.nuget.org/packages/aweXpect.Core) package is intentionally kept stable so extensions don't fight over versions. Add expectations for any type with extension methods on `IThat<TType>`:
+
+```csharp
+public static AndOrResult<string, IThat<string>> IsAbsolutePath(
+    this IThat<string> subject)
+    => new(subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+            => new IsAbsolutePathConstraint(it, grammars)),
+        subject);
+
+// usage
+await Expect.That("/var/log").IsAbsolutePath();
+```
+
+The full walkthrough is at [Write your own extension](/write-your-own-extension).
+
+</TabItem>
+<TabItem value="frameworks" label="Test-framework agnostic">
+
+xUnit (v2 and v3), NUnit (v3 and v4), MSTest and TUnit are detected automatically. The matching framework-native exception is thrown, so failures integrate cleanly with each runner.
+
+```csharp
+// xUnit
+[Fact] public async Task IsActive()
+    => await Expect.That(user.IsActive).IsTrue();
+
+// NUnit
+[Test] public async Task IsActive()
+    => await Expect.That(user.IsActive).IsTrue();
+
+// MSTest
+[TestMethod] public async Task IsActive()
+    => await Expect.That(user.IsActive).IsTrue();
+
+// TUnit
+[Test] public async Task IsActive()
+    => await Expect.That(user.IsActive).IsTrue();
+```
+
+</TabItem>
+</Tabs>
+
+## Migrating from another assertion library?
+
+The [aweXpect.Migration](https://github.com/aweXpect/aweXpect.Migration) analyzer ships code-fix providers that rewrite most FluentAssertions and `xunit.Assert` call sites for you. See the [migration guide](./getting-started#migration) for the full walkthrough.
+
+## Companion libraries
+
+`aweXpect` ships a small core with focused extensions for common ecosystems:
+
+- **[aweXpect.Json](https://github.com/aweXpect/aweXpect.Json)** — expectations for `System.Text.Json`.
+- **[aweXpect.Web](https://github.com/aweXpect/aweXpect.Web)** — expectations for `HttpClient` and `HttpResponseMessage`.
+- **[aweXpect.Reflection](https://github.com/aweXpect/aweXpect.Reflection)** — expectations for reflection types.
+- **[aweXpect.Testably](https://github.com/aweXpect/aweXpect.Testably)** — expectations for [Testably.Abstractions](https://github.com/Testably/Testably.Abstractions) file and time systems.
+- **[aweXpect.Mockolate](https://github.com/aweXpect/aweXpect.Mockolate)** — expectations for [Mockolate](https://github.com/aweXpect/Mockolate) mock interactions.
+
+## Where to go next
+
+- **[Getting Started](./getting-started)** — install the package and write your first expectation.
+- **[Migration](./getting-started#migration)** — automated code fixes for moving from FluentAssertions or `xunit.Assert`.
+- **[Advanced](./advanced)** — multiple expectations, cancellation, customization, and more.
+- **[Write your own extension](../extensions/write-extensions)** — add expectations for your own types using `aweXpect.Core`.
