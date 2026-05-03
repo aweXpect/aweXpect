@@ -48,7 +48,6 @@
     <File Path=".github/workflows/build.yml" />
     <File Path=".github/workflows/ci-analysis.yml" />
     <File Path=".github/workflows/ci.yml" />
-    <File Path=".github/workflows/pages.yml" />
   </Folder>
   <Folder Name="/_/Source/">
     <File Path="Source/Directory.Build.props" />
