@@ -2946,6 +2946,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -3439,7 +3445,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -3936,7 +3943,8 @@ window.BENCHMARK_DATA = {
           271.1530883652823,
           251.29293285097395,
           243.98802202088493,
-          266.001049382346
+          266.001049382346,
+          258.9470479147775
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4409,6 +4417,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4943,7 +4952,8 @@ window.BENCHMARK_DATA = {
           252.99936056137085,
           249.43486084256853,
           231.5416271136357,
-          239.7456165093642
+          239.7456165093642,
+          266.5029978752136
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5136,6 +5146,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7943,6 +7954,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -8359,7 +8376,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -8779,7 +8797,8 @@ window.BENCHMARK_DATA = {
           309191.59329659597,
           309507.34633091517,
           297022.89878627233,
-          309609.5467998798
+          309609.5467998798,
+          308170.7322126116
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9175,6 +9194,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9632,7 +9652,8 @@ window.BENCHMARK_DATA = {
           2742604.640066964,
           2531989.426339286,
           2678833.5027901786,
-          2654064.1588541665
+          2654064.1588541665,
+          2366964.4307291666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10057,7 +10078,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
-          4804906
+          4804906,
+          4804887
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13017,6 +13039,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -13510,7 +13538,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -14007,7 +14036,8 @@ window.BENCHMARK_DATA = {
           492.3057597705296,
           472.0799520492554,
           470.2426012357076,
-          506.29579343795774
+          506.29579343795774,
+          498.31762816111245
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14480,6 +14510,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15014,7 +15045,8 @@ window.BENCHMARK_DATA = {
           537.5483888626098,
           473.1987294038137,
           458.4377720832825,
-          512.2665049235026
+          512.2665049235026,
+          516.6299363454183
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15207,6 +15239,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18476,6 +18509,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -18969,7 +19008,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -19466,7 +19506,8 @@ window.BENCHMARK_DATA = {
           260.6599381128947,
           240.8555198987325,
           239.44222489992777,
-          245.86462208429973
+          245.86462208429973,
+          260.5479956070582
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19939,6 +19980,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20473,7 +20515,8 @@ window.BENCHMARK_DATA = {
           269.4070638509897,
           245.11609716415404,
           229.3851644039154,
-          251.27897256215414
+          251.27897256215414,
+          272.8696369024423
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20666,6 +20709,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -23935,6 +23979,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -24428,7 +24478,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -24925,7 +24976,8 @@ window.BENCHMARK_DATA = {
           496.77405745188395,
           467.20627002716066,
           464.14828589757286,
-          469.28736241658527
+          469.28736241658527,
+          489.1470923423767
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25398,6 +25450,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -25932,7 +25985,8 @@ window.BENCHMARK_DATA = {
           1279.2930216471354,
           1130.1894224802652,
           1181.8798191887993,
-          1140.3187061309814
+          1140.3187061309814,
+          1303.2125753675189
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26361,6 +26415,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29394,6 +29449,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -29887,7 +29948,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -30384,7 +30446,8 @@ window.BENCHMARK_DATA = {
           2042.3155853271485,
           1864.9442280360631,
           1914.142994562785,
-          1866.6009905497233
+          1866.6009905497233,
+          1712.941248957316
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30857,6 +30920,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31391,7 +31455,8 @@ window.BENCHMARK_DATA = {
           1363.8280398505074,
           1292.2264111382622,
           1216.431070582072,
-          1378.3238087972006
+          1378.3238087972006,
+          1399.0749597549438
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31584,6 +31649,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34853,6 +34919,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
@@ -35346,7 +35418,8 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
@@ -35843,7 +35916,8 @@ window.BENCHMARK_DATA = {
           2558.7981918334963,
           2423.3802020733174,
           2507.998802439372,
-          2629.043854268392
+          2629.043854268392,
+          2260.5176442464194
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36316,6 +36390,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -36850,7 +36925,8 @@ window.BENCHMARK_DATA = {
           93161.18085186298,
           61502.32177734375,
           88445.533203125,
-          92762.04544270833
+          92762.04544270833,
+          69521.52768179086
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -37352,7 +37428,8 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           57481,
-          57957
+          57957,
+          57488
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
