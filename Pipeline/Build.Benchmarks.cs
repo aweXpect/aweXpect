@@ -76,7 +76,7 @@ partial class Build
 				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
-					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId);
+					await gitHubClient.Issue.Comment.GetAllForIssue("Testably", "aweXpect", prId);
 				long? commentId = null;
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
@@ -91,12 +91,12 @@ partial class Build
 				if (commentId == null)
 				{
 					Log.Information($"Create comment:\n{body}");
-					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId, body);
+					await gitHubClient.Issue.Comment.Create("Testably", "aweXpect", prId, body);
 				}
 				else
 				{
 					Log.Information($"Update comment:\n{body}");
-					await gitHubClient.Issue.Comment.Update("aweXpect", "aweXpect", commentId.Value, body);
+					await gitHubClient.Issue.Comment.Update("Testably", "aweXpect", commentId.Value, body);
 				}
 			}
 		});
@@ -180,7 +180,7 @@ partial class Build
 			currentFile?.Sha,
 			BenchmarkBranch);
 		HttpResponseMessage response = await client.PutAsync(
-			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/{filename}",
+			$"https://api.github.com/repos/Testably/aweXpect/contents/Docs/pages/static/js/{filename}",
 			new StringContent(JsonSerializer.Serialize(content), Encoding.UTF8, "application/json"));
 		if (response.IsSuccessStatusCode)
 		{
@@ -199,7 +199,7 @@ partial class Build
 		client.DefaultRequestHeaders.UserAgent.ParseAdd("aweXpect");
 		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GithubToken);
 		HttpResponseMessage response = await client.GetAsync(
-			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/{filename}?ref={BenchmarkBranch}");
+			$"https://api.github.com/repos/Testably/aweXpect/contents/Docs/pages/static/js/{filename}?ref={BenchmarkBranch}");
 		string responseContent = await response.Content.ReadAsStringAsync();
 		if (!response.IsSuccessStatusCode)
 		{
@@ -208,7 +208,7 @@ partial class Build
 
 		using JsonDocument document = JsonDocument.Parse(responseContent);
 		var contentStream = await client.GetStreamAsync(
-			$"https://raw.githubusercontent.com/aweXpect/aweXpect/refs/heads/{BenchmarkBranch}/Docs/pages/static/js/{filename}");
+			$"https://raw.githubusercontent.com/Testably/aweXpect/refs/heads/{BenchmarkBranch}/Docs/pages/static/js/{filename}");
 		using StreamReader reader = new(contentStream, Encoding.UTF8);
 		string content = await reader.ReadToEndAsync();
 		string sha = document.RootElement.GetProperty("sha").GetString();

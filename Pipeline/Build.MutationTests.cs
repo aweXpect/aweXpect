@@ -81,7 +81,7 @@ partial class Build
 				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
-					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect",
+					await gitHubClient.Issue.Comment.GetAllForIssue("Testably",
 						"aweXpect", prId);
 				IssueComment existingComment = null;
 				Log.Information($"Found {comments.Count} comments");
@@ -96,19 +96,19 @@ partial class Build
 
 				string body = "## :alien: Mutation Results"
 				              + Environment.NewLine
-				              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
+				              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FTestably%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/Testably/aweXpect/pull/{prId}/merge)"
 				              + Environment.NewLine
 				              + string.Join(Environment.NewLine, mutationCommentBodies);
 				if (existingComment == null)
 				{
 					Log.Information($"Create comment:\n{body}");
-					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect",
+					await gitHubClient.Issue.Comment.Create("Testably", "aweXpect",
 						prId, body);
 				}
 				else
 				{
 					Log.Information($"Update comment:\n{body}");
-					await gitHubClient.Issue.Comment.Update("aweXpect", "aweXpect",
+					await gitHubClient.Issue.Comment.Update("Testably", "aweXpect",
 						existingComment.Id, body);
 				}
 			}
@@ -159,7 +159,7 @@ partial class Build
 				client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 				// https://stryker-mutator.io/docs/General/dashboard/#send-a-report-via-curl
 				await client.PutAsync(
-					$"https://dashboard.stryker-mutator.io/api/reports/github.com/aweXpect/aweXpect/{branchName}?module={project.Key.Name}",
+					$"https://dashboard.stryker-mutator.io/api/reports/github.com/Testably/aweXpect/{branchName}?module={project.Key.Name}",
 					new StringContent(reportComment, new MediaTypeHeaderValue("application/json")));
 			}
 		});
@@ -190,7 +190,7 @@ partial class Build
 		                      {
 		                      	"stryker-config": {
 		                      		"project-info": {
-		                      			"name": "github.com/aweXpect/aweXpect",
+		                      			"name": "github.com/Testably/aweXpect",
 		                      			"module": "{{project.Name}}",
 		                      			"version": "{{branchName}}"
 		                      		},

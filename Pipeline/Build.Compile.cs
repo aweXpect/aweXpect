@@ -175,10 +175,10 @@ partial class Build
 		sb.AppendLine(lines.First());
 		sb.AppendLine(lines.Skip(1).First());
 		sb.AppendLine(
-			$"[![Changelog](https://img.shields.io/badge/Changelog-{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/{version})");
+			$"[![Changelog](https://img.shields.io/badge/Changelog-{version}-blue)](https://github.com/Testably/aweXpect/releases/tag/{version})");
 		foreach (string line in lines.Skip(2))
 		{
-			if (line.StartsWith("[![Build](https://github.com/aweXpect/aweXpect/actions/workflows/build.yml") ||
+			if (line.StartsWith("[![Build](https://github.com/Testably/aweXpect/actions/workflows/build.yml") ||
 			    line.StartsWith("[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure"))
 			{
 				continue;
