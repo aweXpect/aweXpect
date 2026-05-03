@@ -2964,6 +2964,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -3460,7 +3466,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -3960,7 +3967,8 @@ window.BENCHMARK_DATA = {
           266.001049382346,
           258.9470479147775,
           247.81100317637126,
-          256.35084547315324
+          256.35084547315324,
+          272.328241280147
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4433,6 +4441,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4973,7 +4982,8 @@ window.BENCHMARK_DATA = {
           239.7456165093642,
           266.5029978752136,
           251.77768891198295,
-          239.61329537171585
+          239.61329537171585,
+          245.23186742342435
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5166,6 +5176,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7994,6 +8005,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -8413,7 +8430,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -8836,7 +8854,8 @@ window.BENCHMARK_DATA = {
           309609.5467998798,
           308170.7322126116,
           305068.6729817708,
-          316949.8802408854
+          316949.8802408854,
+          284859.67145647324
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9232,6 +9251,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9695,7 +9715,8 @@ window.BENCHMARK_DATA = {
           2654064.1588541665,
           2366964.4307291666,
           2372584.743582589,
-          2618535.659598214
+          2618535.659598214,
+          2365733.591796875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10123,7 +10144,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804887,
           4804887,
-          4804906
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13101,6 +13123,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -13597,7 +13625,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -14097,7 +14126,8 @@ window.BENCHMARK_DATA = {
           506.29579343795774,
           498.31762816111245,
           498.41546058654785,
-          521.2500436646598
+          521.2500436646598,
+          480.7665318761553
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14570,6 +14600,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15110,7 +15141,8 @@ window.BENCHMARK_DATA = {
           512.2665049235026,
           516.6299363454183,
           485.56329917907715,
-          471.965553633372
+          471.965553633372,
+          481.95388011932374
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15303,6 +15335,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18593,6 +18626,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -19089,7 +19128,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -19589,7 +19629,8 @@ window.BENCHMARK_DATA = {
           245.86462208429973,
           260.5479956070582,
           240.75905667032515,
-          245.37836481730145
+          245.37836481730145,
+          244.0580334322793
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20062,6 +20103,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20602,7 +20644,8 @@ window.BENCHMARK_DATA = {
           251.27897256215414,
           272.8696369024423,
           269.01371339162193,
-          251.70466130574545
+          251.70466130574545,
+          243.62761691411336
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20795,6 +20838,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24085,6 +24129,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -24581,7 +24631,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -25081,7 +25132,8 @@ window.BENCHMARK_DATA = {
           469.28736241658527,
           489.1470923423767,
           463.26679337819417,
-          452.64798099654064
+          452.64798099654064,
+          466.98622366098255
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25554,6 +25606,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26094,7 +26147,8 @@ window.BENCHMARK_DATA = {
           1140.3187061309814,
           1303.2125753675189,
           1188.4073860168457,
-          1250.132508468628
+          1250.132508468628,
+          1179.6568423679896
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26523,6 +26577,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29577,6 +29632,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -30073,7 +30134,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -30573,7 +30635,8 @@ window.BENCHMARK_DATA = {
           1866.6009905497233,
           1712.941248957316,
           1676.6080019632975,
-          1845.5254409790039
+          1845.5254409790039,
+          1947.0963312784831
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31046,6 +31109,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31586,7 +31650,8 @@ window.BENCHMARK_DATA = {
           1378.3238087972006,
           1399.0749597549438,
           1374.7919801076252,
-          1288.216135152181
+          1288.216135152181,
+          1272.6552062715803
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31779,6 +31844,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -35069,6 +35135,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:52:05 2026 \u002B0200",
         "message": "docs: slim Getting Started and add Migration page template (#934)"
+      },
+      {
+        "sha": "d830c1d7a942ccc4fe3512b78439aeacf122378b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:37:47 2026 \u002B0200",
+        "message": "chore: move SonarCloud project to Testably organization (#935)"
       }
     ],
     "labels": [
@@ -35565,7 +35637,8 @@ window.BENCHMARK_DATA = {
       "6dfb8970",
       "28700bbc",
       "dda64b57",
-      "94537f66"
+      "94537f66",
+      "d830c1d7"
     ],
     "datasets": [
       {
@@ -36065,7 +36138,8 @@ window.BENCHMARK_DATA = {
           2629.043854268392,
           2260.5176442464194,
           2227.7644963582356,
-          2537.6324912479945
+          2537.6324912479945,
+          2473.7866023381553
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36538,6 +36612,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -37078,7 +37153,8 @@ window.BENCHMARK_DATA = {
           92762.04544270833,
           69521.52768179086,
           69865.80070612981,
-          90587.52008928571
+          90587.52008928571,
+          60600.19071451823
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -37583,7 +37659,8 @@ window.BENCHMARK_DATA = {
           57957,
           57488,
           57489,
-          57481
+          57481,
+          56986
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
