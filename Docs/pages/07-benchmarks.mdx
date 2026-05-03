@@ -20,24 +20,6 @@ These benchmarks compare aweXpect's happy-path overhead — passing assertions, 
 
 <Tabs groupId="aweXpectBenchmark">
 
-<TabItem value="Bool" label="Boolean" default>
-
-Verifies that a boolean subject is `true`.
-
-<BenchmarkResult name="Bool" />
-
-```csharp title="aweXpect"
-await Expect.That(_boolSubject).IsTrue();
-```
-
-```csharp title="FluentAssertions"
-_boolSubject.Should().BeTrue();
-```
-
-[View source on GitHub →](https://github.com/Testably/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks.Bool.cs)
-
-</TabItem>
-
 <TabItem value="String" label="String">
 
 Verifies that two `string` values are equal, ignoring case.
@@ -53,6 +35,24 @@ _stringSubject.Should().BeEquivalentTo(_stringExpectation, o => o.IgnoringCase()
 ```
 
 [View source on GitHub →](https://github.com/Testably/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks.String.cs)
+
+</TabItem>
+
+<TabItem value="Bool" label="Boolean" default>
+
+Verifies that a boolean subject is `true`.
+
+<BenchmarkResult name="Bool" />
+
+```csharp title="aweXpect"
+await Expect.That(_boolSubject).IsTrue();
+```
+
+```csharp title="FluentAssertions"
+_boolSubject.Should().BeTrue();
+```
+
+[View source on GitHub →](https://github.com/Testably/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks.Bool.cs)
 
 </TabItem>
 
@@ -116,33 +116,25 @@ Verifies that two three-element `string` arrays are equal in the same order.
 
 <BenchmarkResult name="StringArray" />
 
-```csharp title="aweXpect"
-await Expect.That(_stringArraySubject).IsEqualTo(_stringArrayExpectation);
-```
-
-```csharp title="FluentAssertions"
-_stringArraySubject.Should().Equal(_stringArrayExpectation);
-```
-
-[View source on GitHub →](https://github.com/Testably/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks.StringArray.cs)
-
-</TabItem>
-
-<TabItem value="StringArrayInAnyOrder" label="String array (any order)">
-
+**In any order**
 Verifies that two three-element `string` arrays contain the same values regardless of order.
 
 <BenchmarkResult name="StringArrayInAnyOrder" />
 
 ```csharp title="aweXpect"
+await Expect.That(_stringArraySubject).IsEqualTo(_stringArrayExpectation);
+// In any order
 await Expect.That(_stringArrayAnyOrderSubject)
     .IsEqualTo(_stringArrayAnyOrderExpectation).InAnyOrder();
 ```
 
 ```csharp title="FluentAssertions"
+_stringArraySubject.Should().Equal(_stringArrayExpectation);
+// In any order
 _stringArrayAnyOrderSubject.Should().BeEquivalentTo(_stringArrayAnyOrderExpectation);
 ```
 
+[View source on GitHub →](https://github.com/Testably/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks.StringArray.cs)
 [View source on GitHub →](https://github.com/Testably/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks.StringArrayInAnyOrder.cs)
 
 </TabItem>

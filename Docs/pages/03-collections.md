@@ -64,8 +64,8 @@ You can verify that all items in the collection are equal to the `expected` valu
 await Expect.That([1, 1, 1]).All().AreEqualTo(1);
 ```
 
-You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or
-configure [equivalence](/docs/expectations/object#equivalence):
+You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
+configure [equivalence](/docs/expectations/common-types/object#equivalence):
 
 ```csharp
 IEnumerable<MyClass> values = //...
@@ -203,8 +203,8 @@ await Expect.That(values).Contains(1).LessThan(5.Times());
 await Expect.That(values).Contains(1).Between(1).And(5.Times());
 ```
 
-You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or
-configure [equivalence](/docs/expectations/object#equivalence):
+You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
+configure [equivalence](/docs/expectations/common-types/object#equivalence):
 
 ```csharp
 IEnumerable<MyClass> values = //...
@@ -289,8 +289,8 @@ await Expect.That(values).StartsWith(1, 2);
 await Expect.That(values).DoesNotStartWith(2, 3);
 ```
 
-You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or
-configure [equivalence](/docs/expectations/object#equivalence):
+You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
+configure [equivalence](/docs/expectations/common-types/object#equivalence):
 
 ```csharp
 IEnumerable<MyClass> values = //...
@@ -320,8 +320,8 @@ await Expect.That(values).EndsWith(4, 5);
 await Expect.That(values).DoesNotEndWith(3, 5);
 ```
 
-You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or
-configure [equivalence](/docs/expectations/object#equivalence):
+You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
+configure [equivalence](/docs/expectations/common-types/object#equivalence):
 
 ```csharp
 IEnumerable<MyClass> values = //...
