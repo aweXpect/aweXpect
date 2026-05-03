@@ -2970,6 +2970,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -3467,7 +3473,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -3968,7 +3975,8 @@ window.BENCHMARK_DATA = {
           258.9470479147775,
           247.81100317637126,
           256.35084547315324,
-          272.328241280147
+          272.328241280147,
+          269.79958724975586
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4441,6 +4449,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4983,7 +4992,8 @@ window.BENCHMARK_DATA = {
           266.5029978752136,
           251.77768891198295,
           239.61329537171585,
-          245.23186742342435
+          245.23186742342435,
+          269.46816228230796
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5176,6 +5186,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8011,6 +8022,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -8431,7 +8448,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -8855,7 +8873,8 @@ window.BENCHMARK_DATA = {
           308170.7322126116,
           305068.6729817708,
           316949.8802408854,
-          284859.67145647324
+          284859.67145647324,
+          322908.5329915365
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9251,6 +9270,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9716,7 +9736,8 @@ window.BENCHMARK_DATA = {
           2366964.4307291666,
           2372584.743582589,
           2618535.659598214,
-          2365733.591796875
+          2365733.591796875,
+          2795256.38984375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10145,7 +10166,8 @@ window.BENCHMARK_DATA = {
           4804887,
           4804887,
           4804906,
-          4804902
+          4804902,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13129,6 +13151,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -13626,7 +13654,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -14127,7 +14156,8 @@ window.BENCHMARK_DATA = {
           498.31762816111245,
           498.41546058654785,
           521.2500436646598,
-          480.7665318761553
+          480.7665318761553,
+          505.6039227076939
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14600,6 +14630,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15142,7 +15173,8 @@ window.BENCHMARK_DATA = {
           516.6299363454183,
           485.56329917907715,
           471.965553633372,
-          481.95388011932374
+          481.95388011932374,
+          522.6490805308024
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15335,6 +15367,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18632,6 +18665,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -19129,7 +19168,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -19630,7 +19670,8 @@ window.BENCHMARK_DATA = {
           260.5479956070582,
           240.75905667032515,
           245.37836481730145,
-          244.0580334322793
+          244.0580334322793,
+          261.298777614321
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20103,6 +20144,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20645,7 +20687,8 @@ window.BENCHMARK_DATA = {
           272.8696369024423,
           269.01371339162193,
           251.70466130574545,
-          243.62761691411336
+          243.62761691411336,
+          272.7409262975057
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20838,6 +20881,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24135,6 +24179,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -24632,7 +24682,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -25133,7 +25184,8 @@ window.BENCHMARK_DATA = {
           489.1470923423767,
           463.26679337819417,
           452.64798099654064,
-          466.98622366098255
+          466.98622366098255,
+          484.41091543833414
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25606,6 +25658,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26148,7 +26201,8 @@ window.BENCHMARK_DATA = {
           1303.2125753675189,
           1188.4073860168457,
           1250.132508468628,
-          1179.6568423679896
+          1179.6568423679896,
+          1247.1319697062174
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26577,6 +26631,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29638,6 +29693,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -30135,7 +30196,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -30636,7 +30698,8 @@ window.BENCHMARK_DATA = {
           1712.941248957316,
           1676.6080019632975,
           1845.5254409790039,
-          1947.0963312784831
+          1947.0963312784831,
+          1930.993352762858
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31109,6 +31172,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31651,7 +31715,8 @@ window.BENCHMARK_DATA = {
           1399.0749597549438,
           1374.7919801076252,
           1288.216135152181,
-          1272.6552062715803
+          1272.6552062715803,
+          1369.4476226806642
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31844,6 +31909,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -35141,6 +35207,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 20:37:47 2026 \u002B0200",
         "message": "chore: move SonarCloud project to Testably organization (#935)"
+      },
+      {
+        "sha": "31ec2c165a33ab6da17f6ba677e81d8a7ef7bc76",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 20:48:51 2026 \u002B0200",
+        "message": "fix: correct URI casing in documentation links (#936)"
       }
     ],
     "labels": [
@@ -35638,7 +35710,8 @@ window.BENCHMARK_DATA = {
       "28700bbc",
       "dda64b57",
       "94537f66",
-      "d830c1d7"
+      "d830c1d7",
+      "31ec2c16"
     ],
     "datasets": [
       {
@@ -36139,7 +36212,8 @@ window.BENCHMARK_DATA = {
           2260.5176442464194,
           2227.7644963582356,
           2537.6324912479945,
-          2473.7866023381553
+          2473.7866023381553,
+          2597.639559427897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36612,6 +36686,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -37154,7 +37229,8 @@ window.BENCHMARK_DATA = {
           69521.52768179086,
           69865.80070612981,
           90587.52008928571,
-          60600.19071451823
+          60600.19071451823,
+          93330.00110677084
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -37660,7 +37736,8 @@ window.BENCHMARK_DATA = {
           57488,
           57489,
           57481,
-          56986
+          56986,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
