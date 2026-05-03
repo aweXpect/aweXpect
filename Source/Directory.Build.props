@@ -10,7 +10,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://aweXpect.com</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageIcon>Docs/logo_256x256.png</PackageIcon>
+		<PackageIcon>Docs/Logo.png</PackageIcon>
 		<PackageReadmeFile>Docs/README.md</PackageReadmeFile>
 	</PropertyGroup>
 
@@ -49,10 +49,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$([MSBuild]::GetPathOfFileAbove('logo_256x256.png', '$(MSBuildThisFileDirectory)../Docs/pages/static/img/'))"
+		<None Include="$([MSBuild]::GetPathOfFileAbove('Logo.png', '$(MSBuildThisFileDirectory)../Docs/Images/'))"
 			  Pack="true"
 			  PackagePath="/Docs/"
-			  Link="\Docs\logo_256x256.png"/>
+			  Link="\Docs\Logo.png"/>
 		<None Include="$(SolutionDir)/Artifacts/README.md"
 			  Condition="Exists('$(SolutionDir)/Artifacts/README.md')"
 			  Pack="true"
