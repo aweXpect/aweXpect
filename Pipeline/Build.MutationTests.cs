@@ -81,7 +81,7 @@ partial class Build
 				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
-					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect",
+					await gitHubClient.Issue.Comment.GetAllForIssue("Testably",
 						"aweXpect", prId);
 				IssueComment existingComment = null;
 				Log.Information($"Found {comments.Count} comments");
