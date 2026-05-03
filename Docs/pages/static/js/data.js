@@ -2958,6 +2958,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -3453,7 +3459,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -3952,7 +3959,8 @@ window.BENCHMARK_DATA = {
           243.98802202088493,
           266.001049382346,
           258.9470479147775,
-          247.81100317637126
+          247.81100317637126,
+          256.35084547315324
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4425,6 +4433,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -4963,7 +4972,8 @@ window.BENCHMARK_DATA = {
           231.5416271136357,
           239.7456165093642,
           266.5029978752136,
-          251.77768891198295
+          251.77768891198295,
+          239.61329537171585
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5156,6 +5166,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -7977,6 +7988,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -8395,7 +8412,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -8817,7 +8835,8 @@ window.BENCHMARK_DATA = {
           297022.89878627233,
           309609.5467998798,
           308170.7322126116,
-          305068.6729817708
+          305068.6729817708,
+          316949.8802408854
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9213,6 +9232,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9674,7 +9694,8 @@ window.BENCHMARK_DATA = {
           2678833.5027901786,
           2654064.1588541665,
           2366964.4307291666,
-          2372584.743582589
+          2372584.743582589,
+          2618535.659598214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10101,7 +10122,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
-          4804887
+          4804887,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13073,6 +13095,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -13568,7 +13596,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -14067,7 +14096,8 @@ window.BENCHMARK_DATA = {
           470.2426012357076,
           506.29579343795774,
           498.31762816111245,
-          498.41546058654785
+          498.41546058654785,
+          521.2500436646598
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14540,6 +14570,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15078,7 +15109,8 @@ window.BENCHMARK_DATA = {
           458.4377720832825,
           512.2665049235026,
           516.6299363454183,
-          485.56329917907715
+          485.56329917907715,
+          471.965553633372
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15271,6 +15303,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18554,6 +18587,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -19049,7 +19088,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -19548,7 +19588,8 @@ window.BENCHMARK_DATA = {
           239.44222489992777,
           245.86462208429973,
           260.5479956070582,
-          240.75905667032515
+          240.75905667032515,
+          245.37836481730145
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20021,6 +20062,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20559,7 +20601,8 @@ window.BENCHMARK_DATA = {
           229.3851644039154,
           251.27897256215414,
           272.8696369024423,
-          269.01371339162193
+          269.01371339162193,
+          251.70466130574545
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20752,6 +20795,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24035,6 +24079,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -24530,7 +24580,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -25029,7 +25080,8 @@ window.BENCHMARK_DATA = {
           464.14828589757286,
           469.28736241658527,
           489.1470923423767,
-          463.26679337819417
+          463.26679337819417,
+          452.64798099654064
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25502,6 +25554,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26040,7 +26093,8 @@ window.BENCHMARK_DATA = {
           1181.8798191887993,
           1140.3187061309814,
           1303.2125753675189,
-          1188.4073860168457
+          1188.4073860168457,
+          1250.132508468628
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26469,6 +26523,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29516,6 +29571,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -30011,7 +30072,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -30510,7 +30572,8 @@ window.BENCHMARK_DATA = {
           1914.142994562785,
           1866.6009905497233,
           1712.941248957316,
-          1676.6080019632975
+          1676.6080019632975,
+          1845.5254409790039
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -30983,6 +31046,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31521,7 +31585,8 @@ window.BENCHMARK_DATA = {
           1216.431070582072,
           1378.3238087972006,
           1399.0749597549438,
-          1374.7919801076252
+          1374.7919801076252,
+          1288.216135152181
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -31714,6 +31779,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -34997,6 +35063,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
@@ -35492,7 +35564,8 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
@@ -35991,7 +36064,8 @@ window.BENCHMARK_DATA = {
           2507.998802439372,
           2629.043854268392,
           2260.5176442464194,
-          2227.7644963582356
+          2227.7644963582356,
+          2537.6324912479945
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36464,6 +36538,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -37002,7 +37077,8 @@ window.BENCHMARK_DATA = {
           88445.533203125,
           92762.04544270833,
           69521.52768179086,
-          69865.80070612981
+          69865.80070612981,
+          90587.52008928571
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -37506,7 +37582,8 @@ window.BENCHMARK_DATA = {
           57481,
           57957,
           57488,
-          57489
+          57489,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
