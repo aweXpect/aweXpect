@@ -22,7 +22,7 @@ namespace Build;
 
 partial class Build
 {
-	private static bool DisableMutationTests = true;
+	private static bool DisableMutationTests = false;
 	AbsolutePath StrykerOutputDirectory => ArtifactsDirectory / "Stryker";
 	AbsolutePath StrykerToolPath => TestResultsDirectory / "dotnet-stryker";
 
