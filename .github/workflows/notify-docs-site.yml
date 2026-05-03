@@ -2,15 +2,14 @@ name: Notify Docs Site
 
 on:
     push:
-        branches: [ main ]
+        branches: [ main, benchmarks ]
         paths:
-            - 'Docs/pages/docs/expectations/**'
-            - 'Docs/pages/docs/extensions/**'
+            - 'Docs/pages/**'
     workflow_dispatch:
 
 jobs:
     dispatch:
-        if: github.ref == 'refs/heads/main'
+        if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/benchmarks'
         name: Trigger Site rebuild
         runs-on: ubuntu-latest
         steps:
@@ -20,4 +19,4 @@ jobs:
                     token: ${{ secrets.SITE_DISPATCH_TOKEN }}
                     repository: Testably/Testably.Site
                     event-type: extension-documentation-updated-event
-                    client-payload: '{"source": "${{ github.repository }}", "sha": "${{ github.sha }}"}'
+                    client-payload: '{"source": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
