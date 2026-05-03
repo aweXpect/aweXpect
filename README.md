@@ -2,10 +2,10 @@
 
 [![Nuget](https://img.shields.io/nuget/v/aweXpect?label=aweXpect)](https://www.nuget.org/packages/aweXpect)
 [![Nuget](https://img.shields.io/nuget/v/aweXpect.Core?label=Core)](https://www.nuget.org/packages/aweXpect.Core)
-[![Build](https://github.com/aweXpect/aweXpect/actions/workflows/build.yml/badge.svg)](https://github.com/aweXpect/aweXpect/actions/workflows/build.yml)
+[![Build](https://github.com/Testably/aweXpect/actions/workflows/build.yml/badge.svg)](https://github.com/Testably/aweXpect/actions/workflows/build.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=aweXpect_aweXpect&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=aweXpect_aweXpect)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=aweXpect_aweXpect&metric=coverage)](https://sonarcloud.io/summary/overall?id=aweXpect_aweXpect)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FTestably%2FaweXpect%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/Testably/aweXpect/main)
 
 Assert unit tests in natural language using awesome expectations.
 
@@ -23,8 +23,8 @@ Assert unit tests in natural language using awesome expectations.
    This brings the static `Expect` class and lots of extension methods into scope.
 
 
-3. See the [documentation](https://awexpect.com/docs/expectations/getting-started#write-your-first-expectation) or
-   the [migration guide](https://awexpect.com/docs/expectations/getting-started#migration) for more information.
+3. See the [documentation](https://docs.testably.org/awexpect/getting-started#write-your-first-expectation) or
+   the [migration guide](https://docs.testably.org/awexpect/getting-started#migration) for more information.
 
 ## Features
 
@@ -46,7 +46,7 @@ By using async assertions per default, we have a consistent API and other perks:
 
 A focus on performance allows you to execute your tests as fast as possible.  
 Special care is taken for the happy case (succeeding tests) to be as performant as possible. See
-the [benchmarks](https://awexpect.com/benchmarks) for more details.
+the [benchmarks](https://docs.testably.org/awexpect/benchmarks) for more details.
 
 ### Extensible
 
@@ -55,7 +55,7 @@ The [aweXpect.Core](https://www.nuget.org/packages/aweXpect.Core/) package is in
 extensions, so that the risk of version conflicts between different extensions can be reduced.
 
 You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
-More information can be found in the [extensibility guide](https://awexpect.com/docs/extensions/write-extensions).
+More information can be found in the [extensibility guide](https://docs.testably.org/awexpect/write-extension).
 
 **Extension projects**
 
