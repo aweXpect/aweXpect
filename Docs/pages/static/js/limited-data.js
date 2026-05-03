@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
-      {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          256.1255780855815,
           260.40536136627196,
           252.54760516484578,
           253.7332250912984,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           243.98802202088493,
           266.001049382346,
           258.9470479147775,
-          247.81100317637126
+          247.81100317637126,
+          256.35084547315324
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -437,7 +437,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          236.45655672366803,
           245.93631155150277,
           236.70832756587438,
           234.87937109810966,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           231.5416271136357,
           239.7456165093642,
           266.5029978752136,
-          251.77768891198295
+          251.77768891198295,
+          239.61329537171585
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
-      {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          303297.1940917969,
           308332.6718424479,
           304608.14515904017,
           317862.0110560826,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           297022.89878627233,
           309609.5467998798,
           308170.7322126116,
-          305068.6729817708
+          305068.6729817708,
+          316949.8802408854
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1045,7 +1045,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2650135.716666667,
           2698391.4934895835,
           2650141.731863839,
           2527002.5555889425,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2678833.5027901786,
           2654064.1588541665,
           2366964.4307291666,
-          2372584.743582589
+          2372584.743582589,
+          2618535.659598214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1154,7 +1154,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           4804906,
-          4804906,
           4804902,
           4804906,
           4804902,
@@ -1202,7 +1201,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804887,
-          4804887
+          4804887,
+          4804906
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
       {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          465.1278178215027,
           487.2945702234904,
           478.9699533144633,
           460.85194536617826,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           470.2426012357076,
           506.29579343795774,
           498.31762816111245,
-          498.41546058654785
+          498.41546058654785,
+          521.2500436646598
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1653,7 +1653,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          477.2973515192668,
           465.3482033411662,
           512.3317754109701,
           469.6192213807787,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           458.4377720832825,
           512.2665049235026,
           516.6299363454183,
-          485.56329917907715
+          485.56329917907715,
+          471.965553633372
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
-      {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          249.77424355915613,
           255.86469701358251,
           245.2874663426326,
           247.58607864379883,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           239.44222489992777,
           245.86462208429973,
           260.5479956070582,
-          240.75905667032515
+          240.75905667032515,
+          245.37836481730145
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2261,7 +2261,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          242.009511250716,
           248.55672407150269,
           240.34878436156683,
           238.34651749928793,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           229.3851644039154,
           251.27897256215414,
           272.8696369024423,
-          269.01371339162193
+          269.01371339162193,
+          251.70466130574545
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
-      {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          467.4443635940552,
           488.6081900278727,
           468.2932273864746,
           464.7819416182382,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           464.14828589757286,
           469.28736241658527,
           489.1470923423767,
-          463.26679337819417
+          463.26679337819417,
+          452.64798099654064
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2869,7 +2869,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1197.113636310284,
           1231.5286661783855,
           1181.6007381439208,
           1136.6536067962647,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1181.8798191887993,
           1140.3187061309814,
           1303.2125753675189,
-          1188.4073860168457
+          1188.4073860168457,
+          1250.132508468628
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
-      {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1934.0759019851685,
           1945.1539843241374,
           1879.881801877703,
           1850.996755472819,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1914.142994562785,
           1866.6009905497233,
           1712.941248957316,
-          1676.6080019632975
+          1676.6080019632975,
+          1845.5254409790039
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3477,7 +3477,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1309.8577658335369,
           1411.3168356577555,
           1373.9519111633301,
           1224.3133642832438,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1216.431070582072,
           1378.3238087972006,
           1399.0749597549438,
-          1374.7919801076252
+          1374.7919801076252,
+          1288.216135152181
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "090496e7b40845d0310d61512025b4c99d8dcdf0",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:22:26 2025 \u002B0100",
-        "message": "chore: Bump the tunit group with 3 updates (#853)"
-      },
-      {
         "sha": "b358648a4227d6081d75ce87644d99ee15b97fed",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:23:01 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 13:01:09 2026 \u002B0200",
         "message": "coverage: re-enable mutation tests (#933)"
+      },
+      {
+        "sha": "94537f66e774bdf402fd7a24b349ddc2fbbb555d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 13:52:05 2026 \u002B0200",
+        "message": "docs: slim Getting Started and add Migration page template (#934)"
       }
     ],
     "labels": [
-      "090496e7",
       "b358648a",
       "1885ef82",
       "c02d0824",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "72cc22d3",
       "6dfb8970",
       "28700bbc",
-      "dda64b57"
+      "dda64b57",
+      "94537f66"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2699.948151452201,
           2563.241558837891,
           2506.648887379964,
           2487.662962504796,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2507.998802439372,
           2629.043854268392,
           2260.5176442464194,
-          2227.7644963582356
+          2227.7644963582356,
+          2537.6324912479945
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89612.84615652902,
           89235.764453125,
           86549.72975510817,
           85148.07113882211,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           88445.533203125,
           92762.04544270833,
           69521.52768179086,
-          69865.80070612981
+          69865.80070612981,
+          90587.52008928571
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          59100,
           58137,
           58597,
           58598,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           57481,
           57957,
           57488,
-          57489
+          57489,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
