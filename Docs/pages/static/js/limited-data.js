@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
-      {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          255.57789754867554,
           268.1248031343733,
           256.1255780855815,
           260.40536136627196,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           271.1530883652823,
           251.29293285097395,
           243.98802202088493,
-          266.001049382346
+          266.001049382346,
+          258.9470479147775
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -439,7 +439,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          235.49215126037598,
           234.44791711171467,
           236.45655672366803,
           245.93631155150277,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           252.99936056137085,
           249.43486084256853,
           231.5416271136357,
-          239.7456165093642
+          239.7456165093642,
+          266.5029978752136
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
-      {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          297362.6296386719,
           315876.72265625,
           303297.1940917969,
           308332.6718424479,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           309191.59329659597,
           309507.34633091517,
           297022.89878627233,
-          309609.5467998798
+          309609.5467998798,
+          308170.7322126116
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1047,7 +1047,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2633151.505408654,
           2598664.7973958333,
           2650135.716666667,
           2698391.4934895835,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2742604.640066964,
           2531989.426339286,
           2678833.5027901786,
-          2654064.1588541665
+          2654064.1588541665,
+          2366964.4307291666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804906,
           4804906,
@@ -1202,7 +1201,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
-          4804906
+          4804906,
+          4804887
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
       {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          460.17647910118103,
           479.9306276957194,
           465.1278178215027,
           487.2945702234904,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           492.3057597705296,
           472.0799520492554,
           470.2426012357076,
-          506.29579343795774
+          506.29579343795774,
+          498.31762816111245
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1655,7 +1655,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          462.062477906545,
           474.14688151223316,
           477.2973515192668,
           465.3482033411662,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           537.5483888626098,
           473.1987294038137,
           458.4377720832825,
-          512.2665049235026
+          512.2665049235026,
+          516.6299363454183
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
-      {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          250.6757323582967,
           274.14725763457164,
           249.77424355915613,
           255.86469701358251,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           260.6599381128947,
           240.8555198987325,
           239.44222489992777,
-          245.86462208429973
+          245.86462208429973,
+          260.5479956070582
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2263,7 +2263,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          236.64041778019495,
           241.06006774902343,
           242.009511250716,
           248.55672407150269,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           269.4070638509897,
           245.11609716415404,
           229.3851644039154,
-          251.27897256215414
+          251.27897256215414,
+          272.8696369024423
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
-      {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          444.0362708909171,
           460.551322778066,
           467.4443635940552,
           488.6081900278727,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           496.77405745188395,
           467.20627002716066,
           464.14828589757286,
-          469.28736241658527
+          469.28736241658527,
+          489.1470923423767
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2871,7 +2871,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1193.6906276430402,
           1201.9932729176112,
           1197.113636310284,
           1231.5286661783855,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1279.2930216471354,
           1130.1894224802652,
           1181.8798191887993,
-          1140.3187061309814
+          1140.3187061309814,
+          1303.2125753675189
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
-      {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1926.7944897242955,
           1803.3422777811686,
           1934.0759019851685,
           1945.1539843241374,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           2042.3155853271485,
           1864.9442280360631,
           1914.142994562785,
-          1866.6009905497233
+          1866.6009905497233,
+          1712.941248957316
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3479,7 +3479,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1278.95707321167,
           1316.1429623921713,
           1309.8577658335369,
           1411.3168356577555,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1363.8280398505074,
           1292.2264111382622,
           1216.431070582072,
-          1378.3238087972006
+          1378.3238087972006,
+          1399.0749597549438
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "29e36632519a7cc20d85fcb47314d000543a82cd",
-        "author": "dependabot[bot]",
-        "date": "Mon Nov 24 16:21:49 2025 \u002B0100",
-        "message": "chore: Bump the mstest group with 2 updates (#851)"
-      },
-      {
         "sha": "3b2f04fac59b1e0085f80e8f3a4eaaf46396a076",
         "author": "dependabot[bot]",
         "date": "Mon Nov 24 16:21:38 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 3 11:49:27 2026 \u002B0200",
         "message": "docs: Add Benchmarks landing page and update CI triggers (#931)"
+      },
+      {
+        "sha": "28700bbcdfeed8785bb3bc90e6c595f7de035ca9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 3 12:08:05 2026 \u002B0200",
+        "message": "refactor: reorganize documentation structure and update links (#932)"
       }
     ],
     "labels": [
-      "29e36632",
       "3b2f04fa",
       "090496e7",
       "b358648a",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "2990f5e0",
       "fcab6cc8",
       "72cc22d3",
-      "6dfb8970"
+      "6dfb8970",
+      "28700bbc"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2506.0713923136395,
           2459.7958170572915,
           2699.948151452201,
           2563.241558837891,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2558.7981918334963,
           2423.3802020733174,
           2507.998802439372,
-          2629.043854268392
+          2629.043854268392,
+          2260.5176442464194
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4087,7 +4087,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          86548.7185546875,
           87331.20862630209,
           89612.84615652902,
           89235.764453125,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           93161.18085186298,
           61502.32177734375,
           88445.533203125,
-          92762.04544270833
+          92762.04544270833,
+          69521.52768179086
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           59100,
           58137,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           57481,
-          57957
+          57957,
+          57488
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
