@@ -91,7 +91,7 @@ await Expect.That(Act).ThrowsException().WithMessageContaining("my exception");
 await Expect.That(Act).ThrowsException().WithoutMessageContaining("something else");
 ```
 
-You can use the same configuration options as when [comparing strings](/docs/expectations/string#equality).
+You can use the same configuration options as when [comparing strings](/docs/expectations/common-types/string#equality).
 
 ## Inner exceptions
 
