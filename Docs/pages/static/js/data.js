@@ -2994,6 +2994,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -3495,7 +3501,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -4000,7 +4007,8 @@ window.BENCHMARK_DATA = {
           269.79958724975586,
           252.4533190727234,
           293.6308441480001,
-          275.110637029012
+          275.110637029012,
+          264.114764213562
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4473,6 +4481,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5023,7 +5032,8 @@ window.BENCHMARK_DATA = {
           269.46816228230796,
           261.65092894236244,
           260.7189357439677,
-          263.8557269732157
+          263.8557269732157,
+          238.03739060674394
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5216,6 +5226,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8079,6 +8090,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -8503,7 +8520,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -8931,7 +8949,8 @@ window.BENCHMARK_DATA = {
           322908.5329915365,
           301925.8316080729,
           311981.2226969401,
-          319975.9797200521
+          319975.9797200521,
+          302834.5935546875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9327,6 +9346,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9800,7 +9820,8 @@ window.BENCHMARK_DATA = {
           2795256.38984375,
           2341530.219010417,
           2704617.4330729167,
-          2937670.0501302085
+          2937670.0501302085,
+          2580748.37265625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10232,6 +10253,7 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804891,
+          4804906,
           4804906,
           4804906
         ],
@@ -13241,6 +13263,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -13742,7 +13770,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -14247,7 +14276,8 @@ window.BENCHMARK_DATA = {
           505.6039227076939,
           501.26384313901264,
           500.64108344486783,
-          544.4871906916301
+          544.4871906916301,
+          485.213325881958
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14720,6 +14750,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15270,7 +15301,8 @@ window.BENCHMARK_DATA = {
           522.6490805308024,
           487.7186327775319,
           538.0864246232169,
-          546.1708667119344
+          546.1708667119344,
+          519.3114194869995
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15463,6 +15495,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18788,6 +18821,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -19289,7 +19328,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -19794,7 +19834,8 @@ window.BENCHMARK_DATA = {
           261.298777614321,
           255.44322522481283,
           258.5103355554434,
-          273.82608989079796
+          273.82608989079796,
+          238.74584555625916
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20267,6 +20308,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20817,7 +20859,8 @@ window.BENCHMARK_DATA = {
           272.7409262975057,
           271.2964104016622,
           269.3243320465088,
-          280.77064650853475
+          280.77064650853475,
+          246.82492923736572
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21010,6 +21053,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24335,6 +24379,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -24836,7 +24886,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -25341,7 +25392,8 @@ window.BENCHMARK_DATA = {
           484.41091543833414,
           494.9349738756816,
           496.84803167978924,
-          528.2129118783133
+          528.2129118783133,
+          472.6876197179159
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25814,6 +25866,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26364,7 +26417,8 @@ window.BENCHMARK_DATA = {
           1247.1319697062174,
           1341.947005589803,
           1309.8175061543782,
-          1345.0313563028972
+          1345.0313563028972,
+          1235.909156926473
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26793,6 +26847,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29882,6 +29937,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -30383,7 +30444,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -30888,7 +30950,8 @@ window.BENCHMARK_DATA = {
           1930.993352762858,
           1708.920198694865,
           2010.3406911214192,
-          2066.6249555860245
+          2066.6249555860245,
+          1959.8867716471354
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31361,6 +31424,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31911,7 +31975,8 @@ window.BENCHMARK_DATA = {
           1369.4476226806642,
           1448.7898471832275,
           1354.2864144189018,
-          1423.9157687595912
+          1423.9157687595912,
+          1321.959544999259
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32104,6 +32169,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -35429,6 +35495,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
@@ -35930,7 +36002,8 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
@@ -36435,7 +36508,8 @@ window.BENCHMARK_DATA = {
           2597.639559427897,
           2245.071430751256,
           2661.832149212177,
-          2669.543800626482
+          2669.543800626482,
+          2533.7583590189615
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36908,6 +36982,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -37458,7 +37533,8 @@ window.BENCHMARK_DATA = {
           93330.00110677084,
           69262.82958984375,
           90789.94447544643,
-          92114.36903599331
+          92114.36903599331,
+          90008.21904296875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -37967,6 +38043,7 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           56977,
+          57481,
           57481,
           57481
         ],
