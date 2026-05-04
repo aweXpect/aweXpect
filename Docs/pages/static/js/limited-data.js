@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
-      {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          277.96284243265785,
           256.58562800089516,
           286.2793915952955,
           296.5693815435682,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           269.79958724975586,
           252.4533190727234,
           293.6308441480001,
-          275.110637029012
+          275.110637029012,
+          264.114764213562
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -431,7 +431,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          251.72965453465778,
           244.6730202947344,
           266.19269466400146,
           260.07902606328327,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           269.46816228230796,
           261.65092894236244,
           260.7189357439677,
-          263.8557269732157
+          263.8557269732157,
+          238.03739060674394
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
-      {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          319051.619913737,
           316846.62387695315,
           340055.86955915176,
           312984.25638253347,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           322908.5329915365,
           301925.8316080729,
           311981.2226969401,
-          319975.9797200521
+          319975.9797200521,
+          302834.5935546875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1039,7 +1039,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2816708.0719866073,
           2654250.218489583,
           2846577.9813058036,
           2840669.1044270834,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2795256.38984375,
           2341530.219010417,
           2704617.4330729167,
-          2937670.0501302085
+          2937670.0501302085,
+          2580748.37265625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804902,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804891,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
       {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          482.34214210510254,
           487.4837978069599,
           535.6228993279593,
           510.74155814831073,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           505.6039227076939,
           501.26384313901264,
           500.64108344486783,
-          544.4871906916301
+          544.4871906916301,
+          485.213325881958
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1647,7 +1647,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          484.68963689804076,
           506.88361522129605,
           517.8432790756226,
           478.3175189971924,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           522.6490805308024,
           487.7186327775319,
           538.0864246232169,
-          546.1708667119344
+          546.1708667119344,
+          519.3114194869995
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
-      {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          272.3747438112895,
           240.3281974474589,
           263.2319943745931,
           246.56725441614788,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           261.298777614321,
           255.44322522481283,
           258.5103355554434,
-          273.82608989079796
+          273.82608989079796,
+          238.74584555625916
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2255,7 +2255,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          258.3463686943054,
           243.00272045135497,
           274.30932191440036,
           252.8639535537133,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           272.7409262975057,
           271.2964104016622,
           269.3243320465088,
-          280.77064650853475
+          280.77064650853475,
+          246.82492923736572
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
-      {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          473.76199467976886,
           485.76467081705727,
           502.207675298055,
           457.3616619427999,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           484.41091543833414,
           494.9349738756816,
           496.84803167978924,
-          528.2129118783133
+          528.2129118783133,
+          472.6876197179159
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2863,7 +2863,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1256.9610354105632,
           1296.5684993743896,
           1256.3972023555211,
           1183.0247463498797,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1247.1319697062174,
           1341.947005589803,
           1309.8175061543782,
-          1345.0313563028972
+          1345.0313563028972,
+          1235.909156926473
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
-      {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1952.0348284403483,
           1854.2924808774676,
           2005.7013147989908,
           1963.410169328962,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1930.993352762858,
           1708.920198694865,
           2010.3406911214192,
-          2066.6249555860245
+          2066.6249555860245,
+          1959.8867716471354
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3471,7 +3471,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1268.5727484776423,
           1336.1510782877604,
           1485.084701792399,
           1294.1252066748482,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1369.4476226806642,
           1448.7898471832275,
           1354.2864144189018,
-          1423.9157687595912
+          1423.9157687595912,
+          1321.959544999259
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "adc742599ffc1a3cff3ebf7c81baf37b0eaa3577",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 3 20:05:08 2025 \u002B0100",
-        "message": "chore: Bump PublicApiGenerator from 11.5.0 to 11.5.3 (#861)"
-      },
-      {
         "sha": "a2bb269c0daf0d2a9bd9897d2addc662361d1915",
         "author": "dependabot[bot]",
         "date": "Wed Dec 10 22:16:46 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon May 4 15:20:03 2026 \u002B0200",
         "message": "chore: Bump peter-evans/repository-dispatch from 3 to 4 (#937)"
+      },
+      {
+        "sha": "6a4e11a2e47a91ce0e37539cca62667650303467",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon May 4 17:40:15 2026 \u002B0200",
+        "message": "docs: refresh landing page hero example and tabs (#940)"
       }
     ],
     "labels": [
-      "adc74259",
       "a2bb269c",
       "85479583",
       "69c35d41",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "31ec2c16",
       "443165cb",
       "29eca80a",
-      "ddd9528a"
+      "ddd9528a",
+      "6a4e11a2"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2545.9479540507,
           2452.8310347965785,
           2640.0172931126185,
           2532.328660583496,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2597.639559427897,
           2245.071430751256,
           2661.832149212177,
-          2669.543800626482
+          2669.543800626482,
+          2533.7583590189615
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4079,7 +4079,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          88265.43655598958,
           86918.22303989956,
           89489.46942608173,
           89824.42639973959,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           93330.00110677084,
           69262.82958984375,
           90789.94447544643,
-          92114.36903599331
+          92114.36903599331,
+          90008.21904296875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           58137,
           58598,
@@ -4241,6 +4240,7 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           56977,
+          57481,
           57481,
           57481
         ],
