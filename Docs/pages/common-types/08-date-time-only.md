@@ -7,28 +7,32 @@ Describes the possible expectations for `DateOnly` and `TimeOnly`.
 You can verify that the `DateOnly` or `TimeOnly` is equal to another one or not:
 
 ```csharp
-DateOnly subjectA = new DateOnly(2024, 12, 24);
+DateOnly subject = new DateOnly(2024, 12, 24);
 
-await Expect.That(subjectA).IsEqualTo(new DateOnly(2024, 12, 24));
-await Expect.That(subjectA).IsNotEqualTo(new DateOnly(2024, 12, 23));
+await Expect.That(subject).IsEqualTo(new DateOnly(2024, 12, 24));
+await Expect.That(subject).IsNotEqualTo(new DateOnly(2024, 12, 23));
+```
 
-TimeOnly subjectB = new TimeOnly(14, 15, 16);
+```csharp
+TimeOnly subject = new TimeOnly(14, 15, 16);
 
-await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 16));
-await Expect.That(subjectB).IsNotEqualTo(new TimeOnly(13, 15, 16));
+await Expect.That(subject).IsEqualTo(new TimeOnly(14, 15, 16));
+await Expect.That(subject).IsNotEqualTo(new TimeOnly(13, 15, 16));
 ```
 
 You can also specify a tolerance:
 
 ```csharp
-DateOnly subjectA = new DateOnly(2024, 12, 24);
+DateOnly subject = new DateOnly(2024, 12, 24);
 
-await Expect.That(subjectA).IsEqualTo(new DateOnly(2024, 12, 23)).Within(TimeSpan.FromDays(1))
+await Expect.That(subject).IsEqualTo(new DateOnly(2024, 12, 23)).Within(TimeSpan.FromDays(1))
   .Because("we accept values between 2024-12-22 and 2024-12-24");
+```
 
-TimeOnly subjectB = new TimeOnly(14, 15, 16);
+```csharp
+TimeOnly subject = new TimeOnly(14, 15, 16);
 
-await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 17)).Within(TimeSpan.FromSeconds(1))
+await Expect.That(subject).IsEqualTo(new TimeOnly(14, 15, 17)).Within(TimeSpan.FromSeconds(1))
   .Because("we accept values between 14:15:16 and 14:15:18");
 ```
 
@@ -37,28 +41,32 @@ await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 17)).Within(TimeSpan.
 You can verify that the `DateOnly` or `TimeOnly` is one of many alternatives:
 
 ```csharp
-DateOnly subjectA = new DateOnly(2024, 12, 24);
+DateOnly subject = new DateOnly(2024, 12, 24);
 
-await Expect.That(subjectA).IsOneOf([new DateOnly(2024, 12, 23), new DateOnly(2024, 12, 24)]);
-await Expect.That(subjectA).IsNotOneOf([new DateOnly(2024, 12, 23), new DateOnly(2024, 12, 25)]);
+await Expect.That(subject).IsOneOf([new DateOnly(2024, 12, 23), new DateOnly(2024, 12, 24)]);
+await Expect.That(subject).IsNotOneOf([new DateOnly(2024, 12, 23), new DateOnly(2024, 12, 25)]);
+```
 
-TimeOnly subjectB = new TimeOnly(14, 15, 16);
+```csharp
+TimeOnly subject = new TimeOnly(14, 15, 16);
 
-await Expect.That(subjectB).IsOneOf([new TimeOnly(14, 15, 15), new TimeOnly(14, 15, 16)]);
-await Expect.That(subjectB).IsNotOneOf([new TimeOnly(13, 15, 16), new TimeOnly(13, 14, 15)]);
+await Expect.That(subject).IsOneOf([new TimeOnly(14, 15, 15), new TimeOnly(14, 15, 16)]);
+await Expect.That(subject).IsNotOneOf([new TimeOnly(13, 15, 16), new TimeOnly(13, 14, 15)]);
 ```
 
 You can also specify a tolerance:
 
 ```csharp
-DateOnly subjectA = new DateOnly(2024, 12, 24);
+DateOnly subject = new DateOnly(2024, 12, 24);
 
-await Expect.That(subjectA).IsOneOf([new DateOnly(2024, 12, 23)]).Within(TimeSpan.FromDays(1))
+await Expect.That(subject).IsOneOf([new DateOnly(2024, 12, 23)]).Within(TimeSpan.FromDays(1))
   .Because("we accept values between 2024-12-22 and 2024-12-24");
+```
 
-TimeOnly subjectB = new TimeOnly(14, 15, 16);
+```csharp
+TimeOnly subject = new TimeOnly(14, 15, 16);
 
-await Expect.That(subjectB).IsOneOf([new TimeOnly(14, 15, 17)]).Within(TimeSpan.FromSeconds(1))
+await Expect.That(subject).IsOneOf([new TimeOnly(14, 15, 17)]).Within(TimeSpan.FromSeconds(1))
   .Because("we accept values between 14:15:16 and 14:15:18");
 ```
 
@@ -67,27 +75,31 @@ await Expect.That(subjectB).IsOneOf([new TimeOnly(14, 15, 17)]).Within(TimeSpan.
 You can verify that the `DateOnly` or `TimeOnly` is (on or) after another value
 
 ```csharp
-DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
+DateOnly subject = DateOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectA).IsAfter(new DateOnly(2024, 1, 1));
-await Expect.That(subjectA).IsOnOrAfter(new DateOnly(2024, 1, 1));
+await Expect.That(subject).IsAfter(new DateOnly(2024, 1, 1));
+await Expect.That(subject).IsOnOrAfter(new DateOnly(2024, 1, 1));
+```
 
-TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
+```csharp
+TimeOnly subject = TimeOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectB).IsAfter(new TimeOnly(0, 0, 0));
-await Expect.That(subjectB).IsOnOrAfter(new TimeOnly(0, 0, 0));
+await Expect.That(subject).IsAfter(new TimeOnly(0, 0, 0));
+await Expect.That(subject).IsOnOrAfter(new TimeOnly(0, 0, 0));
 ```
 
 You can also specify a tolerance:
 
 ```csharp
-DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
+DateOnly subject = DateOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectA).IsAfter(DateOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromDays(1));
+await Expect.That(subject).IsAfter(DateOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromDays(1));
+```
 
-TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
+```csharp
+TimeOnly subject = TimeOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectB).IsAfter(TimeOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromSeconds(1));
+await Expect.That(subject).IsAfter(TimeOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromSeconds(1));
 ```
 
 ## Before
@@ -95,27 +107,31 @@ await Expect.That(subjectB).IsAfter(TimeOnly.FromDateTime(DateTime.Now)).Within(
 You can verify that the `DateOnly` or `TimeOnly` is (on or) before another value
 
 ```csharp
-DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
+DateOnly subject = DateOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectA).IsBefore(new DateOnly(2124, 12, 31));
-await Expect.That(subjectA).IsOnOrBefore(new DateOnly(2124, 12, 31));
+await Expect.That(subject).IsBefore(new DateOnly(2124, 12, 31));
+await Expect.That(subject).IsOnOrBefore(new DateOnly(2124, 12, 31));
+```
 
-TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
+```csharp
+TimeOnly subject = TimeOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectB).IsBefore(new TimeOnly(23, 59, 59));
-await Expect.That(subjectB).IsOnOrBefore(new TimeOnly(23, 59, 59));
+await Expect.That(subject).IsBefore(new TimeOnly(23, 59, 59));
+await Expect.That(subject).IsOnOrBefore(new TimeOnly(23, 59, 59));
 ```
 
 You can also specify a tolerance:
 
 ```csharp
-DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
+DateOnly subject = DateOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectA).IsBefore(DateOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromDays(1));
+await Expect.That(subject).IsBefore(DateOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromDays(1));
+```
 
-TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
+```csharp
+TimeOnly subject = TimeOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectB).IsBefore(TimeOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromSeconds(1));
+await Expect.That(subject).IsBefore(TimeOnly.FromDateTime(DateTime.Now)).Within(TimeSpan.FromSeconds(1));
 ```
 
 ## Between
@@ -123,13 +139,15 @@ await Expect.That(subjectB).IsBefore(TimeOnly.FromDateTime(DateTime.Now)).Within
 You can verify that the `DateOnly` or `TimeOnly` is between two values:
 
 ```csharp
-DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
+DateOnly subject = DateOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectA).IsBetween(new DateOnly(2024, 1, 1)).And(new DateOnly(2123, 12, 31));
+await Expect.That(subject).IsBetween(new DateOnly(2024, 1, 1)).And(new DateOnly(2123, 12, 31));
+```
 
-TimeOnly subjectB = TimeOnly.FromDateTime(DateTime.Now);
+```csharp
+TimeOnly subject = TimeOnly.FromDateTime(DateTime.Now);
 
-await Expect.That(subjectB)
+await Expect.That(subject)
     .IsBetween(TimeOnly.FromDateTime(DateTime.Now).Add(-2.Seconds()))
     .And(TimeOnly.FromDateTime(DateTime.Now).Add(2.Seconds()));
 ```
