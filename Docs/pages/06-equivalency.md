@@ -10,14 +10,14 @@ Equivalency instead compares the public state of two objects field by field and 
 nested objects and collections. Two objects are equivalent when every included member compares as equivalent.
 
 ```csharp
-class Pirate(string name)
+class Album(string title)
 {
-  public string Name { get; } = name;
+  public string Title { get; } = title;
 }
-Pirate jack = new("Jack");
+Album subject = new("Abbey Road");
 
-await Expect.That(jack).IsEquivalentTo(new Pirate("Jack"));
-await Expect.That(jack).IsNotEquivalentTo(new Pirate("Hector"));
+await Expect.That(subject).IsEquivalentTo(new Album("Abbey Road"));
+await Expect.That(subject).IsNotEquivalentTo(new Album("Revolver"));
 ```
 
 ## Where equivalency is available
@@ -30,9 +30,9 @@ Equivalency is exposed on three different surfaces.
 configure the comparison via [`EquivalencyOptions<TExpected>`](#configuration).
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected);
-await Expect.That(pirate).IsEquivalentTo(expected, o => o.IgnoringMember("Bounty"));
-await Expect.That(pirate).IsNotEquivalentTo(landlubber);
+await Expect.That(album).IsEquivalentTo(expected);
+await Expect.That(album).IsEquivalentTo(expected, o => o.IgnoringMember("PlayCount"));
+await Expect.That(album).IsNotEquivalentTo(unexpected);
 ```
 
 ### On collection elements
@@ -41,11 +41,11 @@ await Expect.That(pirate).IsNotEquivalentTo(landlubber);
 expected value, using the same equivalency comparison.
 
 ```csharp
-IEnumerable<Pirate> crew = //...
-Pirate captain = //...
+IEnumerable<Track> tracks = //...
+Track expected = //...
 
-await Expect.That(crew).All().AreEquivalentTo(captain);
-await Expect.That(crew).AtLeast(2).AreEquivalentTo(captain, o => o.IgnoringMember("Name"));
+await Expect.That(tracks).All().AreEquivalentTo(expected);
+await Expect.That(tracks).AtLeast(2).AreEquivalentTo(expected, o => o.IgnoringMember("Title"));
 ```
 
 ### As a modifier on equality assertions
@@ -54,12 +54,12 @@ For expectations that accept a custom equality comparer (`IsEqualTo`, `Contains`
 `All().AreEqualTo(...)`, …), append `.Equivalent()` to switch the comparison from `Equals` to structural equivalency.
 
 ```csharp
-await Expect.That(pirate).IsEqualTo(captain).Equivalent();
+await Expect.That(album).IsEqualTo(expected).Equivalent();
 
-IEnumerable<Pirate> crew = //...
-await Expect.That(crew).Contains(captain).Equivalent();
-await Expect.That(crew).StartsWith(captain).Equivalent();
-await Expect.That(crew).All().AreEqualTo(captain).Equivalent(o => o.IgnoringCollectionOrder());
+IEnumerable<Track> tracks = //...
+await Expect.That(tracks).Contains(expected).Equivalent();
+await Expect.That(tracks).StartsWith(expected).Equivalent();
+await Expect.That(tracks).All().AreEqualTo(expected).Equivalent(o => o.IgnoringCollectionOrder());
 ```
 
 ## Default behaviour
@@ -80,20 +80,20 @@ All equivalency overloads accept an `options` callback that receives an `Equival
 `EquivalencyOptions<TExpected>`) record. The fluent methods are chainable.
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
+await Expect.That(album).IsEquivalentTo(expected, o => o
   .IncludingFields(IncludeMembers.Public | IncludeMembers.Internal)
-  .IgnoringMember("Bounty")
+  .IgnoringMember("PlayCount")
   .IgnoringCollectionOrder());
 ```
 
 ### Ignoring members by name
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected, o => o.IgnoringMember("Bounty"));
+await Expect.That(album).IsEquivalentTo(expected, o => o.IgnoringMember("PlayCount"));
 ```
 
-The match is case-insensitive. For nested members, the path is dot-separated (e.g. `"Ship.Name"`); for collection
-elements, the index is bracketed (e.g. `"Ship.Cargo[3]"`).
+The match is case-insensitive. For nested members, the path is dot-separated (e.g. `"Artist.Name"`); for collection
+elements, the index is bracketed (e.g. `"Tracks[3]"`).
 
 ### Ignoring members by predicate
 
@@ -101,22 +101,22 @@ There are four overloads of `Ignoring`, depending on which information you need:
 
 ```csharp
 // by member path and type
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
+await Expect.That(album).IsEquivalentTo(expected, o => o
   .Ignoring((memberPath, memberType)
-    => memberPath.EndsWith("Bounty") && memberType == typeof(int)));
+    => memberPath.EndsWith("PlayCount") && memberType == typeof(int)));
 
 // by member path only
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
-  .Ignoring(memberPath => memberPath == "Ship.Name"));
+await Expect.That(album).IsEquivalentTo(expected, o => o
+  .Ignoring(memberPath => memberPath == "Artist.Name"));
 
 // by type only
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
+await Expect.That(album).IsEquivalentTo(expected, o => o
   .Ignoring(memberType => memberType == typeof(DateTime)));
 
 // by member path, type and reflected MemberInfo
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
+await Expect.That(album).IsEquivalentTo(expected, o => o
   .Ignoring((memberPath, _, memberInfo)
-    => memberPath.EndsWith("Bounty") && memberInfo is PropertyInfo));
+    => memberPath.EndsWith("PlayCount") && memberInfo is PropertyInfo));
 ```
 
 ### Including fields and properties
@@ -125,7 +125,7 @@ You can change which fields and properties participate in the comparison. Both m
 enum with the values `None`, `Public`, `Internal` and `Private`.
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
+await Expect.That(album).IsEquivalentTo(expected, o => o
   .IncludingFields(IncludeMembers.None)                         // exclude all fields
   .IncludingProperties(IncludeMembers.Public | IncludeMembers.Private));
 ```
@@ -151,9 +151,9 @@ You can apply options to a specific member type only. Type-specific options over
 of that type.
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
-  .For<Ship>(x => x.IgnoringMember("Cargo"))
-  .For<List<string>>(x => x.IgnoringCollectionOrder()));
+await Expect.That(album).IsEquivalentTo(expected, o => o
+  .For<Artist>(x => x.IgnoringMember("BornOn"))
+  .For<List<Track>>(x => x.IgnoringCollectionOrder()));
 ```
 
 Unlike the other fluent methods, `For<T>` mutates `CustomOptions` on the options it was called on rather than returning
@@ -166,16 +166,16 @@ Each type can be compared either by value (`Equals`) or by walking its members. 
 itself (see [Default behaviour](#default-behaviour)). To override for a specific type:
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected, o => o
-  .For<Coordinate>(x => x with { ComparisonType = EquivalencyComparisonType.ByValue }));
+await Expect.That(album).IsEquivalentTo(expected, o => o
+  .For<TrackId>(x => x with { ComparisonType = EquivalencyComparisonType.ByValue }));
 ```
 
 To change the global rule, replace the `DefaultComparisonTypeSelector`:
 
 ```csharp
-await Expect.That(pirate).IsEquivalentTo(expected, o => o with
+await Expect.That(album).IsEquivalentTo(expected, o => o with
 {
-  DefaultComparisonTypeSelector = type => type == typeof(Coordinate)
+  DefaultComparisonTypeSelector = type => type == typeof(TrackId)
     ? EquivalencyComparisonType.ByValue
     : EquivalencyDefaults.DefaultComparisonType(type),
 });
@@ -196,26 +196,26 @@ using IDisposable scope = Customize.aweXpect.Equivalency().DefaultEquivalencyOpt
 ## Per-property expectations with `It.Is<T>()`
 
 Equivalency lets you compare against an *anonymous expectation object* in which individual members assert their own
-expectations via `It.Is<T>()`. Think of it as matching a subject against a wanted poster: each property carries its
-own description rather than a concrete value.
+expectations via `It.Is<T>()`. Think of it as a playlist filter: each property carries its own criterion rather than a
+concrete value.
 
 ```csharp
-class Suspect
+class Track
 {
-  public string? Alias { get; set; }
-  public int HeistsPulled { get; set; }
+  public string? Title { get; set; }
+  public int PlayCount { get; set; }
 }
 
-Suspect cat = new()
+Track midnight = new()
 {
-  Alias = "The Cat",
-  HeistsPulled = 42,
+  Title = "Midnight Echo",
+  PlayCount = 42,
 };
 
-await Expect.That(cat).IsEquivalentTo(new
+await Expect.That(midnight).IsEquivalentTo(new
 {
-  Alias = It.Is<string>().That.IsNotEmpty(),
-  HeistsPulled = It.Is<int>().That.IsGreaterThan(2),
+  Title = It.Is<string>().That.IsNotEmpty(),
+  PlayCount = It.Is<int>().That.IsGreaterThan(2),
 });
 ```
 
@@ -231,25 +231,25 @@ Failure messages list each differing member with its full path and the configure
 For a structural mismatch:
 
 ```
-Expected that captain
-is equivalent to Captain {
-    Name = "Hook",
-    Ship = Ship { Name = "Black Pearl" }
+Expected that album
+is equivalent to Album {
+    Title = "Abbey Road",
+    Artist = Artist { Name = "The Beatles" }
   },
 but it was not:
-  Property Ship.Name was "Jolly Roger" instead of "Black Pearl"
+  Property Artist.Name was "Wings" instead of "The Beatles"
 
 Equivalency options:
  - include public fields and properties
 ```
 
-When the wanted-poster pattern with `It.Is<T>()` fails, the failure renders each member's expectation inline:
+When the playlist-filter pattern with `It.Is<T>()` fails, the failure renders each member's expectation inline:
 
 ```
-Expected that cat
-is equivalent to { Alias = is string that is not empty, HeistsPulled = is int that is greater than 2 },
+Expected that midnight
+is equivalent to { Title = is string that is not empty, PlayCount = is int that is greater than 2 },
 but it was not:
-  Property HeistsPulled was 1
+  Property PlayCount was 1
 
 Equivalency options:
  - include public fields and properties

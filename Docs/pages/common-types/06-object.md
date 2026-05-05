@@ -7,11 +7,11 @@ Describes the possible expectations for objects.
 You can verify that the `object` is equal to another one or not:
 
 ```csharp
-record MyClass(int Value);
-MyClass subject = new(1);
+record Album(string Title);
+Album subject = new("Abbey Road");
 
-await Expect.That(subject).IsEqualTo(new MyClass(1));
-await Expect.That(subject).IsNotEqualTo(new MyClass(2));
+await Expect.That(subject).IsEqualTo(new Album("Abbey Road"));
+await Expect.That(subject).IsNotEqualTo(new Album("Revolver"));
 ```
 
 *Note: this uses the underlying `object.Equals(object?, object?)` method*
@@ -21,11 +21,11 @@ await Expect.That(subject).IsNotEqualTo(new MyClass(2));
 You can verify that the `object` has the same reference as another one:
 
 ```csharp
-record MyClass(int Value);
-MyClass subject = new(1);
+record Album(string Title);
+Album subject = new("Abbey Road");
 
 await Expect.That(subject).IsSameAs(subject);
-await Expect.That(subject).IsNotSameAs(new MyClass(1));
+await Expect.That(subject).IsNotSameAs(new Album("Abbey Road"));
 ```
 
 *Note: this uses the underlying `object.ReferenceEquals(object?, object?)` method*
@@ -35,16 +35,16 @@ await Expect.That(subject).IsNotSameAs(new MyClass(1));
 You can verify that the `object` is equal to another one while using a custom `IEqualityComparer<object>`:
 
 ```csharp
-class MyClassComparer : IEqualityComparer<object>
+class AlbumComparer : IEqualityComparer<object>
 {
   public bool Equals(object? x, object? y)
     => x != null && y != null;
   public int GetHashCode(object obj)
     => obj.GetHashCode();
 }
-MyClass subject = new(1);
+Album subject = new("Abbey Road");
 
-await Expect.That(subject).IsEqualTo(new MyClass(2)).Using(new MyClassComparer());
+await Expect.That(subject).IsEqualTo(new Album("Revolver")).Using(new AlbumComparer());
 ```
 
 ## Equivalency
@@ -53,14 +53,14 @@ You can verify that the `object` is structurally equivalent to another one. See 
 [equivalency](/docs/expectations/equivalency) page for details and configuration options.
 
 ```csharp
-class MyClass(int value)
+class Album(string title)
 {
-  public int Value { get; } = value;
+  public string Title { get; } = title;
 }
-MyClass subject = new(1);
+Album subject = new("Abbey Road");
 
-await Expect.That(subject).IsEquivalentTo(new MyClass(1));
-await Expect.That(subject).IsNotEquivalentTo(new MyClass(2));
+await Expect.That(subject).IsEquivalentTo(new Album("Abbey Road"));
+await Expect.That(subject).IsNotEquivalentTo(new Album("Revolver"));
 ```
 
 ## One of
@@ -68,11 +68,11 @@ await Expect.That(subject).IsNotEquivalentTo(new MyClass(2));
 You can verify that the `object` is one of many alternatives:
 
 ```csharp
-record MyClass(int Value);
-MyClass subject = new(1);
+record Album(string Title);
+Album subject = new("Abbey Road");
 
-await Expect.That(subject).IsOneOf([new MyClass(1), new MyClass(2)]);
-await Expect.That(subject).IsNotOneOf([new MyClass(2), new MyClass(3)]);
+await Expect.That(subject).IsOneOf([new Album("Abbey Road"), new Album("Revolver")]);
+await Expect.That(subject).IsNotOneOf([new Album("Revolver"), new Album("Help!")]);
 ```
 
 ## Type check
@@ -80,12 +80,12 @@ await Expect.That(subject).IsNotOneOf([new MyClass(2), new MyClass(3)]);
 You can verify that the `object` is of a given type or not:
 
 ```csharp
-object subject = new MyClass(1);
+object subject = new Album("Abbey Road");
 
-await Expect.That(subject).Is<MyClass>();
-await Expect.That(subject).Is(typeof(MyClass));
-await Expect.That(subject).IsNot<OtherClass>();
-await Expect.That(subject).IsNot(typeof(OtherClass));
+await Expect.That(subject).Is<Album>();
+await Expect.That(subject).Is(typeof(Album));
+await Expect.That(subject).IsNot<Single>();
+await Expect.That(subject).IsNot(typeof(Single));
 ```
 
 This verifies, if the subject is of the given type or a derived type.
@@ -93,12 +93,12 @@ This verifies, if the subject is of the given type or a derived type.
 You can also verify that the `object` is only of the given type and not of a derived type:
 
 ```csharp
-object subject = new MyClass(1);
+object subject = new Album("Abbey Road");
 
-await Expect.That(subject).IsExactly<MyClass>();
-await Expect.That(subject).IsExactly(typeof(MyClass));
-await Expect.That(subject).IsNotExactly<OtherClass>();
-await Expect.That(subject).IsNotExactly(typeof(OtherClass));
+await Expect.That(subject).IsExactly<Album>();
+await Expect.That(subject).IsExactly(typeof(Album));
+await Expect.That(subject).IsNotExactly<Single>();
+await Expect.That(subject).IsNotExactly(typeof(Single));
 ```
 
 ## Null
@@ -126,12 +126,12 @@ When the object changes in the background, you can also verify that it satisfies
 period:
 
 ```csharp
-MyClass subject = new() {
-	IsTriggered = false
+Track subject = new() {
+	IsPlayed = false
 };
-// Start a background task that sets `IsTriggered` to true
+// Start a background task that sets `IsPlayed` to true
 
-await Expect.That(subject).Satisfies(x => x.IsTriggered == true).Within(2.Seconds());
+await Expect.That(subject).Satisfies(x => x.IsPlayed == true).Within(2.Seconds());
 // using aweXpect.Chronology
 ```
 
@@ -140,18 +140,18 @@ await Expect.That(subject).Satisfies(x => x.IsTriggered == true).Within(2.Second
 You can verify that any object complies with an expectation:
 
 ```csharp
-List<int> values = new();
+List<Track> tracks = new();
 
-await Expect.That(values).CompliesWith(x => x.IsEmpty());
+await Expect.That(tracks).CompliesWith(x => x.IsEmpty());
 ```
 
 When the object changes in the background, you can also verify that it complies with an expectation within a given time
 period:
 
 ```csharp
-List<int> values = new();
-// Start a background task that adds items to `values`
+List<Track> tracks = new();
+// Start a background task that adds items to `tracks`
 
-await Expect.That(values).CompliesWith(x => x.HasCount().AtLeast(4)).Within(2.Seconds());
+await Expect.That(tracks).CompliesWith(x => x.HasCount().AtLeast(4)).Within(2.Seconds());
 // using aweXpect.Chronology
 ```

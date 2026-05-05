@@ -23,22 +23,22 @@ Use the `For`-syntax to access different properties of a common subject and comb
 e.g.
 
 ```csharp
-  public record MyClass(int Status, string Content);
-  MyClass subject = new(1, "some other content");
+  public record Album(int TrackCount, string Title);
+  Album subject = new(1, "Dark Side of the Sun");
   
   await Expect.That(subject)
-    .For(x => x.Status, x => x.IsGreaterThan(1)).And
-    .For(x => x.Content, x => x.Is("some content"));
+    .For(x => x.TrackCount, x => x.IsGreaterThan(1)).And
+    .For(x => x.Title, x => x.Is("Dark Side of the Moon"));
 ```
 
 > ```
 > Expected subject to
-> for .Status be greater than 1 and for .Content be equal to "some content",
-> but .Status was 1 and .Content was "some other content" which differs at index 5:
->         ↓ (actual)
->   "some other content"
->   "some content"
->         ↑ (expected)
+> for .TrackCount be greater than 1 and for .Title be equal to "Dark Side of the Moon",
+> but .TrackCount was 1 and .Title was "Dark Side of the Sun" which differs at index 17:
+>                      ↓ (actual)
+>   "Dark Side of the Sun"
+>   "Dark Side of the Moon"
+>                      ↑ (expected)
 > ```
 
 ## On different subjects
