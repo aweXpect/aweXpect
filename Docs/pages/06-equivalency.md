@@ -237,7 +237,9 @@ is equivalent to Album {
     Artist = Artist { Name = "The Beatles" }
   },
 but it was not:
-  Property Artist.Name was "Wings" instead of "The Beatles"
+  Property Artist.Name differed:
+       Found: "Wings"
+    Expected: "The Beatles"
 
 Equivalency options:
  - include public fields and properties
