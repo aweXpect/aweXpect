@@ -47,22 +47,21 @@ MyClass subject = new(1);
 await Expect.That(subject).IsEqualTo(new MyClass(2)).Using(new MyClassComparer());
 ```
 
-## Equivalence
+## Equivalency
 
-You can verify that the `object` is equivalent to another one or not:
+You can verify that the `object` is structurally equivalent to another one. See the
+[equivalency](/docs/expectations/equivalency) page for details and configuration options.
 
 ```csharp
 class MyClass(int value)
 {
-  int Value { get; } = value;
+  public int Value { get; } = value;
 }
 MyClass subject = new(1);
 
-await Expect.That(subject).IsEqualTo(new MyClass(1)).Equivalent();
-await Expect.That(subject).IsNotEqualTo(new MyClass(2)).Equivalent();
+await Expect.That(subject).IsEquivalentTo(new MyClass(1));
+await Expect.That(subject).IsNotEquivalentTo(new MyClass(2));
 ```
-
-*Note: this compares recursively all properties on the two objects for equivalence.*
 
 ## One of
 

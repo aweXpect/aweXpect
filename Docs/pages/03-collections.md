@@ -65,7 +65,7 @@ await Expect.That([1, 1, 1]).All().AreEqualTo(1);
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
 IEnumerable<MyClass> values = //...
@@ -204,7 +204,7 @@ await Expect.That(values).Contains(1).Between(1).And(5.Times());
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
 IEnumerable<MyClass> values = //...
@@ -290,7 +290,7 @@ await Expect.That(values).DoesNotStartWith(2, 3);
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
 IEnumerable<MyClass> values = //...
@@ -321,7 +321,7 @@ await Expect.That(values).DoesNotEndWith(3, 5);
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
 IEnumerable<MyClass> values = //...
