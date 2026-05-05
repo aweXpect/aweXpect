@@ -18,11 +18,11 @@ class MyClass
   public void OnThresholdReached(ThresholdReachedEventArgs e)
     => ThresholdReached?.Invoke(this, e);
 }
-MyClass sut = new MyClass();
+MyClass subject = new MyClass();
 
 // ↓ Records all events
-IEventRecording<MyClass> recording = sut.Record().Events();
-IEventRecording<MyClass> recording = sut.Record().Events(nameof(MyClass.ThresholdReached));
+IEventRecording<MyClass> recording = subject.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events(nameof(MyClass.ThresholdReached));
 // ↑ Records only the ThresholdReached event
 ```
 
@@ -32,10 +32,10 @@ You can verify that a recording recorded an event:
 
 ```csharp
 // Start the recording
-IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events();
 
 // Perform some action on the subject under test
-sut.OnThresholdReached(new ThresholdReachedEventArgs());
+subject.OnThresholdReached(new ThresholdReachedEventArgs());
 
 // Expect that the ThresholdReached event was triggered at least once
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached));
@@ -46,10 +46,10 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached));
 You can filter the recorded events based on their parameters.
 
 ```csharp
-IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events();
 
-sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
-sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
+subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
+subject.OnThresholdReached(new ThresholdReachedEventArgs(15));
 
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10);
@@ -60,12 +60,12 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
 You can specify a timeout within the expected events should be triggered:
 
 ```csharp
-IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events();
 
 _ = Task.Delay(2.Seconds()).ContinueWith(_ => {
     // Trigger the events in the background
-    sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
-    sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
+    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
+    subject.OnThresholdReached(new ThresholdReachedEventArgs(15));
 });
 
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
@@ -83,12 +83,12 @@ the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asy
 you can filter the recorded events based on the sender (the first parameter):
 
 ```csharp
-IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events();
 
-sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
 
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
-  .WithSender(s => s == sut);
+  .WithSender(s => s == subject);
 ```
 
 ### EventArgs
@@ -98,9 +98,9 @@ the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asy
 you can filter the recorded events based on their `EventArgs` (the second parameter):
 
 ```csharp
-IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events();
 
-sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
 
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .With<ThresholdReachedEventArgs>(e => e < 10);
@@ -111,10 +111,10 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
 You can verify that an event was recorded a specific number of times
 
 ```csharp
-IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = subject.Record().Events();
 
-sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
-sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
+subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
+subject.OnThresholdReached(new ThresholdReachedEventArgs(15));
 
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .Between(1).And(2.Times();
@@ -135,11 +135,11 @@ Included are some overloads for the [
 event:
 
 ```csharp
-MyClass sut = // ...implements INotifyPropertyChanged
-IEventRecording<MyClass> recording = sut.Record().Events();
+MyClass subject = // ...implements INotifyPropertyChanged
+IEventRecording<MyClass> recording = subject.Record().Events();
 
 // do something that triggers the PropertyChanged event
-sut.Execute();
+subject.Execute();
 
 await Expect.That(recording).TriggeredPropertyChanged()
   .Because("it should trigger the PropertyChanged event for any property name");

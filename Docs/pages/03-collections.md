@@ -65,14 +65,14 @@ await Expect.That([1, 1, 1]).All().AreEqualTo(1);
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
-IEnumerable<MyClass> values = //...
-MyClass expected = //...
+IEnumerable<Album> albums = //...
+Album expected = //...
 
-await Expect.That(values).All().AreEqualTo(expected).Equivalent();
-await Expect.That(values).All().AreEqualTo(expected).Using(new MyClassComparer());
+await Expect.That(albums).All().AreEqualTo(expected).Equivalent();
+await Expect.That(albums).All().AreEqualTo(expected).Using(new AlbumComparer());
 ```
 
 For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing
@@ -172,9 +172,9 @@ await Expect.That(["a", "B", "c"]).IsInAscendingOrder().Using(StringComparer.Ord
 For objects, you can also verify the sort order on a member:
 
 ```csharp
-MyClass[] values = //...
+Album[] albums = //...
 
-await Expect.That(values).IsInAscendingOrder(x => x.Value);
+await Expect.That(albums).IsInAscendingOrder(x => x.Title);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
@@ -204,14 +204,14 @@ await Expect.That(values).Contains(1).Between(1).And(5.Times());
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
-IEnumerable<MyClass> values = //...
-MyClass expected = //...
+IEnumerable<Album> albums = //...
+Album expected = //...
 
-await Expect.That(values).Contains(expected).Equivalent();
-await Expect.That(values).Contains(expected).Using(new MyClassComparer());
+await Expect.That(albums).Contains(expected).Equivalent();
+await Expect.That(albums).Contains(expected).Using(new AlbumComparer());
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
@@ -290,14 +290,14 @@ await Expect.That(values).DoesNotStartWith(2, 3);
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
-IEnumerable<MyClass> values = //...
-MyClass expected = //...
+IEnumerable<Album> albums = //...
+Album expected = //...
 
-await Expect.That(values).StartsWith(expected).Equivalent();
-await Expect.That(values).StartsWith(expected).Using(new MyClassComparer());
+await Expect.That(albums).StartsWith(expected).Equivalent();
+await Expect.That(albums).StartsWith(expected).Using(new AlbumComparer());
 ```
 
 For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing
@@ -321,14 +321,14 @@ await Expect.That(values).DoesNotEndWith(3, 5);
 ```
 
 You can also use a [custom comparer](/docs/expectations/common-types/object#custom-comparer) or
-configure [equivalence](/docs/expectations/common-types/object#equivalence):
+configure [equivalency](/docs/expectations/equivalency):
 
 ```csharp
-IEnumerable<MyClass> values = //...
-MyClass expected = //...
+IEnumerable<Album> albums = //...
+Album expected = //...
 
-await Expect.That(values).EndsWith(expected).Equivalent();
-await Expect.That(values).EndsWith(expected).Using(new MyClassComparer());
+await Expect.That(albums).EndsWith(expected).Equivalent();
+await Expect.That(albums).EndsWith(expected).Using(new AlbumComparer());
 ```
 
 For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing
