@@ -3000,6 +3000,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -3502,7 +3508,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -4008,7 +4015,8 @@ window.BENCHMARK_DATA = {
           252.4533190727234,
           293.6308441480001,
           275.110637029012,
-          264.114764213562
+          264.114764213562,
+          291.55724267959596
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4481,6 +4489,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5033,7 +5042,8 @@ window.BENCHMARK_DATA = {
           261.65092894236244,
           260.7189357439677,
           263.8557269732157,
-          238.03739060674394
+          238.03739060674394,
+          244.9257495743888
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5226,6 +5236,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8096,6 +8107,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -8521,7 +8538,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -8950,7 +8968,8 @@ window.BENCHMARK_DATA = {
           301925.8316080729,
           311981.2226969401,
           319975.9797200521,
-          302834.5935546875
+          302834.5935546875,
+          308668.54440104164
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9346,6 +9365,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9821,7 +9841,8 @@ window.BENCHMARK_DATA = {
           2341530.219010417,
           2704617.4330729167,
           2937670.0501302085,
-          2580748.37265625
+          2580748.37265625,
+          2763431.616629464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10253,6 +10274,7 @@ window.BENCHMARK_DATA = {
           4804902,
           4804906,
           4804891,
+          4804906,
           4804906,
           4804906,
           4804906
@@ -13269,6 +13291,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -13771,7 +13799,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -14277,7 +14306,8 @@ window.BENCHMARK_DATA = {
           501.26384313901264,
           500.64108344486783,
           544.4871906916301,
-          485.213325881958
+          485.213325881958,
+          515.0589843896719
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14750,6 +14780,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15302,7 +15333,8 @@ window.BENCHMARK_DATA = {
           487.7186327775319,
           538.0864246232169,
           546.1708667119344,
-          519.3114194869995
+          519.3114194869995,
+          509.6996270588466
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15495,6 +15527,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -18827,6 +18860,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -19329,7 +19368,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -19835,7 +19875,8 @@ window.BENCHMARK_DATA = {
           255.44322522481283,
           258.5103355554434,
           273.82608989079796,
-          238.74584555625916
+          238.74584555625916,
+          260.87515014012655
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20308,6 +20349,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
+          808,
           808,
           808,
           808,
@@ -20860,7 +20902,8 @@ window.BENCHMARK_DATA = {
           271.2964104016622,
           269.3243320465088,
           280.77064650853475,
-          246.82492923736572
+          246.82492923736572,
+          268.16616710027057
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21053,6 +21096,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24385,6 +24429,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -24887,7 +24937,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -25393,7 +25444,8 @@ window.BENCHMARK_DATA = {
           494.9349738756816,
           496.84803167978924,
           528.2129118783133,
-          472.6876197179159
+          472.6876197179159,
+          496.8072699819292
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -25866,6 +25918,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26418,7 +26471,8 @@ window.BENCHMARK_DATA = {
           1341.947005589803,
           1309.8175061543782,
           1345.0313563028972,
-          1235.909156926473
+          1235.909156926473,
+          1356.0351581573486
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -26847,6 +26901,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -29943,6 +29998,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -30445,7 +30506,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -30951,7 +31013,8 @@ window.BENCHMARK_DATA = {
           1708.920198694865,
           2010.3406911214192,
           2066.6249555860245,
-          1959.8867716471354
+          1959.8867716471354,
+          2069.748091016497
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31424,6 +31487,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -31976,7 +32040,8 @@ window.BENCHMARK_DATA = {
           1448.7898471832275,
           1354.2864144189018,
           1423.9157687595912,
-          1321.959544999259
+          1321.959544999259,
+          1409.825442450387
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32169,6 +32234,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -35501,6 +35567,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 4 17:40:15 2026 \u002B0200",
         "message": "docs: refresh landing page hero example and tabs (#940)"
+      },
+      {
+        "sha": "44a5e726867344dbced67b6adc57131656dd287a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue May 5 09:21:34 2026 \u002B0200",
+        "message": "docs: promote Equivalency to a top-level page (#941)"
       }
     ],
     "labels": [
@@ -36003,7 +36075,8 @@ window.BENCHMARK_DATA = {
       "443165cb",
       "29eca80a",
       "ddd9528a",
-      "6a4e11a2"
+      "6a4e11a2",
+      "44a5e726"
     ],
     "datasets": [
       {
@@ -36509,7 +36582,8 @@ window.BENCHMARK_DATA = {
           2245.071430751256,
           2661.832149212177,
           2669.543800626482,
-          2533.7583590189615
+          2533.7583590189615,
+          2720.7809628804525
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -36982,6 +37056,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -37534,7 +37609,8 @@ window.BENCHMARK_DATA = {
           69262.82958984375,
           90789.94447544643,
           92114.36903599331,
-          90008.21904296875
+          90008.21904296875,
+          92348.97192382812
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -38043,6 +38119,7 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           56977,
+          57481,
           57481,
           57481,
           57481
