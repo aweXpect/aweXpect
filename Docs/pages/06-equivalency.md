@@ -77,8 +77,7 @@ By default, equivalency:
 ## Configuration
 
 All equivalency overloads accept an `options` callback that receives an `EquivalencyOptions` (or
-`EquivalencyOptions<TExpected>`) record. The callback returns the configured options. All methods are immutable and
-chainable.
+`EquivalencyOptions<TExpected>`) record. The fluent methods are chainable.
 
 ```csharp
 await Expect.That(pirate).IsEquivalentTo(expected, o => o
@@ -156,6 +155,10 @@ await Expect.That(pirate).IsEquivalentTo(expected, o => o
   .For<Ship>(x => x.IgnoringMember("Cargo"))
   .For<List<string>>(x => x.IgnoringCollectionOrder()));
 ```
+
+Unlike the other fluent methods, `For<T>` mutates `CustomOptions` on the options it was called on rather than returning
+a copy. That is fine inside a single callback, but means an `EquivalencyOptions` instance you have already configured
+with `For<T>` should not be reused across separate assertions.
 
 ### Comparing by value or by members
 
