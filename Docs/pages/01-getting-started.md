@@ -32,9 +32,9 @@ Write your first expectation:
 
 ```csharp
 [Fact]
-public async Task SomeMethod_WhenInputIsInvalid_ShouldReturnFalse()
+public async Task IsInLibrary_WhenAlbumIsMissing_ShouldReturnFalse()
 {
-  bool result = SomeMethod("invalid input");
+  bool result = IsInLibrary("Unknown Album");
   
   await Expect.That(result).IsFalse();
 }
@@ -54,17 +54,17 @@ You can add a reason for all expectations, that will be included in the exceptio
 
 ```csharp
 [Fact]
-public async Task SomeMethod_WhenInputIsInvalid_ShouldReturnFalse()
+public async Task IsInLibrary_WhenAlbumIsMissing_ShouldReturnFalse()
 {
-  bool result = SomeMethod("invalid input");
+  bool result = IsInLibrary("Unknown Album");
   
-  await Expect.That(result).IsFalse().Because("the input was invalid");
+  await Expect.That(result).IsFalse().Because("the album is not in the library");
 }
 ```
 
 This will result in
 > ```
 > Expected result to
-> be False, because the input was invalid,
+> be False, because the album is not in the library,
 > but it was True
 > ```

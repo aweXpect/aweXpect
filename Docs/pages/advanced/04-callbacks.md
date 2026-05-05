@@ -81,8 +81,8 @@ You can also include a parameter during signaling:
 ```csharp
 Signaler<string> signaler = new();
 
-signaler.Signal("foo");
-signaler.Signal("bar");
+signaler.Signal("Yesterday");
+signaler.Signal("Let It Be");
 
 await Expect.That(signaler).Signaled(2.Times());
 ```
@@ -92,11 +92,11 @@ You can filter for signals with specific parameters by providing a `predicate`:
 ```csharp
 Signaler<string> signaler = new();
 
-signaler.Signal("foo");
-signaler.Signal("bar");
-signaler.Signal("foo");
+signaler.Signal("Yesterday");
+signaler.Signal("Let It Be");
+signaler.Signal("Yesterday");
 
-await Expect.That(signaler).Signaled(2.Times()).With(p => p == "foo");
+await Expect.That(signaler).Signaled(2.Times()).With(p => p == "Yesterday");
 ```
 
 *In case of a failed expectation, the recorded parameters will be displayed in the error message.*
