@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
-      {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:31 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          286.2793915952955,
           296.5693815435682,
           263.3704100290934,
           251.2219662030538,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           293.6308441480001,
           275.110637029012,
           264.114764213562,
-          291.55724267959596
+          291.55724267959596,
+          255.5263029416402
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -429,7 +429,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          266.19269466400146,
           260.07902606328327,
           243.59214305877686,
           236.3092998777117,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           260.7189357439677,
           263.8557269732157,
           238.03739060674394,
-          244.9257495743888
+          244.9257495743888,
+          237.95945050166205
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
-      {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:31 2025 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          340055.86955915176,
           312984.25638253347,
           316860.426546224,
           309264.40767996653,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           311981.2226969401,
           319975.9797200521,
           302834.5935546875,
-          308668.54440104164
+          308668.54440104164,
+          305138.9784179687
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1037,7 +1037,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2846577.9813058036,
           2840669.1044270834,
           2669477.157451923,
           2639451.3864397323,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2704617.4330729167,
           2937670.0501302085,
           2580748.37265625,
-          2763431.616629464
+          2763431.616629464,
+          2621686.4469866073
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804902,
           4804906,
           4804906,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
       {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          535.6228993279593,
           510.74155814831073,
           481.78320026397705,
           463.786981179164,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           500.64108344486783,
           544.4871906916301,
           485.213325881958,
-          515.0589843896719
+          515.0589843896719,
+          464.7895871162415
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1645,7 +1645,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          517.8432790756226,
           478.3175189971924,
           503.9329269091288,
           486.7771451813834,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           538.0864246232169,
           546.1708667119344,
           519.3114194869995,
-          509.6996270588466
+          509.6996270588466,
+          474.2149072647095
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
-      {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:31 2025 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          263.2319943745931,
           246.56725441614788,
           260.93338549931843,
           240.82350600560505,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           258.5103355554434,
           273.82608989079796,
           238.74584555625916,
-          260.87515014012655
+          260.87515014012655,
+          242.59774278004963
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2253,7 +2253,7 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
+          808,
           808,
           808,
           808,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          274.30932191440036,
           252.8639535537133,
           241.9848823229472,
           244.92356174332755,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           269.3243320465088,
           280.77064650853475,
           246.82492923736572,
-          268.16616710027057
+          268.16616710027057,
+          254.1082486152649
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
-      {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:31 2025 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          502.207675298055,
           457.3616619427999,
           475.67078488667806,
           444.71676972934176,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           496.84803167978924,
           528.2129118783133,
           472.6876197179159,
-          496.8072699819292
+          496.8072699819292,
+          456.47035996119183
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2861,7 +2861,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1256.3972023555211,
           1183.0247463498797,
           1254.643728129069,
           1227.0699108123779,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1309.8175061543782,
           1345.0313563028972,
           1235.909156926473,
-          1356.0351581573486
+          1356.0351581573486,
+          1245.6930731455484
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
-      {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:31 2025 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2005.7013147989908,
           1963.410169328962,
           1976.0043668111166,
           1821.4311475753784,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           2010.3406911214192,
           2066.6249555860245,
           1959.8867716471354,
-          2069.748091016497
+          2069.748091016497,
+          1880.2078690162073
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3469,7 +3469,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1485.084701792399,
           1294.1252066748482,
           1436.9808774312337,
           1362.8858048756917,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1354.2864144189018,
           1423.9157687595912,
           1321.959544999259,
-          1409.825442450387
+          1409.825442450387,
+          1257.122516495841
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "854795830460f07d2e18ae3bf09a9bac2eaf5b01",
-        "author": "dependabot[bot]",
-        "date": "Wed Dec 10 22:16:39 2025 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#863)"
-      },
-      {
         "sha": "69c35d412d15c6580fb61ecde02939bda4f31beb",
         "author": "dependabot[bot]",
         "date": "Mon Dec 15 21:31:31 2025 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue May 5 09:21:34 2026 \u002B0200",
         "message": "docs: promote Equivalency to a top-level page (#941)"
+      },
+      {
+        "sha": "6c190736043490ec25652ac2823ece51b41637f1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 10 16:07:33 2026 \u002B0200",
+        "message": "chore: bump aweXpect.Core to v2.29.0 (#944)"
       }
     ],
     "labels": [
-      "85479583",
       "69c35d41",
       "9875869d",
       "1bb936f7",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "29eca80a",
       "ddd9528a",
       "6a4e11a2",
-      "44a5e726"
+      "44a5e726",
+      "6c190736"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2640.0172931126185,
           2532.328660583496,
           2618.133165904454,
           2402.109261830648,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2661.832149212177,
           2669.543800626482,
           2533.7583590189615,
-          2720.7809628804525
+          2720.7809628804525,
+          2512.2336551121302
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4077,7 +4077,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89489.46942608173,
           89824.42639973959,
           90341.77333286831,
           88157.99780273438,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           90789.94447544643,
           92114.36903599331,
           90008.21904296875,
-          92348.97192382812
+          92348.97192382812,
+          91880.99539620536
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58137,
           58598,
           58598,
           59100,
@@ -4239,6 +4238,7 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           56977,
+          57481,
           57481,
           57481,
           57481,
