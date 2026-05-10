@@ -1,0 +1,181 @@
+﻿namespace aweXpect.Tests;
+
+public sealed partial class ThatNumber
+{
+	public sealed partial class IsGreaterThanOrEqualTo
+	{
+		public sealed class WithinTests
+		{
+			[Theory]
+			[InlineData((byte)4, (byte)5)]
+			[InlineData((byte)5, (byte)5)]
+			[InlineData((byte)6, (byte)5)]
+			public async Task ForByte_WhenInsideTolerance_ShouldSucceed(
+				byte subject, byte expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(1);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData((byte)3, (byte)5)]
+			[InlineData((byte)0, (byte)5)]
+			public async Task ForByte_WhenOutsideTolerance_ShouldFail(
+				byte subject, byte expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(1);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is greater than or equal to {Formatter.Format(expected)} ± 1,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(12.4, 12.5)]
+			[InlineData(12.5, 12.5)]
+			public async Task ForDecimal_WhenInsideTolerance_ShouldSucceed(
+				double subjectValue, double expectedValue)
+			{
+				decimal subject = new(subjectValue);
+				decimal expected = new(expectedValue);
+
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(new decimal(0.1));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(12.0, 12.5)]
+			public async Task ForDecimal_WhenOutsideTolerance_ShouldFail(
+				double subjectValue, double expectedValue)
+			{
+				decimal subject = new(subjectValue);
+				decimal expected = new(expectedValue);
+
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(new decimal(0.1));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is greater than or equal to {Formatter.Format(expected)} ± 0.1,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task
+				ForDecimal_WhenToleranceIsNegative_ShouldThrowArgumentOutOfRangeException(
+					decimal subject, decimal expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(new decimal(-0.1));
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
+			}
+
+			[Theory]
+			[InlineData(12.4, 12.5)]
+			[InlineData(12.5, 12.5)]
+			public async Task ForDouble_WhenInsideTolerance_ShouldSucceed(
+				double subject, double expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(0.1);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(12.0, 12.5)]
+			public async Task ForDouble_WhenOutsideTolerance_ShouldFail(
+				double subject, double expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(0.1);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is greater than or equal to {Formatter.Format(expected)} ± 0.1,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(12.4f, 12.5f)]
+			[InlineData(12.5f, 12.5f)]
+			public async Task ForFloat_WhenInsideTolerance_ShouldSucceed(
+				float subject, float expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(0.11f);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(4, 5)]
+			[InlineData(5, 5)]
+			[InlineData(6, 5)]
+			public async Task ForInt_WhenInsideTolerance_ShouldSucceed(int subject, int expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(1);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(3, 5)]
+			[InlineData(0, 5)]
+			public async Task ForInt_WhenOutsideTolerance_ShouldFail(int subject, int expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(1);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is greater than or equal to {Formatter.Format(expected)} ± 1,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task
+				ForInt_WhenToleranceIsNegative_ShouldThrowArgumentOutOfRangeException(
+					int subject, int expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
+			}
+
+			[Theory]
+			[InlineData(4L, 5L)]
+			[InlineData(5L, 5L)]
+			public async Task ForLong_WhenInsideTolerance_ShouldSucceed(long subject, long expected)
+			{
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(expected).Within(1L);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+	}
+}

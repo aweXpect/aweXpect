@@ -2,7 +2,7 @@
 
 public sealed partial class ThatNumber
 {
-	public sealed class IsGreaterThan
+	public sealed partial class IsGreaterThan
 	{
 		public sealed class Tests
 		{
