@@ -23,6 +23,30 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMismatch_ShouldFail()
+			{
+				async Task Act()
+					=> await AssertIsString(42);
+
+				await That(Act).Throws<XunitException>();
+
+				static async Task AssertIsString<T>(T value)
+					=> await That(value).Is<string>();
+			}
+
+			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_ShouldResolve()
+			{
+				async Task Act()
+					=> await AssertIsString("foo");
+
+				await That(Act).DoesNotThrow();
+
+				static async Task AssertIsString<T>(T value)
+					=> await That(value).Is<string>();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				object? subject = null;
