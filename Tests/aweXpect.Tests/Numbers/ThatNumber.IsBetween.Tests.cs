@@ -2,7 +2,7 @@
 
 public sealed partial class ThatNumber
 {
-	public sealed class IsBetween
+	public sealed partial class IsBetween
 	{
 		public sealed class Tests
 		{
