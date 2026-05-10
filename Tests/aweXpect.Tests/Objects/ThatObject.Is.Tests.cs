@@ -8,6 +8,17 @@ public sealed partial class ThatObject
 	{
 		public sealed class GenericTests
 		{
+			[Fact]
+			public async Task ShouldAllowChainingFurtherTypeChecks()
+			{
+				object subject = "foo";
+
+				async Task Act()
+					=> await That(subject).Is<string>().And.IsNot<int>();
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenAwaited_ShouldReturnTypedResult(int value)
@@ -44,17 +55,6 @@ public sealed partial class ThatObject
 
 				static async Task AssertIsString<T>(T value)
 					=> await That(value).Is<string>();
-			}
-
-			[Fact]
-			public async Task ShouldAllowChainingFurtherTypeChecks()
-			{
-				object subject = "foo";
-
-				async Task Act()
-					=> await That(subject).Is<string>().And.IsNot<int>();
-
-				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]

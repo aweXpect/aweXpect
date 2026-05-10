@@ -21,6 +21,30 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMatches_ShouldFail()
+			{
+				async Task Act()
+					=> await AssertIsNotString("foo");
+
+				await That(Act).Throws<XunitException>();
+
+				static async Task AssertIsNotString<T>(T value)
+					=> await That(value).IsNot<string>();
+			}
+
+			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMismatch_ShouldResolve()
+			{
+				async Task Act()
+					=> await AssertIsNotString(42);
+
+				await That(Act).DoesNotThrow();
+
+				static async Task AssertIsNotString<T>(T value)
+					=> await That(value).IsNot<string>();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				object? subject = null;
@@ -97,30 +121,6 @@ public sealed partial class ThatObject
 					                   Value = {{value}}
 					                 }
 					               """);
-			}
-
-			[Fact]
-			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMatches_ShouldFail()
-			{
-				async Task Act()
-					=> await AssertIsNotString("foo");
-
-				await That(Act).Throws<XunitException>();
-
-				static async Task AssertIsNotString<T>(T value)
-					=> await That(value).IsNot<string>();
-			}
-
-			[Fact]
-			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMismatch_ShouldResolve()
-			{
-				async Task Act()
-					=> await AssertIsNotString(42);
-
-				await That(Act).DoesNotThrow();
-
-				static async Task AssertIsNotString<T>(T value)
-					=> await That(value).IsNot<string>();
 			}
 		}
 
