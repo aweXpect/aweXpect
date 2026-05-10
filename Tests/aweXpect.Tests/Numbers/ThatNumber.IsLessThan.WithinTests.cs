@@ -85,6 +85,18 @@ public sealed partial class ThatNumber
 					.WithParamName("tolerance");
 			}
 
+			[Fact]
+			public async Task ForDouble_WhenExpectedIsNaN_ShouldFail()
+			{
+				double subject = 5.0;
+				double expected = double.NaN;
+
+				async Task Act()
+					=> await That(subject).IsLessThan(expected).Within(1.0);
+
+				await That(Act).Throws<XunitException>();
+			}
+
 			[Theory]
 			[InlineData(12.5, 12.5)]
 			[InlineData(12.5, 12.6)]
@@ -222,6 +234,42 @@ public sealed partial class ThatNumber
 					              is less than {Formatter.Format(expected)} ± 1,
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+
+			[Theory]
+			[InlineData(5, 5)]
+			[InlineData(5, 6)]
+			public async Task ForNullableInt_WhenInsideTolerance_ShouldSucceed(
+				int? subject, int? expected)
+			{
+				async Task Act()
+					=> await That(subject).IsLessThan(expected).Within(1);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenSubjectIsNull_ShouldFail()
+			{
+				int? subject = null;
+				int? expected = 5;
+
+				async Task Act()
+					=> await That(subject).IsLessThan(expected).Within(1);
+
+				await That(Act).Throws<XunitException>();
+			}
+
+			[Fact]
+			public async Task ForSByte_WhenDifferenceWouldOverflow_ShouldFailWithoutThrowing()
+			{
+				sbyte subject = sbyte.MaxValue;
+				sbyte expected = sbyte.MinValue;
+
+				async Task Act()
+					=> await That(subject).IsLessThan(expected).Within((sbyte)1);
+
+				await That(Act).Throws<XunitException>();
 			}
 
 			[Fact]

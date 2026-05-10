@@ -106,6 +106,36 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 
+			[Fact]
+			public async Task ForDouble_WhenMinimumIsNaN_ShouldFail()
+			{
+				double subject = 13.0;
+				double minimum = double.NaN;
+				double maximum = 14.0;
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within(0.1);
+
+				await That(Act).Throws<XunitException>();
+			}
+
+			[Theory]
+			[InlineData(14.1, 12.0, 14.0)]
+			public async Task ForDouble_WhenOutsideToleranceOnUpperBound_ShouldFail(
+				double subject, double minimum, double maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within(0.05);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage(
+						$"""
+						 Expected that subject
+						 is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)} ± 0.05,
+						 but it was {Formatter.Format(subject)}
+						 """);
+			}
+
 			[Theory]
 			[InlineData(11.0, 12.0, 14.0)]
 			public async Task ForDouble_WhenOutsideTolerance_ShouldFail(
@@ -133,6 +163,24 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsBetween(minimum).And(maximum).Within(0.11f);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(11.0f, 12.0f, 14.0f)]
+			[InlineData(15.0f, 12.0f, 14.0f)]
+			public async Task ForFloat_WhenOutsideToleranceWidenedRange_ShouldFail(
+				float subject, float minimum, float maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within(0.1f);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage(
+						$"""
+						 Expected that subject
+						 is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)} ± 0.1,
+						 but it was {Formatter.Format(subject)}
+						 """);
 			}
 
 			[Theory]
@@ -191,6 +239,62 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsBetween(minimum).And(maximum).Within(1L);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(0L, 2L, 8L)]
+			[InlineData(10L, 2L, 8L)]
+			public async Task ForLong_WhenOutsideToleranceWidenedRange_ShouldFail(
+				long subject, long minimum, long maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within(1L);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage(
+						$"""
+						 Expected that subject
+						 is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)} ± 1,
+						 but it was {Formatter.Format(subject)}
+						 """);
+			}
+
+			[Theory]
+			[InlineData(1, 2, 8)]
+			[InlineData(9, 2, 8)]
+			public async Task ForNullableInt_WhenInsideToleranceWidenedRange_ShouldSucceed(
+				int? subject, int? minimum, int? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within(1);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenSubjectIsNull_ShouldFail()
+			{
+				int? subject = null;
+				int? minimum = 2;
+				int? maximum = 8;
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within(1);
+
+				await That(Act).Throws<XunitException>();
+			}
+
+			[Fact]
+			public async Task ForSByte_WhenDifferenceWouldOverflow_ShouldFailWithoutThrowing()
+			{
+				sbyte subject = sbyte.MinValue;
+				sbyte minimum = 0;
+				sbyte maximum = sbyte.MaxValue;
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum).Within((sbyte)1);
+
+				await That(Act).Throws<XunitException>();
 			}
 
 			[Theory]

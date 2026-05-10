@@ -974,11 +974,10 @@ public static partial class ThatNumber
 			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
-	private sealed class NullableIsInRangeConstraint<TNumber> : ConstraintResult.WithValue<TNumber?>,
+	private sealed class NullableIsInRangeConstraint<TNumber> : ConstraintResult.WithEqualToValue<TNumber?>,
 		IValueConstraint<TNumber?>
 		where TNumber : struct, IComparable<TNumber>
 	{
-		private readonly string _it;
 		private readonly TNumber? _maximum;
 		private readonly TNumber? _minimum;
 		private readonly NumberTolerance<TNumber> _options;
@@ -987,7 +986,7 @@ public static partial class ThatNumber
 			ExpectationGrammars grammars,
 			TNumber? minimum,
 			TNumber? maximum,
-			NumberTolerance<TNumber> options) : base(grammars)
+			NumberTolerance<TNumber> options) : base(it, grammars, minimum is null)
 		{
 			if (maximum != null && minimum != null &&
 			    maximum.Value.CompareTo(minimum.Value) < 0)
@@ -997,7 +996,6 @@ public static partial class ThatNumber
 					"The maximum must be greater than or equal to the minimum.");
 			}
 
-			_it = it;
 			_minimum = minimum;
 			_maximum = maximum;
 			_options = options;
@@ -1021,7 +1019,7 @@ public static partial class ThatNumber
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(_it).Append(" was ");
+			stringBuilder.Append(It).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
 		}
 

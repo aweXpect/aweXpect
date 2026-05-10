@@ -960,9 +960,9 @@ namespace aweXpect
     }
     public static class ThatNumber
     {
-        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>>, TNumber?> IsBetween<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum)
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>>, TNumber?> IsBetween<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>>, TNumber?> IsBetween<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum)
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>>, TNumber?> IsBetween<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
@@ -972,25 +972,25 @@ namespace aweXpect
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsFinite<TNumber>(this aweXpect.Core.IThat<TNumber?> source)
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsGreaterThan<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsGreaterThan<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsGreaterThan<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsGreaterThan<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsGreaterThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsGreaterThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsGreaterThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsGreaterThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsInfinite<TNumber>(this aweXpect.Core.IThat<TNumber> source)
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsInfinite<TNumber>(this aweXpect.Core.IThat<TNumber?> source)
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsLessThan<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsLessThan<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsLessThan<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsLessThan<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsLessThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsLessThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsLessThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsLessThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNaN<TNumber>(this aweXpect.Core.IThat<TNumber> source)
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
@@ -1000,9 +1000,9 @@ namespace aweXpect
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsNegative<TNumber>(this aweXpect.Core.IThat<TNumber?> source)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>>, TNumber?> IsNotBetween<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum)
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>>, TNumber?> IsNotBetween<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>>, TNumber?> IsNotBetween<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum)
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>>, TNumber?> IsNotBetween<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNotEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? unexpected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }

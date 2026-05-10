@@ -115,7 +115,7 @@ public class NumberTolerance<TNumber>(
 			return true;
 		}
 
-		TNumber? diff = calculateDifference(actual.Value, expected.Value);
+		TNumber? diff = TryCalculateDifference(actual.Value, expected.Value);
 		return diff is not null && diff.Value.CompareTo(Tolerance.Value) <= 0;
 	}
 
@@ -141,7 +141,7 @@ public class NumberTolerance<TNumber>(
 			return false;
 		}
 
-		TNumber? diff = calculateDifference(actual.Value, expected.Value);
+		TNumber? diff = TryCalculateDifference(actual.Value, expected.Value);
 		return diff is not null && diff.Value.CompareTo(Tolerance.Value) <= 0;
 	}
 
@@ -167,7 +167,7 @@ public class NumberTolerance<TNumber>(
 			return true;
 		}
 
-		TNumber? diff = calculateDifference(actual.Value, expected.Value);
+		TNumber? diff = TryCalculateDifference(actual.Value, expected.Value);
 		return diff is not null && diff.Value.CompareTo(Tolerance.Value) <= 0;
 	}
 
@@ -193,8 +193,20 @@ public class NumberTolerance<TNumber>(
 			return false;
 		}
 
-		TNumber? diff = calculateDifference(actual.Value, expected.Value);
+		TNumber? diff = TryCalculateDifference(actual.Value, expected.Value);
 		return diff is not null && diff.Value.CompareTo(Tolerance.Value) <= 0;
+	}
+
+	private TNumber? TryCalculateDifference(TNumber actual, TNumber expected)
+	{
+		try
+		{
+			return calculateDifference(actual, expected);
+		}
+		catch (OverflowException)
+		{
+			return null;
+		}
 	}
 
 	/// <summary>

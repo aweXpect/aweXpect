@@ -880,6 +880,11 @@ namespace aweXpect.Options
         public NumberTolerance(System.Func<TNumber, TNumber, TNumber?> calculateDifference) { }
         public TNumber? Tolerance { get; }
         public TNumber? CalculateDifference(TNumber? actual, TNumber? expected) { }
+        public bool IsGreaterThan(TNumber? actual, TNumber? expected) { }
+        public bool IsGreaterThanOrEqualTo(TNumber? actual, TNumber? expected) { }
+        public bool IsInRange(TNumber? actual, TNumber? minimum, TNumber? maximum) { }
+        public bool IsLessThan(TNumber? actual, TNumber? expected) { }
+        public bool IsLessThanOrEqualTo(TNumber? actual, TNumber? expected) { }
         public bool IsWithinTolerance(TNumber? actual, TNumber? expected) { }
         public void SetTolerance(TNumber tolerance) { }
         public override string ToString() { }
