@@ -21,6 +21,30 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMatches_ShouldFail()
+			{
+				async Task Act()
+					=> await AssertIsNotExactlyString("foo");
+
+				await That(Act).Throws<XunitException>();
+
+				static async Task AssertIsNotExactlyString<T>(T value)
+					=> await That(value).IsNotExactly<string>();
+			}
+
+			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMismatch_ShouldResolve()
+			{
+				async Task Act()
+					=> await AssertIsNotExactlyString(42);
+
+				await That(Act).DoesNotThrow();
+
+				static async Task AssertIsNotExactlyString<T>(T value)
+					=> await That(value).IsNotExactly<string>();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				object? subject = null;

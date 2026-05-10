@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -9,15 +9,6 @@ namespace aweXpect;
 
 public static partial class ThatObject
 {
-	/// <summary>
-	///     Verifies that the subject is of type <typeparamref name="TType" />.
-	/// </summary>
-	public static AndOrWhoseResult<TType, IThat<object?>> Is<TType>(
-		this IThat<object?> source)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint<TType>(it, grammars)),
-			source);
-
 	/// <summary>
 	///     Verifies that the subject is of type <paramref name="type" />.
 	/// </summary>
@@ -33,15 +24,6 @@ public static partial class ThatObject
 	}
 
 	/// <summary>
-	///     Verifies that the subject is not of type <typeparamref name="TType" />.
-	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> IsNot<TType>(
-		this IThat<object?> source)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint<TType>(it, grammars).Invert()),
-			source);
-
-	/// <summary>
 	///     Verifies that the subject is not of type <paramref name="type" />.
 	/// </summary>
 	public static AndOrResult<T?, IThat<T?>> IsNot<T>(
@@ -53,39 +35,6 @@ public static partial class ThatObject
 		return new AndOrResult<T?, IThat<T?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsOfTypeConstraint(it, grammars, type).Invert()),
 			source);
-	}
-
-	private sealed class IsOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
-		: ConstraintResult.WithValue<object?>(grammars),
-			IValueConstraint<object?>
-	{
-		public ConstraintResult IsMetBy(object? actual)
-		{
-			Actual = actual;
-			Outcome = actual is TType ? Outcome.Success : Outcome.Failure;
-			return this;
-		}
-
-		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("is type ");
-			Formatter.Format(stringBuilder, typeof(TType));
-		}
-
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation, true));
-		}
-
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("is not type ");
-			Formatter.Format(stringBuilder, typeof(TType));
-		}
-
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class IsOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)

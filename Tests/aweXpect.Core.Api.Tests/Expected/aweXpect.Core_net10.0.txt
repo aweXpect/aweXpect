@@ -230,6 +230,13 @@ namespace aweXpect.Core
         string GetTypeString();
     }
     public interface IThatDelegateThrows<out T> : aweXpect.Core.IExpectThat<T>, aweXpect.Core.IThat<T> { }
+    public interface IThatSubject<T> : aweXpect.Core.IThat<T>
+    {
+        aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> Is<TType>();
+        aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> IsExactly<TType>();
+        aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNot<TType>();
+        aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNotExactly<TType>();
+    }
     public interface IThat<out T>
     {
         bool Equals(object? obj);
@@ -344,10 +351,14 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
     }
     [System.Diagnostics.DebuggerDisplay("ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
-    public readonly struct ThatSubject<T> : aweXpect.Core.IExpectThat<T>, aweXpect.Core.IThat<T>
+    public readonly struct ThatSubject<T> : aweXpect.Core.IExpectThat<T>, aweXpect.Core.IThatSubject<T>, aweXpect.Core.IThat<T>
     {
         public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> Is<TType>() { }
+        public aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> IsExactly<TType>() { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNot<TType>() { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNotExactly<TType>() { }
     }
     public readonly struct Times
     {
@@ -663,10 +674,10 @@ namespace aweXpect
         public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.CancellationToken, TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<T>> That<T>(System.ReadOnlySpan<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<aweXpect.Core.SpanWrapper<T>> That<T>(System.Span<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.Task<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.ValueTask<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<T> That<T>(T subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<T[]?> That<T>(T[]? subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThatSubject<T> That<T>(System.Threading.Tasks.Task<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThatSubject<T> That<T>(System.Threading.Tasks.ValueTask<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThatSubject<T> That<T>(T subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThatSubject<T[]?> That<T>(T[]? subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.Expectation.Combination.All ThatAll(params aweXpect.Results.Expectation[] expectations) { }
         public static aweXpect.Results.Expectation.Combination.Any ThatAny(params aweXpect.Results.Expectation[] expectations) { }
     }

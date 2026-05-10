@@ -8,6 +8,17 @@ public sealed partial class ThatObject
 	{
 		public sealed class GenericTests
 		{
+			[Fact]
+			public async Task ShouldAllowChainingFurtherTypeChecks()
+			{
+				object subject = "foo";
+
+				async Task Act()
+					=> await That(subject).Is<string>().And.IsNot<int>();
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenAwaited_ShouldReturnTypedResult(int value)
@@ -20,6 +31,30 @@ public sealed partial class ThatObject
 				MyClass result = await That(subject).Is<MyClass>();
 
 				await That(result).IsSameAs(subject);
+			}
+
+			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_AndTypeMismatch_ShouldFail()
+			{
+				async Task Act()
+					=> await AssertIsString(42);
+
+				await That(Act).Throws<XunitException>();
+
+				static async Task AssertIsString<T>(T value)
+					=> await That(value).Is<string>();
+			}
+
+			[Fact]
+			public async Task WhenCalledFromGenericMethodWithUnconstrainedT_ShouldResolve()
+			{
+				async Task Act()
+					=> await AssertIsString("foo");
+
+				await That(Act).DoesNotThrow();
+
+				static async Task AssertIsString<T>(T value)
+					=> await That(value).Is<string>();
 			}
 
 			[Fact]

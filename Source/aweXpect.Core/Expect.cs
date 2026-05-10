@@ -17,7 +17,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
 	/// </summary>
-	public static IThat<T> That<T>(T subject,
+	public static IThatSubject<T> That<T>(T subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new ValueSource<T>(subject), doNotPopulateThisValue));
@@ -25,7 +25,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
 	/// </summary>
-	public static IThat<T[]?> That<T>(T[]? subject,
+	public static IThatSubject<T[]?> That<T>(T[]? subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T[]?>(new ExpectationBuilder<T[]?>(
 			new ValueSource<T[]?>(subject), doNotPopulateThisValue));
@@ -33,7 +33,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
-	public static IThat<T> That<T>(Task<T> subject,
+	public static IThatSubject<T> That<T>(Task<T> subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new AsyncValueSource<T>(subject), doNotPopulateThisValue));
@@ -62,7 +62,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
-	public static IThat<T> That<T>(ValueTask<T> subject,
+	public static IThatSubject<T> That<T>(ValueTask<T> subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new AsyncValueSource<T>(subject.AsTask()), doNotPopulateThisValue));
