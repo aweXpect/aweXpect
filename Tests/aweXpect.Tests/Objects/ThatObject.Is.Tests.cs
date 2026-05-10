@@ -47,6 +47,17 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task ShouldAllowChainingFurtherTypeChecks()
+			{
+				object subject = "foo";
+
+				async Task Act()
+					=> await That(subject).Is<string>().And.IsNot<int>();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				object? subject = null;

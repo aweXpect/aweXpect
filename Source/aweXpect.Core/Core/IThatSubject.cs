@@ -15,20 +15,20 @@ public interface IThatSubject<T> : IThat<T>
 	/// <summary>
 	///     Verifies that the subject is of type <typeparamref name="TType" />.
 	/// </summary>
-	AndOrWhoseResult<TType, IThat<T>> Is<TType>();
+	AndOrWhoseResult<TType, IThatSubject<T>> Is<TType>();
 
 	/// <summary>
 	///     Verifies that the subject is not of type <typeparamref name="TType" />.
 	/// </summary>
-	AndOrResult<T, IThat<T>> IsNot<TType>();
+	AndOrResult<T, IThatSubject<T>> IsNot<TType>();
 
 	/// <summary>
 	///     Verifies that the subject is exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	AndOrWhoseResult<TType, IThat<T>> IsExactly<TType>();
+	AndOrWhoseResult<TType, IThatSubject<T>> IsExactly<TType>();
 
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	AndOrResult<T, IThat<T>> IsNotExactly<TType>();
+	AndOrResult<T, IThatSubject<T>> IsNotExactly<TType>();
 }
