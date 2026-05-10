@@ -232,10 +232,10 @@ namespace aweXpect.Core
     public interface IThatDelegateThrows<out T> : aweXpect.Core.IExpectThat<T>, aweXpect.Core.IThat<T> { }
     public interface IThatSubject<T> : aweXpect.Core.IThat<T>
     {
-        aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<T>> Is<TType>();
-        aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<T>> IsExactly<TType>();
-        aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNot<TType>();
-        aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNotExactly<TType>();
+        aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> Is<TType>();
+        aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> IsExactly<TType>();
+        aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNot<TType>();
+        aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNotExactly<TType>();
     }
     public interface IThat<out T>
     {
@@ -341,10 +341,10 @@ namespace aweXpect.Core
     {
         public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        public aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<T>> Is<TType>() { }
-        public aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<T>> IsExactly<TType>() { }
-        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNot<TType>() { }
-        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNotExactly<TType>() { }
+        public aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> Is<TType>() { }
+        public aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThatSubject<T>> IsExactly<TType>() { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNot<TType>() { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatSubject<T>> IsNotExactly<TType>() { }
     }
     public readonly struct Times
     {
