@@ -22,7 +22,7 @@ public static partial class ThatEnumerable
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
 		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
-			ComplyWith(Action<IThat<TItem>> expectations)
+			ComplyWith(Action<IThatSubject<TItem>> expectations)
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
@@ -44,7 +44,7 @@ public static partial class ThatEnumerable
 
 			public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 				EnumerableQuantifier quantifier,
-				Action<IThat<TItem>> expectations)
+				Action<IThatSubject<TItem>> expectations)
 				: base(it, grammars)
 			{
 				_quantifier = quantifier;
@@ -130,7 +130,7 @@ public static partial class ThatEnumerable
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
 		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>
-			ComplyWith(Action<IThat<object?>> expectations)
+			ComplyWith(Action<IThatSubject<object?>> expectations)
 		{
 			ObjectEqualityOptions<object?> options = new();
 			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, object?>(
@@ -152,7 +152,7 @@ public static partial class ThatEnumerable
 
 			public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 				EnumerableQuantifier quantifier,
-				Action<IThat<object?>> expectations)
+				Action<IThatSubject<object?>> expectations)
 				: base(it, grammars)
 			{
 				_quantifier = quantifier;
@@ -238,7 +238,7 @@ public static partial class ThatEnumerable
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
 		public ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>
-			ComplyWith(Action<IThat<TItem>> expectations)
+			ComplyWith(Action<IThatSubject<TItem>> expectations)
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<TEnumerable, IThat<TEnumerable>, TItem>(
@@ -260,7 +260,7 @@ public static partial class ThatEnumerable
 
 			public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 				EnumerableQuantifier quantifier,
-				Action<IThat<TItem>> expectations)
+				Action<IThatSubject<TItem>> expectations)
 				: base(it, grammars)
 			{
 				_quantifier = quantifier;

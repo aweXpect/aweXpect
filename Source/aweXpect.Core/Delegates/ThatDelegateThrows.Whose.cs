@@ -12,7 +12,7 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> Whose<TMember>(
 		Func<TException, TMember?> memberSelector,
-		Action<IThat<TMember?>> expectations,
+		Action<IThatSubject<TMember?>> expectations,
 		[CallerArgumentExpression("memberSelector")]
 		string doNotPopulateThisValue = "")
 		=> new(ExpectationBuilder.ForMember(

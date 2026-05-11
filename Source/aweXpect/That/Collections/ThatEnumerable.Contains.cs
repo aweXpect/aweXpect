@@ -404,7 +404,7 @@ public static partial class ThatEnumerable
 	public static CollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		Contains<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> expected,
+			IEnumerable<Action<IThatSubject<TItem?>>> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
@@ -804,7 +804,7 @@ public static partial class ThatEnumerable
 	public static CollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		DoesNotContain<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> unexpected,
+			IEnumerable<Action<IThatSubject<TItem?>>> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{

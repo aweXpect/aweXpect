@@ -132,7 +132,7 @@ public static partial class ThatEnumerable
 		string it,
 		ExpectationGrammars grammars,
 		string? expectedExpression,
-		IEnumerable<Action<IThat<TItem?>>>? expected,
+		IEnumerable<Action<IThatSubject<TItem?>>>? expected,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<IEnumerable<TItem>?>(it, grammars, expected is null),
 			IAsyncContextConstraint<IEnumerable<TItem>?>

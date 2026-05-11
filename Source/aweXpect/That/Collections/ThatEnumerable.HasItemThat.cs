@@ -24,7 +24,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection has an item that complies with the <paramref name="expectations" />…
 	/// </summary>
 	public static HasItemResult<IEnumerable<TItem>?> HasItemThat<TItem>(
-		this IThat<IEnumerable<TItem>?> source, Action<IThat<TItem>> expectations)
+		this IThat<IEnumerable<TItem>?> source, Action<IThatSubject<TItem>> expectations)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
@@ -40,7 +40,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection has an item that complies with the <paramref name="expectations" />…
 	/// </summary>
 	public static HasItemResult<ImmutableArray<TItem>> HasItemThat<TItem>(
-		this IThat<ImmutableArray<TItem>> source, Action<IThat<TItem>> expectations)
+		this IThat<ImmutableArray<TItem>> source, Action<IThatSubject<TItem>> expectations)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
@@ -66,7 +66,7 @@ public static partial class ThatEnumerable
 		public HasItemThatConstraint(ExpectationBuilder expectationBuilder,
 			string it,
 			ExpectationGrammars grammars,
-			Action<IThat<TItem>> expectations,
+			Action<IThatSubject<TItem>> expectations,
 			CollectionIndexOptions options) : base(grammars)
 		{
 			_expectationBuilder = expectationBuilder;
@@ -182,7 +182,7 @@ public static partial class ThatEnumerable
 		public HasItemThatForEnumerableConstraint(ExpectationBuilder expectationBuilder,
 			string it,
 			ExpectationGrammars grammars,
-			Action<IThat<TItem>> expectations,
+			Action<IThatSubject<TItem>> expectations,
 			CollectionIndexOptions options) : base(grammars)
 		{
 			_expectationBuilder = expectationBuilder;

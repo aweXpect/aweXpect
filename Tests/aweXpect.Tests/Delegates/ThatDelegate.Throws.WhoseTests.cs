@@ -6,6 +6,23 @@ public sealed partial class ThatDelegate
 	{
 		public class WhoseTests
 		{
+			[Fact]
+			public async Task AllowsNestedIs()
+			{
+				void Throwing()
+					=> throw new MyException(new Derived
+					{
+						Name = "foo",
+					});
+
+				async Task Act()
+					=> await That(Throwing).Throws<MyException>()
+						.Whose(e => e.Payload, it => it.Is<Derived>()
+							.Whose(d => d.Name, it => it.IsEqualTo("foo")));
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task ShouldResetItAfterWhichClause(int hResult)
@@ -60,6 +77,27 @@ public sealed partial class ThatDelegate
 						.Whose(e => e.HResult, h => h.IsEqualTo(hResult));
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithInnerException_AllowsNestedIs()
+			{
+				void Throwing()
+					=> throw new InvalidOperationException(
+						"outer",
+						new InvalidCastException("inner"));
+
+				async Task Act()
+					=> await That(Throwing).Throws<InvalidOperationException>()
+						.WithInnerException(it => it.Is<InvalidCastException>()
+							.Whose(e => e!.Message, it => it.IsEqualTo("inner")));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			private sealed class MyException(Base payload) : Exception
+			{
+				public Base Payload { get; } = payload;
 			}
 		}
 	}

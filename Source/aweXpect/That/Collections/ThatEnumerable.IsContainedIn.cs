@@ -168,7 +168,7 @@ public static partial class ThatEnumerable
 	public static CollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsContainedIn<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> expected,
+			IEnumerable<Action<IThatSubject<TItem?>>> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
@@ -340,7 +340,7 @@ public static partial class ThatEnumerable
 	public static CollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsNotContainedIn<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> expected,
+			IEnumerable<Action<IThatSubject<TItem?>>> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);

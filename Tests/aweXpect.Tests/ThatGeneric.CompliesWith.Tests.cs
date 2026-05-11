@@ -8,6 +8,21 @@ public sealed partial class ThatGeneric
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task AllowsNestedIs()
+			{
+				Base subject = new Derived
+				{
+					Name = "foo",
+				};
+
+				async Task Act()
+					=> await That(subject).CompliesWith(it => it.Is<Derived>()
+						.Whose(d => d.Name, it => it.IsEqualTo("foo")));
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData(1, true)]
 			[InlineData(2, false)]
@@ -33,7 +48,7 @@ public sealed partial class ThatGeneric
 					               Property Value differed:
 					                    Found: 1
 					                 Expected: 2
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -61,7 +76,7 @@ public sealed partial class ThatGeneric
 					               Property HasWaitedEnough differed:
 					                    Found: False
 					                 Expected: True
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -137,7 +152,7 @@ public sealed partial class ThatGeneric
 					               Property HasWaitedEnough differed:
 					                    Found: False
 					                 Expected: True
-					             
+
 					             Equivalency options:
 					              - include public fields and properties
 					             """);

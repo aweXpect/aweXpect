@@ -15,7 +15,7 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>>
 		WithInner<TInnerException>(
-			Action<IThat<TInnerException?>> expectations)
+			Action<IThatSubject<TInnerException?>> expectations)
 		where TInnerException : Exception
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
@@ -45,7 +45,7 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInner(
 		Type innerExceptionType,
-		Action<IThat<Exception?>> expectations)
+		Action<IThatSubject<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					" whose ",

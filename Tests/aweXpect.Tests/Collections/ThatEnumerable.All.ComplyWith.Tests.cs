@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -14,6 +13,27 @@ public sealed partial class ThatEnumerable
 		{
 			public sealed class Tests
 			{
+				[Fact]
+				public async Task AllowsNestedIs()
+				{
+					List<Base> subject =
+					[
+						new Derived
+						{
+							Name = "foo",
+						},
+						new Derived
+						{
+							Name = "bar",
+						},
+					];
+
+					async Task Act()
+						=> await That(subject).All().ComplyWith(it => it.Is<Derived>());
+
+					await That(Act).DoesNotThrow();
+				}
+
 				[Fact]
 				public async Task ConsidersCancellationToken()
 				{
@@ -79,7 +99,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable((int[]) []);
+					IEnumerable<int> subject = ToEnumerable((int[])[]);
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(0));

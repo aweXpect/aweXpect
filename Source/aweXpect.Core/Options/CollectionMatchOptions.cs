@@ -367,7 +367,7 @@ public partial class CollectionMatchOptions(
 		internal readonly ManualExpectationBuilder<TItem> ItemExpectationBuilder;
 
 		/// <inheritdoc cref="ExpectationItem{TItem}" />
-		public ExpectationItem(Action<IThat<TItem>> expectation,
+		public ExpectationItem(Action<IThatSubject<TItem?>> expectation,
 			ExpectationGrammars grammars,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
@@ -375,7 +375,7 @@ public partial class CollectionMatchOptions(
 			_context = context;
 			_cancellationToken = cancellationToken;
 			ItemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
-			expectation.Invoke(new ThatSubject<TItem>(ItemExpectationBuilder));
+			expectation.Invoke(new ThatSubject<TItem?>(ItemExpectationBuilder));
 		}
 
 		/// <summary>

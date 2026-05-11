@@ -11,6 +11,23 @@ public sealed partial class ThatEnumerable
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task AllowsNestedIs()
+			{
+				List<Base> subject =
+				[
+					new Derived
+					{
+						Name = "foo",
+					},
+				];
+
+				async Task Act()
+					=> await That(subject).HasItemThat(it => it.Is<Derived>());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task DoesNotEnumerateTwice()
 			{
 				ThrowWhenIteratingTwiceEnumerable subject = new();

@@ -6,6 +6,24 @@ public sealed partial class ThatGeneric
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task AllowsNestedIs()
+			{
+				Outer subject = new()
+				{
+					Item = new Derived
+					{
+						Name = "foo",
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).For(o => o.Item, it => it.Is<Derived>()
+						.Whose(d => d.Name, it => it.IsEqualTo("foo")));
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData(true, true, true)]
 			[InlineData(true, false, false)]

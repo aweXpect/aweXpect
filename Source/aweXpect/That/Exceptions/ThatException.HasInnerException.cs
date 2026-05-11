@@ -21,7 +21,7 @@ public partial class ThatException
 	/// </summary>
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInnerException(
 		this IThat<Exception?> source,
-		Action<IThat<Exception?>> expectations)
+		Action<IThatSubject<Exception?>> expectations)
 		=> new(source.Get().ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					" whose ",

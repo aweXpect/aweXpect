@@ -12,7 +12,7 @@ public partial class ThatDelegateThrows<TException>
 	///     satisfies the <paramref name="expectations" />.
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException(
-		Action<IThat<Exception?>> expectations)
+		Action<IThatSubject<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember(
 					MemberAccessor<Exception?, Exception?>.FromFunc(
