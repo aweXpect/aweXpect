@@ -39,6 +39,65 @@ public sealed partial class ThatObject
 
 				await That(Act).DoesNotThrow();
 			}
+
+			[Fact]
+			public async Task AllowsNestedIs()
+			{
+				Outer subject = new()
+				{
+					Item = new Derived
+					{
+						Name = "foo",
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).Is<Outer>()
+						.Whose(o => o.Item, it => it.Is<Derived>()
+							.Whose(d => d.Name, it => it.IsEqualTo("foo")));
+
+				await That(Act).DoesNotThrow();
+			}
+			[Fact]
+			public async Task Whose_AllowsNestedIs_FailsWhenInnerTypeMismatches()
+			{
+				Outer subject = new()
+				{
+					Item = new OtherDerived(),
+				};
+
+				async Task Act()
+					=> await That(subject).Is<Outer>()
+						.Whose(o => o.Item, it => it.Is<Derived>());
+
+				await That(Act).Throws<XunitException>();
+			}
+		}
+
+		public sealed class AndWhoseTests
+		{
+			[Fact]
+			public async Task AndWhose_AllowsNestedIs()
+			{
+				Outer subject = new()
+				{
+					Item = new Derived
+					{
+						Name = "foo",
+					},
+					Other = new Derived
+					{
+						Name = "bar",
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).Is<Outer>()
+						.Whose(o => o.Item, it => it.Is<Derived>().Whose(d => d.Name, it => it.IsEqualTo("foo")))
+						.AndWhose(o => o.Other, it => it.Is<Derived>().Whose(d => d.Name, it => it.IsEqualTo("bar")));
+
+				await That(Act).DoesNotThrow();
+			}
 		}
 	}
 }

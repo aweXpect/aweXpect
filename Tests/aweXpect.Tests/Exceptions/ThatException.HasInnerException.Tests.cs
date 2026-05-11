@@ -7,6 +7,20 @@ public sealed partial class ThatException
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task AllowsNestedIs()
+			{
+				Exception subject = new InvalidOperationException(
+					"outer",
+					new InvalidCastException("inner"));
+
+				async Task Act()
+					=> await That(subject).HasInnerException(it => it.Is<InvalidCastException>()
+						.Whose(e => e.Message, it => it.IsEqualTo("inner")));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task WhenInnerExceptionHasCorrectMessage_ShouldSucceed()
 			{
 				Exception subject = new("outer",
