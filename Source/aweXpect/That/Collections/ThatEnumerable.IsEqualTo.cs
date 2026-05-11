@@ -493,7 +493,7 @@ public static partial class ThatEnumerable
 	public static CollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsEqualTo<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> expected,
+			IEnumerable<Action<IThatSubject<TItem?>>> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		CollectionMatchOptions matchOptions = new();
@@ -1002,7 +1002,7 @@ public static partial class ThatEnumerable
 	public static CollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsNotEqualTo<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> unexpected,
+			IEnumerable<Action<IThatSubject<TItem?>>> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{

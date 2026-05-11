@@ -39,7 +39,7 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	public AdditionalAndOrWhichResult
 		Which<TMember>(
 			Func<TType, TMember?> memberSelector,
-			Action<IThat<TMember?>> expectations,
+			Action<IThatSubject<TMember?>> expectations,
 			[CallerArgumentExpression("memberSelector")]
 			string doNotPopulateThisValue = "")
 		=> new(
@@ -71,7 +71,7 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 		public AdditionalAndOrWhichResult
 			AndWhich<TMember>(
 				Func<TType, TMember?> memberSelector,
-				Action<IThat<TMember?>> expectations,
+				Action<IThatSubject<TMember?>> expectations,
 				[CallerArgumentExpression("memberSelector")]
 				string doNotPopulateThisValue = "")
 		{

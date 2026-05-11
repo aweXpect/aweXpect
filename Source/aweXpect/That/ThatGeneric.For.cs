@@ -14,7 +14,7 @@ public static partial class ThatGeneric
 	public static AndOrResult<T, IThat<T>> For<T, TMember>(
 		this IThat<T> source,
 		Func<T, TMember?> memberSelector,
-		Action<IThat<TMember?>> expectations,
+		Action<IThatSubject<TMember?>> expectations,
 		[CallerArgumentExpression("memberSelector")]
 		string doNotPopulateThisValue = "")
 	{

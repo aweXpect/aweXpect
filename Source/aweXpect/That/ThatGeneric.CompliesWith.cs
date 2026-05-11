@@ -18,7 +18,7 @@ public static partial class ThatGeneric
 	///     Verifies that the actual value complies with the <paramref name="expectations" />.
 	/// </summary>
 	public static RepeatedCheckResult<T, IThat<T>> CompliesWith<T>(this IThat<T> source,
-		Action<IThat<T>> expectations)
+		Action<IThatSubject<T>> expectations)
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
@@ -32,7 +32,7 @@ public static partial class ThatGeneric
 	///     Verifies that the actual value does not comply with the <paramref name="expectations" />.
 	/// </summary>
 	public static RepeatedCheckResult<T, IThat<T>> DoesNotComplyWith<T>(this IThat<T> source,
-		Action<IThat<T>> expectations)
+		Action<IThatSubject<T>> expectations)
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
@@ -52,7 +52,7 @@ public static partial class ThatGeneric
 		private bool _isOnceNegated;
 
 		public CompliesWithConstraint(ExpectationBuilder expectationBuilder, ExpectationGrammars grammars,
-			Action<IThat<T>> expectations, RepeatedCheckOptions options)
+			Action<IThatSubject<T>> expectations, RepeatedCheckOptions options)
 			: base(grammars)
 		{
 			_options = options;

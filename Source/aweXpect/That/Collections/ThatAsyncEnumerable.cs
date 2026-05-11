@@ -598,7 +598,7 @@ public static partial class ThatAsyncEnumerable
 		string it,
 		ExpectationGrammars grammars,
 		string expectedExpression,
-		IEnumerable<Action<IThat<TItem?>>>? expected,
+		IEnumerable<Action<IThatSubject<TItem?>>>? expected,
 		CollectionMatchOptions matchOptions)
 		: ConstraintResult.WithEqualToValue<IAsyncEnumerable<TItem>?>(it, grammars, expected is null),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>

@@ -19,7 +19,7 @@ public static partial class ThatDelegateThrows
 	/// </remarks>
 	public static AndOrResult<TException?, ThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(
 		this ThatDelegateThrows<TException> source,
-		Action<IThat<IEnumerable<Exception>>> expectations)
+		Action<IThatSubject<IEnumerable<Exception>>> expectations)
 		where TException : Exception?
 		=> new(source.ExpectationBuilder
 				.ForMember(

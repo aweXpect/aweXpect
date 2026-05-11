@@ -92,7 +92,7 @@ public static partial class ThatAsyncEnumerable
 	public static CollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		IsContainedIn<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> expected,
+			IEnumerable<Action<IThatSubject<TItem?>>> expected,
 			[CallerArgumentExpression("expected")]
 			string doNotPopulateThisValue = "")
 	{
@@ -187,7 +187,7 @@ public static partial class ThatAsyncEnumerable
 	public static CollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		IsNotContainedIn<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
-			IEnumerable<Action<IThat<TItem?>>> unexpected,
+			IEnumerable<Action<IThatSubject<TItem?>>> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{

@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerable
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
-			ComplyWith(Action<IThat<TItem>> expectations)
+			ComplyWith(Action<IThatSubject<TItem>> expectations)
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
@@ -45,7 +45,7 @@ public static partial class ThatAsyncEnumerable
 
 		public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations) : base(grammars)
+			Action<IThatSubject<TItem>> expectations) : base(grammars)
 		{
 			_it = it;
 			_grammars = grammars;

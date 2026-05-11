@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection has an item that complies with the <paramref name="expectations" />…
 	/// </summary>
 	public static HasItemResult<IAsyncEnumerable<TItem>?> HasItemThat<TItem>(
-		this IThat<IAsyncEnumerable<TItem>?> source, Action<IThat<TItem>> expectations)
+		this IThat<IAsyncEnumerable<TItem>?> source, Action<IThatSubject<TItem>> expectations)
 	{
 		CollectionIndexOptions indexOptions = new();
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
@@ -44,7 +44,7 @@ public static partial class ThatAsyncEnumerable
 		public HasItemThatConstraint(ExpectationBuilder expectationBuilder,
 			string it,
 			ExpectationGrammars grammars,
-			Action<IThat<TItem>> expectations,
+			Action<IThatSubject<TItem>> expectations,
 			CollectionIndexOptions options) : base(grammars)
 		{
 			_expectationBuilder = expectationBuilder;
