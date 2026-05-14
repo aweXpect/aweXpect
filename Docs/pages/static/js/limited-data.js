@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
-      {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          251.66675072449905,
           277.15419254984175,
           255.35857020105635,
           284.98652833302816,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           274.1667792638143,
           252.45698054631552,
           248.8287740120521,
-          275.62721974509105
+          275.62721974509105,
+          253.63557669321696
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -424,7 +424,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          229.0218552180699,
           264.28134816033497,
           236.5278637068612,
           245.31624037424723,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           274.9757941319392,
           247.30406717153696,
           231.10308287824904,
-          252.1998107433319
+          252.1998107433319,
+          238.38255027624277
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
-      {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          301233.7068434495,
           294638.8506835938,
           307080.0887276786,
           323968.51025390625,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           327563.9485802284,
           299294.89228515624,
           311491.7319986979,
-          309256.57503255206
+          309256.57503255206,
+          301119.75721958705
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1032,7 +1032,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2609997.1020833333,
           2471933.809988839,
           2509995.688701923,
           2652368.6463341345,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2844028.665457589,
           2408953.056082589,
           2594253.4174479167,
-          2712130.3203125
+          2712130.3203125,
+          2696556.7619977677
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804906,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804902,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
       {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          456.1418684445895,
           503.0476961771647,
           455.54577312469485,
           501.5169469833374,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           479.2107125691005,
           478.20732736587524,
           483.7438433329264,
-          483.7574556350708
+          483.7574556350708,
+          482.57681689943587
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1640,7 +1640,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          454.30071252187093,
           538.3768793106079,
           476.29076399121965,
           504.91691623415267,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           509.7148810795375,
           477.0002979278564,
           473.65188536277185,
-          468.68512630462646
+          468.68512630462646,
+          472.3453134536743
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
-      {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          244.3940683878385,
           262.34208812032426,
           251.43657167141254,
           253.01466881434123,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           292.2134678704398,
           250.86630187715804,
           258.882556215922,
-          261.5118856089456
+          261.5118856089456,
+          262.13282505671185
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2248,7 +2248,6 @@ window.BENCHMARK_DATA = {
           816,
           816,
           816,
-          816,
           808,
           808,
           808,
@@ -2290,6 +2289,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          231.87754769325255,
           277.2392265001933,
           235.7345404965537,
           249.73073666890463,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           254.51977375575476,
           242.734259446462,
           247.9168218612671,
-          245.26542322452252
+          245.26542322452252,
+          241.14132420221964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
-      {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          441.82863086064657,
           495.57191336949666,
           463.51147164617265,
           449.0674800554911,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           463.35538022858753,
           469.5621375083923,
           485.01358229319254,
-          475.2220519383748
+          475.2220519383748,
+          471.36099307877674
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2856,7 +2856,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1150.6516721089681,
           1236.5632545471192,
           1218.2815177100044,
           1184.700120417277,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1281.2090979258219,
           1158.123580639179,
           1180.1319816589355,
-          1167.3995031992595
+          1167.3995031992595,
+          1176.61356493632
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
-      {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1774.1404014314924,
           1979.4111666361491,
           1894.9790550231933,
           1869.0229784647624,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           2112.6680567423505,
           1930.0697413126627,
           1925.4966400146484,
-          1857.9609931945802
+          1857.9609931945802,
+          1952.0220278226411
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3464,7 +3464,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1300.0463006337484,
           1406.4692728678385,
           1300.5529863993327,
           1355.4595438639324,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1419.9910226186116,
           1352.0022981007894,
           1368.4235481262208,
-          1324.1085124969482
+          1324.1085124969482,
+          1286.5545445850917
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "7178849c49ea38198cf0226e201423a6c1aa7d6f",
-        "author": "dependabot[bot]",
-        "date": "Sun Jan 18 10:24:50 2026 \u002B0100",
-        "message": "chore: Bump the nunit group with 1 update (#876)"
-      },
-      {
         "sha": "bf7d490739f9bbb4fa69aa43081cc60e09a62869",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 10:25:04 2026 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon May 11 12:40:33 2026 \u002B0200",
         "message": "chore: bump aweXpect.Core to v2.30.0 (#949)"
+      },
+      {
+        "sha": "16e2c24c0183a5c04fe3b49361fdf60601d45946",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu May 14 09:03:34 2026 \u002B0200",
+        "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
       }
     ],
     "labels": [
-      "7178849c",
       "bf7d4907",
       "a61da7b8",
       "9f92c671",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "8cee9190",
       "587bf61c",
       "3f417e79",
-      "5656409f"
+      "5656409f",
+      "16e2c24c"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2469.5860608418784,
           2552.189424641927,
           2513.509962463379,
           2475.283965519496,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2776.1912072988657,
           2534.283773422241,
           2611.066893386841,
-          2536.563325500488
+          2536.563325500488,
+          2567.820678965251
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4072,7 +4072,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          87044.60247395834,
           65075.09894670759,
           86011.31978352864,
           86610.57457682291,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           92732.49713541666,
           63925.73050362723,
           92516.54703776042,
-          90660.58136858259
+          90660.58136858259,
+          89414.75547572544
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           59100,
           58598,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           57481,
           57957,
           57481,
-          57481
+          57481,
+          56986
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
