@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
-      {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          255.35857020105635,
           284.98652833302816,
           292.37138277689616,
           260.1551948956081,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           248.8287740120521,
           275.62721974509105,
           253.63557669321696,
-          263.74906460444134
+          263.74906460444134,
+          254.63417393820626
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -422,7 +422,7 @@ window.BENCHMARK_DATA = {
         "data": [
           712,
           712,
-          712,
+          696,
           696,
           696,
           696,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          236.5278637068612,
           245.31624037424723,
           251.26018158594766,
           269.2377882321676,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           231.10308287824904,
           252.1998107433319,
           238.38255027624277,
-          234.34768841816827
+          234.34768841816827,
+          253.0220613846412
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
-      {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          307080.0887276786,
           323968.51025390625,
           315327.768359375,
           300378.32254464284,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           311491.7319986979,
           309256.57503255206,
           301119.75721958705,
-          299013.83621651784
+          299013.83621651784,
+          328639.2407877604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1030,7 +1030,7 @@ window.BENCHMARK_DATA = {
         "data": [
           335452,
           335452,
-          335452,
+          335444,
           335444,
           335444,
           335444,
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2509995.688701923,
           2652368.6463341345,
           2714056.3393229167,
           2401422.7684895834,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2594253.4174479167,
           2712130.3203125,
           2696556.7619977677,
-          2548547.8702566964
+          2548547.8702566964,
+          2430546.505989583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804906,
           4804887,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
       {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          455.54577312469485,
           501.5169469833374,
           489.32725177492415,
           508.0377559661865,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           483.7438433329264,
           483.7574556350708,
           482.57681689943587,
-          482.29411381941577
+          482.29411381941577,
+          486.32153536478677
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1638,7 +1638,7 @@ window.BENCHMARK_DATA = {
         "data": [
           1368,
           1368,
-          1368,
+          1360,
           1360,
           1360,
           1360,
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          476.29076399121965,
           504.91691623415267,
           488.45515995025636,
           512.5921005249023,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           473.65188536277185,
           468.68512630462646,
           472.3453134536743,
-          465.22883943716687
+          465.22883943716687,
+          474.5699833539816
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
-      {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          251.43657167141254,
           253.01466881434123,
           252.15586341222127,
           283.4110140800476,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           258.882556215922,
           261.5118856089456,
           262.13282505671185,
-          256.3235088030497
+          256.3235088030497,
+          262.6412694454193
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2246,7 +2246,6 @@ window.BENCHMARK_DATA = {
         "data": [
           816,
           816,
-          816,
           808,
           808,
           808,
@@ -2288,6 +2287,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          235.7345404965537,
           249.73073666890463,
           250.99924275080363,
           285.5109028816223,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           247.9168218612671,
           245.26542322452252,
           241.14132420221964,
-          251.34436041514078
+          251.34436041514078,
+          256.59832350413006
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
-      {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          463.51147164617265,
           449.0674800554911,
           494.7442384719849,
           502.3270462036133,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           485.01358229319254,
           475.2220519383748,
           471.36099307877674,
-          475.7153709411621
+          475.7153709411621,
+          471.90136366624097
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2854,7 +2854,7 @@ window.BENCHMARK_DATA = {
         "data": [
           1136,
           1136,
-          1136,
+          1128,
           1128,
           1128,
           1128,
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1218.2815177100044,
           1184.700120417277,
           1256.5540840148926,
           1352.306411488851,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1180.1319816589355,
           1167.3995031992595,
           1176.61356493632,
-          1185.6244538170952
+          1185.6244538170952,
+          1128.6523996499868
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
-      {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1894.9790550231933,
           1869.0229784647624,
           2012.717963663737,
           1738.131617863973,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           1925.4966400146484,
           1857.9609931945802,
           1952.0220278226411,
-          1920.984299468994
+          1920.984299468994,
+          1908.151171024029
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3462,7 +3462,7 @@ window.BENCHMARK_DATA = {
         "data": [
           2632,
           2632,
-          2632,
+          2624,
           2624,
           2624,
           2624,
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1300.5529863993327,
           1355.4595438639324,
           1267.482897077288,
           1394.4780248006184,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1368.4235481262208,
           1324.1085124969482,
           1286.5545445850917,
-          1244.610304260254
+          1244.610304260254,
+          1235.9358866373698
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "a61da7b880908adb0798dc1e7ba2df4f42762e63",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Jan 18 11:57:26 2026 \u002B0100",
-        "message": "feat: add implicit conversion to \u0060Times\u0060 (#878)"
-      },
-      {
         "sha": "9f92c67142800747a441566d55ed6a5a6dac01ec",
         "author": "dependabot[bot]",
         "date": "Sun Jan 18 11:57:45 2026 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
-      "a61da7b8",
       "9f92c671",
       "23cb7fab",
       "16def956",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2513.509962463379,
           2475.283965519496,
           2562.5491035461428,
           2189.664505822318,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2611.066893386841,
           2536.563325500488,
           2567.820678965251,
-          2539.419913973127
+          2539.419913973127,
+          2504.0617779323034
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4070,7 +4070,7 @@ window.BENCHMARK_DATA = {
         "data": [
           2824,
           2824,
-          2824,
+          2816,
           2816,
           2816,
           2816,
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          86011.31978352864,
           86610.57457682291,
           86689.00275530134,
           68438.77999441964,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           92516.54703776042,
           90660.58136858259,
           89414.75547572544,
-          89274.11682942709
+          89274.11682942709,
+          62079.916748046875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          59100,
           58598,
           58598,
           58141,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           57481,
           57481,
           56986,
-          56986
+          56986,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
