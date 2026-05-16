@@ -33,6 +33,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 99 for at least one item,
 					             but found only 0
+
+					             Collection:
+					             [1, 2, 3]
 					             """);
 			}
 
@@ -80,17 +83,11 @@ public sealed partial class ThatAsyncEnumerable
 					             starts with "b" for at least one item,
 					             but found only 0
 
-					             Actual:
-					             apple
-
-					             Expected:
-					             b
-
-					             Actual:
-					             cherry
-
-					             Expected:
-					             b
+					             Collection:
+					             [
+					               "apple",
+					               "cherry"
+					             ]
 					             """);
 			}
 		}

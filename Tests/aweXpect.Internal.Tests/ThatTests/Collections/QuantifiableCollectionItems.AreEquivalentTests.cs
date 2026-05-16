@@ -44,8 +44,33 @@ public sealed partial class QuantifiableCollectionItems
 				               } for all items,
 				             but only 3 of 4 were
 				             
-				             Equivalency options:
-				              - include public fields and properties
+				             Not matching items:
+				             [
+				               QuantifiableCollectionItems.MyClass {
+				                 Inner = <null>,
+				                 Value = "Bar"
+				               }
+				             ]
+				             
+				             Collection:
+				             [
+				               QuantifiableCollectionItems.MyClass {
+				                 Inner = <null>,
+				                 Value = "Foo"
+				               },
+				               QuantifiableCollectionItems.MyClass {
+				                 Inner = <null>,
+				                 Value = "Foo"
+				               },
+				               QuantifiableCollectionItems.MyClass {
+				                 Inner = <null>,
+				                 Value = "Foo"
+				               },
+				               QuantifiableCollectionItems.MyClass {
+				                 Inner = <null>,
+				                 Value = "Bar"
+				               }
+				             ]
 				             """);
 		}
 

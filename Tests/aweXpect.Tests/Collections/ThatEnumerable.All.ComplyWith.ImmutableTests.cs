@@ -26,6 +26,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but only 4 of 7 were
+
+						             Not matching items:
+						             [2, 2, 3]
+
+						             Collection:
+						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
 				}
 
@@ -67,6 +73,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is not equal to 1 for all items,
 						             but none of 7 were
+
+						             Not matching items:
+						             [1, 1, 1, 1, 1, 1, 1]
+
+						             Collection:
+						             [1, 1, 1, 1, 1, 1, 1]
 						             """);
 				}
 			}

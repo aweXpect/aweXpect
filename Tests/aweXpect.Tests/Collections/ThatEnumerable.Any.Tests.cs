@@ -49,6 +49,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 99 for at least one item,
 					             but found only 0
+
+					             Collection:
+					             [1, 2, 3, 4, 5]
 					             """);
 			}
 
@@ -65,6 +68,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 1 for at least one item,
 					             but found only 0
+
+					             Collection:
+					             []
 					             """);
 			}
 
@@ -149,17 +155,11 @@ public sealed partial class ThatEnumerable
 					             starts with "b" for at least one item,
 					             but found only 0
 
-					             Actual:
-					             apple
-
-					             Expected:
-					             b
-
-					             Actual:
-					             cherry
-
-					             Expected:
-					             b
+					             Collection:
+					             [
+					               "apple",
+					               "cherry"
+					             ]
 					             """);
 			}
 		}
@@ -191,6 +191,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 99 for at least one item,
 					             but found only 0
+
+					             Collection:
+					             [1, 2, 3]
 					             """);
 			}
 

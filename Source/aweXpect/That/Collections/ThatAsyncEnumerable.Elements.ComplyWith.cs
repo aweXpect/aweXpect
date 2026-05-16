@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -52,22 +53,26 @@ public static partial class ThatAsyncEnumerable
 		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
+		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly ExpectationGrammars _grammars;
 		private readonly string _it;
 		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
 		private readonly EnumerableQuantifier _quantifier;
 		private int _matchingCount;
+		private LimitedCollection<TItem>? _matchingItems;
 		private int _notMatchingCount;
+		private LimitedCollection<TItem>? _notMatchingItems;
 		private int? _totalCount;
 
 		public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 			EnumerableQuantifier quantifier,
 			Action<IThatSubject<TItem>> expectations) : base(grammars)
 		{
+			_expectationBuilder = expectationBuilder;
 			_it = it;
 			_grammars = grammars;
 			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder, grammars);
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(null, grammars);
 			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
@@ -87,6 +92,10 @@ public static partial class ThatAsyncEnumerable
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			_matchingCount = 0;
 			_notMatchingCount = 0;
+			int maxItems = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get() + 1;
+			LimitedCollection<TItem> items = new(maxItems);
+			_matchingItems = new LimitedCollection<TItem>(maxItems);
+			_notMatchingItems = new LimitedCollection<TItem>(maxItems);
 
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
@@ -94,15 +103,22 @@ public static partial class ThatAsyncEnumerable
 				if (isMatch.Outcome == Outcome.Success)
 				{
 					_matchingCount++;
+					_matchingItems.Add(item);
 				}
 				else
 				{
 					_notMatchingCount++;
+					_notMatchingItems.Add(item);
 				}
 
-				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
+				items.Add(item);
+
+				// items.IsReadOnly is set to true, once the limit is reached.
+				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount) && items.IsReadOnly)
 				{
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					AppendContexts(true);
+					_expectationBuilder.AddCollectionContext(items, true);
 					return this;
 				}
 			}
@@ -110,11 +126,14 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				Outcome = Outcome.Undecided;
+				_expectationBuilder.AddCollectionContext(items, true);
 				return this;
 			}
 
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			AppendContexts(false);
+			_expectationBuilder.AddCollectionContext(items);
 			return this;
 		}
 
@@ -157,6 +176,27 @@ public static partial class ThatAsyncEnumerable
 			else
 			{
 				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
+			}
+		}
+
+		private void AppendContexts(bool isIncomplete)
+		{
+			EnumerableQuantifier.QuantifierContexts quantifierContexts = _quantifier.GetQuantifierContext();
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.MatchingItems))
+			{
+				_expectationBuilder.AddContext(new ResultContext.SyncCallback("Matching items",
+						() => Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption(_matchingItems?.Count))
+							.AppendIsIncomplete(isIncomplete),
+						int.MaxValue));
+			}
+
+			if (quantifierContexts.HasFlag(EnumerableQuantifier.QuantifierContexts.NotMatchingItems))
+			{
+				_expectationBuilder.AddContext(new ResultContext.SyncCallback("Not matching items",
+						() => Formatter.Format(_notMatchingItems,
+								typeof(TItem).GetFormattingOption(_notMatchingItems?.Count))
+							.AppendIsIncomplete(isIncomplete),
+						int.MaxValue));
 			}
 		}
 	}
