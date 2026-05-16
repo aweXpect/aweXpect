@@ -106,7 +106,8 @@ public static partial class ThatAsyncEnumerable
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 			stringBuilder.Append(" for ");
 			stringBuilder.Append(_quantifier);
-			stringBuilder.Append(" items");
+			stringBuilder.Append(' ');
+			stringBuilder.Append(_quantifier.GetItemString());
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -126,7 +127,8 @@ public static partial class ThatAsyncEnumerable
 			stringBuilder.Append(_quantifier);
 			stringBuilder.Append(" for ");
 			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-			stringBuilder.Append(" items");
+			stringBuilder.Append(' ');
+			stringBuilder.Append(_quantifier.GetItemString());
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
