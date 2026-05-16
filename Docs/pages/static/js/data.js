@@ -3054,6 +3054,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -3565,7 +3571,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -4080,7 +4087,8 @@ window.BENCHMARK_DATA = {
           275.62721974509105,
           253.63557669321696,
           263.74906460444134,
-          254.63417393820626
+          254.63417393820626,
+          257.2480085690816
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4553,6 +4561,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5123,7 +5132,8 @@ window.BENCHMARK_DATA = {
           252.1998107433319,
           238.38255027624277,
           234.34768841816827,
-          253.0220613846412
+          253.0220613846412,
+          260.5485079447428
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5316,6 +5326,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8249,6 +8260,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -8683,7 +8700,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -9121,7 +9139,8 @@ window.BENCHMARK_DATA = {
           309256.57503255206,
           301119.75721958705,
           299013.83621651784,
-          328639.2407877604
+          328639.2407877604,
+          307924.8183942522
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9517,6 +9536,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -10010,7 +10030,8 @@ window.BENCHMARK_DATA = {
           2712130.3203125,
           2696556.7619977677,
           2548547.8702566964,
-          2430546.505989583
+          2430546.505989583,
+          2489009.7388020833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10449,6 +10470,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -13521,6 +13543,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -14032,7 +14060,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -14547,7 +14576,8 @@ window.BENCHMARK_DATA = {
           483.7574556350708,
           482.57681689943587,
           482.29411381941577,
-          486.32153536478677
+          486.32153536478677,
+          521.8121624628703
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15020,6 +15050,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15590,7 +15621,8 @@ window.BENCHMARK_DATA = {
           468.68512630462646,
           472.3453134536743,
           465.22883943716687,
-          474.5699833539816
+          474.5699833539816,
+          536.6702416102091
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15783,6 +15815,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -19178,6 +19211,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -19689,7 +19728,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -20204,7 +20244,8 @@ window.BENCHMARK_DATA = {
           261.5118856089456,
           262.13282505671185,
           256.3235088030497,
-          262.6412694454193
+          262.6412694454193,
+          268.359963621412
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20718,6 +20759,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -21247,7 +21289,8 @@ window.BENCHMARK_DATA = {
           245.26542322452252,
           241.14132420221964,
           251.34436041514078,
-          256.59832350413006
+          256.59832350413006,
+          276.8941360473633
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21440,6 +21483,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24835,6 +24879,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -25346,7 +25396,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -25861,7 +25912,8 @@ window.BENCHMARK_DATA = {
           475.2220519383748,
           471.36099307877674,
           475.7153709411621,
-          471.90136366624097
+          471.90136366624097,
+          481.8471424420675
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26334,6 +26386,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26904,7 +26957,8 @@ window.BENCHMARK_DATA = {
           1167.3995031992595,
           1176.61356493632,
           1185.6244538170952,
-          1128.6523996499868
+          1128.6523996499868,
+          1276.5654972394307
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27333,6 +27387,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -30492,6 +30547,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -31003,7 +31064,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -31518,7 +31580,8 @@ window.BENCHMARK_DATA = {
           1857.9609931945802,
           1952.0220278226411,
           1920.984299468994,
-          1908.151171024029
+          1908.151171024029,
+          2018.7297785622734
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31991,6 +32054,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -32561,7 +32625,8 @@ window.BENCHMARK_DATA = {
           1324.1085124969482,
           1286.5545445850917,
           1244.610304260254,
-          1235.9358866373698
+          1235.9358866373698,
+          1498.877787399292
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32754,6 +32819,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -36149,6 +36215,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:42:47 2026 \u002B0200",
         "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
+      },
+      {
+        "sha": "9e78cad2f858bacba801f4c9a63702ec3fcd8b0f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 20:30:50 2026 \u002B0200",
+        "message": "feat: add \u0060Any()\u0060 quantifier across collection variants (#954)"
       }
     ],
     "labels": [
@@ -36660,7 +36732,8 @@ window.BENCHMARK_DATA = {
       "5656409f",
       "16e2c24c",
       "0d5b1a95",
-      "2e3e0f0e"
+      "2e3e0f0e",
+      "9e78cad2"
     ],
     "datasets": [
       {
@@ -37175,7 +37248,8 @@ window.BENCHMARK_DATA = {
           2536.563325500488,
           2567.820678965251,
           2539.419913973127,
-          2504.0617779323034
+          2504.0617779323034,
+          2623.5803386143275
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -37648,6 +37722,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -38218,7 +38293,8 @@ window.BENCHMARK_DATA = {
           90660.58136858259,
           89414.75547572544,
           89274.11682942709,
-          62079.916748046875
+          62079.916748046875,
+          63488.736328125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -38738,6 +38814,7 @@ window.BENCHMARK_DATA = {
           57481,
           56986,
           56986,
+          57481,
           57481
         ],
         "borderColor": "#FF671B",
