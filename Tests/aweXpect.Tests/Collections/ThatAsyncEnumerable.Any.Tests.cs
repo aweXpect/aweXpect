@@ -1,0 +1,99 @@
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
+
+namespace aweXpect.Tests;
+
+public sealed partial class ThatAsyncEnumerable
+{
+	public sealed class Any
+	{
+		public sealed class Tests
+		{
+			[Fact]
+			public async Task WhenAtLeastOneItemMatches_ShouldSucceed()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3, 4, 5);
+
+				async Task Act()
+					=> await That(subject).Any().ComplyWith(it => it.IsEqualTo(3));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenNoItemsMatch_ShouldFail()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 2, 3);
+
+				async Task Act()
+					=> await That(subject).Any().ComplyWith(it => it.IsEqualTo(99));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to 99 for at least one item,
+					             but found only 0
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject).Any().ComplyWith(it => it.IsEqualTo(1));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to 1 for at least one item,
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task WhenAtLeastOneItemMatches_ShouldSucceed()
+			{
+				IAsyncEnumerable<string?> subject = ToAsyncEnumerable<string?>("apple", "banana", "cherry");
+
+				async Task Act()
+					=> await That(subject).Any().ComplyWith(it => it.StartsWith("b"));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenNoItemsMatch_ShouldFail()
+			{
+				IAsyncEnumerable<string?> subject = ToAsyncEnumerable<string?>("apple", "cherry");
+
+				async Task Act()
+					=> await That(subject).Any().ComplyWith(it => it.StartsWith("b"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             starts with "b" for at least one item,
+					             but found only 0
+
+					             Actual:
+					             apple
+
+					             Expected:
+					             b
+
+					             Actual:
+					             cherry
+
+					             Expected:
+					             b
+					             """);
+			}
+		}
+	}
+}
+#endif
