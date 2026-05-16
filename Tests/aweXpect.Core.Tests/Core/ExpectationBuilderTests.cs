@@ -139,6 +139,57 @@ public class ExpectationBuilderTests
 	}
 
 	[Fact]
+	public async Task ForWhich_CalledTwice_OuterConstraintFails_ShouldStillEvaluateOuterConstraint()
+	{
+		ManualExpectationBuilder<string> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foo", "is foo"));
+		sut.ForWhich<string, int>(s => s.Length, " whose length ");
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 3, "is 3"));
+		sut.ForWhich<string, char>(s => s[0], " and whose first char ");
+		sut.AddConstraint((_, _) => new DummyConstraint<char>(c => c == 'B', "is 'B'"));
+
+		ConstraintResult result = await sut.IsMetBy("BAR", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Failure);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is foo whose length is 3 and whose first char is 'B'");
+	}
+
+	[Fact]
+	public async Task ForWhich_CalledTwice_SecondProjectionFails_ShouldIncludeAllProjectionsInOrder()
+	{
+		ManualExpectationBuilder<string> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foo", "is foo"));
+		sut.ForWhich<string, int>(s => s.Length, " whose length ");
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 3, "is 3"));
+		sut.ForWhich<string, char>(s => s[0], " and whose first char ");
+		sut.AddConstraint((_, _) => new DummyConstraint<char>(c => c == 'x', "is 'x'"));
+
+		ConstraintResult result = await sut.IsMetBy("foo", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Failure);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is foo whose length is 3 and whose first char is 'x'");
+	}
+
+	[Fact]
+	public async Task ForWhich_CalledTwice_ShouldHonorConstraintsFromAllLevels()
+	{
+		ManualExpectationBuilder<string> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foo", "is foo"));
+		sut.ForWhich<string, int>(s => s.Length, " whose length ");
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 3, "is 3"));
+		sut.ForWhich<string, char>(s => s[0], " and whose first char ");
+		sut.AddConstraint((_, _) => new DummyConstraint<char>(c => c == 'f', "is 'f'"));
+
+		ConstraintResult result = await sut.IsMetBy("foo", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is foo whose length is 3 and whose first char is 'f'");
+	}
+
+	[Fact]
 	public async Task WhenSubjectHasMultipleLines_ShouldTrimCommonWhiteSpace()
 	{
 		async Task Act() => await That(new[]
