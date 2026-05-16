@@ -3042,6 +3042,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -3551,7 +3557,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -4064,7 +4071,8 @@ window.BENCHMARK_DATA = {
           252.45698054631552,
           248.8287740120521,
           275.62721974509105,
-          253.63557669321696
+          253.63557669321696,
+          263.74906460444134
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4537,6 +4545,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5103,7 +5112,8 @@ window.BENCHMARK_DATA = {
           247.30406717153696,
           231.10308287824904,
           252.1998107433319,
-          238.38255027624277
+          238.38255027624277,
+          234.34768841816827
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5296,6 +5306,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8215,6 +8226,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -8647,7 +8664,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -9083,7 +9101,8 @@ window.BENCHMARK_DATA = {
           299294.89228515624,
           311491.7319986979,
           309256.57503255206,
-          301119.75721958705
+          301119.75721958705,
+          299013.83621651784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9479,6 +9498,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9968,7 +9988,8 @@ window.BENCHMARK_DATA = {
           2408953.056082589,
           2594253.4174479167,
           2712130.3203125,
-          2696556.7619977677
+          2696556.7619977677,
+          2548547.8702566964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10407,6 +10428,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906
@@ -13465,6 +13487,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -13974,7 +14002,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -14487,7 +14516,8 @@ window.BENCHMARK_DATA = {
           478.20732736587524,
           483.7438433329264,
           483.7574556350708,
-          482.57681689943587
+          482.57681689943587,
+          482.29411381941577
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14960,6 +14990,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15526,7 +15557,8 @@ window.BENCHMARK_DATA = {
           477.0002979278564,
           473.65188536277185,
           468.68512630462646,
-          472.3453134536743
+          472.3453134536743,
+          465.22883943716687
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15719,6 +15751,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -19100,6 +19133,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -19609,7 +19648,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -20122,7 +20162,8 @@ window.BENCHMARK_DATA = {
           250.86630187715804,
           258.882556215922,
           261.5118856089456,
-          262.13282505671185
+          262.13282505671185,
+          256.3235088030497
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20636,6 +20677,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -21161,7 +21203,8 @@ window.BENCHMARK_DATA = {
           242.734259446462,
           247.9168218612671,
           245.26542322452252,
-          241.14132420221964
+          241.14132420221964,
+          251.34436041514078
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21354,6 +21397,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24735,6 +24779,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -25244,7 +25294,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -25757,7 +25808,8 @@ window.BENCHMARK_DATA = {
           469.5621375083923,
           485.01358229319254,
           475.2220519383748,
-          471.36099307877674
+          471.36099307877674,
+          475.7153709411621
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26230,6 +26282,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26796,7 +26849,8 @@ window.BENCHMARK_DATA = {
           1158.123580639179,
           1180.1319816589355,
           1167.3995031992595,
-          1176.61356493632
+          1176.61356493632,
+          1185.6244538170952
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27225,6 +27279,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -30370,6 +30425,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -30879,7 +30940,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -31392,7 +31454,8 @@ window.BENCHMARK_DATA = {
           1930.0697413126627,
           1925.4966400146484,
           1857.9609931945802,
-          1952.0220278226411
+          1952.0220278226411,
+          1920.984299468994
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31865,6 +31928,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -32431,7 +32495,8 @@ window.BENCHMARK_DATA = {
           1352.0022981007894,
           1368.4235481262208,
           1324.1085124969482,
-          1286.5545445850917
+          1286.5545445850917,
+          1244.610304260254
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32624,6 +32689,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -36005,6 +36071,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu May 14 09:03:34 2026 \u002B0200",
         "message": "refactor: update to .NET SDK version 10.0.300 (#950)"
+      },
+      {
+        "sha": "0d5b1a9511c35f013df80add1cb449e036aed763",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:04:29 2026 \u002B0200",
+        "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
       }
     ],
     "labels": [
@@ -36514,7 +36586,8 @@ window.BENCHMARK_DATA = {
       "587bf61c",
       "3f417e79",
       "5656409f",
-      "16e2c24c"
+      "16e2c24c",
+      "0d5b1a95"
     ],
     "datasets": [
       {
@@ -37027,7 +37100,8 @@ window.BENCHMARK_DATA = {
           2534.283773422241,
           2611.066893386841,
           2536.563325500488,
-          2567.820678965251
+          2567.820678965251,
+          2539.419913973127
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -37500,6 +37574,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -38066,7 +38141,8 @@ window.BENCHMARK_DATA = {
           63925.73050362723,
           92516.54703776042,
           90660.58136858259,
-          89414.75547572544
+          89414.75547572544,
+          89274.11682942709
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -38584,6 +38660,7 @@ window.BENCHMARK_DATA = {
           57957,
           57481,
           57481,
+          56986,
           56986
         ],
         "borderColor": "#FF671B",
