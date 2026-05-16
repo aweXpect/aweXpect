@@ -29,6 +29,9 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is less than 6 for all items,
 						             but could not verify, because it was already cancelled
+
+						             Collection:
+						             [0, 1, 2, 3, 4, (… and maybe others)]
 						             """);
 				}
 
@@ -57,6 +60,24 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but not all were
+
+						             Not matching items:
+						             [2, 3, 5, 8, 13, 21, 34, 55, 89, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -72,7 +93,13 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to 1 for all items,
-						             but not all were
+						             but only 4 of 7 were
+
+						             Not matching items:
+						             [2, 2, 3]
+
+						             Collection:
+						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
 				}
 
@@ -151,16 +178,19 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             starts with "a" for all items,
-						             but not all were
-						             
-						             Actual:
-						             apple
-						             
-						             Actual:
-						             banana
-						             
-						             Expected:
-						             a
+						             but only 2 of 3 were
+
+						             Not matching items:
+						             [
+						               "banana"
+						             ]
+
+						             Collection:
+						             [
+						               "apple",
+						               "banana",
+						               "avocado"
+						             ]
 						             """);
 				}
 
@@ -195,7 +225,13 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is not equal to 1 for all items,
-						             but not all were
+						             but none of 7 were
+
+						             Not matching items:
+						             [1, 1, 1, 1, 1, 1, 1]
+
+						             Collection:
+						             [1, 1, 1, 1, 1, 1, 1]
 						             """);
 				}
 			}

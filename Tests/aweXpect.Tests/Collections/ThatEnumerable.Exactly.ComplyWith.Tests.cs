@@ -30,6 +30,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 2 for exactly one item,
 					             but found 2
+
+					             Collection:
+					             [1, 2, 3, 2, 5]
 					             """);
 			}
 
@@ -73,6 +76,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             exactly one for is equal to 3 item,
 					             but it did
+
+					             Collection:
+					             [1, 2, 3, 4, 5]
 					             """);
 			}
 		}

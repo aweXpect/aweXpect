@@ -27,7 +27,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is less than 6 for all items,
 					             but could not verify, because it was already cancelled
-					             """);
+					             """).AsPrefix();
 			}
 
 			[Fact]
@@ -55,7 +55,7 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for all items,
 					             but not all were
-					             """);
+					             """).AsPrefix();
 			}
 
 			[Fact]
@@ -70,8 +70,8 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 1 for all items,
-					             but not all were
-					             """);
+					             but only 4 of 7 were
+					             """).AsPrefix();
 			}
 
 			[Fact]

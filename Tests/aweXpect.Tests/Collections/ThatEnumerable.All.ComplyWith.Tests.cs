@@ -49,6 +49,21 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is less than 6 for all items,
 						             but could not verify, because it was already cancelled
+
+						             Collection:
+						             [
+						               0,
+						               1,
+						               2,
+						               3,
+						               4,
+						               5,
+						               6,
+						               7,
+						               8,
+						               9,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -77,6 +92,24 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but not all were
+
+						             Not matching items:
+						             [2, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               2,
+						               3,
+						               5,
+						               8,
+						               13,
+						               21,
+						               34,
+						               55,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 
@@ -93,6 +126,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equal to 1 for all items,
 						             but only 4 of 7 were
+
+						             Not matching items:
+						             [2, 2, 3]
+
+						             Collection:
+						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
 				}
 
@@ -150,6 +189,21 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is not equal to 1 for all items,
 						             but not all were
+
+						             Not matching items:
+						             [1, (… and maybe others)]
+
+						             Collection:
+						             [
+						               1,
+						               1,
+						               1,
+						               1,
+						               1,
+						               1,
+						               1,
+						               (… and maybe others)
+						             ]
 						             """);
 				}
 			}

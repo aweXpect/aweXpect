@@ -30,6 +30,9 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is equal to 99 for at least one item,
 					             but found only 0
+
+					             Collection:
+					             [1, 2, 3, 4, 5]
 					             """);
 			}
 		}
