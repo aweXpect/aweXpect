@@ -3048,6 +3048,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -3558,7 +3564,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -4072,7 +4079,8 @@ window.BENCHMARK_DATA = {
           248.8287740120521,
           275.62721974509105,
           253.63557669321696,
-          263.74906460444134
+          263.74906460444134,
+          254.63417393820626
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4545,6 +4553,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5113,7 +5122,8 @@ window.BENCHMARK_DATA = {
           231.10308287824904,
           252.1998107433319,
           238.38255027624277,
-          234.34768841816827
+          234.34768841816827,
+          253.0220613846412
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5306,6 +5316,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8232,6 +8243,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -8665,7 +8682,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -9102,7 +9120,8 @@ window.BENCHMARK_DATA = {
           311491.7319986979,
           309256.57503255206,
           301119.75721958705,
-          299013.83621651784
+          299013.83621651784,
+          328639.2407877604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9498,6 +9517,7 @@ window.BENCHMARK_DATA = {
           335452,
           335452,
           335452,
+          335444,
           335444,
           335444,
           335444,
@@ -9989,7 +10009,8 @@ window.BENCHMARK_DATA = {
           2594253.4174479167,
           2712130.3203125,
           2696556.7619977677,
-          2548547.8702566964
+          2548547.8702566964,
+          2430546.505989583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10428,6 +10449,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906,
           4804906,
           4804906,
@@ -13493,6 +13515,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -14003,7 +14031,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -14517,7 +14546,8 @@ window.BENCHMARK_DATA = {
           483.7438433329264,
           483.7574556350708,
           482.57681689943587,
-          482.29411381941577
+          482.29411381941577,
+          486.32153536478677
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14990,6 +15020,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15558,7 +15589,8 @@ window.BENCHMARK_DATA = {
           473.65188536277185,
           468.68512630462646,
           472.3453134536743,
-          465.22883943716687
+          465.22883943716687,
+          474.5699833539816
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15751,6 +15783,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -19139,6 +19172,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -19649,7 +19688,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -20163,7 +20203,8 @@ window.BENCHMARK_DATA = {
           258.882556215922,
           261.5118856089456,
           262.13282505671185,
-          256.3235088030497
+          256.3235088030497,
+          262.6412694454193
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20677,6 +20718,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -21204,7 +21246,8 @@ window.BENCHMARK_DATA = {
           247.9168218612671,
           245.26542322452252,
           241.14132420221964,
-          251.34436041514078
+          251.34436041514078,
+          256.59832350413006
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21397,6 +21440,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24785,6 +24829,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -25295,7 +25345,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -25809,7 +25860,8 @@ window.BENCHMARK_DATA = {
           485.01358229319254,
           475.2220519383748,
           471.36099307877674,
-          475.7153709411621
+          475.7153709411621,
+          471.90136366624097
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26282,6 +26334,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -26850,7 +26903,8 @@ window.BENCHMARK_DATA = {
           1180.1319816589355,
           1167.3995031992595,
           1176.61356493632,
-          1185.6244538170952
+          1185.6244538170952,
+          1128.6523996499868
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27279,6 +27333,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -30431,6 +30486,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -30941,7 +31002,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -31455,7 +31517,8 @@ window.BENCHMARK_DATA = {
           1925.4966400146484,
           1857.9609931945802,
           1952.0220278226411,
-          1920.984299468994
+          1920.984299468994,
+          1908.151171024029
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -31928,6 +31991,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -32496,7 +32560,8 @@ window.BENCHMARK_DATA = {
           1368.4235481262208,
           1324.1085124969482,
           1286.5545445850917,
-          1244.610304260254
+          1244.610304260254,
+          1235.9358866373698
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32689,6 +32754,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -36077,6 +36143,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 19:04:29 2026 \u002B0200",
         "message": "fix: pluralize item suffix in \u0060ComplyWith\u0060 failure messages (#951)"
+      },
+      {
+        "sha": "2e3e0f0e27e7ed539cb4758dc90214ae1bce12d2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 16 19:42:47 2026 \u002B0200",
+        "message": "feat: add \u0060ComplyWith\u0060 to string-specialized Elements (#952)"
       }
     ],
     "labels": [
@@ -36587,7 +36659,8 @@ window.BENCHMARK_DATA = {
       "3f417e79",
       "5656409f",
       "16e2c24c",
-      "0d5b1a95"
+      "0d5b1a95",
+      "2e3e0f0e"
     ],
     "datasets": [
       {
@@ -37101,7 +37174,8 @@ window.BENCHMARK_DATA = {
           2611.066893386841,
           2536.563325500488,
           2567.820678965251,
-          2539.419913973127
+          2539.419913973127,
+          2504.0617779323034
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -37574,6 +37648,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -38142,7 +38217,8 @@ window.BENCHMARK_DATA = {
           92516.54703776042,
           90660.58136858259,
           89414.75547572544,
-          89274.11682942709
+          89274.11682942709,
+          62079.916748046875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -38661,7 +38737,8 @@ window.BENCHMARK_DATA = {
           57481,
           57481,
           56986,
-          56986
+          56986,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
