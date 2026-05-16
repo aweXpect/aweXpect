@@ -147,7 +147,37 @@ public sealed partial class ThatAsyncEnumerable
 					async Task Act()
 						=> await That(subject).All().ComplyWith(it => it.StartsWith("a"));
 
-					await That(Act).Throws<XunitException>();
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             starts with "a" for all items,
+						             but not all were
+						             
+						             Actual:
+						             apple
+						             
+						             Actual:
+						             banana
+						             
+						             Expected:
+						             a
+						             """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					IAsyncEnumerable<string?>? subject = null;
+
+					async Task Act()
+						=> await That(subject).All().ComplyWith(it => it.StartsWith("a"));
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             starts with "a" for all items,
+						             but it was <null>
+						             """);
 				}
 			}
 

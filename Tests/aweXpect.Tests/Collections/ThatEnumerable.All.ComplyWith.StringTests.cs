@@ -56,7 +56,12 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).All().ComplyWith(it => it.StartsWith("a"));
 
-					await That(Act).Throws<XunitException>();
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             starts with "a" for all items,
+						             but it was <null>
+						             """);
 				}
 			}
 		}
