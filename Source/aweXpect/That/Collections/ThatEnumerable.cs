@@ -22,7 +22,6 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	private const string For = " for ";
-	private const string ComplyItems = " items";
 	private const string SortOrder = " order";
 	private const string CannotCompareToNull = " cannot compare to <null>";
 

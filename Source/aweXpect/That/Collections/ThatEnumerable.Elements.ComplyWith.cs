@@ -104,7 +104,8 @@ public static partial class ThatEnumerable
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(ComplyItems);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -115,7 +116,8 @@ public static partial class ThatEnumerable
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(For);
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(ComplyItems);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
@@ -212,7 +214,8 @@ public static partial class ThatEnumerable
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(ComplyItems);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -223,7 +226,8 @@ public static partial class ThatEnumerable
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(For);
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(ComplyItems);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
@@ -315,7 +319,8 @@ public static partial class ThatEnumerable
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 				stringBuilder.Append(For);
 				stringBuilder.Append(_quantifier);
-				stringBuilder.Append(ComplyItems);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
@@ -326,7 +331,8 @@ public static partial class ThatEnumerable
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(For);
 				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
-				stringBuilder.Append(ComplyItems);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
