@@ -41,6 +41,8 @@ namespace aweXpect
     {
         public static aweXpect.ThatAsyncEnumerable.Elements All(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?> subject) { }
         public static aweXpect.ThatAsyncEnumerable.Elements<TItem> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> subject) { }
+        public static aweXpect.ThatAsyncEnumerable.Elements Any(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?> subject) { }
+        public static aweXpect.ThatAsyncEnumerable.Elements<TItem> Any<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> subject) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>> AreAllUnique(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?> source) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>, TItem> AreAllUnique<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> source) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> AreAllUnique<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> source, System.Func<TItem, string> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "") { }
@@ -390,6 +392,11 @@ namespace aweXpect
         public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> All(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
         public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> All<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject) { }
+        public static aweXpect.ThatEnumerable.Elements Any(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForEnumerable<System.Collections.IEnumerable> Any(this aweXpect.Core.IThat<System.Collections.IEnumerable> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<string?>> Any(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>> subject) { }
+        public static aweXpect.ThatEnumerable.Elements<TItem> Any<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
+        public static aweXpect.ThatEnumerable.ElementsForStructEnumerable<System.Collections.Immutable.ImmutableArray<TItem>, TItem> Any<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> subject) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> AreAllUnique(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.IEnumerable, aweXpect.Core.IThat<System.Collections.IEnumerable>, object?> AreAllUnique(this aweXpect.Core.IThat<System.Collections.IEnumerable> source) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Immutable.ImmutableArray<string?>, aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>?>> AreAllUnique(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<string?>?> source) { }
