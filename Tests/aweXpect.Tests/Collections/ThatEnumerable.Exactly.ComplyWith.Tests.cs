@@ -57,28 +57,23 @@ public sealed partial class ThatEnumerable
 			}
 		}
 
-		public sealed class AtLeastComplyWithTests
+		public sealed class NegatedComplyWithTests
 		{
 			[Fact]
-			public async Task WhenAtLeastOneItemMatches_ShouldSucceed()
+			public async Task WhenExactlyOneItemMatches_ShouldFail()
 			{
 				int[] subject = [1, 2, 3, 4, 5,];
 
 				async Task Act()
-					=> await That(subject).AtLeast(1).ComplyWith(it => it.IsEqualTo(3));
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.Exactly(1).ComplyWith(x => x.IsEqualTo(3)));
 
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task WhenNoItemsMatch_ShouldFail()
-			{
-				int[] subject = [1, 2, 3, 4, 5,];
-
-				async Task Act()
-					=> await That(subject).AtLeast(1).ComplyWith(it => it.IsEqualTo(99));
-
-				await That(Act).Throws<XunitException>();
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             exactly one for is equal to 3 item,
+					             but it did
+					             """);
 			}
 		}
 	}
