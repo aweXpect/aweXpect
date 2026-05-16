@@ -79,7 +79,7 @@ public sealed partial class ThatAsyncEnumerable
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IAsyncEnumerable<int> subject = ToAsyncEnumerable((int[]) []);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable((int[])[]);
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(0));
@@ -112,6 +112,42 @@ public sealed partial class ThatAsyncEnumerable
 						             is equal to 0 for all items,
 						             but it was <null>
 						             """);
+				}
+			}
+
+			public sealed class StringTests
+			{
+				[Fact]
+				public async Task WhenAllItemsMatchExpectation_ShouldSucceed()
+				{
+					IAsyncEnumerable<string?> subject = ToAsyncEnumerable<string?>("apple", "ant", "avocado");
+
+					async Task Act()
+						=> await That(subject).All().ComplyWith(it => it.StartsWith("a"));
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
+				public async Task WhenExactlyOneItemMatchesExpectation_ShouldSucceed()
+				{
+					IAsyncEnumerable<string?> subject = ToAsyncEnumerable<string?>("apple", "banana", "cherry");
+
+					async Task Act()
+						=> await That(subject).Exactly(1).ComplyWith(it => it.StartsWith("b"));
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
+				public async Task WhenNotAllItemsMatch_ShouldFail()
+				{
+					IAsyncEnumerable<string?> subject = ToAsyncEnumerable<string?>("apple", "banana", "avocado");
+
+					async Task Act()
+						=> await That(subject).All().ComplyWith(it => it.StartsWith("a"));
+
+					await That(Act).Throws<XunitException>();
 				}
 			}
 

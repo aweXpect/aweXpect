@@ -126,6 +126,116 @@ public static partial class ThatEnumerable
 		}
 	}
 
+	public partial class Elements
+	{
+		/// <summary>
+		///     …comply with the <paramref name="expectations" />.
+		/// </summary>
+		public ObjectEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>, string?>
+			ComplyWith(Action<IThatSubject<string?>> expectations)
+		{
+			ObjectEqualityOptions<string?> options = new();
+			return new ObjectEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>, string?>(
+				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
+					=> new ComplyWithConstraint(expectationBuilder, it, grammars, _quantifier, expectations)),
+				_subject,
+				options);
+		}
+
+		private sealed class ComplyWithConstraint
+			: ConstraintResult.WithNotNullValue<IEnumerable<string?>?>,
+				IAsyncContextConstraint<IEnumerable<string?>?>
+		{
+			private readonly ManualExpectationBuilder<string?> _itemExpectationBuilder;
+			private readonly EnumerableQuantifier _quantifier;
+			private int _matchingCount;
+			private int _notMatchingCount;
+			private int? _totalCount;
+
+			public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
+				EnumerableQuantifier quantifier,
+				Action<IThatSubject<string?>> expectations)
+				: base(it, grammars)
+			{
+				_quantifier = quantifier;
+				_itemExpectationBuilder = new ManualExpectationBuilder<string?>(expectationBuilder, grammars);
+				expectations.Invoke(new ThatSubject<string?>(_itemExpectationBuilder));
+			}
+
+			public async Task<ConstraintResult> IsMetBy(
+				IEnumerable<string?>? actual,
+				IEvaluationContext context,
+				CancellationToken cancellationToken)
+			{
+				Actual = actual;
+				if (actual is null)
+				{
+					Outcome = Outcome.Failure;
+					return this;
+				}
+
+				IEnumerable<string?> materialized = context.UseMaterializedEnumerable<string?, IEnumerable<string?>>(actual);
+				bool cancelEarly = actual is not ICollection<string?>;
+				_matchingCount = 0;
+				_notMatchingCount = 0;
+
+				foreach (string? item in materialized)
+				{
+					ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
+					if (isMatch.Outcome == Outcome.Success)
+					{
+						_matchingCount++;
+					}
+					else
+					{
+						_notMatchingCount++;
+					}
+
+					if (cancelEarly && _quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
+					{
+						Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+						return this;
+					}
+
+					if (cancellationToken.IsCancellationRequested)
+					{
+						Outcome = Outcome.Undecided;
+						return this;
+					}
+				}
+
+				_totalCount = _matchingCount + _notMatchingCount;
+				Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+				return this;
+			}
+
+			protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			{
+				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
+				stringBuilder.Append(For);
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
+			}
+
+			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+				=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
+
+			protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			{
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(For);
+				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
+			}
+
+			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+				=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount,
+					_totalCount);
+		}
+	}
+
 	public partial class ElementsForEnumerable<TEnumerable>
 	{
 		/// <summary>

@@ -31,6 +31,23 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
+	public partial class Elements
+	{
+		/// <summary>
+		///     …comply with the <paramref name="expectations" />.
+		/// </summary>
+		public ObjectEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>, string?>
+			ComplyWith(Action<IThatSubject<string?>> expectations)
+		{
+			ObjectEqualityOptions<string?> options = new();
+			return new ObjectEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>, string?>(
+				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
+					=> new ComplyWithConstraint<string?>(expectationBuilder, it, grammars, _quantifier, expectations)),
+				_subject,
+				options);
+		}
+	}
+
 	private sealed class ComplyWithConstraint<TItem>
 		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>

@@ -152,6 +152,7 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>, TItem> StartsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public class Elements : aweXpect.ThatAsyncEnumerable.IElements
         {
+            public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>, string?> ComplyWith(System.Action<aweXpect.Core.IThatSubject<string?>> expectations) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>> Satisfy(System.Func<string?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
         public class Elements<TItem> : aweXpect.ThatAsyncEnumerable.IElements<TItem>
@@ -631,6 +632,7 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Immutable.ImmutableArray<TItem>, aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>>, TItem> StartsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Immutable.ImmutableArray<TItem>> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public class Elements : aweXpect.ThatEnumerable.IElements
         {
+            public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>, string?> ComplyWith(System.Action<aweXpect.Core.IThatSubject<string?>> expectations) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> Satisfy(System.Func<string?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
         public class Elements<TItem> : aweXpect.ThatEnumerable.IElements<TItem>
