@@ -90,26 +90,38 @@ internal class WhichNode<TSource, TMember> : Node
 				FurtherProcessingStrategy.IgnoreResult, default);
 		}
 
-		if (value is TSource typedValue)
+		TSource? source;
+		if (value is TSource directValue)
 		{
-			TMember? matchingValue;
-			if (_memberAccessor != null)
-			{
-				matchingValue = _memberAccessor(typedValue);
-			}
-			else
-			{
-				matchingValue = await _asyncMemberAccessor!.Invoke(typedValue);
-			}
-
-			ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
-			return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
-				matchingValue);
+			source = directValue;
+		}
+		else if (parentResult != null && parentResult.TryGetValue(out TSource? projectedValue))
+		{
+			// A parent WhichNode already projected the outer subject to TSource;
+			// use that projection so chained ForWhich calls compose
+			// (e.g. .Which.X.Which.Y, where Y's accessor operates on X's output).
+			source = projectedValue;
+		}
+		else
+		{
+			throw new InvalidOperationException(
+					$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
+				.LogTrace();
 		}
 
-		throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
-			.LogTrace();
+		TMember? matchingValue;
+		if (_memberAccessor != null)
+		{
+			matchingValue = source is null ? default : _memberAccessor(source);
+		}
+		else
+		{
+			matchingValue = source is null ? default : await _asyncMemberAccessor!.Invoke(source);
+		}
+
+		ConstraintResult innerResult = await _inner.IsMetBy(matchingValue, context, cancellationToken);
+		return CombineResults(parentResult, innerResult, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
+			matchingValue);
 	}
 
 	/// <inheritdoc cref="object.Equals(object?)" />

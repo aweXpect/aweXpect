@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Globalization;
+using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Tests.TestHelpers;
 
@@ -158,6 +159,45 @@ public class ExpectationBuilderTests
 	}
 
 	[Fact]
+	public async Task ForWhich_Async_CalledTwice_WhereSecondProjectsFromFirstResult_ShouldChainProjections()
+	{
+		Func<int, Task<string?>> stringify = i =>
+			Task.FromResult<string?>(i.ToString(CultureInfo.InvariantCulture));
+		Func<string, Task<string?>> doubled = s => Task.FromResult<string?>(s + s);
+		ManualExpectationBuilder<int> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 12, "is 12"));
+		sut.ForWhich(stringify, " whose string ");
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "12", "is \"12\""));
+		sut.ForWhich(doubled, " and whose doubled ");
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "1212", "is \"1212\""));
+
+		ConstraintResult result = await sut.IsMetBy(12, null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is 12 whose string is \"12\" and whose doubled is \"1212\"");
+	}
+
+	[Fact]
+	public async Task ForWhich_CalledThreeTimes_EachProjectionChainsFromPrevious_ShouldEvaluateDeeply()
+	{
+		ManualExpectationBuilder<string> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foo", "is foo"));
+		sut.ForWhich<string, char>(s => s[0], " whose first char ");
+		sut.AddConstraint((_, _) => new DummyConstraint<char>(c => c == 'f', "is 'f'"));
+		sut.ForWhich<char, int>(c => c, " whose code point ");
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 'f', "is 102"));
+		sut.ForWhich<int, bool>(i => i % 2 == 0, " whose is-even ");
+		sut.AddConstraint((_, _) => new DummyConstraint<bool>(b => b, "is true"));
+
+		ConstraintResult result = await sut.IsMetBy("foo", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is foo whose first char is 'f' whose code point is 102 whose is-even is true");
+	}
+
+	[Fact]
 	public async Task ForWhich_CalledTwice_OuterConstraintFails_ShouldStillEvaluateOuterConstraint()
 	{
 		ManualExpectationBuilder<string> sut = new(null);
@@ -206,6 +246,24 @@ public class ExpectationBuilderTests
 		await That(result.Outcome).IsEqualTo(Outcome.Success);
 		await That(result.GetExpectationText())
 			.IsEqualTo("is foo whose length is 3 and whose first char is 'f'");
+	}
+
+	[Fact]
+	public async Task ForWhich_CalledTwice_WhereSecondProjectsFromFirstResult_ShouldChainProjections()
+	{
+		ManualExpectationBuilder<int> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 123, "is 123"));
+		sut.ForWhich<int, string>(i => i.ToString(CultureInfo.InvariantCulture),
+			" whose string ");
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "123", "is \"123\""));
+		sut.ForWhich<string, int>(s => s.Length, " and whose length ");
+		sut.AddConstraint((_, _) => new DummyConstraint<int>(i => i == 3, "is 3"));
+
+		ConstraintResult result = await sut.IsMetBy(123, null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is 123 whose string is \"123\" and whose length is 3");
 	}
 
 	[Fact]
