@@ -90,26 +90,43 @@ internal class WhichNode<TSource, TMember> : Node
 				FurtherProcessingStrategy.IgnoreResult, default);
 		}
 
-		if (value is TSource typedValue)
-		{
-			TMember? matchingValue;
-			if (_memberAccessor != null)
-			{
-				matchingValue = _memberAccessor(typedValue);
-			}
-			else
-			{
-				matchingValue = await _asyncMemberAccessor!.Invoke(typedValue);
-			}
+		TSource? source = ResolveSource(parentResult, value);
+		TMember? matchingValue = await ComputeMatchingValueAsync(source);
 
-			ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
-			return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
-				matchingValue);
+		ConstraintResult innerResult = await _inner.IsMetBy(matchingValue, context, cancellationToken);
+		return CombineResults(parentResult, innerResult, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
+			matchingValue);
+	}
+
+	private static TSource? ResolveSource(ConstraintResult? parentResult, object value)
+	{
+		if (parentResult != null && parentResult.TryGetValue(out TSource? projectedValue))
+		{
+			return projectedValue;
+		}
+
+		if (value is TSource directValue)
+		{
+			return directValue;
 		}
 
 		throw new InvalidOperationException(
 				$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
 			.LogTrace();
+	}
+
+	private async Task<TMember?> ComputeMatchingValueAsync(TSource? source)
+	{
+#pragma warning disable S2583
+		if (source is null)
+		{
+			return default;
+		}
+#pragma warning restore S2583
+
+		return _memberAccessor != null
+			? _memberAccessor(source)
+			: await _asyncMemberAccessor!.Invoke(source);
 	}
 
 	/// <inheritdoc cref="object.Equals(object?)" />
@@ -225,6 +242,11 @@ internal class WhichNode<TSource, TMember> : Node
 			}
 
 			value = default;
+			// When neither this result nor its sub-chains carry a TValue, fall through to a
+			// type-compatibility check so chained WhichNodes can keep propagating projections
+			// even when the recorded matching value happens to be null (e.g. an outer
+			// `Which(p => p.Address)` projecting `null`). The caller is expected to guard
+			// against null `value` even though `[NotNullWhen(true)]` is annotated on the base.
 			return typeof(TValue).IsAssignableFrom(typeof(TMember));
 		}
 

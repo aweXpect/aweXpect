@@ -260,7 +260,7 @@ public sealed class WhichNodeTests
 		Task<ConstraintResult> Act() => whichNode.IsMetBy("foo", null!, CancellationToken.None);
 
 		await That(Act).Throws<InvalidOperationException>()
-			.WithMessage("The expectation node does not support int with value 3");
+			.WithMessage("The expectation node does not support int with value 1");
 	}
 
 	[Fact]
@@ -281,9 +281,76 @@ public sealed class WhichNodeTests
 	}
 
 	[Fact]
+	public async Task IsMetBy_WhenOuterTypeDoesNotMatchButParentExposesProjectedValue_ShouldFallBackToParentProjection()
+	{
+		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "abcd", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		int? observed = null;
+		whichNode.AddConstraint(new DummyConstraint<int>(i =>
+		{
+			observed = i;
+			return true;
+		}, "is anything"));
+
+		ConstraintResult result = await whichNode.IsMetBy(DateTime.Now, null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(observed).IsEqualTo(4);
+	}
+
+	[Fact]
+	public async Task IsMetBy_WhenParentChainProjectsThroughThreeLevels_ShouldPropagateInnermostValue()
+	{
+		WhichNode<string, char> level1 = new(null, s => s![0]);
+		level1.AddNode(new ExpectationNode());
+		level1.AddConstraint(new DummyConstraint<char>(_ => true, "first"));
+
+		WhichNode<char, int> level2 = new(level1, c => c);
+		level2.AddNode(new ExpectationNode());
+		level2.AddConstraint(new DummyConstraint<int>(_ => true, "code"));
+
+		WhichNode<int, bool> level3 = new(level2, i => i % 2 == 0);
+		level3.AddNode(new ExpectationNode());
+		bool? observed = null;
+		level3.AddConstraint(new DummyConstraint<bool>(b =>
+		{
+			observed = b;
+			return b;
+		}, "is true"));
+
+		ConstraintResult result = await level3.IsMetBy("foo", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(observed).IsEqualTo(true);
+	}
+
+	[Fact]
+	public async Task IsMetBy_WhenParentWhichNodeProjectsToInnerSource_ShouldEvaluateAgainstProjectedValue()
+	{
+		WhichNode<string, int> outerWhich = new(null, s => s!.Length);
+		outerWhich.AddNode(new ExpectationNode());
+		outerWhich.AddConstraint(new DummyConstraint<int>(_ => true, "length"));
+
+		bool? observed = null;
+		WhichNode<int, bool> innerWhich = new(outerWhich, i => i % 2 == 0);
+		innerWhich.AddNode(new ExpectationNode());
+		innerWhich.AddConstraint(new DummyConstraint<bool>(b =>
+		{
+			observed = b;
+			return b;
+		}, "is true"));
+
+		ConstraintResult result = await innerWhich.IsMetBy("food", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(observed).IsEqualTo(true);
+	}
+
+	[Fact]
 	public async Task IsMetBy_WhenTypeDoesNotMatch_ShouldThrowInvalidOperationException()
 	{
-		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
+		DummyNode node1 = new("", () => new DummyConstraintResult(Outcome.Success));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
 		whichNode.AddConstraint(new DummyConstraint("c2",
@@ -531,7 +598,7 @@ public sealed class WhichNodeTests
 
 			             Actual:
 			             foo
-			             
+
 			             Expected:
 			             bar
 			             """);
