@@ -3078,6 +3078,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -3593,7 +3599,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -4112,7 +4119,8 @@ window.BENCHMARK_DATA = {
           257.2480085690816,
           244.25682302883692,
           243.7579882328327,
-          256.03809175491335
+          256.03809175491335,
+          254.0504708971296
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4585,6 +4593,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5163,7 +5172,8 @@ window.BENCHMARK_DATA = {
           260.5485079447428,
           231.991211107799,
           191.62189525824326,
-          246.73004194895427
+          246.73004194895427,
+          242.50485041936238
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5356,6 +5366,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8317,6 +8328,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -8755,7 +8772,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -9197,7 +9215,8 @@ window.BENCHMARK_DATA = {
           307924.8183942522,
           311299.91650390625,
           226209.35726492744,
-          315863.78987630206
+          315863.78987630206,
+          307699.7050083705
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9644,6 +9663,7 @@ window.BENCHMARK_DATA = {
           335444,
           335444,
           335442,
+          335444,
           335444
         ],
         "borderColor": "#63A2AC",
@@ -10094,7 +10114,8 @@ window.BENCHMARK_DATA = {
           2489009.7388020833,
           2552441.5973772323,
           1857089.020703125,
-          2662272.79140625
+          2662272.79140625,
+          2663374.1692708335
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10541,6 +10562,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -13633,6 +13655,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -14148,7 +14176,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -14667,7 +14696,8 @@ window.BENCHMARK_DATA = {
           521.8121624628703,
           469.4192423184713,
           369.7571702003479,
-          490.3196488893949
+          490.3196488893949,
+          542.4571160634358
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15140,6 +15170,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15718,7 +15749,8 @@ window.BENCHMARK_DATA = {
           536.6702416102091,
           467.0827213287354,
           374.9241320292155,
-          520.6389963785807
+          520.6389963785807,
+          488.3467140197754
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15911,6 +15943,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -19334,6 +19367,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -19849,7 +19888,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -20368,7 +20408,8 @@ window.BENCHMARK_DATA = {
           268.359963621412,
           254.4930282320295,
           198.6710093975067,
-          261.219749101003
+          261.219749101003,
+          273.1513393719991
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20882,6 +20923,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -21419,7 +21461,8 @@ window.BENCHMARK_DATA = {
           276.8941360473633,
           235.0635022799174,
           196.30359431902568,
-          237.55874942143757
+          237.55874942143757,
+          264.0014883359273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21612,6 +21655,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -25035,6 +25079,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -25550,7 +25600,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -26069,7 +26120,8 @@ window.BENCHMARK_DATA = {
           481.8471424420675,
           465.8563095410665,
           372.336464881897,
-          450.22876809193536
+          450.22876809193536,
+          489.6001601219177
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26542,6 +26594,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -27120,7 +27173,8 @@ window.BENCHMARK_DATA = {
           1276.5654972394307,
           1206.3605616251627,
           918.6929376920065,
-          1172.8343648176926
+          1172.8343648176926,
+          1254.0886882781983
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27549,6 +27603,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -30736,6 +30791,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -31251,7 +31312,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -31770,7 +31832,8 @@ window.BENCHMARK_DATA = {
           2018.7297785622734,
           2016.6996198018392,
           1530.1763628550939,
-          1888.2443939208983
+          1888.2443939208983,
+          2034.3483911241804
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32243,6 +32306,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -32821,7 +32885,8 @@ window.BENCHMARK_DATA = {
           1498.877787399292,
           1403.9941674550375,
           1008.1714033762614,
-          1335.0155604044596
+          1335.0155604044596,
+          1280.7277285712105
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -33014,6 +33079,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -36437,6 +36503,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
@@ -36952,7 +37024,8 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
@@ -37471,7 +37544,8 @@ window.BENCHMARK_DATA = {
           2623.5803386143275,
           2673.3710471561976,
           2033.6847948710124,
-          2490.499685160319
+          2490.499685160319,
+          2624.996596472604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -37944,6 +38018,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -38522,7 +38597,8 @@ window.BENCHMARK_DATA = {
           63488.736328125,
           93535.61938476562,
           49280.53310546875,
-          88718.86038643973
+          88718.86038643973,
+          87920.5650390625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -39046,7 +39122,8 @@ window.BENCHMARK_DATA = {
           57481,
           57957,
           57939,
-          56986
+          56986,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
