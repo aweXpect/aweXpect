@@ -139,6 +139,25 @@ public class ExpectationBuilderTests
 	}
 
 	[Fact]
+	public async Task ForWhich_Async_CalledTwice_ShouldHonorConstraintsFromAllLevels()
+	{
+		Func<string, Task<string?>> upperAccessor = s => Task.FromResult<string?>(s.ToUpperInvariant());
+		Func<string, Task<string?>> doubledAccessor = s => Task.FromResult<string?>(s + s);
+		ManualExpectationBuilder<string> sut = new(null);
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foo", "is foo"));
+		sut.ForWhich(upperAccessor, " whose upper ");
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "FOO", "is FOO"));
+		sut.ForWhich(doubledAccessor, " and whose doubled ");
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foofoo", "is foofoo"));
+
+		ConstraintResult result = await sut.IsMetBy("foo", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(result.GetExpectationText())
+			.IsEqualTo("is foo whose upper is FOO and whose doubled is foofoo");
+	}
+
+	[Fact]
 	public async Task ForWhich_CalledTwice_OuterConstraintFails_ShouldStillEvaluateOuterConstraint()
 	{
 		ManualExpectationBuilder<string> sut = new(null);
