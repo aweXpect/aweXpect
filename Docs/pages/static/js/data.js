@@ -3066,6 +3066,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -3579,7 +3585,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -4096,7 +4103,8 @@ window.BENCHMARK_DATA = {
           263.74906460444134,
           254.63417393820626,
           257.2480085690816,
-          244.25682302883692
+          244.25682302883692,
+          243.7579882328327
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4569,6 +4577,7 @@ window.BENCHMARK_DATA = {
           712,
           712,
           712,
+          696,
           696,
           696,
           696,
@@ -5143,7 +5152,8 @@ window.BENCHMARK_DATA = {
           234.34768841816827,
           253.0220613846412,
           260.5485079447428,
-          231.991211107799
+          231.991211107799,
+          191.62189525824326
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5336,6 +5346,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -8283,6 +8294,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -8719,7 +8736,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -9159,7 +9177,8 @@ window.BENCHMARK_DATA = {
           299013.83621651784,
           328639.2407877604,
           307924.8183942522,
-          311299.91650390625
+          311299.91650390625,
+          226209.35726492744
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9604,7 +9623,8 @@ window.BENCHMARK_DATA = {
           335444,
           335444,
           335444,
-          335444
+          335444,
+          335442
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10052,7 +10072,8 @@ window.BENCHMARK_DATA = {
           2548547.8702566964,
           2430546.505989583,
           2489009.7388020833,
-          2552441.5973772323
+          2552441.5973772323,
+          1857089.020703125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10497,7 +10518,8 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804906,
-          4804906
+          4804906,
+          4804902
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13577,6 +13599,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -14090,7 +14118,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -14607,7 +14636,8 @@ window.BENCHMARK_DATA = {
           482.29411381941577,
           486.32153536478677,
           521.8121624628703,
-          469.4192423184713
+          469.4192423184713,
+          369.7571702003479
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15080,6 +15110,7 @@ window.BENCHMARK_DATA = {
           1368,
           1368,
           1368,
+          1360,
           1360,
           1360,
           1360,
@@ -15654,7 +15685,8 @@ window.BENCHMARK_DATA = {
           465.22883943716687,
           474.5699833539816,
           536.6702416102091,
-          467.0827213287354
+          467.0827213287354,
+          374.9241320292155
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15847,6 +15879,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -19256,6 +19289,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -19769,7 +19808,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -20286,7 +20326,8 @@ window.BENCHMARK_DATA = {
           256.3235088030497,
           262.6412694454193,
           268.359963621412,
-          254.4930282320295
+          254.4930282320295,
+          198.6710093975067
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20800,6 +20841,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
+          864,
           864,
           864,
           864,
@@ -21333,7 +21375,8 @@ window.BENCHMARK_DATA = {
           251.34436041514078,
           256.59832350413006,
           276.8941360473633,
-          235.0635022799174
+          235.0635022799174,
+          196.30359431902568
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -21526,6 +21569,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -24935,6 +24979,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -25448,7 +25498,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -25965,7 +26016,8 @@ window.BENCHMARK_DATA = {
           475.7153709411621,
           471.90136366624097,
           481.8471424420675,
-          465.8563095410665
+          465.8563095410665,
+          372.336464881897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -26438,6 +26490,7 @@ window.BENCHMARK_DATA = {
           1136,
           1136,
           1136,
+          1128,
           1128,
           1128,
           1128,
@@ -27012,7 +27065,8 @@ window.BENCHMARK_DATA = {
           1185.6244538170952,
           1128.6523996499868,
           1276.5654972394307,
-          1206.3605616251627
+          1206.3605616251627,
+          918.6929376920065
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -27441,6 +27495,7 @@ window.BENCHMARK_DATA = {
           3896,
           3896,
           3896,
+          3944,
           3944,
           3944,
           3944,
@@ -30614,6 +30669,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -31127,7 +31188,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -31644,7 +31706,8 @@ window.BENCHMARK_DATA = {
           1920.984299468994,
           1908.151171024029,
           2018.7297785622734,
-          2016.6996198018392
+          2016.6996198018392,
+          1530.1763628550939
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -32117,6 +32180,7 @@ window.BENCHMARK_DATA = {
           2632,
           2632,
           2632,
+          2624,
           2624,
           2624,
           2624,
@@ -32691,7 +32755,8 @@ window.BENCHMARK_DATA = {
           1244.610304260254,
           1235.9358866373698,
           1498.877787399292,
-          1403.9941674550375
+          1403.9941674550375,
+          1008.1714033762614
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -32884,6 +32949,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -36293,6 +36359,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 16 23:07:27 2026 \u002B0200",
         "message": "fix: enhance error messages for collection element expectations (#953)"
+      },
+      {
+        "sha": "17f0b7ef89b1836128e3bcadf53547bf2ce4e7d7",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 06:28:02 2026 \u002B0200",
+        "message": "fix: drain pending \u0060WhichNode\u0060 in chained \u0060ForWhich\u0060 calls (#955)"
       }
     ],
     "labels": [
@@ -36806,7 +36878,8 @@ window.BENCHMARK_DATA = {
       "0d5b1a95",
       "2e3e0f0e",
       "9e78cad2",
-      "891b1b70"
+      "891b1b70",
+      "17f0b7ef"
     ],
     "datasets": [
       {
@@ -37323,7 +37396,8 @@ window.BENCHMARK_DATA = {
           2539.419913973127,
           2504.0617779323034,
           2623.5803386143275,
-          2673.3710471561976
+          2673.3710471561976,
+          2033.6847948710124
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -37796,6 +37870,7 @@ window.BENCHMARK_DATA = {
           2824,
           2824,
           2824,
+          2816,
           2816,
           2816,
           2816,
@@ -38370,7 +38445,8 @@ window.BENCHMARK_DATA = {
           89274.11682942709,
           62079.916748046875,
           63488.736328125,
-          93535.61938476562
+          93535.61938476562,
+          49280.53310546875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -38892,7 +38968,8 @@ window.BENCHMARK_DATA = {
           56986,
           57481,
           57481,
-          57957
+          57957,
+          57939
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
