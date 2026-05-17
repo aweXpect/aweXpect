@@ -55,7 +55,7 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 at index 3 instead of 1
 
 					             Collection:
-					             [0, 0, 1, 2, 3, (… and maybe others)]
+					             [0, 0, 1, 2, 3]
 					             """);
 			}
 
@@ -125,8 +125,7 @@ public sealed partial class ThatEnumerable
 					             [
 					               "foo",
 					               "bar",
-					               "baz",
-					               (… and maybe others)
+					               "baz"
 					             ]
 					             """);
 			}

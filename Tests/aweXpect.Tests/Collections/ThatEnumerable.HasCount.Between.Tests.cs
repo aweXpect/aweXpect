@@ -141,16 +141,7 @@ public sealed partial class ThatEnumerable
 						             but found at least 7
 
 						             Collection:
-						             [
-						               1,
-						               2,
-						               3,
-						               4,
-						               5,
-						               6,
-						               7,
-						               (… and maybe others)
-						             ]
+						             [1, 2, 3, 4, 5, 6, 7]
 						             """);
 				}
 

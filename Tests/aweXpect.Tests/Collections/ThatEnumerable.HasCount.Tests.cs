@@ -139,12 +139,7 @@ public sealed partial class ThatEnumerable
 					             but found at least 3
 
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3,
-					               (… and maybe others)
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 

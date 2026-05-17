@@ -73,12 +73,7 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 at index 1 instead of 3
 
 					             Collection:
-					             [
-					               1,
-					               2,
-					               3,
-					               (… and maybe others)
-					             ]
+					             [1, 2, 3]
 					             """);
 			}
 

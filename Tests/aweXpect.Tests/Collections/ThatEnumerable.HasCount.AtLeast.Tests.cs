@@ -219,8 +219,7 @@ public sealed partial class ThatEnumerable
 						             [
 						               1,
 						               2,
-						               3,
-						               (… and maybe others)
+						               3
 						             ]
 						             """);
 				}
@@ -256,8 +255,7 @@ public sealed partial class ThatEnumerable
 						             [
 						               1,
 						               2,
-						               3,
-						               (… and maybe others)
+						               3
 						             ]
 						             """);
 				}

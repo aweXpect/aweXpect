@@ -177,31 +177,33 @@ internal static class CollectionHelpers
 	internal static bool ExceedsFormatterLimit<TItem>(this IEnumerable<TItem> source)
 	{
 		int limit = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
-		int seen = 0;
-		foreach (TItem _ in source)
+		if (source is ICollection<TItem> collection)
 		{
-			if (++seen > limit)
-			{
-				return true;
-			}
+			return collection.Count > limit;
 		}
 
-		return false;
+		if (source is ICountable { Count: { } countableCount })
+		{
+			return countableCount > limit;
+		}
+
+		return source.Skip(limit).Any();
 	}
 
 	internal static bool ExceedsFormatterLimit(this IEnumerable source)
 	{
 		int limit = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
-		int seen = 0;
-		foreach (object? _ in source)
+		if (source is ICollection collection)
 		{
-			if (++seen > limit)
-			{
-				return true;
-			}
+			return collection.Count > limit;
 		}
 
-		return false;
+		if (source is ICountable { Count: { } countableCount })
+		{
+			return countableCount > limit;
+		}
+
+		return source.Cast<object?>().Skip(limit).Any();
 	}
 
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
