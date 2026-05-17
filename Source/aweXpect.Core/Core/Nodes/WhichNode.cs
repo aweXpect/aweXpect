@@ -90,38 +90,34 @@ internal class WhichNode<TSource, TMember> : Node
 				FurtherProcessingStrategy.IgnoreResult, default);
 		}
 
-		TSource? source;
-		if (value is TSource directValue)
-		{
-			source = directValue;
-		}
-		else if (parentResult != null && parentResult.TryGetValue(out TSource? projectedValue))
-		{
-			// A parent WhichNode already projected the outer subject to TSource;
-			// use that projection so chained ForWhich calls compose
-			// (e.g. .Which.X.Which.Y, where Y's accessor operates on X's output).
-			source = projectedValue;
-		}
-		else
-		{
-			throw new InvalidOperationException(
-					$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
-				.LogTrace();
-		}
-
-		TMember? matchingValue;
-		if (_memberAccessor != null)
-		{
-			matchingValue = source is null ? default : _memberAccessor(source);
-		}
-		else
-		{
-			matchingValue = source is null ? default : await _asyncMemberAccessor!.Invoke(source);
-		}
+		TSource source = ResolveSource(parentResult, value);
+		TMember? matchingValue = _memberAccessor != null
+			? _memberAccessor(source)
+			: await _asyncMemberAccessor!.Invoke(source);
 
 		ConstraintResult innerResult = await _inner.IsMetBy(matchingValue, context, cancellationToken);
 		return CombineResults(parentResult, innerResult, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
 			matchingValue);
+	}
+
+	private static TSource ResolveSource(ConstraintResult? parentResult, object value)
+	{
+		if (value is TSource directValue)
+		{
+			return directValue;
+		}
+
+		// A parent WhichNode already projected the outer subject to TSource; use that
+		// projection so chained ForWhich calls compose (e.g. .Which.X.Which.Y, where Y's
+		// accessor operates on X's output).
+		if (parentResult != null && parentResult.TryGetValue(out TSource? projectedValue))
+		{
+			return projectedValue;
+		}
+
+		throw new InvalidOperationException(
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
+			.LogTrace();
 	}
 
 	/// <inheritdoc cref="object.Equals(object?)" />
@@ -237,7 +233,7 @@ internal class WhichNode<TSource, TMember> : Node
 			}
 
 			value = default;
-			return typeof(TValue).IsAssignableFrom(typeof(TMember));
+			return false;
 		}
 
 		public override ConstraintResult Negate()
