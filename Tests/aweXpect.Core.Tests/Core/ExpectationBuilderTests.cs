@@ -149,13 +149,13 @@ public class ExpectationBuilderTests
 		sut.ForWhich(upperAccessor, " whose upper ");
 		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "FOO", "is FOO"));
 		sut.ForWhich(doubledAccessor, " and whose doubled ");
-		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "foofoo", "is foofoo"));
+		sut.AddConstraint((_, _) => new DummyConstraint<string>(s => s == "FOOFOO", "is FOOFOO"));
 
 		ConstraintResult result = await sut.IsMetBy("foo", null!, CancellationToken.None);
 
 		await That(result.Outcome).IsEqualTo(Outcome.Success);
 		await That(result.GetExpectationText())
-			.IsEqualTo("is foo whose upper is FOO and whose doubled is foofoo");
+			.IsEqualTo("is foo whose upper is FOO and whose doubled is FOOFOO");
 	}
 
 	[Fact]

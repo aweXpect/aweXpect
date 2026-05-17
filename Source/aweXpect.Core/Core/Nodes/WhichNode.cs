@@ -102,17 +102,14 @@ internal class WhichNode<TSource, TMember> : Node
 
 	private static TSource ResolveSource(ConstraintResult? parentResult, object value)
 	{
-		if (value is TSource directValue)
-		{
-			return directValue;
-		}
-
-		// A parent WhichNode already projected the outer subject to TSource; use that
-		// projection so chained ForWhich calls compose (e.g. .Which.X.Which.Y, where Y's
-		// accessor operates on X's output).
 		if (parentResult != null && parentResult.TryGetValue(out TSource? projectedValue))
 		{
 			return projectedValue;
+		}
+
+		if (value is TSource directValue)
+		{
+			return directValue;
 		}
 
 		throw new InvalidOperationException(
