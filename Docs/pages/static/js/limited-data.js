@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
-      {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          252.72715813773019,
           280.3093831062317,
           283.63104089101154,
           266.4278591473897,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           257.2480085690816,
           244.25682302883692,
           243.7579882328327,
-          256.03809175491335
+          256.03809175491335,
+          254.0504708971296
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          237.63500305584498,
           250.10903949737548,
           247.96393378575644,
           246.72612738609314,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           260.5485079447428,
           231.991211107799,
           191.62189525824326,
-          246.73004194895427
+          246.73004194895427,
+          242.50485041936238
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -610,12 +610,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
-      {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
@@ -908,10 +902,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -960,14 +959,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          311220.9062848772,
           304146.2848307292,
           304551.24983723956,
           309351.11951622594,
@@ -1016,7 +1015,8 @@ window.BENCHMARK_DATA = {
           307924.8183942522,
           311299.91650390625,
           226209.35726492744,
-          315863.78987630206
+          315863.78987630206,
+          307699.7050083705
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1075,8 +1075,8 @@ window.BENCHMARK_DATA = {
           335444,
           335444,
           335444,
-          335444,
           335442,
+          335444,
           335444
         ],
         "borderColor": "#63A2AC",
@@ -1092,7 +1092,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2678586.1421875,
           2670087.6234375,
           2669636.982552083,
           2721211.091666667,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           2489009.7388020833,
           2552441.5973772323,
           1857089.020703125,
-          2662272.79140625
+          2662272.79140625,
+          2663374.1692708335
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          4804906,
           4804906,
           4804906,
           4804906,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           4804906,
           4804906,
           4804902,
+          4804906,
           4804906
         ],
         "borderColor": "#FF671B",
@@ -1217,12 +1217,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
       {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
@@ -1516,10 +1510,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -1568,14 +1567,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          481.12435315450034,
           485.612482992808,
           483.65077253977455,
           514.8296607335409,
@@ -1624,7 +1623,8 @@ window.BENCHMARK_DATA = {
           521.8121624628703,
           469.4192423184713,
           369.7571702003479,
-          490.3196488893949
+          490.3196488893949,
+          542.4571160634358
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1700,7 +1700,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          461.08623968760173,
           459.4695859909058,
           459.09368499120075,
           481.4837484995524,
@@ -1749,7 +1748,8 @@ window.BENCHMARK_DATA = {
           536.6702416102091,
           467.0827213287354,
           374.9241320292155,
-          520.6389963785807
+          520.6389963785807,
+          488.3467140197754
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1826,12 +1826,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
-      {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
@@ -2124,10 +2118,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -2176,14 +2175,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          246.59749922385583,
           240.5951186498006,
           251.62415653864542,
           256.68456312815346,
@@ -2232,7 +2231,8 @@ window.BENCHMARK_DATA = {
           268.359963621412,
           254.4930282320295,
           198.6710093975067,
-          261.219749101003
+          261.219749101003,
+          273.1513393719991
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2282,7 +2282,7 @@ window.BENCHMARK_DATA = {
           808,
           808,
           808,
-          808,
+          864,
           864,
           864,
           864,
@@ -2308,7 +2308,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          242.90483951568604,
           247.96704540252685,
           246.0950667063395,
           261.2673779805501,
@@ -2357,7 +2356,8 @@ window.BENCHMARK_DATA = {
           276.8941360473633,
           235.0635022799174,
           196.30359431902568,
-          237.55874942143757
+          237.55874942143757,
+          264.0014883359273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2434,12 +2434,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
-      {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
@@ -2732,10 +2726,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -2784,14 +2783,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          468.40364974339803,
           477.40524133046466,
           455.50418186187744,
           480.4333353996277,
@@ -2840,7 +2839,8 @@ window.BENCHMARK_DATA = {
           481.8471424420675,
           465.8563095410665,
           372.336464881897,
-          450.22876809193536
+          450.22876809193536,
+          489.6001601219177
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2916,7 +2916,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1195.8763028658354,
           1279.3265654246013,
           1341.3342341105142,
           1277.8287263234456,
@@ -2965,7 +2964,8 @@ window.BENCHMARK_DATA = {
           1276.5654972394307,
           1206.3605616251627,
           918.6929376920065,
-          1172.8343648176926
+          1172.8343648176926,
+          1254.0886882781983
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3042,12 +3042,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
-      {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
@@ -3340,10 +3334,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -3392,14 +3391,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1877.2079965046473,
           1883.368688583374,
           1975.8320676167807,
           1909.7076311747232,
@@ -3448,7 +3447,8 @@ window.BENCHMARK_DATA = {
           2018.7297785622734,
           2016.6996198018392,
           1530.1763628550939,
-          1888.2443939208983
+          1888.2443939208983,
+          2034.3483911241804
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3524,7 +3524,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1293.8594581604004,
           1296.8097412109375,
           1272.9032246907552,
           1307.3820737692026,
@@ -3573,7 +3572,8 @@ window.BENCHMARK_DATA = {
           1498.877787399292,
           1403.9941674550375,
           1008.1714033762614,
-          1335.0155604044596
+          1335.0155604044596,
+          1280.7277285712105
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3650,12 +3650,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "4e0f878d20afa367d4d6dc4c13b2b96239a9fb99",
-        "author": "dependabot[bot]",
-        "date": "Fri Jan 30 14:45:50 2026 \u002B0100",
-        "message": "chore: Bump the xunit group with 2 updates (#883)"
-      },
-      {
         "sha": "9c18e66304590c22dae3562ca457e71b27bb16b1",
         "author": "dependabot[bot]",
         "date": "Fri Jan 30 14:46:25 2026 \u002B0100",
@@ -3948,10 +3942,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 17 08:24:51 2026 \u002B0200",
         "message": "fix: only annotate \u0060Collection\u0060 as incomplete when the formatter truncates (#956)"
+      },
+      {
+        "sha": "ef8b9ddaf5f1b7396c908e1f0cefb59df8b92f44",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 17 11:12:32 2026 \u002B0200",
+        "message": "fix: chain projected values across nested \u0060WhichNode\u0060s (#958)"
       }
     ],
     "labels": [
-      "4e0f878d",
       "9c18e663",
       "d34ed13b",
       "6a8bb3d3",
@@ -4000,14 +3999,14 @@ window.BENCHMARK_DATA = {
       "9e78cad2",
       "891b1b70",
       "17f0b7ef",
-      "3b2559e9"
+      "3b2559e9",
+      "ef8b9dda"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          2463.1350833347865,
           2567.3348298754013,
           2530.9322708129885,
           2504.5855895451136,
@@ -4056,7 +4055,8 @@ window.BENCHMARK_DATA = {
           2623.5803386143275,
           2673.3710471561976,
           2033.6847948710124,
-          2490.499685160319
+          2490.499685160319,
+          2624.996596472604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4132,7 +4132,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          87758.57204026442,
           88605.09134114583,
           88204.74019949777,
           88540.18547175481,
@@ -4181,7 +4180,8 @@ window.BENCHMARK_DATA = {
           63488.736328125,
           93535.61938476562,
           49280.53310546875,
-          88718.86038643973
+          88718.86038643973,
+          87920.5650390625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4193,7 +4193,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          58598,
           58598,
           58598,
           58598,
@@ -4242,7 +4241,8 @@ window.BENCHMARK_DATA = {
           57481,
           57957,
           57939,
-          56986
+          56986,
+          57481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
