@@ -133,16 +133,7 @@ public sealed partial class ThatEnumerable
 					             but at least 4 were
 
 					             Collection:
-					             [
-					               1,
-					               1,
-					               1,
-					               1,
-					               2,
-					               2,
-					               3,
-					               (… and maybe others)
-					             ]
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -183,8 +174,7 @@ public sealed partial class ThatEnumerable
 					             [
 					               "foo",
 					               "FOO",
-					               "bar",
-					               (… and maybe others)
+					               "bar"
 					             ]
 					             """);
 			}
@@ -242,8 +232,7 @@ public sealed partial class ThatEnumerable
 					             [
 					               "foo",
 					               "foo",
-					               "bar",
-					               (… and maybe others)
+					               "bar"
 					             ]
 					             """);
 			}

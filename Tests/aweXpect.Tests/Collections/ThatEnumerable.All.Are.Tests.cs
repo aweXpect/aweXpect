@@ -69,8 +69,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.Are.MyBaseClass {
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -162,8 +161,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.Are.MyBaseClass {
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}

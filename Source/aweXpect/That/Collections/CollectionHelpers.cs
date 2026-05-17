@@ -174,6 +174,36 @@ internal static class CollectionHelpers
 		});
 	}
 
+	internal static bool ExceedsFormatterLimit<TItem>(this IEnumerable<TItem> source)
+	{
+		int limit = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+		int seen = 0;
+		foreach (TItem _ in source)
+		{
+			if (++seen > limit)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	internal static bool ExceedsFormatterLimit(this IEnumerable source)
+	{
+		int limit = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+		int seen = 0;
+		foreach (object? _ in source)
+		{
+			if (++seen > limit)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
 	{
 		if (!isIncomplete || formattedItems.Length < 3)

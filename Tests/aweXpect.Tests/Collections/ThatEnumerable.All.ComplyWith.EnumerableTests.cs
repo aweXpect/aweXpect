@@ -114,7 +114,7 @@ public sealed partial class ThatEnumerable
 						             [2, (… and maybe others)]
 
 						             Collection:
-						             [1, 1, 1, 1, 2, 2, 3, (… and maybe others)]
+						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
 				}
 
@@ -177,16 +177,7 @@ public sealed partial class ThatEnumerable
 						             [1, (… and maybe others)]
 
 						             Collection:
-						             [
-						               1,
-						               1,
-						               1,
-						               1,
-						               1,
-						               1,
-						               1,
-						               (… and maybe others)
-						             ]
+						             [1, 1, 1, 1, 1, 1, 1]
 						             """);
 				}
 			}

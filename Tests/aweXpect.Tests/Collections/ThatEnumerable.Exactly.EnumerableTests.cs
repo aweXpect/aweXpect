@@ -134,16 +134,7 @@ public sealed partial class ThatEnumerable
 					             but at least 4 were
 
 					             Collection:
-					             [
-					               1,
-					               1,
-					               1,
-					               1,
-					               2,
-					               2,
-					               3,
-					               (… and maybe others)
-					             ]
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
