@@ -106,8 +106,7 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Collection:
 					             [
-					               <null>,
-					               (… and maybe others)
+					               <null>
 					             ]
 
 					             Dictionary:
@@ -142,8 +141,7 @@ public sealed partial class ThatReadOnlyDictionary
 					             Collection:
 					             [
 					               "foo",
-					               "bar",
-					               (… and maybe others)
+					               "bar"
 					             ]
 
 					             Dictionary:
@@ -177,8 +175,7 @@ public sealed partial class ThatReadOnlyDictionary
 
 					             Collection:
 					             [
-					               "bar",
-					               (… and maybe others)
+					               "bar"
 					             ]
 
 					             Dictionary:
@@ -231,8 +228,7 @@ public sealed partial class ThatReadOnlyDictionary
 					             [
 					               "foo",
 					               <null>,
-					               "baz",
-					               (… and maybe others)
+					               "baz"
 					             ]
 
 					             Dictionary:

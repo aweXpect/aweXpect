@@ -66,8 +66,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
 						                 Foo = 0
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -139,8 +138,7 @@ public sealed partial class ThatEnumerable
 						               ThatEnumerable.All.AreExactly.MyClass {
 						                 Bar = 0,
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -218,8 +216,7 @@ public sealed partial class ThatEnumerable
 						               },
 						               ThatEnumerable.All.AreExactly.MyBaseClass {
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}
@@ -304,8 +301,7 @@ public sealed partial class ThatEnumerable
 						               ThatEnumerable.All.AreExactly.MyClass {
 						                 Bar = 0,
 						                 Foo = 10
-						               },
-						               (… and maybe others)
+						               }
 						             ]
 						             """);
 				}

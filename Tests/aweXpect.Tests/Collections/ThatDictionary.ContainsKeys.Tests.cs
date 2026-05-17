@@ -105,8 +105,7 @@ public sealed partial class ThatDictionary
 
 					             Collection:
 					             [
-					               <null>,
-					               (… and maybe others)
+					               <null>
 					             ]
 
 					             Dictionary:
@@ -141,8 +140,7 @@ public sealed partial class ThatDictionary
 					             Collection:
 					             [
 					               "foo",
-					               "bar",
-					               (… and maybe others)
+					               "bar"
 					             ]
 
 					             Dictionary:
@@ -176,8 +174,7 @@ public sealed partial class ThatDictionary
 
 					             Collection:
 					             [
-					               "bar",
-					               (… and maybe others)
+					               "bar"
 					             ]
 
 					             Dictionary:
@@ -230,8 +227,7 @@ public sealed partial class ThatDictionary
 					             [
 					               "foo",
 					               <null>,
-					               "baz",
-					               (… and maybe others)
+					               "baz"
 					             ]
 
 					             Dictionary:
