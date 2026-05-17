@@ -349,6 +349,13 @@ public abstract class ExpectationBuilder
 		string? replaceIt = null,
 		Func<ExpectationGrammars, ExpectationGrammars>? expectationGrammar = null)
 	{
+		if (_whichNode != null)
+		{
+			_whichNode.AddNode(_node);
+			_node = _whichNode;
+			_whichNode = null;
+		}
+
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
 		{
@@ -377,6 +384,13 @@ public abstract class ExpectationBuilder
 		Func<TSource, Task<TTarget?>> asyncMemberAccessor,
 		string? separator = null)
 	{
+		if (_whichNode != null)
+		{
+			_whichNode.AddNode(_node);
+			_node = _whichNode;
+			_whichNode = null;
+		}
+
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
 		{
